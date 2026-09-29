@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -89,6 +90,8 @@ h1 span{display:block;white-space:nowrap;width:max-content}
 .citem.done .ca,.citem.done .ct{opacity:.6}
 .cfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0 6px;font-size:12.5px;color:var(--muted)}
 .cfoot .buy{margin-left:auto}
+.ytbox{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;margin-top:10px;background:#000;border:1.5px solid var(--rule)}
+.ytbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 h2.month{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;margin:30px 0 0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;text-wrap:balance}
 h2.month span{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted)}
 .empty{margin-top:18px;padding:16px;border:1px dashed var(--line);color:var(--muted);font-size:14px}
@@ -236,7 +239,7 @@ function releaseEl(S,r,ri){
   const url=r.url||`https://hardwax.com/${r.id}/${SLUG[r.id]}/`;
   const cov=r.cover||`https://media.hardwax.com/images/${r.img}.jpg`;
   const hue=HUES[(r.a.length+ri)%HUES.length];
-  const el=document.createElement("article");el.className="rel";
+  const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;
   el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${cov}" loading="lazy" onerror="this.remove()"></div>
   <div class="info"><div class="artist">${esc(r.a)}</div><div class="title">${esc(r.t)}</div>
   <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a>${r.cat?" · "+esc(r.cat):""}</span><span>${r.f}</span><span>${r.d||S.date}</span><span>${esc(r.g)}</span></div>
@@ -246,7 +249,7 @@ function releaseEl(S,r,ri){
   const cb=el.querySelector(".cartbtn");setCartBtn(cb);cb.onclick=()=>toggleCart(r.key);
   const ul=el.querySelector(".tracks");
   const btns=r.tr.map(t=>{
-    const qi=queue.push({...t,a:r.a,t:r.t,shop:S.shop,url})-1;
+    const qi=queue.push({...t,a:r.a,t:r.t,shop:S.shop,url,key:r.key})-1;
     const li=document.createElement("li");
     li.innerHTML=`<button class="trk" data-q="${qi}"><span class="ic">${TRI}</span><span class="side">${t.s}</span><span class="nm">${esc(t.n)}</span></button>`;
     li.firstChild.onclick=()=>play(qi);ul.appendChild(li);return li;
@@ -254,7 +257,7 @@ function releaseEl(S,r,ri){
   if(!btns.length){const m=document.createElement("a");m.className="more";m.href=url;m.target="_blank";m.rel="noopener";m.textContent="Previews in shop ↗";ul.after(m);}
   return el;
 }
-const playable=r=>(r.tr||[]).some(t=>t.u);
+const playable=r=>(r.tr||[]).some(t=>t.u||t.yt||t.ytl);
 function shopSections(month,withBlocked){
   const frag=document.createDocumentFragment();
   // Shops mit mehr direkt hörbaren Platten zuerst, gesperrte Shops am Schluss
@@ -355,7 +358,7 @@ function renderCart(){
     list.appendChild(e);return;
   }
   const note=document.createElement("p");note.className="cnote";
-  note.textContent="Grouped by shop. Open each record in its shop, add it to the shop's cart there and check out with the shop.";
+  note.textContent="Your list, grouped by shop. The shops don't accept orders from other websites, so tap “Open in shop” for each record, add it to the cart on the shop's site and check out there.";
   list.appendChild(note);
   shops.forEach(S=>{
     const mine=items.filter(x=>x.S===S).map(x=>x.r);
@@ -376,7 +379,7 @@ function renderCart(){
       sec.appendChild(row);
     });
     const foot=document.createElement("div");foot.className="cfoot";
-    foot.innerHTML=`<span>${done} of ${mine.length} opened in shop</span>${CART_URL[S.shop]?`<a class="buy" href="${CART_URL[S.shop]}" target="_blank" rel="noopener">Go to ${S.shop} cart<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`:""}`;
+    foot.innerHTML=`<span>${done} of ${mine.length} opened in shop</span>`;
     sec.appendChild(foot);
     list.appendChild(sec);
   });
@@ -391,8 +394,17 @@ function fallback(q){pb.innerHTML=`Preview unavailable · <a href="${q.u||q.page
 function play(i){
   cur=i;const q=queue[i];mark();
   pa.textContent=`${q.a} – ${q.n}`;pb.textContent=`${q.t} · ${q.shop}`;pr.style.width="0";
+  document.querySelectorAll(".ytbox").forEach(b=>b.remove());
+  if(q.yt||q.ytl){au.pause();pp.innerHTML=TRI;pb.textContent=`${q.t} · playing on YouTube`;showYT(q);return}
   if(!q.u){fallback(q);return}
   au.src=q.u;au.play().then(()=>{pp.innerHTML=PAU}).catch(()=>fallback(q));
+}
+function showYT(q){
+  const art=[...document.querySelectorAll("article.rel")].find(a=>a.dataset.key===q.key);if(!art)return;
+  const box=document.createElement("div");box.className="ytbox";
+  const src=q.ytl?`https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(q.ytl)}&autoplay=1&playsinline=1&rel=0`:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(q.yt)}?autoplay=1&playsinline=1&rel=0`;
+  box.innerHTML=`<iframe src="${src}" title="YouTube player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+  art.querySelector(".tracks").after(box);
 }
 au.onerror=()=>{if(cur>=0)fallback(queue[cur])};
 au.ontimeupdate=()=>{if(au.duration)pr.style.width=(au.currentTime/au.duration*100)+"%"};
