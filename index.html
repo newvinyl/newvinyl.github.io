@@ -410,7 +410,8 @@ const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF"};
 const chfOf=(S,p)=>{if(p==null)return null;const f=FX[CODE[S.cur]||S.cur];return f?p*f:null};
 const SYM={CHF:"CHF ",EUR:"€ ",GBP:"£ "};
 const chf=v=>{if(v==null)return "";const c=homeInfo().cur;return SYM[c]+(v/(FX[c]||1)).toFixed(2)};
-const REGION=c=>c==="CH"?"CH":(c==="UK"||c==="GB")?"UK":"EU";
+const EUC=new Set(["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE"]);
+const REGION=c=>c==="CH"?"CH":(c==="UK"||c==="GB")?"UK":EUC.has(c)?"EU":"WORLD";
 const CNAME={CH:"Switzerland",DE:"Germany",NL:"Netherlands",FR:"France",UK:"UK",GB:"UK",BE:"Belgium",IT:"Italy",ES:"Spain",AT:"Austria",DK:"Denmark",SE:"Sweden",PL:"Poland",CZ:"Czechia",PT:"Portugal",IE:"Ireland",JP:"Japan",US:"USA"};
 const fold=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"");
 const norm=s=>fold(s).replace(/\(.*?\)|\[.*?\]/g,"").replace(/\b(ep|lp|12"?|2x12"?)\b/g,"").replace(/[^\p{L}\p{N}]/gu,"");
@@ -631,7 +632,7 @@ function render(){
   }
   if(view==="home"){
     const h=document.createElement("h2");h.className="month";h.textContent=mLabel(now);list.appendChild(h);
-    const frag=shopSections(pool.filter(matches),!flt.from.size||flt.from.size===3);
+    const frag=shopSections(pool.filter(matches),!flt.from.size);
     if(![...frag.children].some(c=>c.querySelector(".rel"))&&!pool.length&&!swissEmpty){
       const e=document.createElement("p");e.className="empty";
       e.innerHTML=`No new releases for ${MONTHS[+now.split("-")[1]-1]} yet. They appear here as soon as the shops list new records. Last month's records are under <a href="#archiv" data-go="archiv">Past</a>.`;
@@ -678,7 +679,7 @@ function renderFilter(now){
     <div class="fpanel" ${fltOpen?"":"hidden"}>
       <div class="homerow frow"><label class="flabel" for="fhome">Your country</label>${homeSelect("fhome")}</div>
       <div class="flabel">Ships from</div>
-      <div class="chips">${["CH","EU","UK"].map(z=>chip("data-from",z,flt.from.has(z),({CH:"Switzerland",EU:"EU",UK:"UK"})[z]+(z===homeInfo().region?" · no customs":""),nFrom(z),z!=="CH"&&!nFrom(z)&&!flt.from.has(z))).join("")}</div>
+      <div class="chips">${["CH","EU","UK","WORLD"].filter(z=>flt.from.has(z)||SHOPS.some(S=>!S.blocked&&(S.items||[]).length&&REGION(S.country)===z)).map(z=>chip("data-from",z,flt.from.has(z),({CH:"Switzerland",EU:"EU",UK:"UK",WORLD:"Rest of world"})[z]+(z===homeInfo().region?" · no customs":""),nFrom(z),!nFrom(z)&&!flt.from.has(z))).join("")}</div>
       <div class="flabel">Show</div>
       <div class="chips">${chip("data-tog","newOnly",flt.newOnly,"New since last visit",nNew,!nNew&&!flt.newOnly)}${chip("data-tog","fol",flt.fol,`${STAR}Following`,nFol,!nFol&&!flt.fol)}${chip("data-tog","hideHeard",flt.hideHeard,"Hide heard",nHeard,!nHeard&&!flt.hideHeard)}</div>
       <div class="flabel">Type</div>
@@ -713,7 +714,7 @@ const today=()=>new Date().toLocaleDateString("en-GB",{day:"numeric",month:"shor
 const VAT_CH=0.081,VAT_FREE=5/VAT_CH;let FXDATE="";
 const HOMES=[["CH","Switzerland",8.1],["AT","Austria",20],["BE","Belgium",21],["CZ","Czechia",21],["DK","Denmark",25],["FI","Finland",25.5],["FR","France",20],["DE","Germany",19],["GR","Greece",24],["IE","Ireland",23],["IT","Italy",22],["LU","Luxembourg",17],["NL","Netherlands",21],["PL","Poland",23],["PT","Portugal",23],["ES","Spain",21],["SE","Sweden",25],["UK","United Kingdom",20],["XX","Somewhere else",null]];
 const homeInfo=()=>{const h=HOMES.find(x=>x[0]===home)||HOMES[HOMES.length-1];const region=h[0]==="CH"?"CH":h[0]==="UK"?"UK":h[0]==="XX"?"XX":"EU";return {code:h[0],name:h[1],vat:h[2],region,cur:region==="CH"?"CHF":region==="UK"?"GBP":"EUR"}};
-const zoneName={CH:"Switzerland",EU:"the EU",UK:"the UK"};
+const zoneName={CH:"Switzerland",EU:"the EU",UK:"the UK",WORLD:"the same country"};
 function importCost(S,goods,shipC){
   const H=homeInfo(),from=REGION(S.country),base=goods+(shipC||0);
   if(H.region==="XX")return {kind:"unknown"};
