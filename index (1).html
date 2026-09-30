@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Vinyl Releases">
+<meta name="description" content="New house and techno vinyl releases from European record shops, updated daily and grouped by shop.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Monthly Vinyl Releases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Einheitlich 95 % Schwarz (bewusst ein Theme). Layout: eine Spalte, max 560px, Shops als Blöcke mit Sticky-Kopf, Player unten fixiert */
+:root{
+  --bg:#0d0d0d; --deep:#1a1a1a; --fg:#ecebe7; --muted:#a0a4a9; --line:#3c4046;
+  --black:#000000; --rule:#ffffff; --div:#ffffff; --accent:#93a8ff; --accent-fg:#111317; --warn:#e3a94f;
+  --display:"Helvetica Neue", "HelveticaNeue", Helvetica, "Inter Tight", Arial, sans-serif;
+  --body:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45}
+.wrap{max-width:560px;margin:0 auto;padding-inline:16px;padding-block:20px 120px}
+header.top{display:flex;flex-direction:column;gap:6px;background:var(--black);border-top:4px solid var(--rule);border-bottom:4px solid var(--rule);padding:18px 14px 14px}
+h1{font-family:var(--display);font-weight:700;font-size:40px;line-height:.98;letter-spacing:.01em;margin:0;color:var(--rule);width:100%}
+h1 span{display:block;white-space:nowrap;width:max-content}
+.date{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;margin:0 0 8px}
+.demo{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+.tabs{display:flex;gap:6px;margin-top:14px;align-items:center}
+.tab.tabcart{margin-left:auto;position:relative;width:46px;height:46px;padding:0!important;border-radius:0!important;border:2px solid var(--rule)!important;background:var(--black)!important;color:var(--rule)!important;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+.tab.tabcart svg{width:23px;height:23px}
+.tab.tabcart[aria-selected="true"]{background:var(--rule)!important;color:var(--black)!important}
+.tab.tabcart .badge{position:absolute;top:-8px;right:-8px;border:2px solid var(--bg)}
+.tab{all:unset;cursor:pointer;font-weight:700;font-size:14px;min-height:46px;box-sizing:border-box;display:inline-flex;align-items:center;padding:0 16px;border-radius:0;border:2px solid var(--rule);background:var(--black);color:var(--rule)}
+.tab[aria-selected="true"]{background:var(--rule);color:var(--black);border-color:var(--rule)}
+.tab:focus-visible,.sim:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sim{all:unset;cursor:pointer;display:inline-block;margin-top:6px;font-size:12.5px;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.sim[aria-pressed="true"]{color:var(--warn)}
+.sim[aria-pressed="true"]::before{content:"● "}
+.filter{margin-top:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:10px}
+.fbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fbtn{all:unset;cursor:pointer;order:3;margin-left:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;box-sizing:border-box;padding:6px 14px;font-weight:700;font-size:15px;color:var(--rule);background:var(--black);border:2px solid var(--rule)}
+.fbtn::after{content:"▾";font-size:11px;color:var(--muted)}
+.fbtn[aria-expanded="true"]::after{content:"▴"}
+.fbtn b{background:var(--accent);color:var(--accent-fg);font-size:11px;border-radius:999px;padding:1px 7px}
+.fcount{font-family:var(--mono);font-size:12px;color:var(--muted);order:1}
+.freset{all:unset;order:2;cursor:pointer;font-size:12.5px;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.fpanel{padding-top:14px;align-items:stretch;display:flex;flex-direction:column;gap:8px}
+.flabel{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-bottom:6px}
+.flabel{align-self:flex-end}
+.chip{all:unset;cursor:pointer;font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:999px}
+.chip i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:2px}
+.chip:disabled{opacity:.35;cursor:default}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.chip[aria-pressed="true"] i{color:var(--accent-fg)}
+.fbtn:focus-visible,.chip:focus-visible,.freset:focus-visible,#flabelsel:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#flabelsel{width:100%;max-width:100%;font:inherit;font-size:14px;padding:8px 10px;background:var(--deep);color:#f2f0ea;border:1px solid var(--line);border-radius:4px}
+.fnone{font-size:13px;color:var(--muted)}
+.lbl{color:var(--fg);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--muted);padding-block:6px}
+.lbl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cartbtn{all:unset;font-family:var(--display);letter-spacing:.02em;cursor:pointer;display:inline-flex;align-items:center;gap:9px;min-height:48px;box-sizing:border-box;font-size:15px;font-weight:700;color:var(--rule);background:var(--black);border:2px solid var(--rule);padding:8px 16px;border-radius:3px}
+.cartbtn svg,.buy svg,.copen svg{width:14px;height:14px;flex:none}
+.buy svg,.copen svg{width:18px}
+.cartbtn.on{background:var(--rule);color:var(--black)}
+.cartbtn:focus-visible,.pcart:focus-visible,.cdel:focus-visible,.copen:focus-visible,.shoplink:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.shoplink{align-self:flex-end;font-size:12.5px;color:var(--muted);margin-top:8px;padding-block:6px;text-underline-offset:3px}
+.badge{display:inline-block;min-width:18px;text-align:center;background:var(--accent);color:var(--accent-fg);font-size:11px;font-weight:700;border-radius:999px;padding:1px 6px;font-family:var(--mono)}
+.pcart{all:unset;cursor:pointer;order:1;position:relative;width:44px;height:44px;flex:none;display:flex;align-items:center;justify-content:center;color:#f2f0ea}
+.pcart svg{width:25px;height:25px}
+.pcart .badge{position:absolute;top:2px;right:0}
+.cnote{font-size:13px;color:var(--muted);margin:8px 0 0}
+.citem{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:start;padding:16px 0;border-bottom:1.5px solid var(--div)}
+.cthumb{width:64px;aspect-ratio:1;max-width:100%;position:relative;overflow:hidden}
+.cthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ctext{min-width:0}
+.ca{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.025em;line-height:1.15}
+.ct{font-size:14px}
+.cl{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px}
+.cside{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.cprice{font-family:var(--mono);font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cdel{all:unset;cursor:pointer;font-size:12px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.copen{grid-column:1/-1;justify-self:end;display:inline-flex;align-items:center;gap:8px;min-height:44px;box-sizing:border-box;padding:6px 14px;font-weight:700;font-size:14px;color:var(--rule);background:var(--black);border:2px solid var(--rule);border-radius:3px;text-decoration:none}
+.citem.done .copen{background:transparent;border-color:var(--line);color:var(--muted)}
+.citem.done .ca,.citem.done .ct{opacity:.6}
+.cfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0 6px;font-size:12.5px;color:var(--muted)}
+.cfoot .buy{margin-left:auto}
+.ytbox{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;margin-top:10px;background:#000;border:1.5px solid var(--rule)}
+.ytbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.bagacts{display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-top:16px;padding:14px;background:var(--black);border:2px solid var(--rule)}
+.bagrow{display:flex;gap:10px;justify-content:flex-end;width:100%;flex-wrap:wrap}
+.bbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:9px;min-height:46px;box-sizing:border-box;padding:8px 14px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--rule);background:var(--black);border:2px solid var(--rule)}
+.bbtn svg{width:16px;height:16px;flex:none}
+.bbtn:hover,.bbtn:active{background:var(--rule);color:var(--black)}
+.bbtn:disabled{opacity:.5;cursor:default}
+.bbtn:focus-visible,#bagmail:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#bagmail{flex:1;min-width:0;font:inherit;font-size:16px;padding:10px 12px;background:#1a1a1a;color:#f2f0ea;border:2px solid var(--rule);border-radius:0}
+.bagmsg{margin:0;font-size:12.5px;color:var(--muted);min-height:1em;text-align:right}
+.bagmsg:empty{display:none}
+h2.month{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;margin:30px 0 0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;text-wrap:balance}
+h2.month span{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted)}
+.empty{margin-top:18px;padding:16px;border:1px dashed var(--line);color:var(--muted);font-size:14px}
+.empty a{color:var(--accent)}
+section.shop{margin-top:22px}
+.shop-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--black);display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:11px 12px 10px;border-top:4px solid var(--rule);border-bottom:4px solid var(--rule);text-transform:uppercase}
+.shop-name{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.04em}
+.shop-sum{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.rel{display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;border-bottom:1.5px solid var(--div)}
+.cover{width:100%;aspect-ratio:1;max-width:100%;position:relative;overflow:hidden;background:var(--deep)}
+.cover img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.cover .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.cover .ph span{width:62%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--mono);font-size:15px;line-height:1.3;padding:18px;color:#111}
+.cover .ph span::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--deep)}
+.info{min-width:0;display:flex;flex-direction:column;gap:3px}
+.artist{font-family:var(--display);font-weight:700;font-size:27px;line-height:1.08;letter-spacing:.025em;text-wrap:balance}
+.title{font-weight:400;font-size:19px;line-height:1.25}
+.meta{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.5}
+.meta span+span::before{content:" · ";color:var(--line)}
+.row{display:flex;justify-content:flex-end;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+.price{font-family:var(--display);font-weight:700;font-size:27px;line-height:1.08;letter-spacing:.025em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.price .cur{font-size:.5em;margin-right:.15em;vertical-align:.55em}
+.price .noprice{font-family:var(--body);font-weight:400;font-size:14px;letter-spacing:0;color:var(--muted)}
+.buy{display:inline-flex;align-items:center;gap:8px;min-height:48px;box-sizing:border-box;font-size:15px;font-weight:700;color:var(--rule);background:var(--black);border:2px solid var(--rule);text-decoration:none;padding:8px 16px;border-radius:3px}
+.buy svg{width:18px;height:14px;flex:none}
+.buy:hover{background:var(--rule);color:var(--black)}
+.buy:focus-visible,.trk:focus-visible,.pbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tracks{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column}
+.trk{all:unset;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:46px;padding:2px 0;font-size:14px;width:100%;box-sizing:border-box}
+.trk .ic{order:3;margin-left:auto;width:44px;height:40px;flex:none;display:flex;align-items:center;justify-content:flex-end;color:var(--fg)}
+.trk .ic .tri{width:24px;height:26px}
+.trk .side{font-family:var(--mono);font-size:11px;color:var(--muted);width:20px;flex:none}
+.trk .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trk.on .ic{color:var(--accent)}
+.trk.on .nm{color:var(--accent);font-weight:500}
+.more{all:unset;cursor:pointer;align-self:flex-end;font-size:13px;color:var(--muted);padding:10px 4px;min-height:24px}
+.blocked{padding:14px 0;font-size:13.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+.blocked b{color:var(--warn);font-weight:500}
+.player{position:fixed;left:0;right:0;bottom:0;background:var(--deep);color:#f2f0ea;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.player .in{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.pbtn{all:unset;cursor:pointer;width:48px;height:48px;order:3;flex:none;border-radius:50%;background:#f2f0ea;color:var(--deep);display:flex;align-items:center;justify-content:center;font-size:14px}
+.pbtn .tri{width:18px;height:20px}
+.pbtn.sm .tri{width:20px;height:15px}
+.pbtn.sm{width:40px;height:40px;order:2;font-size:12px;background:transparent;color:#f2f0ea;border:1px solid rgba(255,255,255,.3)}
+.pt{min-width:0;flex:1;order:0}
+.pt .a{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pt .b{font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pt .b a{color:inherit}
+.bar{height:2px;background:rgba(255,255,255,.2);margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:#f2f0ea}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+
+
+</head>
+<body>
+<div class="wrap">
+  <p class="date" id="stand"></p>
+  <header class="top">
+    <h1 id="title"><span>Monthly Vinyl Releases</span></h1>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-v="home" id="tab-home">This month</button>
+    <button class="tab" role="tab" data-v="archiv" id="tab-archiv">Past</button>
+    <button class="tab tabcart" role="tab" data-v="korb" id="tab-korb" aria-label="My bag"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 7V2.5M9 7V1.8M12.5 7V2.8M16 7V2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="1.5" y="7" width="19" height="13.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11.8h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><b class="badge" data-cartcount hidden>0</b></button>
+  </nav>
+  <div id="filter" class="filter"></div>
+  <main id="list"></main>
+</div>
+
+<div class="player" id="player">
+  <div class="in">
+    <button class="pbtn" id="pp" aria-label="Play"><svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M1 1 19 11 1 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
+    <div class="pt"><div class="a" id="pa">Tap a track</div><div class="b" id="pb">Previews straight from the shops</div><div class="bar"><i id="pr"></i></div></div>
+    <button class="pcart" id="pcart" aria-label="Open my bag"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 7V2.5M9 7V1.8M12.5 7V2.8M16 7V2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="1.5" y="7" width="19" height="13.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11.8h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><b class="badge" data-cartcount hidden>0</b></button>
+    <button class="pbtn sm" id="nx" aria-label="Next track"><svg class="tri" viewBox="0 0 30 22" aria-hidden="true"><path d="M1 1 14 11 1 21ZM15 1 28 11 15 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
+  </div>
+</div>
+<audio id="au" preload="none"></audio>
+
+<script>
+const TRI='<svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M1 1 19 11 1 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',PAU='<svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M2 1h5v20H2zM13 1h5v20h-5z" fill="currentColor"/></svg>';
+let SHOPS=[];let UPDATED="";
+const SLUG={"08898":"artefakt/flow-tide-ep","89538":"fjaak/fjaak015","88982":"dj-honesty/unknown-pleasures-ep","89537":"mees-javois/swamped-ep","88033":"boo-williams/lost-of-time","88845":"robotman-feat-marshall-jefferson/do-da-doo","40056":"marc-cotterell/connection","88152":"deep88/summer-of-love-ep","89286":"chris-simmonds/midnight-music","37855":"robert-hood/the-metronome","89517":"altinbas/beyond-the-veil","89510":"pyramidal-decode/origini"};
+const LABEL_URL={
+ "Delsin":"https://delsinrecords.bandcamp.com/","Fjaak":"https://fjaak.bandcamp.com/","No Speakers":"https://nospeakers1.bandcamp.com/",
+ "Primordial State":"https://primordialstate.bandcamp.com/","Chiwax":"https://dbh-music.bandcamp.com/","Definitive":"https://definitiverecordings.bandcamp.com/",
+ "House Of Groove":"https://houseofgroove1.bandcamp.com/","Hotmix":"https://hotmixrecords.bandcamp.com/","M-Plant":"https://m-plant.bandcamp.com/",
+ "Ostgut Ton":"https://ra.co/labels/803","Attic Music":"https://atticmusic.bandcamp.com/","Pink Dolphin":"https://rontrent1.bandcamp.com/",
+ "Topo2":"https://topo2.bandcamp.com/","Disctechno":"https://disctechnomusic.bandcamp.com/","Pressure":"https://pressurerecords.bandcamp.com/",
+ "Rush Hour RSS":"https://www.rushhour.nl/","Antimodus":"https://antimodus.bandcamp.com/","Marco Shuttle Productions":"https://marcoshuttle.bandcamp.com/",
+ "Magic Power":"https://magicpower.bandcamp.com/","Beyond The Bridge":"https://beyondthebridgemusic.bandcamp.com/","Blueprint":"https://blueprintrecords.bandcamp.com/",
+ "Elektorni":"https://soundcloud.com/elektorni","Psychemagik":"https://psychemagik.bandcamp.com/","Global Swing":"https://ra.co/labels/20230",
+ "Phonica Records":"https://phonicarecords.bandcamp.com/","Jiaolong":"https://caribouband.bandcamp.com/","The Quiet Village":"https://thequietvillage.bandcamp.com/",
+ "Good Plus":"https://soundcloud.com/good-plus","Up The Stuss":"https://soundcloud.com/upthestuss","Nervous Records":"https://nervousnyc.com/",
+ "Berg Audio":"https://bergaudio.bandcamp.com/","B-Edits":"https://b-edit.bandcamp.com/","Chapelle XIV Music":"https://ra.co/labels/20302",
+ "Cod3 QR":"https://cod3qr.bandcamp.com/","Pariter":"https://pariter-records.bandcamp.com/","Emotions Electric":"https://emotionselectric.bandcamp.com/",
+ "Organized Disorder Music":"https://organizeddisorder.bandcamp.com/"
+};
+const labelUrl=l=>LABEL_URL[l]||`https://www.discogs.com/search/?q=${encodeURIComponent(l)}&type=label`;
+const HUES=["#e8c547","#e07a5f","#81b29a","#f2cc8f","#9fb3ff","#d4a5d8","#b8d8a0","#f4a261"];
+const fmt=(c,p)=>p==null?"Price in shop":`${c} ${p.toFixed(p%1?2:0)}`;
+const fmtBig=(c,p)=>p==null?`<span class="noprice">Price in shop</span>`:`<span class="cur">${c}</span>${p.toFixed(p%1?2:0)}`;
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+let queue=[];let cur=-1;
+const list=document.getElementById("list");
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const mLabel=k=>{const [y,m]=k.split("-");return `${MONTHS[+m-1]} ${y}`};
+const mKey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
+// Jede Platte bekommt den Monat, in dem sie im Shop als neu erschien (alle aktuellen: September 2026)
+let INDEX={};
+function buildIndex(){INDEX={};SHOPS.forEach(S=>(S.items||[]).forEach(r=>{r.href=r.url;r.key=S.shop+"|"+r.href;INDEX[r.key]={S,r}}))}
+const CART_URL={"Hardwax":"https://hardwax.com/basket/","Juno Records":"https://www.juno.co.uk/cart/"};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let cart=store.get("mvr-cart",[]);
+let opened=new Set(store.get("mvr-opened",[]));
+const saveCart=()=>{store.set("mvr-cart",cart);store.set("mvr-opened",[...opened])};
+const inCart=k=>cart.includes(k);
+function cartBadges(){
+  const n=cart.length;
+  document.querySelectorAll("[data-cartcount]").forEach(e=>{e.textContent=n;e.hidden=!n});
+}
+function toggleCart(k){
+  if(inCart(k)){cart=cart.filter(x=>x!==k);opened.delete(k)}else cart.push(k);
+  saveCart();cartBadges();
+  document.querySelectorAll(`.cartbtn[data-key="${CSS.escape(k)}"]`).forEach(setCartBtn);
+}
+const PLUS='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
+const CHECK='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.5 7.5 5.5 11.5 12.5 2.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
+function setCartBtn(b){const on=inCart(b.dataset.key);b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);b.innerHTML=on?`In my bag${CHECK}`:`Add to bag${PLUS}`}
+const NOT_GENRE=/^(reissue|repress|lp|ep|edits?|2×12"?|12")$/i;
+const genresOf=r=>[...new Set(r.g.split(/[\/·]/).map(x=>x.trim().replace(/\s+Edits$/i,"")).filter(x=>x&&!NOT_GENRE.test(x)))];
+const flt={genres:new Set(),label:""};let fltOpen=false;
+const fltActive=()=>flt.genres.size>0||!!flt.label;
+const matches=r=>(!flt.label||r.l===flt.label)&&(!flt.genres.size||genresOf(r).some(g=>flt.genres.has(g)));
+let simulate=false, view=location.hash==="#archiv"?"archiv":location.hash==="#korb"?"korb":"home";
+const nowKey=()=>{const d=new Date();if(simulate)d.setMonth(d.getMonth()+1,1);return mKey(d)};
+
+function releaseEl(S,r,ri){
+  const url=r.url||`https://hardwax.com/${r.id}/${SLUG[r.id]}/`;
+  const cov=r.cover||`https://media.hardwax.com/images/${r.img}.jpg`;
+  const hue=HUES[(r.a.length+ri)%HUES.length];
+  const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;
+  el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${cov}" loading="lazy" onerror="this.remove()"></div>
+  <div class="info"><div class="artist">${esc(r.a)}</div><div class="title">${esc(r.t)}</div>
+  <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a>${r.cat?" · "+esc(r.cat):""}</span><span>${r.f}</span><span>${r.d||S.date}</span><span>${esc(r.g)}</span></div>
+  <ul class="tracks"></ul>
+  <div class="row"><span class="price">${fmtBig(S.cur,r.p)}</span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
+  <a class="shoplink" href="${url}" target="_blank" rel="noopener">or view directly at ${S.shop} ↗</a></div>`;
+  const cb=el.querySelector(".cartbtn");setCartBtn(cb);cb.onclick=()=>toggleCart(r.key);
+  const ul=el.querySelector(".tracks");
+  const btns=r.tr.map(t=>{
+    const qi=queue.push({...t,a:r.a,t:r.t,shop:S.shop,url,key:r.key})-1;
+    const li=document.createElement("li");
+    li.innerHTML=`<button class="trk" data-q="${qi}"><span class="ic">${TRI}</span><span class="side">${t.s}</span><span class="nm">${esc(t.n)}</span></button>`;
+    li.firstChild.onclick=()=>play(qi);ul.appendChild(li);return li;
+  });
+  if(!btns.length){const m=document.createElement("a");m.className="more";m.href=url;m.target="_blank";m.rel="noopener";m.textContent="Previews in shop ↗";ul.after(m);}
+  return el;
+}
+const playable=r=>(r.tr||[]).some(t=>t.u||t.yt||t.ytl);
+function shopSections(month,withBlocked){
+  const frag=document.createDocumentFragment();
+  // Shops mit mehr direkt hörbaren Platten zuerst, gesperrte Shops am Schluss
+  const nPlay=S=>S.blocked?-1:S.items.filter(r=>month(r.m)&&matches(r)&&playable(r)).length;
+  SHOPS.map((S,i)=>({S,i,n:nPlay(S)})).sort((a,b)=>b.n-a.n||a.i-b.i).map(x=>x.S).forEach(S=>{
+    const sec=document.createElement("section");sec.className="shop";
+    if(S.blocked){
+      if(!withBlocked||fltActive())return;
+      sec.innerHTML=`<div class="shop-head"><span class="shop-name">${S.shop}</span><span class="shop-sum">–</span></div>
+      <p class="blocked"><b>No data yet.</b> This shop doesn't allow automated reading. For the app we'll ask them for a feed or permission.</p>`;
+      frag.appendChild(sec);return;
+    }
+    const items=S.items.filter(r=>month(r.m)&&matches(r)).map((r,i)=>({r,i})).sort((a,b)=>playable(b.r)-playable(a.r)||a.i-b.i).map(x=>x.r);
+    if(!items.length)return;
+    sec.innerHTML=`<div class="shop-head"><span class="shop-name">${S.shop}</span><span class="shop-sum">${items.length} ${items.length>1?"records":"record"}</span></div>`;
+    items.forEach((r,ri)=>sec.appendChild(releaseEl(S,r,ri)));
+    frag.appendChild(sec);
+  });
+  return frag;
+}
+function render(){
+  const playing=cur>=0?queue[cur]:null;
+  queue=[];list.innerHTML="";
+  const now=nowKey();
+  document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===view));
+  document.getElementById("filter").hidden=view==="korb";
+  if(view==="korb"){renderCart();cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();return}
+  renderFilter(now);
+  const pool=SHOPS.flatMap(S=>(S.items||[]).filter(r=>view==="home"?r.m===now:r.m<now));
+  if(fltActive()&&pool.length&&!pool.some(matches)){
+    const e=document.createElement("p");e.className="empty";
+    e.innerHTML=`No records match this filter ${view==="home"?"this month":"in past months"}. <a href="#" data-reset>Clear filter</a>`;
+    list.appendChild(e);
+  }
+  if(view==="home"){
+    const h=document.createElement("h2");h.className="month";h.textContent=mLabel(now);list.appendChild(h);
+    const frag=shopSections(k=>k===now,true);
+    if(![...frag.children].some(c=>c.querySelector(".rel"))){
+      const e=document.createElement("p");e.className="empty";
+      e.innerHTML=`No new releases for ${MONTHS[+now.split("-")[1]-1]} yet. They appear here as soon as the shops list new records. Last month's records are under <a href="#archiv" data-go="archiv">Past</a>.`;
+      list.appendChild(e);
+    }
+    list.appendChild(frag);
+  }else{
+    const months=[...new Set(SHOPS.flatMap(S=>(S.items||[]).map(r=>r.m)))].filter(k=>k<now).sort().reverse();
+    if(!months.length){
+      const e=document.createElement("p");e.className="empty";
+      e.textContent=`Nothing here yet. On 1 ${MONTHS[+now.split("-")[1]%12]}, all records from ${MONTHS[+now.split("-")[1]-1]} move to Past and stay available to order.`;
+      list.appendChild(e);
+    }
+    months.forEach(k=>{
+      const h=document.createElement("h2");h.className="month";
+      const n=SHOPS.reduce((t,S)=>t+(S.items||[]).filter(r=>r.m===k&&matches(r)).length,0);
+      if(!n)return;
+      h.innerHTML=`${mLabel(k)}<span>${n} ${n>1?"records":"record"}</span>`;list.appendChild(h);
+      list.appendChild(shopSections(x=>x===k,false));
+    });
+  }
+  cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();
+  list.querySelectorAll("[data-reset]").forEach(a=>a.onclick=e=>{e.preventDefault();flt.genres.clear();flt.label="";render()});
+  list.querySelectorAll("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
+}
+function renderFilter(now){
+  const box=document.getElementById("filter");
+  const pool=SHOPS.flatMap(S=>(S.items||[]).filter(r=>view==="home"?r.m===now:r.m<now));
+  const count=(fn)=>{const m=new Map();pool.forEach(r=>fn(r).forEach(x=>m.set(x,(m.get(x)||0)+1)));return m};
+  const gm=count(genresOf), lm=count(r=>[r.l]);
+  const CORE=["House","Deep House","Tech House","Minimal","Techno","Dub Techno","Electro","Acid House","Balearic","Ambient","Lo-Fi House","Disco","Italo Disco"];
+  const rest=[...new Set([...gm.keys(),...flt.genres])].filter(g=>!CORE.includes(g)).sort((a,b)=>a.localeCompare(b,"en"));
+  const genres=[...CORE,...rest];
+  const labels=[...new Set([...lm.keys(),...(flt.label?[flt.label]:[])])].sort((a,b)=>a.localeCompare(b,"de"));
+  const n=flt.genres.size+(flt.label?1:0);
+  const hits=pool.filter(matches).length;
+  box.innerHTML=`<div class="fbar"><button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button>
+    <span class="fcount">${fltActive()?`${hits} of ${pool.length} records`:`${pool.length} records`}</span>
+    ${n?`<button class="freset" id="freset">Clear</button>`:""}</div>
+    <div class="fpanel" ${fltOpen?"":"hidden"}>
+      <div class="flabel">Genre</div>
+      <div class="chips">${genres.map(g=>`<button class="chip" aria-pressed="${flt.genres.has(g)}" data-g="${esc(g)}"${!(gm.get(g)||0)&&!flt.genres.has(g)?" disabled":""}>${esc(g)} <i>${gm.get(g)||0}</i></button>`).join("")||'<span class="fnone">No genres</span>'}</div>
+      <label class="flabel" for="flabelsel">Label</label>
+      <select id="flabelsel"><option value="">All labels (${labels.length})</option>${labels.map(l=>`<option value="${esc(l)}"${l===flt.label?" selected":""}>${esc(l)} (${lm.get(l)||0})</option>`).join("")}</select>
+    </div>`;
+  box.querySelector("#fbtn").onclick=()=>{fltOpen=!fltOpen;renderFilter(now);};
+  const rs=box.querySelector("#freset");if(rs)rs.onclick=()=>{flt.genres.clear();flt.label="";render()};
+  box.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const g=c.dataset.g;flt.genres.has(g)?flt.genres.delete(g):flt.genres.add(g);render()});
+  box.querySelector("#flabelsel").onchange=e=>{flt.label=e.target.value;render()};
+}
+function go(v){view=v;try{history.replaceState(null,"",v==="home"?"#":"#"+v)}catch(e){}render();window.scrollTo(0,0)}
+const PDFI='<svg viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1h8l4 4v12H2z M10 1v4h4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 10h6M5 13h6" stroke="currentColor" stroke-width="1.8"/></svg>';
+const COPYI='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 5V1H1v10h4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+const MAILI='<svg viewBox="0 0 18 14" aria-hidden="true"><rect x="1" y="1" width="16" height="12" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M1 1l8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+const SITE="https://newvinyl.github.io";
+const today=()=>new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+function bagText(items,shops){
+  let t=`My bag · Monthly Vinyl Releases · ${today()}\n`;
+  shops.forEach(S=>{const mine=items.filter(x=>x.S===S).map(x=>x.r);const sum=mine.reduce((a,r)=>a+(r.p||0),0);
+    t+=`\n${S.shop.toUpperCase()} (${mine.length} ${mine.length>1?"records":"record"}${sum?` · ${fmt(S.cur,sum)}`:""})\n`;
+    mine.forEach(r=>{t+=`- ${r.a} – ${r.t} [${r.l}${r.cat?" "+r.cat:""}, ${r.f}] ${fmt(S.cur,r.p)}\n  ${r.href}\n`})});
+  return t+`\n${SITE}\n`;
+}
+function loadPDF(){return window.jspdf?Promise.resolve():new Promise((res,rej)=>{const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";sc.onload=res;sc.onerror=rej;document.head.appendChild(sc)})}
+const pdfSafe=t=>String(t).replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/[–—]/g,"-").replace(/×/g,"x").replace(/…/g,"...").replace(/[^\u0000-ÿ€]/g,"?");
+async function bagPDF(items,shops){
+  await loadPDF();
+  const doc=new window.jspdf.jsPDF({unit:"mm",format:"a4"}),W=210,M=16;let y=0;
+  const band=(h,fill)=>{doc.setFillColor(fill);doc.rect(0,y,W,h,"F")};
+  const newPage=()=>{doc.addPage();y=M};
+  const need=h=>{if(y+h>285)newPage()};
+  y=0;band(38,"#000000");doc.setDrawColor(255);doc.setLineWidth(1.4);doc.line(0,38,W,38);
+  doc.setTextColor(255);doc.setFont("helvetica","bold");doc.setFontSize(30);doc.text("MY BAG",M,21);
+  doc.setFont("helvetica","normal");doc.setFontSize(10);
+  doc.text(pdfSafe(`Monthly Vinyl Releases · ${today()} · ${items.length} ${items.length>1?"records":"record"} · ${shops.length} ${shops.length>1?"shops":"shop"}`),M,30);
+  y=48;doc.setTextColor(0);
+  shops.forEach(S=>{
+    const mine=items.filter(x=>x.S===S).map(x=>x.r),sum=mine.reduce((a,r)=>a+(r.p||0),0);
+    need(26);doc.setFillColor(0);doc.rect(M,y,W-2*M,10,"F");doc.setTextColor(255);doc.setFont("helvetica","bold");doc.setFontSize(12);
+    doc.text(pdfSafe(S.shop.toUpperCase()),M+3,y+6.8);doc.setFont("helvetica","normal");doc.setFontSize(9);
+    doc.text(pdfSafe(`${mine.length} ${mine.length>1?"RECORDS":"RECORD"}${sum?` · ${fmt(S.cur,sum)}`:""}`),W-M-3,y+6.8,{align:"right"});
+    y+=16;doc.setTextColor(0);
+    mine.forEach(r=>{
+      need(26);
+      doc.setFont("helvetica","bold");doc.setFontSize(13);const al=doc.splitTextToSize(pdfSafe(r.a),120);doc.text(al,M,y);
+      doc.text(pdfSafe(fmt(S.cur,r.p)),W-M,y,{align:"right"});y+=al.length*5.4;
+      doc.setFont("helvetica","normal");doc.setFontSize(11);const tl=doc.splitTextToSize(pdfSafe(r.t),150);doc.text(tl,M,y);y+=tl.length*4.8;
+      doc.setFontSize(8.5);doc.setTextColor(90);doc.text(pdfSafe(`${r.l}${r.cat?" · "+r.cat:""} · ${r.f} · ${r.g}`),M,y);y+=5.2;
+      doc.setTextColor(0);doc.setFont("helvetica","bold");doc.setFontSize(9.5);doc.textWithLink(pdfSafe(`Buy at ${S.shop} >`),M,y,{url:r.href});
+      y+=4;doc.setDrawColor(0);doc.setLineWidth(.4);doc.line(M,y,W-M,y);y+=7;
+    });
+    y+=4;
+  });
+  const n=doc.getNumberOfPages();
+  for(let i=1;i<=n;i++){doc.setPage(i);doc.setFont("helvetica","normal");doc.setFontSize(8);doc.setTextColor(120);doc.textWithLink(SITE.replace("https://",""),M,292,{url:SITE});doc.text(`${i}/${n}`,W-M,292,{align:"right"})}
+  const name=`my-bag-${new Date().toISOString().slice(0,10)}.pdf`,blob=doc.output("blob");
+  const dl=window.claude&&window.claude.use?await window.claude.use("downloads").catch(()=>null):null;
+  if(dl){await dl.save({filename:name,data:blob});return}
+  doc.save(name);
+}
+function wireBag(items,shops){
+  const msg=t=>{const m=document.getElementById("bagmsg");if(m)m.textContent=t};
+  document.getElementById("bagpdf").onclick=async e=>{const b=e.currentTarget;b.disabled=true;msg("Packing your PDF…");
+    try{await bagPDF(items,shops);msg("PDF ready.")}catch(err){msg(err&&err.code==="declined"?"Download cancelled.":"The PDF could not be created. Check your connection and try again.")}b.disabled=false};
+  const text=bagText(items,shops);
+  document.getElementById("bagcopy").onclick=()=>{navigator.clipboard.writeText(text).then(()=>msg("List copied. Paste it anywhere."),()=>msg("Copy not allowed here. Use Export PDF or Send instead."))};
+  const inp=document.getElementById("bagmail"),send=document.getElementById("bagsend");
+  try{inp.value=store.get("mvr-mail","")}catch(e){}
+  const upd=()=>{send.href=`mailto:${encodeURIComponent(inp.value.trim())}?subject=${encodeURIComponent("My vinyl bag · Monthly Vinyl Releases")}&body=${encodeURIComponent(text)}`;store.set("mvr-mail",inp.value.trim())};
+  inp.oninput=upd;upd();
+  send.onclick=()=>msg(inp.value.trim()?`Opening your mail app to send the list to ${inp.value.trim()}…`:"Opening your mail app. Add who it's for there.");
+}
+function renderCart(){
+  const items=cart.map(k=>INDEX[k]).filter(Boolean);
+  const shops=SHOPS.filter(S=>items.some(x=>x.S===S));
+  const h=document.createElement("h2");h.className="month";
+  h.innerHTML=`My bag<span>${items.length?`${items.length} ${items.length>1?"records":"record"} · ${shops.length} ${shops.length>1?"shops":"shop"}`:""}</span>`;
+  list.appendChild(h);
+  if(!items.length){
+    const e=document.createElement("p");e.className="empty";
+    e.innerHTML=`Your bag is empty. Tap “Add to bag” on any record, keep listening, and pack your crate as you go. <a href="#" data-go="home">Back to new releases</a>`;
+    list.appendChild(e);return;
+  }
+  const acts=document.createElement("div");acts.className="bagacts";
+  acts.innerHTML=`<div class="bagrow"><button class="bbtn" id="bagpdf">${PDFI}Export PDF</button><button class="bbtn" id="bagcopy">${COPYI}Copy list</button></div>
+    <label class="flabel" for="bagmail">Send the list by email</label>
+    <div class="bagrow"><input id="bagmail" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com"><a class="bbtn" id="bagsend" href="#">${MAILI}Send</a></div>
+    <p class="bagmsg" id="bagmsg" role="status"></p>`;
+  list.appendChild(acts);
+  wireBag(items,shops);
+  const note=document.createElement("p");note.className="cnote";
+  note.textContent="Grouped by shop, so you order each shop in one go. Tap “Buy at …” to open the record in its shop and check out there.";
+  list.appendChild(note);
+  shops.forEach(S=>{
+    const mine=items.filter(x=>x.S===S).map(x=>x.r);
+    const sum=mine.reduce((t,r)=>t+(r.p||0),0), unknown=mine.some(r=>r.p==null);
+    const done=mine.filter(r=>opened.has(r.key)).length;
+    const sec=document.createElement("section");sec.className="shop";
+    sec.innerHTML=`<div class="shop-head"><span class="shop-name">${S.shop}</span><span class="shop-sum">${mine.length} ${mine.length>1?"records":"record"}${sum?` · ${fmt(S.cur,sum)}${unknown?" +":""}`:""}</span></div>`;
+    mine.forEach((r,ri)=>{
+      const row=document.createElement("div");row.className="citem"+(opened.has(r.key)?" done":"");
+      const hue=HUES[(r.a.length+ri)%HUES.length];
+      const cov=r.cover||`https://media.hardwax.com/images/${r.img}.jpg`;
+      row.innerHTML=`<div class="cthumb" style="background:${hue}"><img alt="" src="${cov}" loading="lazy" onerror="this.remove()"></div>
+      <div class="ctext"><div class="ca">${esc(r.a)}</div><div class="ct">${esc(r.t)}</div><div class="cl">${esc(r.l)}${r.cat?" · "+esc(r.cat):""}</div></div>
+      <div class="cside"><span class="cprice">${fmt(S.cur,r.p)}</span><button class="cdel" aria-label="Remove ${esc(r.a)}">Remove</button></div>
+      <a class="copen" href="${r.href}" target="_blank" rel="noopener">${opened.has(r.key)?`Opened at ${S.shop} ✓`:`Buy at ${S.shop}`}<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`;
+      row.querySelector(".cdel").onclick=()=>{toggleCart(r.key);render()};
+      row.querySelector(".copen").addEventListener("click",()=>{opened.add(r.key);saveCart();setTimeout(render,50)});
+      sec.appendChild(row);
+    });
+    const foot=document.createElement("div");foot.className="cfoot";
+    foot.innerHTML=`<span>${done} of ${mine.length} opened at ${S.shop}</span>`;
+    sec.appendChild(foot);
+    list.appendChild(sec);
+  });
+  list.querySelectorAll("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
+}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>go(b.dataset.v));
+document.getElementById("pcart").onclick=()=>go("korb");
+
+const au=document.getElementById("au"),pp=document.getElementById("pp"),pa=document.getElementById("pa"),pb=document.getElementById("pb"),pr=document.getElementById("pr");
+function mark(){if(!document.querySelector('.trk'))return;document.querySelectorAll(".trk").forEach(b=>b.classList.toggle("on",+b.dataset.q===cur))}
+function fallback(q){pb.innerHTML=`Preview unavailable · <a href="${q.u||q.page}" target="_blank" rel="noopener">Open preview ↗</a>`;pp.innerHTML=TRI}
+function play(i){
+  cur=i;const q=queue[i];mark();
+  pa.textContent=`${q.a} – ${q.n}`;pb.textContent=`${q.t} · ${q.shop}`;pr.style.width="0";
+  document.querySelectorAll(".ytbox").forEach(b=>b.remove());
+  if(q.yt||q.ytl){au.pause();pp.innerHTML=TRI;pb.textContent=`${q.t} · playing on YouTube`;showYT(q);return}
+  if(!q.u){fallback(q);return}
+  au.src=q.u;au.play().then(()=>{pp.innerHTML=PAU}).catch(()=>fallback(q));
+}
+function showYT(q){
+  const art=[...document.querySelectorAll("article.rel")].find(a=>a.dataset.key===q.key);if(!art)return;
+  const box=document.createElement("div");box.className="ytbox";
+  const src=q.ytl?`https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(q.ytl)}&autoplay=1&playsinline=1&rel=0`:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(q.yt)}?autoplay=1&playsinline=1&rel=0`;
+  box.innerHTML=`<iframe src="${src}" title="YouTube player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+  art.querySelector(".tracks").after(box);
+}
+au.onerror=()=>{if(cur>=0)fallback(queue[cur])};
+au.ontimeupdate=()=>{if(au.duration)pr.style.width=(au.currentTime/au.duration*100)+"%"};
+au.onended=()=>{if(cur<queue.length-1)play(cur+1)};
+pp.onclick=()=>{if(cur<0){play(0);return}if(!queue[cur].u)return;if(au.paused){au.play().then(()=>pp.innerHTML=PAU).catch(()=>fallback(queue[cur]))}else{au.pause();pp.innerHTML=TRI}};
+document.getElementById("nx").onclick=()=>play(Math.min(cur+1,queue.length-1));
+const fmtDate=iso=>{const [y,m,d]=iso.split("-");return `${+d} ${MONTHS[+m-1].slice(0,3)} ${y}`};
+list.innerHTML='<p class="empty">Loading new releases…</p>';
+fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+  SHOPS=d.shops;UPDATED=d.updated;buildIndex();cart=cart.filter(k=>INDEX[k]);
+  document.getElementById("stand").textContent="Last update: "+fmtDate(UPDATED);
+  cartBadges();render();
+}).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
+function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
+fitTitle();addEventListener("resize",fitTitle);try{document.fonts.ready.then(fitTitle)}catch(e){}
+
+</script>
+
+</body>
+</html>
