@@ -653,7 +653,9 @@ function toggleFollow(kind,v){setTimeout(maybeNudge,400);if(!follow[kind].includ
 let glitchT=null;
 function startGlitch(){
   if(glitchT||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  glitchT=setInterval(()=>{if(!document.hidden)glitch()},180000);
+  const vis=()=>{const el=document.getElementById("gdate");if(!el||document.hidden)return false;const r=el.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight};
+  setTimeout(()=>{if(vis())glitch()},3000);
+  glitchT=setInterval(()=>{if(vis())glitch()},180000);
 }
 function glitch(){
   const el=document.getElementById("gdate");if(!el)return;
