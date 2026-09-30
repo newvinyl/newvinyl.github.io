@@ -357,6 +357,26 @@ section.shop,h2.month{scroll-margin-top:8px}
 .nlater{background:#fff;color:#000}
 .nsave:focus-visible,.nlater:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media (min-width:900px){.nudge{bottom:92px}.nudge .nin{flex-direction:row;align-items:center;max-width:860px;padding:14px 16px}.ntext{flex:1}}
+.returning{margin:10px 0 0}
+.returning button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--rule);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--muted);padding-block:6px}
+.returning svg{width:14px;height:11px}
+.returning button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bbtn.ghost{border-style:dashed}
+.rmodal{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.7);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.rpanel{width:100%;max-width:520px;background:#fff;color:#000;padding:20px 18px 16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);max-height:90vh;overflow:auto}
+.rpanel h2{margin:0;font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.02em}
+.rbody p{margin:0 0 8px;font-size:14.5px;line-height:1.5;color:#222}
+.rsum{font-family:var(--mono);font-size:13px;color:#000!important;background:#f0f0ee;padding:10px 12px}
+.rnote{font-size:13px!important;color:#555!important}
+.rlabel{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#555;margin-bottom:6px}
+#rin{width:100%;box-sizing:border-box;font-family:var(--mono);font-size:14px;padding:10px 12px;background:#fff;color:#000;border:2px solid #000;border-radius:0;resize:vertical}
+#rin:focus-visible,.rfile:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.rfile{text-decoration:underline;text-underline-offset:3px;cursor:pointer;color:#000;font-weight:700}
+.rmsg{margin:0;font-size:13px;color:#b3261e;min-height:0}
+.rmsg:empty{display:none}
+.rbtns{display:flex;justify-content:flex-end;gap:8px}
+a.nlater{text-decoration:none}
+@media (min-width:700px){.rmodal{align-items:center}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -370,6 +390,7 @@ section.shop,h2.month{scroll-margin-top:8px}
     <h1 id="title"><span>Monthly Vinyl Releases</span></h1>
   </header>
   <p class="lede" id="lede"></p>
+  <p class="returning" id="returning" hidden><button type="button" data-restore>Been here before? Restore your follows &amp; bag<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button></p>
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-v="home" id="tab-home">This month</button>
     <button class="tab" role="tab" data-v="archiv" id="tab-archiv">Past</button>
@@ -394,7 +415,7 @@ section.shop,h2.month{scroll-margin-top:8px}
     <section class="fblock">
       <h3>About &amp; privacy</h3>
       <p>Monthly Vinyl Releases is an independent project and is not affiliated with any of the shops listed. Prices, stock and release dates come from the shops' public new-release pages and are updated every morning. They may have changed since; the shop's own page is always right.</p>
-      <p>No account, no cookies, no tracking. Your bag, follows, heard records and settings are stored only in your browser. You can back them up under <a href="#" data-data>My bag → Your data</a>.</p>
+      <p>No account, no cookies, no tracking. Your bag, follows, heard records and settings are stored only in your browser. You can save a backup link under <a href="#" data-data>My bag → Your data</a>. The data is inside the link, nothing is stored on a server.</p>
       <p>Covers and audio previews load directly from the shops' servers. Some previews play via YouTube in privacy-enhanced mode, only when you press play. Fonts are loaded from Google Fonts.</p>
     </section>
   </footer>
@@ -410,6 +431,7 @@ section.shop,h2.month{scroll-margin-top:8px}
   </div>
 </div>
 <div class="nudge" id="nudge" role="status" hidden></div>
+<div class="rmodal" id="restore" hidden></div>
 <audio id="au" preload="none"></audio>
 
 <script>
@@ -963,49 +985,81 @@ function mergeData(d){
   return {f:follow.a.length+follow.l.length-before.f,h:heard.size-before.h,c:cart.length-before.c};
 }
 const plural=(n,w)=>`${n} ${w}${n===1?"":"s"}`;
+// Backup als Link: der Code steht nach dem # (wird nie an einen Server geschickt). Öffnen des Links stellt alles wieder her.
+async function makeLink(){return `${SITE}/#restore=${await makeCode()}`}
+const linkMail=link=>`mailto:${encodeURIComponent(store.get("mvr-mail",""))}?subject=${encodeURIComponent("My vinyl backup link · Monthly Vinyl Releases")}&body=${encodeURIComponent(`Open this link to get your follows, heard records and bag back, on any device:\n\n${link}\n\nIt only works for you: the data is inside the link, nothing is stored on a server.\n`)}`;
 function dataBox(){
-  const box=document.createElement("div");box.className="bagacts databox";
+  const box=document.createElement("div");box.className="bagacts databox";box.id="yourdata";
   const last=store.get("mvr-backup",null),nf=follow.a.length+follow.l.length;
   const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
   const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone;
   box.innerHTML=`<div class="dhead"><span class="dtitle">Your data</span><span class="dsum">${plural(nf,"follow")} · ${plural(heard.size,"heard record")} · ${plural(cart.length,"record")} in bag</span></div>
-    <p class="dtext">Everything is saved only in this browser. Clearing the browser data deletes it, and other devices don't see it. Save a backup code and restore it anytime, on any device.${last?` <span class="dlast">Last backup: ${fmtDate(last)}.</span>`:` <span class="dlast warn">No backup yet.</span>`}</p>
-    <div class="bagrow"><button class="bbtn" id="bkcopy">${COPYI}Copy backup code</button><button class="bbtn" id="bkfile">${SAVEI}Save as file</button><a class="bbtn" id="bkmail" href="#">${MAILI}Email</a></div>
-    <label class="flabel" for="bkin">Restore: paste a backup code</label>
-    <textarea id="bkin" rows="3" spellcheck="false" autocomplete="off" placeholder="MVR1z.…"></textarea>
-    <div class="bagrow"><label class="bbtn" for="bkpick">${LOADI}Open file</label><input id="bkpick" type="file" accept=".txt,text/plain" hidden><button class="bbtn" id="bkrestore">Restore</button></div>
+    <p class="dtext">Everything is saved only in this browser. Clearing the browser data deletes it, and other devices don't see it. Save your backup link: bookmark it or email it to yourself, and open it anytime to get everything back.${last?` <span class="dlast">Last backup: ${fmtDate(last)}.</span>`:` <span class="dlast warn">No backup yet.</span>`}</p>
+    <div class="bagrow"><button class="bbtn" id="bkcopy">${COPYI}Copy backup link</button><a class="bbtn" id="bkmail" href="#">${MAILI}Email it to me</a><button class="bbtn" id="bkfile">${SAVEI}Save as file</button></div>
     <p class="bagmsg" id="bkmsg" role="status"></p>
+    <div class="bagrow"><button class="bbtn ghost" id="bkopen">${LOADI}Restore from a backup</button></div>
     ${ios&&!standalone?`<p class="dtext">On iPhone and iPad, Safari deletes this data when you haven't opened the page for 7 days. Add it to your Home Screen (Share → Add to Home Screen) and open it from there to keep it.</p>`:""}`;
   const msg=t=>{box.querySelector("#bkmsg").textContent=t};
-  const done=backupDone;
   const fname=()=>`vinyl-backup-${new Date().toISOString().slice(0,10)}.txt`;
-  box.querySelector("#bkcopy").onclick=async()=>{const code=await makeCode();navigator.clipboard.writeText(code).then(()=>{done();msg("Backup code copied. Paste it into your notes or send it to yourself.")},()=>{box.querySelector("#bkin").value=code;msg("Copy isn't allowed here. The code is in the box below: select it and copy it by hand.")})};
+  box.querySelector("#bkcopy").onclick=async()=>{const link=await makeLink();navigator.clipboard.writeText(link).then(()=>{backupDone();msg("Backup link copied. Bookmark it, or paste it into your notes or an email to yourself.")},()=>{msg("Copy isn't allowed here. Use Email it to me or Save as file instead.")})};
   box.querySelector("#bkfile").onclick=async e=>{const b=e.currentTarget;b.disabled=true;
-    try{const code=await makeCode(),blob=new Blob([`Monthly Vinyl Releases backup\n${SITE}\n\n${code}\n`],{type:"text/plain"});
+    try{const link=await makeLink(),blob=new Blob([`Monthly Vinyl Releases backup\n\nOpen this link to restore your follows, heard records and bag:\n${link}\n`],{type:"text/plain"});
       const dl=window.claude&&window.claude.use?await window.claude.use("downloads").catch(()=>null):null;
       if(dl)await dl.save({filename:fname(),data:blob});
       else{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fname();document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
-      done();msg("Backup file saved.")}catch(err){msg(err&&err.code==="declined"?"Saving cancelled.":"The file could not be saved. Use Copy backup code instead.")}
+      backupDone();msg("Backup file saved. It contains your backup link.")}catch(err){msg(err&&err.code==="declined"?"Saving cancelled.":"The file could not be saved. Use Copy backup link instead.")}
     b.disabled=false};
-  box.querySelector("#bkmail").onclick=async e=>{e.preventDefault();const code=await makeCode();done();
-    location.href=`mailto:${encodeURIComponent(store.get("mvr-mail",""))}?subject=${encodeURIComponent("My vinyl backup · Monthly Vinyl Releases")}&body=${encodeURIComponent(`To restore: open ${SITE}, go to My bag → Your data, paste this code and tap Restore.\n\n${code}\n`)}`;
-    msg("Opening your mail app with the backup code…")};
-  const restore=async text=>{
-    try{const d=await readCode(text),r=mergeData(d);
-      msg(`Restored from ${d.saved?fmtDate(d.saved):"backup"}: ${plural(r.f,"new follow")}, ${plural(r.h,"heard record")}, ${plural(r.c,"record")} added to the bag. Nothing on this device was removed.`);
-      setTimeout(render,1600)}
-    catch(err){msg(err&&err.message==="browser"?"This browser can't read compressed codes. Try the latest Safari, Chrome or Firefox.":"That doesn't look like a backup code. It starts with MVR1.")}
-  };
-  box.querySelector("#bkrestore").onclick=()=>restore(box.querySelector("#bkin").value);
-  box.querySelector("#bkpick").onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)f.text().then(restore)};
+  box.querySelector("#bkmail").onclick=async e=>{e.preventDefault();const link=await makeLink();backupDone();location.href=linkMail(link);msg("Opening your mail app with your backup link…")};
+  box.querySelector("#bkopen").onclick=()=>openRestore();
   return box;
 }
+// Wiederherstellen-Fenster: aus einem Backup-Link (automatisch) oder zum Einfügen von Link, Code oder Datei
+function closeRestore(){const m=document.getElementById("restore");if(m){m.hidden=true;m.innerHTML=""}document.removeEventListener("keydown",restoreKey)}
+function restoreKey(e){if(e.key==="Escape")closeRestore()}
+function summary(d){const a=x=>Array.isArray(x)?x.length:0;const f=d.follow?a(d.follow.a)+a(d.follow.l):0;return `${plural(f,"follow")} · ${plural(a(d.heard),"heard record")} · ${plural(a(d.cart),"record")} in bag`}
+function openRestore(pre){
+  const m=document.getElementById("restore");
+  m.innerHTML=`<div class="rpanel" role="dialog" aria-modal="true" aria-labelledby="rtitle">
+    <h2 id="rtitle">Restore your data</h2>
+    <div class="rbody"></div>
+    <p class="rmsg" id="rmsg" role="status"></p>
+    <div class="rbtns"><button class="nlater" id="rcancel">Cancel</button><button class="nsave" id="rgo">Restore</button></div></div>`;
+  m.hidden=false;document.addEventListener("keydown",restoreKey);
+  const body=m.querySelector(".rbody"),msg=t=>{m.querySelector("#rmsg").textContent=t},go=m.querySelector("#rgo");
+  m.querySelector("#rcancel").onclick=closeRestore;
+  m.onclick=e=>{if(e.target===m)closeRestore()};
+  let data=null;
+  const apply=d=>{const r=mergeData(d);
+    body.innerHTML=`<p>Welcome back. Added ${plural(r.f,"follow")}, ${plural(r.h,"heard record")} and ${plural(r.c,"record")} to your bag. Nothing on this device was removed.</p>`;
+    msg("");go.textContent="Done";go.onclick=closeRestore;m.querySelector("#rcancel").remove();render()};
+  if(pre){
+    data=pre;
+    body.innerHTML=`<p>This backup link${pre.saved?` from ${fmtDate(pre.saved)}`:""} contains:</p><p class="rsum">${summary(pre)}</p><p class="rnote">It is added to what's already in this browser. Nothing gets deleted.</p>`;
+    go.onclick=()=>apply(data);go.focus();
+  }else{
+    body.innerHTML=`<label class="rlabel" for="rin">Paste your backup link or code</label><textarea id="rin" rows="3" spellcheck="false" autocomplete="off" placeholder="${SITE.replace("https://","")}/#restore=MVR1z…"></textarea>
+      <p class="rnote">Or <label class="rfile" for="rpick">open a backup file</label>.<input id="rpick" type="file" accept=".txt,text/plain" hidden> It is added to what's already in this browser. Nothing gets deleted.</p>`;
+    const run=async text=>{try{data=await readCode(text);apply(data)}catch(err){msg(err&&err.message==="browser"?"This browser can't read this backup. Try the latest Safari, Chrome or Firefox.":"That doesn't look like a backup link or code. It contains “#restore=MVR1” or starts with “MVR1”.")}};
+    go.onclick=()=>run(m.querySelector("#rin").value);
+    m.querySelector("#rpick").onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)f.text().then(run)};
+    setTimeout(()=>m.querySelector("#rin").focus(),50);
+  }
+}
+async function checkRestoreLink(){
+  const h=location.hash||"";if(!/^#restore=/.test(h))return;
+  try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}
+  try{const d=await readCode(decodeURIComponent(h.slice(9)));openRestore(d)}
+  catch(e){openRestore();const r=document.getElementById("rmsg");if(r)r.textContent="This backup link seems incomplete. Paste the full link or code below."}
+}
+// Einstieg für Rückkehrer: nur sichtbar, wenn dieser Browser noch keine Daten hat
+function updateReturning(){const el=document.getElementById("returning");if(el)el.hidden=dataCount()>0}
 // Backup-Hinweis: erscheint erst, wenn jemand etwas zu verlieren hat (Follow, 3 im Bag oder 10 gehört).
 // Höchstens einmal pro Besuch; "Later" = 7 Tage Ruhe; nach einem Backup erst wieder nach 30 Tagen und nur mit neuen Daten.
 const dataCount=()=>follow.a.length+follow.l.length+heard.size+cart.length;
 function backupDone(){store.set("mvr-backup",new Date().toISOString().slice(0,10));store.set("mvr-backup-n",dataCount());hideNudge()}
 let nudgeShown=false;
 function maybeNudge(){
+  updateReturning();
   if(nudgeShown||view==="korb"||!document.getElementById("nudge"))return;
   if(!(follow.a.length+follow.l.length>=1||cart.length>=3||heard.size>=10))return;
   if(Date.now()<(store.get("mvr-nudge-snooze",0)||0))return;
@@ -1018,16 +1072,17 @@ function showNudge(){
   const n=document.getElementById("nudge");
   const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
   const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone;
-  n.innerHTML=`<div class="nin"><div class="ntext"><b>Keep your follows &amp; bag safe</b><span>Everything lives only in this browser. Save a backup code to restore it anytime, on any device.${ios&&!standalone?" Tip: add this page to your Home Screen, or Safari deletes the data after 7 days without a visit.":""}</span></div>
+  n.innerHTML=`<div class="nin"><div class="ntext"><b>Keep your follows &amp; bag safe</b><span>Everything lives only in this browser. Save your backup link to get it all back anytime, on any device.${ios&&!standalone?" Tip: add this page to your Home Screen, or Safari deletes the data after 7 days without a visit.":""}</span></div>
     <div class="nbtns"><button class="nlater" id="nlater">Later</button><button class="nsave" id="nsave">Save backup</button></div></div>`;
   n.hidden=false;
   n.querySelector("#nlater").onclick=()=>{store.set("mvr-nudge-snooze",Date.now()+7*864e5);hideNudge()};
   n.querySelector("#nsave").onclick=async()=>{
-    const code=await makeCode(),t=n.querySelector(".ntext span"),b=n.querySelector(".nbtns");
-    const ok=()=>{backupDone();n.hidden=false;t.textContent="Backup code copied. Paste it somewhere safe, like your notes or an email to yourself. To restore: My bag → Your data.";b.innerHTML='<button class="nsave" id="ndone">Done</button>';b.querySelector("#ndone").onclick=hideNudge};
-    try{await navigator.clipboard.writeText(code);ok()}
-    catch(e){try{const blob=new Blob([`Monthly Vinyl Releases backup\n${SITE}\n\n${code}\n`],{type:"text/plain"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`vinyl-backup-${new Date().toISOString().slice(0,10)}.txt`;document.body.appendChild(a);a.click();a.remove();ok();t.textContent="Backup file saved. To restore: My bag → Your data → Open file."}catch(_){t.textContent="Copy isn't allowed here. Open My bag → Your data to save your backup."}}
+    const link=await makeLink(),t=n.querySelector(".ntext span"),b=n.querySelector(".nbtns");
+    const after=txt=>{backupDone();n.hidden=false;t.textContent=txt;b.innerHTML='<a class="nlater" id="nmail" href="#">Email it to me</a><button class="nsave" id="ndone">Done</button>';b.querySelector("#ndone").onclick=hideNudge;b.querySelector("#nmail").onclick=e=>{e.preventDefault();location.href=linkMail(link)}};
+    try{await navigator.clipboard.writeText(link);after("Backup link copied. Bookmark it or paste it into your notes. Open it anytime to get everything back.")}
+    catch(e){after("Send the backup link to yourself by email. Open it anytime to get everything back.")}
   };
+
 }
 function renderCart(){
   const {items,shops,mine}=bagGroups();
@@ -1147,8 +1202,10 @@ const MAILS={shop:{s:"Shop listing request · Monthly Vinyl Releases",b:"Hi,\n\n
 document.addEventListener("click",e=>{
   const m=e.target.closest&&e.target.closest("[data-mail]");
   if(m){e.preventDefault();const t=MAILS[m.dataset.mail]||MAILS.hello;location.href=`mailto:${MAILTO()}?subject=${encodeURIComponent(t.s)}${t.b?`&body=${encodeURIComponent(t.b)}`:""}`;return}
+  const rr=e.target.closest&&e.target.closest("[data-restore]");
+  if(rr){e.preventDefault();openRestore();return}
   const dd=e.target.closest&&e.target.closest("[data-data]");
-  if(dd){e.preventDefault();go("korb");setTimeout(()=>{const b=document.querySelector(".databox");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})},60);return}
+  if(dd){e.preventDefault();go("korb");setTimeout(()=>{const b=document.getElementById("yourdata");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})},60);return}
   const j=e.target.closest&&e.target.closest("[data-jump]");
   if(j){e.preventDefault();const el=document.getElementById(j.dataset.jump);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
 });
@@ -1170,7 +1227,7 @@ list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
   SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();{document.getElementById("lede").textContent="Find the newest releases from techno and house to ambient and disco, all in one place. Listen to previews, compare prices, fill your bag with your favourites and buy directly from the shops. The page is updated every day with the latest releases. Enjoy!"}cart=cart.filter(k=>INDEX[k]);
   document.getElementById("stand").textContent="Last update: "+fmtDate(UPDATED);
-  cartBadges();render();setTimeout(maybeNudge,4000);
+  cartBadges();render();updateReturning();checkRestoreLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=Math.min(100*avail/w-0.5,132)+"px"}
 {let qt;const qi=document.getElementById("q");qi.oninput=()=>{clearTimeout(qt);qt=setTimeout(()=>{flt.q=qi.value;if(SHOPS.length)render()},160)}}
