@@ -1267,7 +1267,7 @@ document.getElementById("nx").onclick=()=>{const n=nextIdx(cur);if(n>=0)play(n,t
 const fmtDate=iso=>{const [y,m,d]=iso.split("-");return `${+d} ${MONTHS[+m-1].slice(0,3)} ${y}`};
 list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
-  SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();{document.getElementById("lede").textContent="Find the newest releases from techno and house to ambient and disco, all in one place. Listen to previews, compare prices, fill your bag with your favourites and buy directly from the shops. The page is updated every day with the latest releases. Enjoy!"}cart=cart.filter(k=>INDEX[k]);
+  SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();{document.getElementById("lede").textContent="Find the newest releases from techno and house to ambient and disco, all in one place. Listen to previews, compare prices, fill your bag with your favourites and buy directly from the shops. The page is updated every day with the latest releases."}cart=cart.filter(k=>INDEX[k]);
   document.getElementById("stand").textContent="Last update: "+fmtDate(UPDATED);
   cartBadges();render();updateReturning();checkRestoreLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
