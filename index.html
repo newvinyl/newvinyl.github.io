@@ -346,6 +346,17 @@ section.shop,h2.month{scroll-margin-top:8px}
 .addship:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .shipl[hidden]{display:none}
 .tag.shoptag{background:var(--black);border-color:var(--rule);color:var(--rule)}
+.nudge{position:fixed;left:0;right:0;z-index:25;bottom:calc(78px + env(safe-area-inset-bottom,0px));padding:0 12px;pointer-events:none}
+.nudge .nin{pointer-events:auto;max-width:560px;margin:0 auto;background:#fff;color:#000;padding:14px 14px 12px;display:flex;flex-direction:column;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.55)}
+.ntext{display:flex;flex-direction:column;gap:4px}
+.ntext b{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.02em}
+.ntext span{font-size:13.5px;line-height:1.45;color:#222}
+.nbtns{display:flex;justify-content:flex-end;gap:8px}
+.nsave,.nlater{all:unset;cursor:pointer;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;padding:8px 16px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.02em;border:2px solid #000}
+.nsave{background:#000;color:#fff}
+.nlater{background:#fff;color:#000}
+.nsave:focus-visible,.nlater:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (min-width:900px){.nudge{bottom:92px}.nudge .nin{flex-direction:row;align-items:center;max-width:860px;padding:14px 16px}.ntext{flex:1}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -398,6 +409,7 @@ section.shop,h2.month{scroll-margin-top:8px}
     <button class="pbtn sm" id="nx" aria-label="Next track"><svg class="tri" viewBox="0 0 30 22" aria-hidden="true"><path d="M1 1 14 11 1 21ZM15 1 28 11 15 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
   </div>
 </div>
+<div class="nudge" id="nudge" role="status" hidden></div>
 <audio id="au" preload="none"></audio>
 
 <script>
@@ -494,7 +506,7 @@ function cartBadges(){
   const n=cart.length;
   document.querySelectorAll("[data-cartcount]").forEach(e=>{e.textContent=n;e.hidden=!n});
 }
-function toggleCart(k){
+function toggleCart(k){setTimeout(maybeNudge,400);
   if(inCart(k)){cart=cart.filter(x=>x!==k);opened.delete(k)}else cart.push(k);
   saveCart();cartBadges();
   document.querySelectorAll(`.cartbtn[data-key="${CSS.escape(k)}"]`).forEach(setCartBtn);
@@ -509,7 +521,7 @@ function setCartBtn(b){
 }
 const isFol=r=>follow.a.includes(r.a)||follow.l.includes(r.l);
 function setFolBtn(b){const on=follow[b.dataset.fol].includes(b.dataset.v),w=b.dataset.fol==="a"?"artist":"label";b.setAttribute("aria-pressed",on);b.innerHTML=STAR;const t=`${on?"Unfollow":"Follow"} ${w} ${b.dataset.v}`;b.setAttribute("aria-label",t);b.title=t}
-function toggleFollow(kind,v){
+function toggleFollow(kind,v){setTimeout(maybeNudge,400);
   const a=follow[kind],i=a.indexOf(v);i<0?a.push(v):a.splice(i,1);store.set("mvr-follow",follow);
   document.querySelectorAll(`.folbtn[data-fol="${kind}"]`).forEach(b=>{if(b.dataset.v===v)setFolBtn(b)});
   document.querySelectorAll("article.rel").forEach(art=>{const e=INDEX[art.dataset.key];if(e)setTags(art,art._e)});
@@ -680,7 +692,7 @@ function render(){
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===view));
   document.getElementById("filter").hidden=view==="korb";
   document.getElementById("search").hidden=view==="korb";
-  if(view==="korb"){renderJump();renderCart();cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();return}
+  if(view==="korb"){hideNudge();renderJump();renderCart();cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();return}
   renderFilter(now);
   const inView=viewMonths(now);
   const pool=entries(inView);
@@ -965,7 +977,7 @@ function dataBox(){
     <p class="bagmsg" id="bkmsg" role="status"></p>
     ${ios&&!standalone?`<p class="dtext">On iPhone and iPad, Safari deletes this data when you haven't opened the page for 7 days. Add it to your Home Screen (Share → Add to Home Screen) and open it from there to keep it.</p>`:""}`;
   const msg=t=>{box.querySelector("#bkmsg").textContent=t};
-  const done=()=>store.set("mvr-backup",new Date().toISOString().slice(0,10));
+  const done=backupDone;
   const fname=()=>`vinyl-backup-${new Date().toISOString().slice(0,10)}.txt`;
   box.querySelector("#bkcopy").onclick=async()=>{const code=await makeCode();navigator.clipboard.writeText(code).then(()=>{done();msg("Backup code copied. Paste it into your notes or send it to yourself.")},()=>{box.querySelector("#bkin").value=code;msg("Copy isn't allowed here. The code is in the box below: select it and copy it by hand.")})};
   box.querySelector("#bkfile").onclick=async e=>{const b=e.currentTarget;b.disabled=true;
@@ -987,6 +999,35 @@ function dataBox(){
   box.querySelector("#bkrestore").onclick=()=>restore(box.querySelector("#bkin").value);
   box.querySelector("#bkpick").onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)f.text().then(restore)};
   return box;
+}
+// Backup-Hinweis: erscheint erst, wenn jemand etwas zu verlieren hat (Follow, 3 im Bag oder 10 gehört).
+// Höchstens einmal pro Besuch; "Later" = 7 Tage Ruhe; nach einem Backup erst wieder nach 30 Tagen und nur mit neuen Daten.
+const dataCount=()=>follow.a.length+follow.l.length+heard.size+cart.length;
+function backupDone(){store.set("mvr-backup",new Date().toISOString().slice(0,10));store.set("mvr-backup-n",dataCount());hideNudge()}
+let nudgeShown=false;
+function maybeNudge(){
+  if(nudgeShown||view==="korb"||!document.getElementById("nudge"))return;
+  if(!(follow.a.length+follow.l.length>=1||cart.length>=3||heard.size>=10))return;
+  if(Date.now()<(store.get("mvr-nudge-snooze",0)||0))return;
+  const last=store.get("mvr-backup",null);
+  if(last){const age=(Date.now()-new Date(last+"T12:00:00").getTime())/864e5;if(age<30||dataCount()<=(store.get("mvr-backup-n",0)||0))return}
+  nudgeShown=true;showNudge();
+}
+function hideNudge(){const n=document.getElementById("nudge");if(n)n.hidden=true}
+function showNudge(){
+  const n=document.getElementById("nudge");
+  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone;
+  n.innerHTML=`<div class="nin"><div class="ntext"><b>Keep your follows &amp; bag safe</b><span>Everything lives only in this browser. Save a backup code to restore it anytime, on any device.${ios&&!standalone?" Tip: add this page to your Home Screen, or Safari deletes the data after 7 days without a visit.":""}</span></div>
+    <div class="nbtns"><button class="nlater" id="nlater">Later</button><button class="nsave" id="nsave">Save backup</button></div></div>`;
+  n.hidden=false;
+  n.querySelector("#nlater").onclick=()=>{store.set("mvr-nudge-snooze",Date.now()+7*864e5);hideNudge()};
+  n.querySelector("#nsave").onclick=async()=>{
+    const code=await makeCode(),t=n.querySelector(".ntext span"),b=n.querySelector(".nbtns");
+    const ok=()=>{backupDone();n.hidden=false;t.textContent="Backup code copied. Paste it somewhere safe, like your notes or an email to yourself. To restore: My bag → Your data.";b.innerHTML='<button class="nsave" id="ndone">Done</button>';b.querySelector("#ndone").onclick=hideNudge};
+    try{await navigator.clipboard.writeText(code);ok()}
+    catch(e){try{const blob=new Blob([`Monthly Vinyl Releases backup\n${SITE}\n\n${code}\n`],{type:"text/plain"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`vinyl-backup-${new Date().toISOString().slice(0,10)}.txt`;document.body.appendChild(a);a.click();a.remove();ok();t.textContent="Backup file saved. To restore: My bag → Your data → Open file."}catch(_){t.textContent="Copy isn't allowed here. Open My bag → Your data to save your backup."}}
+  };
 }
 function renderCart(){
   const {items,shops,mine}=bagGroups();
@@ -1057,7 +1098,7 @@ document.getElementById("pcart").onclick=()=>go("korb");
 const au=document.getElementById("au"),pp=document.getElementById("pp"),pa=document.getElementById("pa"),pb=document.getElementById("pb"),pr=document.getElementById("pr");
 function mark(){if(!document.querySelector('.trk'))return;document.querySelectorAll(".trk").forEach(b=>b.classList.toggle("on",+b.dataset.q===cur))}
 function fallback(q){pb.innerHTML=`Preview unavailable · <a href="${q.u||q.page}" target="_blank" rel="noopener">Open preview${EXT}</a>`;pp.innerHTML=TRI}
-function markHeard(q){if(!q||!q.gk||heard.has(q.gk))return;heard.add(q.gk);store.set("mvr-heard",[...heard].slice(-3000));document.querySelectorAll("article.rel").forEach(a=>{if(a._e&&a._e.gk===q.gk)setTags(a,a._e)})}
+function markHeard(q){if(!q||!q.gk||heard.has(q.gk))return;setTimeout(maybeNudge,1500);heard.add(q.gk);store.set("mvr-heard",[...heard].slice(-3000));document.querySelectorAll("article.rel").forEach(a=>{if(a._e&&a._e.gk===q.gk)setTags(a,a._e)})}
 const isYT=q=>!!(q&&(q.yt||q.ytl));
 const canPlay=q=>!!(q&&(q.u||q.yt||q.ytl));
 // Nächster hörbarer Track (überspringt Einträge ohne Hörprobe)
@@ -1129,7 +1170,7 @@ list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
   SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();{document.getElementById("lede").textContent="Find the newest releases from techno and house to ambient and disco, all in one place. Listen to previews, compare prices, fill your bag with your favourites and buy directly from the shops. The page is updated every day with the latest releases. Enjoy!"}cart=cart.filter(k=>INDEX[k]);
   document.getElementById("stand").textContent="Last update: "+fmtDate(UPDATED);
-  cartBadges();render();
+  cartBadges();render();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=Math.min(100*avail/w-0.5,132)+"px"}
 {let qt;const qi=document.getElementById("q");qi.oninput=()=>{clearTimeout(qt);qt=setTimeout(()=>{flt.q=qi.value;if(SHOPS.length)render()},160)}}
