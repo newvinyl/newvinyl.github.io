@@ -292,6 +292,7 @@ label.bbtn{cursor:pointer}
 .totop:hover{background:#f2f0ea;color:var(--deep)}
 .totop:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .totop[hidden]{display:none}
+.ext{display:inline-block;width:.72em;height:.72em;margin-left:.35em;vertical-align:.02em;flex:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -326,6 +327,7 @@ label.bbtn{cursor:pointer}
 <audio id="au" preload="none"></audio>
 
 <script>
+const EXT='<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg>';
 const TRI='<svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M1 1 19 11 1 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',PAU='<svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M2 1h5v20H2zM13 1h5v20h-5z" fill="currentColor"/></svg>';
 let SHOPS=[];let UPDATED="";
 const SLUG={"08898":"artefakt/flow-tide-ep","89538":"fjaak/fjaak015","88982":"dj-honesty/unknown-pleasures-ep","89537":"mees-javois/swamped-ep","88033":"boo-williams/lost-of-time","88845":"robotman-feat-marshall-jefferson/do-da-doo","40056":"marc-cotterell/connection","88152":"deep88/summer-of-love-ep","89286":"chris-simmonds/midnight-music","37855":"robert-hood/the-metronome","89517":"altinbas/beyond-the-veil","89510":"pyramidal-decode/origini"};
@@ -523,8 +525,8 @@ function releaseEl(e,ri){
   <div class="fol"><button class="folbtn" data-fol="a" data-v="${esc(r.a)}"></button><button class="folbtn" data-fol="l" data-v="${esc(r.l)}"></button></div>
   <ul class="tracks"></ul>
   <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}</span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
-  <a class="shoplink" href="${url}" target="_blank" rel="noopener">or view directly at ${S.shop} ↗</a>
-  ${others.length?`<div class="also"><div class="also-h">Also at ${others.length} more ${others.length>1?"shops":"shop"}</div>${others.map(o=>`<div class="orow${isLow(o)?" low":""}"><a class="oshop" href="${o.href}" target="_blank" rel="noopener">${esc(o.S.shop)} <i>${o.S.country||""}</i> ↗</a><span class="ost">${o.st&&STOCK[o.st]?STOCK[o.st]:""}${isLow(o)?`${o.st?" · ":""}<b>lowest</b>`:""}</span><span class="oprice">${fmt(o.S.cur,o.p)}${o.chf!=null&&CODE[o.S.cur]!==homeInfo().cur?`<small>≈ ${chf(o.chf)}</small>`:""}</span><button class="cartbtn mini" data-key="${esc(o.key)}" data-shop="${esc(o.S.shop)}"></button></div>`).join("")}</div>`:""}</div>`;
+  <a class="shoplink" href="${url}" target="_blank" rel="noopener">or view directly at ${S.shop}${EXT}</a>
+  ${others.length?`<div class="also"><div class="also-h">Also at ${others.length} more ${others.length>1?"shops":"shop"}</div>${others.map(o=>`<div class="orow${isLow(o)?" low":""}"><a class="oshop" href="${o.href}" target="_blank" rel="noopener">${esc(o.S.shop)} <i>${o.S.country||""}</i>${EXT}</a><span class="ost">${o.st&&STOCK[o.st]?STOCK[o.st]:""}${isLow(o)?`${o.st?" · ":""}<b>lowest</b>`:""}</span><span class="oprice">${fmt(o.S.cur,o.p)}${o.chf!=null&&CODE[o.S.cur]!==homeInfo().cur?`<small>≈ ${chf(o.chf)}</small>`:""}</span><button class="cartbtn mini" data-key="${esc(o.key)}" data-shop="${esc(o.S.shop)}"></button></div>`).join("")}</div>`:""}</div>`;
   setTags(el,e);
   el.querySelectorAll(".cartbtn").forEach(cb=>{setCartBtn(cb);cb.onclick=()=>toggleCart(cb.dataset.key)});
   el.querySelectorAll(".folbtn").forEach(b=>{setFolBtn(b);b.onclick=()=>toggleFollow(b.dataset.fol,b.dataset.v)});
@@ -544,7 +546,7 @@ function releaseEl(e,ri){
   });
   if(src!==r&&trs.length){const n=document.createElement("p");n.className="srcnote";n.textContent=`Previews via ${src.S.shop}`;tf.appendChild(n)}
   if(extra)tf.appendChild(extra);
-  if(!trs.length){const m=document.createElement("a");m.className="more";m.href=url;m.target="_blank";m.rel="noopener";m.textContent="Previews in shop ↗";tf.appendChild(m);}
+  if(!trs.length){const m=document.createElement("a");m.className="more";m.href=url;m.target="_blank";m.rel="noopener";m.innerHTML="Previews in shop"+EXT;tf.appendChild(m);}
   return el;
 }
 const where=S=>[S.where,CNAME[S.country]||S.country].filter(Boolean).join(", ");
@@ -903,7 +905,7 @@ function renderCart(){
       row.innerHTML=`<div class="cthumb" style="background:${hue}"><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
       <div class="ctext"><div class="ca">${esc(r.a)}</div><div class="ct">${esc(r.t)}</div><div class="cl">${esc(r.l)}${r.cat?" · "+esc(r.cat):""}${r.st&&STOCK[r.st]?" · "+STOCK[r.st]:""}</div>${alt?`<div class="calt">${chf(r.chf-alt.chf)} cheaper at ${esc(alt.S.shop)}</div>`:""}</div>
       <div class="cside"><span class="cprice">${fmt(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="cchf">≈ ${chf(r.chf)}</span>`:""}<button class="cdel" aria-label="Remove ${esc(r.a)}">Remove</button></div>
-      <a class="copen" href="${r.href}" target="_blank" rel="noopener">${opened.has(r.key)?`Opened at ${S.shop} ✓`:`Buy at ${S.shop}`}<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`;
+      <a class="copen" href="${r.href}" target="_blank" rel="noopener">${opened.has(r.key)?`Opened at ${S.shop}`:`Buy at ${S.shop}`}<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`;
       row.querySelector(".cdel").onclick=()=>{toggleCart(r.key);render()};
       row.querySelector(".copen").addEventListener("click",()=>{opened.add(r.key);saveCart();setTimeout(render,50)});
       sec.appendChild(row);
@@ -934,7 +936,7 @@ document.getElementById("pcart").onclick=()=>go("korb");
 
 const au=document.getElementById("au"),pp=document.getElementById("pp"),pa=document.getElementById("pa"),pb=document.getElementById("pb"),pr=document.getElementById("pr");
 function mark(){if(!document.querySelector('.trk'))return;document.querySelectorAll(".trk").forEach(b=>b.classList.toggle("on",+b.dataset.q===cur))}
-function fallback(q){pb.innerHTML=`Preview unavailable · <a href="${q.u||q.page}" target="_blank" rel="noopener">Open preview ↗</a>`;pp.innerHTML=TRI}
+function fallback(q){pb.innerHTML=`Preview unavailable · <a href="${q.u||q.page}" target="_blank" rel="noopener">Open preview${EXT}</a>`;pp.innerHTML=TRI}
 function markHeard(q){if(!q||!q.gk||heard.has(q.gk))return;heard.add(q.gk);store.set("mvr-heard",[...heard].slice(-3000));document.querySelectorAll("article.rel").forEach(a=>{if(a._e&&a._e.gk===q.gk)setTags(a,a._e)})}
 function play(i){
   cur=i;const q=queue[i];mark();markHeard(q);
