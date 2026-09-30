@@ -25,6 +25,7 @@
 <meta name="twitter:description" content="New house, techno, disco &amp; ambient vinyl from independent shops like Hardwax, Clone and Phonica. Listen, compare prices, order per shop. Updated daily.">
 <meta name="twitter:image" content="https://monthlyvinyl.net/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Monthly Vinyl Releases", "alternateName": "Monthly Vinyl", "url": "https://monthlyvinyl.net/", "description": "New house, techno, disco & ambient vinyl from independent shops like Hardwax, Clone and Phonica. Listen, compare prices, order per shop. Updated daily.", "inLanguage": "en"}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="56d072fe-6ab0-4180-9a6f-e9926985275c" data-domains="monthlyvinyl.net"></script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30.5' fill='%230d0d0d' stroke='%23ffffff' stroke-width='3'/%3E%3Cg fill='none' stroke='%233a3a3a' stroke-width='1.2'%3E%3Ccircle cx='32' cy='32' r='25'/%3E%3Ccircle cx='32' cy='32' r='21.5'/%3E%3Ccircle cx='32' cy='32' r='18'/%3E%3C/g%3E%3Cpath d='M14 20a22 22 0 0 1 10-8' fill='none' stroke='%23ffffff' stroke-opacity='.55' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%2393a8ff'/%3E%3Ccircle cx='32' cy='32' r='2.6' fill='%230d0d0d'/%3E%3C/svg%3E">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -502,8 +503,9 @@ section.shop{margin-top:14px}
     <section class="fblock">
       <h3>About &amp; privacy</h3>
       <p>Monthly Vinyl Releases is an independent project and is not affiliated with any of the shops listed. Prices, stock and release dates come from the shops' public new-release pages and are updated every morning. They may have changed since; the shop's own page is always right.</p>
-      <p>No account, no cookies, no tracking. Your bag, follows, heard records and settings are stored only in your browser. You can save a backup link under <a href="#" data-data>My bag → Your data</a>. The data is inside the link, nothing is stored on a server.</p>
+      <p>No account, no cookies. Your bag, follows, heard records and settings are stored only in your browser. You can save a backup link under <a href="#" data-data>My bag → Your data</a>. The data is inside the link, nothing is stored on a server.</p>
       <p>Covers and audio previews load directly from the shops' servers. Some previews play via YouTube in privacy-enhanced mode, only when you press play. Fonts are loaded from Google Fonts.</p>
+      <p>To improve the page, we count visits and clicks anonymously with <a href="https://umami.is" target="_blank" rel="noopener">Umami</a>: no cookies, no IP addresses stored, nothing that identifies you, and no data sold or shared.</p>
     </section>
     <!--GENRES--><p class="fgenres"><b>Browse by genre:</b> <a href="/house/">House</a> · <a href="/deep-house/">Deep House</a> · <a href="/tech-house/">Tech House</a> · <a href="/minimal/">Minimal</a> · <a href="/techno/">Techno</a> · <a href="/dub-techno/">Dub Techno</a> · <a href="/electro/">Electro</a> · <a href="/acid-house/">Acid House</a> · <a href="/balearic/">Balearic</a> · <a href="/ambient/">Ambient</a> · <a href="/disco/">Disco</a> · <a href="/italo-disco/">Italo Disco</a> · <a href="/acid/">Acid</a> · <a href="/breakbeat/">Breakbeat</a> · <a href="/downtempo/">Downtempo</a> · <a href="/electronic/">Electronic</a> · <a href="/minimal-house/">Minimal House</a></p><!--/GENRES-->
   </footer>
@@ -616,7 +618,7 @@ function cartBadges(){
   const n=cart.length;
   document.querySelectorAll("[data-cartcount]").forEach(e=>{e.textContent=n;e.hidden=!n});
 }
-function toggleCart(k){setTimeout(maybeNudge,400);
+function toggleCart(k){setTimeout(maybeNudge,400);track(inCart(k)?"Remove from bag":"Add to bag",{shop:shopOf(k)});
   if(inCart(k)){cart=cart.filter(x=>x!==k);opened.delete(k)}else cart.push(k);
   saveCart();cartBadges();
   document.querySelectorAll(`.cartbtn[data-key="${CSS.escape(k)}"]`).forEach(setCartBtn);
@@ -631,11 +633,25 @@ function setCartBtn(b){
 }
 const isFol=r=>follow.a.includes(r.a)||follow.l.includes(r.l);
 function setFolBtn(b){const on=follow[b.dataset.fol].includes(b.dataset.v),w=b.dataset.fol==="a"?"artist":"label";b.setAttribute("aria-pressed",on);b.innerHTML=STAR;const t=`${on?"Unfollow":"Follow"} ${w} ${b.dataset.v}`;b.setAttribute("aria-label",t);b.title=t}
-function toggleFollow(kind,v){setTimeout(maybeNudge,400);
+function toggleFollow(kind,v){setTimeout(maybeNudge,400);if(!follow[kind].includes(v))track("Follow",{type:kind==="a"?"artist":"label",name:v});
   const a=follow[kind],i=a.indexOf(v);i<0?a.push(v):a.splice(i,1);store.set("mvr-follow",follow);
   document.querySelectorAll(`.folbtn[data-fol="${kind}"]`).forEach(b=>{if(b.dataset.v===v)setFolBtn(b)});
   document.querySelectorAll("article.rel").forEach(art=>{const e=INDEX[art.dataset.key];if(e)setTags(art,art._e)});
 }
+// Anonyme Nutzungsstatistik (Umami, ohne Cookies). Läuft nur auf monthlyvinyl.net, sonst passiert nichts.
+function track(name,data){try{if(window.umami&&typeof umami.track==="function")umami.track(name,data)}catch(e){}}
+const shopOf=k=>{const e=INDEX[k];return e&&e.S?e.S.shop:""};
+document.addEventListener("click",e=>{
+  const a=e.target.closest&&e.target.closest("a[href]");
+  if(a&&a.target==="_blank"&&/^https?:/.test(a.href)&&a.hostname!==location.hostname){
+    const art=a.closest("article.rel"),inBag=!!a.closest(".run,#list.bagview");
+    const where=a.classList.contains("runbtn")?(/checkout/i.test(a.textContent)?"checkout":"guided"):inBag?"bag":art?"card":"other";
+    const host=a.hostname.replace(/^www\./,"");track(/youtube|youtu\.be|bandcamp|discogs|instagram|umami/.test(host)?"External link":"Shop click",{host,where});
+    return}
+  const b=e.target.closest&&e.target.closest("button,a");if(!b)return;
+  const ids={bagpdf:"Export PDF",bagcopy:"Copy list",bagmail:"Email list",bagsend:"Send list",bkcopy:"Backup link copied",bkmail:"Backup emailed",bkfile:"Backup file",bkopen:"Restore opened",sbtn:"Search opened",fbtn:"Filter opened"};
+  if(ids[b.id]&&!(b.id==="fbtn"&&b.getAttribute("aria-expanded")==="true"))track(ids[b.id]);
+},true);
 const STOCK={in:"In stock",low:"Low stock",pre:"Pre-order",out:"Sold out"};
 const NOT_GENRE=/^(reissue|repress|remaster(ed)?|lp|ep|edits?|2×12"?|12")$/i;
 const genresOf=r=>[...new Set(r.g.split(/[\/·]/).map(x=>x.trim().replace(/\s+Edits$/i,"")).filter(x=>x&&!NOT_GENRE.test(x)))];
@@ -899,18 +915,18 @@ function renderFilter(now){
     </div>`;
   box.querySelector("#fbtn").onclick=()=>{fltOpen=!fltOpen;renderFilter(now);};
   const rs=box.querySelector("#freset");if(rs)rs.onclick=()=>{clearFlt();render()};
-  box.querySelectorAll("[data-g]").forEach(c=>c.onclick=()=>{const g=c.dataset.g;flt.genres.has(g)?flt.genres.delete(g):flt.genres.add(g);render()});
-  box.querySelectorAll("[data-from]").forEach(c=>c.onclick=()=>{const g=c.dataset.from;flt.from.has(g)?flt.from.delete(g):flt.from.add(g);render()});
-  box.querySelectorAll("[data-shop]").forEach(c=>c.onclick=()=>{const g=c.dataset.shop;flt.shops.has(g)?flt.shops.delete(g):flt.shops.add(g);render()});
-  box.querySelectorAll("[data-tog]").forEach(c=>c.onclick=()=>{flt[c.dataset.tog]=!flt[c.dataset.tog];render()});
-  box.querySelectorAll("[data-type]").forEach(c=>c.onclick=()=>{flt.type=c.dataset.type;render()});
-  box.querySelectorAll("[data-mode]").forEach(c=>c.onclick=()=>{mode=c.dataset.mode;store.set("mvr-mode",mode);render()});
+  box.querySelectorAll("[data-g]").forEach(c=>c.onclick=()=>{const g=c.dataset.g;if(!flt.genres.has(g))track("Filter",{type:"genre",value:g});flt.genres.has(g)?flt.genres.delete(g):flt.genres.add(g);render()});
+  box.querySelectorAll("[data-from]").forEach(c=>c.onclick=()=>{const g=c.dataset.from;if(!flt.from.has(g))track("Filter",{type:"ships from",value:g});flt.from.has(g)?flt.from.delete(g):flt.from.add(g);render()});
+  box.querySelectorAll("[data-shop]").forEach(c=>c.onclick=()=>{const g=c.dataset.shop;if(!flt.shops.has(g))track("Filter",{type:"shop",value:g});flt.shops.has(g)?flt.shops.delete(g):flt.shops.add(g);render()});
+  box.querySelectorAll("[data-tog]").forEach(c=>c.onclick=()=>{if(!flt[c.dataset.tog])track("Filter",{type:"show",value:c.dataset.tog});flt[c.dataset.tog]=!flt[c.dataset.tog];render()});
+  box.querySelectorAll("[data-type]").forEach(c=>c.onclick=()=>{if(c.dataset.type)track("Filter",{type:"type",value:c.dataset.type==="re"?"reissues":"new music"});flt.type=c.dataset.type;render()});
+  box.querySelectorAll("[data-mode]").forEach(c=>c.onclick=()=>{track("Group by",{mode:c.dataset.mode});mode=c.dataset.mode;store.set("mvr-mode",mode);render()});
   const smb=box.querySelector("#smore");if(smb)smb.onclick=()=>{shopsMore=!showShops;renderFilter(now)};
   const gmb=box.querySelector("#gmore");if(gmb)gmb.onclick=()=>{genresMore=!showRest;renderFilter(now)};
   box.querySelector("#fdone").onclick=()=>{fltOpen=false;renderFilter(now);const s=document.getElementById("filter");window.scrollTo({top:Math.max(0,s.getBoundingClientRect().top+scrollY-8),behavior:"smooth"})};
-  box.querySelector("#flabelsel").onchange=e=>{flt.label=e.target.value;render()};
+  box.querySelector("#flabelsel").onchange=e=>{if(e.target.value)track("Filter",{type:"label",value:e.target.value});flt.label=e.target.value;render()};
 }
-function go(v){view=v;try{history.replaceState(null,"",v==="home"?"#":"#"+v)}catch(e){}render();window.scrollTo(0,0)}
+function go(v){if(v!==view)track("View",{view:({home:"this month",archiv:"past",korb:"bag"})[v]||v});view=v;try{history.replaceState(null,"",v==="home"?"#":"#"+v)}catch(e){}render();window.scrollTo(0,0)}
 const PDFI='<svg viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1h8l4 4v12H2z M10 1v4h4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 10h6M5 13h6" stroke="currentColor" stroke-width="1.8"/></svg>';
 const COPYI='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 5V1H1v10h4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 const MAILI='<svg viewBox="0 0 18 14" aria-hidden="true"><rect x="1" y="1" width="16" height="12" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M1 1l8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
@@ -1066,7 +1082,7 @@ async function readCode(text){
   return d;
 }
 // Zusammenführen statt überschreiben: nichts auf diesem Gerät geht verloren
-function mergeData(d){
+function mergeData(d){track("Backup restored");
   const arr=x=>Array.isArray(x)?x.filter(s=>typeof s==="string"):[];
   const before={f:follow.a.length+follow.l.length,h:heard.size,c:cart.length};
   arr(d.cart).forEach(k=>{if(!cart.includes(k))cart.push(k)});
@@ -1278,6 +1294,7 @@ const canPlay=q=>!!(q&&(q.u||q.yt||q.ytl));
 const nextIdx=i=>{for(let j=i+1;j<queue.length;j++)if(canPlay(queue[j]))return j;return -1};
 function play(i,auto){
   if(i<0||!queue[i])return;
+  if(!auto)track("Play",{shop:queue[i].shop,source:isYT(queue[i])?"youtube":"audio"});
   cur=i;const q=queue[i];mark();markHeard(q);
   pa.textContent=`${q.a} – ${q.n}`;pb.textContent=`${q.t} · ${q.shop}`;pr.style.width="0";
   document.querySelectorAll(".ytbox").forEach(b=>b.remove());yt={win:null,state:-1,q:null,ended:false};
@@ -1350,7 +1367,8 @@ fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.jso
   cartBadges();render();updateReturning();checkRestoreLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
-{let qt;const qi=document.getElementById("q");qi.oninput=()=>{clearTimeout(qt);qt=setTimeout(()=>{flt.q=qi.value;if(SHOPS.length)render();if(sbox.classList.contains("open")){const f=document.getElementById("filter");const top=f.getBoundingClientRect().top+scrollY-sbox.offsetHeight-8;if(Math.abs(scrollY-top)>4)window.scrollTo({top:Math.max(0,top)})}},160)}}
+{let qt;const qi=document.getElementById("q");let st;qi.addEventListener("input",()=>{clearTimeout(st);st=setTimeout(()=>{const v=qi.value.trim();if(v.length>=2){const hits=(document.querySelector(".fcount")||{}).textContent||"";track("Search",{query:v.toLowerCase().slice(0,60),results:parseInt(hits)||0})}},1500)});
+qi.oninput=()=>{clearTimeout(qt);qt=setTimeout(()=>{flt.q=qi.value;if(SHOPS.length)render();if(sbox.classList.contains("open")){const f=document.getElementById("filter");const top=f.getBoundingClientRect().top+scrollY-sbox.offsetHeight-8;if(Math.abs(scrollY-top)>4)window.scrollTo({top:Math.max(0,top)})}},160)}}
 // Mobile: Suche hinter der Lupe oben; öffnet als Leiste am oberen Rand
 const sbox=document.getElementById("search"),sbtn=document.getElementById("sbtn");
 function searchUI(open){sbox.classList.toggle("open",open);sbtn.setAttribute("aria-expanded",open);sbtn.classList.toggle("on",!open&&!!flt.q.trim())}
