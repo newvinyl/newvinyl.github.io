@@ -153,12 +153,7 @@ section.shop{margin-top:22px}
 .bar{height:2px;background:rgba(255,255,255,.2);margin-top:6px}
 .bar i{display:block;height:100%;width:0;background:#f2f0ea}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Störung: nach 5 s, dann nach 3, 6, 12, 24 … Minuten, je 1 Sekunde */
-html.glitching .wrap,html.glitching .player{filter:drop-shadow(4px 0 rgba(255,0,64,.95)) drop-shadow(-4px 0 rgba(0,255,225,.95)) contrast(1.4) saturate(2);transform:translate(var(--gx,0px),var(--gy,0px)) skewX(var(--gs,0deg))}
-.glitch-ov{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden;background:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px)}
-.glitch-ov .bar{position:absolute;left:-10%;width:120%;mix-blend-mode:difference}
-.glitch-ov .flash{position:absolute;inset:0;background:linear-gradient(90deg,#ff0040 0 33%,#00ffe1 33% 66%,#3b00ff 66%);mix-blend-mode:difference;opacity:0}
-.glitch-ov .txt{position:absolute;left:8%;top:40%;font-family:var(--mono);font-size:13px;color:#00ffe1;text-shadow:2px 0 #ff0040;letter-spacing:.1em;white-space:nowrap}
+
 </style>
 
 
@@ -208,6 +203,19 @@ const LABEL_URL={
  "Organized Disorder Music":"https://organizeddisorder.bandcamp.com/"
 };
 const labelUrl=l=>LABEL_URL[l]||`https://www.discogs.com/search/?q=${encodeURIComponent(l)}&type=label`;
+// Grösste verfügbare Cover-Version pro Shop; fällt beim Fehler auf das Original zurück
+function hiRes(u){
+  if(!u)return u;
+  if(/media\.hardwax\.com\/images\//.test(u)&&!/big\.jpg$/.test(u))return u.replace(/\.jpg$/,"big.jpg");
+  if(/redeyerecords\.co\.uk\/imagery\//.test(u))return u.replace(/-2\.jpg$/,"-1.jpg");
+  if(/rushhourrecords/.test(u))return u.replace("/styles/cover_medium/","/styles/cover_large/");
+  if(/clone\.nl\/platen\/artwork\/small\//.test(u))return u.replace("/artwork/small/","/artwork/large/");
+  if(/yoyaku\.io\/wp-content\/uploads\//.test(u))return u.replace(/-\d+x\d+(\.\w+)$/,"$1");
+  if(/imagescdn\.juno\.co\.uk\/300\//.test(u))return u.replace("/300/","/full/").replace(/-MED\.jpg$/,"-BIG.jpg");
+  if(/decks\.de\/decks\/gfx\/co_mid\//.test(u))return u.replace("/co_mid/","/co_big/");
+  return u;
+}
+function coverErr(img){const lo=img.dataset.lo;if(lo&&img.src!==lo&&!img.dataset.tried){img.dataset.tried=1;img.src=lo}else img.remove()}
 const HUES=["#e8c547","#e07a5f","#81b29a","#f2cc8f","#9fb3ff","#d4a5d8","#b8d8a0","#f4a261"];
 const fmt=(c,p)=>p==null?"Price in shop":`${c} ${p.toFixed(p%1?2:0)}`;
 const fmtBig=(c,p)=>p==null?`<span class="noprice">Price in shop</span>`:`<span class="cur">${c}</span>${p.toFixed(p%1?2:0)}`;
@@ -251,7 +259,7 @@ function releaseEl(S,r,ri){
   const cov=r.cover||`https://media.hardwax.com/images/${r.img}.jpg`;
   const hue=HUES[(r.a.length+ri)%HUES.length];
   const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;
-  el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${cov}" loading="lazy" onerror="this.remove()"></div>
+  el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
   <div class="info"><div class="artist">${esc(r.a)}</div><div class="title">${esc(r.t)}</div>
   <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a>${r.cat?" · "+esc(r.cat):""}</span><span>${r.f}</span><span>${r.d||S.date}</span><span>${esc(r.g)}</span></div>
   <ul class="tracks"></ul>
@@ -449,7 +457,7 @@ function renderCart(){
       const row=document.createElement("div");row.className="citem"+(opened.has(r.key)?" done":"");
       const hue=HUES[(r.a.length+ri)%HUES.length];
       const cov=r.cover||`https://media.hardwax.com/images/${r.img}.jpg`;
-      row.innerHTML=`<div class="cthumb" style="background:${hue}"><img alt="" src="${cov}" loading="lazy" onerror="this.remove()"></div>
+      row.innerHTML=`<div class="cthumb" style="background:${hue}"><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
       <div class="ctext"><div class="ca">${esc(r.a)}</div><div class="ct">${esc(r.t)}</div><div class="cl">${esc(r.l)}${r.cat?" · "+esc(r.cat):""}</div></div>
       <div class="cside"><span class="cprice">${fmt(S.cur,r.p)}</span><button class="cdel" aria-label="Remove ${esc(r.a)}">Remove</button></div>
       <a class="copen" href="${r.href}" target="_blank" rel="noopener">${opened.has(r.key)?`Opened at ${S.shop} ✓`:`Buy at ${S.shop}`}<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`;
@@ -499,88 +507,7 @@ fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.jso
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
 fitTitle();addEventListener("resize",fitTitle);try{document.fonts.ready.then(fitTitle)}catch(e){}
-(function(){
-  const reduce=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const r=(a,b)=>a+Math.random()*(b-a);
-  const root=document.documentElement;
-  const wrap=()=>document.querySelector(".wrap");
-  const cssv=n=>getComputedStyle(root).getPropertyValue(n).trim();
-  let busy=false;
 
-  /* 1) RGB-Störung: Farbkanäle, Balken, Blitze (1 s) */
-  const C=["#ff0040","#00ffe1","#3b00ff","#ffffff","#ffe600"];
-  const MSG=["SIGNAL LOST","0xDEADBEEF","CARRIER ERR // 33⅓ RPM","SYNC FAIL ▓▓░░","NEEDLE DROP"];
-  function rgb(done){
-    const ov=document.createElement("div");ov.className="glitch-ov";ov.setAttribute("aria-hidden","true");
-    const flash=document.createElement("div");flash.className="flash";ov.appendChild(flash);
-    const txt=document.createElement("div");txt.className="txt";txt.textContent=MSG[Math.floor(Math.random()*MSG.length)];ov.appendChild(txt);
-    const bars=Array.from({length:7},()=>{const b=document.createElement("div");b.className="bar";ov.appendChild(b);return b});
-    document.body.appendChild(ov);root.classList.add("glitching");
-    const tick=()=>{
-      bars.forEach(b=>{b.style.top=r(0,98)+"%";b.style.height=r(.4,7)+"%";b.style.background=C[Math.floor(Math.random()*C.length)];b.style.transform=`translateX(${r(-8,8)}%)`;b.style.opacity=Math.random()<.25?0:r(.5,1)});
-      root.style.setProperty("--gx",r(-12,12)+"px");root.style.setProperty("--gy",r(-4,4)+"px");root.style.setProperty("--gs",r(-6,6)+"deg");
-      txt.style.transform=`translate(${r(-20,20)}px,${r(-60,60)}px)`;txt.style.opacity=Math.random()<.5?1:0;
-    };
-    tick();const iv=setInterval(tick,70);
-    // höchstens 2 Vollbild-Blitze pro Sekunde
-    [0,480].forEach(t=>setTimeout(()=>{flash.style.opacity=.85;setTimeout(()=>flash.style.opacity=0,70)},t));
-    setTimeout(()=>{clearInterval(iv);ov.remove();root.classList.remove("glitching");["--gx","--gy","--gs"].forEach(v=>root.style.removeProperty(v));done()},1000);
-  }
-
-  /* 2) Schmelzen: jedes sichtbare Element (Cover, Titel, Texte) verläuft langsam einzeln nach unten, Spalte für Spalte,
-        wie Wachs; dann schwappt alles schnell zurück, gefolgt von einem Rüttler (ca. 7.5 s) */
-  function melt(done){
-    if(!document.getElementById("mvr-melt-svg")){
-      const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.id="mvr-melt-svg";
-      svg.setAttribute("width","0");svg.setAttribute("height","0");svg.style.position="absolute";
-      // Rauschen nur entlang x (Spalten), nur nach unten verschieben: R = 0.5 (kein seitlicher Versatz), G = 0..0.5
-      svg.innerHTML=[1,2,3].map(i=>`<filter id="mvr-melt${i}" x="0" y="0" width="100%" height="190%" color-interpolation-filters="sRGB">
-        <feTurbulence type="fractalNoise" baseFrequency="${[0.035,0.06,0.022][i-1]} 0" numOctaves="3" seed="${i*11}" result="n"></feTurbulence>
-        <feColorMatrix in="n" type="matrix" values="0 0 0 0 .5  0 .55 0 0 0  0 0 0 0 0  0 0 0 0 1" result="m"></feColorMatrix>
-        <feDisplacementMap class="mvr-md" in="SourceGraphic" in2="m" scale="0" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-      </filter>`).join("");
-      document.body.appendChild(svg);
-    }
-    const H=innerHeight;
-    const els=[...document.querySelectorAll("header.top, .tabs, h2.month, .shop-head, .rel .cover, .rel .info, .citem, .empty")]
-      .filter(el=>{const b=el.getBoundingClientRect();return b.bottom>0&&b.top<H&&b.height>0}).slice(0,14);
-    const maps=[...document.querySelectorAll("#mvr-melt-svg .mvr-md")];
-    const plan=els.map((el,i)=>({el,f:(i%3)+1,delay:r(0,1400),amt:r(.7,1.25),old:[el.style.filter,el.style.transform,el.style.transformOrigin,el.style.transition]}));
-    plan.forEach(p=>{p.el.style.filter=`url(#mvr-melt${p.f})`;p.el.style.transformOrigin="50% 0";p.el.style.transition="none"});
-    const t0=performance.now(),MELT=5600,HOLD=1000,BACK=220;let raf;
-    const ease=k=>k<0?0:k>1?1:k*k*(3-2*k);
-    const step=t=>{
-      const e=t-t0;
-      let k=e<MELT?Math.pow(Math.min(1,e/MELT),1.6):e<MELT+HOLD?1:1-ease((e-MELT-HOLD)/BACK);
-      const sc=k*Math.min(420,H*.55);
-      maps.forEach((m,i)=>m.setAttribute("scale",(sc*(1+i*.15)).toFixed(1)));
-      plan.forEach(p=>{const kk=Math.max(0,Math.min(1,(e-p.delay)/MELT))*(e<MELT+HOLD?1:1-ease((e-MELT-HOLD)/BACK));
-        p.el.style.transform=`translateY(${(kk*kk*28*p.amt).toFixed(1)}px) scaleY(${(1+kk*.12*p.amt).toFixed(3)})`});
-      if(e<MELT+HOLD+BACK)raf=requestAnimationFrame(step);else finish();
-    };
-    const finish=()=>{cancelAnimationFrame(raf);maps.forEach(m=>m.setAttribute("scale","0"));
-      plan.forEach(p=>{[p.el.style.filter,p.el.style.transform,p.el.style.transformOrigin,p.el.style.transition]=p.old});
-      // Rüttler durch den ganzen Screen nach dem Zurückschnappen
-      const kf=[0,-14,12,-10,9,-6,4,-2,0].map((x,i)=>({transform:`translate(${x}px,${i%2?-x*.6:x*.4}px) rotate(${x*.08}deg)`}));
-      [document.querySelector(".wrap"),document.querySelector(".player")].forEach(el=>el&&el.animate(kf,{duration:480,easing:"ease-out"}));
-      setTimeout(done,500)};
-    raf=requestAnimationFrame(step);
-  }
-
-  const KINDS={rgb,melt};let last=null;
-  function glitch(kind){
-    if(busy||reduce())return;busy=true;
-    const keys=Object.keys(KINDS).filter(k=>k!==last);
-    kind=kind||keys[Math.floor(Math.random()*keys.length)];last=kind;
-    try{KINDS[kind](()=>{busy=false})}catch(e){busy=false}
-  }
-  let delay=3*60*1000;
-  function next(){setTimeout(()=>{glitch();delay*=2;next()},delay)}
-  setTimeout(()=>{glitch();next()},5000); // erste Störung nach 5 s, dann 3, 6, 12 … Minuten
-  const h=location.hash.slice(1);
-  if(h==="glitch")setTimeout(()=>glitch("rgb"),800);
-  if(h==="melt")setTimeout(()=>glitch("melt"),800);
-})();
 </script>
 
 </body>
