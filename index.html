@@ -8,12 +8,27 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Vinyl Releases">
-<meta name="description" content="New house and techno vinyl releases from European record shops, updated daily and grouped by shop.">
+<meta name="description" content="New house, techno, disco, balearic and ambient vinyl from independent record shops like Hardwax, Clone, Phonica and Redeye. Listen to previews, compare prices and order per shop. Updated every morning.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="canonical" href="https://monthlyvinyl.net/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Monthly Vinyl Releases">
+<meta property="og:title" content="Monthly Vinyl Releases – new house, techno, disco &amp; ambient vinyl">
+<meta property="og:description" content="New house, techno, disco, balearic and ambient vinyl from independent record shops like Hardwax, Clone, Phonica and Redeye. Listen to previews, compare prices and order per shop. Updated every morning.">
+<meta property="og:url" content="https://monthlyvinyl.net/">
+<meta property="og:image" content="https://monthlyvinyl.net/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Monthly Vinyl Releases – new vinyl from independent record shops, updated every morning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monthly Vinyl Releases">
+<meta name="twitter:description" content="New house, techno, disco, balearic and ambient vinyl from independent record shops like Hardwax, Clone, Phonica and Redeye. Listen to previews, compare prices and order per shop. Updated every morning.">
+<meta name="twitter:image" content="https://monthlyvinyl.net/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Monthly Vinyl Releases", "alternateName": "Monthly Vinyl", "url": "https://monthlyvinyl.net/", "description": "New house, techno, disco, balearic and ambient vinyl from independent record shops like Hardwax, Clone, Phonica and Redeye. Listen to previews, compare prices and order per shop. Updated every morning.", "inLanguage": "en"}</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30.5' fill='%230d0d0d' stroke='%23ffffff' stroke-width='3'/%3E%3Cg fill='none' stroke='%233a3a3a' stroke-width='1.2'%3E%3Ccircle cx='32' cy='32' r='25'/%3E%3Ccircle cx='32' cy='32' r='21.5'/%3E%3Ccircle cx='32' cy='32' r='18'/%3E%3C/g%3E%3Cpath d='M14 20a22 22 0 0 1 10-8' fill='none' stroke='%23ffffff' stroke-opacity='.55' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%2393a8ff'/%3E%3Ccircle cx='32' cy='32' r='2.6' fill='%230d0d0d'/%3E%3C/svg%3E">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Monthly Vinyl Releases</title>
+<title>Monthly Vinyl Releases – New House, Techno, Disco &amp; Ambient Vinyl</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
@@ -183,7 +198,7 @@ section.shop{margin-top:22px}
 .tag.st-out{border-color:#e07a5f;color:#e07a5f}
 .rel.isfol .artist{color:var(--rule)}
 .rel.isfol{border-left:0;box-shadow:inset 0 3px 0 var(--accent)}
-.artist{display:flex;align-items:flex-start;gap:6px}
+.artist{display:flex;align-items:flex-start;gap:6px;margin:0}
 .artist .an{flex:1;min-width:0}
 .star{all:unset;cursor:pointer;flex:none;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:40px;height:36px;margin:-3px -10px -6px 0;color:var(--muted)}
 .star svg{width:21px;height:21px}
@@ -406,7 +421,8 @@ a.nlater{text-decoration:none}
   <header class="top">
     <h1 id="title"><span>Monthly Vinyl Releases</span></h1>
   </header>
-  <p class="lede" id="lede"></p>
+  <p class="lede" id="lede">Find the newest releases from techno and house to ambient and disco, all in one place. Listen to previews, compare prices, fill your bag with your favourites and buy directly from the shops. The page is updated every day with the latest releases.</p>
+  <noscript><p class="lede">This page needs JavaScript to show the release list and play previews.</p></noscript>
   <p class="returning" id="returning" hidden><button type="button" data-restore>Been here before? Restore your follows &amp; bag<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button></p>
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-v="home" id="tab-home">This month</button>
@@ -648,8 +664,8 @@ function releaseEl(e,ri){
   const priced=e.all.filter(o=>o.chf!=null),low=priced.length>1?Math.min(...priced.map(o=>o.chf)):null;
   const isLow=o=>low!=null&&o.chf!=null&&Math.abs(o.chf-low)<.005;
   const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;el._e=e;
-  el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
-  <div class="info"><div class="tags none"></div><div class="artist"><span class="an">${esc(r.a)}</span><button class="star folbtn" data-fol="a" data-v="${esc(r.a)}"></button></div><div class="title">${esc(r.t)}</div>
+  el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="${esc(r.a)} – ${esc(r.t)} (${esc(r.l)}) vinyl cover" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
+  <div class="info"><div class="tags none"></div><h3 class="artist"><span class="an">${esc(r.a)}</span><button class="star folbtn" data-fol="a" data-v="${esc(r.a)}"></button></h3><div class="title">${esc(r.t)}</div>
   <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a><button class="star sm folbtn" data-fol="l" data-v="${esc(r.l)}"></button>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${genreLinks(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
   <ul class="tracks"></ul>
   <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}</span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
@@ -1158,7 +1174,7 @@ function renderCart(){
       const hue=HUES[(r.a.length+ri)%HUES.length];
       const cov=r.cover||`https://media.hardwax.com/images/${r.img}.jpg`;
       const alt=(GROUPS[r.gk]||[]).filter(o=>o!==r&&o.chf!=null&&r.chf!=null&&o.chf<r.chf-.005).sort((a,b)=>a.chf-b.chf)[0];
-      row.innerHTML=`<div class="cthumb" style="background:${hue}"><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
+      row.innerHTML=`<div class="cthumb" style="background:${hue}"><img alt="${esc(r.a)} – ${esc(r.t)} cover" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
       <div class="ctext"><div class="ca">${esc(r.a)}</div><div class="ct">${esc(r.t)}</div><div class="cl">${esc(r.l)}${r.cat?" · "+esc(r.cat):""}${r.st&&STOCK[r.st]?" · "+STOCK[r.st]:""}</div>${alt?`<div class="calt">${chf(r.chf-alt.chf)} cheaper at ${esc(alt.S.shop)}</div>`:""}</div>
       <div class="cside"><span class="cprice">${fmt(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="cchf">≈ ${chf(r.chf)}</span>`:""}<button class="cdel" aria-label="Remove ${esc(r.a)}">Remove</button></div>
       <a class="copen" href="${r.href}" target="_blank" rel="noopener">${opened.has(r.key)?`Opened at ${S.shop}`:`Buy at ${S.shop}`}<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`;
@@ -1268,7 +1284,7 @@ document.getElementById("nx").onclick=()=>{const n=nextIdx(cur);if(n>=0)play(n,t
 const fmtDate=iso=>{const [y,m,d]=iso.split("-");return `${+d} ${MONTHS[+m-1].slice(0,3)} ${y}`};
 list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
-  SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();{document.getElementById("lede").textContent="Find the newest releases from techno and house to ambient and disco, all in one place. Listen to previews, compare prices, fill your bag with your favourites and buy directly from the shops. The page is updated every day with the latest releases."}cart=cart.filter(k=>INDEX[k]);
+  SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();cart=cart.filter(k=>INDEX[k]);
   document.getElementById("stand").textContent="Last update: "+fmtDate(UPDATED);
   cartBadges();render();updateReturning();checkRestoreLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
