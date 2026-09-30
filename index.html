@@ -837,7 +837,8 @@ function go(v){view=v;try{history.replaceState(null,"",v==="home"?"#":"#"+v)}cat
 const PDFI='<svg viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1h8l4 4v12H2z M10 1v4h4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 10h6M5 13h6" stroke="currentColor" stroke-width="1.8"/></svg>';
 const COPYI='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 5V1H1v10h4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 const MAILI='<svg viewBox="0 0 18 14" aria-hidden="true"><rect x="1" y="1" width="16" height="12" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M1 1l8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
-const SITE="https://newvinyl.github.io";
+// Eigene Adresse der Seite (für Backup-Links, PDF, E-Mails): auf der echten Website die aktuelle Domain, sonst die Hauptadresse
+const SITE=/(^|\.)monthlyvinyl\.net$|^newvinyl\.github\.io$/.test(location.hostname)?location.origin:"https://monthlyvinyl.net";
 const today=()=>new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
 // Porto- und Zollrechner. Alle Beträge intern in CHF, angezeigt in der Währung des Wohnlands.
 // Regeln (Stand Sept. 2026, Schätzung):
