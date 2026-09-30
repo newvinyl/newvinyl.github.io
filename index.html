@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#0d0d0d">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Vinyl Releases">
@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Hintergrund wechselt bei jedem Aufruf (Script direkt nach diesem Block setzt die Tokens). Layout: eine Spalte, max 560px, Shops als Blöcke mit Sticky-Kopf, Player unten fixiert */
+/* Einheitlich 95 % Schwarz (bewusst ein Theme). Layout: eine Spalte, max 560px, Shops als Blöcke mit Sticky-Kopf, Player unten fixiert */
 :root{
   --bg:#0d0d0d; --deep:#1a1a1a; --fg:#ecebe7; --muted:#a0a4a9; --line:#3c4046;
   --black:#000000; --rule:#ffffff; --div:#ffffff; --accent:#93a8ff; --accent-fg:#111317; --warn:#e3a94f;
@@ -33,7 +33,7 @@ h1 span{display:block;white-space:nowrap;width:max-content}
 .demo{font-size:12.5px;color:var(--muted);margin:10px 0 0}
 .tabs{display:flex;gap:6px;margin-top:14px;align-items:center}
 .tab.tabcart{margin-left:auto;position:relative;width:46px;height:46px;padding:0!important;border-radius:0!important;border:2px solid var(--rule)!important;background:var(--black)!important;color:var(--rule)!important;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
-.tab.tabcart svg{width:22px;height:20px}
+.tab.tabcart svg{width:23px;height:23px}
 .tab.tabcart[aria-selected="true"]{background:var(--rule)!important;color:var(--black)!important}
 .tab.tabcart .badge{position:absolute;top:-8px;right:-8px;border:2px solid var(--bg)}
 .tab{all:unset;cursor:pointer;font-weight:700;font-size:14px;min-height:46px;box-sizing:border-box;display:inline-flex;align-items:center;padding:0 16px;border-radius:0;border:2px solid var(--rule);background:var(--black);color:var(--rule)}
@@ -72,7 +72,7 @@ h1 span{display:block;white-space:nowrap;width:max-content}
 .shoplink{align-self:flex-end;font-size:12.5px;color:var(--muted);margin-top:8px;padding-block:6px;text-underline-offset:3px}
 .badge{display:inline-block;min-width:18px;text-align:center;background:var(--accent);color:var(--accent-fg);font-size:11px;font-weight:700;border-radius:999px;padding:1px 6px;font-family:var(--mono)}
 .pcart{all:unset;cursor:pointer;order:1;position:relative;width:44px;height:44px;flex:none;display:flex;align-items:center;justify-content:center;color:#f2f0ea}
-.pcart svg{width:24px;height:22px}
+.pcart svg{width:25px;height:25px}
 .pcart .badge{position:absolute;top:2px;right:0}
 .cnote{font-size:13px;color:var(--muted);margin:8px 0 0}
 .citem{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:start;padding:16px 0;border-bottom:1.5px solid var(--div)}
@@ -92,6 +92,16 @@ h1 span{display:block;white-space:nowrap;width:max-content}
 .cfoot .buy{margin-left:auto}
 .ytbox{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;margin-top:10px;background:#000;border:1.5px solid var(--rule)}
 .ytbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.bagacts{display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-top:16px;padding:14px;background:var(--black);border:2px solid var(--rule)}
+.bagrow{display:flex;gap:10px;justify-content:flex-end;width:100%;flex-wrap:wrap}
+.bbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:9px;min-height:46px;box-sizing:border-box;padding:8px 14px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--rule);background:var(--black);border:2px solid var(--rule)}
+.bbtn svg{width:16px;height:16px;flex:none}
+.bbtn:hover,.bbtn:active{background:var(--rule);color:var(--black)}
+.bbtn:disabled{opacity:.5;cursor:default}
+.bbtn:focus-visible,#bagmail:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#bagmail{flex:1;min-width:0;font:inherit;font-size:16px;padding:10px 12px;background:#1a1a1a;color:#f2f0ea;border:2px solid var(--rule);border-radius:0}
+.bagmsg{margin:0;font-size:12.5px;color:var(--muted);min-height:1em;text-align:right}
+.bagmsg:empty{display:none}
 h2.month{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;margin:30px 0 0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;text-wrap:balance}
 h2.month span{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted)}
 .empty{margin-top:18px;padding:16px;border:1px dashed var(--line);color:var(--muted);font-size:14px}
@@ -150,24 +160,7 @@ html.glitching .wrap,html.glitching .player{filter:drop-shadow(4px 0 rgba(255,0,
 .glitch-ov .flash{position:absolute;inset:0;background:linear-gradient(90deg,#ff0040 0 33%,#00ffe1 33% 66%,#3b00ff 66%);mix-blend-mode:difference;opacity:0}
 .glitch-ov .txt{position:absolute;left:8%;top:40%;font-family:var(--mono);font-size:13px;color:#00ffe1;text-shadow:2px 0 #ff0040;letter-spacing:.1em;white-space:nowrap}
 </style>
-<script>
-/* Bei jedem Aufruf eine neue Hintergrundfarbe: grelle Neons im Wechsel mit dunklen, erdigen, mystischen Tönen */
-(function(){
-  var NEON=["#ff2d95","#b6ff00","#00e5ff","#ffe600","#ff5a1f","#2b3cff","#9d00ff","#00ff9c","#ff0040","#ff9ff3","#39ff14","#ff00e5"];
-  var DARK=["#14261d","#3b0d11","#15123a","#3a2518","#0f3b3f","#2a1030","#2f3a17","#1d1a2e","#402a10","#0e2230","#311a1a","#1f2a24"];
-  var GLOW=["#b6ff00","#ff2d95","#00e5ff","#ffe600","#ff5a1f","#39ff14"];
-  var last=null;try{last=localStorage.getItem("mvr-bg")}catch(e){}
-  var pool=Math.random()<0.5?NEON:DARK, bg;
-  do{bg=pool[Math.floor(Math.random()*pool.length)]}while(bg===last&&pool.length>1);
-  try{localStorage.setItem("mvr-bg",bg)}catch(e){}
-  function lum(h){var c=[1,3,5].map(function(i){var v=parseInt(h.substr(i,2),16)/255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]}
-  var light=lum(bg)>0.18, r=document.documentElement.style;
-  r.setProperty("--bg",bg);
-  if(light){r.setProperty("--fg","#0d0d0d");r.setProperty("--muted","rgba(0,0,0,.68)");r.setProperty("--line","rgba(0,0,0,.32)");r.setProperty("--div","#0d0d0d");r.setProperty("--accent","#0d0d0d");r.setProperty("--accent-fg","#ffffff")}
-  else{var g=GLOW.filter(function(x){return x!==bg})[Math.floor(Math.random()*(GLOW.length-1))];r.setProperty("--fg","#f2f0ea");r.setProperty("--muted","rgba(255,255,255,.66)");r.setProperty("--line","rgba(255,255,255,.26)");r.setProperty("--div","#ffffff");r.setProperty("--accent",g);r.setProperty("--accent-fg","#0d0d0d")}
-  var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",bg);
-})();
-</script>
+
 
 </head>
 <body>
@@ -179,7 +172,7 @@ html.glitching .wrap,html.glitching .player{filter:drop-shadow(4px 0 rgba(255,0,
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-v="home" id="tab-home">This month</button>
     <button class="tab" role="tab" data-v="archiv" id="tab-archiv">Past</button>
-    <button class="tab tabcart" role="tab" data-v="korb" id="tab-korb" aria-label="Cart"><svg viewBox="0 0 22 20" aria-hidden="true"><path d="M1 2h3.5l2.4 11h11l2.2-8H6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="17" r="1.6" fill="currentColor"/><circle cx="16.5" cy="17" r="1.6" fill="currentColor"/></svg><b class="badge" data-cartcount hidden>0</b></button>
+    <button class="tab tabcart" role="tab" data-v="korb" id="tab-korb" aria-label="My bag"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 7V2.5M9 7V1.8M12.5 7V2.8M16 7V2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="1.5" y="7" width="19" height="13.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11.8h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><b class="badge" data-cartcount hidden>0</b></button>
   </nav>
   <div id="filter" class="filter"></div>
   <main id="list"></main>
@@ -189,7 +182,7 @@ html.glitching .wrap,html.glitching .player{filter:drop-shadow(4px 0 rgba(255,0,
   <div class="in">
     <button class="pbtn" id="pp" aria-label="Play"><svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M1 1 19 11 1 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
     <div class="pt"><div class="a" id="pa">Tap a track</div><div class="b" id="pb">Previews straight from the shops</div><div class="bar"><i id="pr"></i></div></div>
-    <button class="pcart" id="pcart" aria-label="Open cart"><svg viewBox="0 0 22 20" aria-hidden="true"><path d="M1 2h3.5l2.4 11h11l2.2-8H6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="17" r="1.6" fill="currentColor"/><circle cx="16.5" cy="17" r="1.6" fill="currentColor"/></svg><b class="badge" data-cartcount hidden>0</b></button>
+    <button class="pcart" id="pcart" aria-label="Open my bag"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 7V2.5M9 7V1.8M12.5 7V2.8M16 7V2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="1.5" y="7" width="19" height="13.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11.8h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><b class="badge" data-cartcount hidden>0</b></button>
     <button class="pbtn sm" id="nx" aria-label="Next track"><svg class="tri" viewBox="0 0 30 22" aria-hidden="true"><path d="M1 1 14 11 1 21ZM15 1 28 11 15 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
   </div>
 </div>
@@ -244,7 +237,7 @@ function toggleCart(k){
 }
 const PLUS='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
 const CHECK='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.5 7.5 5.5 11.5 12.5 2.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
-function setCartBtn(b){const on=inCart(b.dataset.key);b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);b.innerHTML=on?`In cart${CHECK}`:`Add to cart${PLUS}`}
+function setCartBtn(b){const on=inCart(b.dataset.key);b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);b.innerHTML=on?`In my bag${CHECK}`:`Add to bag${PLUS}`}
 const NOT_GENRE=/^(reissue|repress|lp|ep|edits?|2×12"?|12")$/i;
 const genresOf=r=>[...new Set(r.g.split(/[\/·]/).map(x=>x.trim().replace(/\s+Edits$/i,"")).filter(x=>x&&!NOT_GENRE.test(x)))];
 const flt={genres:new Set(),label:""};let fltOpen=false;
@@ -364,19 +357,87 @@ function renderFilter(now){
   box.querySelector("#flabelsel").onchange=e=>{flt.label=e.target.value;render()};
 }
 function go(v){view=v;try{history.replaceState(null,"",v==="home"?"#":"#"+v)}catch(e){}render();window.scrollTo(0,0)}
+const PDFI='<svg viewBox="0 0 16 18" aria-hidden="true"><path d="M2 1h8l4 4v12H2z M10 1v4h4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 10h6M5 13h6" stroke="currentColor" stroke-width="1.8"/></svg>';
+const COPYI='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 5V1H1v10h4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+const MAILI='<svg viewBox="0 0 18 14" aria-hidden="true"><rect x="1" y="1" width="16" height="12" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M1 1l8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+const SITE="https://newvinyl.github.io";
+const today=()=>new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+function bagText(items,shops){
+  let t=`My bag · Monthly Vinyl Releases · ${today()}\n`;
+  shops.forEach(S=>{const mine=items.filter(x=>x.S===S).map(x=>x.r);const sum=mine.reduce((a,r)=>a+(r.p||0),0);
+    t+=`\n${S.shop.toUpperCase()} (${mine.length} ${mine.length>1?"records":"record"}${sum?` · ${fmt(S.cur,sum)}`:""})\n`;
+    mine.forEach(r=>{t+=`- ${r.a} – ${r.t} [${r.l}${r.cat?" "+r.cat:""}, ${r.f}] ${fmt(S.cur,r.p)}\n  ${r.href}\n`})});
+  return t+`\n${SITE}\n`;
+}
+function loadPDF(){return window.jspdf?Promise.resolve():new Promise((res,rej)=>{const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";sc.onload=res;sc.onerror=rej;document.head.appendChild(sc)})}
+const pdfSafe=t=>String(t).replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/[–—]/g,"-").replace(/×/g,"x").replace(/…/g,"...").replace(/[^\u0000-ÿ€]/g,"?");
+async function bagPDF(items,shops){
+  await loadPDF();
+  const doc=new window.jspdf.jsPDF({unit:"mm",format:"a4"}),W=210,M=16;let y=0;
+  const band=(h,fill)=>{doc.setFillColor(fill);doc.rect(0,y,W,h,"F")};
+  const newPage=()=>{doc.addPage();y=M};
+  const need=h=>{if(y+h>285)newPage()};
+  y=0;band(38,"#000000");doc.setDrawColor(255);doc.setLineWidth(1.4);doc.line(0,38,W,38);
+  doc.setTextColor(255);doc.setFont("helvetica","bold");doc.setFontSize(30);doc.text("MY BAG",M,21);
+  doc.setFont("helvetica","normal");doc.setFontSize(10);
+  doc.text(pdfSafe(`Monthly Vinyl Releases · ${today()} · ${items.length} ${items.length>1?"records":"record"} · ${shops.length} ${shops.length>1?"shops":"shop"}`),M,30);
+  y=48;doc.setTextColor(0);
+  shops.forEach(S=>{
+    const mine=items.filter(x=>x.S===S).map(x=>x.r),sum=mine.reduce((a,r)=>a+(r.p||0),0);
+    need(26);doc.setFillColor(0);doc.rect(M,y,W-2*M,10,"F");doc.setTextColor(255);doc.setFont("helvetica","bold");doc.setFontSize(12);
+    doc.text(pdfSafe(S.shop.toUpperCase()),M+3,y+6.8);doc.setFont("helvetica","normal");doc.setFontSize(9);
+    doc.text(pdfSafe(`${mine.length} ${mine.length>1?"RECORDS":"RECORD"}${sum?` · ${fmt(S.cur,sum)}`:""}`),W-M-3,y+6.8,{align:"right"});
+    y+=16;doc.setTextColor(0);
+    mine.forEach(r=>{
+      need(26);
+      doc.setFont("helvetica","bold");doc.setFontSize(13);const al=doc.splitTextToSize(pdfSafe(r.a),120);doc.text(al,M,y);
+      doc.text(pdfSafe(fmt(S.cur,r.p)),W-M,y,{align:"right"});y+=al.length*5.4;
+      doc.setFont("helvetica","normal");doc.setFontSize(11);const tl=doc.splitTextToSize(pdfSafe(r.t),150);doc.text(tl,M,y);y+=tl.length*4.8;
+      doc.setFontSize(8.5);doc.setTextColor(90);doc.text(pdfSafe(`${r.l}${r.cat?" · "+r.cat:""} · ${r.f} · ${r.g}`),M,y);y+=5.2;
+      doc.setTextColor(0);doc.setFont("helvetica","bold");doc.setFontSize(9.5);doc.textWithLink(pdfSafe(`Buy at ${S.shop} >`),M,y,{url:r.href});
+      y+=4;doc.setDrawColor(0);doc.setLineWidth(.4);doc.line(M,y,W-M,y);y+=7;
+    });
+    y+=4;
+  });
+  const n=doc.getNumberOfPages();
+  for(let i=1;i<=n;i++){doc.setPage(i);doc.setFont("helvetica","normal");doc.setFontSize(8);doc.setTextColor(120);doc.textWithLink(SITE.replace("https://",""),M,292,{url:SITE});doc.text(`${i}/${n}`,W-M,292,{align:"right"})}
+  const name=`my-bag-${new Date().toISOString().slice(0,10)}.pdf`,blob=doc.output("blob");
+  const dl=window.claude&&window.claude.use?await window.claude.use("downloads").catch(()=>null):null;
+  if(dl){await dl.save({filename:name,data:blob});return}
+  doc.save(name);
+}
+function wireBag(items,shops){
+  const msg=t=>{const m=document.getElementById("bagmsg");if(m)m.textContent=t};
+  document.getElementById("bagpdf").onclick=async e=>{const b=e.currentTarget;b.disabled=true;msg("Packing your PDF…");
+    try{await bagPDF(items,shops);msg("PDF ready.")}catch(err){msg(err&&err.code==="declined"?"Download cancelled.":"The PDF could not be created. Check your connection and try again.")}b.disabled=false};
+  const text=bagText(items,shops);
+  document.getElementById("bagcopy").onclick=()=>{navigator.clipboard.writeText(text).then(()=>msg("List copied. Paste it anywhere."),()=>msg("Copy not allowed here. Use Export PDF or Send instead."))};
+  const inp=document.getElementById("bagmail"),send=document.getElementById("bagsend");
+  try{inp.value=store.get("mvr-mail","")}catch(e){}
+  const upd=()=>{send.href=`mailto:${encodeURIComponent(inp.value.trim())}?subject=${encodeURIComponent("My vinyl bag · Monthly Vinyl Releases")}&body=${encodeURIComponent(text)}`;store.set("mvr-mail",inp.value.trim())};
+  inp.oninput=upd;upd();
+  send.onclick=()=>msg(inp.value.trim()?`Opening your mail app to send the list to ${inp.value.trim()}…`:"Opening your mail app. Add who it's for there.");
+}
 function renderCart(){
   const items=cart.map(k=>INDEX[k]).filter(Boolean);
   const shops=SHOPS.filter(S=>items.some(x=>x.S===S));
   const h=document.createElement("h2");h.className="month";
-  h.innerHTML=`Warenkorb<span>${items.length?`${items.length} ${items.length>1?"records":"record"} · ${shops.length} ${shops.length>1?"shops":"shop"}`:""}</span>`;
+  h.innerHTML=`My bag<span>${items.length?`${items.length} ${items.length>1?"records":"record"} · ${shops.length} ${shops.length>1?"shops":"shop"}`:""}</span>`;
   list.appendChild(h);
   if(!items.length){
     const e=document.createElement("p");e.className="empty";
-    e.innerHTML=`Your cart is empty. Tap “Add to cart” on any record, keep listening, and order everything per shop at the end. <a href="#" data-go="home">Back to new releases</a>`;
+    e.innerHTML=`Your bag is empty. Tap “Add to bag” on any record, keep listening, and pack your crate as you go. <a href="#" data-go="home">Back to new releases</a>`;
     list.appendChild(e);return;
   }
+  const acts=document.createElement("div");acts.className="bagacts";
+  acts.innerHTML=`<div class="bagrow"><button class="bbtn" id="bagpdf">${PDFI}Export PDF</button><button class="bbtn" id="bagcopy">${COPYI}Copy list</button></div>
+    <label class="flabel" for="bagmail">Send the list by email</label>
+    <div class="bagrow"><input id="bagmail" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com"><a class="bbtn" id="bagsend" href="#">${MAILI}Send</a></div>
+    <p class="bagmsg" id="bagmsg" role="status"></p>`;
+  list.appendChild(acts);
+  wireBag(items,shops);
   const note=document.createElement("p");note.className="cnote";
-  note.textContent="Your list, grouped by shop. The shops don't accept orders from other websites, so tap “Open in shop” for each record, add it to the cart on the shop's site and check out there.";
+  note.textContent="Grouped by shop, so you order each shop in one go. Tap “Buy at …” to open the record in its shop and check out there.";
   list.appendChild(note);
   shops.forEach(S=>{
     const mine=items.filter(x=>x.S===S).map(x=>x.r);
@@ -391,13 +452,13 @@ function renderCart(){
       row.innerHTML=`<div class="cthumb" style="background:${hue}"><img alt="" src="${cov}" loading="lazy" onerror="this.remove()"></div>
       <div class="ctext"><div class="ca">${esc(r.a)}</div><div class="ct">${esc(r.t)}</div><div class="cl">${esc(r.l)}${r.cat?" · "+esc(r.cat):""}</div></div>
       <div class="cside"><span class="cprice">${fmt(S.cur,r.p)}</span><button class="cdel" aria-label="Remove ${esc(r.a)}">Remove</button></div>
-      <a class="copen" href="${r.href}" target="_blank" rel="noopener">${opened.has(r.key)?"Opened in shop ✓":"Open in shop"}<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`;
+      <a class="copen" href="${r.href}" target="_blank" rel="noopener">${opened.has(r.key)?`Opened at ${S.shop} ✓`:`Buy at ${S.shop}`}<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`;
       row.querySelector(".cdel").onclick=()=>{toggleCart(r.key);render()};
       row.querySelector(".copen").addEventListener("click",()=>{opened.add(r.key);saveCart();setTimeout(render,50)});
       sec.appendChild(row);
     });
     const foot=document.createElement("div");foot.className="cfoot";
-    foot.innerHTML=`<span>${done} of ${mine.length} opened in shop</span>`;
+    foot.innerHTML=`<span>${done} of ${mine.length} opened at ${S.shop}</span>`;
     sec.appendChild(foot);
     list.appendChild(sec);
   });
@@ -439,17 +500,22 @@ fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.jso
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
 fitTitle();addEventListener("resize",fitTitle);try{document.fonts.ready.then(fitTitle)}catch(e){}
 (function(){
+  const reduce=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const r=(a,b)=>a+Math.random()*(b-a);
+  const root=document.documentElement;
+  const wrap=()=>document.querySelector(".wrap");
+  const cssv=n=>getComputedStyle(root).getPropertyValue(n).trim();
+  let busy=false;
+
+  /* 1) RGB-Störung: Farbkanäle, Balken, Blitze (1 s) */
   const C=["#ff0040","#00ffe1","#3b00ff","#ffffff","#ffe600"];
   const MSG=["SIGNAL LOST","0xDEADBEEF","CARRIER ERR // 33⅓ RPM","SYNC FAIL ▓▓░░","NEEDLE DROP"];
-  let delay=3*60*1000;
-  function glitch(){
-    if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-    const root=document.documentElement,ov=document.createElement("div");ov.className="glitch-ov";ov.setAttribute("aria-hidden","true");
+  function rgb(done){
+    const ov=document.createElement("div");ov.className="glitch-ov";ov.setAttribute("aria-hidden","true");
     const flash=document.createElement("div");flash.className="flash";ov.appendChild(flash);
     const txt=document.createElement("div");txt.className="txt";txt.textContent=MSG[Math.floor(Math.random()*MSG.length)];ov.appendChild(txt);
     const bars=Array.from({length:7},()=>{const b=document.createElement("div");b.className="bar";ov.appendChild(b);return b});
     document.body.appendChild(ov);root.classList.add("glitching");
-    const r=(a,b)=>a+Math.random()*(b-a);
     const tick=()=>{
       bars.forEach(b=>{b.style.top=r(0,98)+"%";b.style.height=r(.4,7)+"%";b.style.background=C[Math.floor(Math.random()*C.length)];b.style.transform=`translateX(${r(-8,8)}%)`;b.style.opacity=Math.random()<.25?0:r(.5,1)});
       root.style.setProperty("--gx",r(-12,12)+"px");root.style.setProperty("--gy",r(-4,4)+"px");root.style.setProperty("--gs",r(-6,6)+"deg");
@@ -458,11 +524,62 @@ fitTitle();addEventListener("resize",fitTitle);try{document.fonts.ready.then(fit
     tick();const iv=setInterval(tick,70);
     // höchstens 2 Vollbild-Blitze pro Sekunde
     [0,480].forEach(t=>setTimeout(()=>{flash.style.opacity=.85;setTimeout(()=>flash.style.opacity=0,70)},t));
-    setTimeout(()=>{clearInterval(iv);ov.remove();root.classList.remove("glitching");["--gx","--gy","--gs"].forEach(v=>root.style.removeProperty(v))},1000);
+    setTimeout(()=>{clearInterval(iv);ov.remove();root.classList.remove("glitching");["--gx","--gy","--gs"].forEach(v=>root.style.removeProperty(v));done()},1000);
   }
+
+  /* 2) Schmelzen: jedes sichtbare Element (Cover, Titel, Texte) verläuft langsam einzeln nach unten, Spalte für Spalte,
+        wie Wachs; dann schwappt alles schnell zurück, gefolgt von einem Rüttler (ca. 7.5 s) */
+  function melt(done){
+    if(!document.getElementById("mvr-melt-svg")){
+      const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.id="mvr-melt-svg";
+      svg.setAttribute("width","0");svg.setAttribute("height","0");svg.style.position="absolute";
+      // Rauschen nur entlang x (Spalten), nur nach unten verschieben: R = 0.5 (kein seitlicher Versatz), G = 0..0.5
+      svg.innerHTML=[1,2,3].map(i=>`<filter id="mvr-melt${i}" x="0" y="0" width="100%" height="190%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="${[0.035,0.06,0.022][i-1]} 0" numOctaves="3" seed="${i*11}" result="n"></feTurbulence>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 .5  0 .55 0 0 0  0 0 0 0 0  0 0 0 0 1" result="m"></feColorMatrix>
+        <feDisplacementMap class="mvr-md" in="SourceGraphic" in2="m" scale="0" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+      </filter>`).join("");
+      document.body.appendChild(svg);
+    }
+    const H=innerHeight;
+    const els=[...document.querySelectorAll("header.top, .tabs, h2.month, .shop-head, .rel .cover, .rel .info, .citem, .empty")]
+      .filter(el=>{const b=el.getBoundingClientRect();return b.bottom>0&&b.top<H&&b.height>0}).slice(0,14);
+    const maps=[...document.querySelectorAll("#mvr-melt-svg .mvr-md")];
+    const plan=els.map((el,i)=>({el,f:(i%3)+1,delay:r(0,1400),amt:r(.7,1.25),old:[el.style.filter,el.style.transform,el.style.transformOrigin,el.style.transition]}));
+    plan.forEach(p=>{p.el.style.filter=`url(#mvr-melt${p.f})`;p.el.style.transformOrigin="50% 0";p.el.style.transition="none"});
+    const t0=performance.now(),MELT=5600,HOLD=1000,BACK=220;let raf;
+    const ease=k=>k<0?0:k>1?1:k*k*(3-2*k);
+    const step=t=>{
+      const e=t-t0;
+      let k=e<MELT?Math.pow(Math.min(1,e/MELT),1.6):e<MELT+HOLD?1:1-ease((e-MELT-HOLD)/BACK);
+      const sc=k*Math.min(420,H*.55);
+      maps.forEach((m,i)=>m.setAttribute("scale",(sc*(1+i*.15)).toFixed(1)));
+      plan.forEach(p=>{const kk=Math.max(0,Math.min(1,(e-p.delay)/MELT))*(e<MELT+HOLD?1:1-ease((e-MELT-HOLD)/BACK));
+        p.el.style.transform=`translateY(${(kk*kk*28*p.amt).toFixed(1)}px) scaleY(${(1+kk*.12*p.amt).toFixed(3)})`});
+      if(e<MELT+HOLD+BACK)raf=requestAnimationFrame(step);else finish();
+    };
+    const finish=()=>{cancelAnimationFrame(raf);maps.forEach(m=>m.setAttribute("scale","0"));
+      plan.forEach(p=>{[p.el.style.filter,p.el.style.transform,p.el.style.transformOrigin,p.el.style.transition]=p.old});
+      // Rüttler durch den ganzen Screen nach dem Zurückschnappen
+      const kf=[0,-14,12,-10,9,-6,4,-2,0].map((x,i)=>({transform:`translate(${x}px,${i%2?-x*.6:x*.4}px) rotate(${x*.08}deg)`}));
+      [document.querySelector(".wrap"),document.querySelector(".player")].forEach(el=>el&&el.animate(kf,{duration:480,easing:"ease-out"}));
+      setTimeout(done,500)};
+    raf=requestAnimationFrame(step);
+  }
+
+  const KINDS={rgb,melt};let last=null;
+  function glitch(kind){
+    if(busy||reduce())return;busy=true;
+    const keys=Object.keys(KINDS).filter(k=>k!==last);
+    kind=kind||keys[Math.floor(Math.random()*keys.length)];last=kind;
+    try{KINDS[kind](()=>{busy=false})}catch(e){busy=false}
+  }
+  let delay=3*60*1000;
   function next(){setTimeout(()=>{glitch();delay*=2;next()},delay)}
   setTimeout(()=>{glitch();next()},5000); // erste Störung nach 5 s, dann 3, 6, 12 … Minuten
-  if(location.hash==="#glitch")setTimeout(glitch,800);
+  const h=location.hash.slice(1);
+  if(h==="glitch")setTimeout(()=>glitch("rgb"),800);
+  if(h==="melt")setTimeout(()=>glitch("melt"),800);
 })();
 </script>
 
