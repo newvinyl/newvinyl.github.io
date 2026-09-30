@@ -24,6 +24,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45}
 .wrap{max-width:560px;margin:0 auto;padding-inline:16px;padding-block:20px 120px}
 header.top{display:flex;flex-direction:column;gap:6px;background:var(--black);border-top:4px solid var(--rule);border-bottom:4px solid var(--rule);padding:18px 14px 14px}
@@ -176,11 +177,15 @@ section.shop{margin-top:22px}
 .tag.st-out{border-color:#e07a5f;color:#e07a5f}
 .rel.isfol .artist{color:var(--rule)}
 .rel.isfol{border-left:0;box-shadow:inset 0 3px 0 var(--accent)}
-.fol{display:flex;justify-content:flex-end;gap:8px;margin-top:10px;flex-wrap:wrap}
-.folbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:36px;box-sizing:border-box;padding:4px 10px;font-size:12.5px;color:var(--muted);border:1px solid var(--line)}
-.folbtn svg{width:13px;height:13px}
-.folbtn[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
-.folbtn[aria-pressed="true"] svg path{fill:currentColor}
+.artist{display:flex;align-items:flex-start;gap:6px}
+.artist .an{flex:1;min-width:0}
+.star{all:unset;cursor:pointer;flex:none;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:40px;height:36px;margin:-3px -10px -6px 0;color:var(--muted)}
+.star svg{width:21px;height:21px}
+.star:hover{color:var(--rule)}
+.star[aria-pressed="true"]{color:var(--accent)}
+.star[aria-pressed="true"] svg path{fill:currentColor}
+.star.sm{width:30px;height:26px;margin:-6px -4px -8px 0;vertical-align:middle}
+.star.sm svg{width:14px;height:14px}
 .folbtn:focus-visible,.cartbtn.mini:focus-visible,.oshop:focus-visible,.calc input:focus-visible,#home:focus-visible,.homesel:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .pwrap{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .chf{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
@@ -249,7 +254,6 @@ label.bbtn{cursor:pointer}
   #list:not(.bagview) .trk .ic{width:36px;height:32px}
   #list:not(.bagview) .trk .ic .tri{width:18px;height:20px}
   #list:not(.bagview) .cartbtn:not(.mini){min-height:42px;font-size:14px;padding:6px 12px}
-  #list:not(.bagview) .folbtn{min-height:32px;font-size:12px;padding:3px 8px}
   #list:not(.bagview) .row{gap:10px;margin-top:12px}
   .rel .cover img{transition:transform .25s ease}
   .rel:hover .cover img{transform:scale(1.02)}
@@ -260,11 +264,14 @@ label.bbtn{cursor:pointer}
   #list:not(.bagview) .info{flex:1}
   #list:not(.bagview) .tags{height:22px;overflow:hidden;flex-wrap:nowrap;margin-bottom:6px}
   #list:not(.bagview) .tags.none{display:flex;visibility:hidden}
-  #list:not(.bagview) .artist,#list:not(.bagview) .title,#list:not(.bagview) .meta{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-  #list:not(.bagview) .artist{height:calc(2 * 1.08em)}
+  #list:not(.bagview) .artist .an,#list:not(.bagview) .title,#list:not(.bagview) .meta{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  #list:not(.bagview) .artist{height:calc(2 * 1.08em);overflow:hidden}
+  #list:not(.bagview) .star{height:30px;margin-top:-4px}
+  #list:not(.bagview) .star svg{width:18px;height:18px}
+  #list:not(.bagview) .star.sm{height:22px}
+  #list:not(.bagview) .star.sm svg{width:13px;height:13px}
   #list:not(.bagview) .title{height:calc(2 * 1.25em)}
   #list:not(.bagview) .meta{height:calc(2 * 1.5em)}
-  #list:not(.bagview) .fol{height:32px;flex-wrap:nowrap;overflow:hidden;margin-top:8px}
   #list:not(.bagview) .tracks:not(.trpop){height:152px;margin-top:10px}
   #list:not(.bagview) .trk{height:38px;min-height:0}
   #list:not(.bagview) li.xtra{display:none}
@@ -309,6 +316,31 @@ label.bbtn{cursor:pointer}
 .fmail{color:var(--fg);text-underline-offset:3px}
 @media (max-width:480px){.topline{gap:8px;flex-wrap:nowrap}.topline .date,.getlisted{font-size:11px;white-space:nowrap}.getlisted svg{width:11px}}
 @media (min-width:900px){.foot{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px}.fblock{border-bottom:0}}
+.lede{margin:12px 0 0;font-size:14px;line-height:1.5;color:var(--muted);max-width:640px}
+.jump{margin-top:12px;display:flex;align-items:center;gap:10px;min-width:0}
+.jump[hidden]{display:none}
+.jlabel{flex:none;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.jrow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0;padding-block:4px}
+.jrow::-webkit-scrollbar{display:none}
+.jchip{all:unset;cursor:pointer;flex:none;white-space:nowrap;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:7px 11px;border:1.5px solid var(--rule);background:var(--black);color:var(--rule)}
+.jchip i{font-style:normal;font-family:var(--mono);font-weight:400;font-size:11px;color:var(--muted);margin-left:4px;letter-spacing:0}
+.jchip:hover{background:var(--rule);color:var(--black)}
+.jchip:hover i{color:var(--black)}
+.jchip.jmonth{border-style:dashed}
+.jchip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section.shop,h2.month{scroll-margin-top:8px}
+.fright{order:3;margin-left:auto;display:flex;gap:8px;align-items:center}
+.modes{display:inline-flex;border:1.5px solid var(--rule)}
+.modes button{all:unset;cursor:pointer;font-size:13px;font-weight:700;padding:0 10px;min-height:41px;display:inline-flex;align-items:center;color:var(--muted)}
+.modes button[aria-pressed="true"]{background:var(--rule);color:var(--black)}
+.modes button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.fbar .fbtn{margin-left:0}
+.fdone{display:flex;justify-content:flex-end;margin-top:8px}
+.chip.more{border-style:dashed}
+.addship{all:unset;cursor:pointer;align-self:flex-end;font-size:13px;font-weight:700;padding:8px 12px;border:1.5px dashed var(--rule);color:var(--rule)}
+.addship:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.shipl[hidden]{display:none}
+.tag.shoptag{background:var(--black);border-color:var(--rule);color:var(--rule)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -321,6 +353,7 @@ label.bbtn{cursor:pointer}
   <header class="top">
     <h1 id="title"><span>Monthly Vinyl Releases</span></h1>
   </header>
+  <p class="lede" id="lede"></p>
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-v="home" id="tab-home">This month</button>
     <button class="tab" role="tab" data-v="archiv" id="tab-archiv">Past</button>
@@ -328,6 +361,7 @@ label.bbtn{cursor:pointer}
   </nav>
   <div class="search" id="search"><input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Search artist, label, cat no. or track" aria-label="Search artist, label, catalog number or track"></div>
   <div id="filter" class="filter"></div>
+  <nav class="jump" id="jump" aria-label="Jump to" hidden></nav>
   <main id="list"></main>
   <footer class="foot" id="about">
     <section class="fblock" id="shops">
@@ -344,7 +378,7 @@ label.bbtn{cursor:pointer}
     <section class="fblock">
       <h3>About &amp; privacy</h3>
       <p>Monthly Vinyl Releases is an independent project and is not affiliated with any of the shops listed. Prices, stock and release dates come from the shops' public new-release pages and are updated every morning. They may have changed since; the shop's own page is always right.</p>
-      <p>No account, no cookies, no tracking. Your bag, follows, heard records and settings are stored only in your browser. You can back them up under My bag → Your data.</p>
+      <p>No account, no cookies, no tracking. Your bag, follows, heard records and settings are stored only in your browser. You can back them up under <a href="#" data-data>My bag → Your data</a>.</p>
       <p>Covers and audio previews load directly from the shops' servers. Some previews play via YouTube in privacy-enhanced mode, only when you press play. Fonts are loaded from Google Fonts.</p>
     </section>
   </footer>
@@ -469,7 +503,7 @@ function setCartBtn(b){
   b.innerHTML=on?`In my bag${CHECK}`:`Add to bag${PLUS}`;
 }
 const isFol=r=>follow.a.includes(r.a)||follow.l.includes(r.l);
-function setFolBtn(b){const on=follow[b.dataset.fol].includes(b.dataset.v);b.setAttribute("aria-pressed",on);b.innerHTML=`${STAR}${on?"Following":"Follow"} ${b.dataset.fol==="a"?"artist":"label"}`}
+function setFolBtn(b){const on=follow[b.dataset.fol].includes(b.dataset.v),w=b.dataset.fol==="a"?"artist":"label";b.setAttribute("aria-pressed",on);b.innerHTML=STAR;const t=`${on?"Unfollow":"Follow"} ${w} ${b.dataset.v}`;b.setAttribute("aria-label",t);b.title=t}
 function toggleFollow(kind,v){
   const a=follow[kind],i=a.indexOf(v);i<0?a.push(v):a.splice(i,1);store.set("mvr-follow",follow);
   document.querySelectorAll(`.folbtn[data-fol="${kind}"]`).forEach(b=>{if(b.dataset.v===v)setFolBtn(b)});
@@ -480,10 +514,10 @@ const NOT_GENRE=/^(reissue|repress|remaster(ed)?|lp|ep|edits?|2×12"?|12")$/i;
 const genresOf=r=>[...new Set(r.g.split(/[\/·]/).map(x=>x.trim().replace(/\s+Edits$/i,"")).filter(x=>x&&!NOT_GENRE.test(x)))];
 const REISSUE=/\b(reissue|repress|remaster(ed)?)\b/i;
 const isReissue=r=>REISSUE.test(r.g)||REISSUE.test(r.t);
-const flt={genres:new Set(),label:"",q:"",newOnly:false,fol:false,hideHeard:false,from:new Set(),type:""};let fltOpen=false;
-const nFlt=()=>flt.genres.size+(flt.label?1:0)+(flt.newOnly?1:0)+(flt.fol?1:0)+(flt.hideHeard?1:0)+flt.from.size+(flt.type?1:0);
+const flt={genres:new Set(),label:"",q:"",playOnly:false,newOnly:false,fol:false,hideHeard:false,from:new Set(),type:""};let fltOpen=false;
+const nFlt=()=>flt.genres.size+(flt.label?1:0)+(flt.playOnly?1:0)+(flt.newOnly?1:0)+(flt.fol?1:0)+(flt.hideHeard?1:0)+flt.from.size+(flt.type?1:0);
 const fltActive=()=>nFlt()>0||!!flt.q.trim();
-function clearFlt(){flt.genres.clear();flt.label="";flt.newOnly=flt.fol=flt.hideHeard=false;flt.from.clear();flt.type="";flt.q="";const q=document.getElementById("q");if(q)q.value=""}
+function clearFlt(){flt.genres.clear();flt.label="";flt.playOnly=flt.newOnly=flt.fol=flt.hideHeard=false;flt.from.clear();flt.type="";flt.q="";const q=document.getElementById("q");if(q)q.value=""}
 function hitQ(e){
   const terms=fold(flt.q).split(/\s+/).filter(Boolean);if(!terms.length)return true;
   return terms.every(t=>{const tc=t.replace(/[\-\.\/]/g,"");return e.all.some(o=>o._h.includes(t)||(tc&&o._hc.includes(tc)))});
@@ -494,6 +528,7 @@ function matches(e){
   if(flt.genres.size&&!genresOf(r).some(g=>flt.genres.has(g)))return false;
   if(flt.type==="new"&&isReissue(r))return false;
   if(flt.type==="re"&&!isReissue(r))return false;
+  if(flt.playOnly&&!e.all.some(playable))return false;
   if(flt.newOnly&&!NEWSET.has(e.gk))return false;
   if(flt.fol&&!e.all.some(isFol))return false;
   if(flt.hideHeard&&heard.has(e.gk))return false;
@@ -538,6 +573,7 @@ function filterGenre(v){
 list.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("button.gen");if(b){e.preventDefault();filterGenre(b.dataset.genre)}});
 function setTags(art,e){
   const box=art.querySelector(".tags");if(!box)return;const r=e.r,t=[];
+  if(mode==="date")t.push(`<span class="tag shoptag">${esc(e.S.shop)}</span>`);
   if(NEWSET.has(e.gk))t.push('<span class="tag new">New</span>');
   if(e.all.some(isFol))t.push(`<span class="tag fol">${STAR}Following</span>`);
   if(heard.has(e.gk))t.push('<span class="tag heard">Heard</span>');
@@ -556,9 +592,8 @@ function releaseEl(e,ri){
   const isLow=o=>low!=null&&o.chf!=null&&Math.abs(o.chf-low)<.005;
   const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;el._e=e;
   el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
-  <div class="info"><div class="tags none"></div><div class="artist">${esc(r.a)}</div><div class="title">${esc(r.t)}</div>
-  <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${genreLinks(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
-  <div class="fol"><button class="folbtn" data-fol="a" data-v="${esc(r.a)}"></button><button class="folbtn" data-fol="l" data-v="${esc(r.l)}"></button></div>
+  <div class="info"><div class="tags none"></div><div class="artist"><span class="an">${esc(r.a)}</span><button class="star folbtn" data-fol="a" data-v="${esc(r.a)}"></button></div><div class="title">${esc(r.t)}</div>
+  <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a><button class="star sm folbtn" data-fol="l" data-v="${esc(r.l)}"></button>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${genreLinks(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
   <ul class="tracks"></ul>
   <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}</span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
   <a class="shoplink" href="${url}" target="_blank" rel="noopener">or view directly at ${S.shop}${EXT}</a>
@@ -587,107 +622,148 @@ function releaseEl(e,ri){
 }
 const where=S=>[S.where,CNAME[S.country]||S.country].filter(Boolean).join(", ");
 function shopHead(S,right){return `<div class="shop-head"><span class="shop-name">${S.shop}${S.country?`<span class="cc" title="${esc(where(S))}">${S.country}</span>`:""}</span><span class="shop-sum">${right}</span></div>`}
-function shopSections(list,withBlocked){
-  const frag=document.createDocumentFragment(),by=new Map();
-  list.forEach(e=>{if(!by.has(e.S))by.set(e.S,[]);by.get(e.S).push(e)});
-  // Schweizer Shops zuerst (Wohnort CH), dann Shops mit mehr hörbaren Platten, gesperrte Shops am Schluss
-  const hr=homeInfo().region,rank=S=>S.blocked?-1:(REGION(S.country)===hr?1e4:0)+(by.get(S)||[]).filter(e=>e.all.some(playable)).length;
-  SHOPS.map((S,i)=>({S,i,n:rank(S)})).sort((a,b)=>b.n-a.n||a.i-b.i).map(x=>x.S).forEach(S=>{
-    const sec=document.createElement("section");sec.className="shop";
+const slug=s=>fold(s).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const dayLabel=iso=>{const d=new Date(iso+"T12:00:00");return `${DOW[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}`};
+const firstSeen=e=>e.all.map(o=>o.first_seen||(o.m+"-01")).sort()[0];
+let mode=store.get("mvr-mode","shop");if(mode!=="shop"&&mode!=="date")mode="shop";
+// Feste Reihenfolge: Shops aus dem eigenen Zollgebiet zuerst, sonst alphabetisch; gesperrte Shops am Schluss
+const shopOrder=()=>{const hr=homeInfo().region;return [...SHOPS].sort((a,b)=>(!!a.blocked-!!b.blocked)||((REGION(b.country)===hr)-(REGION(a.country)===hr))||a.shop.localeCompare(b.shop,"en"))};
+// Innerhalb eines Blocks: hörbare zuerst, dann gefolgte, dann neue; nicht hörbare immer am Ende
+const cardSort=(a,b)=>(b.e.all.some(playable)-a.e.all.some(playable))||(b.e.all.some(isFol)-a.e.all.some(isFol))||(NEWSET.has(b.e.gk)-NEWSET.has(a.e.gk))||a.i-b.i;
+function groupSections(list,withBlocked,k){
+  const frag=document.createDocumentFragment();
+  const mkSec=(id,label,head,items)=>{const sec=document.createElement("section");sec.className="shop";sec.id=id;sec.dataset.jl=label;sec.innerHTML=head;
+    items.map((e,i)=>({e,i})).sort(cardSort).forEach((x,ri)=>sec.appendChild(releaseEl(x.e,ri)));frag.appendChild(sec)};
+  if(mode==="date"){
+    const by=new Map();list.forEach(e=>{const d=firstSeen(e);if(!by.has(d))by.set(d,[]);by.get(d).push(e)});
+    const ord=shopOrder();
+    [...by.keys()].sort().reverse().forEach(d=>{
+      const items=by.get(d).sort((a,b)=>ord.indexOf(a.S)-ord.indexOf(b.S));
+      mkSec(`d-${d}`,dayLabel(d),`<div class="shop-head"><span class="shop-name">Added ${dayLabel(d)}</span><span class="shop-sum">${items.length} ${items.length>1?"records":"record"} · all shops</span></div>`,items);
+    });
+    return frag;
+  }
+  const by=new Map();list.forEach(e=>{if(!by.has(e.S))by.set(e.S,[]);by.get(e.S).push(e)});
+  shopOrder().forEach(S=>{
     if(S.blocked){
       if(!withBlocked||fltActive())return;
+      const sec=document.createElement("section");sec.className="shop";
       sec.innerHTML=shopHead(S,esc(where(S)))+`<p class="blocked"><b>No data yet.</b> ${S.note?esc(S.note)+". ":""}We'll ask them for a feed or permission.</p>`;
       frag.appendChild(sec);return;
     }
-    const items=(by.get(S)||[]).map((e,i)=>({e,i})).sort((a,b)=>(b.e.all.some(isFol)-a.e.all.some(isFol))||(NEWSET.has(b.e.gk)-NEWSET.has(a.e.gk))||(b.e.all.some(playable)-a.e.all.some(playable))||a.i-b.i).map(x=>x.e);
-    if(!items.length)return;
-    sec.innerHTML=shopHead(S,`${esc(where(S))} · ${items.length} ${items.length>1?"records":"record"}`);
-    items.forEach((e,ri)=>sec.appendChild(releaseEl(e,ri)));
-    frag.appendChild(sec);
+    const items=by.get(S)||[];if(!items.length)return;
+    mkSec(`s-${k}-${slug(S.shop)}`,S.shop,shopHead(S,`${esc(where(S))} · ${items.length} ${items.length>1?"records":"record"}`),items);
   });
   return frag;
 }
 function swissNote(){
   const e=document.createElement("p");e.className="empty";
-  e.innerHTML=`<b>No Swiss shop in the list yet.</b> Know one? <a href="#shops" data-jump="shops">Tell us</a>. We checked Plattfon, Six Pack, Sihl Records, Panthera, Zero Zero, Ex Libris and cede.ch: none of them publishes a readable list of new house and techno records online. As soon as one does, it appears here first. Until then: under CHF 62 per order (records plus shipping) you pay no import VAT from EU or UK shops. <a href="#" data-go="korb">Check it in your bag</a>`;
+  e.innerHTML=`<b>No Swiss shop in the list yet.</b> Know one? <a href="#shops" data-jump="shops">Tell us</a>. We checked Plattfon, Six Pack, Sihl Records, Panthera, Zero Zero, Ex Libris and cede.ch: none of them publishes a readable list of new house and techno records online. Until then: under CHF 62 per order (records plus shipping) you pay no import VAT from EU or UK shops. <a href="#" data-go="korb">Check it in your bag</a>`;
   return e;
+}
+const prevKey=k=>{let [y,m]=k.split("-").map(Number);m--;if(!m){m=12;y--}return `${y}-${String(m).padStart(2,"0")}`};
+const viewMonths=now=>view==="home"?(k=>k===now||k===prevKey(now)):(k=>k<prevKey(now));
+function monthHead(k,n,first){
+  const h=document.createElement("h2");h.className="month";h.id=`m-${k}`;
+  h.innerHTML=`${mLabel(k)}${n?`<span>${n} ${n>1?"records":"record"}</span>`:""}`;return h;
 }
 function render(){
   const playing=cur>=0?queue[cur]:null;
   queue=[];list.innerHTML="";list.className=view==="korb"?"bagview":"";
-  const now=nowKey();
+  const now=nowKey(),prev=prevKey(now);
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===view));
   document.getElementById("filter").hidden=view==="korb";
   document.getElementById("search").hidden=view==="korb";
-  if(view==="korb"){renderCart();cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();return}
+  if(view==="korb"){renderJump();renderCart();cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();return}
   renderFilter(now);
-  const inView=view==="home"?(k=>k===now):(k=>k<now);
+  const inView=viewMonths(now);
   const pool=entries(inView);
   const swissEmpty=flt.from.has("CH")&&!entries(inView,false).some(e=>e.all.some(o=>o.S.country==="CH"));
   if(swissEmpty)list.appendChild(swissNote());
   if(fltActive()&&pool.length&&!pool.some(matches)){
     const e=document.createElement("p");e.className="empty";
-    e.innerHTML=`No records match ${flt.q.trim()?`“${esc(flt.q.trim())}”`:"this filter"} ${view==="home"?"this month":"in past months"}. <a href="#" data-reset>Clear search and filter</a>`;
+    e.innerHTML=`No records match ${flt.q.trim()?`“${esc(flt.q.trim())}”`:"this filter"} ${view==="home"?"this month or last month":"in earlier months"}. <a href="#" data-reset>Clear search and filter</a>`;
     list.appendChild(e);
   }
-  if(view==="home"){
-    const h=document.createElement("h2");h.className="month";h.textContent=mLabel(now);list.appendChild(h);
-    const frag=shopSections(pool.filter(matches),!flt.from.size);
-    if(![...frag.children].some(c=>c.querySelector(".rel"))&&!pool.length&&!swissEmpty){
-      const e=document.createElement("p");e.className="empty";
-      e.innerHTML=`No new releases for ${MONTHS[+now.split("-")[1]-1]} yet. They appear here as soon as the shops list new records. Last month's records are under <a href="#archiv" data-go="archiv">Past</a>.`;
-      list.appendChild(e);
-    }
-    list.appendChild(frag);
-  }else{
-    const months=[...new Set(SHOPS.flatMap(S=>(S.items||[]).map(r=>r.m)))].filter(k=>k<now).sort().reverse();
-    if(!months.length){
-      const e=document.createElement("p");e.className="empty";
-      e.textContent=`Nothing here yet. On 1 ${MONTHS[+now.split("-")[1]%12]}, all records from ${MONTHS[+now.split("-")[1]-1]} move to Past and stay available to order.`;
-      list.appendChild(e);
-    }
-    months.forEach(k=>{
-      const es=entries(x=>x===k).filter(matches);if(!es.length)return;
-      const h=document.createElement("h2");h.className="month";
-      h.innerHTML=`${mLabel(k)}<span>${es.length} ${es.length>1?"records":"record"}</span>`;list.appendChild(h);
-      list.appendChild(shopSections(es,false));
-    });
+  const months=view==="home"?[now,prev]:[...new Set(SHOPS.flatMap(S=>(S.items||[]).map(r=>r.m)))].filter(k=>k<prev).sort().reverse();
+  if(view!=="home"&&!months.length){
+    const e=document.createElement("p");e.className="empty";
+    e.textContent=`Nothing here yet. The start page always shows this month and last month. Older records move here and stay available to order.`;
+    list.appendChild(e);
   }
+  let firstBlocks=true;
+  months.forEach((k,mi)=>{
+    const es=entries(x=>x===k).filter(matches);
+    if(view==="home"&&k===now&&!es.length){
+      if(fltActive())return;
+      list.appendChild(monthHead(k,0));
+      const e=document.createElement("p");e.className="empty";
+      e.textContent=`Nothing new in ${MONTHS[+k.split("-")[1]-1]} yet. New records arrive every morning. Below: everything from ${MONTHS[+prev.split("-")[1]-1]}.`;
+      list.appendChild(e);return;
+    }
+    if(!es.length)return;
+    list.appendChild(monthHead(k,es.length));
+    list.appendChild(groupSections(es,firstBlocks&&view==="home"&&!flt.from.size,k));
+    firstBlocks=false;
+  });
+  renderJump();
   cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();
   list.querySelectorAll("[data-reset]").forEach(a=>a.onclick=e=>{e.preventDefault();clearFlt();render()});
   list.querySelectorAll("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
 }
+// Sprungleiste: Shops (oder Tage) des ersten Monats, dazu die weiteren Monate
+function renderJump(){
+  const nav=document.getElementById("jump");if(!nav)return;
+  if(view==="korb"){nav.hidden=true;return}
+  const seen=new Set(),items=[];
+  const heads=[...list.querySelectorAll("h2.month")];
+  heads.forEach((h,hi)=>{
+    if(hi>0){items.push(`<button class="jchip jmonth" data-to="${h.id}">${esc(h.firstChild.textContent)}</button>`);return}
+  });
+  const firstMonth=heads[0];
+  const secs=[...list.querySelectorAll("section.shop[data-jl]")].filter(s=>!heads[1]||(s.compareDocumentPosition(heads[1])&Node.DOCUMENT_POSITION_FOLLOWING));
+  const useSecs=secs.length?secs:[...list.querySelectorAll("section.shop[data-jl]")];
+  const chips=[];
+  useSecs.forEach(s=>{if(seen.has(s.dataset.jl))return;seen.add(s.dataset.jl);chips.push(`<button class="jchip" data-to="${s.id}">${esc(s.dataset.jl)} <i>${s.querySelectorAll("article.rel").length}</i></button>`)});
+  const all=[...chips,...items];
+  nav.hidden=all.length<2;
+  nav.innerHTML=`<span class="jlabel">Jump to</span><div class="jrow">${all.join("")}</div>`;
+  nav.querySelectorAll("[data-to]").forEach(b=>b.onclick=()=>{const el=document.getElementById(b.dataset.to);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})});
+}
+let genresMore=false;
 function renderFilter(now){
   const box=document.getElementById("filter");
-  const inView=view==="home"?(k=>k===now):(k=>k<now);
+  const inView=viewMonths(now);
   const all=entries(inView,false),pool=entries(inView);
   const count=(fn)=>{const m=new Map();pool.forEach(e=>fn(e.r).forEach(x=>m.set(x,(m.get(x)||0)+1)));return m};
   const gm=count(genresOf), lm=count(r=>[r.l]);
   const CORE=["House","Deep House","Tech House","Minimal","Techno","Dub Techno","Electro","Acid House","Balearic","Ambient","Disco","Italo Disco"];
   const rest=[...new Set([...gm.keys(),...flt.genres])].filter(g=>!CORE.includes(g)&&!/lo-?fi/i.test(g)).sort((a,b)=>a.localeCompare(b,"en"));
-  const genres=[...CORE,...rest];
+  const showRest=genresMore||rest.some(g=>flt.genres.has(g));
   const labels=[...new Set([...lm.keys(),...(flt.label?[flt.label]:[])])].sort((a,b)=>a.localeCompare(b,"de"));
   const n=nFlt();
   const hits=pool.filter(matches).length;
-  const nNew=pool.filter(e=>NEWSET.has(e.gk)).length,nFol=pool.filter(e=>e.all.some(isFol)).length,nHeard=pool.filter(e=>heard.has(e.gk)).length;
+  const nNew=pool.filter(e=>NEWSET.has(e.gk)).length,nFol=pool.filter(e=>e.all.some(isFol)).length,nHeard=pool.filter(e=>heard.has(e.gk)).length,nPlay=pool.filter(e=>e.all.some(playable)).length;
   const nFrom=c=>all.filter(e=>e.all.some(o=>REGION(o.S.country)===c)).length;
   const nRe=pool.filter(e=>isReissue(e.r)).length;
   const chip=(attr,val,on,label,cnt,dis)=>`<button class="chip" aria-pressed="${on}" ${attr}="${esc(val)}"${dis?" disabled":""}>${label} <i>${cnt}</i></button>`;
-  box.innerHTML=`<div class="fbar"><button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button>
-    <span class="fcount">${fltActive()?`${hits} of ${all.length} records`:`${all.length} records`}</span>
-    ${fltActive()?`<button class="freset" id="freset">Clear</button>`:""}</div>
+  box.innerHTML=`<div class="fbar"><span class="fcount">${fltActive()?`${hits} of ${all.length} records`:`${all.length} records`}</span>
+    ${fltActive()?`<button class="freset" id="freset">Clear</button>`:""}
+    <div class="fright"><div class="modes" role="group" aria-label="Group records"><button data-mode="shop" aria-pressed="${mode==="shop"}">By shop</button><button data-mode="date" aria-pressed="${mode==="date"}">By date</button></div>
+    <button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
     <div class="fpanel" ${fltOpen?"":"hidden"}>
-      <div class="homerow frow"><label class="flabel" for="fhome">Your country</label>${homeSelect("fhome")}</div>
-      <div class="flabel">Ships from</div>
-      <div class="chips">${["CH","EU","UK","WORLD"].filter(z=>flt.from.has(z)||SHOPS.some(S=>!S.blocked&&(S.items||[]).length&&REGION(S.country)===z)).map(z=>chip("data-from",z,flt.from.has(z),({CH:"Switzerland",EU:"EU",UK:"UK",WORLD:"Rest of world"})[z]+(z===homeInfo().region?" · no customs":""),nFrom(z),!nFrom(z)&&!flt.from.has(z))).join("")}</div>
       <div class="flabel">Show</div>
-      <div class="chips">${chip("data-tog","newOnly",flt.newOnly,"New since last visit",nNew,!nNew&&!flt.newOnly)}${chip("data-tog","fol",flt.fol,`${STAR}Following`,nFol,!nFol&&!flt.fol)}${chip("data-tog","hideHeard",flt.hideHeard,"Hide heard",nHeard,!nHeard&&!flt.hideHeard)}</div>
+      <div class="chips">${chip("data-tog","playOnly",flt.playOnly,"Playable only",nPlay,false)}${chip("data-tog","newOnly",flt.newOnly,"New since last visit",nNew,!nNew&&!flt.newOnly)}${chip("data-tog","fol",flt.fol,`${STAR}Following`,nFol,!nFol&&!flt.fol)}${chip("data-tog","hideHeard",flt.hideHeard,"Hide heard",nHeard,!nHeard&&!flt.hideHeard)}</div>
+      <div class="flabel">Genre</div>
+      <div class="chips">${CORE.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join("")}${showRest?rest.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join(""):""}${rest.length?`<button class="chip more" id="gmore" aria-expanded="${showRest}">${showRest?"Fewer genres":`More genres <i>${rest.length}</i>`}</button>`:""}</div>
       <div class="flabel">Type</div>
       <div class="chips">${chip("data-type","",!flt.type,"All",pool.length,false)}${chip("data-type","new",flt.type==="new","New music",pool.length-nRe,false)}${chip("data-type","re",flt.type==="re","Reissues",nRe,!nRe&&flt.type!=="re")}</div>
-      <div class="flabel">Genre</div>
-      <div class="chips">${genres.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join("")||'<span class="fnone">No genres</span>'}</div>
+      <div class="flabel">Ships from</div>
+      <div class="chips">${["CH","EU","UK","WORLD"].filter(z=>flt.from.has(z)||SHOPS.some(S=>!S.blocked&&(S.items||[]).length&&REGION(S.country)===z)).map(z=>chip("data-from",z,flt.from.has(z),({CH:"Switzerland",EU:"EU",UK:"UK",WORLD:"Rest of world"})[z]+(z===homeInfo().region?" · no customs":""),nFrom(z),!nFrom(z)&&!flt.from.has(z))).join("")}</div>
       <label class="flabel" for="flabelsel">Label</label>
       <select id="flabelsel"><option value="">All labels (${labels.length})</option>${labels.map(l=>`<option value="${esc(l)}"${l===flt.label?" selected":""}>${follow.l.includes(l)?"★ ":""}${esc(l)} (${lm.get(l)||0})</option>`).join("")}</select>
+      <div class="fdone"><button class="bbtn" id="fdone">Show ${hits} ${hits===1?"record":"records"}</button></div>
     </div>`;
   box.querySelector("#fbtn").onclick=()=>{fltOpen=!fltOpen;renderFilter(now);};
   const rs=box.querySelector("#freset");if(rs)rs.onclick=()=>{clearFlt();render()};
@@ -695,7 +771,9 @@ function renderFilter(now){
   box.querySelectorAll("[data-from]").forEach(c=>c.onclick=()=>{const g=c.dataset.from;flt.from.has(g)?flt.from.delete(g):flt.from.add(g);render()});
   box.querySelectorAll("[data-tog]").forEach(c=>c.onclick=()=>{flt[c.dataset.tog]=!flt[c.dataset.tog];render()});
   box.querySelectorAll("[data-type]").forEach(c=>c.onclick=()=>{flt.type=c.dataset.type;render()});
-  wireHome(box.querySelector("#fhome"));
+  box.querySelectorAll("[data-mode]").forEach(c=>c.onclick=()=>{mode=c.dataset.mode;store.set("mvr-mode",mode);render()});
+  const gmb=box.querySelector("#gmore");if(gmb)gmb.onclick=()=>{genresMore=!showRest;renderFilter(now)};
+  box.querySelector("#fdone").onclick=()=>{fltOpen=false;renderFilter(now);const s=document.getElementById("filter");window.scrollTo({top:Math.max(0,s.getBoundingClientRect().top+scrollY-8),behavior:"smooth"})};
   box.querySelector("#flabelsel").onchange=e=>{flt.label=e.target.value;render()};
 }
 function go(v){view=v;try{history.replaceState(null,"",v==="home"?"#":"#"+v)}catch(e){}render();window.scrollTo(0,0)}
@@ -948,8 +1026,9 @@ function renderCart(){
     });
     const calc=document.createElement("div");calc.className="calc";
     const skey=S.shop+"|"+homeInfo().cur,v=ship[skey];
-    calc.innerHTML=`<label class="shipl"><span>Shipping from ${esc(S.shop)} in ${homeInfo().cur}</span><input type="number" inputmode="decimal" min="0" step="0.5" placeholder="e.g. 12" value="${typeof v==="number"?v:""}"></label><div class="calcout"></div>`;
+    calc.innerHTML=`<label class="shipl"${typeof v==="number"?"":" hidden"}><span>Shipping from ${esc(S.shop)} in ${homeInfo().cur}</span><input type="number" inputmode="decimal" min="0" step="0.5" placeholder="e.g. 12" value="${typeof v==="number"?v:""}"></label>${typeof v==="number"?"":`<button class="addship">+ Add shipping cost from ${esc(S.shop)}</button>`}<div class="calcout"></div>`;
     const out=calc.querySelector(".calcout"),inp=calc.querySelector("input");
+    const asb=calc.querySelector(".addship");if(asb)asb.onclick=()=>{asb.remove();calc.querySelector(".shipl").hidden=false;inp.focus()};
     const refresh=()=>{out.innerHTML=calcBody(S,shopCalc(S,rs));grandTotal();if(wireBag.upd)wireBag.upd()};
     inp.oninput=()=>{const n=parseFloat(String(inp.value).replace(",","."));if(inp.value===""||isNaN(n))delete ship[skey];else ship[skey]=Math.max(0,n);store.set("mvr-ship",ship);refresh()};
     out.innerHTML=calcBody(S,shopCalc(S,rs));
@@ -974,30 +1053,56 @@ const au=document.getElementById("au"),pp=document.getElementById("pp"),pa=docum
 function mark(){if(!document.querySelector('.trk'))return;document.querySelectorAll(".trk").forEach(b=>b.classList.toggle("on",+b.dataset.q===cur))}
 function fallback(q){pb.innerHTML=`Preview unavailable · <a href="${q.u||q.page}" target="_blank" rel="noopener">Open preview${EXT}</a>`;pp.innerHTML=TRI}
 function markHeard(q){if(!q||!q.gk||heard.has(q.gk))return;heard.add(q.gk);store.set("mvr-heard",[...heard].slice(-3000));document.querySelectorAll("article.rel").forEach(a=>{if(a._e&&a._e.gk===q.gk)setTags(a,a._e)})}
-function play(i){
+const isYT=q=>!!(q&&(q.yt||q.ytl));
+const canPlay=q=>!!(q&&(q.u||q.yt||q.ytl));
+// Nächster hörbarer Track (überspringt Einträge ohne Hörprobe)
+const nextIdx=i=>{for(let j=i+1;j<queue.length;j++)if(canPlay(queue[j]))return j;return -1};
+function play(i,auto){
+  if(i<0||!queue[i])return;
   cur=i;const q=queue[i];mark();markHeard(q);
   pa.textContent=`${q.a} – ${q.n}`;pb.textContent=`${q.t} · ${q.shop}`;pr.style.width="0";
-  document.querySelectorAll(".ytbox").forEach(b=>b.remove());
-  if(q.yt||q.ytl){au.pause();pp.innerHTML=TRI;pb.textContent=`${q.t} · playing on YouTube`;showYT(q);return}
+  document.querySelectorAll(".ytbox").forEach(b=>b.remove());yt={win:null,state:-1,q:null,ended:false};
+  if(isYT(q)){au.pause();pp.innerHTML=TRI;pb.textContent=`${q.t} · on YouTube`;showYT(q,auto);return}
   if(!q.u){fallback(q);return}
   au.src=q.u;au.play().then(()=>{pp.innerHTML=PAU}).catch(()=>fallback(q));
 }
-function showYT(q){
+// YouTube über die Player-Leiste steuern (postMessage, ohne externes Skript): Play/Pause, Fortschritt, am Ende automatisch weiter
+let yt={win:null,state:-1,q:null,ended:false};
+const ytSend=o=>{try{if(yt.win)yt.win.postMessage(JSON.stringify(o),"*")}catch(e){}};
+const ytCmd=func=>ytSend({event:"command",func,args:[],id:"mvr",channel:"widget"});
+function showYT(q,auto){
   const art=[...document.querySelectorAll("article.rel")].find(a=>a.dataset.key===q.key);if(!art)return;
   const box=document.createElement("div");box.className="ytbox";
-  const src=q.ytl?`https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(q.ytl)}&autoplay=1&playsinline=1&rel=0`:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(q.yt)}?autoplay=1&playsinline=1&rel=0`;
-  box.innerHTML=`<iframe src="${src}" title="YouTube player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
-  art.querySelector(".tracks").after(box);
+  const org=location.origin&&location.origin!=="null"?`&origin=${encodeURIComponent(location.origin)}`:"";
+  const base=q.ytl?`https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(q.ytl)}&`:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(q.yt)}?`;
+  box.innerHTML=`<iframe src="${base}autoplay=1&playsinline=1&rel=0&enablejsapi=1${org}" title="YouTube player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+  art.querySelector(".trfoot").after(box);
+  const ifr=box.querySelector("iframe");yt={win:null,state:-1,q,ended:false};
+  ifr.addEventListener("load",()=>{if(yt.q!==q)return;yt.win=ifr.contentWindow;ytSend({event:"listening",id:"mvr",channel:"widget"})});
+  if(auto){const r=box.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight-90)box.scrollIntoView({behavior:"smooth",block:"center"})}
 }
-au.onerror=()=>{if(cur>=0)fallback(queue[cur])};
+addEventListener("message",e=>{
+  if(!yt.win||e.source!==yt.win)return;
+  let d;try{d=typeof e.data==="string"?JSON.parse(e.data):e.data}catch(_){return}
+  const info=d&&d.info;if(!info||typeof info!=="object")return;
+  if(typeof info.playerState==="number"){
+    yt.state=info.playerState;
+    pp.innerHTML=info.playerState===1||info.playerState===3?PAU:TRI;
+    if(info.playerState===0&&!yt.ended&&cur>=0&&queue[cur]===yt.q){yt.ended=true;const n=nextIdx(cur);if(n>=0)play(n,true)}
+  }
+  if(typeof info.currentTime==="number"&&info.duration)pr.style.width=Math.min(100,info.currentTime/info.duration*100)+"%";
+});
+au.onerror=()=>{if(cur>=0&&!isYT(queue[cur]))fallback(queue[cur])};
 au.ontimeupdate=()=>{if(au.duration)pr.style.width=(au.currentTime/au.duration*100)+"%"};
-au.onended=()=>{if(cur<queue.length-1)play(cur+1)};
+au.onended=()=>{const n=nextIdx(cur);if(n>=0)play(n,true)};
 // Kontakt: Adresse erst beim Klick zusammensetzen (weniger Spam), Sprung-Links zum Footer
 const MAILTO=()=>["contact-mvr","pm.me"].join("@");
 const MAILS={shop:{s:"Shop listing request · Monthly Vinyl Releases",b:"Hi,\n\nwe'd like our shop to be listed on Monthly Vinyl Releases.\n\nShop name:\nCountry / city:\nLink to our new-releases page or feed:\nCover images and audio previews online (yes / no):\nContact person:\n\nThanks!\n"},hello:{s:"Hello · Monthly Vinyl Releases",b:""}};
 document.addEventListener("click",e=>{
   const m=e.target.closest&&e.target.closest("[data-mail]");
   if(m){e.preventDefault();const t=MAILS[m.dataset.mail]||MAILS.hello;location.href=`mailto:${MAILTO()}?subject=${encodeURIComponent(t.s)}${t.b?`&body=${encodeURIComponent(t.b)}`:""}`;return}
+  const dd=e.target.closest&&e.target.closest("[data-data]");
+  if(dd){e.preventDefault();go("korb");setTimeout(()=>{const b=document.querySelector(".databox");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})},60);return}
   const j=e.target.closest&&e.target.closest("[data-jump]");
   if(j){e.preventDefault();const el=document.getElementById(j.dataset.jump);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
 });
@@ -1012,12 +1117,12 @@ document.addEventListener("click",e=>{document.querySelectorAll("details.moretr[
 // Desktop: Leertaste = Play/Pause, N = nächster Track
 addEventListener("keydown",e=>{if(e.metaKey||e.ctrlKey||e.altKey||/^(INPUT|TEXTAREA|SELECT|BUTTON|A)$/.test((e.target||{}).tagName||""))return;
   if(e.code==="Space"){e.preventDefault();pp.click()}else if(e.key==="n"||e.key==="N"){document.getElementById("nx").click()}});
-pp.onclick=()=>{if(cur<0){play(0);return}if(!queue[cur].u)return;if(au.paused){au.play().then(()=>pp.innerHTML=PAU).catch(()=>fallback(queue[cur]))}else{au.pause();pp.innerHTML=TRI}};
-document.getElementById("nx").onclick=()=>play(Math.min(cur+1,queue.length-1));
+pp.onclick=()=>{if(cur<0){const n=nextIdx(-1);if(n>=0)play(n);return}const q=queue[cur];if(isYT(q)){if(!yt.win){play(cur);return}ytCmd(yt.state===1||yt.state===3?"pauseVideo":"playVideo");return}if(!q.u)return;if(au.paused){au.play().then(()=>pp.innerHTML=PAU).catch(()=>fallback(queue[cur]))}else{au.pause();pp.innerHTML=TRI}};
+document.getElementById("nx").onclick=()=>{const n=nextIdx(cur);if(n>=0)play(n,true)};
 const fmtDate=iso=>{const [y,m,d]=iso.split("-");return `${+d} ${MONTHS[+m-1].slice(0,3)} ${y}`};
 list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
-  SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();cart=cart.filter(k=>INDEX[k]);
+  SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();{const n=SHOPS.filter(S=>!S.blocked&&(S.items||[]).length).length;document.getElementById("lede").textContent=`New house, techno, disco & ambient vinyl from ${n} record shops, updated every morning. Listen to previews, compare prices and order per shop to save on shipping.`}cart=cart.filter(k=>INDEX[k]);
   document.getElementById("stand").textContent="Last update: "+fmtDate(UPDATED);
   cartBadges();render();
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
