@@ -459,6 +459,16 @@ section.shop{margin-top:14px}
 }
 @media (max-width:340px){.lu2{display:none!important}}
 @media (max-width:380px){.getlisted svg{display:none}.topline{gap:6px}.topline .date,.getlisted{font-size:10.5px}}
+.sig{display:inline-block;position:relative}
+.sig .d{display:inline-block;min-width:1ch;text-align:center}
+.sig .d.inv{background:var(--fg);color:var(--bg)}
+.sig::before,.sig::after{content:attr(data-t);position:absolute;inset:0;opacity:0;pointer-events:none;white-space:nowrap}
+.sig.run::before{animation:sliceA .42s steps(1,end);color:#fff}
+.sig.run::after{animation:sliceB .42s steps(1,end);color:#5c5c5c}
+.sig.run{animation:jit .42s steps(1,end)}
+@keyframes sliceA{0%{opacity:1;clip-path:inset(0 0 62% 0);transform:translateX(-3px)}20%{clip-path:inset(40% 0 35% 0);transform:translateX(4px)}40%{clip-path:inset(70% 0 0 0);transform:translateX(-2px)}60%{clip-path:inset(15% 0 60% 0);transform:translateX(2px)}80%{clip-path:inset(55% 0 20% 0);transform:translateX(-1px)}100%{opacity:0}}
+@keyframes sliceB{0%{opacity:1;clip-path:inset(50% 0 20% 0);transform:translateX(3px)}25%{clip-path:inset(10% 0 70% 0);transform:translateX(-4px)}50%{clip-path:inset(75% 0 5% 0);transform:translateX(2px)}75%{clip-path:inset(30% 0 45% 0);transform:translateX(-2px)}100%{opacity:0}}
+@keyframes jit{0%{opacity:.35}10%{opacity:1}45%{opacity:.6}55%{opacity:1}100%{opacity:1}}
 </style>
 
 
@@ -639,6 +649,23 @@ function toggleFollow(kind,v){setTimeout(maybeNudge,400);if(!follow[kind].includ
   document.querySelectorAll("article.rel").forEach(art=>{const e=INDEX[art.dataset.key];if(e)setTags(art,art._e)});
 }
 // Anonyme Nutzungsstatistik (Umami, ohne Cookies). Läuft nur auf monthlyvinyl.net, sonst passiert nichts.
+// Kleiner Glitch im Datum oben: alle 3 Minuten kurz Streifen-Riss, Ziffern flackern, eine Ziffer blitzt invertiert
+let glitchT=null;
+function startGlitch(){
+  if(glitchT||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  glitchT=setInterval(()=>{if(!document.hidden)glitch()},180000);
+}
+function glitch(){
+  const el=document.getElementById("gdate");if(!el)return;
+  el.classList.remove("run");void el.offsetWidth;el.classList.add("run");setTimeout(()=>el.classList.remove("run"),450);
+  setTimeout(()=>{
+    const ds=[...el.querySelectorAll(".d")],orig=ds.map(d=>d.textContent),dur=520;
+    ds.forEach((d,i)=>{const start=40+i*38+Math.random()*60,end=start+120+Math.random()*(dur-280);let t0=null;
+      const tick=ts=>{if(!t0)t0=ts;const t=ts-t0;if(t<start)return requestAnimationFrame(tick);if(t<end){d.textContent=Math.random()*10|0;return requestAnimationFrame(tick)}d.textContent=orig[i]};
+      requestAnimationFrame(tick)});
+    const d=ds[Math.random()*ds.length|0];if(d)setTimeout(()=>{d.classList.add("inv");setTimeout(()=>d.classList.remove("inv"),70)},dur+40);
+  },260);
+}
 function track(name,data){try{if(window.umami&&typeof umami.track==="function")umami.track(name,data)}catch(e){}}
 const shopOf=k=>{const e=INDEX[k];return e&&e.S?e.S.shop:""};
 document.addEventListener("click",e=>{
@@ -1363,7 +1390,7 @@ const fmtDate=iso=>{const [y,m,d]=iso.split("-");return `${+d} ${MONTHS[+m-1].sl
 list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
   SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();try{const gp=new URLSearchParams(location.search).get("genre");if(gp)flt.genres.add(gp)}catch(e){}cart=cart.filter(k=>INDEX[k]);
-  document.getElementById("stand").innerHTML=`<span class="lu">Last update:</span><span class="lu2">Updated</span> ${esc(fmtDate(UPDATED))}`;
+  {const dt=esc(fmtDate(UPDATED));document.getElementById("stand").innerHTML=`<span class="lu">Last update:</span><span class="lu2">Updated</span> <span class="sig" id="gdate" data-t="${dt}">${[...dt].map(c=>/\d/.test(c)?`<span class="d">${c}</span>`:c).join("")}</span>`;startGlitch()}
   cartBadges();render();updateReturning();checkRestoreLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
