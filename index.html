@@ -265,7 +265,7 @@ label.bbtn{cursor:pointer}
   #list:not(.bagview) .title{height:calc(2 * 1.25em)}
   #list:not(.bagview) .meta{height:calc(2 * 1.5em)}
   #list:not(.bagview) .fol{height:32px;flex-wrap:nowrap;overflow:hidden;margin-top:8px}
-  #list:not(.bagview) .tracks:not(.trpop){height:114px;margin-top:10px}
+  #list:not(.bagview) .tracks:not(.trpop){height:152px;margin-top:10px}
   #list:not(.bagview) .trk{height:38px;min-height:0}
   #list:not(.bagview) li.xtra{display:none}
   #list:not(.bagview) .trfoot,#list:not(.bagview) .trfoot:empty{display:flex;height:30px}
@@ -500,7 +500,7 @@ function releaseEl(e,ri){
   setTags(el,e);
   el.querySelectorAll(".cartbtn").forEach(cb=>{setCartBtn(cb);cb.onclick=()=>toggleCart(cb.dataset.key)});
   el.querySelectorAll(".folbtn").forEach(b=>{setFolBtn(b);b.onclick=()=>toggleFollow(b.dataset.fol,b.dataset.v)});
-  // Alle Tracks in der Liste (Handy zeigt alle); auf dem Desktop sind ab Track 4 nur im Aufklapp-Menü sichtbar
+  // Alle Tracks in der Liste (Handy zeigt alle); auf dem Desktop sind ab Track 5 nur im Aufklapp-Menü sichtbar
   const ul=el.querySelector(".tracks"),tf=document.createElement("div");tf.className="trfoot";ul.after(tf);
   const trs=src.tr||[];let extra=null;
   trs.forEach((t,ti)=>{
@@ -508,9 +508,9 @@ function releaseEl(e,ri){
     const mk=()=>{const li=document.createElement("li");
       li.innerHTML=`<button class="trk" data-q="${qi}"><span class="ic">${TRI}</span><span class="side">${esc(t.s)}</span><span class="nm">${esc(t.n)}</span></button>`;
       li.firstChild.onclick=()=>{play(qi);if(extra)extra.open=false};return li};
-    const li=mk();if(ti>=3)li.className="xtra";ul.appendChild(li);
-    if(ti>=3){
-      if(!extra){const n=trs.length-3;extra=document.createElement("details");extra.className="moretr";extra.innerHTML=`<summary>+ ${n} more ${n>1?"tracks":"track"}</summary><ul class="tracks trpop"></ul>`}
+    const li=mk();if(ti>=4)li.className="xtra";ul.appendChild(li);
+    if(ti>=4){
+      if(!extra){const n=trs.length-4;extra=document.createElement("details");extra.className="moretr";extra.innerHTML=`<summary>+ ${n} more ${n>1?"tracks":"track"}</summary><ul class="tracks trpop"></ul>`}
       extra.querySelector("ul").appendChild(mk());
     }
   });
