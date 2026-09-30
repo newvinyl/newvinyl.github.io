@@ -520,6 +520,35 @@ html.sheet-open,html.sheet-open body{overflow:hidden}
 .chip.hid{border-style:dashed;color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
 .chip.hid::before{content:"✕ ";text-decoration:none;display:inline-block;margin-right:2px}
 @media (prefers-reduced-motion:reduce){.ffab,.fpanel.sheet,.fback{animation:none}.fnudge{transition:none}}
+/* Filter auf dem Handy: grosse Tasten, feste Raster, klare Reihenfolge */
+@media (max-width:899px){
+.fpanel.sheet{top:0;max-height:none;height:100%;border-top:0;padding-top:0}
+.fpanel.sheet .shead{padding:10px 0 12px;margin-bottom:0}
+.fpanel.sheet .shead b{font-size:26px}
+.fpanel.sheet .freset{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-size:15px}
+.sx{width:48px;height:48px;margin-right:-10px}
+.sx svg{width:18px;height:18px}
+.fpanel{gap:10px}
+.fpanel .flabel,.fpanel.sheet .flabel{align-self:stretch;text-align:left;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--fg);margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.fpanel.sheet .shead+.flabel{margin-top:6px;border-top:0;padding-top:8px}
+.fpanel .fhint,.fpanel.sheet .fhint{align-self:stretch;text-align:left;font-size:14px;line-height:1.35;margin:-4px 0 2px}
+.fpanel .chips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0}
+.fpanel .chip{display:flex;align-items:center;gap:8px;min-height:52px;box-sizing:border-box;padding:10px 14px;border-radius:12px;border-width:1.5px;font-size:16px;line-height:1.2;text-align:left;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.fpanel .chip i{margin-left:auto;font-size:13px;padding-left:4px}
+.fpanel .chip:active:not(:disabled){transform:scale(.97)}
+.fpanel .chip[aria-pressed="true"]{font-weight:700}
+.fpanel .chip[aria-pressed="true"]::before{content:"✓";font-weight:700}
+.fpanel .chip svg{width:15px;height:15px;flex:none;margin:0}
+.fpanel .chip.more{grid-column:1/-1;justify-content:center;color:var(--muted)}
+.fpanel .chip.more i{margin-left:0}
+.fpanel .chips.seg{grid-template-columns:repeat(3,1fr)}
+.fpanel .chips.seg .chip{flex-direction:column;justify-content:center;gap:2px;text-align:center;min-height:60px;padding:8px 6px}
+.fpanel .chips.seg .chip i{margin:0;padding:0}
+.fpanel .chips.seg .chip[aria-pressed="true"]::before{content:none}
+#flabelsel{font-size:16px;min-height:52px;padding:10px 12px;border-radius:12px}
+.fpanel.sheet .fdone{margin-top:14px}
+.fpanel.sheet .fdone .bbtn{min-height:56px;font-size:17px}
+}
 </style>
 
 
@@ -987,13 +1016,13 @@ function renderFilter(now){
     <div class="fright"><div class="modes" role="group" aria-label="Group records by"><span class="mlabel" aria-hidden="true">By</span><button data-mode="shop" aria-pressed="${mode==="shop"}">Shop</button><button data-mode="date" aria-pressed="${mode==="date"}">Date</button></div>
     <button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
     <div class="fpanel${fltSheet?" sheet":""}${sheetAnim?" anim":""}" ${fltOpen?"":"hidden"} ${fltSheet?'role="dialog" aria-modal="true" aria-label="Filter"':""}>${fltSheet?`<div class="shead"><b>Filter</b>${fltActive()?`<button class="freset" id="sreset">Clear all</button>`:""}<button class="sx" id="sx" aria-label="Close filter"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2 2 14" stroke="currentColor" stroke-width="2.2"/></svg></button></div>`:""}
-      <div class="flabel">Show</div>
-      <div class="chips">${chip("data-tog","playOnly",flt.playOnly,"Playable only",nPlay,false)}${chip("data-tog","newOnly",flt.newOnly,"New since last visit",nNew,!nNew&&!flt.newOnly)}${chip("data-tog","fol",flt.fol,`${STAR}Following`,nFol,!nFol&&!flt.fol)}${chip("data-tog","hideHeard",flt.hideHeard,"Hide heard",nHeard,!nHeard&&!flt.hideHeard)}</div>
       <div class="flabel">Genre</div>
       <p class="fhint">Tap once to show only this genre, twice to hide it.</p>
       <div class="chips">${CORE.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join("")}${showRest?rest.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join(""):""}${rest.length?`<button class="chip more" id="gmore" aria-expanded="${showRest}">${showRest?"Fewer genres":`More genres <i>${rest.length}</i>`}</button>`:""}</div>
+      <div class="flabel">Show</div>
+      <div class="chips">${chip("data-tog","playOnly",flt.playOnly,"Playable only",nPlay,false)}${chip("data-tog","newOnly",flt.newOnly,"New since last visit",nNew,!nNew&&!flt.newOnly)}${chip("data-tog","fol",flt.fol,`${STAR}Following`,nFol,!nFol&&!flt.fol)}${chip("data-tog","hideHeard",flt.hideHeard,"Hide heard",nHeard,!nHeard&&!flt.hideHeard)}</div>
       <div class="flabel">Type</div>
-      <div class="chips">${chip("data-type","",!flt.type,"All",pool.length,false)}${chip("data-type","new",flt.type==="new","New music",pool.length-nRe,false)}${chip("data-type","re",flt.type==="re","Reissues",nRe,!nRe&&flt.type!=="re")}</div>
+      <div class="chips seg">${chip("data-type","",!flt.type,"All",pool.length,false)}${chip("data-type","new",flt.type==="new","New music",pool.length-nRe,false)}${chip("data-type","re",flt.type==="re","Reissues",nRe,!nRe&&flt.type!=="re")}</div>
       <div class="flabel">Ships from</div>
       <div class="chips">${["CH","EU","UK","WORLD"].filter(z=>flt.from.has(z)||SHOPS.some(S=>!S.blocked&&(S.items||[]).length&&REGION(S.country)===z)).map(z=>chip("data-from",z,flt.from.has(z),({CH:"Switzerland",EU:"EU",UK:"UK",WORLD:"Rest of world"})[z]+(z===homeInfo().region?" · no customs":""),nFrom(z),!nFrom(z)&&!flt.from.has(z))).join("")}</div>
       <div class="flabel">Shop</div>
