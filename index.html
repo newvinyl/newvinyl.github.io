@@ -344,8 +344,8 @@ function renderFilter(now){
   const pool=SHOPS.flatMap(S=>(S.items||[]).filter(r=>view==="home"?r.m===now:r.m<now));
   const count=(fn)=>{const m=new Map();pool.forEach(r=>fn(r).forEach(x=>m.set(x,(m.get(x)||0)+1)));return m};
   const gm=count(genresOf), lm=count(r=>[r.l]);
-  const CORE=["House","Deep House","Tech House","Minimal","Techno","Dub Techno","Electro","Acid House","Balearic","Ambient","Lo-Fi House","Disco","Italo Disco"];
-  const rest=[...new Set([...gm.keys(),...flt.genres])].filter(g=>!CORE.includes(g)).sort((a,b)=>a.localeCompare(b,"en"));
+  const CORE=["House","Deep House","Tech House","Minimal","Techno","Dub Techno","Electro","Acid House","Balearic","Ambient","Disco","Italo Disco"];
+  const rest=[...new Set([...gm.keys(),...flt.genres])].filter(g=>!CORE.includes(g)&&!/lo-?fi/i.test(g)).sort((a,b)=>a.localeCompare(b,"en"));
   const genres=[...CORE,...rest];
   const labels=[...new Set([...lm.keys(),...(flt.label?[flt.label]:[])])].sort((a,b)=>a.localeCompare(b,"de"));
   const n=flt.genres.size+(flt.label?1:0);
