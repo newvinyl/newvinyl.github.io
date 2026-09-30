@@ -381,6 +381,19 @@ section.shop,h2.month{scroll-margin-top:8px}
 .rbtns{display:flex;justify-content:flex-end;gap:8px}
 a.nlater{text-decoration:none}
 @media (min-width:700px){.rmodal{align-items:center}}
+.run{margin:14px 0 4px;padding:14px;background:var(--black);border:2px solid var(--rule);display:flex;flex-direction:column;gap:10px}
+.rsteps{display:flex;gap:4px}
+.rsteps i{flex:1;height:4px;background:var(--line)}
+.rsteps i.on{background:var(--rule)}
+.runbtn{display:grid;grid-template-columns:1fr auto;grid-template-areas:"l a" "t a";align-items:center;column-gap:12px;row-gap:2px;min-height:56px;box-sizing:border-box;padding:10px 14px;background:var(--rule);color:var(--black);text-decoration:none}
+.runbtn .rl{grid-area:l;font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.02em}
+.runbtn .rt{grid-area:t;font-size:13px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.runbtn svg{grid-area:a;width:20px;height:16px}
+.runbtn:focus-visible,.runreset:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.runhint,.rundone{margin:0;font-size:12.5px;line-height:1.45;color:var(--muted);text-align:right}
+.rundone{color:var(--fg);font-weight:700;font-size:14px}
+.runreset{all:unset;cursor:pointer;align-self:flex-end;font-size:12.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:4px 0}
+.fblock code{font-family:var(--mono);font-size:12px;color:var(--fg)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -409,6 +422,7 @@ a.nlater{text-decoration:none}
       <h3>For record shops</h3>
       <p>Your shop is not listed? We'd love to include more independent record shops, wherever they are based.</p>
       <p>What we need: a public new-releases page or a feed that may be read automatically, with cover images and ideally audio previews. Every listing links straight to your product page. We don't sell anything ourselves.</p>
+      <p><b>One-tap checkout:</b> if your shop offers a link that puts several records into the basket at once (for example <code>/cart/add?items=123,456</code>), buyers here can send their whole order to your checkout with a single tap.</p>
       <a class="bbtn" data-mail="shop" href="#">Get your shop listed<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>
     </section>
     <section class="fblock">
@@ -501,7 +515,7 @@ function buildIndex(){
     INDEX[r.key]={S,r};(GROUPS[r.gk]=GROUPS[r.gk]||[]).push(r);
   }));
 }
-const CART_URL={"Hardwax":"https://hardwax.com/basket/","Juno Records":"https://www.juno.co.uk/cart/"};
+const CART_URL={"Hardwax":"https://hardwax.com/basket/","Juno Records":"https://www.juno.co.uk/cart/","Phonica":"https://www.phonicarecords.com/checkout"};
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let cart=store.get("mvr-cart",[]);
 let opened=new Set(store.get("mvr-opened",[]));
@@ -1088,6 +1102,27 @@ function showNudge(){
   };
 
 }
+// Geführter Einkauf: pro Shop eine Platte nach der anderen öffnen, am Schluss zur Kasse
+function runBox(S,rs){
+  const box=document.createElement("div");box.className="run";
+  const n=rs.length,doneN=rs.filter(r=>opened.has(r.key)).length,next=rs.find(r=>!opened.has(r.key));
+  const steps=rs.map(r=>`<i class="${opened.has(r.key)?"on":""}"></i>`).join("");
+  const cartUrl=CART_URL[S.shop];
+  if(next){
+    const idx=rs.indexOf(next)+1;
+    box.innerHTML=`<div class="rsteps" aria-hidden="true">${steps}</div>
+      <a class="runbtn" href="${next.href}" target="_blank" rel="noopener"><span class="rl">${doneN?`Next: ${idx} of ${n}`:`Start shopping at ${esc(S.shop)} · ${plural(n,"record")}`}</span><span class="rt">${esc(next.a)} – ${esc(next.t)}</span><svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>
+      <p class="runhint">${doneN?"Added it to the basket there? Tap for the next record.":`Each record opens in a new tab. Add it to the basket at ${esc(S.shop)}, come back here and tap Next.`}</p>`;
+    box.querySelector(".runbtn").addEventListener("click",()=>{opened.add(next.key);saveCart();setTimeout(render,60)});
+  }else{
+    box.innerHTML=`<div class="rsteps" aria-hidden="true">${steps}</div>
+      <p class="rundone">All ${plural(n,"record")} opened at ${esc(S.shop)}.</p>
+      ${cartUrl?`<a class="runbtn" href="${cartUrl}" target="_blank" rel="noopener"><span class="rl">Go to ${esc(S.shop)} checkout</span><svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>`:`<p class="runhint">Check out in the ${esc(S.shop)} tab, all records should be in the basket there.</p>`}
+      <button class="runreset">Start over</button>`;
+    box.querySelector(".runreset").onclick=()=>{rs.forEach(r=>opened.delete(r.key));saveCart();render()};
+  }
+  return box;
+}
 function renderCart(){
   const {items,shops,mine}=bagGroups();
   const h=document.createElement("h2");h.className="month";
@@ -1116,6 +1151,7 @@ function renderCart(){
     const done=rs.filter(r=>opened.has(r.key)).length;
     const sec=document.createElement("section");sec.className="shop";
     sec.innerHTML=shopHead(S,`${esc(where(S))} · ${rs.length} ${rs.length>1?"records":"record"}${sum?` · ${fmt(S.cur,sum)}${unknown?" +":""}`:""}`);
+    sec.appendChild(runBox(S,rs));
     rs.forEach((r,ri)=>{
       const row=document.createElement("div");row.className="citem"+(opened.has(r.key)?" done":"");
       const hue=HUES[(r.a.length+ri)%HUES.length];
