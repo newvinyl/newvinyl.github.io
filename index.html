@@ -43,7 +43,7 @@ h1 span{display:block;white-space:nowrap;width:max-content}
 .sim{all:unset;cursor:pointer;display:inline-block;margin-top:6px;font-size:12.5px;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .sim[aria-pressed="true"]{color:var(--warn)}
 .sim[aria-pressed="true"]::before{content:"● "}
-.filter{margin-top:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:10px}
+.filter{margin-top:6px;padding-block:6px}
 .fbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .fbtn{all:unset;cursor:pointer;order:3;margin-left:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;box-sizing:border-box;padding:6px 14px;font-weight:700;font-size:15px;color:var(--rule);background:var(--black);border:2px solid var(--rule)}
 .fbtn::after{content:"▾";font-size:11px;color:var(--muted)}
@@ -155,8 +155,10 @@ section.shop{margin-top:22px}
 .bar i{display:block;height:100%;width:0;background:#f2f0ea}
 
 /* Suche, Merker, Folgen, Preisvergleich, Portorechner */
-.search{margin-top:14px}
-#q{width:100%;font:inherit;font-size:16px;padding:12px 14px;background:var(--black);color:var(--rule);border:2px solid var(--rule);border-radius:0;-webkit-appearance:none;appearance:none}
+.search{margin-top:18px;position:relative}
+.search::before{content:"";position:absolute;left:0;top:50%;width:20px;height:20px;transform:translateY(-50%);background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='8.5' cy='8.5' r='6.5' fill='none' stroke='%23ffffff' stroke-width='2.2'/%3E%3Cpath d='M13.5 13.5 19 19' stroke='%23ffffff' stroke-width='2.4'/%3E%3C/svg%3E");pointer-events:none}
+#q{width:100%;font:inherit;font-size:17px;padding:12px 4px 12px 32px;background:transparent;color:var(--rule);border:0;border-bottom:2px solid var(--rule);border-radius:0;-webkit-appearance:none;appearance:none}
+#q::-webkit-search-decoration{-webkit-appearance:none}
 #q::placeholder{color:var(--muted)}
 #q:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .chip svg{width:12px;height:12px;vertical-align:-1px;margin-right:3px}
@@ -318,22 +320,24 @@ label.bbtn{cursor:pointer}
 @media (min-width:900px){.foot{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px}.fblock{border-bottom:0}}
 .lede{margin:14px 0 0;font-size:17px;line-height:1.45;color:var(--rule);max-width:720px}
 @media (min-width:900px){.lede{font-size:22px;max-width:1000px;margin-top:18px}}
-.jump{margin-top:12px;display:flex;align-items:center;gap:10px;min-width:0}
+.jump{margin-top:4px;display:flex;align-items:center;gap:14px;min-width:0;border-top:1px solid var(--line);padding-top:6px}
 .jump[hidden]{display:none}
 .jlabel{flex:none;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.jrow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0;padding-block:4px}
+.jrow{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0;padding-block:6px}
 .jrow::-webkit-scrollbar{display:none}
-.jchip{all:unset;cursor:pointer;flex:none;white-space:nowrap;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:7px 11px;border:1.5px solid var(--rule);background:var(--black);color:var(--rule)}
+@media (max-width:899px){.jrow{-webkit-mask-image:linear-gradient(to right,#000 82%,transparent);mask-image:linear-gradient(to right,#000 82%,transparent);padding-right:40px}}
+.jchip{all:unset;cursor:pointer;flex:none;white-space:nowrap;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:8px 0;color:var(--fg);border-bottom:2px solid transparent}
 .jchip i{font-style:normal;font-family:var(--mono);font-weight:400;font-size:11px;color:var(--muted);margin-left:4px;letter-spacing:0}
-.jchip:hover{background:var(--rule);color:var(--black)}
-.jchip:hover i{color:var(--black)}
-.jchip.jmonth{border-style:dashed}
+.jchip:hover{border-bottom-color:var(--rule)}
+.jchip:hover i{color:var(--muted)}
+.jchip.jmonth{color:var(--muted)}
 .jchip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 section.shop,h2.month{scroll-margin-top:8px}
 .fright{order:3;margin-left:auto;display:flex;gap:8px;align-items:center}
-.modes{display:inline-flex;border:1.5px solid var(--rule)}
-.modes button{all:unset;cursor:pointer;font-size:13px;font-weight:700;padding:0 10px;min-height:41px;display:inline-flex;align-items:center;color:var(--muted)}
-.modes button[aria-pressed="true"]{background:var(--rule);color:var(--black)}
+.modes{display:inline-flex;align-items:center;gap:14px;margin-right:10px}
+.mlabel{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:-4px}
+.modes button{all:unset;cursor:pointer;font-size:14px;font-weight:700;padding:0 0 2px;min-height:44px;display:inline-flex;align-items:center;color:var(--muted);border-bottom:2px solid transparent;box-sizing:border-box}
+.modes button[aria-pressed="true"]{color:var(--rule);border-bottom-color:var(--rule)}
 .modes button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
 .fbar .fbtn{margin-left:0}
 .fdone{display:flex;justify-content:flex-end;margin-top:8px}
@@ -729,7 +733,7 @@ function renderJump(){
   useSecs.forEach(s=>{if(seen.has(s.dataset.jl))return;seen.add(s.dataset.jl);chips.push(`<button class="jchip" data-to="${s.id}">${esc(s.dataset.jl)} <i>${s.querySelectorAll("article.rel").length}</i></button>`)});
   const all=[...chips,...items];
   nav.hidden=all.length<2;
-  nav.innerHTML=`<span class="jlabel">Jump to</span><div class="jrow">${all.join("")}</div>`;
+  nav.innerHTML=`<span class="jlabel">Go to</span><div class="jrow">${all.join("")}</div>`;
   nav.querySelectorAll("[data-to]").forEach(b=>b.onclick=()=>{const el=document.getElementById(b.dataset.to);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})});
 }
 let genresMore=false;
@@ -751,7 +755,7 @@ function renderFilter(now){
   const chip=(attr,val,on,label,cnt,dis)=>`<button class="chip" aria-pressed="${on}" ${attr}="${esc(val)}"${dis?" disabled":""}>${label} <i>${cnt}</i></button>`;
   box.innerHTML=`<div class="fbar"><span class="fcount">${fltActive()?`${hits} of ${all.length} records`:`${all.length} records`}</span>
     ${fltActive()?`<button class="freset" id="freset">Clear</button>`:""}
-    <div class="fright"><div class="modes" role="group" aria-label="Group records"><button data-mode="shop" aria-pressed="${mode==="shop"}">By shop</button><button data-mode="date" aria-pressed="${mode==="date"}">By date</button></div>
+    <div class="fright"><div class="modes" role="group" aria-label="Group records by"><span class="mlabel" aria-hidden="true">By</span><button data-mode="shop" aria-pressed="${mode==="shop"}">Shop</button><button data-mode="date" aria-pressed="${mode==="date"}">Date</button></div>
     <button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
     <div class="fpanel" ${fltOpen?"":"hidden"}>
       <div class="flabel">Show</div>
