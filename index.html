@@ -474,6 +474,52 @@ section.shop{margin-top:14px}
 article.rel{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 60px)}
 article.rel.flash .cover{animation:flash 1.6s ease-out}
 @keyframes flash{0%{outline:3px solid var(--rule);outline-offset:4px}70%{outline:3px solid var(--rule);outline-offset:4px}100%{outline:3px solid transparent;outline-offset:4px}}
+/* Schwebender Filter */
+.fabwrap{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--ph,76px) + 14px);z-index:40;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;width:max-content;max-width:calc(100vw - 32px)}
+.fabwrap>*{pointer-events:auto}
+.fabwrap[hidden]{display:none!important}
+.ffab{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:9px;min-height:46px;box-sizing:border-box;padding:0 20px 0 18px;border-radius:999px;background:var(--rule);color:#0d0d0d;font-weight:700;font-size:15px;box-shadow:0 6px 24px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.4);animation:fabIn .28s cubic-bezier(.2,.9,.3,1.2)}
+.ffab svg{width:18px;height:14px}
+.ffab .fb{background:#0d0d0d;color:var(--rule);font-size:12px;font-family:var(--mono);min-width:20px;height:20px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px;box-sizing:border-box}
+.ffab:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ffab.pulse{animation:fabPulse .6s ease-out}
+@keyframes fabIn{from{opacity:0;transform:translateY(14px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes fabPulse{0%{transform:scale(1)}40%{transform:scale(1.07)}100%{transform:scale(1)}}
+.fnudge{display:flex;align-items:stretch;background:var(--black);border:2px solid var(--rule);box-shadow:0 6px 24px rgba(0,0,0,.55);opacity:0;transform:translateY(8px);transition:opacity .22s,transform .22s;max-width:min(320px,calc(100vw - 32px))}
+.fnudge.on{opacity:1;transform:none}
+.fnudge[hidden]{display:none}
+.nhide{all:unset;cursor:pointer;padding:11px 12px 11px 14px;font-size:14px;color:var(--fg);line-height:1.3}
+.nhide b{color:var(--rule);text-decoration:underline;text-underline-offset:3px;margin-left:4px;white-space:nowrap}
+.nx{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;width:40px;border-left:1px solid var(--line);color:var(--muted)}
+.nx svg{width:13px;height:13px}
+.nhide:focus-visible,.nx:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+/* Filter als Blatt */
+.fback{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:70;animation:fade .2s}
+.fback[hidden]{display:none}
+@keyframes fade{from{opacity:0}}
+html.sheet-open,html.sheet-open body{overflow:hidden}
+.fpanel.sheet{position:fixed;z-index:71;left:0;right:0;bottom:0;max-height:82vh;max-height:82dvh;overflow-y:auto;overscroll-behavior:contain;background:var(--bg);border-top:4px solid var(--rule);padding:0 16px calc(16px + env(safe-area-inset-bottom,0px));margin:0;max-width:none}
+.fpanel.sheet.anim{animation:sheetUp .28s cubic-bezier(.2,.9,.3,1)}
+@keyframes sheetUp{from{transform:translateY(40px);opacity:0}}
+.fpanel.sheet .shead{position:sticky;top:0;z-index:1;background:var(--bg);display:flex;align-items:center;gap:14px;padding:14px 0 10px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+.fpanel.sheet .shead b{font-family:var(--display);font-size:20px;margin-right:auto}
+.fpanel.sheet .freset{order:0}
+.sx{all:unset;cursor:pointer;order:1;display:flex;align-items:center;justify-content:center;width:40px;height:40px;margin-right:-8px;color:var(--rule)}
+.sx svg{width:15px;height:15px}
+.sx:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.fpanel.sheet .fdone{position:sticky;bottom:calc(-16px - env(safe-area-inset-bottom,0px));background:var(--bg);margin:6px -16px 0;padding:12px 16px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.fpanel.sheet .fdone .bbtn{flex:1;justify-content:center;background:var(--rule);color:#0d0d0d}
+@media (min-width:900px){
+.fpanel.sheet{left:auto;top:0;width:420px;max-height:none;height:100%;border-top:0;border-left:4px solid var(--rule);padding:0 24px 24px}
+.fpanel.sheet.anim{animation:sheetIn .28s cubic-bezier(.2,.9,.3,1)}
+.fpanel.sheet .fdone{margin:6px -24px 0;padding:14px 24px 24px;bottom:-24px}
+@keyframes sheetIn{from{transform:translateX(40px);opacity:0}}
+}
+.fpanel.sheet .chips{justify-content:flex-start}.fpanel.sheet .flabel,.fpanel.sheet .fhint{align-self:flex-start;text-align:left}
+.fhint{margin:-2px 0 2px;font-size:12px;color:var(--muted);align-self:flex-end;text-align:right}
+.chip.hid{border-style:dashed;color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
+.chip.hid::before{content:"✕ ";text-decoration:none;display:inline-block;margin-right:2px}
+@media (prefers-reduced-motion:reduce){.ffab,.fpanel.sheet,.fback{animation:none}.fnudge{transition:none}}
 </style>
 
 
@@ -526,6 +572,11 @@ article.rel.flash .cover{animation:flash 1.6s ease-out}
   </footer>
 </div>
 
+<div class="fback" id="fback" hidden></div>
+<div class="fabwrap" id="fabwrap" hidden>
+  <div class="fnudge" id="fnudge" hidden><button type="button" class="nhide" id="nhide"></button><button type="button" class="nx" id="nx" aria-label="Dismiss"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  <button type="button" class="ffab" id="ffab" aria-label="Filter records"><svg viewBox="0 0 20 16" aria-hidden="true"><path d="M1 2h18M4 8h12M8 14h4" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg><span class="ft">Filter</span><b class="fb" id="ffabn" hidden></b></button>
+</div>
 <div class="player" id="player">
   <div class="in">
     <button class="pbtn" id="pp" aria-label="Play"><svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M1 1 19 11 1 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
@@ -691,10 +742,10 @@ const NOT_GENRE=/^(reissue|repress|remaster(ed)?|lp|ep|edits?|2×12"?|12")$/i;
 const genresOf=r=>[...new Set(r.g.split(/[\/·]/).map(x=>x.trim().replace(/\s+Edits$/i,"")).filter(x=>x&&!NOT_GENRE.test(x)))];
 const REISSUE=/\b(reissue|repress|remaster(ed)?)\b/i;
 const isReissue=r=>REISSUE.test(r.g)||REISSUE.test(r.t);
-const flt={genres:new Set(),label:"",q:"",playOnly:false,newOnly:false,fol:false,hideHeard:false,from:new Set(),shops:new Set(),type:""};let fltOpen=false;
-const nFlt=()=>flt.genres.size+(flt.label?1:0)+(flt.playOnly?1:0)+(flt.newOnly?1:0)+(flt.fol?1:0)+(flt.hideHeard?1:0)+flt.from.size+flt.shops.size+(flt.type?1:0);
+const flt={genres:new Set(),label:"",q:"",playOnly:false,newOnly:false,fol:false,hideHeard:false,from:new Set(),shops:new Set(),hide:new Set(),type:""};let fltOpen=false,fltSheet=false,sheetAnim=false;
+const nFlt=()=>flt.genres.size+(flt.label?1:0)+(flt.playOnly?1:0)+(flt.newOnly?1:0)+(flt.fol?1:0)+(flt.hideHeard?1:0)+flt.from.size+flt.shops.size+flt.hide.size+(flt.type?1:0);
 const fltActive=()=>nFlt()>0||!!flt.q.trim();
-function clearFlt(){flt.genres.clear();flt.label="";flt.playOnly=flt.newOnly=flt.fol=flt.hideHeard=false;flt.from.clear();flt.shops.clear();flt.type="";flt.q="";const q=document.getElementById("q");if(q)q.value=""}
+function clearFlt(){flt.genres.clear();flt.label="";flt.playOnly=flt.newOnly=flt.fol=flt.hideHeard=false;flt.from.clear();flt.shops.clear();flt.hide.clear();flt.type="";flt.q="";const q=document.getElementById("q");if(q)q.value=""}
 function hitQ(e){
   const terms=fold(flt.q).split(/\s+/).filter(Boolean);if(!terms.length)return true;
   return terms.every(t=>{const tc=t.replace(/[\-\.\/]/g,"");return e.all.some(o=>o._h.includes(t)||(tc&&o._hc.includes(tc)))});
@@ -702,6 +753,7 @@ function hitQ(e){
 function matches(e){
   const r=e.r;
   if(flt.label&&!e.all.some(o=>o.l===flt.label))return false;
+  if(flt.hide.size&&genresOf(r).some(g=>flt.hide.has(g)))return false;
   if(flt.genres.size&&!genresOf(r).some(g=>flt.genres.has(g)))return false;
   if(flt.type==="new"&&isReissue(r))return false;
   if(flt.type==="re"&&!isReissue(r))return false;
@@ -852,6 +904,7 @@ function render(){
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===view));
   document.getElementById("filter").hidden=view==="korb";
   document.getElementById("search").hidden=view==="korb";
+  updateFab();
   if(view==="korb"){hideNudge();renderJump();renderCart();cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();return}
   renderFilter(now);
   const inView=viewMonths(now);
@@ -884,7 +937,7 @@ function render(){
     list.appendChild(groupSections(es,firstBlocks&&view==="home"&&!flt.from.size,k));
     firstBlocks=false;
   });
-  renderJump();
+  renderJump();observeCards();
   cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();
   list.querySelectorAll("[data-reset]").forEach(a=>a.onclick=e=>{e.preventDefault();clearFlt();render()});
   list.querySelectorAll("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
@@ -911,6 +964,7 @@ function renderJump(){
 let genresMore=false,shopsMore=false;
 function renderFilter(now){
   const box=document.getElementById("filter");
+  const oldP=box.querySelector(".fpanel"),keepTop=oldP?oldP.scrollTop:0;
   const inView=viewMonths(now);
   const all=entries(inView,false),pool=entries(inView);
   const count=(fn)=>{const m=new Map();pool.forEach(e=>fn(e.r).forEach(x=>m.set(x,(m.get(x)||0)+1)));return m};
@@ -932,10 +986,11 @@ function renderFilter(now){
     ${fltActive()?`<button class="freset" id="freset">Clear</button>`:""}
     <div class="fright"><div class="modes" role="group" aria-label="Group records by"><span class="mlabel" aria-hidden="true">By</span><button data-mode="shop" aria-pressed="${mode==="shop"}">Shop</button><button data-mode="date" aria-pressed="${mode==="date"}">Date</button></div>
     <button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
-    <div class="fpanel" ${fltOpen?"":"hidden"}>
+    <div class="fpanel${fltSheet?" sheet":""}${sheetAnim?" anim":""}" ${fltOpen?"":"hidden"} ${fltSheet?'role="dialog" aria-modal="true" aria-label="Filter"':""}>${fltSheet?`<div class="shead"><b>Filter</b>${fltActive()?`<button class="freset" id="sreset">Clear all</button>`:""}<button class="sx" id="sx" aria-label="Close filter"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2 2 14" stroke="currentColor" stroke-width="2.2"/></svg></button></div>`:""}
       <div class="flabel">Show</div>
       <div class="chips">${chip("data-tog","playOnly",flt.playOnly,"Playable only",nPlay,false)}${chip("data-tog","newOnly",flt.newOnly,"New since last visit",nNew,!nNew&&!flt.newOnly)}${chip("data-tog","fol",flt.fol,`${STAR}Following`,nFol,!nFol&&!flt.fol)}${chip("data-tog","hideHeard",flt.hideHeard,"Hide heard",nHeard,!nHeard&&!flt.hideHeard)}</div>
       <div class="flabel">Genre</div>
+      <p class="fhint">Tap once to show only this genre, twice to hide it.</p>
       <div class="chips">${CORE.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join("")}${showRest?rest.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join(""):""}${rest.length?`<button class="chip more" id="gmore" aria-expanded="${showRest}">${showRest?"Fewer genres":`More genres <i>${rest.length}</i>`}</button>`:""}</div>
       <div class="flabel">Type</div>
       <div class="chips">${chip("data-type","",!flt.type,"All",pool.length,false)}${chip("data-type","new",flt.type==="new","New music",pool.length-nRe,false)}${chip("data-type","re",flt.type==="re","Reissues",nRe,!nRe&&flt.type!=="re")}</div>
@@ -947,9 +1002,11 @@ function renderFilter(now){
       <select id="flabelsel"><option value="">All labels (${labels.length})</option>${labels.map(l=>`<option value="${esc(l)}"${l===flt.label?" selected":""}>${follow.l.includes(l)?"★ ":""}${esc(l)} (${lm.get(l)||0})</option>`).join("")}</select>
       <div class="fdone"><button class="bbtn" id="fdone">Show ${hits} ${hits===1?"record":"records"}</button></div>
     </div>`;
-  box.querySelector("#fbtn").onclick=()=>{fltOpen=!fltOpen;renderFilter(now);};
+  box.querySelector("#fbtn").onclick=()=>{fltSheet=false;fltOpen=!fltOpen;renderFilter(now);};
   const rs=box.querySelector("#freset");if(rs)rs.onclick=()=>{clearFlt();render()};
-  box.querySelectorAll("[data-g]").forEach(c=>c.onclick=()=>{const g=c.dataset.g;if(!flt.genres.has(g))track("Filter",{type:"genre",value:g});flt.genres.has(g)?flt.genres.delete(g):flt.genres.add(g);render()});
+  box.querySelectorAll("[data-g]").forEach(c=>{const g=c.dataset.g;
+    if(flt.hide.has(g)){c.classList.add("hid");c.disabled=false;c.setAttribute("aria-label",`${g}: hidden. Tap to show again`)}
+    c.onclick=()=>{if(flt.genres.has(g)){flt.genres.delete(g);flt.hide.add(g);track("Filter",{type:"hide genre",value:g})}else if(flt.hide.has(g)){flt.hide.delete(g)}else{flt.genres.add(g);track("Filter",{type:"genre",value:g})}render()}});
   box.querySelectorAll("[data-from]").forEach(c=>c.onclick=()=>{const g=c.dataset.from;if(!flt.from.has(g))track("Filter",{type:"ships from",value:g});flt.from.has(g)?flt.from.delete(g):flt.from.add(g);render()});
   box.querySelectorAll("[data-shop]").forEach(c=>c.onclick=()=>{const g=c.dataset.shop;if(!flt.shops.has(g))track("Filter",{type:"shop",value:g});flt.shops.has(g)?flt.shops.delete(g):flt.shops.add(g);render()});
   box.querySelectorAll("[data-tog]").forEach(c=>c.onclick=()=>{if(!flt[c.dataset.tog])track("Filter",{type:"show",value:c.dataset.tog});flt[c.dataset.tog]=!flt[c.dataset.tog];render()});
@@ -957,7 +1014,9 @@ function renderFilter(now){
   box.querySelectorAll("[data-mode]").forEach(c=>c.onclick=()=>{track("Group by",{mode:c.dataset.mode});mode=c.dataset.mode;store.set("mvr-mode",mode);render()});
   const smb=box.querySelector("#smore");if(smb)smb.onclick=()=>{shopsMore=!showShops;renderFilter(now)};
   const gmb=box.querySelector("#gmore");if(gmb)gmb.onclick=()=>{genresMore=!showRest;renderFilter(now)};
-  box.querySelector("#fdone").onclick=()=>{fltOpen=false;renderFilter(now);const s=document.getElementById("filter");window.scrollTo({top:Math.max(0,s.getBoundingClientRect().top+scrollY-8),behavior:"smooth"})};
+  box.querySelector("#fdone").onclick=()=>{if(fltSheet){closeSheet(true);return}fltOpen=false;renderFilter(now);const s=document.getElementById("filter");window.scrollTo({top:Math.max(0,s.getBoundingClientRect().top+scrollY-8),behavior:"smooth"})};
+  if(fltSheet){const np=box.querySelector(".fpanel");np.scrollTop=keepTop;box.querySelector("#sx").onclick=()=>closeSheet(false);const sr=box.querySelector("#sreset");if(sr)sr.onclick=()=>{clearFlt();render()}}
+  updateFab();
   box.querySelector("#flabelsel").onchange=e=>{if(e.target.value)track("Filter",{type:"label",value:e.target.value});flt.label=e.target.value;render()};
 }
 function go(v){if(v!==view)track("View",{view:({home:"this month",archiv:"past",korb:"bag"})[v]||v});view=v;try{history.replaceState(null,"",v==="home"?"#":"#"+v)}catch(e){}render();window.scrollTo(0,0)}
@@ -1419,6 +1478,63 @@ function showPlaying(){
   art.classList.remove("flash");void art.offsetWidth;art.classList.add("flash");setTimeout(()=>art.classList.remove("flash"),1600);
 }
 {const pt=document.getElementById("ptgo");pt.onclick=showPlaying;pt.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showPlaying()}}}
+// Schwebender Filter-Knopf: erscheint, sobald die Filter-Zeile aus dem Bild ist; öffnet den Filter als Blatt (Handy unten, Desktop rechts)
+let pastFilter=false;
+function updateFab(){
+  const w=document.getElementById("fabwrap");if(!w)return;
+  const show=pastFilter&&view!=="korb"&&!fltSheet;
+  w.hidden=!show;
+  const n=nFlt(),b=document.getElementById("ffabn");b.hidden=!n;b.textContent=n;
+  document.getElementById("ffab").setAttribute("aria-label",n?`Filter records, ${n} active`:"Filter records");
+  if(!show)hideSmart();
+}
+function openSheet(){
+  fltSheet=true;fltOpen=true;hideSmart();
+  document.getElementById("fback").hidden=false;document.documentElement.classList.add("sheet-open");
+  sheetAnim=true;renderFilter(nowKey());sheetAnim=false;
+  const p=document.querySelector("#filter .fpanel");if(p){p.scrollTop=0;const x=p.querySelector("#sx");if(x)x.focus({preventScroll:true})}
+  track("Filter opened",{from:"floating"});
+}
+function closeSheet(jump){
+  if(!fltSheet)return;
+  fltSheet=false;fltOpen=false;
+  document.getElementById("fback").hidden=true;document.documentElement.classList.remove("sheet-open");
+  renderFilter(nowKey());
+  if(jump){const l=document.getElementById("list");window.scrollTo({top:Math.max(0,l.getBoundingClientRect().top+scrollY-8),behavior:"smooth"})}
+  document.getElementById("ffab").focus({preventScroll:true});
+}
+document.getElementById("ffab").onclick=openSheet;
+document.getElementById("fback").onclick=()=>closeSheet(false);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&fltSheet)closeSheet(false)});
+if("IntersectionObserver" in window){
+  new IntersectionObserver(es=>{es.forEach(en=>{pastFilter=!en.isIntersecting&&en.boundingClientRect.top<0;updateFab()})}).observe(document.getElementById("filter"));
+}
+// Player-Höhe als CSS-Variable, damit der Knopf immer darüber schwebt
+{const pl=document.getElementById("player"),set=()=>document.documentElement.style.setProperty("--ph",pl.offsetHeight+"px");set();if(window.ResizeObserver)new ResizeObserver(set).observe(pl);addEventListener("resize",set)}
+// Smarter Hinweis: sieht man beim Scrollen fast nur ein Genre, bietet der Knopf an, es auszublenden
+const seenCards=[],seenGk=new Set(),nudgedG=new Set();let smartT=null,smartG="";
+const cardIO="IntersectionObserver" in window?new IntersectionObserver(es=>{es.forEach(en=>{if(!en.isIntersecting)return;const a=en.target;cardIO.unobserve(a);if(!a._e||seenGk.has(a._e.gk))return;seenGk.add(a._e.gk);seenCards.push(genresOf(a._e.r));if(seenCards.length>14)seenCards.shift();checkSmart()})},{threshold:.6}):null;
+function observeCards(){if(!cardIO||view==="korb")return;document.querySelectorAll("#list article.rel").forEach(a=>{if(a._e&&!seenGk.has(a._e.gk))cardIO.observe(a)})}
+function checkSmart(){
+  if(seenCards.length<10||fltSheet||flt.genres.size||nudgedG.size>=2||smartG)return;
+  const last=seenCards.slice(-12),c={};last.forEach(gs=>new Set(gs).forEach(g=>c[g]=(c[g]||0)+1));
+  const [g,n]=Object.entries(c).sort((a,b)=>b[1]-a[1])[0]||[];
+  if(!g||n<9||flt.hide.has(g)||nudgedG.has(g))return;
+  const others=entries(viewMonths(nowKey())).filter(e=>matches(e)&&!genresOf(e.r).includes(g)).length;
+  if(others<15)return;
+  nudgedG.add(g);smartG=g;
+  const nd=document.getElementById("fnudge");
+  document.getElementById("nhide").innerHTML=`Lots of ${esc(g)}? <b>Hide it</b>`;
+  nd.hidden=false;requestAnimationFrame(()=>nd.classList.add("on"));
+  track("Smart hide shown",{genre:g});
+  clearTimeout(smartT);smartT=setTimeout(hideSmart,9000);
+}
+function hideSmart(){const nd=document.getElementById("fnudge");if(!nd)return;nd.classList.remove("on");clearTimeout(smartT);smartG="";setTimeout(()=>{if(!nd.classList.contains("on"))nd.hidden=true},250)}
+document.getElementById("nhide").onclick=()=>{const g=smartG;if(!g)return;hideSmart();flt.genres.delete(g);flt.hide.add(g);track("Smart hide used",{genre:g});render();
+  const l=document.getElementById("list");window.scrollTo({top:Math.max(0,l.getBoundingClientRect().top+scrollY-8),behavior:"smooth"});
+  flashFab(`${g} hidden`)};
+document.getElementById("nx").onclick=hideSmart;
+function flashFab(t){const f=document.getElementById("ffab"),ft=f.querySelector(".ft");ft.textContent=t;f.classList.add("pulse");setTimeout(()=>{ft.textContent="Filter";f.classList.remove("pulse")},2600)}
 // Mobile: Suche hinter der Lupe oben; öffnet als Leiste am oberen Rand
 const sbox=document.getElementById("search"),sbtn=document.getElementById("sbtn");
 function searchUI(open){sbox.classList.toggle("open",open);sbtn.setAttribute("aria-expanded",open);sbtn.classList.toggle("on",!open&&!!flt.q.trim())}
