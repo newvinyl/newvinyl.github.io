@@ -421,6 +421,28 @@ a.nlater{text-decoration:none}
 @media (min-width:900px){.ltitle{font-size:40px;margin-top:28px}.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1100px}.steps span{font-size:15.5px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+.lede .ls,.steps em{display:none}
+@media (max-width:899px){
+.ltitle{font-size:21px;margin-top:14px}
+.lede{font-size:14.5px;line-height:1.4;margin-top:6px}
+.lede .ll{display:none}.lede .ls{display:inline}
+.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.steps li{padding-top:7px;gap:1px}
+.steps b{font-size:14px}.steps b i{font-size:11px;margin-right:5px}
+.steps span{display:none}
+.steps em{display:block;font-style:normal;font-size:12px;line-height:1.3;color:var(--muted)}
+.returning{margin-top:6px}.returning button{font-size:12.5px;padding-block:4px}
+.tabs{margin-top:10px}.tab{min-height:40px}.tab.tabcart{width:40px;height:40px}
+.search{margin-top:4px}#q{padding-block:8px}
+.filter{margin-top:2px;padding-block:2px}.fbtn{min-height:38px;padding-block:4px}
+.jump{margin-top:0;padding-top:2px}.jrow{padding-block:0}.jchip{padding:6px 0}
+h2.month{margin-top:6px;font-size:18px}
+section.shop{margin-top:8px}
+.shop-head{padding:9px 10px 8px;align-items:center}.shop-sum .where{display:none}.shop-name{flex:none}
+.steps{margin-top:8px}.returning{margin-top:2px}
+.shop-head+.rel{padding-top:12px}
+.returning button{font-weight:400;color:var(--fg)}
+}
 </style>
 
 
@@ -432,11 +454,11 @@ a.nlater{text-decoration:none}
     <h1 id="title" aria-label="Monthly Vinyl"><span>MONTHLY VINYL</span></h1>
   </header>
   <h2 class="ltitle">Less tabs. More digging.</h2>
-  <p class="lede" id="lede">Every morning this page collects the newest electronic vinyl releases, from house and techno to ambient, disco and everything in between, from the most relevant online record shops, with previews and price comparison. One page, everything in one place.</p>
+  <p class="lede" id="lede"><span class="ll">Every morning this page collects the newest electronic vinyl releases, from house and techno to ambient, disco and everything in between, from the most relevant online record shops, with previews and price comparison. One page, everything in one place.</span><span class="ls">Every morning the newest electronic vinyl from top shops, with previews and price comparison.</span></p>
   <ol class="steps">
-    <li><b><i>1</i>Dig</b><span>Listen to previews of this month's new records.</span></li>
-    <li><b><i>2</i>Collect</b><span>Tap «Add to bag» on the ones you want.</span></li>
-    <li><b><i>3</i>Buy</b><span>Buy directly at the shops from your bag. Not ready yet? Save your wishlist: export it sorted by shop or send it by email.</span></li>
+    <li><b><i>1</i>Dig</b><span>Listen to previews of this month's new records.</span><em>Play the previews</em></li>
+    <li><b><i>2</i>Collect</b><span>Tap «Add to bag» on the ones you want.</span><em>Add to your bag</em></li>
+    <li><b><i>3</i>Buy</b><span>Buy directly at the shops from your bag. Not ready yet? Save your wishlist: export it sorted by shop or send it by email.</span><em>Buy at the shops</em></li>
   </ol>
   <noscript><p class="lede">This page needs JavaScript to show the release list and play previews.</p></noscript>
   <p class="returning" id="returning" hidden><button type="button" data-restore>Been here before? Restore your follows &amp; bag<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button></p>
@@ -743,7 +765,7 @@ function groupSections(list,withBlocked,k){
       frag.appendChild(sec);return;
     }
     const items=by.get(S)||[];if(!items.length)return;
-    mkSec(`s-${k}-${slug(S.shop)}`,S.shop,shopHead(S,`${esc(where(S))} · ${items.length} ${items.length>1?"records":"record"}`),items);
+    mkSec(`s-${k}-${slug(S.shop)}`,S.shop,shopHead(S,`<span class="where">${esc(where(S))} · </span>${items.length} ${items.length>1?"records":"record"}`),items);
   });
   return frag;
 }
@@ -1184,7 +1206,7 @@ function renderCart(){
     const sum=rs.reduce((t,r)=>t+(r.p||0),0), unknown=rs.some(r=>r.p==null);
     const done=rs.filter(r=>opened.has(r.key)).length;
     const sec=document.createElement("section");sec.className="shop";
-    sec.innerHTML=shopHead(S,`${esc(where(S))} · ${rs.length} ${rs.length>1?"records":"record"}${sum?` · ${fmt(S.cur,sum)}${unknown?" +":""}`:""}`);
+    sec.innerHTML=shopHead(S,`<span class="where">${esc(where(S))} · </span>${rs.length} ${rs.length>1?"records":"record"}${sum?` · ${fmt(S.cur,sum)}${unknown?" +":""}`:""}`);
     sec.appendChild(runBox(S,rs));
     rs.forEach((r,ri)=>{
       const row=document.createElement("div");row.className="citem"+(opened.has(r.key)?" done":"");
