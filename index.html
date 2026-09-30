@@ -160,7 +160,11 @@ section.shop{margin-top:22px}
 #q:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .chip svg{width:12px;height:12px;vertical-align:-1px;margin-right:3px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.tags[hidden]{display:none}
+.tags.none{display:none}
+.trfoot{display:flex;justify-content:flex-end;align-items:center;gap:10px;position:relative}
+.trfoot:empty{display:none}
+.trfoot .srcnote{margin:0 auto 0 0;text-align:left}
+.moretr{display:none}
 .tag{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);color:var(--muted)}
 .tag svg{width:11px;height:11px}
 .tag.new{background:var(--rule);color:var(--black);border-color:var(--rule);font-weight:500}
@@ -250,6 +254,31 @@ label.bbtn{cursor:pointer}
   .rel .cover img{transition:transform .25s ease}
   .rel:hover .cover img{transform:scale(1.02)}
   h2.month{font-size:26px;margin-top:36px}
+  /* Ruhiges Raster: feste Höhen, damit Titel, Tracks und Preise pro Reihe auf einer Linie liegen */
+  #list:not(.bagview) section.shop{align-items:stretch}
+  #list:not(.bagview) .rel{height:100%;box-sizing:border-box}
+  #list:not(.bagview) .info{flex:1}
+  #list:not(.bagview) .tags{height:22px;overflow:hidden;flex-wrap:nowrap;margin-bottom:6px}
+  #list:not(.bagview) .tags.none{display:flex;visibility:hidden}
+  #list:not(.bagview) .artist,#list:not(.bagview) .title,#list:not(.bagview) .meta{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  #list:not(.bagview) .artist{height:calc(2 * 1.08em)}
+  #list:not(.bagview) .title{height:calc(2 * 1.25em)}
+  #list:not(.bagview) .meta{height:calc(2 * 1.5em)}
+  #list:not(.bagview) .fol{height:32px;flex-wrap:nowrap;overflow:hidden;margin-top:8px}
+  #list:not(.bagview) .tracks:not(.trpop){height:114px;margin-top:10px}
+  #list:not(.bagview) .trk{height:38px;min-height:0}
+  #list:not(.bagview) li.xtra{display:none}
+  #list:not(.bagview) .trfoot,#list:not(.bagview) .trfoot:empty{display:flex;height:30px}
+  #list:not(.bagview) .moretr{display:block}
+  .moretr summary{list-style:none;cursor:pointer;font-size:12.5px;color:var(--fg);border:1px solid var(--line);padding:3px 10px;user-select:none}
+  .moretr summary::-webkit-details-marker{display:none}
+  .moretr summary::after{content:" ▾";color:var(--muted);font-size:10px}
+  .moretr[open] summary{border-color:var(--rule)}
+  .moretr[open] summary::after{content:" ▴"}
+  .moretr summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .moretr .trpop{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;margin:0;padding:2px 12px;background:var(--black);border:1.5px solid var(--rule);box-shadow:0 12px 30px rgba(0,0,0,.6)}
+  #list:not(.bagview) .row{flex-wrap:nowrap;min-height:46px}
+  #list:not(.bagview) .shoplink{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 }
 @media (min-width:1200px){#list:not(.bagview) section.shop{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (min-width:1560px){#list:not(.bagview) section.shop{grid-template-columns:repeat(5,minmax(0,1fr));column-gap:32px}}
@@ -448,7 +477,7 @@ function setTags(art,e){
   if(heard.has(e.gk))t.push('<span class="tag heard">Heard</span>');
   if(r.st&&STOCK[r.st])t.push(`<span class="tag st-${r.st}">${STOCK[r.st]}</span>`);
   if(isReissue(r))t.push('<span class="tag">Reissue</span>');
-  box.innerHTML=t.join("");box.hidden=!t.length;
+  box.innerHTML=t.join("");box.classList.toggle("none",!t.length);
   art.classList.toggle("isfol",e.all.some(isFol));art.classList.toggle("heard",heard.has(e.gk));
 }
 function releaseEl(e,ri){
@@ -461,7 +490,7 @@ function releaseEl(e,ri){
   const isLow=o=>low!=null&&o.chf!=null&&Math.abs(o.chf-low)<.005;
   const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;el._e=e;
   el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
-  <div class="info"><div class="tags" hidden></div><div class="artist">${esc(r.a)}</div><div class="title">${esc(r.t)}</div>
+  <div class="info"><div class="tags none"></div><div class="artist">${esc(r.a)}</div><div class="title">${esc(r.t)}</div>
   <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${esc(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
   <div class="fol"><button class="folbtn" data-fol="a" data-v="${esc(r.a)}"></button><button class="folbtn" data-fol="l" data-v="${esc(r.l)}"></button></div>
   <ul class="tracks"></ul>
@@ -471,15 +500,23 @@ function releaseEl(e,ri){
   setTags(el,e);
   el.querySelectorAll(".cartbtn").forEach(cb=>{setCartBtn(cb);cb.onclick=()=>toggleCart(cb.dataset.key)});
   el.querySelectorAll(".folbtn").forEach(b=>{setFolBtn(b);b.onclick=()=>toggleFollow(b.dataset.fol,b.dataset.v)});
-  const ul=el.querySelector(".tracks");
-  (src.tr||[]).forEach(t=>{
+  // Alle Tracks in der Liste (Handy zeigt alle); auf dem Desktop sind ab Track 4 nur im Aufklapp-Menü sichtbar
+  const ul=el.querySelector(".tracks"),tf=document.createElement("div");tf.className="trfoot";ul.after(tf);
+  const trs=src.tr||[];let extra=null;
+  trs.forEach((t,ti)=>{
     const qi=queue.push({...t,a:r.a,t:r.t,shop:src.S.shop,url:src.href,key:r.key,gk:e.gk})-1;
-    const li=document.createElement("li");
-    li.innerHTML=`<button class="trk" data-q="${qi}"><span class="ic">${TRI}</span><span class="side">${esc(t.s)}</span><span class="nm">${esc(t.n)}</span></button>`;
-    li.firstChild.onclick=()=>play(qi);ul.appendChild(li);
+    const mk=()=>{const li=document.createElement("li");
+      li.innerHTML=`<button class="trk" data-q="${qi}"><span class="ic">${TRI}</span><span class="side">${esc(t.s)}</span><span class="nm">${esc(t.n)}</span></button>`;
+      li.firstChild.onclick=()=>{play(qi);if(extra)extra.open=false};return li};
+    const li=mk();if(ti>=3)li.className="xtra";ul.appendChild(li);
+    if(ti>=3){
+      if(!extra){const n=trs.length-3;extra=document.createElement("details");extra.className="moretr";extra.innerHTML=`<summary>+ ${n} more ${n>1?"tracks":"track"}</summary><ul class="tracks trpop"></ul>`}
+      extra.querySelector("ul").appendChild(mk());
+    }
   });
-  if(src!==r&&(src.tr||[]).length){const n=document.createElement("p");n.className="srcnote";n.textContent=`Previews via ${src.S.shop}`;ul.after(n)}
-  if(!(src.tr||[]).length){const m=document.createElement("a");m.className="more";m.href=url;m.target="_blank";m.rel="noopener";m.textContent="Previews in shop ↗";ul.after(m);}
+  if(src!==r&&trs.length){const n=document.createElement("p");n.className="srcnote";n.textContent=`Previews via ${src.S.shop}`;tf.appendChild(n)}
+  if(extra)tf.appendChild(extra);
+  if(!trs.length){const m=document.createElement("a");m.className="more";m.href=url;m.target="_blank";m.rel="noopener";m.textContent="Previews in shop ↗";tf.appendChild(m);}
   return el;
 }
 const where=S=>[S.where,CNAME[S.country]||S.country].filter(Boolean).join(", ");
@@ -889,6 +926,7 @@ function showYT(q){
 au.onerror=()=>{if(cur>=0)fallback(queue[cur])};
 au.ontimeupdate=()=>{if(au.duration)pr.style.width=(au.currentTime/au.duration*100)+"%"};
 au.onended=()=>{if(cur<queue.length-1)play(cur+1)};
+document.addEventListener("click",e=>{document.querySelectorAll("details.moretr[open]").forEach(d=>{if(!d.contains(e.target))d.open=false})});
 // Desktop: Leertaste = Play/Pause, N = nächster Track
 addEventListener("keydown",e=>{if(e.metaKey||e.ctrlKey||e.altKey||/^(INPUT|TEXTAREA|SELECT|BUTTON|A)$/.test((e.target||{}).tagName||""))return;
   if(e.code==="Space"){e.preventDefault();pp.click()}else if(e.key==="n"||e.key==="N"){document.getElementById("nx").click()}});
