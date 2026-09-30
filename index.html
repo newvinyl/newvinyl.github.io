@@ -216,6 +216,16 @@ section.shop{margin-top:22px}
 .cust .warn{color:var(--warn);font-weight:500}
 .cust .hint{display:block;margin-top:4px}
 .empty b{color:var(--fg)}
+.databox{margin-top:30px}
+.dhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;flex-wrap:wrap}
+.dtitle{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.02em}
+.dsum{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.dtext{margin:0;font-size:13px;line-height:1.5;color:var(--muted);width:100%}
+.dlast{color:var(--fg)}
+.dlast.warn{color:var(--warn)}
+#bkin{width:100%;font-family:var(--mono);font-size:13px;padding:10px 12px;background:#1a1a1a;color:#f2f0ea;border:2px solid var(--rule);border-radius:0;resize:vertical;box-sizing:border-box}
+#bkin:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+label.bbtn{cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -691,6 +701,80 @@ function grandTotal(){
   const el=document.getElementById("grand");if(!el)return;
   el.innerHTML=`<span class="gl">Bag total, estimated</span><span class="gv">${chf(g)}</span><span class="gs">${missing?`Shipping not entered for ${missing} ${missing>1?"shops":"shop"} yet.`:`Records and shipping${imp?", plus estimated import costs":homeInfo().region!=="XX"?", no import costs":""}.`}</span>`;
 }
+// Backup-Code: alle persönlichen Daten (Bag, Follows, Gehört, Porto, Land) als Text zum Sichern und Wiederherstellen
+const SAVEI='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v9M4 6.5 8 10.5 12 6.5M2 11v4h12v-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+const LOADI='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11V2M4 5.5 8 1.5 12 5.5M2 11v4h12v-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+function myData(){return {v:1,saved:new Date().toISOString().slice(0,10),cart,opened:[...opened],heard:[...heard],follow,ship,home,mail:store.get("mvr-mail","")}}
+const b64u=bytes=>{let s="";const a=new Uint8Array(bytes);for(let i=0;i<a.length;i+=8192)s+=String.fromCharCode.apply(null,a.subarray(i,i+8192));return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")};
+const unb64u=t=>{t=t.replace(/-/g,"+").replace(/_/g,"/");while(t.length%4)t+="=";const s=atob(t),a=new Uint8Array(s.length);for(let i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a};
+async function pipe(bytes,Stream,fmt){return new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new Stream(fmt))).arrayBuffer())}
+async function makeCode(){
+  const raw=new TextEncoder().encode(JSON.stringify(myData()));
+  try{if(window.CompressionStream)return "MVR1z."+b64u(await pipe(raw,CompressionStream,"deflate-raw"))}catch(e){}
+  return "MVR1."+b64u(raw);
+}
+async function readCode(text){
+  const m=/MVR1(z?)\.([A-Za-z0-9_\-]+)/.exec(String(text||"").replace(/\s+/g,""));
+  if(!m)throw new Error("format");
+  let bytes=unb64u(m[2]);
+  if(m[1]){if(!window.DecompressionStream)throw new Error("browser");bytes=await pipe(bytes,DecompressionStream,"deflate-raw")}
+  const d=JSON.parse(new TextDecoder().decode(bytes));
+  if(!d||d.v!==1)throw new Error("format");
+  return d;
+}
+// Zusammenführen statt überschreiben: nichts auf diesem Gerät geht verloren
+function mergeData(d){
+  const arr=x=>Array.isArray(x)?x.filter(s=>typeof s==="string"):[];
+  const before={f:follow.a.length+follow.l.length,h:heard.size,c:cart.length};
+  arr(d.cart).forEach(k=>{if(!cart.includes(k))cart.push(k)});
+  arr(d.opened).forEach(k=>opened.add(k));
+  arr(d.heard).forEach(k=>heard.add(k));
+  if(d.follow){arr(d.follow.a).forEach(x=>{if(!follow.a.includes(x))follow.a.push(x)});arr(d.follow.l).forEach(x=>{if(!follow.l.includes(x))follow.l.push(x)})}
+  if(d.ship&&typeof d.ship==="object")Object.entries(d.ship).forEach(([k,v])=>{if(typeof v==="number"&&!(k in ship))ship[k]=v});
+  if(typeof d.home==="string"&&HOMES.some(h=>h[0]===d.home))home=d.home;
+  if(typeof d.mail==="string"&&d.mail&&!store.get("mvr-mail",""))store.set("mvr-mail",d.mail);
+  saveCart();store.set("mvr-heard",[...heard].slice(-3000));store.set("mvr-follow",follow);store.set("mvr-ship",ship);store.set("mvr-home",home);
+  cartBadges();
+  return {f:follow.a.length+follow.l.length-before.f,h:heard.size-before.h,c:cart.length-before.c};
+}
+const plural=(n,w)=>`${n} ${w}${n===1?"":"s"}`;
+function dataBox(){
+  const box=document.createElement("div");box.className="bagacts databox";
+  const last=store.get("mvr-backup",null),nf=follow.a.length+follow.l.length;
+  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone;
+  box.innerHTML=`<div class="dhead"><span class="dtitle">Your data</span><span class="dsum">${plural(nf,"follow")} · ${plural(heard.size,"heard record")} · ${plural(cart.length,"record")} in bag</span></div>
+    <p class="dtext">Everything is saved only in this browser. Clearing the browser data deletes it, and other devices don't see it. Save a backup code and restore it anytime, on any device.${last?` <span class="dlast">Last backup: ${fmtDate(last)}.</span>`:` <span class="dlast warn">No backup yet.</span>`}</p>
+    <div class="bagrow"><button class="bbtn" id="bkcopy">${COPYI}Copy backup code</button><button class="bbtn" id="bkfile">${SAVEI}Save as file</button><a class="bbtn" id="bkmail" href="#">${MAILI}Email</a></div>
+    <label class="flabel" for="bkin">Restore: paste a backup code</label>
+    <textarea id="bkin" rows="3" spellcheck="false" autocomplete="off" placeholder="MVR1z.…"></textarea>
+    <div class="bagrow"><label class="bbtn" for="bkpick">${LOADI}Open file</label><input id="bkpick" type="file" accept=".txt,text/plain" hidden><button class="bbtn" id="bkrestore">Restore</button></div>
+    <p class="bagmsg" id="bkmsg" role="status"></p>
+    ${ios&&!standalone?`<p class="dtext">On iPhone and iPad, Safari deletes this data when you haven't opened the page for 7 days. Add it to your Home Screen (Share → Add to Home Screen) and open it from there to keep it.</p>`:""}`;
+  const msg=t=>{box.querySelector("#bkmsg").textContent=t};
+  const done=()=>store.set("mvr-backup",new Date().toISOString().slice(0,10));
+  const fname=()=>`vinyl-backup-${new Date().toISOString().slice(0,10)}.txt`;
+  box.querySelector("#bkcopy").onclick=async()=>{const code=await makeCode();navigator.clipboard.writeText(code).then(()=>{done();msg("Backup code copied. Paste it into your notes or send it to yourself.")},()=>{box.querySelector("#bkin").value=code;msg("Copy isn't allowed here. The code is in the box below: select it and copy it by hand.")})};
+  box.querySelector("#bkfile").onclick=async e=>{const b=e.currentTarget;b.disabled=true;
+    try{const code=await makeCode(),blob=new Blob([`Monthly Vinyl Releases backup\n${SITE}\n\n${code}\n`],{type:"text/plain"});
+      const dl=window.claude&&window.claude.use?await window.claude.use("downloads").catch(()=>null):null;
+      if(dl)await dl.save({filename:fname(),data:blob});
+      else{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fname();document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+      done();msg("Backup file saved.")}catch(err){msg(err&&err.code==="declined"?"Saving cancelled.":"The file could not be saved. Use Copy backup code instead.")}
+    b.disabled=false};
+  box.querySelector("#bkmail").onclick=async e=>{e.preventDefault();const code=await makeCode();done();
+    location.href=`mailto:${encodeURIComponent(store.get("mvr-mail",""))}?subject=${encodeURIComponent("My vinyl backup · Monthly Vinyl Releases")}&body=${encodeURIComponent(`To restore: open ${SITE}, go to My bag → Your data, paste this code and tap Restore.\n\n${code}\n`)}`;
+    msg("Opening your mail app with the backup code…")};
+  const restore=async text=>{
+    try{const d=await readCode(text),r=mergeData(d);
+      msg(`Restored from ${d.saved?fmtDate(d.saved):"backup"}: ${plural(r.f,"new follow")}, ${plural(r.h,"heard record")}, ${plural(r.c,"record")} added to the bag. Nothing on this device was removed.`);
+      setTimeout(render,1600)}
+    catch(err){msg(err&&err.message==="browser"?"This browser can't read compressed codes. Try the latest Safari, Chrome or Firefox.":"That doesn't look like a backup code. It starts with MVR1.")}
+  };
+  box.querySelector("#bkrestore").onclick=()=>restore(box.querySelector("#bkin").value);
+  box.querySelector("#bkpick").onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)f.text().then(restore)};
+  return box;
+}
 function renderCart(){
   const {items,shops,mine}=bagGroups();
   const h=document.createElement("h2");h.className="month";
@@ -699,7 +783,7 @@ function renderCart(){
   if(!items.length){
     const e=document.createElement("p");e.className="empty";
     e.innerHTML=`Your bag is empty. Tap “Add to bag” on any record, keep listening, and pack your crate as you go. <a href="#" data-go="home">Back to new releases</a>`;
-    list.appendChild(e);list.querySelectorAll("[data-go]").forEach(a=>a.onclick=ev=>{ev.preventDefault();go(a.dataset.go)});return;
+    list.appendChild(e);list.appendChild(dataBox());list.querySelectorAll("[data-go]").forEach(a=>a.onclick=ev=>{ev.preventDefault();go(a.dataset.go)});return;
   }
   const acts=document.createElement("div");acts.className="bagacts";
   acts.innerHTML=`<div class="grand" id="grand"></div>
@@ -749,6 +833,7 @@ function renderCart(){
     EU:"Orders from EU shops: no customs. From the UK or Switzerland: your country's VAT on records plus shipping, and since 1 July 2026 an EU flat duty of €3 on parcels up to €150. Over €150, VAT is collected on delivery with the parcel service's fee. Records themselves are duty-free.",
     UK:"Orders from UK shops: no customs. From the EU or Switzerland: 20% UK VAT. Up to £135 the shop charges it at checkout; above that it is collected on delivery with the parcel service's fee."};
   const hi=homeInfo();if(FOOT[hi.region]){const f=document.createElement("p");f.className="cnote";f.textContent=FOOT[hi.region]+" Estimates, not a customs ruling.";list.appendChild(f)}
+  list.appendChild(dataBox());
   grandTotal();
   list.querySelectorAll("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
 }
