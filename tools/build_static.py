@@ -113,8 +113,7 @@ def main():
         n = len(items)
         others = " · ".join(f'<a href="/{slug(o)}/">{e(o)}</a>' for o in genre_list if o != g)
         title = f"New {g} Vinyl Releases – {mlabel(now)} | Monthly Vinyl Releases"
-        desc = (f"{n} new {g.lower()} vinyl records from independent shops like Hardwax, Clone, Phonica and Redeye. "
-                f"Listen to previews, compare prices and order per shop. Updated every morning.")
+        desc = f"{n} new {g.lower()} vinyl records from independent shops like Hardwax, Clone and Phonica. Listen, compare prices, order per shop. Updated daily."
         page = f'''<!doctype html>
 <html lang="en">
 <head>
