@@ -412,6 +412,13 @@ a.nlater{text-decoration:none}
 .fgenres{grid-column:1/-1;margin:18px 0 0;font-size:13px;line-height:1.9;color:var(--muted)}
 .fgenres a{color:var(--fg)}
 .fgenres b{color:var(--fg)}
+.ltitle{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.1;letter-spacing:.01em;color:var(--rule);margin:22px 0 0}
+.steps{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.steps li{display:flex;flex-direction:column;gap:2px;border-top:1.5px solid var(--rule);padding-top:10px}
+.steps b{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.02em;color:var(--rule)}
+.steps b i{font-style:normal;font-family:var(--mono);font-weight:400;font-size:13px;color:var(--muted);margin-right:8px}
+.steps span{font-size:14.5px;line-height:1.45;color:var(--fg)}
+@media (min-width:900px){.ltitle{font-size:40px;margin-top:28px}.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1100px}.steps span{font-size:15.5px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -424,7 +431,13 @@ a.nlater{text-decoration:none}
   <header class="top">
     <h1 id="title"><span>Monthly Vinyl Releases</span></h1>
   </header>
-  <p class="lede" id="lede">Find the newest releases from techno and house to ambient and disco, all in one place. Listen to previews, compare prices, fill your bag with your favourites and buy directly from the shops. The page is updated every day with the latest releases.</p>
+  <h2 class="ltitle">Digging takes time. We do it for you.</h2>
+  <p class="lede" id="lede">Every morning this page collects the newest releases of the month from the most relevant online record shops. One page, everything in one place.</p>
+  <ol class="steps">
+    <li><b><i>1</i>Dig</b><span>Listen through this month's new records.</span></li>
+    <li><b><i>2</i>Collect</b><span>Tap «Add to bag» on the ones you want.</span></li>
+    <li><b><i>3</i>Buy</b><span>In your bag, export your list sorted by shop, send it by email, or buy directly at the shops.</span></li>
+  </ol>
   <noscript><p class="lede">This page needs JavaScript to show the release list and play previews.</p></noscript>
   <p class="returning" id="returning" hidden><button type="button" data-restore>Been here before? Restore your follows &amp; bag<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button></p>
   <nav class="tabs" role="tablist">
