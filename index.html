@@ -429,7 +429,7 @@ a.nlater{text-decoration:none}
 <div class="wrap">
   <div class="topline"><a class="getlisted" href="#shops" data-jump="shops">Shop missing? Get listed<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><p class="date" id="stand"></p></div>
   <header class="top">
-    <h1 id="title"><span>Monthly Vinyl Releases</span></h1>
+    <h1 id="title" aria-label="Monthly Vinyl"><span>MONTHLY VINYL</span></h1>
   </header>
   <h2 class="ltitle">Less tabs. More digging.</h2>
   <p class="lede" id="lede">Every morning this page collects the newest electronic vinyl releases, from house and techno to ambient, disco and everything in between, from the most relevant online record shops, with previews and price comparison. One page, everything in one place.</p>
@@ -1305,7 +1305,7 @@ fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.jso
   document.getElementById("stand").textContent="Last update: "+fmtDate(UPDATED);
   cartBadges();render();updateReturning();checkRestoreLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
-function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=Math.min(100*avail/w-0.5,132)+"px"}
+function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
 {let qt;const qi=document.getElementById("q");qi.oninput=()=>{clearTimeout(qt);qt=setTimeout(()=>{flt.q=qi.value;if(SHOPS.length)render()},160)}}
 fitTitle();addEventListener("resize",fitTitle);try{document.fonts.ready.then(fitTitle)}catch(e){}
 
