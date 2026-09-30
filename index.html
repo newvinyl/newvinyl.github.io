@@ -282,6 +282,16 @@ label.bbtn{cursor:pointer}
 }
 @media (min-width:1200px){#list:not(.bagview) section.shop{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (min-width:1560px){#list:not(.bagview) section.shop{grid-template-columns:repeat(5,minmax(0,1fr));column-gap:32px}}
+.gen{all:unset;cursor:pointer;color:var(--fg);text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--muted);text-underline-offset:3px;padding-block:4px}
+.gen:hover{color:var(--rule);text-decoration-color:var(--rule)}
+.gen.on{color:var(--accent);text-decoration-color:var(--accent)}
+.gen:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gsep{color:var(--muted);margin-inline:.35em}
+.totop{all:unset;cursor:pointer;order:1;width:40px;height:40px;flex:none;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#f2f0ea;border:1px solid rgba(255,255,255,.3);border-radius:50%}
+.totop svg{width:17px;height:17px}
+.totop:hover{background:#f2f0ea;color:var(--deep)}
+.totop:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.totop[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -308,6 +318,7 @@ label.bbtn{cursor:pointer}
   <div class="in">
     <button class="pbtn" id="pp" aria-label="Play"><svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M1 1 19 11 1 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
     <div class="pt"><div class="a" id="pa">Tap a track</div><div class="b" id="pb">Previews straight from the shops</div><div class="bar"><i id="pr"></i></div></div>
+    <button class="totop" id="totop" aria-label="Back to top" title="Back to top" hidden><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 16V3M3 8.5 9 2.5 15 8.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button>
     <button class="pcart" id="pcart" aria-label="Open my bag"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 7V2.5M9 7V1.8M12.5 7V2.8M16 7V2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="1.5" y="7" width="19" height="13.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11.8h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><b class="badge" data-cartcount hidden>0</b></button>
     <button class="pbtn sm" id="nx" aria-label="Next track"><svg class="tri" viewBox="0 0 30 22" aria-hidden="true"><path d="M1 1 14 11 1 21ZM15 1 28 11 15 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
   </div>
@@ -470,6 +481,23 @@ function entries(month,applyRegion=true){
   })});
   return out;
 }
+// Genres in der Karte als Filter-Links: Klick zeigt alle Releases dieses Genres
+function genreLinks(g){
+  return String(g||"").split(/(\s*\/\s*|\s*·\s*)/).map(part=>{
+    if(/^\s*[\/·]\s*$/.test(part))return `<span class="gsep">${esc(part.trim())}</span>`;
+    const t=part.trim(),v=t.replace(/\s+Edits$/i,"");
+    if(!t)return "";
+    if(NOT_GENRE.test(v))return esc(t);
+    return `<button class="gen${flt.genres.has(v)?" on":""}" data-genre="${esc(v)}" title="Show all ${esc(v)} releases">${esc(t)}</button>`;
+  }).join("");
+}
+function filterGenre(v){
+  const only=flt.genres.size===1&&flt.genres.has(v);
+  flt.genres.clear();if(!only)flt.genres.add(v);
+  render();
+  const f=document.getElementById("search");window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-12),behavior:"smooth"});
+}
+list.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("button.gen");if(b){e.preventDefault();filterGenre(b.dataset.genre)}});
 function setTags(art,e){
   const box=art.querySelector(".tags");if(!box)return;const r=e.r,t=[];
   if(NEWSET.has(e.gk))t.push('<span class="tag new">New</span>');
@@ -491,7 +519,7 @@ function releaseEl(e,ri){
   const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;el._e=e;
   el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
   <div class="info"><div class="tags none"></div><div class="artist">${esc(r.a)}</div><div class="title">${esc(r.t)}</div>
-  <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${esc(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
+  <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${genreLinks(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
   <div class="fol"><button class="folbtn" data-fol="a" data-v="${esc(r.a)}"></button><button class="folbtn" data-fol="l" data-v="${esc(r.l)}"></button></div>
   <ul class="tracks"></ul>
   <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}</span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
@@ -926,6 +954,12 @@ function showYT(q){
 au.onerror=()=>{if(cur>=0)fallback(queue[cur])};
 au.ontimeupdate=()=>{if(au.duration)pr.style.width=(au.currentTime/au.duration*100)+"%"};
 au.onended=()=>{if(cur<queue.length-1)play(cur+1)};
+// Zurück nach oben: Button erscheint nach etwas Scrollen, Titel ist ebenfalls klickbar
+{const tt=document.getElementById("totop");let tk=0;
+  const upd=()=>{tk=0;tt.hidden=scrollY<Math.max(700,innerHeight*1.2)};
+  addEventListener("scroll",()=>{if(!tk)tk=requestAnimationFrame(upd)},{passive:true});
+  tt.onclick=()=>{window.scrollTo({top:0,behavior:"smooth"});tt.blur()};
+  const ti=document.getElementById("title");ti.style.cursor="pointer";ti.title="Back to top";ti.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});}
 document.addEventListener("click",e=>{document.querySelectorAll("details.moretr[open]").forEach(d=>{if(!d.contains(e.target))d.open=false})});
 // Desktop: Leertaste = Play/Pause, N = nächster Track
 addEventListener("keydown",e=>{if(e.metaKey||e.ctrlKey||e.altKey||/^(INPUT|TEXTAREA|SELECT|BUTTON|A)$/.test((e.target||{}).tagName||""))return;
