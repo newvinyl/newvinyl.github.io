@@ -549,6 +549,9 @@ html.sheet-open,html.sheet-open body{overflow:hidden}
 .fpanel.sheet .fdone{margin-top:14px}
 .fpanel.sheet .fdone .bbtn{min-height:56px;font-size:17px}
 }
+/* Lange Namen ohne Leerzeichen dürfen die Seite nie breiter machen als den Bildschirm */
+html,body{overflow-x:clip}
+.info,.artist,.an,.title,.nm,.lbl,.shop-name,.citem{overflow-wrap:anywhere;min-width:0}
 </style>
 
 
