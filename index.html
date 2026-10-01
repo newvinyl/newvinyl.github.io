@@ -553,7 +553,9 @@ html.sheet-open,html.sheet-open body{overflow:hidden}
 html,body{overflow-x:clip}
 .info,.artist,.an,.title,.nm,.lbl,.shop-name,.citem{overflow-wrap:anywhere;min-width:0}
 /* Teilen */
-.sharebtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:6px 0;font-size:13px;font-weight:700;color:var(--fg);text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:4px}
+.cwrap{display:flex;flex-direction:column;align-items:center}
+.cwrap .cartbtn{align-self:stretch;justify-content:center}
+.sharebtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:6px 0;font-size:13px;font-weight:700;color:var(--fg);text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:4px}
 .sharebtn svg{width:13px;height:13px}
 .sharebtn:hover{color:var(--rule);text-decoration-color:var(--rule)}
 .sharebtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -897,7 +899,7 @@ function releaseEl(e,ri){
   <div class="info"><div class="tags none"></div><h3 class="artist"><span class="an">${esc(r.a)}</span><button class="star folbtn" data-fol="a" data-v="${esc(r.a)}"></button></h3><div class="title">${esc(r.t)}</div>
   <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a><button class="star sm folbtn" data-fol="l" data-v="${esc(r.l)}"></button>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${genreLinks(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
   <ul class="tracks"></ul>
-  <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}<button class="sharebtn" type="button" aria-label="Share ${esc(r.a)} – ${esc(r.t)}">${SHAREI}Share</button></span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
+  <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}</span><span class="cwrap"><button class="cartbtn" data-key="${esc(r.key)}"></button><button class="sharebtn" type="button" aria-label="Share ${esc(r.a)} – ${esc(r.t)}">${SHAREI}Share</button></span></div>
   <a class="shoplink" href="${url}" target="_blank" rel="noopener">or view directly at ${S.shop}${EXT}</a>
   ${others.length?`<div class="also"><div class="also-h">Also at ${others.length} more ${others.length>1?"shops":"shop"}</div>${others.map(o=>`<div class="orow${isLow(o)?" low":""}"><a class="oshop" href="${o.href}" target="_blank" rel="noopener">${esc(o.S.shop)} <i>${o.S.country||""}</i>${EXT}</a><span class="ost">${o.st&&STOCK[o.st]?STOCK[o.st]:""}${isLow(o)?`${o.st?" · ":""}<b>lowest</b>`:""}</span><span class="oprice">${fmt(o.S.cur,o.p)}${o.chf!=null&&CODE[o.S.cur]!==homeInfo().cur?`<small>≈ ${chf(o.chf)}</small>`:""}</span><button class="cartbtn mini" data-key="${esc(o.key)}" data-shop="${esc(o.S.shop)}"></button></div>`).join("")}</div>`:""}</div>`;
   setTags(el,e);
