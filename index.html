@@ -593,6 +593,13 @@ html,body{overflow-x:clip}
 .shcov{width:140px;height:140px}
 }
 @media (prefers-reduced-motion:reduce){.share,.shpanel{animation:none}}
+/* Preiszeile: Preis bündig mit Unterkante von «Add to bag», darunter Umrechnung und Teilen rechtsbündig */
+.rel .row{display:grid;grid-template-columns:auto auto;justify-content:end;align-items:end;column-gap:14px;row-gap:2px}
+.rel .row .pwrap,.rel .row .cwrap{display:contents}
+.rel .row .price{grid-column:1;grid-row:1;align-self:end;justify-self:end;line-height:.9;margin-bottom:-1px}
+.rel .row .chf{grid-column:1;grid-row:2;justify-self:end;align-self:start;margin-top:4px}
+.rel .row .cartbtn{grid-column:2;grid-row:1}
+.rel .row .sharebtn{grid-column:2;grid-row:2;justify-self:end;align-self:start}
 </style>
 
 
