@@ -646,7 +646,7 @@ html,body{overflow-x:clip}
 <div class="share" id="share" hidden></div>
 <div class="fback" id="fback" hidden></div>
 <div class="fabwrap" id="fabwrap" hidden>
-  <div class="fnudge" id="fnudge" hidden><button type="button" class="nhide" id="nhide"></button><button type="button" class="nx" id="nx" aria-label="Dismiss"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  <div class="fnudge" id="fnudge" hidden><button type="button" class="nhide" id="nhide"></button><button type="button" class="nx" id="nhx" aria-label="Dismiss"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
   <button type="button" class="ffab" id="ffab" aria-label="Filter records"><svg viewBox="0 0 20 16" aria-hidden="true"><path d="M1 2h18M4 8h12M8 14h4" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg><span class="ft">Filter</span><b class="fb" id="ffabn" hidden></b></button>
 </div>
 <div class="player" id="player">
@@ -1677,7 +1677,7 @@ function hideSmart(){const nd=document.getElementById("fnudge");if(!nd)return;nd
 document.getElementById("nhide").onclick=()=>{const g=smartG;if(!g)return;hideSmart();flt.genres.delete(g);flt.hide.add(g);track("Smart hide used",{genre:g});render();
   const l=document.getElementById("list");window.scrollTo({top:Math.max(0,l.getBoundingClientRect().top+scrollY-8),behavior:"smooth"});
   flashFab(`${g} hidden`)};
-document.getElementById("nx").onclick=hideSmart;
+document.getElementById("nhx").onclick=hideSmart;
 function flashFab(t){const f=document.getElementById("ffab"),ft=f.querySelector(".ft");ft.textContent=t;f.classList.add("pulse");setTimeout(()=>{ft.textContent="Filter";f.classList.remove("pulse")},2600)}
 // Mobile: Suche hinter der Lupe oben; öffnet als Leiste am oberen Rand
 const sbox=document.getElementById("search"),sbtn=document.getElementById("sbtn");
