@@ -552,6 +552,45 @@ html.sheet-open,html.sheet-open body{overflow:hidden}
 /* Lange Namen ohne Leerzeichen dürfen die Seite nie breiter machen als den Bildschirm */
 html,body{overflow-x:clip}
 .info,.artist,.an,.title,.nm,.lbl,.shop-name,.citem{overflow-wrap:anywhere;min-width:0}
+/* Teilen */
+.sharebtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:6px 0;font-size:13px;font-weight:700;color:var(--fg);text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:4px}
+.sharebtn svg{width:13px;height:13px}
+.sharebtn:hover{color:var(--rule);text-decoration-color:var(--rule)}
+.sharebtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.share{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.65);display:flex;align-items:flex-end;justify-content:center;animation:fade .2s}
+.share[hidden]{display:none}
+.shpanel{width:100%;max-height:92vh;max-height:92dvh;overflow-y:auto;overscroll-behavior:contain;box-sizing:border-box;background:var(--bg);border-top:4px solid var(--rule);padding:4px 16px calc(18px + env(safe-area-inset-bottom,0px));animation:sheetUp .28s cubic-bezier(.2,.9,.3,1)}
+.shtop{display:flex;align-items:center;justify-content:space-between;padding:8px 0 10px}
+.shtop b{font-family:var(--display);font-size:20px}
+.shcard{display:flex;gap:14px;align-items:center;border:1px solid var(--line);padding:10px;background:var(--deep)}
+.shcov{position:relative;flex:none;width:112px;height:112px;overflow:hidden;background:#1c1c1c}
+.shcov .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.shcov .ph span{width:84%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--mono);font-size:9px;line-height:1.3;color:#111}
+.shcov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shtxt{min-width:0}
+.shtxt h2{margin:0;font-family:var(--display);font-size:18px;line-height:1.15;overflow-wrap:anywhere}
+.shtxt p{margin:2px 0 0;overflow-wrap:anywhere}
+.sht{font-size:15px}
+.shl{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.shd{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px!important}
+.shgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px 6px;margin:18px 0 16px}
+.sho{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:var(--fg);text-align:center;-webkit-tap-highlight-color:transparent}
+.shi{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--rule);transition:background .15s,color .15s,border-color .15s}
+.shi svg{width:24px;height:24px}
+.sho:hover .shi,.sho:active .shi{background:var(--rule);color:#0d0d0d;border-color:var(--rule)}
+.sho:focus-visible .shi{outline:2px solid var(--accent);outline-offset:2px}
+.shlink{display:flex;gap:8px}
+.shlink input{flex:1;min-width:0;font:inherit;font-family:var(--mono);font-size:13px;padding:0 10px;background:var(--deep);color:var(--fg);border:1px solid var(--line);border-radius:0;min-height:46px;box-sizing:border-box}
+.shlink .bbtn{flex:none}
+.shlink .bbtn svg{width:15px;height:15px}
+.shmsg{min-height:1.4em;margin:10px 0 0;font-size:13.5px;color:var(--fg)}
+@media (max-width:380px){.shgrid{grid-template-columns:repeat(4,minmax(0,1fr))}.shcov{width:92px;height:92px}}
+@media (min-width:700px){
+.share{align-items:center}
+.shpanel{width:480px;max-height:88vh;border:4px solid var(--rule);padding:6px 24px 24px;animation:sheetIn .25s cubic-bezier(.2,.9,.3,1)}
+.shcov{width:140px;height:140px}
+}
+@media (prefers-reduced-motion:reduce){.share,.shpanel{animation:none}}
 </style>
 
 
@@ -604,6 +643,7 @@ html,body{overflow-x:clip}
   </footer>
 </div>
 
+<div class="share" id="share" hidden></div>
 <div class="fback" id="fback" hidden></div>
 <div class="fabwrap" id="fabwrap" hidden>
   <div class="fnudge" id="fnudge" hidden><button type="button" class="nhide" id="nhide"></button><button type="button" class="nx" id="nx" aria-label="Dismiss"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
@@ -760,6 +800,7 @@ function track(name,data){try{if(window.umami&&typeof umami.track==="function")u
 const shopOf=k=>{const e=INDEX[k];return e&&e.S?e.S.shop:""};
 document.addEventListener("click",e=>{
   const a=e.target.closest&&e.target.closest("a[href]");
+  if(a&&a.closest("#share"))return;
   if(a&&a.target==="_blank"&&/^https?:/.test(a.href)&&a.hostname!==location.hostname){
     const art=a.closest("article.rel"),inBag=!!a.closest(".run,#list.bagview");
     const where=a.classList.contains("runbtn")?(/checkout/i.test(a.textContent)?"checkout":"guided"):inBag?"bag":art?"card":"other";
@@ -856,7 +897,7 @@ function releaseEl(e,ri){
   <div class="info"><div class="tags none"></div><h3 class="artist"><span class="an">${esc(r.a)}</span><button class="star folbtn" data-fol="a" data-v="${esc(r.a)}"></button></h3><div class="title">${esc(r.t)}</div>
   <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a><button class="star sm folbtn" data-fol="l" data-v="${esc(r.l)}"></button>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${genreLinks(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
   <ul class="tracks"></ul>
-  <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}</span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
+  <div class="row"><span class="pwrap"><span class="price">${fmtBig(S.cur,r.p)}</span>${r.chf!=null&&CODE[S.cur]!==homeInfo().cur?`<span class="chf">≈ ${chf(r.chf)}${isLow(r)?" · lowest":""}</span>`:""}<button class="sharebtn" type="button" aria-label="Share ${esc(r.a)} – ${esc(r.t)}">${SHAREI}Share</button></span><button class="cartbtn" data-key="${esc(r.key)}"></button></div>
   <a class="shoplink" href="${url}" target="_blank" rel="noopener">or view directly at ${S.shop}${EXT}</a>
   ${others.length?`<div class="also"><div class="also-h">Also at ${others.length} more ${others.length>1?"shops":"shop"}</div>${others.map(o=>`<div class="orow${isLow(o)?" low":""}"><a class="oshop" href="${o.href}" target="_blank" rel="noopener">${esc(o.S.shop)} <i>${o.S.country||""}</i>${EXT}</a><span class="ost">${o.st&&STOCK[o.st]?STOCK[o.st]:""}${isLow(o)?`${o.st?" · ":""}<b>lowest</b>`:""}</span><span class="oprice">${fmt(o.S.cur,o.p)}${o.chf!=null&&CODE[o.S.cur]!==homeInfo().cur?`<small>≈ ${chf(o.chf)}</small>`:""}</span><button class="cartbtn mini" data-key="${esc(o.key)}" data-shop="${esc(o.S.shop)}"></button></div>`).join("")}</div>`:""}</div>`;
   setTags(el,e);
@@ -1491,7 +1532,7 @@ list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
   SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();try{const gp=new URLSearchParams(location.search).get("genre");if(gp)flt.genres.add(gp)}catch(e){}cart=cart.filter(k=>INDEX[k]);
   {const dt=esc(fmtDate(UPDATED));document.getElementById("stand").innerHTML=`<span class="lu">Last update:</span><span class="lu2">Updated</span> <span class="sig" id="gdate" data-t="${dt}">${[...dt].map(c=>/\d/.test(c)?`<span class="d">${c}</span>`:c).join("")}</span>`;startGlitch()}
-  cartBadges();render();updateReturning();checkRestoreLink();setTimeout(maybeNudge,4000);
+  cartBadges();render();updateReturning();checkRestoreLink();checkShareLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
 {let qt;const qi=document.getElementById("q");let st;qi.addEventListener("input",()=>{clearTimeout(st);st=setTimeout(()=>{const v=qi.value.trim();if(v.length>=2){const hits=(document.querySelector(".fcount")||{}).textContent||"";track("Search",{query:v.toLowerCase().slice(0,60),results:parseInt(hits)||0})}},1500)});
@@ -1499,7 +1540,10 @@ qi.oninput=()=>{clearTimeout(qt);qt=setTimeout(()=>{flt.q=qi.value;if(SHOPS.leng
 // Player: Tippen auf Artist/Track springt zur Platte in der Liste (wechselt bei Bedarf Ansicht oder hebt Filter auf)
 function showPlaying(){
   const q=nowQ;if(!q)return;
-  const find=()=>[...document.querySelectorAll("article.rel")].find(a=>(a._e&&q.gk&&a._e.gk===q.gk)||a.dataset.key===q.key);
+  jumpTo(a=>(a._e&&q.gk&&a._e.gk===q.gk)||a.dataset.key===q.key);
+}
+function jumpTo(pred){
+  const find=()=>[...document.querySelectorAll("article.rel")].find(pred);
   let art=find();
   const tryViews=()=>{for(const v of ["home","archiv"]){if(art)return;if(view!==v)go(v);art=find()}};
   tryViews();
@@ -1508,8 +1552,76 @@ function showPlaying(){
   const sb=document.getElementById("search");if(sb&&sb.classList.contains("open"))searchUI(false);
   art.scrollIntoView({behavior:"smooth",block:"start"});
   art.classList.remove("flash");void art.offsetWidth;art.classList.add("flash");setTimeout(()=>art.classList.remove("flash"),1600);
+  return art;
 }
 {const pt=document.getElementById("ptgo");pt.onclick=showPlaying;pt.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showPlaying()}}}
+// Teilen: eigene Seite pro Platte (/r/<slug>/, vom Build-Skript erzeugt) zeigt das Cover als Vorschaubild und leitet hierher weiter
+const rslug=(a,t)=>`${a} ${t}`.normalize("NFKD").replace(/[^\x00-\x7f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,80).replace(/^-+|-+$/g,"");
+const SHAREI='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 10.5V1.5M4.5 5 8 1.5 11.5 5M2.5 8.5v6h11v-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+const SI={
+  wa:'<svg viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.6 7.6c.3-.6.6-.6.9-.6h.6c.2 0 .4.1.5.4l.8 1.9c.1.2 0 .5-.1.6l-.6.7c-.1.2-.1.4 0 .6.6 1.1 1.5 2 2.6 2.6.2.1.4.1.6 0l.7-.8c.2-.2.4-.2.6-.1l1.9.9c.2.1.3.3.3.5 0 .6-.2 1.3-.8 1.7-.6.4-1.6.6-3-.1-1.6-.7-3.6-2.6-4.4-4.2-.7-1.4-.6-2.4-.1-3.1Z" fill="currentColor"/></svg>',
+  ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
+  tg:'<svg viewBox="0 0 24 24"><path d="M21.5 3.5 2.8 10.7c-.8.3-.8 1.4.1 1.6l4.7 1.5 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.9 3.6c.6.4 1.4.1 1.6-.6l3.2-15.4c.2-.9-.7-1.6-1.8-1.4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m7.6 13.8 10-7-7.7 8.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  x:'<svg viewBox="0 0 24 24"><path d="M3.5 3.5h5l12 17h-5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M20 3.5 13.6 10.6M10.3 13.6 4 20.5" stroke="currentColor" stroke-width="1.9"/></svg>',
+  fb:'<svg viewBox="0 0 24 24"><path d="M13.5 21.5v-8h2.8l.4-3.2h-3.2V8.3c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4v3.2h2.8v8" fill="currentColor"/></svg>',
+  bs:'<svg viewBox="0 0 24 24"><path d="M12 10.8C10.6 8 6.8 3 3.8 3 2.2 3 2.3 5.4 2.6 7.5c.4 3 2.6 4 5.3 3.6-3.9.7-4.9 3-2.7 5.2 4.1 4.2 5.8-1.1 6.8-3.5 1 2.4 2.7 7.7 6.8 3.5 2.2-2.2 1.2-4.5-2.7-5.2 2.7.4 4.9-.6 5.3-3.6.3-2.1.4-4.5-1.2-4.5-3 0-6.8 5-8.2 7.8Z" fill="currentColor"/></svg>',
+  th:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M16.8 11.3c-.4-3-2.3-4.4-4.8-4.4-2 0-3.5 1-4.2 2.6"/><path d="M17 11.6c-1.6-.9-4.5-1.1-6.2-.3-1.7.8-1.7 3.2.2 3.8 2.6.8 5.1-.8 5.1-4.2v-.3"/><path d="M18.4 6.8C17 4.2 14.7 3 12 3 6.8 3 4 6.6 4 12s2.8 9 8 9c3.8 0 6.4-1.8 7.3-4.6"/></svg>',
+  rd:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="14.5" rx="8" ry="5.5"/><path d="M12 9V4l4.2 1"/><circle cx="17.6" cy="5.2" r="1.4"/><circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none"/><path d="M9.3 16.9c1.6 1 3.8 1 5.4 0" stroke-linecap="round"/></svg>',
+  em:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.5" y="5" width="19" height="14"/><path d="m2.5 5 9.5 8 9.5-8"/></svg>',
+  more:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>'
+};
+let shareFrom=null;
+function closeShare(){const m=document.getElementById("share");if(m.hidden)return;m.hidden=true;m.innerHTML="";document.documentElement.classList.remove("sheet-open");if(shareFrom)shareFrom.focus({preventScroll:true});shareFrom=null}
+async function copyText(t,input){try{await navigator.clipboard.writeText(t);return true}catch(e){try{input.select();return document.execCommand("copy")}catch(_){return false}}}
+function openShare(art,btn){
+  const e=art&&art._e;if(!e)return;const r=e.r;shareFrom=btn||null;
+  const url=`${SITE}/r/${rslug(r.a,r.t)}/`,title=`${r.a} – ${r.t}`,line=`${title} (${r.l}) on vinyl`,u=encodeURIComponent(url),t=encodeURIComponent(line);
+  const img=art.querySelector(".cover img"),ph=art.querySelector(".cover .ph");
+  const native=!!navigator.share;
+  const opts=[
+    ["wa","WhatsApp",`https://wa.me/?text=${encodeURIComponent(line+" "+url)}`],
+    ["ig","Instagram",null],
+    ["tg","Telegram",`https://t.me/share/url?url=${u}&text=${t}`],
+    ["x","X",`https://x.com/intent/tweet?text=${t}&url=${u}`],
+    ["fb","Facebook",`https://www.facebook.com/sharer/sharer.php?u=${u}`],
+    ["bs","Bluesky",`https://bsky.app/intent/compose?text=${encodeURIComponent(line+" "+url)}`],
+    ["th","Threads",`https://www.threads.net/intent/post?text=${encodeURIComponent(line+" "+url)}`],
+    ["rd","Reddit",`https://www.reddit.com/submit?url=${u}&title=${t}`],
+    ["em","Email",`mailto:?subject=${encodeURIComponent(title+" · Monthly Vinyl")}&body=${encodeURIComponent(`${line}\n\nListen to the previews and compare prices:\n${url}\n`)}`],
+    ...(native?[["more","More",null]]:[])];
+  const m=document.getElementById("share");
+  m.innerHTML=`<div class="shpanel" role="dialog" aria-modal="true" aria-labelledby="shtitle">
+    <div class="shtop"><b>Share this record</b><button class="sx" id="shx" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2 2 14" stroke="currentColor" stroke-width="2.2"/></svg></button></div>
+    <div class="shcard"><div class="shcov">${ph?ph.outerHTML:""}${img?`<img src="${esc(img.currentSrc||img.src)}" alt="" onerror="this.remove()">`:""}</div>
+      <div class="shtxt"><h2 id="shtitle">${esc(r.a)}</h2><p class="sht">${esc(r.t)}</p><p class="shl">${esc(r.l)}${r.cat?" · "+esc(r.cat):""}</p><p class="shd">monthlyvinyl.net</p></div></div>
+    <div class="shgrid">${opts.map(([id,label,href])=>href?`<a class="sho" data-ch="${id}" href="${esc(href)}" ${id==="em"?"":'target="_blank" rel="noopener"'}><span class="shi">${SI[id]}</span>${label}</a>`:`<button class="sho" type="button" data-ch="${id}"><span class="shi">${SI[id]}</span>${label}</button>`).join("")}</div>
+    <div class="shlink"><input id="shurl" readonly value="${esc(url)}" aria-label="Link to this record"><button class="bbtn" id="shcopy" type="button">${COPYI}Copy link</button></div>
+    <p class="shmsg" id="shmsg" role="status"></p></div>`;
+  m.hidden=false;document.documentElement.classList.add("sheet-open");
+  const msg=x=>{m.querySelector("#shmsg").textContent=x},inp=m.querySelector("#shurl");
+  m.onclick=ev=>{if(ev.target===m)closeShare()};
+  m.querySelector("#shx").onclick=closeShare;
+  m.querySelector("#shcopy").onclick=async()=>{track("Share",{channel:"copy",shop:e.S.shop});msg(await copyText(url,inp)?"Link copied.":"Select the link above and copy it.")};
+  inp.onfocus=()=>inp.select();
+  m.querySelectorAll(".sho").forEach(b=>b.addEventListener("click",async ev=>{
+    const ch=b.dataset.ch;track("Share",{channel:ch,shop:e.S.shop});
+    if(ch==="more"){ev.preventDefault();try{await navigator.share({title,text:line,url})}catch(_){}}
+    if(ch==="ig"){ev.preventDefault();
+      if(native){try{await navigator.share({title,text:line,url});return}catch(err){if(err&&err.name==="AbortError")return}}
+      const ok=await copyText(url,inp);msg(ok?"Link copied. In Instagram, paste it into your story with the link sticker, or into a DM.":"Copy the link above, then paste it in Instagram.")}
+  }));
+  setTimeout(()=>m.querySelector("#shx").focus({preventScroll:true}),30);
+}
+document.addEventListener("click",ev=>{const b=ev.target.closest&&ev.target.closest(".sharebtn");if(b){ev.preventDefault();openShare(b.closest("article.rel"),b)}});
+document.addEventListener("keydown",ev=>{if(ev.key==="Escape")closeShare()});
+// Geteilter Link (?r=slug): direkt zur Platte springen
+function checkShareLink(){
+  let sl=null;try{sl=new URLSearchParams(location.search).get("r")}catch(e){}
+  if(!sl)return;
+  try{const q=new URLSearchParams(location.search);q.delete("r");const qs=q.toString();history.replaceState(null,"",location.pathname+(qs?"?"+qs:"")+location.hash)}catch(e){}
+  track("Shared link opened");
+  setTimeout(()=>jumpTo(a=>a._e&&a._e.all.some(o=>rslug(o.a,o.t)===sl)),250);
+}
 // Schwebender Filter-Knopf: erscheint, sobald die Filter-Zeile aus dem Bild ist; öffnet den Filter als Blatt (Handy unten, Desktop rechts)
 let pastFilter=false;
 function updateFab(){

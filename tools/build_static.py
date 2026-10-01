@@ -3,6 +3,7 @@
 - eine statische Plattenliste in index.html (zwischen <!--STATIC--> und <!--/STATIC-->),
 - Genre-Links im Footer (zwischen <!--GENRES--> und <!--/GENRES-->),
 - eine Unterseite pro Genre (/techno/, /ambient/ …),
+- eine Teilen-Seite pro Platte (/r/<slug>/) mit Cover als Vorschaubild,
 - sitemap.xml und llms.txt.
 Die interaktive Seite überschreibt die statische Liste beim Laden; Besucher sehen davon nichts.
 Aufruf im Repo-Ordner:  python3 tools/build_static.py
@@ -21,6 +22,56 @@ e = lambda s: html.escape(str(s or ""), quote=True)
 def slug(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+SHARE_PAGE = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{name} · Monthly Vinyl</title>
+<meta name="description" content="{desc}">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Monthly Vinyl">
+<meta property="og:title" content="{name}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{img}">
+<meta property="og:image:alt" content="{name} vinyl cover">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{name}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{img}">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<script>location.replace("/?r={sl}")</script>
+<style>body{{margin:0;background:#0d0d0d;color:#ecebe7;font:16px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;padding:24px 16px}}.w{{max-width:560px;margin:0 auto}}img{{width:100%;max-width:360px;height:auto;display:block;margin-bottom:16px}}h1{{font-size:24px;margin:0}}p{{color:#9a9893}}a{{color:#fff}}</style>
+</head>
+<body><div class="w">
+<img src="{img}" alt="{name} vinyl cover">
+<h1>{name}</h1>
+<p>{meta}</p>
+<p><a href="/?r={sl}">Listen to the previews on Monthly Vinyl →</a></p>
+<p>Buy: {buy}</p>
+</div></body>
+</html>
+"""
+
+def rslug(a, t):
+    # muss genau der Funktion rslug() in index.html entsprechen
+    return slug(f"{a} {t}")[:80].strip("-")
+
+def hires(u):
+    # grösste Cover-Version pro Shop, wie hiRes() in index.html
+    if not u: return u
+    if re.search(r"media\.hardwax\.com/images/", u) and not u.endswith("big.jpg"): return re.sub(r"\.jpg$", "big.jpg", u)
+    if "redeyerecords.co.uk/imagery/" in u: return re.sub(r"-2\.jpg$", "-1.jpg", u)
+    if "rushhourrecords" in u: return u.replace("/styles/cover_medium/", "/styles/cover_large/")
+    if "clone.nl/platen/artwork/small/" in u: return u.replace("/artwork/small/", "/artwork/large/")
+    if "yoyaku.io/wp-content/uploads/" in u: return re.sub(r"-\d+x\d+(\.\w+)$", r"\1", u)
+    if "imagescdn.juno.co.uk/300/" in u: return re.sub(r"-MED\.jpg$", "-BIG.jpg", u.replace("/300/", "/full/"))
+    if "decks.de/decks/gfx/co_mid/" in u: return u.replace("/co_mid/", "/co_big/")
+    return u
 
 def norm(s):
     s = unicodedata.normalize("NFKD", str(s or "").lower())
@@ -169,6 +220,41 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
 '''
         os.makedirs(os.path.join(ROOT, gs), exist_ok=True)
         open(os.path.join(ROOT, gs, "index.html"), "w", encoding="utf-8").write(page)
+
+    # 2b. Teilen-Seiten: eine Seite pro Platte (/r/<slug>/) mit dem Cover als Vorschaubild für WhatsApp, Instagram usw.
+    #     Besucher werden sofort zur Platte auf der Hauptseite weitergeleitet (/?r=<slug>).
+    import shutil
+    rdir = os.path.join(ROOT, "r")
+    if os.path.isdir(rdir): shutil.rmtree(rdir)
+    allg, allo = {}, []
+    for S in data["shops"]:
+        if S.get("blocked"): continue
+        for r in S.get("items", []):
+            k = norm(r["a"]) + "|" + norm(r["t"])
+            if k not in allg: allg[k] = []; allo.append(k)
+            allg[k].append((S, r))
+    done = set()
+    for k in allo:
+        offers = allg[k]
+        S, r = sorted(offers, key=lambda o: (not o[1].get("cover"), not playable(o[1]), o[1].get("p") is None))[0]
+        slugs = []
+        for _, o in offers:
+            sl = rslug(o["a"], o["t"])
+            if sl and sl not in done and sl not in slugs: slugs.append(sl)
+        if not slugs: continue
+        meta = " · ".join(x for x in [r.get("l"), r.get("cat"), r.get("f")] if x)
+        gs = ", ".join(genres_of(r.get("g"))[:3])
+        desc = f'{meta}{" · " + gs if gs else ""}. Listen to the previews and compare prices on Monthly Vinyl.'
+        img = hires(r.get("cover")) or f"{SITE}/og-image.png"
+        name = f'{r["a"]} – {r["t"]}'
+        buy = " · ".join(f'<a href="{e(o.get("url"))}" rel="nofollow noopener">{e(Sx["shop"])} {e(price(Sx, o.get("p")))}</a>' for Sx, o in offers)
+        for sl in slugs:
+            done.add(sl)
+            url = f"{SITE}/r/{sl}/"
+            page = SHARE_PAGE.format(name=e(name), desc=e(desc), url=url, img=e(img), sl=sl, meta=e(meta), buy=buy)
+            os.makedirs(os.path.join(rdir, sl), exist_ok=True)
+            open(os.path.join(rdir, sl, "index.html"), "w", encoding="utf-8").write(page)
+    print(f"share pages: {len(done)}")
 
     # 3. Sitemap
     urls = [f"{SITE}/"] + [f"{SITE}/{slug(g)}/" for g in genre_list]
