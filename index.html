@@ -1027,7 +1027,8 @@ const slug=s=>fold(s).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const dayLabel=iso=>{const d=new Date(iso+"T12:00:00");return `${DOW[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}`};
 const firstSeen=e=>e.all.map(o=>o.first_seen||(o.m+"-01")).sort()[0];
-let mode=store.get("mvr-mode","shop");if(mode!=="shop"&&mode!=="date")mode="shop";
+// Jeder Besuch startet nach Shop gruppiert; «Date» gilt nur bis zum Neuladen
+let mode="shop";
 // Feste Reihenfolge: Shops aus dem eigenen Zollgebiet zuerst, sonst alphabetisch; gesperrte Shops am Schluss
 const shopOrder=()=>{const hr=homeInfo().region;return [...SHOPS].sort((a,b)=>(!!a.blocked-!!b.blocked)||((REGION(b.country)===hr)-(REGION(a.country)===hr))||a.shop.localeCompare(b.shop,"en"))};
 // Innerhalb eines Blocks: hörbare zuerst, dann gefolgte, dann neue; nicht hörbare immer am Ende
