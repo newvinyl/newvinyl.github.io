@@ -677,6 +677,12 @@ html.sheet-open .igbadge{display:none}
 .ffab,.ffab.act{min-height:38px;padding:0 14px 0 12px;gap:7px;border-radius:0;font-size:13.5px;background:var(--yellow);color:#0d0d0d;box-shadow:0 4px 16px rgba(0,0,0,.6)}
 .ffab svg{width:15px;height:12px}
 .ffab .fb{min-width:18px;height:18px;font-size:11px}
+/* Pull to refresh (Handy) */
+.ptr{display:none}
+html.ptr-on,html.ptr-on body{overscroll-behavior-y:none}
+html.ptr-on .ptr{display:flex;position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:0;right:0;z-index:0;flex-direction:column;align-items:center;gap:6px;opacity:0;pointer-events:none;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--yellow)}
+html.ptr-on .ptr svg{width:38px;height:38px;will-change:transform}
+html.ptr-on .wrap{position:relative;z-index:1;background:var(--bg);transform-origin:50% 0;will-change:transform}
 </style>
 
 
@@ -740,6 +746,7 @@ html.sheet-open .igbadge{display:none}
     <circle cx="70.5" cy="49.5" r="2.6" fill="var(--neon)"/>
   </svg>
 </a>
+<div class="ptr" id="ptr" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#0d0d0d" stroke="var(--yellow)" stroke-width="2.5"/><circle cx="20" cy="20" r="12" fill="none" stroke="#3a3a3a" stroke-width="1.2"/><circle cx="20" cy="20" r="6.5" fill="var(--yellow)"/><circle cx="20" cy="20" r="1.6" fill="#0d0d0d"/><path d="M8 13a14 14 0 0 1 7-6" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/></svg><span id="ptrt">Pull to refresh</span></div>
 <div class="share" id="share" hidden></div>
 <div class="fback" id="fback" hidden></div>
 <div class="fabwrap" id="fabwrap" hidden>
@@ -1789,6 +1796,33 @@ function flashFab(t){const f=document.getElementById("ffab"),ft=f.querySelector(
 {const ig=document.getElementById("igbadge"),END="2026-11-15";
   if(ig&&new Date().toISOString().slice(0,10)<END&&!store.get("mvr-ig",false)){setTimeout(()=>{ig.hidden=false;track("IG badge shown")},1800)}
   if(ig)ig.addEventListener("click",()=>{store.set("mvr-ig",true);track("IG badge click");setTimeout(()=>ig.hidden=true,300)})}
+// Pull to refresh (nur Handy): Inhalt dehnt sich wie Gummi, schnellt beim Loslassen federnd zurück; weit genug gezogen = neue Daten laden
+(function(){
+  if(!matchMedia("(pointer:coarse) and (max-width:899px)").matches)return;
+  document.documentElement.classList.add("ptr-on");
+  const wrap=document.querySelector(".wrap"),ptr=document.getElementById("ptr"),ptrt=document.getElementById("ptrt"),disc=ptr.querySelector("svg");
+  const MAX=150,TH=86;let y0=null,pulling=false,d=0,anim=0,busy=false;
+  const rub=dy=>MAX*(1-Math.exp(-dy/230));
+  const paint=x=>{wrap.style.transform=x?`translateY(${x}px) scaleY(${1+x/700})`:"";ptr.style.opacity=Math.min(1,Math.max(0,x/TH));disc.style.transform=`rotate(${x*3}deg) scale(${.6+.4*Math.min(1,Math.max(0,x)/TH)})`};
+  const blocked=()=>document.documentElement.classList.contains("sheet-open")||document.getElementById("search").classList.contains("open")||!document.getElementById("restore").hidden;
+  addEventListener("touchstart",e=>{if(busy||blocked()||scrollY>0||e.touches.length>1){y0=null;return}cancelAnimationFrame(anim);y0=e.touches[0].clientY;pulling=false},{passive:true});
+  addEventListener("touchmove",e=>{if(y0==null)return;const dy=e.touches[0].clientY-y0;
+    if(dy<=0||scrollY>0){if(pulling){d=0;paint(0)}pulling=false;return}
+    pulling=true;e.preventDefault();d=rub(dy);paint(d);ptrt.textContent=d>=TH?"Release to refresh":"Pull to refresh"},{passive:false});
+  const spring=(from,done)=>{let x=from,v=0,last=performance.now();const k=1100,c=19;
+    const step=t=>{const dt=Math.min(.032,(t-last)/1000);last=t;const a=-k*x-c*v;v+=a*dt;x+=v*dt;
+      if(Math.abs(x)<.4&&Math.abs(v)<8){paint(0);wrap.style.transform="";done&&done();return}
+      paint(x);anim=requestAnimationFrame(step)};anim=requestAnimationFrame(step)};
+  addEventListener("touchend",()=>{if(y0==null)return;y0=null;if(!pulling)return;pulling=false;
+    const go=d>=TH;ptrt.textContent=go?"Refreshing…":"Pull to refresh";
+    spring(d,()=>{if(go)refreshData()});d=0});
+  async function refreshData(){busy=true;track("Pull to refresh");
+    try{const r=await fetch("releases.json",{cache:"no-store"});if(!r.ok)throw 0;const dd=await r.json();
+      SHOPS=dd.shops;UPDATED=dd.updated;if(dd.fx){FX={...FX,...dd.fx};FXDATE=dd.fx.date||""}buildIndex();render();
+      const g=document.getElementById("gdate");if(g){const dt=esc(fmtDate(UPDATED));g.dataset.t=dt;g.innerHTML=[...dt].map(c=>/\d/.test(c)?`<span class="d">${c}</span>`:c).join("");glitch()}
+    }catch(e){}
+    busy=false}
+})();
 // Mobile: Suche hinter der Lupe oben; öffnet als Leiste am oberen Rand
 const sbox=document.getElementById("search"),sbtn=document.getElementById("sbtn");
 function searchUI(open){sbox.classList.toggle("open",open);sbtn.setAttribute("aria-expanded",open);sbtn.classList.toggle("on",!open&&!!flt.q.trim())}
