@@ -666,6 +666,13 @@ html.sheet-open .igbadge{display:none}
 .star[aria-pressed="true"]{color:var(--yellow)}
 .tag.fol{border-color:var(--yellow);color:var(--yellow)}
 .rel.isfol{box-shadow:inset 0 3px 0 var(--yellow)}
+/* Kleiner Label-Stern: Unterkante auf der Schriftlinie; aktive Genres in der Kartenzeile hellgrün wie im Filter */
+.meta .star.sm{display:inline-block;position:relative;width:14px;height:14px;margin:0 2px 0 6px;padding:0;vertical-align:baseline}
+.meta .star.sm svg{display:block;width:14px;height:14px}
+.meta .star.sm::after{content:"";position:absolute;inset:-12px -8px}
+#list:not(.bagview) .meta .star.sm{height:13px;width:13px}
+#list:not(.bagview) .meta .star.sm svg{width:13px;height:13px}
+.gen.on{color:var(--neon);text-decoration-color:var(--neon)}
 </style>
 
 
