@@ -626,7 +626,12 @@ h1#title span{-webkit-text-stroke:.085em var(--yellow);letter-spacing:.02em;padd
 /* Gelbe Trennlinien zwischen den Releases; «Add to bag»: Hover 70 % Gelb, ausgewählt 100 % Gelb */
 .rel{border-bottom-color:var(--yellow)}
 .cartbtn.on{background:var(--yellow);border-color:var(--yellow);color:#0d0d0d}
-@media (hover:hover){.cartbtn:not(.on):hover{background:rgba(251,237,79,.7);border-color:rgba(251,237,79,.7);color:#0d0d0d}}
+.cartbtn{transition:transform .18s cubic-bezier(.3,.7,.4,1),box-shadow .18s,background-color .12s,border-color .12s;transform:perspective(500px) translateZ(0);transform-origin:50% 50%}
+@media (hover:hover){.cartbtn:not(.on):hover{background:#fcf38d;border-color:#fcf38d;color:#0d0d0d;transform:perspective(500px) translateZ(-22px) rotateX(7deg);box-shadow:inset 0 3px 6px rgba(0,0,0,.35)}}
+.cartbtn:active{transform:perspective(500px) translateZ(-36px) rotateX(9deg)!important;box-shadow:inset 0 4px 8px rgba(0,0,0,.45)}
+.cartbtn.pressin{animation:pressin .38s cubic-bezier(.3,.7,.4,1)}
+@keyframes pressin{0%{transform:perspective(500px) translateZ(-36px) rotateX(9deg)}100%{transform:perspective(500px) translateZ(0)}}
+@media (prefers-reduced-motion:reduce){.cartbtn{transition:background-color .12s,border-color .12s}.cartbtn:hover,.cartbtn:active{transform:none!important}.cartbtn.pressin{animation:none}}
 </style>
 
 
@@ -795,7 +800,7 @@ function cartBadges(){
 function toggleCart(k){setTimeout(maybeNudge,400);track(inCart(k)?"Remove from bag":"Add to bag",{shop:shopOf(k)});
   if(inCart(k)){cart=cart.filter(x=>x!==k);opened.delete(k)}else cart.push(k);
   saveCart();cartBadges();
-  document.querySelectorAll(`.cartbtn[data-key="${CSS.escape(k)}"]`).forEach(setCartBtn);
+  document.querySelectorAll(`.cartbtn[data-key="${CSS.escape(k)}"]`).forEach(b=>{setCartBtn(b);b.classList.remove("pressin");void b.offsetWidth;b.classList.add("pressin");setTimeout(()=>b.classList.remove("pressin"),400)});
 }
 const PLUS='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
 const CHECK='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.5 7.5 5.5 11.5 12.5 2.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
