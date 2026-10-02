@@ -1801,14 +1801,17 @@ function flashFab(t){const f=document.getElementById("ffab"),ft=f.querySelector(
   if(!matchMedia("(pointer:coarse) and (max-width:899px)").matches)return;
   document.documentElement.classList.add("ptr-on");
   const wrap=document.querySelector(".wrap"),ptr=document.getElementById("ptr"),ptrt=document.getElementById("ptrt"),disc=ptr.querySelector("svg");
-  const MAX=150,TH=86;let y0=null,pulling=false,d=0,anim=0,busy=false;
+  const MAX=150,TH=86;let y0=null,pulling=false,d=0,anim=0,busy=false,fx=0,tx=0,ty=0;
   const rub=dy=>MAX*(1-Math.exp(-dy/230));
-  const paint=x=>{wrap.style.transform=x?`translateY(${x}px) scaleY(${1+x/700})`:"";ptr.style.opacity=Math.min(1,Math.max(0,x/TH));disc.style.transform=`rotate(${x*3}deg) scale(${.6+.4*Math.min(1,Math.max(0,x)/TH)})`};
+  const paint=x=>{const p=x/MAX;
+    if(!x){wrap.style.transform="";wrap.style.transformOrigin=""}
+    else{wrap.style.transformOrigin=`${tx}px 0px`;
+      wrap.style.transform=`perspective(650px) translate(${fx*p*34}px,${x}px) rotateX(${-p*16}deg) rotateY(${fx*p*13}deg) skewX(${-fx*p*7}deg) scale(${1-p*.06},${1+x/650})`}ptr.style.opacity=Math.min(1,Math.max(0,x/TH));disc.style.transform=`rotate(${x*3}deg) scale(${.6+.4*Math.min(1,Math.max(0,x)/TH)})`};
   const blocked=()=>document.documentElement.classList.contains("sheet-open")||document.getElementById("search").classList.contains("open")||!document.getElementById("restore").hidden;
-  addEventListener("touchstart",e=>{if(busy||blocked()||scrollY>0||e.touches.length>1){y0=null;return}cancelAnimationFrame(anim);y0=e.touches[0].clientY;pulling=false},{passive:true});
+  addEventListener("touchstart",e=>{if(busy||blocked()||scrollY>0||e.touches.length>1){y0=null;return}cancelAnimationFrame(anim);const t=e.touches[0];y0=t.clientY;const r=wrap.getBoundingClientRect();tx=t.clientX-r.left;ty=t.clientY-r.top;fx=Math.max(-1,Math.min(1,(t.clientX/innerWidth-.5)*2));pulling=false},{passive:true});
   addEventListener("touchmove",e=>{if(y0==null)return;const dy=e.touches[0].clientY-y0;
     if(dy<=0||scrollY>0){if(pulling){d=0;paint(0)}pulling=false;return}
-    pulling=true;e.preventDefault();d=rub(dy);paint(d);ptrt.textContent=d>=TH?"Release to refresh":"Pull to refresh"},{passive:false});
+    pulling=true;e.preventDefault();const t=e.touches[0],r=wrap.getBoundingClientRect();fx+=(Math.max(-1,Math.min(1,(t.clientX/innerWidth-.5)*2))-fx)*.35;tx=t.clientX-r.left+(wrap.style.transform?0:0);d=rub(dy);paint(d);ptrt.textContent=d>=TH?"Release to refresh":"Pull to refresh"},{passive:false});
   const spring=(from,done)=>{let x=from,v=0,last=performance.now();const k=1100,c=19;
     const step=t=>{const dt=Math.min(.032,(t-last)/1000);last=t;const a=-k*x-c*v;v+=a*dt;x+=v*dt;
       if(Math.abs(x)<.4&&Math.abs(v)<8){paint(0);wrap.style.transform="";done&&done();return}
