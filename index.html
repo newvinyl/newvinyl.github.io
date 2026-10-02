@@ -760,6 +760,9 @@ html.sheet-open .igbadge{display:none}
 <audio id="au" preload="none"></audio>
 
 <script>
+// Beim Neuladen immer oben starten (Browser würde sonst die alte Scroll-Position wiederherstellen)
+try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}
+if(!/^#(shops|about)/.test(location.hash))window.scrollTo(0,0);
 const EXT='<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg>';
 const TRI='<svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M1 1 19 11 1 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',PAU='<svg class="tri" viewBox="0 0 20 22" aria-hidden="true"><path d="M2 1h5v20H2zM13 1h5v20h-5z" fill="currentColor"/></svg>';
 let SHOPS=[];let UPDATED="";
@@ -1634,7 +1637,7 @@ list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
   SHOPS=d.shops;UPDATED=d.updated;if(d.fx){FX={...FX,...d.fx};FXDATE=d.fx.date||""}if(!HOMES.some(h=>h[0]===home))home=detectHome();buildIndex();initSeen();try{const gp=new URLSearchParams(location.search).get("genre");if(gp)flt.genres.add(gp)}catch(e){}cart=cart.filter(k=>INDEX[k]);
   {const dt=esc(fmtDate(UPDATED));document.getElementById("stand").innerHTML=`<span class="lu">Last update:</span><span class="lu2">Updated</span> <span class="sig" id="gdate" data-t="${dt}">${[...dt].map(c=>/\d/.test(c)?`<span class="d">${c}</span>`:c).join("")}</span>`;startGlitch()}
-  cartBadges();render();updateReturning();checkRestoreLink();checkShareLink();setTimeout(maybeNudge,4000);
+  cartBadges();render();if(!/[?&]r=/.test(location.search)&&!/^#(shops|about)/.test(location.hash))window.scrollTo(0,0);updateReturning();checkRestoreLink();checkShareLink();setTimeout(maybeNudge,4000);
 }).catch(()=>{list.innerHTML='<p class="empty">The release list could not be loaded. Reload the page to try again.</p>'});
 function fitTitle(){const h=document.getElementById("title");if(!h)return;h.style.fontSize="100px";const w=Math.max(...[...h.children].map(c=>c.getBoundingClientRect().width));const avail=h.clientWidth;if(w>0&&avail>0)h.style.fontSize=(100*avail/w-0.5)+"px"}
 {let qt;const qi=document.getElementById("q");let st;qi.addEventListener("input",()=>{clearTimeout(st);st=setTimeout(()=>{const v=qi.value.trim();if(v.length>=2){const hits=(document.querySelector(".fcount")||{}).textContent||"";track("Search",{query:v.toLowerCase().slice(0,60),results:parseInt(hits)||0})}},1500)});
