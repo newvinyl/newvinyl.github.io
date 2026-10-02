@@ -683,6 +683,9 @@ html.ptr-on,html.ptr-on body{overscroll-behavior-y:none}
 html.ptr-on .ptr{display:flex;position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:0;right:0;z-index:-1;flex-direction:column;align-items:center;gap:6px;opacity:0;pointer-events:none;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--yellow)}
 html.ptr-on .ptr svg{width:38px;height:38px;will-change:transform}
 html.ptr-on .wrap{position:relative;background:var(--bg);transform-origin:50% 0}
+/* Abdunkelung hinter dem Filterfenster als Teil des Fensters selbst, damit sie nie darüber liegen kann */
+.fback{display:none!important}
+.fpanel.sheet{box-shadow:0 0 0 100vmax rgba(0,0,0,.6)}
 </style>
 
 
@@ -1762,6 +1765,7 @@ function closeSheet(jump){
 }
 document.getElementById("ffab").onclick=openSheet;
 document.getElementById("fback").onclick=()=>closeSheet(false);
+document.addEventListener("click",e=>{if(!fltSheet)return;const t=e.target;if(t.closest&&(t.closest("#filter .fpanel")||t.closest("#ffab")||t.closest("#fbtn")))return;closeSheet(false)},true);
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&fltSheet)closeSheet(false)});
 if("IntersectionObserver" in window){
   new IntersectionObserver(es=>{es.forEach(en=>{pastFilter=!en.isIntersecting&&en.boundingClientRect.top<0;updateFab()})}).observe(document.getElementById("filter"));
