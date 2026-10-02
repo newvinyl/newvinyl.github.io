@@ -620,10 +620,13 @@ html,body{overflow-x:clip}
 @media (min-width:900px){.filter{margin-top:14px}.fbar .tab.tabcart{margin-left:6px}}
 /* Gelb wie auf Instagram: Haupttitel, Play-Dreiecke, Play-Knopf im Player */
 h1#title{color:var(--yellow)}
-.trk .ic{color:var(--yellow)}
 .pbtn:not(.sm){background:var(--yellow);color:#0d0d0d}
 /* Titel wie das Profilbild: Helvetica, extra fett (Strich verstärkt), enge Laufweite, volle Breite */
 h1#title span{-webkit-text-stroke:.085em var(--yellow);letter-spacing:.02em;padding-inline:.045em;paint-order:stroke fill}
+/* Gelbe Trennlinien zwischen den Releases; «Add to bag»: Hover 70 % Gelb, ausgewählt 100 % Gelb */
+.rel{border-bottom-color:var(--yellow)}
+.cartbtn.on{background:var(--yellow);border-color:var(--yellow);color:#0d0d0d}
+@media (hover:hover){.cartbtn:not(.on):hover{background:rgba(251,237,79,.7);border-color:rgba(251,237,79,.7);color:#0d0d0d}}
 </style>
 
 
