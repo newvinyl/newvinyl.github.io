@@ -645,6 +645,24 @@ h1#title span{-webkit-text-stroke:.085em var(--yellow);letter-spacing:.02em;padd
 html.sheet-open .igbadge{display:none}
 @media (min-width:900px){.igbadge{left:32px;width:118px;height:118px}}
 @media (prefers-reduced-motion:reduce){.igbadge,.igring{animation:none}}
+/* Filter: aktiver Filter = gelber Knopf; Handy: «Show N records» immer gelb, daneben «Clear all» */
+.fbtn.act{background:var(--yellow);border-color:var(--yellow);color:#0d0d0d}
+.fbtn.act::after{color:#0d0d0d}
+.fbtn.act b{background:#0d0d0d;color:var(--yellow)}
+.ffab.act{background:var(--yellow)}
+.fdone{align-items:center;gap:14px}
+.fclear{all:unset;cursor:pointer;font-weight:700;font-size:15px;color:var(--fg);text-decoration:underline;text-underline-offset:4px;padding:10px 4px;white-space:nowrap}
+.fclear:disabled{opacity:.35;cursor:default;text-decoration:none}
+.fclear:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:899px){
+.fpanel .fdone .bbtn{background:var(--yellow)!important;border-color:var(--yellow)!important;color:#0d0d0d!important;flex:1;justify-content:center}
+.fpanel.sheet .shead .freset{display:none}
+}
+@media (min-width:900px){
+.fclear{display:none}
+.fpanel .fdone .bbtn,.fpanel.sheet .fdone .bbtn{background:var(--black);border-color:var(--rule);color:var(--rule)}
+.fpanel .fdone .bbtn:hover{background:#fcf38d;border-color:#fcf38d;color:#0d0d0d}
+}
 </style>
 
 
@@ -1125,7 +1143,7 @@ function renderFilter(now){
   box.innerHTML=`<div class="fbar">${fltActive()?`<span class="fbreak"></span><span class="fcount">${hits} of ${all.length} records</span>`:""}
     ${fltActive()?`<button class="freset" id="freset">Clear</button>`:""}
     <div class="fright"><div class="modes" role="group" aria-label="Group records by"><span class="mlabel" aria-hidden="true">By</span><button data-mode="shop" aria-pressed="${mode==="shop"}">Shop</button><button data-mode="date" aria-pressed="${mode==="date"}">Date</button></div>
-    <button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
+    <button class="fbtn${fltActive()?" act":""}" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
     <div class="fpanel${fltSheet?" sheet":""}${sheetAnim?" anim":""}" ${fltOpen?"":"hidden"} ${fltSheet?'role="dialog" aria-modal="true" aria-label="Filter"':""}>${fltSheet?`<div class="shead"><b>Filter</b>${fltActive()?`<button class="freset" id="sreset">Clear all</button>`:""}<button class="sx" id="sx" aria-label="Close filter"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2 2 14" stroke="currentColor" stroke-width="2.2"/></svg></button></div>`:""}
       <div class="flabel">Genre</div>
       <p class="fhint">Tap once to show only this genre, twice to hide it.</p>
@@ -1142,9 +1160,10 @@ function renderFilter(now){
       <div class="chips">${shopList.filter((sh,i)=>showShops||i<SHOPN||flt.shops.has(sh)).map(sh=>chip("data-shop",sh,flt.shops.has(sh),esc(sh),nShop(sh),false)).join("")}${shopList.length>SHOPN?`<button class="chip more" id="smore" aria-expanded="${showShops}">${showShops?"Fewer shops":`All shops <i>${shopList.length}</i>`}</button>`:""}</div>
       <label class="flabel" for="flabelsel">Label</label>
       <select id="flabelsel"><option value="">All labels (${labels.length})</option>${labels.map(l=>`<option value="${esc(l)}"${l===flt.label?" selected":""}>${follow.l.includes(l)?"★ ":""}${esc(l)} (${lm.get(l)||0})</option>`).join("")}</select>
-      <div class="fdone"><button class="bbtn" id="fdone">Show ${hits} ${hits===1?"record":"records"}</button></div>
+      <div class="fdone"><button class="fclear" id="fclear" type="button"${fltActive()?"":" disabled"}>Clear all</button><button class="bbtn" id="fdone">Show ${hits} ${hits===1?"record":"records"}</button></div>
     </div>`;
-  box.querySelector("#fbtn").onclick=()=>{fltSheet=false;fltOpen=!fltOpen;renderFilter(now);};
+  box.querySelector("#fbtn").onclick=()=>{if(matchMedia("(max-width:899px)").matches){openSheet();return}fltSheet=false;fltOpen=!fltOpen;renderFilter(now);};
+  box.querySelector("#fclear").onclick=()=>{clearFlt();track("Filter cleared");render()};
   const rs=box.querySelector("#freset");if(rs)rs.onclick=()=>{clearFlt();render()};
   box.querySelectorAll("[data-g]").forEach(c=>{const g=c.dataset.g;
     if(flt.hide.has(g)){c.classList.add("hid");c.disabled=false;c.setAttribute("aria-label",`${g}: hidden. Tap to show again`)}
@@ -1698,7 +1717,7 @@ function updateFab(){
   const w=document.getElementById("fabwrap");if(!w)return;
   const show=pastFilter&&view!=="korb"&&!fltSheet;
   w.hidden=!show;
-  const n=nFlt(),b=document.getElementById("ffabn");b.hidden=!n;b.textContent=n;
+  const n=nFlt(),b=document.getElementById("ffabn");b.hidden=!n;b.textContent=n;document.getElementById("ffab").classList.toggle("act",fltActive());
   document.getElementById("ffab").setAttribute("aria-label",n?`Filter records, ${n} active`:"Filter records");
   if(!show)hideSmart();
 }
