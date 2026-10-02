@@ -476,7 +476,7 @@ article.rel{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 60px)}
 article.rel.flash .cover{animation:flash 1.6s ease-out}
 @keyframes flash{0%{outline:3px solid var(--rule);outline-offset:4px}70%{outline:3px solid var(--rule);outline-offset:4px}100%{outline:3px solid transparent;outline-offset:4px}}
 /* Schwebender Filter */
-.fabwrap{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--ph,76px) + 14px);z-index:40;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;width:max-content;max-width:calc(100vw - 32px)}
+.fabwrap{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--ph,76px) + 22px);z-index:40;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;width:max-content;max-width:calc(100vw - 32px)}
 .fabwrap>*{pointer-events:auto}
 .fabwrap[hidden]{display:none!important}
 .ffab{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:9px;min-height:46px;box-sizing:border-box;padding:0 20px 0 18px;border-radius:999px;background:var(--rule);color:#0d0d0d;font-weight:700;font-size:15px;box-shadow:0 6px 24px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.4);animation:fabIn .28s cubic-bezier(.2,.9,.3,1.2)}
@@ -1768,7 +1768,7 @@ if("IntersectionObserver" in window){
   new IntersectionObserver(es=>{es.forEach(en=>{pastFilter=!en.isIntersecting&&en.boundingClientRect.top<0;updateFab()})}).observe(document.getElementById("filter"));
 }
 // Player-Höhe als CSS-Variable, damit der Knopf immer darüber schwebt
-{const pl=document.getElementById("player"),set=()=>document.documentElement.style.setProperty("--ph",pl.offsetHeight+"px");set();if(window.ResizeObserver)new ResizeObserver(set).observe(pl);addEventListener("resize",set)}
+{const pl=document.getElementById("player"),set=()=>{const r=pl.getBoundingClientRect(),h=r.height?Math.max(pl.offsetHeight,Math.round(document.documentElement.clientHeight-r.top)):0;document.documentElement.style.setProperty("--ph",Math.max(0,h)+"px")};addEventListener("scroll",()=>requestAnimationFrame(set),{passive:true});set();if(window.ResizeObserver)new ResizeObserver(set).observe(pl);addEventListener("resize",set)}
 // Smarter Hinweis: sieht man beim Scrollen fast nur ein Genre, bietet der Knopf an, es auszublenden
 const seenCards=[],seenGk=new Set(),nudgedG=new Set();let smartT=null,smartG="";
 const cardIO="IntersectionObserver" in window?new IntersectionObserver(es=>{es.forEach(en=>{if(!en.isIntersecting)return;const a=en.target;cardIO.unobserve(a);if(!a._e||seenGk.has(a._e.gk))return;seenGk.add(a._e.gk);seenCards.push(genresOf(a._e.r));if(seenCards.length>14)seenCards.shift();checkSmart()})},{threshold:.6}):null;
