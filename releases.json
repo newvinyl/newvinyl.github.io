@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-01",
+ "updated": "2026-10-02",
  "shops": [
   {
    "shop": "Hardwax",
@@ -12660,6 +12660,248 @@
      ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
+    },
+    {
+     "a": "Shkedul / Invisible Euphoria",
+     "t": "MUSEK 05",
+     "l": "Musek Records",
+     "cat": "MUSEK005",
+     "f": "12\"",
+     "p": 20.99,
+     "g": "Techno",
+     "url": "https://clone.nl/item84717.html",
+     "cover": "https://clone.nl/platen/artwork/small/plaatimage83802.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Shkedul - Enter the Void",
+       "u": "https://clone.nl/platen/mp3/84717/1%20Shkedul%20-%20Enter%20the%20Void.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Shkedul - Concentratio",
+       "u": "https://clone.nl/platen/mp3/84717/2%20Shkedul%20-%20Concentratio.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Invisible Euphoria - To ride shotgun",
+       "u": "https://clone.nl/platen/mp3/84717/3%20Invisible%20Euphoria%20-%20To%20ride%20shotgun.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Invisible Euphoria - Rodeo Fanatics",
+       "u": "https://clone.nl/platen/mp3/84717/4%20Invisible%20Euphoria%20-%20Rodeo%20Fanatics.mp3"
+      }
+     ],
+     "d": "2026-10-01",
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "nthng",
+     "t": "Last Light Of The Sun",
+     "l": "TOPO2",
+     "cat": "TOPO2-006",
+     "f": "2LP",
+     "p": 29.99,
+     "g": "Ambient",
+     "url": "https://clone.nl/item84599.html",
+     "cover": "https://clone.nl/platen/artwork/small/plaatimage83685.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "i hear you",
+       "u": "https://clone.nl/platen/mp3/84599/01%20i%20hear%20you.mp3"
+      },
+      {
+       "s": "02",
+       "n": "last light of the sun",
+       "u": "https://clone.nl/platen/mp3/84599/02%20last%20light%20of%20the%20sun.mp3"
+      },
+      {
+       "s": "03",
+       "n": "am sleeper",
+       "u": "https://clone.nl/platen/mp3/84599/03%20am%20sleeper.mp3"
+      },
+      {
+       "s": "04",
+       "n": "many reasons",
+       "u": "https://clone.nl/platen/mp3/84599/04%20many%20reasons.mp3"
+      },
+      {
+       "s": "05",
+       "n": "distance",
+       "u": "https://clone.nl/platen/mp3/84599/05%20distance.mp3"
+      },
+      {
+       "s": "06",
+       "n": "wandering",
+       "u": "https://clone.nl/platen/mp3/84599/06%20wandering.mp3"
+      },
+      {
+       "s": "07",
+       "n": "scattered mind",
+       "u": "https://clone.nl/platen/mp3/84599/07%20scattered%20mind.mp3"
+      },
+      {
+       "s": "08",
+       "n": "orchid",
+       "u": "https://clone.nl/platen/mp3/84599/08%20orchid.mp3"
+      },
+      {
+       "s": "09",
+       "n": "ghostlike dreams",
+       "u": "https://clone.nl/platen/mp3/84599/09%20ghostlike%20dreams.mp3"
+      },
+      {
+       "s": "10",
+       "n": "flutter",
+       "u": "https://clone.nl/platen/mp3/84599/10%20flutter.mp3"
+      }
+     ],
+     "d": "2026-10-01",
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "The Melting Hours",
+     "t": "The Melting Hours",
+     "l": "Beyond Space And Time",
+     "cat": "BEST004",
+     "f": "12\"",
+     "p": 15.49,
+     "g": "Ambient",
+     "url": "https://clone.nl/item84497.html",
+     "cover": "https://clone.nl/platen/artwork/small/plaatimage83586.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Blue Sun",
+       "u": "https://clone.nl/platen/mp3/84497/1%20Blue%20Sun.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Liquid Dunes",
+       "u": "https://clone.nl/platen/mp3/84497/2%20Liquid%20Dunes.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Cloud Touch",
+       "u": "https://clone.nl/platen/mp3/84497/3%20Cloud%20Touch.mp3"
+      }
+     ],
+     "d": "2026-10-01",
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Acid For The Grandma",
+     "t": "Loose Parts",
+     "l": "Acid For The Grandma",
+     "cat": "AFTG005",
+     "f": "12\"",
+     "p": 18.99,
+     "g": "Acid Techno",
+     "url": "https://clone.nl/item84452.html",
+     "cover": "https://clone.nl/platen/artwork/small/plaatimage83541.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Hypnotic Evocation",
+       "u": "https://clone.nl/platen/mp3/84452/1%20Hypnotic%20Evocation.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Good Pressure",
+       "u": "https://clone.nl/platen/mp3/84452/2%20Good%20Pressure.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Loose Parts",
+       "u": "https://clone.nl/platen/mp3/84452/3%20Loose%20Parts.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Reverse Clone",
+       "u": "https://clone.nl/platen/mp3/84452/4%20Reverse%20Clone.mp3"
+      }
+     ],
+     "d": "2026-10-01",
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Dream 2 Science",
+     "t": "My Love Turns To Liquid (Cozmic remixes)",
+     "l": "Rush Hour",
+     "cat": "RH RSS 41",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "House",
+     "url": "https://clone.nl/item84091.html",
+     "cover": "https://clone.nl/platen/artwork/small/plaatimage83181.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "my love turns to liquid (original mix)",
+       "u": "https://clone.nl/platen/mp3/84091/1%20my%20love%20turns%20to%20liquid%20(original%20mix).mp3"
+      },
+      {
+       "s": "2",
+       "n": "my love turns to liquid (warm water mix)",
+       "u": "https://clone.nl/platen/mp3/84091/2%20my%20love%20turns%20to%20liquid%20(warm%20water%20mix).mp3"
+      },
+      {
+       "s": "3",
+       "n": "my love turns to liquid (padapella)",
+       "u": "https://clone.nl/platen/mp3/84091/3%20my%20love%20turns%20to%20liquid%20(padapella).mp3"
+      },
+      {
+       "s": "4",
+       "n": "my love turns to liquid (cozmic remix)",
+       "u": "https://clone.nl/platen/mp3/84091/4%20my%20love%20turns%20to%20liquid%20(cozmic%20remix).mp3"
+      },
+      {
+       "s": "5",
+       "n": "my love turns to liquid (cozmic remix instrumental)",
+       "u": "https://clone.nl/platen/mp3/84091/5%20my%20love%20turns%20to%20liquid%20(cozmic%20remix%20instrumental).mp3"
+      }
+     ],
+     "d": "2026-09-30",
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "CARISTA",
+     "t": "Everything Is Better With You",
+     "l": "United Identities",
+     "cat": "",
+     "f": "12\"",
+     "p": 16.99,
+     "g": "Acid House",
+     "url": "https://clone.nl/item85064.html",
+     "cover": "https://clone.nl/platen/artwork/small/plaatimage84142.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Everything Is Better With You (Original Mix)",
+       "u": "https://clone.nl/platen/mp3/85064/1%20Everything%20Is%20Better%20With%20You%20(Original%20Mix).mp3"
+      },
+      {
+       "s": "2",
+       "n": "Everything Is Better With You (Instrumental Mix)",
+       "u": "https://clone.nl/platen/mp3/85064/2%20Everything%20Is%20Better%20With%20You%20(Instrumental%20Mix).mp3"
+      }
+     ],
+     "d": "2026-11-16",
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
     }
    ],
    "country": "NL"
@@ -13397,7 +13639,18 @@
      "g": "House",
      "url": "https://www.phonicarecords.com/product/chloe-caillet-dance-again-ninja-tune/213554",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/bb0672a87d50cad31f26409f2a91c6fc.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Lemme Dance (feat. Myd)",
+       "yt": "CzErh6vE7Uc"
+      },
+      {
+       "s": "",
+       "n": "Change (with Luke Alessi)",
+       "yt": "aUGKBy3Jq0s"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
     },
@@ -13689,7 +13942,13 @@
      "g": "House",
      "url": "https://www.phonicarecords.com/product/hodge-big-splash-lp-local-action/213703",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/2adb1eedefdef0826913f7ad6a7f9273.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/3201405.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
     },
@@ -13803,6 +14062,46 @@
      "tr": [],
      "m": "2026-10",
      "first_seen": "2026-10-01"
+    },
+    {
+     "a": "AI Robot",
+     "t": "Sapphires EP",
+     "l": "Moving In Silence",
+     "cat": "214367",
+     "f": "12\"",
+     "p": 15.98,
+     "g": "House",
+     "url": "https://www.phonicarecords.com/product/ai-robot-sapphires-ep-moving-in-silence/214367",
+     "cover": "https://d1c4rk9le5opln.cloudfront.net/af6222e478e0e58b8cfdd058518831d2.jpg",
+     "m": "2026-10",
+     "first_seen": "2026-10-02",
+     "tr": []
+    },
+    {
+     "a": "Aphex Twin",
+     "t": "Drukqs LP",
+     "l": "Warp",
+     "cat": "213028",
+     "f": "4×LP",
+     "p": 49.99,
+     "g": "Ambient",
+     "url": "https://www.phonicarecords.com/product/aphex-twin-drukqs-lp-warp/213028",
+     "cover": "https://d1c4rk9le5opln.cloudfront.net/7018d5e4f89dab974f9d0c433f5c935b.jpg",
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-02",
+     "tr": [
+      {
+       "s": "",
+       "n": "QKThr",
+       "yt": "9wCfNFmpL1s"
+      },
+      {
+       "s": "",
+       "n": "Nanou2",
+       "yt": "zpNhIAlA83s"
+      }
+     ]
     }
    ],
    "country": "UK"
@@ -15282,6 +15581,552 @@
      ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
+    },
+    {
+     "a": "Beste Hira",
+     "t": "MP10",
+     "l": "Magic Power",
+     "cat": "MP10",
+     "f": "12\"",
+     "p": 14.83,
+     "g": "Techno / Minimal",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199507-mp10-beste-hira-mp10/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191395-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191395.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Jazztronik",
+     "t": "Brownswood Remix Editions 010 - SAMURAI",
+     "l": "Brownswood Recordings",
+     "cat": "BWOOD0471",
+     "f": "12\"",
+     "p": 15.58,
+     "g": "House / Disco",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200432-bwood0471-jazztronik-brownswood-remix-editions-010-samurai-remixes/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/703140-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/703140.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Jeff Bastow Orchestra",
+     "t": "Rundflug (Local Flight)",
+     "l": "Thank You",
+     "cat": "THANKYOU047",
+     "f": "12\"",
+     "p": 14.43,
+     "g": "Balearic / Disco",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200275-thankyou047-jeff-bastow-orchestra-rundflug-local-flight/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191874-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191874.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Joao Comazzi",
+     "t": "Tucanaçai",
+     "l": "Bless You",
+     "cat": "BLESSYOU032",
+     "f": "12\"",
+     "p": 20.6,
+     "g": "House / Disco",
+     "url": "https://www.redeyerecords.co.uk/vinyl/198773-blessyou032-joao-comazzi-tucanaçai/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/190909-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/190909.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Aaron Carl",
+     "t": "Down",
+     "l": "Metroplex",
+     "cat": "M035",
+     "f": "12\"",
+     "p": 14.13,
+     "g": "Techno / Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/187354-m035-aaron-carl-down/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/185631-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/185631.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Artefakt",
+     "t": "Flow Tide EP",
+     "l": "Delsin",
+     "cat": "165DSR",
+     "f": "12\"",
+     "p": 12.72,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200153-165dsr-artefakt-flow-tide-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191799-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191799.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Audiotech",
+     "t": "Im Your Audio Tech",
+     "l": "Metroplex",
+     "cat": "M053",
+     "f": "12\"",
+     "p": 13.15,
+     "g": "Techno / Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/188290-m053-audiotech-im-your-audio-tech/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/186203-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/186203.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "B(If)tek",
+     "t": "Sub-Vocal Theme Park",
+     "l": "Portal Replica",
+     "cat": "PORTAL01",
+     "f": "12\"",
+     "p": 31.69,
+     "g": "Techno / Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/196211-portal01-biftek-sub-vocal-theme-park/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/189239-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/189239.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Crystal Distortion",
+     "t": "Offworld Redliner Electronics",
+     "l": "Sound Metaphors 23",
+     "cat": "SM23-17",
+     "f": "12\"",
+     "p": 15.83,
+     "g": "Techno / Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200281-sm23-17-crystal-distortion-offworld-redliner-electronics/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191879-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191879.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Cybotron",
+     "t": "Parallel Shift",
+     "l": "Tresor",
+     "cat": "TRESOR313EP2",
+     "f": "12\"",
+     "p": 14.59,
+     "g": "Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/176641-tresor313ep2-cybotron-parallel-shift/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/178644-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/178644.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "DMX Krew/Luca Lozano",
+     "t": "CABBAGE TRAX 2",
+     "l": "Klasse Wrecks",
+     "cat": "CBGTRX2",
+     "f": "12\"",
+     "p": 12.72,
+     "g": "Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200605-cbgtrx2-dmx-krew-luca-lozano-cabbage-trax-2/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192068-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192068.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "FJAAK",
+     "t": "FJAAK015",
+     "l": "Fjaak",
+     "cat": "FJAAK015",
+     "f": "12\"",
+     "p": 13.43,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200383-fjaak015-fjaak-fjaak015/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191933-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191933.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Global Dance Archive II",
+     "t": "VA",
+     "l": "Transmigration",
+     "cat": "TM031",
+     "f": "12\"",
+     "p": 14.64,
+     "g": "Techno / Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200274-tm031-global-dance-archive-ii-va/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191873-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191873.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Lonefront",
+     "t": "Open Texture",
+     "l": "Crystal Ceremony",
+     "cat": "TMCC05",
+     "f": "12\"",
+     "p": 17.24,
+     "g": "Techno / Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200278-tmcc05-lonefront-open-texture/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191876-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191876.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Marcal",
+     "t": "Four Small Escapes EP",
+     "l": "The Third Room",
+     "cat": "T3R028",
+     "f": "12\"",
+     "p": 12.72,
+     "g": "Techno / Electro",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199508-t3r028-marcal-four-small-escapes-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191396-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191396.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Mogwaa",
+     "t": "Love On The Rocks",
+     "l": "Bless You",
+     "cat": "BLESSYOU035",
+     "f": "12\"",
+     "p": 14.64,
+     "g": "Balearic / Downtempo",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200276-blessyou035-mogwaa-love-on-the-rocks/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/48125-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/48125.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Splash",
+     "t": "Eye For An Eye (Lipelis Remixes)",
+     "l": "Cwpt",
+     "cat": "CWPT014",
+     "f": "12\"",
+     "p": 16.25,
+     "g": "Balearic / Downtempo",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200273-cwpt014-splash-eye-for-an-eye-lipelis-remixes/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191872-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191872.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Tranquility Bass",
+     "t": "They Came In Peace",
+     "l": "Sound Metaphors Records",
+     "cat": "SMR036",
+     "f": "12\"",
+     "p": 15.55,
+     "g": "Balearic / Downtempo",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200279-smr036-tranquility-bass-they-came-in-peace/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191877-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191877.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Second Storey",
+     "t": "Ladakh EP",
+     "l": "High Canopy",
+     "cat": "HIGHCANOPY1",
+     "f": "12\"",
+     "p": 22.54,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199500-highcanopy1-second-storey-ladakh-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191390-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191390.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Aisie",
+     "t": "Black Fire Dream",
+     "l": "Studio 33",
+     "cat": "S33033",
+     "f": "12\"",
+     "p": 16.36,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199336-s33033-aisie-black-fire-dream/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/702952-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/702952.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Miles",
+     "t": "Vault",
+     "l": "Short Span",
+     "cat": "SHORT15",
+     "f": "12\"",
+     "p": 22.45,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200315-short15-miles-vault/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/703109-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/703109.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Rafael Anton Irisarri",
+     "t": "Points Of Inaccessibility",
+     "l": "Black Knoll Editions",
+     "cat": "BKE023LP",
+     "f": "12\"",
+     "p": 27.91,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/189505-bke023lp-rafael-anton-irisarri-points-of-inaccessibility/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/701565-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/701565.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Sa Pa",
+     "t": "Rhythm From Ambient",
+     "l": "Dub Techno For Life",
+     "cat": "DTL002",
+     "f": "12\"",
+     "p": 15.12,
+     "g": "Ambient / Dub Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199827-dtl002-sa-pa-rhythm-from-ambient/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/703045-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/703045.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Sebastian Mullaert & Tamarma",
+     "t": "Holds The Sky",
+     "l": "Awesome Soundwave",
+     "cat": "ASW083",
+     "f": "12\"",
+     "p": 16.36,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200785-asw083-sebastian-mullaert-and-tamarma-holds-the-sky/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/703212-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/703212.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "State Of Flux",
+     "t": "Mind Weeds",
+     "l": "Podadisk",
+     "cat": "PDSK002",
+     "f": "12\"",
+     "p": 14.02,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200355-pdsk002-state-of-flux-mind-weeds/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/703129-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/703129.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
+    },
+    {
+     "a": "Sun Electric",
+     "t": "Episodes",
+     "l": "De:tuned",
+     "cat": "ASGDE055",
+     "f": "12\"",
+     "p": 10.76,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/191269-asgde055-sun-electric-episodes/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/701701-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/701701.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-02"
     }
    ],
    "country": "UK"
@@ -16191,7 +17036,13 @@
      "g": "Deep House",
      "url": "https://yoyaku.io/release/vick-lavender-superhero-2x12-lu004-love-universal/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/09/LU004-LOVE-UNIVERSAL-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Super Hero",
+       "yt": "hR9j3peZIho"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
     },
@@ -16465,7 +17316,18 @@
      "g": "Deep House",
      "url": "https://yoyaku.io/release/moomin-a-minor-thought-2x12-smallvillelp11/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/09/SMALLVILLELP11-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "123",
+       "yt": "eOBKvcn-vzs"
+      },
+      {
+       "s": "",
+       "n": "Time To Reflect",
+       "yt": "WRrXcAO6wU8"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
     },
@@ -17373,7 +18235,13 @@
      "first_seen": "2026-09-30",
      "url": "https://kompakt.fm/releases/four_small_escapes_ep",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a918cb47cc6b-6a968f6cc51a1-fitted.jpg?v=2",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191396.mp3"
+      }
+     ]
     },
     {
      "a": "Bonobo",
@@ -17439,7 +18307,13 @@
      "g": "House",
      "url": "https://kompakt.fm/releases/the_reason_why",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a840f5554d38-6a841ba05b7b4-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "The Reason Why feat. Bákayan",
+       "yt": "Dto0Na5HGZU"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
     },
@@ -17523,7 +18397,13 @@
      "g": "Techno",
      "url": "https://kompakt.fm/releases/monster_ep",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a840f55465a2-6a841c6366f20-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Baby Monsta",
+       "yt": "XhwrSrE3ogI"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-01"
     },
@@ -17606,9 +18486,9 @@
  ],
  "fx": {
   "CHF": 1,
-  "EUR": 0.9454,
-  "GBP": 1.1033,
-  "USD": 0.8345,
-  "date": "2026-10-01"
+  "EUR": 0.9467,
+  "GBP": 1.1024,
+  "USD": 0.836,
+  "date": "2026-10-02"
  }
 }
