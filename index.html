@@ -963,7 +963,6 @@ function setTags(art,e){
   const box=art.querySelector(".tags");if(!box)return;const r=e.r,t=[];
   if(mode==="date")t.push(`<span class="tag shoptag">${esc(e.S.shop)}</span>`);
   if(NEWSET.has(e.gk))t.push('<span class="tag new">New</span>');
-  if(e.all.some(isFol))t.push(`<span class="tag fol">${STAR}Following</span>`);
   if(heard.has(e.gk))t.push('<span class="tag heard">Heard</span>');
   if(r.st&&STOCK[r.st])t.push(`<span class="tag st-${r.st}">${STOCK[r.st]}</span>`);
   if(isReissue(r))t.push('<span class="tag">Reissue</span>');
