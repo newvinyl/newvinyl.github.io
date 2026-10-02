@@ -36,7 +36,7 @@
 /* Einheitlich 95 % Schwarz (bewusst ein Theme). Layout: eine Spalte, max 560px, Shops als Blöcke mit Sticky-Kopf, Player unten fixiert */
 :root{
   --bg:#0d0d0d; --deep:#1a1a1a; --fg:#ecebe7; --muted:#a0a4a9; --line:#3c4046;
-  --black:#000000; --rule:#ffffff; --div:#ffffff; --accent:#ff2bd6; --neon:#39ff14; --pink:#ff2bd6; --accent-fg:#111317; --warn:#e3a94f;
+  --black:#000000; --rule:#ffffff; --div:#ffffff; --accent:#ff2bd6; --neon:#39ff14; --pink:#ff2bd6; --yellow:#fbed4f; --accent-fg:#111317; --warn:#e3a94f;
   --display:"Helvetica Neue", "HelveticaNeue", Helvetica, "Inter Tight", Arial, sans-serif;
   --body:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -618,6 +618,10 @@ html,body{overflow-x:clip}
 .fmode.flabel{display:block!important}.chips.fmode{display:grid!important;grid-template-columns:1fr 1fr}
 }
 @media (min-width:900px){.filter{margin-top:14px}.fbar .tab.tabcart{margin-left:6px}}
+/* Gelb wie auf Instagram: Haupttitel, Play-Dreiecke, Play-Knopf im Player */
+h1#title{color:var(--yellow)}
+.trk .ic{color:var(--yellow)}
+.pbtn:not(.sm){background:var(--yellow);color:#0d0d0d}
 </style>
 
 
