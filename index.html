@@ -602,6 +602,22 @@ html,body{overflow-x:clip}
 .rel .row .chf{line-height:1;margin-bottom:-1px}
 .rel .row .cartbtn{grid-column:2;grid-row:1}
 .rel .row .sharebtn{grid-column:2;grid-row:2;justify-self:end;align-self:start}
+/* Tabs «This month / Past» in derselben Zeile wie der Filter-Knopf */
+.fbar .tabs{display:contents}
+.fbar .tab{order:0}
+.fbar .tab.tabcart{order:4;margin-left:0}
+.fbar .fright{order:3;margin-left:auto}
+.fbar .fbreak{order:5;flex-basis:100%;height:0}
+.fbar .fcount{order:6}.fbar .freset{order:7}
+.fbar{gap:8px 6px}
+.fmode{display:none!important}
+@media (max-width:899px){
+.filter{margin-top:32px}
+.fbar .modes{display:none}
+.fbar .fbtn{min-height:42px}
+.fmode.flabel{display:block!important}.chips.fmode{display:grid!important;grid-template-columns:1fr 1fr}
+}
+@media (min-width:900px){.filter{margin-top:14px}.fbar .tab.tabcart{margin-left:6px}}
 </style>
 
 
@@ -621,7 +637,7 @@ html,body{overflow-x:clip}
   </ol>
   <noscript><p class="lede">This page needs JavaScript to show the release list and play previews.</p></noscript>
   <p class="returning" id="returning" hidden><button type="button" data-restore>Been here before? Restore your follows &amp; bag<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button></p>
-  <nav class="tabs" role="tablist">
+  <span id="tabhome" hidden></span><nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-v="home" id="tab-home">This month</button>
     <button class="tab" role="tab" data-v="archiv" id="tab-archiv">Past</button>
     <button class="tab tabcart" role="tab" data-v="korb" id="tab-korb" aria-label="My bag"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 7V2.5M9 7V1.8M12.5 7V2.8M16 7V2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="1.5" y="7" width="19" height="13.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11.8h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><b class="badge" data-cartcount hidden>0</b></button>
@@ -987,6 +1003,7 @@ function render(){
   const now=nowKey(),prev=prevKey(now);
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===view));
   document.getElementById("filter").hidden=view==="korb";
+  if(view==="korb"){const t=document.querySelector("nav.tabs"),h=document.getElementById("tabhome");if(t&&h&&t.previousElementSibling!==h)h.after(t)}
   document.getElementById("search").hidden=view==="korb";
   updateFab();
   if(view==="korb"){hideNudge();renderJump();renderCart();cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();return}
@@ -1048,6 +1065,7 @@ function renderJump(){
 let genresMore=false,shopsMore=false;
 function renderFilter(now){
   const box=document.getElementById("filter");
+  const tabsEl=document.querySelector("nav.tabs");if(tabsEl&&box.contains(tabsEl))document.getElementById("tabhome").after(tabsEl);
   const oldP=box.querySelector(".fpanel"),keepTop=oldP?oldP.scrollTop:0;
   const inView=viewMonths(now);
   const all=entries(inView,false),pool=entries(inView);
@@ -1066,7 +1084,7 @@ function renderFilter(now){
   const SHOPN=10,shopList=[...new Set(SHOPS.filter(S=>!S.blocked&&(S.items||[]).length).map(S=>S.shop))].filter(sh=>flt.shops.has(sh)||nShop(sh)).sort((a,b)=>a.localeCompare(b,"en"));
   const showShops=shopsMore||shopList.slice(SHOPN).some(sh=>flt.shops.has(sh));
   const chip=(attr,val,on,label,cnt,dis)=>`<button class="chip" aria-pressed="${on}" ${attr}="${esc(val)}"${dis?" disabled":""}>${label} <i>${cnt}</i></button>`;
-  box.innerHTML=`<div class="fbar">${fltActive()?`<span class="fcount">${hits} of ${all.length} records</span>`:""}
+  box.innerHTML=`<div class="fbar">${fltActive()?`<span class="fbreak"></span><span class="fcount">${hits} of ${all.length} records</span>`:""}
     ${fltActive()?`<button class="freset" id="freset">Clear</button>`:""}
     <div class="fright"><div class="modes" role="group" aria-label="Group records by"><span class="mlabel" aria-hidden="true">By</span><button data-mode="shop" aria-pressed="${mode==="shop"}">Shop</button><button data-mode="date" aria-pressed="${mode==="date"}">Date</button></div>
     <button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
@@ -1074,6 +1092,8 @@ function renderFilter(now){
       <div class="flabel">Genre</div>
       <p class="fhint">Tap once to show only this genre, twice to hide it.</p>
       <div class="chips">${CORE.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join("")}${showRest?rest.map(g=>chip("data-g",g,flt.genres.has(g),esc(g),gm.get(g)||0,!(gm.get(g)||0)&&!flt.genres.has(g))).join(""):""}${rest.length?`<button class="chip more" id="gmore" aria-expanded="${showRest}">${showRest?"Fewer genres":`More genres <i>${rest.length}</i>`}</button>`:""}</div>
+      <div class="flabel fmode">Group by</div>
+      <div class="chips seg fmode"><button class="chip" aria-pressed="${mode==="shop"}" data-mode="shop">Shop</button><button class="chip" aria-pressed="${mode==="date"}" data-mode="date">Date</button></div>
       <div class="flabel">Show</div>
       <div class="chips">${chip("data-tog","playOnly",flt.playOnly,"Playable only",nPlay,false)}${chip("data-tog","newOnly",flt.newOnly,"New since last visit",nNew,!nNew&&!flt.newOnly)}${chip("data-tog","fol",flt.fol,`${STAR}Following`,nFol,!nFol&&!flt.fol)}${chip("data-tog","hideHeard",flt.hideHeard,"Hide heard",nHeard,!nHeard&&!flt.hideHeard)}</div>
       <div class="flabel">Type</div>
@@ -1100,6 +1120,7 @@ function renderFilter(now){
   const gmb=box.querySelector("#gmore");if(gmb)gmb.onclick=()=>{genresMore=!showRest;renderFilter(now)};
   box.querySelector("#fdone").onclick=()=>{if(fltSheet){closeSheet(true);return}fltOpen=false;renderFilter(now);const s=document.getElementById("filter");window.scrollTo({top:Math.max(0,s.getBoundingClientRect().top+scrollY-8),behavior:"smooth"})};
   if(fltSheet){const np=box.querySelector(".fpanel");np.scrollTop=keepTop;box.querySelector("#sx").onclick=()=>closeSheet(false);const sr=box.querySelector("#sreset");if(sr)sr.onclick=()=>{clearFlt();render()}}
+  if(tabsEl){const fb=box.querySelector(".fbar");fb.prepend(tabsEl)}
   updateFab();
   box.querySelector("#flabelsel").onchange=e=>{if(e.target.value)track("Filter",{type:"label",value:e.target.value});flt.label=e.target.value;render()};
 }
