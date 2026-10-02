@@ -631,6 +631,20 @@ h1#title span{-webkit-text-stroke:.085em var(--yellow);letter-spacing:.02em;padd
 /* Shop-Titel (z. B. CLONE) gelb, Länderkürzel bleibt weiss */
 .shop-name{color:var(--yellow)}
 .shop-name .cc{color:var(--fg)}
+/* Instagram-Störer: rund, Markenfarben, schwebt links unten über dem Player, bis man ihn anklickt */
+.igbadge{position:fixed;left:16px;bottom:calc(var(--ph,76px) + 14px);z-index:45;width:96px;height:96px;display:block;border-radius:50%;box-shadow:0 8px 26px rgba(0,0,0,.55);animation:igIn .5s cubic-bezier(.2,.9,.3,1.3) both,igFloat 3.6s ease-in-out .5s infinite;-webkit-tap-highlight-color:transparent}
+.igbadge[hidden]{display:none}
+.igbadge svg{width:100%;height:100%;display:block}
+.igbadge text{font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.06em;fill:var(--neon)}
+.igring{transform-origin:60px 60px;animation:igSpin 14s linear infinite}
+.igbadge:hover .igring{animation-duration:5s}
+.igbadge:focus-visible{outline:3px solid var(--neon);outline-offset:3px}
+@keyframes igIn{from{opacity:0;transform:scale(.3) rotate(-30deg)}to{opacity:1;transform:none}}
+@keyframes igFloat{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+@keyframes igSpin{to{transform:rotate(360deg)}}
+html.sheet-open .igbadge{display:none}
+@media (min-width:900px){.igbadge{left:32px;width:118px;height:118px}}
+@media (prefers-reduced-motion:reduce){.igbadge,.igring{animation:none}}
 </style>
 
 
@@ -671,6 +685,7 @@ h1#title span{-webkit-text-stroke:.085em var(--yellow);letter-spacing:.02em;padd
       <h3>Contact · Impressum</h3>
       <p><b>Monthly Vinyl Releases</b><br><a class="fmail" data-mail="hello" href="#">contact-mvr [at] pm.me</a></p>
       <p>Questions, corrections or a record we missed: write anytime.</p>
+      <p class="fsocial">Follow: <a href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener">Instagram</a> · <a href="https://x.com/monthlyvinyl" target="_blank" rel="noopener">X</a></p>
     </section>
     <section class="fblock">
       <h3>About &amp; privacy</h3>
@@ -683,6 +698,16 @@ h1#title span{-webkit-text-stroke:.085em var(--yellow);letter-spacing:.02em;padd
   </footer>
 </div>
 
+<a class="igbadge" id="igbadge" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Follow us on Instagram" hidden>
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <circle cx="60" cy="60" r="58" fill="var(--pink)"/>
+    <g class="igring"><path id="igpath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" fill="none"/>
+    <text><textPath href="#igpath" textLength="272" lengthAdjust="spacing">FOLLOW US · ON INSTAGRAM ·</textPath></text></g>
+    <rect x="43" y="43" width="34" height="34" rx="10" fill="none" stroke="var(--neon)" stroke-width="5"/>
+    <circle cx="60" cy="60" r="8" fill="none" stroke="var(--neon)" stroke-width="5"/>
+    <circle cx="70.5" cy="49.5" r="2.6" fill="var(--neon)"/>
+  </svg>
+</a>
 <div class="share" id="share" hidden></div>
 <div class="fback" id="fback" hidden></div>
 <div class="fabwrap" id="fabwrap" hidden>
@@ -840,7 +865,7 @@ function track(name,data){try{if(window.umami&&typeof umami.track==="function")u
 const shopOf=k=>{const e=INDEX[k];return e&&e.S?e.S.shop:""};
 document.addEventListener("click",e=>{
   const a=e.target.closest&&e.target.closest("a[href]");
-  if(a&&a.closest("#share"))return;
+  if(a&&(a.closest("#share")||a.id==="igbadge"))return;
   if(a&&a.target==="_blank"&&/^https?:/.test(a.href)&&a.hostname!==location.hostname){
     const art=a.closest("article.rel"),inBag=!!a.closest(".run,#list.bagview");
     const where=a.classList.contains("runbtn")?(/checkout/i.test(a.textContent)?"checkout":"guided"):inBag?"bag":art?"card":"other";
@@ -1724,6 +1749,10 @@ document.getElementById("nhide").onclick=()=>{const g=smartG;if(!g)return;hideSm
   flashFab(`${g} hidden`)};
 document.getElementById("nhx").onclick=hideSmart;
 function flashFab(t){const f=document.getElementById("ffab"),ft=f.querySelector(".ft");ft.textContent=t;f.classList.add("pulse");setTimeout(()=>{ft.textContent="Filter";f.classList.remove("pulse")},2600)}
+// Instagram-Störer: in den ersten Wochen (bis 15.11.2026) sichtbar, bis man ihn einmal anklickt
+{const ig=document.getElementById("igbadge"),END="2026-11-15";
+  if(ig&&new Date().toISOString().slice(0,10)<END&&!store.get("mvr-ig",false)){setTimeout(()=>{ig.hidden=false;track("IG badge shown")},1800)}
+  if(ig)ig.addEventListener("click",()=>{store.set("mvr-ig",true);track("IG badge click");setTimeout(()=>ig.hidden=true,300)})}
 // Mobile: Suche hinter der Lupe oben; öffnet als Leiste am oberen Rand
 const sbox=document.getElementById("search"),sbtn=document.getElementById("sbtn");
 function searchUI(open){sbox.classList.toggle("open",open);sbtn.setAttribute("aria-expanded",open);sbtn.classList.toggle("on",!open&&!!flt.q.trim())}
