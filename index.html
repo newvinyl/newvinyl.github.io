@@ -1066,7 +1066,7 @@ function renderFilter(now){
   const SHOPN=10,shopList=[...new Set(SHOPS.filter(S=>!S.blocked&&(S.items||[]).length).map(S=>S.shop))].filter(sh=>flt.shops.has(sh)||nShop(sh)).sort((a,b)=>a.localeCompare(b,"en"));
   const showShops=shopsMore||shopList.slice(SHOPN).some(sh=>flt.shops.has(sh));
   const chip=(attr,val,on,label,cnt,dis)=>`<button class="chip" aria-pressed="${on}" ${attr}="${esc(val)}"${dis?" disabled":""}>${label} <i>${cnt}</i></button>`;
-  box.innerHTML=`<div class="fbar"><span class="fcount">${fltActive()?`${hits} of ${all.length} records`:`${all.length} records`}</span>
+  box.innerHTML=`<div class="fbar">${fltActive()?`<span class="fcount">${hits} of ${all.length} records</span>`:""}
     ${fltActive()?`<button class="freset" id="freset">Clear</button>`:""}
     <div class="fright"><div class="modes" role="group" aria-label="Group records by"><span class="mlabel" aria-hidden="true">By</span><button data-mode="shop" aria-pressed="${mode==="shop"}">Shop</button><button data-mode="date" aria-pressed="${mode==="date"}">Date</button></div>
     <button class="fbtn" id="fbtn" aria-expanded="${fltOpen}">Filter${n?` <b>${n}</b>`:""}</button></div></div>
