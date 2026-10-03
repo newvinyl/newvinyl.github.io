@@ -1,0 +1,77 @@
+name: Today's Digs
+
+# Runs right after the daily update pushes releases.json, with a morning
+# fallback and a manual button. Renders the video, uploads it to the "digs"
+# release and updates the hidden page /92h6fy/.
+on:
+  push:
+    branches: [main]
+    paths: [releases.json]
+  schedule:
+    - cron: "40 5 * * *"   # 07:40 Zurich (summer time) – fallback
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date YYYY-MM-DD (empty = date of releases.json)"
+        required: false
+      force:
+        description: "Render again even if this date is already done"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: digs
+  cancel-in-progress: false
+
+jobs:
+  digs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core >/dev/null
+          pip install -q numpy pillow
+
+      - name: Render
+        id: render
+        env:
+          DIGS_WORK: ${{ runner.temp }}/digs
+        run: |
+          mkdir -p "$DIGS_WORK"
+          ARGS=""
+          if [ -n "${{ github.event.inputs.date }}" ]; then ARGS="$ARGS --date ${{ github.event.inputs.date }}"; fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          python3 tools/digs.py $ARGS > "$DIGS_WORK/result.json"
+          cat "$DIGS_WORK/result.json"
+          echo "skip=$(python3 -c "import json;print(str(json.load(open('$DIGS_WORK/result.json'))['skip']).lower())")" >> "$GITHUB_OUTPUT"
+
+      - name: Upload video to release
+        if: steps.render.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DIGS_WORK: ${{ runner.temp }}/digs
+        run: |
+          gh release view digs >/dev/null 2>&1 || gh release create digs --prerelease --title "Today's Digs" --notes "Daily rendered videos. Not for linking."
+          VIDEO=$(python3 -c "import json;print(json.load(open('$DIGS_WORK/result.json'))['video'])")
+          POSTER=$(python3 -c "import json;print(json.load(open('$DIGS_WORK/result.json'))['poster'])")
+          gh release upload digs "$VIDEO" "$POSTER" --clobber
+          # keep only the newest 20 assets (10 days)
+          gh api "repos/${{ github.repository }}/releases/tags/digs" --jq '.assets | sort_by(.created_at) | reverse | .[20:] | .[].id' |
+            while read id; do gh api -X DELETE "repos/${{ github.repository }}/releases/assets/$id"; done
+
+      - name: Commit page
+        if: steps.render.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add 92h6fy
+          git diff --cached --quiet && exit 0
+          git commit -m "Today's Digs $(python3 -c "import json;print(json.load(open('${{ runner.temp }}/digs/result.json'))['date'])")"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push origin main && break; sleep 5; done

@@ -1,0 +1,587 @@
+#!/usr/bin/env python3
+"""Today's Digs – picks 3 new releases from releases.json, renders the Instagram
+video (1080x1920, 21 s, H.264/AAC) and writes the hidden page /92h6fy/.
+
+Rules (from the user):
+- 3 releases, each must have a real mp3 preview (music in the video).
+- Priority 1: three different shops (the shop where the release is new today).
+- Priority 2: different genres. Price is not decisive.
+- Never repeat releases that were already featured (history.json / posted.json).
+- Layout and caption follow the "Today's Digs 02.10.26" post.
+
+Usage: python3 tools/digs.py [--date YYYY-MM-DD] [--force] [--offline]
+Outputs: <WORK>/digs_<yymmdd>.mp4 + poster jpg, 92h6fy/index.html, caption.txt,
+history.json. Uploading the video is done by the workflow.
+"""
+import argparse, datetime as dt, html, io, itertools, json, math, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SLUG = "92h6fy"
+OUT = os.path.join(ROOT, SLUG)
+REPO = "newvinyl/newvinyl.github.io"
+RELEASE_TAG = "digs"
+
+W, H, FPS, DUR, SR, SY = 1080, 1920, 30, 21, 44100, 285
+BG, ACC, WH, GR, RULE = (15, 15, 15), (255, 214, 10), (255, 255, 255), (154, 154, 154), (46, 46, 46)
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+SHORT = {"Redeye Records": "Redeye", "Juno Records": "Juno", "OYE Records": "OYE"}
+CUR = {"€": "EUR", "£": "GBP", "$": "USD", "CHF": "CHF"}
+# preferred cover sources (bigger first), preferred named-track sources
+COVER_RANK = ["Phonica", "Yoyaku", "Kompakt", "Rush Hour", "Juno Records", "Decks.de", "Redeye Records", "Hardwax", "Clone"]
+
+# ---------------------------------------------------------------- helpers
+def log(*a):
+    print(*a, file=sys.stderr, flush=True)
+
+def norm(s):
+    return (s or "").lower().strip()
+
+def gkey(it):
+    return norm(it.get("a")) + "|" + norm(it.get("t"))
+
+def short(shop):
+    return SHORT.get(shop, shop)
+
+def family(g):
+    g = norm(g)
+    if any(x in g for x in ("ambient", "downtempo", "balearic")):
+        return "Ambient"
+    if any(x in g for x in ("disco", "italo", "edit", "cosmic")):
+        return "Disco"
+    if any(x in g for x in ("electro", "breakbeat")):
+        return "Electro"
+    if "techno" in g:
+        return "Techno"
+    if any(x in g for x in ("house", "minimal")):
+        return "House"
+    return g.title() or "Electronic"
+
+def genre_label(g):
+    g = (g or "").split("·")[0]
+    first = g.split("/")[0].strip()
+    return (first or "Electronic").upper()
+
+def fetch(url, timeout=40):
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*", "Referer": urllib.parse.urljoin(url, "/")})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+def font_path(bold):
+    cands = (["/usr/share/texmf/fonts/opentype/public/tex-gyre/texgyreheros-bold.otf",
+              "/usr/share/fonts/opentype/tex-gyre/texgyreheros-bold.otf",
+              "/usr/share/fonts/opentype/inter/Inter-Bold.otf",
+              "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
+              "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"] if bold else
+             ["/usr/share/texmf/fonts/opentype/public/tex-gyre/texgyreheros-regular.otf",
+              "/usr/share/fonts/opentype/tex-gyre/texgyreheros-regular.otf",
+              "/usr/share/fonts/opentype/inter/Inter-Regular.otf",
+              "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
+              "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"])
+    for p in cands:
+        if os.path.exists(p):
+            return p
+    raise SystemExit("no font found")
+
+FB, FR = font_path(True), font_path(False)
+FSYM = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+_fc = {}
+def F(size, bold=True, sym=False):
+    k = (size, bold, sym)
+    if k not in _fc:
+        _fc[k] = ImageFont.truetype(FSYM if sym and os.path.exists(FSYM) else (FB if bold else FR), size)
+    return _fc[k]
+
+# ---------------------------------------------------------------- selection
+def load_seen():
+    seen = set()
+    for name in ("history.json", "posted.json"):
+        p = os.path.join(OUT, name)
+        if os.path.exists(p):
+            d = json.load(open(p, encoding="utf-8"))
+            for e in d if isinstance(d, list) else d.get("days", []):
+                for k in e.get("keys", []):
+                    seen.add(k)
+    return seen
+
+def playable(arr):
+    """Tracks with a direct mp3, named ones first, one list per release."""
+    out, names = [], set()
+    for x in arr:
+        for t in x.get("tr") or []:
+            u = t.get("u")
+            if not u:
+                continue
+            n = (t.get("n") or "").strip()
+            out.append({"n": n, "u": u, "shop": x["shop"], "named": bool(n) and n.lower() != "preview"})
+    out.sort(key=lambda t: (not t["named"],))
+    return out
+
+def candidates(data, day, seen):
+    yday = (dt.date.fromisoformat(day) - dt.timedelta(days=1)).isoformat()
+    G = {}
+    for s in data["shops"]:
+        for it in s.get("items") or []:
+            x = dict(it, shop=s["shop"], cur=s.get("cur", "€"))
+            G.setdefault(gkey(it), []).append(x)
+    cands = []
+    for k, arr in G.items():
+        if k in seen:
+            continue
+        new_here = [x for x in arr if x.get("first_seen") == day]
+        if not new_here:
+            continue
+        tr = playable(arr)
+        if not tr:
+            continue
+        strict = not any(x.get("first_seen") and x["first_seen"] < yday for x in arr)
+        shops_with_price = len({x["shop"] for x in arr if x.get("p") is not None})
+        for x in new_here:
+            score = (2.0 if strict else 0.0) + 0.35 * min(shops_with_price, 4) + (0.4 if tr[0]["named"] else 0)
+            score += 0.3 if any(y["shop"] in COVER_RANK[:3] for y in arr) else 0
+            cands.append({"key": k, "arr": arr, "feat": x, "shop": x["shop"], "fam": family(x.get("g")),
+                          "strict": strict, "tracks": tr, "score": score})
+    cands.sort(key=lambda c: -c["score"])
+    return cands
+
+def choose(cands, banned):
+    pool = [c for c in cands if c["key"] not in banned][:45]
+    best, bk = None, None
+    for combo in itertools.combinations(pool, 3):
+        if len({c["key"] for c in combo}) < 3:
+            continue
+        k = (len({c["shop"] for c in combo}), len({c["fam"] for c in combo}), sum(c["score"] for c in combo))
+        if bk is None or k > bk:
+            best, bk = combo, k
+    return list(best) if best else None
+
+# ---------------------------------------------------------------- media
+def cover_urls(arr):
+    urls = []
+    for shop in COVER_RANK:
+        for x in arr:
+            u = x.get("cover")
+            if x["shop"] != shop or not u:
+                continue
+            if shop == "Yoyaku":
+                urls.append(re.sub(r"-\d+x\d+(\.\w+)$", r"\1", u))
+            if shop == "Redeye Records":
+                urls.append(re.sub(r"-2\.jpg$", "-1.jpg", u))
+            if shop == "Clone":
+                urls.append(u.replace("/artwork/small/", "/artwork/large/"))
+            urls.append(u)
+    return list(dict.fromkeys(urls))
+
+def get_cover(arr, offline, seed):
+    if offline:
+        rng = np.random.default_rng(seed)
+        a = (rng.random((8, 8, 3)) * 255).astype("uint8")
+        return Image.fromarray(a).resize((600, 600), Image.NEAREST)
+    best = None
+    for u in cover_urls(arr):
+        try:
+            im = Image.open(io.BytesIO(fetch(u))).convert("RGB")
+        except Exception as e:
+            log("cover fail", u, e)
+            continue
+        if best is None or im.width > best.width:
+            best = im
+        if best.width >= 600:
+            break
+    if best is None:
+        raise RuntimeError("no cover")
+    s = min(best.size)  # centre-crop square
+    l, t = (best.width - s) // 2, (best.height - s) // 2
+    return best.crop((l, t, l + s, t + s))
+
+def decode(path):
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-f", "f32le", "-ac", "2", "-ar", str(SR), "-"],
+                         check=True, capture_output=True).stdout
+    return np.frombuffer(raw, dtype="<f4").reshape(-1, 2).copy()
+
+def get_audio(track, offline, work, seed):
+    if offline:
+        t = np.arange(SR * 60) / SR
+        env = np.where(t > 20, 1.0, 0.35)
+        x = (np.sin(2 * np.pi * (110 + seed * 40) * t) * 0.3 + np.sin(2 * np.pi * 2 * t) ** 8 * 0.4) * env
+        return np.stack([x, x], 1).astype("float32")
+    p = os.path.join(work, "a_%d.mp3" % seed)
+    open(p, "wb").write(fetch(track["u"], timeout=90))
+    a = decode(p)
+    if len(a) < SR * 10:
+        raise RuntimeError("audio too short")
+    return a
+
+def pick_start(a):
+    """Start a little before the biggest energy rise (RMS per 0.5 s)."""
+    hop = SR // 2
+    m = a.mean(1)
+    rms = np.array([np.sqrt(np.mean(m[i:i + hop] ** 2)) for i in range(0, len(m) - hop, hop)])
+    dur = len(m) / SR
+    best, bt = -1, min(30.0, max(0.0, dur - 12))
+    for i in range(12, len(rms) - 8):          # t from 6 s
+        t = i / 2
+        if t > dur - 10:
+            break
+        rise = rms[i:i + 4].mean() - rms[i - 4:i].mean()
+        if rise > best:
+            best, bt = rise, t
+    return max(0.0, bt - 1.5), rms
+
+def seg(a, start, length):
+    i, n = int(start * SR), int(length * SR)
+    s = a[i:i + n]
+    if len(s) < n:
+        s = np.concatenate([s, np.zeros((n - len(s), 2), "float32")])
+    r = np.sqrt(np.mean(s ** 2)) + 1e-6
+    return s * min(4.0, 0.14 / r)              # loudness match
+
+def fade(s, fin, fout):
+    n = len(s)
+    g = np.ones(n, "float32")
+    a, b = int(fin * SR), int(fout * SR)
+    if a: g[:a] = np.linspace(0, 1, a)
+    if b: g[n - b:] = np.linspace(1, 0, b)
+    return s * g[:, None]
+
+def build_mix(picks):
+    mix = np.zeros((SR * DUR, 2), "float32")
+    plan = [(0, 9.1, 1.2, 0.15, -3.0), (9, 6.1, 0.1, 0.15, 0.0), (15, 6.0, 0.1, 1.5, 0.0)]
+    for p, (at, ln, fi, fo, pre) in zip(picks, plan):
+        st = max(0.0, p["start"] + pre)
+        s = fade(seg(p["audio"], st, ln), fi, fo)
+        i = int(at * SR)
+        mix[i:i + len(s)] += s[:len(mix) - i]
+    peak = np.abs(mix).max()
+    if peak > 0.97:
+        mix *= 0.97 / peak
+    return mix
+
+# ---------------------------------------------------------------- drawing
+def fit(d, text, size, bold, maxw):
+    while size > 18 and d.textlength(text, font=F(size, bold)) > maxw:
+        size -= 2
+    return F(size, bold)
+
+def txt(d, xy, text, size, col, bold=True, anchor="ls", maxw=888):
+    f = fit(d, text, size, bold, maxw)
+    d.text(xy, text, font=f, fill=col, anchor=anchor)
+    return d.textlength(text, font=f)
+
+def paste_cover(img, cov, x, y, s, z=1.0):
+    d = int(round(s * z))
+    c = cov.resize((d, d), Image.LANCZOS) if z != 1.0 else cov.resize((s, s), Image.LANCZOS)
+    off = (d - s) // 2
+    img.paste(c.crop((off, off, off + s, off + s)) if d != s else c, (x, y))
+
+def draw_title(img, picks, date_s, t):
+    d = ImageDraw.Draw(img)
+    y0 = SY
+    txt(d, (96, y0 + 230), "Today's Digs", 112, WH)
+    txt(d, (96, y0 + 390), date_s, 150, ACC)
+    for i, p in enumerate(picks):
+        a = min(1, max(0, (t - 0.35 - i * 0.45) / 0.55))
+        a = 1 - (1 - a) ** 3
+        if a <= 0:
+            continue
+        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+        x, y = 96 + i * 299, y0 + 470 + int((1 - a) * 30)
+        layer.paste(p["thumb"], (x, y))
+        txt(ld, (x, y + 340), p["genre"], 28, ACC, maxw=290)
+        txt(ld, (x, y + 382), p["a"], 32, WH, maxw=290)
+        txt(ld, (x, y + 420), p["t"], 29, GR, bold=False, maxw=290)
+        if a < 1:
+            al = layer.getchannel("A").point(lambda v: int(v * a))
+            layer.putalpha(al)
+        img.paste(layer, (0, 0), layer)
+    a = min(1, max(0, (t - 1.6) / 0.5))
+    if a > 0:
+        col = lambda c: tuple(int(BG[k] + (c[k] - BG[k]) * a) for k in range(3))
+        txt(d, (96, y0 + 1200), "Previews & price comparison", 40, col(GR), bold=False)
+        txt(d, (96, y0 + 1262), "monthlyvinyl.net", 48, col(ACC))
+
+def draw_slide(img, p, i, date_s, t, lev):
+    d = ImageDraw.Draw(img)
+    y0 = SY
+    txt(d, (96, y0 + 92), p["genre"], 34, ACC, maxw=560)
+    txt(d, (984, y0 + 92), "%s  ·  %d / 3" % (date_s, i + 1), 32, GR, anchor="rs")
+    paste_cover(img, p["cov700"], 230, y0 + 140, 620, 1 + 0.04 * (t / 6))
+    txt(d, (96, y0 + 868), p["a"], 66, WH)
+    txt(d, (96, y0 + 936), p["t"], 48, WH, bold=False)
+    txt(d, (96, y0 + 990), "  ·  ".join(p["meta"]), 30, GR, bold=False)
+    d.rectangle([96, y0 + 1030, 984, y0 + 1031], fill=RULE)
+    y = y0 + 1092
+    multi = len(p["prices"]) > 1
+    for j, (shop, label) in enumerate(p["prices"][:3]):
+        ch = multi and j == 0
+        col = ACC if ch else WH
+        w = txt(d, (96, y), shop, 38, col, bold=ch, maxw=420)
+        if ch:
+            d.text((96 + w + 18, y), "←", font=F(36, True, sym=True), fill=ACC, anchor="ls")
+            txt(d, (96 + w + 62, y), "cheapest", 38, ACC, maxw=300)
+        txt(d, (984, y), label, 38, col, bold=ch, anchor="rs")
+        y += 54
+    d.rectangle([96, y0 + 1252, 984, y0 + 1256], fill=RULE)
+    d.rectangle([96, y0 + 1252, 96 + int(888 * min(1, t / 6)), y0 + 1256], fill=ACC)
+    by = y0 + 1318
+    d.polygon([(98, by - 20), (98, by - 1), (114, by - 10)], fill=WH)
+    txt(d, (130, by), p["track"], 30, WH, bold=False, maxw=480)
+    for b in range(4):
+        ph = math.sin(p["frame"] * 0.45 + b * 1.9) * 0.5 + 0.5
+        h = 6 + 30 * lev * (0.4 + 0.6 * ph)
+        d.rectangle([632 + b * 13, by + 2 - h, 640 + b * 13, by + 2], fill=ACC)
+    txt(d, (984, by), "monthlyvinyl.net", 30, ACC, anchor="rs")
+
+def render_frame(f, picks, date_s, levs):
+    t = f / FPS
+    base = Image.new("RGB", (W, H), BG)
+    layers = []
+    xf = 0.25
+    if t < 3 + xf:
+        im = base.copy(); draw_title(im, picks, date_s, t)
+        layers.append((im, 1.0 if t < 3 else 1 - (t - 3) / xf))
+    for i in range(3):
+        s, e = 3 + i * 6, 9 + i * 6
+        if s <= t < e + xf:
+            a = (t - s) / xf if t < s + xf else 1.0
+            if i < 2 and t > e:
+                a = 1 - (t - e) / xf
+            if i == 2 and t > DUR - 0.4:
+                a = min(a, (DUR - t) / 0.4)
+            picks[i]["frame"] = f
+            im = base.copy(); draw_slide(im, picks[i], i, date_s, t - s, levs[f])
+            layers.append((im, max(0.0, min(1.0, a))))
+    out = base
+    for im, a in layers:
+        out = im if a >= 1 else Image.blend(out, im, a)
+    return out
+
+def render_video(picks, date_s, mix, path, poster):
+    hop = SR // FPS
+    m = mix.mean(1)
+    levs = np.array([np.sqrt(np.mean(m[f * hop:(f + 1) * hop] ** 2)) for f in range(DUR * FPS)])
+    levs = np.minimum(1, levs / (levs.max() + 1e-9) * 1.15)
+    wav = path + ".f32"
+    mix.astype("<f4").tofile(wav)
+    cmd = ["ffmpeg", "-y", "-v", "error",
+           "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
+           "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
+           "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p",
+           "-b:v", "8M", "-maxrate", "10M", "-bufsize", "16M", "-g", "60", "-preset", "medium",
+           "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-ac", "2",
+           "-movflags", "+faststart", "-shortest", path]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    for f in range(DUR * FPS):
+        im = render_frame(f, picks, date_s, levs)
+        if f == int(2.9 * FPS):
+            im.convert("RGB").save(poster, quality=88)
+        pr.stdin.write(im.tobytes())
+    pr.stdin.close()
+    if pr.wait() != 0:
+        raise RuntimeError("ffmpeg failed")
+    os.remove(wav)
+
+# ---------------------------------------------------------------- texts
+def price_s(x):
+    return "%s%.2f" % (x["cur"], x["p"]) if x.get("p") is not None else None
+
+def prepare(c, fx):
+    x, arr = c["feat"], c["arr"]
+    meta_src = next((y for y in [x] + arr if y.get("l")), x)
+    cat = x.get("cat") or next((y.get("cat") for y in arr if y.get("cat")), "")
+    meta = [v for v in [meta_src.get("l"), cat, x.get("f") or meta_src.get("f")] if v]
+    rows, seen_shop = [], set()
+    for y in arr:
+        if y.get("p") is None or y["shop"] in seen_shop:
+            continue
+        seen_shop.add(y["shop"])
+        chf = y["p"] * fx.get(CUR.get(y["cur"], "EUR"), 1)
+        rows.append((chf, short(y["shop"]), price_s(y)))
+    rows.sort()
+    tr = c["track"]
+    tname = tr["n"] if tr["named"] else x["t"]
+    return {"key": c["key"], "a": x["a"], "t": x["t"], "l": meta_src.get("l") or "", "genre": genre_label(x.get("g")),
+            "gfull": x.get("g") or "", "meta": meta, "prices": [(r[1], r[2]) for r in rows],
+            "shop": short(x["shop"]), "shop_price": price_s(x), "url": x.get("url"),
+            "track": tname + " (preview)", "strict": c["strict"]}
+
+def tag(s):
+    s = re.sub(r"[^a-z0-9]", "", norm(s))
+    return "#" + s if 2 < len(s) <= 24 else None
+
+def caption(picks, date_s):
+    nums = ["1️⃣", "2️⃣", "3️⃣"]
+    lines = ["Today's Digs %s 👇" % date_s, "🔊 Sound on", ""]
+    for n, p in zip(nums, picks):
+        lab = " (%s)" % p["l"] if p["l"] else ""
+        lines.append("%s %s – %s%s" % (n, p["a"], p["t"], lab))
+        g = p["genre"].title().replace("Dj", "DJ")
+        lines.append("%s · %s at %s" % (g, p["shop_price"], p["shop"]) if p["shop_price"] else "%s · at %s" % (g, p["shop"]))
+        lines.append("")
+    lines += ["Full price comparison + previews of all three 👉", "monthlyvinyl.net (link in bio)", "",
+              "Which one goes in your bag – 1, 2 or 3?", ""]
+    tags = ["#newvinyl", "#vinylrelease"]
+    for p in picks:
+        tags.append(tag(p["genre"]))
+    for p in picks:
+        tags += [tag(p["a"]), tag(p["l"])]
+    tags += ["#vinylcollection", "#recordshop", "#monthlyvinyl"]
+    out = []
+    for t in tags:
+        if t and t not in out:
+            out.append(t)
+    lines.append(" ".join(out[:16]))
+    return "\n".join(lines)
+
+# ---------------------------------------------------------------- page
+PAGE = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Today's Digs</title>
+<link rel="icon" href="/favicon-32.png">
+<style>
+:root{--bg:#0f0f0f;--fg:#fff;--mut:#9a9a9a;--acc:#ffd60a;--line:#2e2e2e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 "Helvetica Neue",Helvetica,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:30px;margin:0}h1 span{color:var(--acc)}.sub{color:var(--mut);margin:4px 0 24px}
+.grid{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:28px}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+video{width:100%;border-radius:10px;background:#000;display:block}
+.btn{display:inline-block;background:var(--acc);color:#000;font-weight:700;padding:12px 18px;border-radius:9px;text-decoration:none;border:0;font-size:15px;cursor:pointer;margin:12px 8px 0 0}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+textarea{width:100%;min-height:400px;background:#161616;color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:12px;font:14px/1.5 ui-monospace,Menlo,monospace}
+ol{padding-left:20px}li{margin:6px 0}a{color:var(--acc)}.m{color:var(--mut);font-size:14px}
+h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:26px 0 8px}
+.ok{color:var(--acc);font-size:14px;margin-left:6px}
+</style></head><body><main>
+<h1>Today's Digs <span>__DATE__</span></h1>
+<p class="sub">Generated __GEN__ · not published · 1080×1920 · 21 s</p>
+<div class="grid">
+<div>
+<video controls playsinline preload="metadata" poster="__POSTER__" src="__VIDEO__"></video>
+<a class="btn" href="__VIDEO__" download="__FILE__">⬇ Download video</a>
+</div>
+<div>
+<textarea id="cap" readonly>__CAPTION__</textarea>
+<button class="btn" id="copy">Copy caption</button><span class="ok" id="ok"></span>
+<h2>Releases</h2>
+<ol>__LIST__</ol>
+__NOTE__
+</div></div>
+<h2>Previous days</h2>
+<ul class="m">__ARCHIVE__</ul>
+</main>
+<script>
+document.getElementById('copy').onclick=async()=>{const t=document.getElementById('cap');
+try{await navigator.clipboard.writeText(t.value)}catch(e){t.select();document.execCommand('copy')}
+document.getElementById('ok').textContent='copied ✓';setTimeout(()=>document.getElementById('ok').textContent='',2000)};
+</script></body></html>
+"""
+
+def write_page(day, date_s, picks, cap, video_url, poster_url, fname, history, note):
+    li = []
+    for p in picks:
+        pr = " · ".join("%s %s" % (s, v) for s, v in p["prices"]) or "no price"
+        li.append('<li><b>%s – %s</b> <span class="m">(%s · new at %s)</span><br><span class="m">%s · ▶ %s</span>%s</li>' % (
+            html.escape(p["a"]), html.escape(p["t"]), html.escape(p["genre"].title()), html.escape(p["shop"]),
+            html.escape(pr), html.escape(p["track"]),
+            ' · <a href="%s" target="_blank" rel="noopener">shop</a>' % html.escape(p["url"]) if p.get("url") else ""))
+    arch = []
+    for e in history[1:8]:
+        arch.append('<li>%s – %s · <a href="%s">video</a></li>' % (
+            html.escape(e["date"]), html.escape(" / ".join(e.get("titles", []))), html.escape(e.get("video", ""))))
+    gen = dt.datetime.now(dt.timezone(dt.timedelta(hours=2))).strftime("%d.%m.%Y %H:%M")
+    rep = {"__DATE__": date_s, "__GEN__": gen, "__VIDEO__": html.escape(video_url), "__POSTER__": html.escape(poster_url),
+           "__FILE__": fname, "__CAPTION__": html.escape(cap), "__LIST__": "".join(li),
+           "__NOTE__": '<p class="m">%s</p>' % html.escape(note) if note else "",
+           "__ARCHIVE__": "".join(arch) or "<li>–</li>"}
+    page = PAGE
+    for k, v in rep.items():
+        page = page.replace(k, v)
+    os.makedirs(OUT, exist_ok=True)
+    open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(page)
+    open(os.path.join(OUT, "caption.txt"), "w", encoding="utf-8").write(cap + "\n")
+
+# ---------------------------------------------------------------- main
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--date")
+    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--offline", action="store_true", help="synthetic media, for layout tests")
+    ap.add_argument("--work", default=os.environ.get("DIGS_WORK") or tempfile.mkdtemp())
+    a = ap.parse_args()
+    data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
+    day = a.date or data["updated"]
+    date_s = dt.date.fromisoformat(day).strftime("%d.%m.%y")
+    ymd = day.replace("-", "")[2:]
+    hist_p = os.path.join(OUT, "history.json")
+    history = json.load(open(hist_p, encoding="utf-8")) if os.path.exists(hist_p) else []
+    if not a.force and history and history[0]["date"] == day:
+        log("digs for", day, "already done")
+        print(json.dumps({"skip": True}))
+        return
+    history = [e for e in history if e["date"] != day]
+    seen = load_seen()
+    fx = data.get("fx", {})
+    cands = candidates(data, day, seen)
+    log(len(cands), "candidates for", day)
+    banned, picks = set(), None
+    while True:
+        combo = choose(cands, banned)
+        if not combo:
+            raise SystemExit("not enough releases with previews for %s" % day)
+        ok = []
+        for n, c in enumerate(combo):
+            if "audio" not in c:
+                try:
+                    for ti, tr in enumerate(c["tracks"][:3]):
+                        try:
+                            c["audio"] = get_audio(tr, a.offline, a.work, n * 10 + ti)
+                            c["track"] = tr
+                            break
+                        except Exception as e:
+                            log("audio fail", c["key"], e)
+                    if "audio" not in c:
+                        raise RuntimeError("no audio")
+                    c["cover"] = get_cover(c["arr"], a.offline, n)
+                except Exception as e:
+                    log("drop", c["key"], e)
+                    banned.add(c["key"])
+                    break
+            ok.append(c)
+        if len(ok) == 3:
+            picks = ok
+            break
+    # order: genres spread, keep score order
+    P = []
+    for c in picks:
+        p = prepare(c, fx)
+        p["audio"] = c["audio"]
+        p["start"], _ = pick_start(c["audio"])
+        p["cov700"] = c["cover"].resize((700, 700), Image.LANCZOS)
+        p["thumb"] = c["cover"].resize((290, 290), Image.LANCZOS)
+        P.append(p)
+        log("pick", p["shop"], "|", p["a"], "–", p["t"], "|", p["genre"], "| start %.1fs" % p["start"], "| strict" if p["strict"] else "| newly listed at shop")
+    mix = build_mix(P)
+    fname = "todays-digs-%s.mp4" % ymd
+    vpath = os.path.join(a.work, fname)
+    poster = os.path.join(a.work, "todays-digs-%s.jpg" % ymd)
+    render_video(P, date_s, mix, vpath, poster)
+    base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
+    cap = caption(P, date_s)
+    nonstrict = [p for p in P if not p["strict"]]
+    note = ("Note: %s was already listed in another shop before yesterday (new at %s today)." %
+            (", ".join("%s – %s" % (p["a"], p["t"]) for p in nonstrict), ", ".join(p["shop"] for p in nonstrict))) if nonstrict else ""
+    history.insert(0, {"date": day, "keys": [p["key"] for p in P], "titles": ["%s – %s" % (p["a"], p["t"]) for p in P],
+                       "shops": [p["shop"] for p in P], "video": base + fname})
+    write_page(day, date_s, P, cap, base + fname, base + os.path.basename(poster), fname, history, note)
+    json.dump(history[:60], open(hist_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(json.dumps({"skip": False, "video": vpath, "poster": poster, "date": day}))
+
+if __name__ == "__main__":
+    main()
