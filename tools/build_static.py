@@ -288,8 +288,10 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
             st = STOCK.get(o.get("st"), "")
             where = ", ".join(x for x in [Sx.get("where"), Sx.get("country")] if x)
             sub = " · ".join(x for x in [where, st] if x)
+            cv = chf(Sx, o)
+            conv = f'<span class="w">≈ CHF {cv:.2f}</span>' if mixed and cv is not None else ""
             cls = ' class="best"' if best and o is best[1] and len(priced) > 1 else ""
-            rows.append(f'<tr{cls}><td>{e(Sx["shop"])}<span class="w">{e(sub)}</span></td><td class="p">{e(price(Sx, o.get("p")))}{f'<span class="w">≈ CHF {chf(Sx, o):.2f}</span>' if mixed and chf(Sx, o) is not None else ""}</td>'
+            rows.append(f'<tr{cls}><td>{e(Sx["shop"])}<span class="w">{e(sub)}</span></td><td class="p">{e(price(Sx, o.get("p")))}{conv}</td>'
                         f'<td class="go"><a href="{e(o.get("url"))}" rel="nofollow noopener" target="_blank" aria-label="Buy at {e(Sx["shop"])}">Buy ↗</a></td></tr>')
         # Tracklist: bevorzugt die Variante mit abspielbaren mp3s
         trsrc = sorted(offers, key=lambda o: -sum(1 for t in o[1].get("tr", []) if t.get("u")))[0][1].get("tr", []) or r.get("tr", [])
