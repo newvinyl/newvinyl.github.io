@@ -392,7 +392,9 @@ def price_s(x):
 def prepare(c, fx):
     x, arr = c["feat"], c["arr"]
     meta_src = next((y for y in [x] + arr if y.get("l")), x)
-    cat = x.get("cat") or next((y.get("cat") for y in arr if y.get("cat")), "")
+    # Phonica shows internal numbers instead of catalog numbers → prefer other shops
+    cats = [y.get("cat") for y in [x] + arr if y.get("cat") and not (y["shop"] == "Phonica" and y["cat"].isdigit())]
+    cat = cats[0] if cats else ""
     meta = [v for v in [meta_src.get("l"), cat, x.get("f") or meta_src.get("f")] if v]
     rows, seen_shop = [], set()
     for y in arr:
