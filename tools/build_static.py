@@ -185,7 +185,6 @@ def main():
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{SITE}/{gs}/">
 <meta property="og:image" content="{SITE}/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0d0d0d">
@@ -359,10 +358,6 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{e(img)}">
 <meta property="og:image:alt" content="{e(name)} vinyl cover">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{e(name)}">
-<meta name="twitter:description" content="{e(desc)}">
-<meta name="twitter:image" content="{e(img)}">
 <meta name="theme-color" content="#0d0d0d">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">

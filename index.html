@@ -20,10 +20,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Monthly Vinyl Releases – new vinyl from independent record shops, updated every morning">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Monthly Vinyl Releases">
-<meta name="twitter:description" content="New house, techno, disco &amp; ambient vinyl from independent shops like Hardwax, Clone and Phonica. Listen, compare prices, order per shop. Updated daily.">
-<meta name="twitter:image" content="https://monthlyvinyl.net/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Monthly Vinyl Releases", "alternateName": "Monthly Vinyl", "url": "https://monthlyvinyl.net/", "description": "New house, techno, disco & ambient vinyl from independent shops like Hardwax, Clone and Phonica. Listen, compare prices, order per shop. Updated daily.", "inLanguage": "en"}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="56d072fe-6ab0-4180-9a6f-e9926985275c" data-domains="monthlyvinyl.net"></script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30.5' fill='%230d0d0d' stroke='%23ffffff' stroke-width='3'/%3E%3Cg fill='none' stroke='%233a3a3a' stroke-width='1.2'%3E%3Ccircle cx='32' cy='32' r='25'/%3E%3Ccircle cx='32' cy='32' r='21.5'/%3E%3Ccircle cx='32' cy='32' r='18'/%3E%3C/g%3E%3Cpath d='M14 20a22 22 0 0 1 10-8' fill='none' stroke='%23ffffff' stroke-opacity='.55' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%2393a8ff'/%3E%3Ccircle cx='32' cy='32' r='2.6' fill='%230d0d0d'/%3E%3C/svg%3E">
@@ -681,6 +677,14 @@ html.sheet-open .igbadge{display:none}
 .ffab,.ffab.act{min-height:38px;padding:0 14px 0 12px;gap:7px;border-radius:0;font-size:13.5px;background:var(--yellow);color:#0d0d0d;box-shadow:0 4px 16px rgba(0,0,0,.6)}
 .ffab svg{width:15px;height:12px}
 .ffab .fb{min-width:18px;height:18px;font-size:11px}
+/* Instagram-Link oben rechts neben der Lupe */
+.igtop{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;margin:-10px -10px -10px 0;color:var(--rule);flex:none}
+.igtop svg{width:21px;height:21px}
+.igtop:hover{color:var(--yellow)}
+.igtop:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+@media (min-width:900px){.topline{align-items:center}.igtop{margin:-10px -8px -10px 10px;width:44px;height:44px}.igtop svg{width:22px;height:22px}}
+@media (max-width:899px){.topline .sbtn{margin-right:-4px}}
+@media (max-width:430px){.lu2{display:none!important}}
 /* Abdunkelung hinter dem Filterfenster als Teil des Fensters selbst, damit sie nie darüber liegen kann */
 .fback{display:none!important}
 .fpanel.sheet{box-shadow:0 0 0 100vmax rgba(0,0,0,.6)}
@@ -690,7 +694,7 @@ html.sheet-open .igbadge{display:none}
 </head>
 <body>
 <div class="wrap">
-  <div class="topline"><a class="getlisted" href="#shops" data-jump="shops">Shop missing? Get listed<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><p class="date" id="stand"></p><button type="button" class="sbtn" id="sbtn" aria-label="Search" aria-controls="search" aria-expanded="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M13.5 13.5 19 19" stroke="currentColor" stroke-width="2.4"/></svg></button></div>
+  <div class="topline"><a class="getlisted" href="#shops" data-jump="shops">Shop missing? Get listed<svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><p class="date" id="stand"></p><button type="button" class="sbtn" id="sbtn" aria-label="Search" aria-controls="search" aria-expanded="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M13.5 13.5 19 19" stroke="currentColor" stroke-width="2.4"/></svg></button><a class="igtop" id="igtop" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Follow Monthly Vinyl on Instagram" title="Follow us on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg></a></div>
   <header class="top">
     <h1 id="title" aria-label="Monthly Vinyl"><span>MONTHLY VINYL</span></h1>
   </header>
@@ -724,7 +728,7 @@ html.sheet-open .igbadge{display:none}
       <h3>Contact · Impressum</h3>
       <p><b>Monthly Vinyl Releases</b><br><a class="fmail" data-mail="hello" href="#">contact-mvr [at] pm.me</a></p>
       <p>Questions, corrections or a record we missed: write anytime.</p>
-      <p class="fsocial">Follow: <a href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener">Instagram</a> · <a href="https://x.com/monthlyvinyl" target="_blank" rel="noopener">X</a></p>
+      <p class="fsocial">Follow: <a href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener">Instagram</a></p>
     </section>
     <section class="fblock">
       <h3>About &amp; privacy</h3>
@@ -907,6 +911,7 @@ function track(name,data){try{if(window.umami&&typeof umami.track==="function")u
 const shopOf=k=>{const e=INDEX[k];return e&&e.S?e.S.shop:""};
 document.addEventListener("click",e=>{
   const a=e.target.closest&&e.target.closest("a[href]");
+  if(a&&a.id==="igtop"){track("Instagram follow",{where:"header"});return}
   if(a&&(a.closest("#share")||a.id==="igbadge"))return;
   if(a&&a.target==="_blank"&&/^https?:/.test(a.href)&&a.hostname!==location.hostname){
     const art=a.closest("article.rel"),inBag=!!a.closest(".run,#list.bagview");
@@ -1675,7 +1680,6 @@ const SI={
   wa:'<svg viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.6 7.6c.3-.6.6-.6.9-.6h.6c.2 0 .4.1.5.4l.8 1.9c.1.2 0 .5-.1.6l-.6.7c-.1.2-.1.4 0 .6.6 1.1 1.5 2 2.6 2.6.2.1.4.1.6 0l.7-.8c.2-.2.4-.2.6-.1l1.9.9c.2.1.3.3.3.5 0 .6-.2 1.3-.8 1.7-.6.4-1.6.6-3-.1-1.6-.7-3.6-2.6-4.4-4.2-.7-1.4-.6-2.4-.1-3.1Z" fill="currentColor"/></svg>',
   ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
   tg:'<svg viewBox="0 0 24 24"><path d="M21.5 3.5 2.8 10.7c-.8.3-.8 1.4.1 1.6l4.7 1.5 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.5 4.9 3.6c.6.4 1.4.1 1.6-.6l3.2-15.4c.2-.9-.7-1.6-1.8-1.4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m7.6 13.8 10-7-7.7 8.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
-  x:'<svg viewBox="0 0 24 24"><path d="M3.5 3.5h5l12 17h-5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M20 3.5 13.6 10.6M10.3 13.6 4 20.5" stroke="currentColor" stroke-width="1.9"/></svg>',
   fb:'<svg viewBox="0 0 24 24"><path d="M13.5 21.5v-8h2.8l.4-3.2h-3.2V8.3c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4v3.2h2.8v8" fill="currentColor"/></svg>',
   bs:'<svg viewBox="0 0 24 24"><path d="M12 10.8C10.6 8 6.8 3 3.8 3 2.2 3 2.3 5.4 2.6 7.5c.4 3 2.6 4 5.3 3.6-3.9.7-4.9 3-2.7 5.2 4.1 4.2 5.8-1.1 6.8-3.5 1 2.4 2.7 7.7 6.8 3.5 2.2-2.2 1.2-4.5-2.7-5.2 2.7.4 4.9-.6 5.3-3.6.3-2.1.4-4.5-1.2-4.5-3 0-6.8 5-8.2 7.8Z" fill="currentColor"/></svg>',
   th:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M16.8 11.3c-.4-3-2.3-4.4-4.8-4.4-2 0-3.5 1-4.2 2.6"/><path d="M17 11.6c-1.6-.9-4.5-1.1-6.2-.3-1.7.8-1.7 3.2.2 3.8 2.6.8 5.1-.8 5.1-4.2v-.3"/><path d="M18.4 6.8C17 4.2 14.7 3 12 3 6.8 3 4 6.6 4 12s2.8 9 8 9c3.8 0 6.4-1.8 7.3-4.6"/></svg>',
@@ -1695,7 +1699,6 @@ function openShare(art,btn){
     ["wa","WhatsApp",`https://wa.me/?text=${encodeURIComponent(line+" "+url)}`],
     ["ig","Instagram",null],
     ["tg","Telegram",`https://t.me/share/url?url=${u}&text=${t}`],
-    ["x","X",`https://x.com/intent/tweet?text=${t}&url=${u}`],
     ["fb","Facebook",`https://www.facebook.com/sharer/sharer.php?u=${u}`],
     ["bs","Bluesky",`https://bsky.app/intent/compose?text=${encodeURIComponent(line+" "+url)}`],
     ["th","Threads",`https://www.threads.net/intent/post?text=${encodeURIComponent(line+" "+url)}`],
