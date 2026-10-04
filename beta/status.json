@@ -62,15 +62,54 @@
    "none": 0
   }
  },
- "pages_checked": 161,
- "new_from_shop_pages": 44,
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
  "copied_from_other_shop": 9,
  "broken_clips_removed": 102,
  "clips_verified": 1468,
- "not_reachable": {
-  "Phonica: http403": 19,
-  "Phonica: failed": 33,
-  "Redeye Records: botcheck": 4,
-  "Yoyaku: botcheck": 58
- }
+ "not_reachable": {},
+ "clip_hosts": {
+  "clone.nl": {
+   "clips": 717,
+   "failed": 79,
+   "sample": [
+    "https://clone.nl/platen/mp3/83125/1%20Chrysalis.mp3",
+    "https://clone.nl/platen/mp3/83125/2%20Politics%20Of%20Being.mp3",
+    "https://clone.nl/platen/mp3/83125/3%20Murmuration.mp3"
+   ]
+  },
+  "media.hardwax.com": {
+   "clips": 414,
+   "failed": 0,
+   "sample": []
+  },
+  "objectstore.true.nl": {
+   "clips": 218,
+   "failed": 0,
+   "sample": []
+  },
+  "s3.amazonaws.com": {
+   "clips": 19,
+   "failed": 8,
+   "sample": [
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/kompakt508-cover_blown-01-honey_hunter.mp3"
+   ]
+  },
+  "sounds.redeyerecords.co.uk": {
+   "clips": 98,
+   "failed": 2,
+   "sample": [
+    "https://sounds.redeyerecords.co.uk/702956.mp3",
+    "https://sounds.redeyerecords.co.uk/703140.mp3"
+   ]
+  },
+  "www.juno.co.uk": {
+   "clips": 2,
+   "failed": 0,
+   "sample": []
+  }
+ },
+ "unverifiable_hosts": []
 }
