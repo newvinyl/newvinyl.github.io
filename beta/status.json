@@ -2,9 +2,9 @@
  "date": "2026-10-04",
  "total": {
   "records": 653,
-  "tracks": 478,
+  "tracks": 495,
   "clip": 96,
-  "none": 79
+  "none": 62
  },
  "shops": {
   "Hardwax": {
@@ -27,21 +27,21 @@
   },
   "Clone": {
    "records": 194,
-   "tracks": 178,
+   "tracks": 193,
    "clip": 0,
-   "none": 16
+   "none": 1
   },
   "Phonica": {
    "records": 82,
-   "tracks": 33,
+   "tracks": 34,
    "clip": 5,
-   "none": 44
+   "none": 43
   },
   "Redeye Records": {
    "records": 118,
-   "tracks": 24,
+   "tracks": 25,
    "clip": 91,
-   "none": 3
+   "none": 2
   },
   "Yoyaku": {
    "records": 96,
@@ -62,15 +62,15 @@
    "none": 0
   }
  },
- "pages_checked": 60,
- "new_from_shop_pages": 58,
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
  "copied_from_other_shop": 10,
  "broken_clips_removed": 102,
- "clips_verified": 1661,
+ "clips_verified": 1840,
  "not_reachable": {},
  "clip_hosts": {
   "clone.nl": {
-   "clips": 643,
+   "clips": 814,
    "failed": 0,
    "sample": []
   },
@@ -85,9 +85,13 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 11,
-   "failed": 0,
-   "sample": []
+   "clips": 19,
+   "failed": 8,
+   "sample": [
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/kompakt508-cover_blown-01-honey_hunter.mp3"
+   ]
   },
   "sounds.redeyerecords.co.uk": {
    "clips": 96,
