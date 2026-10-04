@@ -741,10 +741,10 @@ article.rel.now .cover{outline:3px solid var(--yellow);outline-offset:4px}
 .pbtn.rnd svg{width:20px;height:20px}
 .pbtn.rnd.spin svg{animation:rndspin .5s cubic-bezier(.3,1.4,.5,1)}
 @keyframes rndspin{from{transform:rotate(-200deg) scale(.6)}to{transform:none}}
-.pskim{all:unset;cursor:pointer;order:2;flex:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 7px;border:1px solid rgba(255,255,255,.3);color:#f2f0ea;opacity:.75}
+.pskim{all:unset;cursor:pointer;order:2;flex:none;box-sizing:border-box;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);color:#f2f0ea}
 .pskim[aria-pressed="true"]{border-color:var(--yellow);color:#0d0d0d;background:var(--yellow);opacity:1}
 .pskim:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media (max-width:480px){.player .in{gap:8px}.pskim{padding:5px 5px;font-size:9.5px}.pbtn.rnd,.pbtn.sm{width:36px;height:36px}}
+@media (max-width:480px){.player .in{gap:8px}.pskim,.pbtn.rnd,.pbtn.sm{width:36px;height:36px}.pskim{font-size:8px}}
 @media (prefers-reduced-motion:reduce){.pbtn.rnd.spin svg{animation:none}}
 /* Schmale Handys: Platz für den Tracknamen; nach oben geht's über den Titel */
 @media (max-width:420px){.totop{display:none!important}}
