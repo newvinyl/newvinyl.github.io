@@ -80,13 +80,14 @@ def get_page(url, tries=3):
     if not allowed(url):
         return None, "robots"
     host = urllib.parse.urlparse(url).netloc
+    err = "http429"
     for t in range(tries):
         _polite(host)
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml", "Accept-Language": "en"})
             with urllib.request.urlopen(req, timeout=90) as r:
                 body = r.read().decode("utf-8", "replace")
-                if "cf-chl" in body or "challenge-platform" in body:
+                if re.search(r"<title>\s*(Just a moment|Nur einen Moment|Attention Required)", body) or ("_cf_chl_opt" in body and len(body) < 40000):
                     return None, "botcheck"
                 return body, "ok"
         except urllib.error.HTTPError as e:
@@ -191,6 +192,16 @@ def tracks_yoyaku(page):
     return out
 
 
+def tracks_clone(page):
+    out = []
+    for href, title in re.findall(r'<a class="preview"[^>]*href="(https://clone\.nl/platen/mp3/[^"]+\.mp3)"[^>]*title="([^"]*)"', page):
+        name = html.unescape(title).rsplit(" - ", 1)[-1].strip()
+        m = re.match(r"^(\d{1,2}|[A-D]\d?)\s+(.+)$", name)
+        s, n = (m.group(1), m.group(2)) if m else ("", name)
+        out.append({"s": s, "n": n, "u": urllib.parse.quote(html.unescape(href), safe=":/%")})
+    return out
+
+
 def tracklist_redeye(page):
     m = re.search(r'<[^>]+class="tracks"[^>]*>(.*?)</(?:p|div|span|li)>', page, re.S)
     if not m:
@@ -201,6 +212,7 @@ def tracklist_redeye(page):
 
 
 EXTRACT = {
+    "Clone": tracks_clone,
     "Rush Hour": tracks_rushhour,
     "Phonica": tracks_phonica,
     "Kompakt": tracks_kompakt,
@@ -231,23 +243,64 @@ def main():
     months = {now, prev}
     items = [(S, r) for S in data.get("shops", []) for r in (S.get("items") or []) if r.get("m") in months]
 
-    # 1) Produktseiten der Shops ohne Einzeltracks abfragen
+    ver = cache.setdefault("_verified", {})
+    hosts = {}
+    unverifiable = set()
+    removed = 0
+
+    def verify_and_prune():
+        nonlocal removed, unverifiable
+        urls = sorted({t["u"] for _, r in items for t in r.get("tr", []) if t.get("u")})
+        need = [u for u in urls if ver.get(u, {}).get("d") != str(TODAY)]
+        with cf.ThreadPoolExecutor(max_workers=12) as ex:
+            for u, ok in zip(need, ex.map(check_audio, need)):
+                ver[u] = {"d": str(TODAY), "ok": ok}
+        # Hosts, die aus dem Rechenzentrum generell nicht antworten (Bot-Schutz), nicht bestrafen:
+        # fällt die Mehrheit eines Hosts durch, gelten seine Clips als «nicht prüfbar» und bleiben drin.
+        hosts.clear()
+        for u in urls:
+            d = hosts.setdefault(urllib.parse.urlparse(u).netloc, [0, 0, []])
+            d[0] += 1
+            if not ver.get(u, {}).get("ok"):
+                d[1] += 1
+                if len(d[2]) < 3:
+                    d[2].append(u)
+        unverifiable = {h for h, (n, f, _) in hosts.items() if n >= 5 and f / n > 0.5}
+        bad = {u for u in urls if not ver.get(u, {}).get("ok") and urllib.parse.urlparse(u).netloc not in unverifiable}
+        for _, r in items:
+            n0 = len(r.get("tr", []))
+            r["tr"] = [t for t in r.get("tr", []) if not (t.get("u") and t["u"] in bad)]
+            removed += n0 - len(r["tr"])
+        return urls
+
+    # Bereits Gefundenes aus dem Cache einsetzen
+    for S, r in items:
+        c = cache.get(r.get("url"), {})
+        if c.get("tl") and not r.get("tl"):
+            r["tl"] = c["tl"]
+        if c.get("tr") and not per_track(r):
+            r["tr"] = [dict(t) for t in c["tr"]]
+
+    # 1) Alle vorhandenen Hörproben prüfen, defekte entfernen
+    verify_and_prune()
+
+    # 2) Für Platten ohne (funktionierende) Einzeltracks die Produktseite des Shops lesen
     todo = []
     for S, r in items:
         shop, url = S["shop"], r.get("url")
         if not url:
             continue
         c = cache.get(url, {})
+        if c.get("checked") == str(TODAY):
+            continue
         if shop == "Redeye Records":
-            if not r.get("tl") and not c.get("tl") and c.get("checked") != str(TODAY):
+            if not r.get("tl"):
                 todo.append((S, r))
             continue
         if shop not in EXTRACT or per_track(r):
             continue
-        if c.get("tr"):
-            continue  # schon gefunden; wird unten eingesetzt und geprüft
         first = c.get("first_try", str(TODAY))
-        if (TODAY - datetime.date.fromisoformat(first)).days > RETRY_DAYS or c.get("checked") == str(TODAY):
+        if (TODAY - datetime.date.fromisoformat(first)).days > RETRY_DAYS:
             continue
         todo.append((S, r))
 
@@ -264,51 +317,22 @@ def main():
             c["checked"] = str(TODAY)
             stats["pages"] += 1
             if page is None:
-                stats["blocked"][f'{S["shop"]}: {st}'] = stats["blocked"].get(f'{S["shop"]}: {st}', 0) + 1
+                k = f'{S["shop"]}: {st}'
+                stats["blocked"][k] = stats["blocked"].get(k, 0) + 1
                 continue
             if S["shop"] == "Redeye Records":
                 tl = tracklist_redeye(page)
                 if len(tl) > 1:
-                    c["tl"] = tl
+                    c["tl"] = r["tl"] = tl
                 continue
             tr = EXTRACT[S["shop"]](page)
             if tr:
                 c["tr"] = tr
+                r["tr"] = [dict(t) for t in tr]
                 stats["found"] += 1
 
-    # Gefundenes einsetzen
-    for S, r in items:
-        c = cache.get(r.get("url"), {})
-        if c.get("tl") and not r.get("tl"):
-            r["tl"] = c["tl"]
-        if c.get("tr") and not per_track(r):
-            r["tr"] = [dict(t) for t in c["tr"]]
-
-    # 2) Jede Hörprobe prüfen (Ergebnis 1 Tag gecacht)
-    ver = cache.setdefault("_verified", {})
-    urls = sorted({t["u"] for _, r in items for t in r.get("tr", []) if t.get("u")})
-    need = [u for u in urls if ver.get(u, {}).get("d") != str(TODAY)]
-    with cf.ThreadPoolExecutor(max_workers=12) as ex:
-        for u, ok in zip(need, ex.map(check_audio, need)):
-            ver[u] = {"d": str(TODAY), "ok": ok}
-    # Hosts, die aus dem Rechenzentrum generell nicht antworten (Bot-Schutz), nicht bestrafen:
-    # fällt die Mehrheit eines Hosts durch, gelten seine Clips als «nicht prüfbar» und bleiben drin.
-    hosts = {}
-    for u in urls:
-        h = urllib.parse.urlparse(u).netloc
-        d = hosts.setdefault(h, [0, 0, []])
-        d[0] += 1
-        if not ver.get(u, {}).get("ok"):
-            d[1] += 1
-            if len(d[2]) < 3:
-                d[2].append(u)
-    unverifiable = {h for h, (n, f, _) in hosts.items() if n >= 5 and f / n > 0.5}
-    bad = {u for u in urls if not ver.get(u, {}).get("ok") and urllib.parse.urlparse(u).netloc not in unverifiable}
-    removed = 0
-    for _, r in items:
-        n0 = len(r.get("tr", []))
-        r["tr"] = [t for t in r.get("tr", []) if not (t.get("u") and t["u"] in bad)]
-        removed += n0 - len(r["tr"])
+    # Neu Gefundenes ebenfalls prüfen
+    urls = verify_and_prune()
 
     # 3) Einzeltracks von derselben Platte in einem anderen Shop übernehmen
     best = {}
