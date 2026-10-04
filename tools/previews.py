@@ -6,7 +6,7 @@
    des Shops (Rush Hour, Phonica, Kompakt, Yoyaku; Redeye: Trackliste zum Gesamtclip).
 3. Übernimmt Einzeltracks von derselben Platte in einem anderen Shop.
 4. Prüft JEDE Hörprobe per HTTP; was nicht antwortet, fliegt raus.
-5. Schreibt das Ergebnis nach OUT (Standard: beta/releases.json) und einen Statusbericht.
+5. Schreibt das Ergebnis zurück nach releases.json und einen Statusbericht (tools/preview_status.json).
 
 Respektiert robots.txt, bremst pro Shop, umgeht keine Bot-Sperren.
 """
@@ -30,9 +30,9 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 from build_static import norm, parse_tracklist  # noqa: E402
 
 SRC = os.environ.get("SRC", os.path.join(ROOT, "releases.json"))
-OUT = os.environ.get("OUT", os.path.join(ROOT, "beta", "releases.json"))
+OUT = os.environ.get("OUT", os.path.join(ROOT, "releases.json"))
 CACHE = os.path.join(ROOT, "tools", "preview_cache.json")
-STATUS = os.path.join(os.path.dirname(OUT), "status.json")
+STATUS = os.environ.get("STATUS", os.path.join(ROOT, "tools", "preview_status.json"))
 UA = "MonthlyVinylBot/1.0 (+https://monthlyvinyl.net; preview check for listed records)"
 TODAY = datetime.datetime.now(ZoneInfo("Europe/Zurich")).date()
 RETRY_DAYS = 14          # Platten ohne Hörprobe so lange täglich neu prüfen

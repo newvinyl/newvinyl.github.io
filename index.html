@@ -1038,8 +1038,8 @@ function matches(e){
 let simulate=false, view=location.hash==="#archiv"?"archiv":location.hash==="#korb"?"korb":"home";
 const nowKey=()=>{const d=new Date();if(simulate)d.setMonth(d.getMonth()+1,1);return mKey(d)};
 const playable=r=>(r.tr||[]).some(t=>t.u||t.yt||t.ytl);
-// Beta (/beta/): Hörbarkeit in Stufen – 2 Einzeltracks, 1 nur Gesamtclip des Shops, 0 keine Hörprobe
-const BETA=/^\/beta\//.test(location.pathname);
+// Hörbarkeit in Stufen – 2 Einzeltracks, 1 nur Gesamtclip des Shops, 0 keine Hörprobe
+const BETA=true; // Hörproben-Stufen, «No preview yet»-Block und Überspringen defekter Clips sind live
 const perTrack=r=>(r.tr||[]).some(t=>(t.u&&!/sounds\.redeyerecords/.test(t.u))||t.yt||t.ytl);
 const tier=e=>e.all.some(perTrack)?2:e.all.some(playable)?1:0;
 // Gleiche Platte in mehreren Shops = eine Karte. Hauptangebot: Schweizer Shop (bei Wohnort CH), dann hörbar, dann günstigster Preis in CHF
