@@ -1,4 +1,216 @@
-status: ok len: 250583
-=== product-tracks @142210:
- ue="1" aria-label="Quantity"></div><button type="submit" class="single_add_to_cart_button button alt">Add to cart</button></form></template></div></div><div class="product-content__right"><div class="product-tracks"><div><div class="heading"><h6>Tracklist</h6> <small class="tracks-count">(8 tracks)</small></div> <a href="#" class="alltracks fwap-play" data-product="757629" aria-label="Play all tracks" title="Play all"> <svg height="20px" width="20px"><use xlink:href="#icon-play"/></svg> <span>Play All</span> </a></div><ul class="tracks"><li> <a class="track fwap-play" href="#" data-product="757629" data-index="0" title="Play">the rolling wave</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="1" title="Play">sudden flash</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="2" title="Play">acoustics of space</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="3" title="Play">sweeping leaps</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="4" title="Play">sensation of suspension</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="5" title="Play">free from the matrix</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="6" title="Play">half an owl and a full moon rising</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="7" title="Play">twin state</a></li></ul></div></div></div></div></div><section class="related products is-width-constrained"><h2 class="ct-module-title">Goes well with</h2><ul class="products columns-6" data-products="type-1"><li class="product type-product post-579391 status-publish first instock product_cat-arrivals product_cat-back-in-stock product_tag-discogs product_tag-wavo-v2 has-post-thumbnail featured taxable shipping-taxable purchasable product-type-simple"><div class="product-content"><figure > <a href="#" class="play-button fwap-play" type="button" data-product="579391"> <svg height="24px" width="24px"><use xlink:href="#icon-play-alt"/></svg> </a> <a class="ct-media-container" href="https://yoyaku.io/release/steffi-the-red-hunter-remixes-camo003/" aria-label="The Red Hunter (Remixes)"><img width="400" height="400" src="https://yoyaku.io/wp-content/uploads/2024/02/CaMo003_1-400x400.jpg" loading="lazy" decoding="async" itemprop="image" class=" wp-post-image" style="aspect-ratio: 1/1;" title="CaMo003_1" alt="The Red Hunter (Remixes)" /></a></figure><div class="product-meta"><h2 class="woocommerce-loop-product__title"><a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="https://yoyaku.io/releas 
+status: ok len: 65756
+=== ajax @55251:
+ 
+        }
+
+        /**
+         * Add current product to cart
+         */
+        async _addToCart() {
+            if (!this.currentProduct?.id) return;
+
+            const wcAjaxUrl = this.config.wc_ajax_url;
+            if (!wcAjaxUrl) {
+                console.warn('[FWAP] WooCommerce AJAX URL not configured');
+                return;
+            }
+
+            this.el.cartBtn?.classList.add('fwap-loading');
+
+            try {
+                const formData = new FormData();
+                formData.append('product_id', this.currentProduct.id);
+                formData.append('quantity', 1);
+
+                const response = await fetch(wcAjaxUrl.replace('%%endpoint%%', 'add_to_cart'), {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin'
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    // B2B sites may require login - redirect to product page
+                    if (data.product_url) {
+                        window.location.href = data.product_url;
+                        return;
+                    }
+                    throw new Error(typeof data.error === 'string' ? data.error : 'Unable to add to cart');
+                }
+
+                this.el.cartBtn?.classList.add('fwap-added');
+                this._showStatus(this.config.i18n?.added || 'Added to cart', 'success');
+
+                // Trigger WooCommerce cart update event
+                document.body.dispatchEvent(new CustomEvent('added_to_cart', {
+                    detail: { product_id: this.currentProduct.id }
+                }));
+
+                // Reset button after delay
+                setTimeout(() => {
+                    this.el.cartBtn?.classList.remove('fwap-added');
+                }, 2000);
+
+            } catch (error) {
+                console.error('[FWAP] Add to cart failed:', error);
+                this._showStatus(this.config.i18n?.error || 'Error', 'error');
+            } finally {
+                this.el.cartBtn?.classList.remove('fwap-loading');
+            }
+        }
+
+        /**
+         * Toggle wishlist for current product
+         * Uses TI-Wishlist native button if available, otherwise redirects to product page
+         */
+        _toggleWishlist() {
+            if (!this.currentProduct?.id) return;
+
+            // Try to find and click the native TI-Wishlist button on the page
+            const nativeBtn = document.querySelector(
+                `.tinvwl_add_to_wishlist_button[data-tinv-wl-product="${this.currentProduct.id}"]`
+            );
+
+            if (nativeBtn) {
+                // Trigger native TI-Wish 
+
+=== fetch( @31157:
+ se}
+         */
+        async _fetchProduct(productId) {
+            const url = this.config.rest_url;
+
+            // All endpoints now use GET with ID in URL path
+            const response = await fetch(`${url}/${productId}`);
+
+            // Try to parse the body even on !ok so we can surface the WP_Error
+            // `code` (no_tracks / no_playable_tracks / no_peaks / ...) and let
+            // callers distinguish "no audio on this product" from real errors.
+            let json = null;
+            try { json = await response.json(); } catch (_) { /* body may be empty */ }
+
+            if (!response.ok) {
+                const err = new Error(json && json.message ? json.message : `HTTP ${response.status}`);
+                if (json && json.code) {
+                    err.code = json.code;
+                }
+                throw err;
+            }
+
+            // Check for success response (standard format)
+            if (json && (json.success === false || json.code)) {
+                const err = new Error(json.message || 'API Error');
+                if (json.code) {
+                    err.code = json.code;
+                }
+                throw err;
+            }
+
+            // Normalize response format
+            return this._normalizeProductData(json, productId);
+        }
+
+        /**
+         * Normalize API response to common format
+         * Handles both fwap/v1/track and legacy formats
+         * @param {Object} json - Raw API response
+         * @param {number} productId
+         * @returns {Object}
+         */
+        _normalizeProductData(json, productId) {
+            // Universal format: { success: true, data: [{ id, title, mp3, artist, image, product_url }] }
+            const trackData = json.data || json.tracks || [];
+
+            const tracks = trackData.map((t, idx) => {
+                const url = (t.mp3 || t.url || '').trim();
+
+                return {
+                    name: t.title || t.name || `Track ${idx + 1}`,
+                    url,
+                    playable: t.playable !== undefined ? Boolean(t.playable) : this._isPlayableUrl(url),
+                    side: (t.title || t.name)?.match(/^([A-H]\d)/)?.[1] || null
+                };
+            });
+
+            const firstTrack = trackData[0] || {};
+
+            // Strip HTML from artist (HTML entities will be decoded at display time)
+            const artistText = (firstTrack.artist || json.artist || '--').replace(/<[^>]*>/g, '');
+
+            // Extract SKU from product URL if available
+            let sku = json.sku || '--';
+            if (firstTrack.product_url && sku === '--') {
+                const urlMatch = firstTrack.product_url.match(/\/product\/ 
+
+=== fetch( @55693:
+         const formData = new FormData();
+                formData.append('product_id', this.currentProduct.id);
+                formData.append('quantity', 1);
+
+                const response = await fetch(wcAjaxUrl.replace('%%endpoint%%', 'add_to_cart'), {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin'
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    // B2B sites may require login - redirect to product page
+                    if (data.product_url) {
+                        window.location.href = data.product_url;
+                        return;
+                    }
+                    throw new Error(typeof data.error === 'string' ? data.error : 'Unable to add to cart');
+                }
+
+                this.el.cartBtn?.classList.add('fwap-added');
+                this._showStatus(this.config.i18n?.added || 'Added to cart', 'success');
+
+                // Trigger WooCommerce cart update event
+                document.body.dispatchEvent(new CustomEvent('added_to_cart', {
+                    detail: { product_id: this.currentProduct.id }
+                }));
+
+                // Reset button after delay
+                setTimeout(() => {
+                    this.el.cartBtn?.classList.remove('fwap-added');
+                }, 2000);
+
+            } catch (error) {
+                console.error('[FWAP] Add to cart failed:', error);
+                this._showStatus(this.config.i18n?.error || 'Error', 'error');
+            } finally {
+                this.el.cartBtn?.classList.remove('fwap-loading');
+            }
+        }
+
+        /**
+         * Toggle wishlist for current product
+         * Uses TI-Wishlist native button if available, otherwise redirects to product page
+         */
+        _toggleWishlist() {
+            if (!this.currentProduct?.id) return;
+
+            // Try to find and click the native TI-Wishlist button on the page
+            const nativeBtn = document.querySelector(
+                `.tinvwl_add_to_wishlist_button[data-tinv-wl-product="${this.currentProduct.id}"]`
+            );
+
+            if (nativeBtn) {
+                // Trigger native TI-Wishlist functionality
+                nativeBtn.click();
+                // Toggle visual state
+                this.el.wishlistBtn?.classList.toggle('fwap-wishlisted');
+                return;
+            }
+
+            // Fallback: redirect to product page where wishlist button exists
+            if (this.currentProduct.product_url) {
+                window.location.href = this.currentProduct.product_url;
+            }
+        }
+
+        / 
 
