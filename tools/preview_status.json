@@ -1,21 +1,21 @@
 {
  "date": "2026-10-04",
  "total": {
-  "records": 653,
-  "tracks": 495,
-  "clip": 96,
+  "records": 708,
+  "tracks": 528,
+  "clip": 118,
   "none": 62
  },
  "shops": {
   "Hardwax": {
-   "records": 85,
-   "tracks": 85,
+   "records": 87,
+   "tracks": 87,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 38,
-   "tracks": 37,
+   "records": 41,
+   "tracks": 40,
    "clip": 0,
    "none": 1
   },
@@ -26,22 +26,22 @@
    "none": 1
   },
   "Clone": {
-   "records": 194,
-   "tracks": 193,
+   "records": 214,
+   "tracks": 213,
    "clip": 0,
    "none": 1
   },
   "Phonica": {
-   "records": 82,
-   "tracks": 34,
+   "records": 83,
+   "tracks": 39,
    "clip": 5,
-   "none": 43
+   "none": 39
   },
   "Redeye Records": {
-   "records": 118,
-   "tracks": 25,
-   "clip": 91,
-   "none": 2
+   "records": 145,
+   "tracks": 27,
+   "clip": 113,
+   "none": 5
   },
   "Yoyaku": {
    "records": 96,
@@ -50,10 +50,10 @@
    "none": 2
   },
   "Kompakt": {
-   "records": 36,
-   "tracks": 24,
+   "records": 38,
+   "tracks": 25,
    "clip": 0,
-   "none": 12
+   "none": 13
   },
   "Juno Records": {
    "records": 1,
@@ -62,31 +62,36 @@
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 10,
- "broken_clips_removed": 102,
- "clips_verified": 1840,
- "not_reachable": {},
+ "pages_checked": 33,
+ "new_from_shop_pages": 5,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 20,
+ "clips_verified": 1953,
+ "not_reachable": {
+  "Phonica: http403": 1,
+  "Redeye Records: failed:UnicodeEncodeError": 1
+ },
  "clip_hosts": {
   "clone.nl": {
-   "clips": 814,
-   "failed": 0,
-   "sample": []
+   "clips": 890,
+   "failed": 1,
+   "sample": [
+    "https://clone.nl/platen/mp3/84004/06%20Graves%20Qui%3Fmicos%20%28Breaks%29.mp3"
+   ]
   },
   "media.hardwax.com": {
-   "clips": 414,
+   "clips": 417,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 218,
+   "clips": 233,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 19,
-   "failed": 8,
+   "clips": 21,
+   "failed": 9,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
@@ -94,7 +99,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 96,
+   "clips": 113,
    "failed": 0,
    "sample": []
   },

@@ -5145,7 +5145,38 @@
      "g": "Electro",
      "url": "https://www.rushhour.nl/record/vinyl/suntub-extras",
      "cover": "https://objectstore.true.nl/rushhourrecords:files/styles/cover_medium/storage-api-public/extras_mockup_sidea_sticker.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "opener",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/f/ftl_018_suntub_extras/01_-_ml_buch_-_opener.mp3"
+      },
+      {
+       "s": "",
+       "n": "sway walking",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/f/ftl_018_suntub_extras/02_-_ml_buch_-_sway_walking.mp3"
+      },
+      {
+       "s": "",
+       "n": "suncrumb trail staging",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/f/ftl_018_suntub_extras/03_-_ml_buch_-_suncrumb_trail_staging.mp3"
+      },
+      {
+       "s": "",
+       "n": "moving light change",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/f/ftl_018_suntub_extras/05_-_ml_buch_-_moving_light_change.mp3"
+      },
+      {
+       "s": "",
+       "n": "growing eyes blade of cloud rolling chill",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/f/ftl_018_suntub_extras/04_-_ml_buch_-_growing_eyes_blade_of_cloud_rolling_chill.mp3"
+      },
+      {
+       "s": "",
+       "n": "halfdark slow blinking",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/f/ftl_018_suntub_extras/06_-_ml_buch_-_halfdark_slow_blinking.mp3"
+      }
+     ],
      "d": "W 42 - 2026",
      "m": "2026-10",
      "first_seen": "2026-10-04"
@@ -5160,7 +5191,53 @@
      "g": "Ambient",
      "url": "https://www.rushhour.nl/record/vinyl/dois-desertos",
      "cover": "https://objectstore.true.nl/rushhourrecords:files/styles/cover_medium/storage-api-public/cover_plus_sticker_quote.png",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "test the water",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/01_test_the_water.mp3"
+      },
+      {
+       "s": "",
+       "n": "check the results",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/02_check_the_results.mp3"
+      },
+      {
+       "s": "",
+       "n": "wawona skies",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/03_wawona_skies.mp3"
+      },
+      {
+       "s": "",
+       "n": "yosemite roads",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/04_yosemite_roads.mp3"
+      },
+      {
+       "s": "",
+       "n": "no walk ave",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/05_no_walk_ave.mp3"
+      },
+      {
+       "s": "",
+       "n": "variacoes sobre esmeraldinha",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/06_variacoes_sobre_esmeraldinha.mp3"
+      },
+      {
+       "s": "",
+       "n": "memoria",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/07_memoria.mp3"
+      },
+      {
+       "s": "",
+       "n": "rua da rosa",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/08_rua_da_rosa.mp3"
+      },
+      {
+       "s": "",
+       "n": "nocturno",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/a/ais-006_dois_desertos/09_nocturno.mp3"
+      }
+     ],
      "d": "W 40 - 2026",
      "m": "2026-10",
      "first_seen": "2026-10-04"
@@ -14676,11 +14753,6 @@
        "u": "https://clone.nl/platen/mp3/84655/2%20Solo%20Imperiale%20%28Rick%20Wade%20Remix%29.mp3"
       },
       {
-       "s": "3",
-       "n": "Echoes of The Tribe",
-       "u": "https://clone.nl/platen/mp3/84655/3%20Echoes%20of%20The%20Tribe.mp3"
-      },
-      {
        "s": "4",
        "n": "Echoes of The Tribe (Trinidadian Deep Remix)",
        "u": "https://clone.nl/platen/mp3/84655/4%20Echoes%20of%20The%20Tribe%20%28Trinidadian%20Deep%20Remix%29.mp3"
@@ -14739,11 +14811,6 @@
        "s": "1",
        "n": "Sugar Plant - Just Be There",
        "u": "https://clone.nl/platen/mp3/84653/1%20Sugar%20Plant%20-%20Just%20Be%20There.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Dub Squad - E.D.E.N (snippet 1)",
-       "u": "https://clone.nl/platen/mp3/84653/2%20Dub%20Squad%20-%20E.D.E.N%20%28snippet%201%29.mp3"
       }
      ],
      "m": "2026-10",
@@ -14830,11 +14897,6 @@
      "url": "https://clone.nl/item84475.html",
      "cover": "https://clone.nl/platen/artwork/small/plaatimage83564.jpg",
      "tr": [
-      {
-       "s": "1",
-       "n": "False Oracles",
-       "u": "https://clone.nl/platen/mp3/84475/1%20False%20Oracles.mp3"
-      },
       {
        "s": "2",
        "n": "Fail To Call",
@@ -14961,24 +15023,59 @@
      "cover": "https://clone.nl/platen/artwork/small/plaatimage83094.jpg",
      "tr": [
       {
-       "s": "1",
+       "s": "01",
        "n": "La Vieja Escuela",
-       "u": "https://clone.nl/platen/mp3/84004/1%20La%20Vieja%20Escuela.mp3"
+       "u": "https://clone.nl/platen/mp3/84004/01%20La%20Vieja%20Escuela.mp3"
       },
       {
-       "s": "2",
+       "s": "02",
        "n": "FFAMEOFFHELL (Vocal)",
-       "u": "https://clone.nl/platen/mp3/84004/2%20FFAMEOFFHELL%20%28Vocal%29.mp3"
+       "u": "https://clone.nl/platen/mp3/84004/02%20%20FFAMEOFFHELL%20%28Vocal%29.mp3"
       },
       {
-       "s": "3",
+       "s": "03",
        "n": "Go Off",
-       "u": "https://clone.nl/platen/mp3/84004/3%20Go%20Off.mp3"
+       "u": "https://clone.nl/platen/mp3/84004/03%20Go%20Off.mp3"
       },
       {
-       "s": "4",
+       "s": "04",
        "n": "Mega Def (VIP Mix)",
-       "u": "https://clone.nl/platen/mp3/84004/4%20Mega%20Def%20%28VIP%20Mix%29.mp3"
+       "u": "https://clone.nl/platen/mp3/84004/04%20Mega%20Def%20%28VIP%20Mix%29.mp3"
+      },
+      {
+       "s": "05",
+       "n": "HHELLOFFAMEE (Vocal)",
+       "u": "https://clone.nl/platen/mp3/84004/05%20HHELLOFFAMEE%20%28Vocal%29.mp3"
+      },
+      {
+       "s": "07",
+       "n": "Tech Grooverz",
+       "u": "https://clone.nl/platen/mp3/84004/07%20Tech%20Grooverz.mp3"
+      },
+      {
+       "s": "08",
+       "n": "Atarax",
+       "u": "https://clone.nl/platen/mp3/84004/08%20Atarax.mp3"
+      },
+      {
+       "s": "09",
+       "n": "Submissive To You",
+       "u": "https://clone.nl/platen/mp3/84004/09%20Submissive%20To%20You.mp3"
+      },
+      {
+       "s": "10",
+       "n": "Lamprea",
+       "u": "https://clone.nl/platen/mp3/84004/10%20Lamprea.mp3"
+      },
+      {
+       "s": "11",
+       "n": "Wacha 3K (Breakz XL) feat. Dejota & Capo",
+       "u": "https://clone.nl/platen/mp3/84004/11%20Wacha%203K%20%28Breakz%20XL%29%20feat.%20Dejota%20%26%20Capo.mp3"
+      },
+      {
+       "s": "12",
+       "n": "No Deal (Original)",
+       "u": "https://clone.nl/platen/mp3/84004/12%20No%20Deal%20%28Original%29.mp3"
       }
      ],
      "m": "2026-10",
@@ -22204,13 +22301,7 @@
      "g": "Electro · Reissue",
      "url": "https://www.redeyerecords.co.uk/vinyl/201747-mrclp006ltd-digitalism-i-love-you-dude-2026-re-issue-ltd-coloured-vinyl-hand-numbered/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192767-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192767.mp3"
-      }
-     ],
+     "tr": [],
      "m": "2026-10",
      "first_seen": "2026-10-04"
     },
@@ -22384,13 +22475,7 @@
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/201757-defcl004lp-various-artists-defected-classics-vol-4/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192775-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192775.mp3"
-      }
-     ],
+     "tr": [],
      "m": "2026-10",
      "first_seen": "2026-10-04"
     },
@@ -22719,13 +22804,7 @@
      "g": "Balearic / Downtempo",
      "url": "https://www.redeyerecords.co.uk/vinyl/201740-qmr001lpltd-cccc-chiara-civello-and-clap!-clap!-cccc/",
      "cover": "https://www.redeyerecords.co.uk/imagery/800759-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/800759.mp3"
-      }
-     ],
+     "tr": [],
      "m": "2026-10",
      "first_seen": "2026-10-04"
     }
@@ -26781,7 +26860,13 @@
      "g": "Techno / Electro",
      "url": "https://kompakt.fm/releases/space_1999_bergen_light_rail",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6aa7f362999ea-6aa9688374a2b-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Space 1999",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aa7f38eaac58-6aa96892227ef-mp3-temp.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-04"
     }
