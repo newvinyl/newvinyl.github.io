@@ -103,8 +103,45 @@ def price(S, p):
 def playable(r):
     return any(t.get("u") or t.get("yt") or t.get("ytl") for t in r.get("tr", []))
 
+def fix_redeye_previews(data):
+    """Redeye liefert pro Platte nur einen Clip (sounds.redeyerecords.co.uk/ID.mp3),
+    der oft noch nicht existiert (404). Führt ein anderer Shop dieselbe Platte mit
+    abspielbaren Tracks, übernimmt der Redeye-Eintrag diese Trackliste."""
+    def base(t):  # Redeye-Zusatz wie " - Standard Weight, Blue Ripple Coloured Vinyl" weg
+        return norm(re.split(r"\s+-\s+", t or "", maxsplit=1)[0])
+    good = {}
+    for S in data.get("shops", []):
+        if S.get("shop") == "Redeye Records":
+            continue
+        for r in S.get("items") or []:
+            tr = [t for t in r.get("tr", []) if t.get("u") and "redeyerecords" not in t["u"]]
+            if not tr:
+                continue
+            k = (norm(r.get("a")), base(r.get("t")))
+            if len(tr) > len(good.get(k, [])):
+                good[k] = tr
+    n = 0
+    for S in data.get("shops", []):
+        if S.get("shop") != "Redeye Records":
+            continue
+        for r in S.get("items") or []:
+            tr = r.get("tr", [])
+            if tr and not all("sounds.redeyerecords" in (t.get("u") or "") for t in tr):
+                continue
+            src = good.get((norm(r.get("a")), base(r.get("t"))))
+            if src:
+                r["tr"] = [dict(t) for t in src]
+                n += 1
+    return n
+
 def main():
-    data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
+    path = os.path.join(ROOT, "releases.json")
+    data = json.load(open(path, encoding="utf-8"))
+    fixed = fix_redeye_previews(data)
+    if fixed:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=1)
+        print(f"Redeye: {fixed} Einträge mit vollständiger Trackliste aus anderem Shop")
     today = datetime.datetime.now(ZoneInfo("Europe/Zurich")).date()
     now = f"{today.year}-{today.month:02d}"
     pm = today.month - 1 or 12
