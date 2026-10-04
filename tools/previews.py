@@ -178,17 +178,21 @@ def tracks_kompakt(page):
 
 
 def tracks_yoyaku(page):
+    """Yoyaku lädt die Clips über seine öffentliche Player-API (/wp-json/fwap/v1/track/<Produkt-ID>)."""
+    m = re.search(r'"current_product_id":(\d+)', page) or re.search(r'class="alltracks fwap-play" data-product="(\d+)"', page)
+    if not m:
+        return []
+    body, st = get_page(f"https://yoyaku.io/wp-json/fwap/v1/track/{m.group(1)}")
+    if not body:
+        return []
+    try:
+        js = json.loads(body)
+    except ValueError:
+        return []
     out = []
-    for m in re.finditer(r'(https?:[^"\'\s<>]+?\.(?:mp3|m4a))', page):
-        u = html.unescape(m.group(1)).replace("\\/", "/")
-        if u not in [t["u"] for t in out]:
-            out.append({"s": "", "n": "Track", "u": u})
-    # Titel aus der Trackliste (gleiche Reihenfolge), wenn vorhanden
-    names = [html.unescape(re.sub("<[^>]+>", "", n)).strip()
-             for n in re.findall(r'class="[^"]*track[-_]?(?:title|name)[^"]*"[^>]*>(.*?)</', page, re.S)]
-    for t, n in zip(out, names):
-        if n:
-            t["n"] = n
+    for t in js.get("data") or []:
+        if t.get("mp3") and t.get("playable", True):
+            out.append({"s": "", "n": (t.get("title") or "Track").strip(), "u": t["mp3"]})
     return out
 
 
