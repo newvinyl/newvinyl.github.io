@@ -1,0 +1,51 @@
+name: Preview check (beta)
+
+# Holt fehlende Hörproben direkt von den Shop-Produktseiten, prüft jeden Clip
+# und schreibt das Ergebnis auf die versteckte Testseite /beta/.
+on:
+  push:
+    branches: [main]
+    paths: [releases.json]
+  schedule:
+    - cron: "17 5 * * *"    # 07:17 Zurich (Sommerzeit)
+    - cron: "17 10 * * *"   # 12:17 Zurich (Sommerzeit)
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: "Nur eine Produktseite untersuchen (URL)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: previews
+  cancel-in-progress: false
+
+jobs:
+  previews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe
+        if: ${{ github.event.inputs.probe != '' }}
+        run: python3 tools/previews.py --probe "${{ github.event.inputs.probe }}"
+      - name: Check previews
+        if: ${{ github.event.inputs.probe == '' }}
+        run: |
+          python3 tools/previews.py
+          python3 tools/make_beta.py
+      - name: Commit
+        if: ${{ github.event.inputs.probe == '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add beta tools/preview_cache.json
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "Preview check $(date -u +%F): beta"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0; sleep 5; done
+          exit 1
