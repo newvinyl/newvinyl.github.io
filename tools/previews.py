@@ -36,7 +36,7 @@ STATUS = os.path.join(os.path.dirname(OUT), "status.json")
 UA = "MonthlyVinylBot/1.0 (+https://monthlyvinyl.net; preview check for listed records)"
 TODAY = datetime.datetime.now(ZoneInfo("Europe/Zurich")).date()
 RETRY_DAYS = 14          # Platten ohne Hörprobe so lange täglich neu prüfen
-PAGE_DELAY = {"default": 1.0, "www.rushhour.nl": 2.5}
+PAGE_DELAY = {"default": 1.0, "www.rushhour.nl": 2.5, "www.phonicarecords.com": 4.0}
 REDEYE_CLIP = "sounds.redeyerecords.co.uk"
 
 
@@ -83,8 +83,8 @@ def get_page(url, tries=3):
     for t in range(tries):
         _polite(host)
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html"})
-            with urllib.request.urlopen(req, timeout=30) as r:
+            req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml", "Accept-Language": "en"})
+            with urllib.request.urlopen(req, timeout=90) as r:
                 body = r.read().decode("utf-8", "replace")
                 if "cf-chl" in body or "challenge-platform" in body:
                     return None, "botcheck"
@@ -96,8 +96,8 @@ def get_page(url, tries=3):
             return None, f"http{e.code}"
         except Exception as e:
             err = type(e).__name__
-            time.sleep(3)
-    return None, "failed"
+            time.sleep(5 * (t + 1))
+    return None, "failed:" + err
 
 
 def check_audio(url):
@@ -291,7 +291,19 @@ def main():
     with cf.ThreadPoolExecutor(max_workers=12) as ex:
         for u, ok in zip(need, ex.map(check_audio, need)):
             ver[u] = {"d": str(TODAY), "ok": ok}
-    bad = {u for u in urls if not ver.get(u, {}).get("ok")}
+    # Hosts, die aus dem Rechenzentrum generell nicht antworten (Bot-Schutz), nicht bestrafen:
+    # fällt die Mehrheit eines Hosts durch, gelten seine Clips als «nicht prüfbar» und bleiben drin.
+    hosts = {}
+    for u in urls:
+        h = urllib.parse.urlparse(u).netloc
+        d = hosts.setdefault(h, [0, 0, []])
+        d[0] += 1
+        if not ver.get(u, {}).get("ok"):
+            d[1] += 1
+            if len(d[2]) < 3:
+                d[2].append(u)
+    unverifiable = {h for h, (n, f, _) in hosts.items() if n >= 5 and f / n > 0.5}
+    bad = {u for u in urls if not ver.get(u, {}).get("ok") and urllib.parse.urlparse(u).netloc not in unverifiable}
     removed = 0
     for _, r in items:
         n0 = len(r.get("tr", []))
@@ -331,7 +343,9 @@ def main():
     tot = {k: sum(d[k] for d in per_shop.values()) for k in ("records", "tracks", "clip", "none")}
     report = {"date": str(TODAY), "total": tot, "shops": per_shop, "pages_checked": stats["pages"],
               "new_from_shop_pages": stats["found"], "copied_from_other_shop": copied,
-              "broken_clips_removed": removed, "clips_verified": len(urls), "not_reachable": stats["blocked"]}
+              "broken_clips_removed": removed, "clips_verified": len(urls), "not_reachable": stats["blocked"],
+              "clip_hosts": {h: {"clips": n, "failed": f, "sample": smp} for h, (n, f, smp) in sorted(hosts.items())},
+              "unverifiable_hosts": sorted(unverifiable)}
     with open(STATUS, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
     pct = lambda k: round(100 * tot[k] / max(1, tot["records"]))
