@@ -277,16 +277,16 @@ def main():
             removed += n0 - len(r["tr"])
         return urls
 
-    # Bereits Gefundenes aus dem Cache einsetzen
+    # 1) Alle vorhandenen Hörproben prüfen, defekte entfernen
+    verify_and_prune()
+
+    # Bereits Gefundenes aus dem Cache einsetzen (auch dort, wo gerade defekte Clips entfernt wurden)
     for S, r in items:
         c = cache.get(r.get("url"), {})
         if c.get("tl") and not r.get("tl"):
             r["tl"] = c["tl"]
         if c.get("tr") and not per_track(r):
             r["tr"] = [dict(t) for t in c["tr"]]
-
-    # 1) Alle vorhandenen Hörproben prüfen, defekte entfernen
-    verify_and_prune()
 
     # 2) Für Platten ohne (funktionierende) Einzeltracks die Produktseite des Shops lesen
     todo = []
