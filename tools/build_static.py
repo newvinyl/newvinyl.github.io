@@ -134,11 +134,62 @@ def fix_redeye_previews(data):
                 n += 1
     return n
 
+SIDE = re.compile(r"^(?:([A-Da-d]\d{1,2})(?:[.:]\s*|\s+-\s+|\s+)|([A-Da-d])(?:[.:]\s*|\s+-\s+)|(\d{1,2})(?:[.:]\s*|\s+))(.+)$")
+
+def parse_tracklist(s):
+    """Redeye-Tracklisten-Text ('A1. X | A2. Y' oder 'A1. X A2. Y') -> [{'s','n'}]."""
+    s = re.sub(r"\s+:\s+[^|]*$", "", s or "").strip().rstrip("|").strip()
+    out = []
+    for seg in s.split(" | "):
+        seg = seg.strip()
+        if not seg or seg.startswith(":"):
+            continue
+        parts = [seg]
+        if re.match(r"^[A-Da-d]\d", seg):
+            parts = re.split(r"\s+(?=[A-Da-d]\d{0,2}\.\s)", seg)
+            if len(parts) == 1:
+                parts = re.split(r"\s+(?=[A-D]\d\s)", seg)
+        for p in parts:
+            p = p.strip()
+            m = SIDE.match(p)
+            side, name = "", p
+            if m:
+                if m.group(1) or m.group(2):
+                    side, name = (m.group(1) or m.group(2)).upper(), m.group(4)
+                elif int(m.group(3)) == len(out) + 1:
+                    side, name = m.group(3), m.group(4)
+            name = re.sub(r"\s+", " ", name).strip(" ,|")
+            if name and not re.fullmatch(r"[A-D]\d?", name):
+                out.append({"s": side, "n": name})
+    return out
+
+def add_redeye_tracklists(data):
+    """Redeye hat nur einen Hörprobe-Clip pro Platte. Die Titelliste (tools/redeye_tracklists.json,
+    Schlüssel = Nummer in der Redeye-URL) kommt als "tl" an den Eintrag, damit die Seite alle Tracks zeigt."""
+    p = os.path.join(ROOT, "tools", "redeye_tracklists.json")
+    if not os.path.exists(p):
+        return 0
+    lists = json.load(open(p, encoding="utf-8"))
+    n = 0
+    for S in data.get("shops", []):
+        if S.get("shop") != "Redeye Records":
+            continue
+        for r in S.get("items") or []:
+            m = re.search(r"/vinyl/(\d+)-", r.get("url", ""))
+            tl = parse_tracklist(lists.get(m.group(1), "")) if m else []
+            if len(tl) > 1 and r.get("tl") != tl:
+                r["tl"] = tl
+                n += 1
+    return n
+
 def main():
     path = os.path.join(ROOT, "releases.json")
     data = json.load(open(path, encoding="utf-8"))
     fixed = fix_redeye_previews(data)
-    if fixed:
+    tls = add_redeye_tracklists(data)
+    if tls:
+        print(f"Redeye: Tracklisten für {tls} Einträge ergänzt")
+    if fixed or tls:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=1)
         print(f"Redeye: {fixed} Einträge mit vollständiger Trackliste aus anderem Shop")

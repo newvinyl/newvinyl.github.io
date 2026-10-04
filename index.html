@@ -155,6 +155,11 @@ section.shop{margin-top:22px}
 .trk .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trk.on .ic{color:var(--accent)}
 .trk.on .nm{color:var(--accent);font-weight:500}
+.tracks .tln{display:flex;gap:10px;align-items:center;min-height:24px;font-size:13px;color:var(--muted)}
+.tracks .tln .side{font-family:var(--mono);font-size:11px;width:20px;flex:none}
+.tracks .tln .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tracks .tln.tlx{display:none}.tracks.tlall .tln.tlx{display:flex}
+.tracks .tlmore{cursor:pointer;padding-left:30px;text-decoration:underline}
 .more{all:unset;cursor:pointer;align-self:flex-end;font-size:13px;color:var(--muted);padding:10px 4px;min-height:24px}
 .blocked{padding:14px 0;font-size:13.5px;color:var(--muted);border-bottom:1px solid var(--line)}
 .blocked b{color:var(--warn);font-weight:500}
@@ -1108,6 +1113,11 @@ function releaseEl(e,ri){
     }
   });
   if(src!==r&&trs.length){const n=document.createElement("p");n.className="srcnote";n.textContent=`Previews via ${src.S.shop}`;tf.appendChild(n)}
+  // Shops mit nur einem Hörprobe-Clip pro Platte (Redeye): komplette Trackliste zeigen
+  const tl=trs.length===1&&Array.isArray(src.tl)&&src.tl.length>1?src.tl:null;
+  if(tl){const b=ul.querySelector(".trk .nm");if(b)b.textContent="Preview · whole record";
+    tl.forEach((t,ti)=>{const li=document.createElement("li");li.className="tln"+(ti>=6?" tlx":"");li.innerHTML=`<span class="side">${esc(t.s||"")}</span><span class="nm">${esc(t.n)}</span>`;ul.appendChild(li)});
+    if(tl.length>6){const m=document.createElement("li");m.className="tln tlmore";m.textContent=`+ ${tl.length-6} more`;m.onclick=()=>{ul.classList.add("tlall");m.remove()};ul.appendChild(m)}}
   if(extra)tf.appendChild(extra);
   if(!trs.length){const m=document.createElement("a");m.className="more";m.href=url;m.target="_blank";m.rel="noopener";m.innerHTML="Previews in shop"+EXT;tf.appendChild(m);}
   return el;
