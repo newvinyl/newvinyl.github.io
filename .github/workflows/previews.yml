@@ -14,6 +14,9 @@ on:
       probe:
         description: "Nur eine Produktseite untersuchen (URL)"
         required: false
+      needle:
+        description: "Text, um den herum ausgegeben wird (|| trennt mehrere)"
+        required: false
 
 permissions:
   contents: write
@@ -35,7 +38,7 @@ jobs:
         if: ${{ github.event.inputs.probe != '' }}
         run: |
           mkdir -p beta
-          python3 tools/previews.py --probe "${{ github.event.inputs.probe }}" > beta/probe.txt 2>&1 || true
+          python3 tools/previews.py --probe "${{ github.event.inputs.probe }}" "${{ github.event.inputs.needle }}" > beta/probe.txt 2>&1 || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add beta/probe.txt && git commit -q -m "Preview probe" && for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done

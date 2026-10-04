@@ -385,6 +385,11 @@ if __name__ == "__main__":
     if len(sys.argv) > 2 and sys.argv[1] == "--probe":
         page, st = get_page(sys.argv[2])
         print("status:", st, "len:", len(page or ""))
+        if page and len(sys.argv) > 3:
+            for needle in sys.argv[3].split("||"):
+                for m in list(re.finditer(re.escape(needle), page))[:3]:
+                    print(f"=== {needle} @{m.start()}:\n", page[max(0, m.start() - 200): m.start() + 2500], "\n")
+            sys.exit(0)
         if page:
             for pat in [r"\.mp3", r"\.m4a", r"fwa-(?:track|play|item|list)", r"data-(?:track|audio|file|sample|preview)[a-z-]*=", r"admin-ajax|wc-ajax|wp-json", r"tracklist", r"yioAudio\w*\s*=", r"sample|preview"]:
                 for m in list(re.finditer(pat, page, re.I))[:3]:
