@@ -386,8 +386,8 @@ if __name__ == "__main__":
         page, st = get_page(sys.argv[2])
         print("status:", st, "len:", len(page or ""))
         if page:
-            for pat in [r"\.mp3", r"\.m4a", r"data-[a-z-]*(?:src|track|audio|file)", r"audio", r"play"]:
-                for m in list(re.finditer(pat, page, re.I))[:4]:
+            for pat in [r"\.mp3", r"\.m4a", r"fwa-(?:track|play|item|list)", r"data-(?:track|audio|file|sample|preview)[a-z-]*=", r"admin-ajax|wc-ajax|wp-json", r"tracklist", r"yioAudio\w*\s*=", r"sample|preview"]:
+                for m in list(re.finditer(pat, page, re.I))[:3]:
                     print(f"--- {pat} @{m.start()}:", re.sub(r"\s+", " ", page[max(0, m.start() - 250): m.start() + 200]))
         sys.exit(0)
     main()
