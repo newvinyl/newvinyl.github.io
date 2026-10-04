@@ -1,46 +1,4 @@
 status: ok len: 250583
-=== fwap-player.js @217813:
- yoyaku.io/wp-content/plugins/fwa-player-v2/assets/js/modules/waveform.js?ver=2.2.10.1788685311"></script> <script id="fwap-player-js" src="https://yoyaku.io/wp-content/plugins/fwa-player-v2/assets/js/fwap-player.js?ver=2.2.10.1788685311"></script> <script id="fwap-player-js-after">(function($) {
-                let memoryCleanupInterval;
-                
-                // Enhanced memory management for FWA Player
-                function yioPlayerMemoryOptimizer() {
-                    if (window.fwapPlayer && window.fwapPlayer.playlist) {
-                        // Clean up inactive audio elements
-                        const activeIndex = window.fwapPlayer.options.currentIndex;
-                        const playlist = window.fwapPlayer.playlist;
-                        
-                        playlist.forEach(function(track, index) {
-                            if (Math.abs(index - activeIndex) > 2) {
-                                // Unload tracks more than 2 positions away
-                                if (track.audioElement) {
-                                    track.audioElement.src = "";
-                                    track.audioElement.load();
-                                }
-                            }
-                        });
-                        
-                        // Force garbage collection if available
-                        if (window.gc) {
-                            window.gc();
-                        }
-                    }
-                }
-                
-                // Initialize memory optimizer
-                $(document).ready(function() {
-                    memoryCleanupInterval = setInterval(yioPlayerMemoryOptimizer, 30000);
-                });
-                
-                // Cleanup on page unload
-                $(window).on("beforeunload", function() {
-                    if (memoryCleanupInterval) {
-                        clearInterval(memoryCleanupInterval);
-                    }
-                    yioPlayerMemoryOptimizer();
-                });
-                
-            })(jQuery);
-        
-//# sourceURL=fwap-player-js-after</script> <script data-wp-strategy="defer" defer id="hoverIntent-js" src="https://yoyaku.io/wp-includes/js/hoverIntent.min.js?ver=1.10.2"></script> <script id="tinvwl-js-extra">var tinvwl_add_to_wishlist = {"text_create":"Create New","text_already_in":"Product already in Wishlist","text_default_title":"Default wishlist","multi_wishlists":"","simple_flow":"","hide_zero_counter":"","i18n_make_a_selection_text":"Please select some product options before adding this product to your Wishlist.","variation_make_remove":"1","tinvwl_break_submit":"No items or actions  
+=== product-tracks @142210:
+ ue="1" aria-label="Quantity"></div><button type="submit" class="single_add_to_cart_button button alt">Add to cart</button></form></template></div></div><div class="product-content__right"><div class="product-tracks"><div><div class="heading"><h6>Tracklist</h6> <small class="tracks-count">(8 tracks)</small></div> <a href="#" class="alltracks fwap-play" data-product="757629" aria-label="Play all tracks" title="Play all"> <svg height="20px" width="20px"><use xlink:href="#icon-play"/></svg> <span>Play All</span> </a></div><ul class="tracks"><li> <a class="track fwap-play" href="#" data-product="757629" data-index="0" title="Play">the rolling wave</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="1" title="Play">sudden flash</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="2" title="Play">acoustics of space</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="3" title="Play">sweeping leaps</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="4" title="Play">sensation of suspension</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="5" title="Play">free from the matrix</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="6" title="Play">half an owl and a full moon rising</a></li><li> <a class="track fwap-play" href="#" data-product="757629" data-index="7" title="Play">twin state</a></li></ul></div></div></div></div></div><section class="related products is-width-constrained"><h2 class="ct-module-title">Goes well with</h2><ul class="products columns-6" data-products="type-1"><li class="product type-product post-579391 status-publish first instock product_cat-arrivals product_cat-back-in-stock product_tag-discogs product_tag-wavo-v2 has-post-thumbnail featured taxable shipping-taxable purchasable product-type-simple"><div class="product-content"><figure > <a href="#" class="play-button fwap-play" type="button" data-product="579391"> <svg height="24px" width="24px"><use xlink:href="#icon-play-alt"/></svg> </a> <a class="ct-media-container" href="https://yoyaku.io/release/steffi-the-red-hunter-remixes-camo003/" aria-label="The Red Hunter (Remixes)"><img width="400" height="400" src="https://yoyaku.io/wp-content/uploads/2024/02/CaMo003_1-400x400.jpg" loading="lazy" decoding="async" itemprop="image" class=" wp-post-image" style="aspect-ratio: 1/1;" title="CaMo003_1" alt="The Red Hunter (Remixes)" /></a></figure><div class="product-meta"><h2 class="woocommerce-loop-product__title"><a class="woocommerce-LoopProduct-link woocommerce-loop-product__link" href="https://yoyaku.io/releas 
 
