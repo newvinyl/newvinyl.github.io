@@ -1,0 +1,76 @@
+{
+ "date": "2026-10-04",
+ "total": {
+  "records": 653,
+  "tracks": 418,
+  "clip": 101,
+  "none": 134
+ },
+ "shops": {
+  "Hardwax": {
+   "records": 85,
+   "tracks": 85,
+   "clip": 0,
+   "none": 0
+  },
+  "Rush Hour": {
+   "records": 38,
+   "tracks": 37,
+   "clip": 0,
+   "none": 1
+  },
+  "Decks.de": {
+   "records": 3,
+   "tracks": 2,
+   "clip": 0,
+   "none": 1
+  },
+  "Clone": {
+   "records": 194,
+   "tracks": 177,
+   "clip": 0,
+   "none": 17
+  },
+  "Phonica": {
+   "records": 82,
+   "tracks": 32,
+   "clip": 6,
+   "none": 44
+  },
+  "Redeye Records": {
+   "records": 118,
+   "tracks": 22,
+   "clip": 93,
+   "none": 3
+  },
+  "Yoyaku": {
+   "records": 96,
+   "tracks": 38,
+   "clip": 2,
+   "none": 56
+  },
+  "Kompakt": {
+   "records": 36,
+   "tracks": 24,
+   "clip": 0,
+   "none": 12
+  },
+  "Juno Records": {
+   "records": 1,
+   "tracks": 1,
+   "clip": 0,
+   "none": 0
+  }
+ },
+ "pages_checked": 161,
+ "new_from_shop_pages": 44,
+ "copied_from_other_shop": 9,
+ "broken_clips_removed": 102,
+ "clips_verified": 1468,
+ "not_reachable": {
+  "Phonica: http403": 19,
+  "Phonica: failed": 33,
+  "Redeye Records: botcheck": 4,
+  "Yoyaku: botcheck": 58
+ }
+}
