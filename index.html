@@ -878,7 +878,13 @@ function hiRes(u){
   if(/decks\.de\/decks\/gfx\/co_mid\//.test(u))return u.replace("/co_mid/","/co_big/");
   return u;
 }
-function coverErr(img){const lo=img.dataset.lo;if(lo&&img.src!==lo&&!img.dataset.tried){img.dataset.tried=1;img.src=lo}else img.remove()}
+function coverErr(img){const lo=img.dataset.lo;if(lo&&img.src!==lo&&!img.dataset.tried){img.dataset.tried=1;img.dataset.src=lo;img.src=lo}else{if(imgIO)imgIO.unobserve(img);img.remove()}}
+// Cover nur laden, solange sie in der Nähe des Bildschirms sind; weit weg wieder freigeben.
+// Sonst hält das Handy hunderte grosse Cover im Speicher und der Browser stürzt ab (iPhone).
+const imgIO="IntersectionObserver" in window?new IntersectionObserver(es=>{es.forEach(en=>{const i=en.target;
+  if(en.isIntersecting){if(!i.getAttribute("src")&&i.dataset.src)i.src=i.dataset.src}
+  else if(i.getAttribute("src")){i.removeAttribute("src")}})},{rootMargin:"1500px 1200px"}):null;
+function watchImgs(root){(root||document).querySelectorAll("img[data-src]:not([data-w])").forEach(i=>{i.dataset.w=1;if(imgIO)imgIO.observe(i);else i.src=i.dataset.src})}
 const HUES=["#e8c547","#e07a5f","#81b29a","#f2cc8f","#9fb3ff","#d4a5d8","#b8d8a0","#f4a261"];
 const fmt=(c,p)=>p==null?"Price in shop":`${c} ${p.toFixed(p%1?2:0)}`;
 const fmtBig=(c,p)=>p==null?`<span class="noprice">Price in shop</span>`:`<span class="cur">${c}</span>${p.toFixed(p%1?2:0)}`;
@@ -1097,7 +1103,7 @@ function releaseEl(e,ri){
   const priced=e.all.filter(o=>o.chf!=null),low=priced.length>1?Math.min(...priced.map(o=>o.chf)):null;
   const isLow=o=>low!=null&&o.chf!=null&&Math.abs(o.chf-low)<.005;
   const el=document.createElement("article");el.className="rel";el.dataset.key=r.key;el._e=e;
-  el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="${esc(r.a)} – ${esc(r.t)} (${esc(r.l)}) vinyl cover" src="${hiRes(cov)}" data-lo="${cov}" loading="lazy" decoding="async" onerror="coverErr(this)"></div>
+  el.innerHTML=`<div class="cover"><div class="ph"><span style="background:${hue}">${esc(r.l)}${r.cat?"<br>"+esc(r.cat):""}</span></div><img alt="${esc(r.a)} – ${esc(r.t)} (${esc(r.l)}) vinyl cover" data-src="${hiRes(cov)}" data-lo="${cov}" decoding="async" onerror="coverErr(this)"></div>
   <div class="info"><div class="tags none"></div><h3 class="artist"><span class="an">${esc(r.a)}</span><button class="star folbtn" data-fol="a" data-v="${esc(r.a)}"></button></h3><div class="title">${esc(r.t)}</div>
   <div class="meta"><span><a class="lbl" href="${labelUrl(r.l)}" target="_blank" rel="noopener">${esc(r.l)}</a><button class="star sm folbtn" data-fol="l" data-v="${esc(r.l)}"></button>${r.cat?" · "+esc(r.cat):""}</span><span>${esc(r.f||"")}</span><span>${esc(r.d||S.date||"")}</span><span>${genreLinks(r.g)}</span>${r.bpm?`<span>${esc(r.bpm)} BPM</span>`:""}${r.mk?`<span>Key ${esc(r.mk)}</span>`:""}</div>
   <ul class="tracks"></ul>
@@ -1235,7 +1241,7 @@ function updateTitle(){
 }
 function render(){
   const playing=cur>=0?queue[cur]:nowQ;
-  queue=[];list.innerHTML="";list.className=view==="korb"?"bagview":"";
+  queue=[];if(imgIO)imgIO.disconnect();list.innerHTML="";list.className=view==="korb"?"bagview":"";
   const now=nowKey(),prev=prevKey(now);
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===view));
   document.getElementById("filter").hidden=view==="korb";
@@ -1285,7 +1291,7 @@ function render(){
     firstBlocks=false;
   });
   if(flt.newOnly&&view==="home"&&list.querySelector("article.rel"))list.appendChild(caughtEl(true));
-  renderJump();observeCards();updateTitle();
+  renderJump();observeCards();watchImgs(list);updateTitle();
   cur=playing?queue.findIndex(q=>q.n===playing.n&&q.a===playing.a):-1;mark();
   list.querySelectorAll("[data-reset]").forEach(a=>a.onclick=e=>{e.preventDefault();clearFlt();render()});
   list.querySelectorAll("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
@@ -1916,7 +1922,7 @@ function openShare(art,btn){
   const m=document.getElementById("share");
   m.innerHTML=`<div class="shpanel" role="dialog" aria-modal="true" aria-labelledby="shtitle">
     <div class="shtop"><b>Share this record</b><button class="sx" id="shx" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2 2 14" stroke="currentColor" stroke-width="2.2"/></svg></button></div>
-    <div class="shcard"><div class="shcov">${ph?ph.outerHTML:""}${img?`<img src="${esc(img.currentSrc||img.src)}" alt="" onerror="this.remove()">`:""}</div>
+    <div class="shcard"><div class="shcov">${ph?ph.outerHTML:""}${img&&(img.currentSrc||img.getAttribute("src")||img.dataset.src)?`<img src="${esc(img.currentSrc||img.getAttribute("src")||img.dataset.src)}" alt="" onerror="this.remove()">`:""}</div>
       <div class="shtxt"><h2 id="shtitle">${esc(r.a)}</h2><p class="sht">${esc(r.t)}</p><p class="shl">${esc(r.l)}${r.cat?" · "+esc(r.cat):""}</p><p class="shd">monthlyvinyl.net</p></div></div>
     <div class="shgrid">${opts.map(([id,label,href])=>href?`<a class="sho" data-ch="${id}" href="${esc(href)}" ${id==="em"?"":'target="_blank" rel="noopener"'}><span class="shi">${SI[id]}</span>${label}</a>`:`<button class="sho" type="button" data-ch="${id}"><span class="shi">${SI[id]}</span>${label}</button>`).join("")}</div>
     <div class="shlink"><input id="shurl" readonly value="${esc(url)}" aria-label="Link to this record"><button class="bbtn" id="shcopy" type="button">${COPYI}Copy link</button></div>
