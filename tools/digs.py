@@ -450,36 +450,38 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK = (57, 255, 20), (255, 43, 214), (13, 13, 13)
+REEL_V = 2   # bump to re-render today's reel after a design change
+# One text colour per scheme, never white text; on pink always black.
 SCHEMES = {
-    # bg, artist, title, small, accent (kicker/date/site), bars, progress, rule
-    "S1": dict(bg=BLK, artist=WH, title=WH, small=GR, acc=GRN, bars=[GRN], prog=GRN, rule=RULE),
-    "S2": dict(bg=BLK, artist=WH, title=WH, small=GR, acc=PNK, bars=[PNK], prog=PNK, rule=RULE),
-    "S4": dict(bg=PNK, artist=WH, title=BLK, small=BLK, acc=BLK, bars=[BLK], prog=BLK, rule=BLK),
-    "S5": dict(bg=BLK, artist=PNK, title=GRN, small=GR, acc=WH, bars=[GRN, PNK], prog=GRN, rule=RULE),
-    "S6": dict(bg=GRN, artist=BLK, title=BLK, small=BLK, acc=BLK, bars=[PNK], prog=PNK, rule=PNK),
+    # bg, text (all type + play triangle), bars, progress, rule
+    "S1": dict(bg=BLK, text=GRN, bars=[GRN], prog=GRN, rule=RULE),
+    "S2": dict(bg=BLK, text=PNK, bars=[PNK], prog=PNK, rule=RULE),
+    "S4": dict(bg=PNK, text=BLK, bars=[BLK], prog=BLK, rule=BLK),
+    "S6": dict(bg=GRN, text=BLK, bars=[PNK], prog=PNK, rule=PNK),
 }
 
 def draw_reel(img, p, date_s, t, lev, frame):
     c = SCHEMES[p["scheme"]]
+    col = c["text"]
     d = ImageDraw.Draw(img)
-    txt(d, (96, 318), p["kicker"], 34, c["acc"], maxw=600)
-    txt(d, (984, 318), date_s, 32, c["small"], anchor="rs")
+    txt(d, (96, 318), p["kicker"], 34, col, maxw=600)
+    txt(d, (984, 318), date_s, 32, col, anchor="rs")
     paste_cover(img, p["cov880"], 100, 360, 880, 1 + 0.035 * (t / RDUR))
-    txt(d, (96, 1340), p["a"], 76, c["artist"])
-    txt(d, (96, 1412), p["t"], 56, c["title"], bold=False)
-    txt(d, (96, 1470), "  ·  ".join(p["meta"] + ([p["genre"].title()] if p["genre"] else [])), 32, c["small"], bold=False)
+    txt(d, (96, 1340), p["a"], 76, col)
+    txt(d, (96, 1412), p["t"], 56, col, bold=False)
+    txt(d, (96, 1470), "  ·  ".join(p["meta"] + ([p["genre"].title()] if p["genre"] else [])), 32, col, bold=False)
     d.rectangle([96, 1538, 984, 1542], fill=c["rule"])
     d.rectangle([96, 1538, 96 + int(888 * min(1, t / RDUR)), 1542], fill=c["prog"])
     by = 1612
-    d.polygon([(98, by - 22), (98, by - 1), (116, by - 11)], fill=c["title"])
-    tw = txt(d, (134, by), p["track"], 32, c["title"], bold=False, maxw=640)
+    d.polygon([(98, by - 22), (98, by - 1), (116, by - 11)], fill=col)
+    tw = txt(d, (134, by), p["track"], 32, col, bold=False, maxw=640)
     bx = 134 + int(tw) + 26
     for b in range(5):
         ph = math.sin(frame * 0.45 + b * 1.7) * 0.5 + 0.5
         h = 6 + 32 * lev * (0.4 + 0.6 * ph)
         d.rectangle([bx + b * 14, by + 2 - h, bx + 8 + b * 14, by + 2], fill=c["bars"][b % len(c["bars"])])
-    txt(d, (96, 1680), p["shops_line"], 34, c["small"] if c["bg"] != BLK else WH, maxw=560)
-    txt(d, (984, 1680), "monthlyvinyl.net", 34, c["acc"], anchor="rs")
+    txt(d, (96, 1680), p["shops_line"], 34, col, maxw=560)
+    txt(d, (984, 1680), "monthlyvinyl.net", 34, col, anchor="rs")
 
 def render_reel(p, date_s, aud, path, poster):
     n = RDUR * FPS
@@ -693,7 +695,7 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
                   "" if R["strict"] else "Note: already listed in another shop before yesterday.")
     log("reel", R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", R["scheme"])
     return {"files": [rpath, rposter], "cap": rcap, "section": sec,
-            "entry": {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "scheme": R["scheme"]}}
+            "entry": {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "scheme": R["scheme"], "v": REEL_V}}
 
 def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
@@ -737,12 +739,12 @@ def main():
     ymd = day.replace("-", "")[2:]
     hist_p = os.path.join(OUT, "history.json")
     history = json.load(open(hist_p, encoding="utf-8")) if os.path.exists(hist_p) else []
-    if not a.force and history and history[0]["date"] == day and history[0].get("reel"):
+    if not a.force and history and history[0]["date"] == day and (history[0].get("reel") or {}).get("v") == REEL_V:
         log("digs + reel for", day, "already done")
         print(json.dumps({"skip": True}))
         return
     keep = None
-    if not a.force and history and history[0]["date"] == day and not history[0].get("reel"):
+    if not a.force and history and history[0]["date"] == day and (history[0].get("reel") or {}).get("v") != REEL_V:
         keep = history[0]          # digs done earlier today: keep exactly that video, add the reel only
     history = [e for e in history if e["date"] != day]
     seen = load_seen(skip_day=day)
