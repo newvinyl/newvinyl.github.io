@@ -1,10 +1,10 @@
 {
- "date": "2026-10-04",
+ "date": "2026-10-05",
  "total": {
-  "records": 708,
-  "tracks": 528,
-  "clip": 118,
-  "none": 62
+  "records": 782,
+  "tracks": 556,
+  "clip": 157,
+  "none": 69
  },
  "shops": {
   "Hardwax": {
@@ -26,8 +26,8 @@
    "none": 1
   },
   "Clone": {
-   "records": 214,
-   "tracks": 213,
+   "records": 215,
+   "tracks": 214,
    "clip": 0,
    "none": 1
   },
@@ -38,22 +38,22 @@
    "none": 39
   },
   "Redeye Records": {
-   "records": 145,
-   "tracks": 27,
-   "clip": 113,
-   "none": 5
+   "records": 195,
+   "tracks": 33,
+   "clip": 152,
+   "none": 10
   },
   "Yoyaku": {
-   "records": 96,
-   "tracks": 94,
+   "records": 97,
+   "tracks": 96,
    "clip": 0,
-   "none": 2
+   "none": 1
   },
   "Kompakt": {
-   "records": 38,
-   "tracks": 25,
+   "records": 60,
+   "tracks": 44,
    "clip": 0,
-   "none": 13
+   "none": 16
   },
   "Juno Records": {
    "records": 1,
@@ -62,15 +62,18 @@
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
+ "pages_checked": 141,
+ "new_from_shop_pages": 13,
  "copied_from_other_shop": 0,
- "broken_clips_removed": 9,
- "clips_verified": 1952,
- "not_reachable": {},
+ "broken_clips_removed": 16,
+ "clips_verified": 2014,
+ "not_reachable": {
+  "Phonica: http403": 44,
+  "Redeye Records: failed:UnicodeEncodeError": 3
+ },
  "clip_hosts": {
   "clone.nl": {
-   "clips": 889,
+   "clips": 891,
    "failed": 0,
    "sample": []
   },
@@ -85,8 +88,8 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 21,
-   "failed": 9,
+   "clips": 29,
+   "failed": 11,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
@@ -94,7 +97,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 113,
+   "clips": 152,
    "failed": 0,
    "sample": []
   },
@@ -109,7 +112,12 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 261,
+   "clips": 265,
+   "failed": 0,
+   "sample": []
+  },
+  "yydistribution.ams3.digitaloceanspaces.com": {
+   "clips": 9,
    "failed": 0,
    "sample": []
   }
