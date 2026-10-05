@@ -6,7 +6,7 @@ name: Today's Digs
 on:
   push:
     branches: [main]
-    paths: [releases.json]
+    paths: [releases.json, tools/digs.py]
   schedule:
     - cron: "40 5 * * *"   # 07:40 Zurich (summer time) – fallback
   workflow_dispatch:
@@ -59,11 +59,11 @@ jobs:
           DIGS_WORK: ${{ runner.temp }}/digs
         run: |
           gh release view digs >/dev/null 2>&1 || gh release create digs --prerelease --title "Today's Digs" --notes "Daily rendered videos. Not for linking."
-          VIDEO=$(python3 -c "import json;print(json.load(open('$DIGS_WORK/result.json'))['video'])")
-          POSTER=$(python3 -c "import json;print(json.load(open('$DIGS_WORK/result.json'))['poster'])")
-          gh release upload digs "$VIDEO" "$POSTER" --clobber
-          # keep only the newest 20 assets (10 days)
-          gh api "repos/${{ github.repository }}/releases/tags/digs" --jq '.assets | sort_by(.created_at) | reverse | .[20:] | .[].id' |
+          python3 -c "import json;r=json.load(open('$DIGS_WORK/result.json'));print('\n'.join(r.get('files') or [r['video'],r['poster']]))" > "$DIGS_WORK/files.txt"
+          cat "$DIGS_WORK/files.txt"
+          xargs -d '\n' gh release upload digs --clobber < "$DIGS_WORK/files.txt"
+          # keep only the newest 40 assets (10 days: digs + reel, video + poster)
+          gh api "repos/${{ github.repository }}/releases/tags/digs" --jq '.assets | sort_by(.created_at) | reverse | .[40:] | .[].id' |
             while read id; do gh api -X DELETE "repos/${{ github.repository }}/releases/assets/$id"; done
 
       - name: Commit page

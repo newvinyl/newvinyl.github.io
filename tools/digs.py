@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Today's Digs – picks 3 new releases from releases.json, renders the Instagram
-video (1080x1920, 21 s, H.264/AAC) and writes the hidden page /92h6fy/.
+"""Today's Digs + Reel – picks 3 new releases from releases.json for the feed video
+(1080x1920, 21 s) and one other release for a 20 s Reel, renders both (H.264/AAC)
+and writes the hidden page /92h6fy/ with both videos and captions.
 
 Rules (from the user):
 - 3 releases, each must have a real mp3 preview (music in the video).
@@ -96,15 +97,19 @@ def F(size, bold=True, sym=False):
     return _fc[k]
 
 # ---------------------------------------------------------------- selection
-def load_seen():
+def load_seen(skip_day=None):
     seen = set()
     for name in ("history.json", "posted.json"):
         p = os.path.join(OUT, name)
         if os.path.exists(p):
             d = json.load(open(p, encoding="utf-8"))
             for e in d if isinstance(d, list) else d.get("days", []):
+                if skip_day and e.get("date") == skip_day:
+                    continue
                 for k in e.get("keys", []):
                     seen.add(k)
+                if e.get("reel"):
+                    seen.add(e["reel"].get("key"))
     return seen
 
 def playable(arr):
@@ -439,75 +444,284 @@ def caption(picks, date_s):
     lines.append(" ".join(out[:16]))
     return "\n".join(lines)
 
+
+# ---------------------------------------------------------------- reel (one release, 20 s)
+RDUR = 20
+
+# Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
+GRN, PNK, BLK = (57, 255, 20), (255, 43, 214), (13, 13, 13)
+SCHEMES = {
+    # bg, artist, title, small, accent (kicker/date/site), bars, progress, rule
+    "S1": dict(bg=BLK, artist=WH, title=WH, small=GR, acc=GRN, bars=[GRN], prog=GRN, rule=RULE),
+    "S2": dict(bg=BLK, artist=WH, title=WH, small=GR, acc=PNK, bars=[PNK], prog=PNK, rule=RULE),
+    "S4": dict(bg=PNK, artist=WH, title=BLK, small=BLK, acc=BLK, bars=[BLK], prog=BLK, rule=BLK),
+    "S5": dict(bg=BLK, artist=PNK, title=GRN, small=GR, acc=WH, bars=[GRN, PNK], prog=GRN, rule=RULE),
+    "S6": dict(bg=GRN, artist=BLK, title=BLK, small=BLK, acc=BLK, bars=[PNK], prog=PNK, rule=PNK),
+}
+
+def draw_reel(img, p, date_s, t, lev, frame):
+    c = SCHEMES[p["scheme"]]
+    d = ImageDraw.Draw(img)
+    txt(d, (96, 318), p["kicker"], 34, c["acc"], maxw=600)
+    txt(d, (984, 318), date_s, 32, c["small"], anchor="rs")
+    paste_cover(img, p["cov880"], 100, 360, 880, 1 + 0.035 * (t / RDUR))
+    txt(d, (96, 1340), p["a"], 76, c["artist"])
+    txt(d, (96, 1412), p["t"], 56, c["title"], bold=False)
+    txt(d, (96, 1470), "  ·  ".join(p["meta"] + ([p["genre"].title()] if p["genre"] else [])), 32, c["small"], bold=False)
+    d.rectangle([96, 1538, 984, 1542], fill=c["rule"])
+    d.rectangle([96, 1538, 96 + int(888 * min(1, t / RDUR)), 1542], fill=c["prog"])
+    by = 1612
+    d.polygon([(98, by - 22), (98, by - 1), (116, by - 11)], fill=c["title"])
+    tw = txt(d, (134, by), p["track"], 32, c["title"], bold=False, maxw=640)
+    bx = 134 + int(tw) + 26
+    for b in range(5):
+        ph = math.sin(frame * 0.45 + b * 1.7) * 0.5 + 0.5
+        h = 6 + 32 * lev * (0.4 + 0.6 * ph)
+        d.rectangle([bx + b * 14, by + 2 - h, bx + 8 + b * 14, by + 2], fill=c["bars"][b % len(c["bars"])])
+    txt(d, (96, 1680), p["shops_line"], 34, c["small"] if c["bg"] != BLK else WH, maxw=560)
+    txt(d, (984, 1680), "monthlyvinyl.net", 34, c["acc"], anchor="rs")
+
+def render_reel(p, date_s, aud, path, poster):
+    n = RDUR * FPS
+    hop = SR // FPS
+    m = aud.mean(1)
+    levs = np.array([np.sqrt(np.mean(m[f * hop:(f + 1) * hop] ** 2)) for f in range(n)])
+    levs = np.minimum(1, levs / (levs.max() + 1e-9) * 1.15)
+    wav = path + ".f32"
+    aud.astype("<f4").tofile(wav)
+    cmd = ["ffmpeg", "-y", "-v", "error",
+           "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
+           "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
+           "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p",
+           "-b:v", "8M", "-maxrate", "10M", "-bufsize", "16M", "-g", "60", "-preset", "medium",
+           "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-ac", "2",
+           "-movflags", "+faststart", "-shortest", path]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    black = Image.new("RGB", (W, H), (0, 0, 0))
+    for f in range(n):
+        t = f / FPS
+        im = Image.new("RGB", (W, H), SCHEMES[p["scheme"]]["bg"])
+        draw_reel(im, p, date_s, t, levs[f], f)
+        if f == int(1.5 * FPS):
+            im.save(poster, quality=88)
+        a = min(1.0, t / 0.6, (RDUR - t) / 1.0)
+        if a < 1:
+            im = Image.blend(black, im, max(0.0, a))
+        pr.stdin.write(im.tobytes())
+    pr.stdin.close()
+    if pr.wait() != 0:
+        raise RuntimeError("ffmpeg failed")
+    os.remove(wav)
+
+def reel_mix(audio, start):
+    s = fade(seg(audio, start, RDUR), 0.6, 2.0)
+    peak = np.abs(s).max()
+    return s * (0.97 / peak) if peak > 0.97 else s
+
+def pick_reel(cands, digs_keys, digs_fams, offline, work):
+    """Best remaining release with a real preview and a big cover; a different genre family than the digs if possible."""
+    pool = [c for c in cands if c["key"] not in digs_keys]
+    pool.sort(key=lambda c: (c["fam"] in digs_fams, -(c["score"] + (0.5 if c["tracks"][0]["named"] else 0))))
+    fallback = None
+    for n, c in enumerate(pool[:12]):
+        try:
+            cov = get_cover(c["arr"], offline, 90 + n)
+            aud = tr = None
+            for ti, t in enumerate(c["tracks"][:3]):
+                try:
+                    aud, tr = get_audio(t, offline, work, 900 + n * 10 + ti), t
+                    break
+                except Exception as e:
+                    log("reel audio fail", c["key"], e)
+            if aud is None:
+                continue
+        except Exception as e:
+            log("reel drop", c["key"], e)
+            continue
+        c = dict(c, cover=cov, audio=aud, track=tr)
+        if cov.width >= 500:
+            return c
+        fallback = fallback or c
+    return fallback
+
+def tracklist(arr):
+    out, seen = [], set()
+    for x in arr:
+        for t in x.get("tr") or []:
+            n = (t.get("n") or "").strip()
+            if not n or n.lower() in ("preview", "whole ep on youtube") or n.lower() in seen:
+                continue
+            seen.add(n.lower())
+            out.append(("%s %s" % (t.get("s") or "", n)).strip())
+    return out[:10]
+
+def reel_caption(p, arr):
+    cat = [v for v in p["meta"][1:2]]
+    head = "%s – %s" % (p["a"], p["t"])
+    inside = ", ".join(v for v in [p["l"]] + cat if v)
+    lines = [head + (" (%s)" % inside if inside else ""),
+             "%s 🔊 Sound on: \"%s\"" % ("New in the shops" if p["strict"] else "Fresh in the shops", p["track"].replace(" (preview)", "")), ""]
+    tl = tracklist(arr)
+    if len(tl) > 1:
+        lines += tl + [""]
+    fmt = p["meta"][-1] if p["meta"] else "Vinyl"
+    if len(p["prices"]) > 1:
+        lines.append("💿 %s – %d shops compared:" % (fmt, len(p["prices"])))
+        for j, (shop, pr) in enumerate(p["prices"][:5]):
+            lines.append("%s %s%s" % (shop, pr, "  ← cheapest" if j == 0 else ""))
+    elif p["shop_price"]:
+        lines.append("💿 %s – %s at %s" % (fmt, p["shop_price"], p["shop"]))
+    else:
+        lines.append("💿 %s – at %s" % (fmt, p["shop"]))
+    lines += ["", "Listen to all previews + compare prices 👉", "monthlyvinyl.net (link in bio)", "", "Cop or drop?", ""]
+    tags = ["#newvinyl", "#vinylrelease", tag(p["genre"]), tag(p["a"]), tag(p["l"]), "#vinyldj", "#vinylcollection", "#recordshop", "#nowspinning", "#monthlyvinyl"]
+    out = []
+    for t in tags:
+        if t and t not in out:
+            out.append(t)
+    lines.append(" ".join(out))
+    return "\n".join(lines)
+
 # ---------------------------------------------------------------- page
 PAGE = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
-<title>Today's Digs</title>
+<title>Today's Digs + Reel</title>
 <link rel="icon" href="/favicon-32.png">
 <style>
 :root{--bg:#0f0f0f;--fg:#fff;--mut:#9a9a9a;--acc:#ffd60a;--line:#2e2e2e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 "Helvetica Neue",Helvetica,Arial,sans-serif}
 main{max-width:980px;margin:0 auto;padding:28px 16px 60px}
-h1{font-size:30px;margin:0}h1 span{color:var(--acc)}.sub{color:var(--mut);margin:4px 0 24px}
-.grid{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:28px}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+h1{font-size:30px;margin:0}h1 span{color:var(--acc)}.sub{color:var(--mut);margin:4px 0 8px}
+nav.jump{display:flex;gap:10px;margin:0 0 8px;flex-wrap:wrap}nav.jump a{color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:6px 14px;text-decoration:none;font-size:14px}
+section{border-top:4px solid var(--acc);margin-top:30px;padding-top:16px}
+section h2.t{font-size:24px;margin:0 0 4px;color:var(--fg);text-transform:none;letter-spacing:0}
+.grid{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:28px;margin-top:14px}@media(max-width:760px){.grid{grid-template-columns:1fr}}
 video{width:100%;border-radius:10px;background:#000;display:block}
 .btn{display:inline-block;background:var(--acc);color:#000;font-weight:700;padding:12px 18px;border-radius:9px;text-decoration:none;border:0;font-size:15px;cursor:pointer;margin:12px 8px 0 0}
-.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-textarea{width:100%;min-height:400px;background:#161616;color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:12px;font:14px/1.5 ui-monospace,Menlo,monospace}
+textarea{width:100%;min-height:380px;background:#161616;color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:12px;font:14px/1.5 ui-monospace,Menlo,monospace}
 ol{padding-left:20px}li{margin:6px 0}a{color:var(--acc)}.m{color:var(--mut);font-size:14px}
 h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:26px 0 8px}
 .ok{color:var(--acc);font-size:14px;margin-left:6px}
 </style></head><body><main>
-<h1>Today's Digs <span>__DATE__</span></h1>
-<p class="sub">Generated __GEN__ · not published · 1080×1920 · 21 s</p>
+<h1>Instagram <span>__DATE__</span></h1>
+<p class="sub">Generated __GEN__ · not published · both 1080×1920</p>
+<nav class="jump"><a href="#digs">Today's Digs · post video</a><a href="#reel">Reel · one release</a></nav>
+__SECTIONS__
+<h2>Previous days</h2>
+<ul class="m">__ARCHIVE__</ul>
+</main>
+<script>
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{const t=document.getElementById(b.dataset.copy),ok=b.nextElementSibling;
+try{await navigator.clipboard.writeText(t.value)}catch(e){t.select();document.execCommand('copy')}
+ok.textContent='copied ✓';setTimeout(()=>ok.textContent='',2000)});
+</script></body></html>
+"""
+
+SECTION = """<section id="__ID__">
+<h2 class="t">__TITLE__</h2><p class="m">__SUB__</p>
 <div class="grid">
 <div>
 <video controls playsinline preload="metadata" poster="__POSTER__" src="__VIDEO__"></video>
 <a class="btn" href="__VIDEO__" download="__FILE__">⬇ Download video</a>
 </div>
 <div>
-<textarea id="cap" readonly>__CAPTION__</textarea>
-<button class="btn" id="copy">Copy caption</button><span class="ok" id="ok"></span>
-<h2>Releases</h2>
+<textarea id="cap-__ID__" readonly>__CAPTION__</textarea>
+<button class="btn" data-copy="cap-__ID__">Copy caption</button><span class="ok"></span>
+<h2>Release__S__</h2>
 <ol>__LIST__</ol>
 __NOTE__
-</div></div>
-<h2>Previous days</h2>
-<ul class="m">__ARCHIVE__</ul>
-</main>
-<script>
-document.getElementById('copy').onclick=async()=>{const t=document.getElementById('cap');
-try{await navigator.clipboard.writeText(t.value)}catch(e){t.select();document.execCommand('copy')}
-document.getElementById('ok').textContent='copied ✓';setTimeout(()=>document.getElementById('ok').textContent='',2000)};
-</script></body></html>
-"""
+</div></div></section>"""
 
-def write_page(day, date_s, picks, cap, video_url, poster_url, fname, history, note):
-    li = []
-    for p in picks:
-        pr = " · ".join("%s %s" % (s, v) for s, v in p["prices"]) or "no price"
-        li.append('<li><b>%s – %s</b> <span class="m">(%s · new at %s)</span><br><span class="m">%s · ▶ %s</span>%s</li>' % (
-            html.escape(p["a"]), html.escape(p["t"]), html.escape(p["genre"].title()), html.escape(p["shop"]),
-            html.escape(pr), html.escape(p["track"]),
-            ' · <a href="%s" target="_blank" rel="noopener">shop</a>' % html.escape(p["url"]) if p.get("url") else ""))
+def rel_li(p):
+    pr = " · ".join("%s %s" % (s_, v) for s_, v in p["prices"]) or "no price"
+    return '<li><b>%s – %s</b> <span class="m">(%s · new at %s)</span><br><span class="m">%s · ▶ %s</span>%s</li>' % (
+        html.escape(p["a"]), html.escape(p["t"]), html.escape(p["genre"].title()), html.escape(p["shop"]),
+        html.escape(pr), html.escape(p["track"]),
+        ' · <a href="%s" target="_blank" rel="noopener">shop</a>' % html.escape(p["url"]) if p.get("url") else "")
+
+def section(sid, title, sub, video, poster, fname, cap, items, note):
+    rep = {"__ID__": sid, "__TITLE__": title, "__SUB__": sub, "__VIDEO__": html.escape(video), "__POSTER__": html.escape(poster),
+           "__FILE__": fname, "__CAPTION__": html.escape(cap), "__LIST__": "".join(rel_li(p) for p in items),
+           "__S__": "s" if len(items) > 1 else "", "__NOTE__": '<p class="m">%s</p>' % html.escape(note) if note else ""}
+    out = SECTION
+    for k, v in rep.items():
+        out = out.replace(k, v)
+    return out
+
+def write_page(date_s, sections, history, caps):
     arch = []
     for e in history[1:8]:
-        arch.append('<li>%s – %s · <a href="%s">video</a></li>' % (
-            html.escape(e["date"]), html.escape(" / ".join(e.get("titles", []))), html.escape(e.get("video", ""))))
+        r = e.get("reel") or {}
+        arch.append('<li>%s – digs: %s · <a href="%s">video</a>%s</li>' % (
+            html.escape(e["date"]), html.escape(" / ".join(e.get("titles", []))), html.escape(e.get("video", "")),
+            ' · reel: %s · <a href="%s">video</a>' % (html.escape(r.get("title", "")), html.escape(r.get("video", ""))) if r else ""))
     gen = dt.datetime.now(dt.timezone(dt.timedelta(hours=2))).strftime("%d.%m.%Y %H:%M")
-    rep = {"__DATE__": date_s, "__GEN__": gen, "__VIDEO__": html.escape(video_url), "__POSTER__": html.escape(poster_url),
-           "__FILE__": fname, "__CAPTION__": html.escape(cap), "__LIST__": "".join(li),
-           "__NOTE__": '<p class="m">%s</p>' % html.escape(note) if note else "",
-           "__ARCHIVE__": "".join(arch) or "<li>–</li>"}
-    page = PAGE
-    for k, v in rep.items():
-        page = page.replace(k, v)
+    page = PAGE.replace("__DATE__", date_s).replace("__GEN__", gen).replace("__SECTIONS__", "\n".join(sections)) \
+               .replace("__ARCHIVE__", "".join(arch) or "<li>–</li>")
     os.makedirs(OUT, exist_ok=True)
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(page)
-    open(os.path.join(OUT, "caption.txt"), "w", encoding="utf-8").write(cap + "\n")
+    open(os.path.join(OUT, "caption.txt"), "w", encoding="utf-8").write(caps[0] + "\n")
+    if len(caps) > 1:
+        open(os.path.join(OUT, "caption_reel.txt"), "w", encoding="utf-8").write(caps[1] + "\n")
+
+def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
+    rc = pick_reel(cands, digs_keys, digs_fams, a.offline, a.work)
+    if not rc:
+        log("no reel candidate")
+        return None
+    import random
+    R = prepare(rc, fx)
+    R["kicker"] = "NEW IN THE SHOPS" if R["strict"] else "FRESH IN THE SHOPS"
+    R["cov880"] = rc["cover"].resize((880, 880), Image.LANCZOS)
+    last = next((e.get("reel", {}).get("scheme") for e in history if e.get("reel", {}).get("scheme")), None)
+    R["scheme"] = random.choice([k for k in SCHEMES if k != last])
+    n_sh = len(R["prices"])
+    R["shops_line"] = ("%d shops · from %s" % (n_sh, R["prices"][0][1])) if n_sh > 1 else \
+                      ("%s · %s" % (R["shop"], R["shop_price"]) if R["shop_price"] else "at %s" % R["shop"])
+    start, _ = pick_start(rc["audio"])
+    aud = reel_mix(rc["audio"], max(0.0, start - 1.0))
+    rname = "reel-%s.mp4" % ymd
+    rpath = os.path.join(a.work, rname)
+    rposter = os.path.join(a.work, "reel-%s.jpg" % ymd)
+    render_reel(R, date_s, aud, rpath, rposter)
+    rcap = reel_caption(R, rc["arr"])
+    sec = section("reel", "Reel · one release", "20 s · post as a Reel · colours %s" % R["scheme"], base + rname,
+                  base + os.path.basename(rposter), rname, rcap, [R],
+                  "" if R["strict"] else "Note: already listed in another shop before yesterday.")
+    log("reel", R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", R["scheme"])
+    return {"files": [rpath, rposter], "cap": rcap, "section": sec,
+            "entry": {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "scheme": R["scheme"]}}
+
+def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
+    base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
+    cap_p = os.path.join(OUT, "caption.txt")
+    cap = open(cap_p, encoding="utf-8").read().rstrip("\n") if os.path.exists(cap_p) else ""
+    fams = set()
+    G = {}
+    for s_ in data["shops"]:
+        for it in s_.get("items") or []:
+            G.setdefault(gkey(it), it)
+    for k in keep.get("keys", []):
+        if k in G: fams.add(family(G[k].get("g")))
+    rel = make_reel(a, cands, fx, set(keep.get("keys", [])), fams, history, date_s, ymd, base)
+    video = keep.get("video", "")
+    fname = video.rsplit("/", 1)[-1]
+    items = "".join("<li><b>%s</b> <span class=\"m\">(%s)</span></li>" % (html.escape(t), html.escape(s_))
+                    for t, s_ in zip(keep.get("titles", []), keep.get("shops", [])))
+    digs_sec = section("digs", "Today's Digs · post video", "3 releases · 21 s · post in the feed", video,
+                       video.replace(".mp4", ".jpg"), fname, cap, [], "").replace("<ol></ol>", "<ol>%s</ol>" % items).replace("<h2>Release</h2>", "<h2>Releases</h2>")
+    sections, caps, files = [digs_sec], [cap], []
+    if rel:
+        sections.insert(0, rel["section"]); caps.append(rel["cap"]); files = rel["files"]; keep["reel"] = rel["entry"]
+    else:
+        keep["reel"] = {"key": "", "title": "(none)", "video": ""}
+    history.insert(0, keep)
+    write_page(date_s, sections, history, caps)
+    json.dump(history[:60], open(hist_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(json.dumps({"skip": not files, "video": files[0] if files else "", "poster": files[1] if files else "", "files": files, "date": day}))
 
 # ---------------------------------------------------------------- main
 def main():
@@ -523,16 +737,21 @@ def main():
     ymd = day.replace("-", "")[2:]
     hist_p = os.path.join(OUT, "history.json")
     history = json.load(open(hist_p, encoding="utf-8")) if os.path.exists(hist_p) else []
-    if not a.force and history and history[0]["date"] == day:
-        log("digs for", day, "already done")
+    if not a.force and history and history[0]["date"] == day and history[0].get("reel"):
+        log("digs + reel for", day, "already done")
         print(json.dumps({"skip": True}))
         return
+    keep = None
+    if not a.force and history and history[0]["date"] == day and not history[0].get("reel"):
+        keep = history[0]          # digs done earlier today: keep exactly that video, add the reel only
     history = [e for e in history if e["date"] != day]
-    seen = load_seen()
+    seen = load_seen(skip_day=day)
     fx = data.get("fx", {})
     cands = candidates(data, day, seen)
     log(len(cands), "candidates for", day)
     banned, picks = set(), None
+    if keep:
+        return reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p)
     while True:
         combo = choose(cands, banned)
         if not combo:
@@ -559,7 +778,6 @@ def main():
         if len(ok) == 3:
             picks = ok
             break
-    # order: genres spread, keep score order
     P = []
     for c in picks:
         p = prepare(c, fx)
@@ -579,11 +797,22 @@ def main():
     nonstrict = [p for p in P if not p["strict"]]
     note = ("Note: %s was already listed in another shop before yesterday (new at %s today)." %
             (", ".join("%s – %s" % (p["a"], p["t"]) for p in nonstrict), ", ".join(p["shop"] for p in nonstrict))) if nonstrict else ""
-    history.insert(0, {"date": day, "keys": [p["key"] for p in P], "titles": ["%s – %s" % (p["a"], p["t"]) for p in P],
-                       "shops": [p["shop"] for p in P], "video": base + fname})
-    write_page(day, date_s, P, cap, base + fname, base + os.path.basename(poster), fname, history, note)
+    entry = {"date": day, "keys": [p["key"] for p in P], "titles": ["%s – %s" % (p["a"], p["t"]) for p in P],
+             "shops": [p["shop"] for p in P], "video": base + fname}
+    files = [vpath, poster]
+    sections = [section("digs", "Today's Digs · post video", "3 releases · 21 s · post in the feed", base + fname,
+                        base + os.path.basename(poster), fname, cap, P, note)]
+    caps = [cap]
+    # Reel: one other release, 20 s
+    rel = make_reel(a, cands, fx, {p["key"] for p in P}, {c["fam"] for c in picks}, history, date_s, ymd, base)
+    if rel:
+        files += rel["files"]; caps.append(rel["cap"]); sections.insert(0, rel["section"]); entry["reel"] = rel["entry"]
+    else:
+        entry["reel"] = {"key": "", "title": "(none)", "video": ""}
+    history.insert(0, entry)
+    write_page(date_s, sections, history, caps)
     json.dump(history[:60], open(hist_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(json.dumps({"skip": False, "video": vpath, "poster": poster, "date": day}))
+    print(json.dumps({"skip": False, "video": vpath, "poster": poster, "files": files, "date": day}))
 
 if __name__ == "__main__":
     main()
