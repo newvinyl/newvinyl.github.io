@@ -449,7 +449,7 @@ def caption(picks, date_s):
 RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
-GRN, PNK, BLK = (57, 255, 20), (255, 43, 214), (13, 13, 13)
+GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
 REEL_V = 2   # bump to re-render today's reel after a design change
 # One text colour per scheme, never white text; on pink always black.
 SCHEMES = {
@@ -458,6 +458,8 @@ SCHEMES = {
     "S2": dict(bg=BLK, text=PNK, bars=[PNK], prog=PNK, rule=RULE),
     "S4": dict(bg=PNK, text=BLK, bars=[BLK], prog=BLK, rule=BLK),
     "S6": dict(bg=GRN, text=BLK, bars=[PNK], prog=PNK, rule=PNK),
+    "Y1": dict(bg=BLK, text=YEL, bars=[YEL], prog=YEL, rule=RULE),   # yellow of the website title
+    "Y2": dict(bg=YEL, text=BLK, bars=[BLK], prog=BLK, rule=BLK),
 }
 
 def draw_reel(img, p, date_s, t, lev, frame):
