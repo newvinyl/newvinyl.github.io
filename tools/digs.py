@@ -450,7 +450,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 3   # bump to re-render today's reel after a design change
+REEL_V = 4   # bump to re-render today's reel after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
 SCHEMES = {
@@ -476,10 +476,6 @@ def draw_reel(img, p, date_s, t, lev, frame):
     txt(d, (96, 318), p["kicker"], 34, col, maxw=600)
     txt(d, (984, 318), date_s, 32, col, anchor="rs")
     paste_cover(img, p["cov880"], 100, 360, 880, 1 + 0.035 * (t / RDUR))
-    # play button centred on the cover
-    cx, cy, r = 540, 800, 86
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=col)
-    d.polygon([(cx - 26, cy - 40), (cx - 26, cy + 40), (cx + 44, cy)], fill=bg)
     txt(d, (96, 1340), p["a"], 76, col)
     txt(d, (96, 1412), p["t"], 56, col, bold=False)
     txt(d, (96, 1470), "  ·  ".join(p["meta"] + ([p["genre"].title()] if p["genre"] else [])), 32, col, bold=False)
@@ -487,8 +483,9 @@ def draw_reel(img, p, date_s, t, lev, frame):
     d.rectangle([96, 1539, 984, 1541], fill=c["rule"])
     d.rectangle([96, 1536, 96 + int(888 * min(1, t / RDUR)), 1544], fill=col)
     by = 1612
-    tw = txt(d, (96, by), p["track"], 32, col, bold=False, maxw=680)
-    bx = 96 + int(tw) + 26
+    d.polygon([(98, by - 22), (98, by - 1), (116, by - 11)], fill=col)
+    tw = txt(d, (134, by), p["track"], 32, col, bold=False, maxw=640)
+    bx = 134 + int(tw) + 26
     for b in range(5):
         ph = math.sin(frame * 0.45 + b * 1.7) * 0.5 + 0.5
         h = 6 + 32 * lev * (0.4 + 0.6 * ph)
