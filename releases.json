@@ -31859,11 +31859,371 @@
   },
   {
    "shop": "Deejay.de",
-   "blocked": true,
-   "note": "Shop disallows automated reading",
-   "country": "DE",
    "where": "Wiesbaden",
-   "items": []
+   "country": "DE",
+   "cur": "€",
+   "items": [
+    {
+     "a": "Chris Pascoe",
+     "t": "Darkside",
+     "l": "Slow-Wave",
+     "cat": "SW10",
+     "f": "12\"",
+     "p": 16.77,
+     "g": "Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Chris_Pascoe_Darkside_SW10_Vinyl__1263536",
+     "cover": "https://www.deejay.de/images/l/3/6/1263536.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Darkside",
+       "page": "https://www.deejay.de/Chris_Pascoe_Darkside_SW10_Vinyl__1263536"
+      },
+      {
+       "s": "B1",
+       "n": "Cocaine",
+       "page": "https://www.deejay.de/Chris_Pascoe_Darkside_SW10_Vinyl__1263536"
+      }
+     ],
+     "d": "06.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "Sound Of The Suburbs",
+     "t": "I Wont Stop / Against The Tide",
+     "l": "Morpheus",
+     "cat": "MORPHEUS01A",
+     "f": "12\"",
+     "p": 15.92,
+     "g": "Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Sound_Of_The_Suburbs_I_Wont_Stop_Against_The_Tide_MORPHEUS01A_Vinyl__1036743",
+     "cover": "https://www.deejay.de/images/l/4/3/1036743.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "I Wont Stop",
+       "page": "https://www.deejay.de/Sound_Of_The_Suburbs_I_Wont_Stop_Against_The_Tide_MORPHEUS01A_Vinyl__1036743"
+      },
+      {
+       "s": "B1",
+       "n": "Against The Tide",
+       "page": "https://www.deejay.de/Sound_Of_The_Suburbs_I_Wont_Stop_Against_The_Tide_MORPHEUS01A_Vinyl__1036743"
+      }
+     ],
+     "d": "06.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "Unknown",
+     "t": "PVC09",
+     "l": "PVC Records",
+     "cat": "PVC09",
+     "f": "12\"",
+     "p": 14.24,
+     "g": "Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Unknown_PVC09_PVC09_Vinyl__1230409",
+     "cover": "https://www.deejay.de/images/l/0/9/1230409.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "KINR",
+       "page": "https://www.deejay.de/Unknown_PVC09_PVC09_Vinyl__1230409"
+      },
+      {
+       "s": "A2",
+       "n": "Ruffneck",
+       "page": "https://www.deejay.de/Unknown_PVC09_PVC09_Vinyl__1230409"
+      },
+      {
+       "s": "B1",
+       "n": "Sun Goes Back",
+       "page": "https://www.deejay.de/Unknown_PVC09_PVC09_Vinyl__1230409"
+      },
+      {
+       "s": "B2",
+       "n": "Get Me Down",
+       "page": "https://www.deejay.de/Unknown_PVC09_PVC09_Vinyl__1230409"
+      }
+     ],
+     "d": "06.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "Arno",
+     "t": "What Is Life?! EP",
+     "l": "Arno",
+     "cat": "ARNO003",
+     "f": "12\"",
+     "p": 12.19,
+     "g": "Minimal House / Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Arno_What_Is_Life!_EP_ARNO003_Vinyl__1207895",
+     "cover": "https://www.deejay.de/images/l/9/5/1207895.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Original",
+       "page": "https://www.deejay.de/Arno_What_Is_Life!_EP_ARNO003_Vinyl__1207895"
+      },
+      {
+       "s": "B1",
+       "n": "Melchior Productions Ltd Remix",
+       "page": "https://www.deejay.de/Arno_What_Is_Life!_EP_ARNO003_Vinyl__1207895"
+      }
+     ],
+     "d": "05.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "Kurilo",
+     "t": "Bipolar Loops",
+     "l": "Trance Pandemic",
+     "cat": "TP009",
+     "f": "12\"",
+     "p": 12.56,
+     "g": "Tech House / Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Kurilo_Bipolar_Loops_TP009_Vinyl__1244455",
+     "cover": "https://www.deejay.de/images/l/5/5/1244455.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A Pleasure To Remember (XTSY Mix) w/ Matas",
+       "page": "https://www.deejay.de/Kurilo_Bipolar_Loops_TP009_Vinyl__1244455"
+      },
+      {
+       "s": "A2",
+       "n": "Brighton Paradise",
+       "page": "https://www.deejay.de/Kurilo_Bipolar_Loops_TP009_Vinyl__1244455"
+      },
+      {
+       "s": "B1",
+       "n": "Elastic Man w/ Tom Peters",
+       "page": "https://www.deejay.de/Kurilo_Bipolar_Loops_TP009_Vinyl__1244455"
+      },
+      {
+       "s": "B2",
+       "n": "4 AM Breakfast",
+       "page": "https://www.deejay.de/Kurilo_Bipolar_Loops_TP009_Vinyl__1244455"
+      }
+     ],
+     "d": "05.10.2026",
+     "st": "pre"
+    },
+    {
+     "a": "Gringo / Francisco Ruiz-Tagle / Double Dipp",
+     "t": "MBK004",
+     "l": "Minimal Brooklyn Records",
+     "cat": "MBK004",
+     "f": "12\"",
+     "p": 17.02,
+     "g": "Minimal House / Breakbeat",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Gringo_Francisco_Ruiz-Tagle_Double_Dipp_MBK004_MBK004_Vinyl__1258771",
+     "cover": "https://www.deejay.de/images/l/7/1/1258771.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Gringow - Black Is The New Color",
+       "page": "https://www.deejay.de/Gringo_Francisco_Ruiz-Tagle_Double_Dipp_MBK004_MBK004_Vinyl__1258771"
+      },
+      {
+       "s": "A2",
+       "n": "Gringow - My K",
+       "page": "https://www.deejay.de/Gringo_Francisco_Ruiz-Tagle_Double_Dipp_MBK004_MBK004_Vinyl__1258771"
+      },
+      {
+       "s": "B1",
+       "n": "Francisco Ruiz-Tagle - Primal Depths",
+       "page": "https://www.deejay.de/Gringo_Francisco_Ruiz-Tagle_Double_Dipp_MBK004_MBK004_Vinyl__1258771"
+      },
+      {
+       "s": "B2",
+       "n": "Double Dipp - Bean Water",
+       "page": "https://www.deejay.de/Gringo_Francisco_Ruiz-Tagle_Double_Dipp_MBK004_MBK004_Vinyl__1258771"
+      }
+     ],
+     "d": "05.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "VARIOUS",
+     "t": "Many Shades Of House (Selected By Lea Lisa) Vol.2 (LP 2x12\")",
+     "l": "Favorite",
+     "cat": "FVR206",
+     "f": "2×12\"",
+     "p": 24.33,
+     "g": "Deep House / Disco · Reissue",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451",
+     "cover": "https://www.deejay.de/images/l/5/1/1251451.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Korsakow - Sun Of A Gun (Original)",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      },
+      {
+       "s": "A2",
+       "n": "Ian Pooley - Flatlet",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      },
+      {
+       "s": "B1",
+       "n": "Cab Drivers - Backside 50",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      },
+      {
+       "s": "B2",
+       "n": "Fred Quest - Only On The Condition You Call Me Esteban",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      },
+      {
+       "s": "C1",
+       "n": "Chateau Flight - Welcome (Full Lenght Meex)",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      },
+      {
+       "s": "C2",
+       "n": "Funk Force Project - Funk In NJ (Original Mix)",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      },
+      {
+       "s": "D1",
+       "n": "Leonel Castillo - 1974",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      },
+      {
+       "s": "D2",
+       "n": "Colourful Karma feat. Terra Deva - For The Music (Mandrax Dub)",
+       "page": "https://www.deejay.de/VARIOUS_Many_Shades_Of_House_Selected_By_Lea_Lisa_Vol2_LP_2x12_FVR206_Vinyl__1251451"
+      }
+     ],
+     "d": "05.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "Diogo",
+     "t": "Healiocentric EP ft. DJ Nature remix",
+     "l": "Heion Records",
+     "cat": "HEION002",
+     "f": "12\"",
+     "p": 13.24,
+     "g": "Minimal House / Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Diogo_Healiocentric_EP_ft_DJ_Nature_remix_HEION002_Vinyl__1260460",
+     "cover": "https://www.deejay.de/images/l/6/0/1260460.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Healiocentric",
+       "page": "https://www.deejay.de/Diogo_Healiocentric_EP_ft_DJ_Nature_remix_HEION002_Vinyl__1260460"
+      },
+      {
+       "s": "A2",
+       "n": "Traums",
+       "page": "https://www.deejay.de/Diogo_Healiocentric_EP_ft_DJ_Nature_remix_HEION002_Vinyl__1260460"
+      },
+      {
+       "s": "B1",
+       "n": "Healiocentric (DJ Nature remix)",
+       "page": "https://www.deejay.de/Diogo_Healiocentric_EP_ft_DJ_Nature_remix_HEION002_Vinyl__1260460"
+      }
+     ],
+     "d": "05.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "Royston Bassmann",
+     "t": "2004 Speculation",
+     "l": "Ikigai Records",
+     "cat": "IKI001",
+     "f": "12\"",
+     "p": 14.08,
+     "g": "Electro / Tech House / Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Royston_Bassmann_2004_Speculation_IKI001_Vinyl__1257772",
+     "cover": "https://www.deejay.de/images/l/7/2/1257772.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "R2G",
+       "page": "https://www.deejay.de/Royston_Bassmann_2004_Speculation_IKI001_Vinyl__1257772"
+      },
+      {
+       "s": "A2",
+       "n": "Live & Direct; the future",
+       "page": "https://www.deejay.de/Royston_Bassmann_2004_Speculation_IKI001_Vinyl__1257772"
+      },
+      {
+       "s": "A3",
+       "n": "Alternate Music",
+       "page": "https://www.deejay.de/Royston_Bassmann_2004_Speculation_IKI001_Vinyl__1257772"
+      },
+      {
+       "s": "B1",
+       "n": "Euphoria 2003",
+       "page": "https://www.deejay.de/Royston_Bassmann_2004_Speculation_IKI001_Vinyl__1257772"
+      },
+      {
+       "s": "B2",
+       "n": "2004 Speculation",
+       "page": "https://www.deejay.de/Royston_Bassmann_2004_Speculation_IKI001_Vinyl__1257772"
+      }
+     ],
+     "d": "05.10.2026",
+     "st": "in"
+    },
+    {
+     "a": "Guy From Downstairs",
+     "t": "Layers Only",
+     "l": "Pleasure Zone",
+     "cat": "PLZ047",
+     "f": "12\"",
+     "p": 12.19,
+     "g": "Minimal Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.deejay.de/Guy_From_Downstairs_Layers_Only_PLZ047_Vinyl__1181368",
+     "cover": "https://www.deejay.de/images/l/6/8/1181368.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Don't Change",
+       "page": "https://www.deejay.de/Guy_From_Downstairs_Layers_Only_PLZ047_Vinyl__1181368"
+      },
+      {
+       "s": "A2",
+       "n": "16:22 feat. Direkt",
+       "page": "https://www.deejay.de/Guy_From_Downstairs_Layers_Only_PLZ047_Vinyl__1181368"
+      },
+      {
+       "s": "B1",
+       "n": "Dream Untitled",
+       "page": "https://www.deejay.de/Guy_From_Downstairs_Layers_Only_PLZ047_Vinyl__1181368"
+      },
+      {
+       "s": "B2",
+       "n": "Perfect Endlessness",
+       "page": "https://www.deejay.de/Guy_From_Downstairs_Layers_Only_PLZ047_Vinyl__1181368"
+      }
+     ],
+     "d": "05.10.2026",
+     "st": "in"
+    }
+   ]
   },
   {
    "shop": "OYE Records",
