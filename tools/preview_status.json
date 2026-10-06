@@ -1,15 +1,15 @@
 {
  "date": "2026-10-06",
  "total": {
-  "records": 897,
-  "tracks": 610,
-  "clip": 206,
+  "records": 918,
+  "tracks": 621,
+  "clip": 216,
   "none": 81
  },
  "shops": {
   "Hardwax": {
-   "records": 93,
-   "tracks": 93,
+   "records": 95,
+   "tracks": 95,
    "clip": 0,
    "none": 0
   },
@@ -20,8 +20,8 @@
    "none": 1
   },
   "Decks.de": {
-   "records": 4,
-   "tracks": 2,
+   "records": 5,
+   "tracks": 3,
    "clip": 0,
    "none": 2
   },
@@ -32,16 +32,16 @@
    "none": 1
   },
   "Phonica": {
-   "records": 97,
-   "tracks": 49,
+   "records": 102,
+   "tracks": 50,
    "clip": 7,
-   "none": 41
+   "none": 45
   },
   "Redeye Records": {
-   "records": 250,
-   "tracks": 42,
-   "clip": 199,
-   "none": 9
+   "records": 258,
+   "tracks": 43,
+   "clip": 208,
+   "none": 7
   },
   "Yoyaku": {
    "records": 104,
@@ -50,8 +50,8 @@
    "none": 1
   },
   "Kompakt": {
-   "records": 73,
-   "tracks": 57,
+   "records": 74,
+   "tracks": 58,
    "clip": 0,
    "none": 16
   },
@@ -62,18 +62,20 @@
    "none": 0
   },
   "Deejay.de": {
-   "records": 10,
-   "tracks": 0,
-   "clip": 0,
-   "none": 10
+   "records": 14,
+   "tracks": 5,
+   "clip": 1,
+   "none": 8
   }
  },
- "pages_checked": 0,
+ "pages_checked": 12,
  "new_from_shop_pages": 0,
  "copied_from_other_shop": 0,
  "broken_clips_removed": 11,
- "clips_verified": 2147,
- "not_reachable": {},
+ "clips_verified": 2171,
+ "not_reachable": {
+  "Phonica: http403": 4
+ },
  "clip_hosts": {
   "clone.nl": {
    "clips": 925,
@@ -85,7 +87,7 @@
    ]
   },
   "media.hardwax.com": {
-   "clips": 453,
+   "clips": 461,
    "failed": 0,
    "sample": []
   },
@@ -95,7 +97,7 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 34,
+   "clips": 42,
    "failed": 11,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
@@ -104,7 +106,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 199,
+   "clips": 207,
    "failed": 0,
    "sample": []
   },
