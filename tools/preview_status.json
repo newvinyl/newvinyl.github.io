@@ -1,10 +1,10 @@
 {
  "date": "2026-10-06",
  "total": {
-  "records": 887,
+  "records": 897,
   "tracks": 610,
   "clip": 206,
-  "none": 71
+  "none": 81
  },
  "shops": {
   "Hardwax": {
@@ -60,6 +60,12 @@
    "tracks": 1,
    "clip": 0,
    "none": 0
+  },
+  "Deejay.de": {
+   "records": 10,
+   "tracks": 0,
+   "clip": 0,
+   "none": 10
   }
  },
  "pages_checked": 0,
