@@ -16387,7 +16387,18 @@
      "g": "Minimal House",
      "url": "https://www.phonicarecords.com/product/unknown-artist-creature-008-creature/212752",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/8bd19226dd112dafc070caf1ff8818ff.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Fake ID (Club Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CREATURE008_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Fake ID (Jazz Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CREATURE008_2.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-03"
     },
@@ -18397,7 +18408,25 @@
        "u": "https://sounds.redeyerecords.co.uk/183621.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Molen - Predominante"
+      },
+      {
+       "s": "A2",
+       "n": "Molen – Double Take"
+      },
+      {
+       "s": "B1",
+       "n": "Trajano – Davi’lara"
+      },
+      {
+       "s": "B2",
+       "n": "Alquimic – Interactuando Con Las Maquinas"
+      }
+     ]
     },
     {
      "a": "Mario Liberti",
@@ -18663,13 +18692,7 @@
      "first_seen": "2026-10-06",
      "url": "https://www.redeyerecords.co.uk/vinyl/179339-alnlp80nx-sasha-and-john-digweed-northern-exposure-redux-north-2lp-140g-midnight-blue-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191279-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191279.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out"
     },
     {
@@ -18858,7 +18881,21 @@
        "u": "https://sounds.redeyerecords.co.uk/190658.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A",
+       "n": "Fred Nasen - Sunday Visitor"
+      },
+      {
+       "s": "B1",
+       "n": "Fred Nasen - Get Down"
+      },
+      {
+       "s": "B2",
+       "n": "Fred Nasen - Stickiness"
+      }
+     ]
     },
     {
      "a": "Fred Nasen",
@@ -18879,7 +18916,21 @@
        "u": "https://sounds.redeyerecords.co.uk/190662.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Fred Nasen - Empty Bags"
+      },
+      {
+       "s": "A2",
+       "n": "Fred Nasen - Definition Dub"
+      },
+      {
+       "s": "B",
+       "n": "Fred Nasen - Tranquility (1998 Version)"
+      }
+     ]
     },
     {
      "a": "Flamingo Pier",
@@ -19047,7 +19098,17 @@
        "u": "https://sounds.redeyerecords.co.uk/190660.mp3"
       }
      ],
-     "st": "out"
+     "st": "out",
+     "tl": [
+      {
+       "s": "A",
+       "n": "Asad Rizvi - Smiling At The Sun"
+      },
+      {
+       "s": "B",
+       "n": "Smithmonger - Vinegar Stroke"
+      }
+     ]
     },
     {
      "a": "Andre Zimmer",
@@ -24970,8 +25031,28 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/190745.mp3"
+       "n": "1. Everybody",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "2. Pressure",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "3. Keep It Coming",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "4. Better",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "5. Definition of House",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_5.mp3"
       }
      ],
      "st": "pre"
@@ -25010,7 +25091,25 @@
        "u": "https://clone.nl/platen/mp3/84365/4%20Point%20of%20no%20return%20%286%20am%29.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "Just Be Yourself",
+       "s": "A1"
+      },
+      {
+       "n": "Since That Day",
+       "s": "A2"
+      },
+      {
+       "n": "Point Of No Return (2 Am)",
+       "s": "B1"
+      },
+      {
+       "n": "Point Of No Return (6 Am)",
+       "s": "B2"
+      }
+     ]
     },
     {
      "a": "Carebears",
@@ -25031,7 +25130,25 @@
        "u": "https://sounds.redeyerecords.co.uk/181296.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "808 A1",
+       "s": "A1"
+      },
+      {
+       "n": "808 A2",
+       "s": "A2"
+      },
+      {
+       "n": "808 B1",
+       "s": "B1"
+      },
+      {
+       "n": "808 B2",
+       "s": "B2"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -25073,7 +25190,17 @@
        "u": "https://sounds.redeyerecords.co.uk/184204.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "Burnin Love",
+       "s": "A"
+      },
+      {
+       "n": "Ain't No Ceiling",
+       "s": "B"
+      }
+     ]
     },
     {
      "a": "Shakedown",
@@ -25094,7 +25221,37 @@
        "u": "https://sounds.redeyerecords.co.uk/191061.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "Side 1",
+       "s": ""
+      },
+      {
+       "n": "1. Shakedown - At Night (Purple Disco Machine Remix)",
+       "s": ""
+      },
+      {
+       "n": "2. Shakedown - At Night (Peggy Gou’s Acid Journey Remix)",
+       "s": ""
+      },
+      {
+       "n": "side 2",
+       "s": ""
+      },
+      {
+       "n": "1. Shakedown - At Night (Kid Crème Club Mix)",
+       "s": ""
+      },
+      {
+       "n": "2. Shakedown - At Night",
+       "s": ""
+      },
+      {
+       "n": "3. Shakedown - At Night (Accapella)",
+       "s": ""
+      }
+     ]
     },
     {
      "a": "Unknown Artist",
@@ -25115,7 +25272,25 @@
        "u": "https://sounds.redeyerecords.co.uk/145749.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "Dex",
+       "s": "A1"
+      },
+      {
+       "n": "Hit",
+       "s": "A2"
+      },
+      {
+       "n": "Bsf",
+       "s": "B1"
+      },
+      {
+       "n": "France Cobra008",
+       "s": "B2"
+      }
+     ]
     },
     {
      "a": "VA",
@@ -25198,6 +25373,24 @@
        "n": "Preview",
        "u": "https://sounds.redeyerecords.co.uk/191294.mp3"
       }
+     ],
+     "tl": [
+      {
+       "n": "Take Control",
+       "s": "A1"
+      },
+      {
+       "n": "Damage The Disco",
+       "s": "A2"
+      },
+      {
+       "n": "Random Friday",
+       "s": "B1"
+      },
+      {
+       "n": "Bridge To Bliss",
+       "s": "B2"
+      }
      ]
     },
     {
@@ -25219,7 +25412,25 @@
        "u": "https://sounds.redeyerecords.co.uk/184272.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "Cut The Breaks",
+       "s": "A1"
+      },
+      {
+       "n": "Giving It All",
+       "s": "A2"
+      },
+      {
+       "n": "Visconti Bounce",
+       "s": "B1"
+      },
+      {
+       "n": "Hover Craft Fender Bender",
+       "s": "B2"
+      }
+     ]
     },
     {
      "a": "Lars Huismann",
@@ -25318,7 +25529,25 @@
        "u": "https://sounds.redeyerecords.co.uk/181883.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "Terminus81z",
+       "s": "1"
+      },
+      {
+       "n": "Pulse Width",
+       "s": "2"
+      },
+      {
+       "n": "Distant Dissonance",
+       "s": "3"
+      },
+      {
+       "n": "Light Forms",
+       "s": "4"
+      }
+     ]
     },
     {
      "a": "Buraye",
@@ -25360,7 +25589,25 @@
        "u": "https://sounds.redeyerecords.co.uk/190076.mp3"
       }
      ],
-     "st": "out"
+     "st": "out",
+     "tl": [
+      {
+       "n": "Phase Two",
+       "s": "A1"
+      },
+      {
+       "n": "Nordark",
+       "s": "A2"
+      },
+      {
+       "n": "Embad",
+       "s": "B1"
+      },
+      {
+       "n": "Embad (Z@p Remix)",
+       "s": "B2"
+      }
+     ]
     },
     {
      "a": "K.O.P. 32",
@@ -25428,7 +25675,33 @@
        "u": "https://sounds.redeyerecords.co.uk/800429.mp3"
       }
      ],
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "n": "Sonzai",
+       "s": "A1"
+      },
+      {
+       "n": "Irohanihoheto",
+       "s": "A2"
+      },
+      {
+       "n": "Kemono",
+       "s": "A3"
+      },
+      {
+       "n": "Karappo",
+       "s": "B1"
+      },
+      {
+       "n": "Tamatebako",
+       "s": "B2"
+      },
+      {
+       "n": "Kurenai",
+       "s": "B3"
+      }
+     ]
     },
     {
      "a": "Igaxx",
@@ -25526,14 +25799,18 @@
      "first_seen": "2026-10-05",
      "url": "https://www.redeyerecords.co.uk/vinyl/201492-cat033lp-bosco-sacro-inhabit/",
      "cover": "https://www.redeyerecords.co.uk/imagery/703368-2.jpg",
-     "tr": [
+     "tr": [],
+     "st": "pre",
+     "tl": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703368.mp3"
+       "n": "inhabit 2.gift From The Fog 3.silence Dances 4.desert Of Sense 5.vertigo 6.dong",
+       "s": "1"
+      },
+      {
+       "n": "dee 7.trickster 8.the Future Past",
+       "s": ""
       }
-     ],
-     "st": "pre"
+     ]
     },
     {
      "a": "Boogie Rookie",
@@ -25589,13 +25866,7 @@
      "first_seen": "2026-10-05",
      "url": "https://www.redeyerecords.co.uk/vinyl/201456-movlpb4177-fila-brazillia-black-market-gardening/",
      "cover": "https://www.redeyerecords.co.uk/imagery/800745-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/800745.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre"
     },
     {
@@ -25610,13 +25881,7 @@
      "first_seen": "2026-10-05",
      "url": "https://www.redeyerecords.co.uk/vinyl/201338-digrecrelp01-block-four-100-photography-lessons/",
      "cover": "https://www.redeyerecords.co.uk/imagery/800734-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/800734.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre"
     },
     {
@@ -25757,13 +26022,7 @@
      "first_seen": "2026-10-05",
      "url": "https://www.redeyerecords.co.uk/vinyl/198561-oda09m-fohn-porcelain/",
      "cover": "https://www.redeyerecords.co.uk/imagery/702814-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/702814.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out"
     },
     {
@@ -25999,14 +26258,38 @@
      "first_seen": "2026-10-05",
      "url": "https://www.redeyerecords.co.uk/vinyl/201635-slang50626lp-skee-mask-and-north-americans-final-circle-red-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/703378-2.jpg",
-     "tr": [
+     "tr": [],
+     "st": "pre",
+     "tl": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703378.mp3"
+       "n": "Side A:",
+       "s": ""
+      },
+      {
+       "n": "01. 05012023 (04:27)",
+       "s": ""
+      },
+      {
+       "n": "02. 15102021 (05:51)",
+       "s": ""
+      },
+      {
+       "n": "side B:",
+       "s": ""
+      },
+      {
+       "n": "01. 22122021 (04:49)",
+       "s": ""
+      },
+      {
+       "n": "02. 29072025 (05:10)",
+       "s": ""
+      },
+      {
+       "n": "03. 30122021 (05:16)",
+       "s": ""
       }
-     ],
-     "st": "pre"
+     ]
     },
     {
      "a": "Alva Noto",
@@ -26090,7 +26373,21 @@
        "u": "https://sounds.redeyerecords.co.uk/190933.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A",
+       "n": "In Your Body (Twentysix Mix)"
+      },
+      {
+       "s": "B1",
+       "n": "Erodat"
+      },
+      {
+       "s": "B2",
+       "n": "Iradiat"
+      }
+     ]
     },
     {
      "a": "D-Leria",
@@ -26173,7 +26470,17 @@
        "u": "https://clone.nl/platen/mp3/84263/2%20Virton%20%28Chris%20Liebing%20Remix%29.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A",
+       "n": "Ignacio - Virton (Chris Liebing Remix)"
+      },
+      {
+       "s": "B",
+       "n": "Ignacio - Virton"
+      }
+     ]
     }
    ],
    "country": "UK"
@@ -26291,7 +26598,28 @@
      "first_seen": "2026-10-06",
      "url": "https://yoyaku.io/release/sascha-dive-back-to-balance-ep-b2r019/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/05/B2R019-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Back To Balance feat. Robert Owens",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Back To Balance feat. Robert Owens (Bengoa's Acid Dub)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Down To My Bones",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Rhythm In Your Soul",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_4.mp3"
+      }
+     ]
     },
     {
      "a": "Unknown Artist",
@@ -26305,7 +26633,18 @@
      "first_seen": "2026-10-06",
      "url": "https://yoyaku.io/release/creature008-the-other-side-creature008/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/07/CREATURE008-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Fake ID (Club Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CREATURE008_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Fake ID (Jazz Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CREATURE008_2.mp3"
+      }
+     ]
     },
     {
      "a": "Theo Kottis",
@@ -26322,8 +26661,28 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/190745.mp3"
+       "n": "1. Everybody",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "2. Pressure",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "3. Keep It Coming",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "4. Better",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "5. Definition of House",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_5.mp3"
       }
      ]
     },
@@ -27058,7 +27417,53 @@
      "first_seen": "2026-09-29",
      "url": "https://yoyaku.io/release/john-beltran-open-house-now-then-lp-2x12-ee0016/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/03/EE0016-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "n": "A1. Aquatic",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_1.mp3"
+      },
+      {
+       "n": "A2. Aquatic (Carl Craig Mix)",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_2.mp3"
+      },
+      {
+       "n": "A3. Rainforest",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_3.mp3"
+      },
+      {
+       "n": "A4. Earth & Nightfall (Original Mix)",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_4.mp3"
+      },
+      {
+       "n": "A5. Earth & Nightfall (Detroit In Effect Remix)",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_5.mp3"
+      },
+      {
+       "n": "B1. High Tide",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_6.mp3"
+      },
+      {
+       "n": "B2. Bisous Au Revoir",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_7.mp3"
+      },
+      {
+       "n": "B3. Fragile",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_8.mp3"
+      },
+      {
+       "n": "B4. Fragile (Terrace Rework)",
+       "s": "",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/EE0016_9.mp3"
+      }
+     ]
     },
     {
      "m": "2026-09",
@@ -29522,7 +29927,28 @@
      "first_seen": "2026-10-05",
      "url": "https://yoyaku.io/release/dj-immortal-dissociation-gluerec00/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/09/GLUEREC00-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "n": "the space between",
+       "s": "",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GLUEREC00_1.mp3"
+      },
+      {
+       "n": "third man factor",
+       "s": "",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GLUEREC00_2.mp3"
+      },
+      {
+       "n": "dissociation",
+       "s": "",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GLUEREC00_3.mp3"
+      },
+      {
+       "n": "businessmen",
+       "s": "",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GLUEREC00_4.mp3"
+      }
+     ]
     }
    ],
    "country": "FR"
@@ -29571,7 +29997,13 @@
      "first_seen": "2026-10-06",
      "url": "https://kompakt.fm/releases/ciapa_incl_melchior_productions_ltd_remix",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a5635941920e-6a56379bbdbab-fitted.jpg?v=2",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Ciapa",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a5635c8289a8-6a5637a8db6a3-mp3-temp.mp3"
+      }
+     ]
     },
     {
      "a": "Rupert Marnie",
@@ -29620,7 +30052,13 @@
      "first_seen": "2026-10-06",
      "url": "https://kompakt.fm/releases/the_strength",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a9589685d84b-6a958db1607a1-fitted.jpg?v=2",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Gettin' Lifted",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a95899682c0c-6a958dc3f33c1-mp3-temp.mp3"
+      }
+     ]
     },
     {
      "a": "Rhode & Brown",
@@ -29719,7 +30157,13 @@
      "first_seen": "2026-10-06",
      "url": "https://kompakt.fm/releases/m_o_o_d_p_r_o_g_r_a_m_s_e_x_t_e_n_d_e_d_p_l_a_y",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a918cb4162a3-6a919f4515a44-fitted.jpg?v=2",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Good Magic",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09c6da-6a919f6606ea1-mp3-temp.mp3"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -29857,8 +30301,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a9589687f3ae-6a9590fac004f-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Bäume Strahlen Stress Aus",
        "s": "",
+       "n": "Bäume Strahlen Stress Aus",
        "u": ""
       }
      ]
@@ -29919,8 +30363,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a8da7b198db3-6ab506439b418-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Birdwatchers",
        "s": "",
+       "n": "Birdwatchers",
        "u": ""
       }
      ]
@@ -30226,8 +30670,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a61f21d5d59e-6aabb436a1b29-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "The Experiment",
        "s": "",
+       "n": "The Experiment",
        "u": ""
       }
      ]
@@ -31087,7 +31531,13 @@
      "first_seen": "2026-10-05",
      "url": "https://kompakt.fm/releases/free_refill_ep",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a96cc2f1d258-6a96d09d742e9-fitted.jpg",
-     "tr": []
+     "tr": [
+      {
+       "n": "Keep The Party Going",
+       "s": "",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a96cc612b193-6a96d0b18597a-mp3-temp.mp3"
+      }
+     ]
     },
     {
      "a": "DJ Pierre",
@@ -31285,7 +31735,13 @@
      "first_seen": "2026-10-05",
      "url": "https://kompakt.fm/releases/hans_nieswandt_edits",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a68ad3d368e1-6a6a00265ab0e-fitted.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "n": "Svengali Joe / Hans Nieswandt Edit",
+       "s": "",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a68ad6e20cbe-6a6a0032d68d9-mp3-temp.mp3"
+      }
+     ],
      "st": "out"
     },
     {
@@ -31300,33 +31756,7 @@
      "first_seen": "2026-10-06",
      "url": "https://kompakt.fm/releases/nebulae",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/eudemonia022-nebulae.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Floating Castles In The Sky",
-       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-01-floating_castles_in_the_sky.mp3"
-      },
-      {
-       "s": "",
-       "n": "Celestial Winds",
-       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-02-celestial_winds.mp3"
-      },
-      {
-       "s": "",
-       "n": "Nebulae",
-       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-03-nebulae.mp3"
-      },
-      {
-       "s": "",
-       "n": "Into Orbit",
-       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-04-into_orbit.mp3"
-      },
-      {
-       "s": "",
-       "n": "Stardust",
-       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-05-stardust.mp3"
-      }
-     ],
+     "tr": [],
      "d": "October 23, 2026",
      "st": "pre"
     },
