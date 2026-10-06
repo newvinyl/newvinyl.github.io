@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-05",
+ "updated": "2026-10-06",
  "shops": [
   {
    "shop": "Hardwax",
@@ -3396,6 +3396,276 @@
      ],
      "m": "2026-10",
      "first_seen": "2026-10-04"
+    },
+    {
+     "a": "JK Flesh / Monrella",
+     "t": "Shouting The Odds",
+     "l": "Give/Take",
+     "cat": "078",
+     "f": "LP",
+     "p": 34,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://hardwax.com/88043/jk-flesh-monrella/shouting-the-odds/",
+     "cover": "https://media.hardwax.com/images/88043x.jpg",
+     "tr": [
+      {
+       "s": "A",
+       "n": "Conditional",
+       "u": "https://media.hardwax.com/audio/88043_A1.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Transactional",
+       "u": "https://media.hardwax.com/audio/88043_A2.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Disagreeable",
+       "u": "https://media.hardwax.com/audio/88043_A3.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Used / User",
+       "u": "https://media.hardwax.com/audio/88043_A4.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Night Before Rake",
+       "u": "https://media.hardwax.com/audio/88043_B1.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Slightly Over",
+       "u": "https://media.hardwax.com/audio/88043_B2.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Doube Red",
+       "u": "https://media.hardwax.com/audio/88043_B3.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Shelf",
+       "u": "https://media.hardwax.com/audio/88043_B4.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Dream 2 Science",
+     "t": "My Love Turns To Liquid",
+     "l": "Rush Hour",
+     "cat": "RSS 041",
+     "f": "12\"",
+     "p": 17.5,
+     "g": "Deep House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://hardwax.com/89109/dream-2-science/my-love-turns-to-liquid/",
+     "cover": "https://media.hardwax.com/images/89109a.jpg",
+     "tr": [
+      {
+       "s": "A",
+       "n": "My Love Turns To Liquid (Original Mix)",
+       "u": "https://media.hardwax.com/audio/89109_A1.mp3"
+      },
+      {
+       "s": "A",
+       "n": "My Love Turns To Liquid (Warm Water Mix)",
+       "u": "https://media.hardwax.com/audio/89109_A2.mp3"
+      },
+      {
+       "s": "A",
+       "n": "My Love Turns To Liquid (Padapella)",
+       "u": "https://media.hardwax.com/audio/89109_A3.mp3"
+      },
+      {
+       "s": "B",
+       "n": "My Love Turns To Liquid (Cozmic Remix)",
+       "u": "https://media.hardwax.com/audio/89109_B1.mp3"
+      },
+      {
+       "s": "B",
+       "n": "My Love Turns To Liquid (Cozmic Remix Instrumental)",
+       "u": "https://media.hardwax.com/audio/89109_B2.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Civilistjävel",
+     "t": "Älvgång",
+     "l": "Six Of Swords",
+     "cat": "05 LP",
+     "f": "LP",
+     "p": 28,
+     "g": "Ambient",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://hardwax.com/89549/civilistjavel/alvgang/",
+     "cover": "https://media.hardwax.com/images/89549x.jpg",
+     "tr": [
+      {
+       "s": "A",
+       "n": "Strinne Ett",
+       "u": "https://media.hardwax.com/audio/89549_A1.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Strinne Två",
+       "u": "https://media.hardwax.com/audio/89549_A2.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Strinne Tre (feat. Soccer Committee)",
+       "u": "https://media.hardwax.com/audio/89549_A3.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Strinne Fyra (feat. Carrier)",
+       "u": "https://media.hardwax.com/audio/89549_A4.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Bjärtrå Ett",
+       "u": "https://media.hardwax.com/audio/89549_B1.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Bjärtrå Två",
+       "u": "https://media.hardwax.com/audio/89549_B2.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Bjärtrå Tre",
+       "u": "https://media.hardwax.com/audio/89549_B3.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Bjärtrå Fyra (feat. Guest)",
+       "u": "https://media.hardwax.com/audio/89549_B4.mp3"
+      }
+     ]
+    },
+    {
+     "a": "PPP (Piezo, DJ Plead & DJ Python)",
+     "t": "Bborn Again",
+     "l": "Wisdom Teeth",
+     "cat": "029",
+     "f": "12\"",
+     "p": 24,
+     "g": "Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://hardwax.com/87999/ppp-piezo-dj-plead-and-dj-python/bborn-again/",
+     "cover": "https://media.hardwax.com/images/87999x.jpg",
+     "tr": [
+      {
+       "s": "A",
+       "n": "Wisco",
+       "u": "https://media.hardwax.com/audio/87999_01.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Bborn Again",
+       "u": "https://media.hardwax.com/audio/87999_02.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Pez",
+       "u": "https://media.hardwax.com/audio/87999_03.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Coni",
+       "u": "https://media.hardwax.com/audio/87999_04.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Plz",
+       "u": "https://media.hardwax.com/audio/87999_05.mp3"
+      }
+     ]
+    },
+    {
+     "a": "K-Lone",
+     "t": "Have A Few Days Off",
+     "l": "Wisdom Teeth",
+     "cat": "030",
+     "f": "12\"",
+     "p": 25,
+     "g": "Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://hardwax.com/07508/k-lone/have-a-few-days-off/",
+     "cover": "https://media.hardwax.com/images/07508x.jpg",
+     "tr": [
+      {
+       "s": "A",
+       "n": "Holdup",
+       "u": "https://media.hardwax.com/audio/07508_01.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Love Me a Little More",
+       "u": "https://media.hardwax.com/audio/07508_02.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Self Care (live mix)",
+       "u": "https://media.hardwax.com/audio/07508_03.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Have a Few Days Off",
+       "u": "https://media.hardwax.com/audio/07508_04.mp3"
+      },
+      {
+       "s": "B",
+       "n": "eerhT owT enO",
+       "u": "https://media.hardwax.com/audio/07508_05.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Micro Tonne",
+       "u": "https://media.hardwax.com/audio/07508_06.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Fletch",
+     "t": "Lift You Up",
+     "l": "Hard Times",
+     "cat": "024",
+     "f": "12\"",
+     "p": 19,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://hardwax.com/89570/fletch/lift-you-up/",
+     "cover": "https://media.hardwax.com/images/89570x.jpg",
+     "tr": [
+      {
+       "s": "A",
+       "n": "Lift You Up",
+       "u": "https://media.hardwax.com/audio/89570_A1.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Stand Up",
+       "u": "https://media.hardwax.com/audio/89570_A2.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Touch Me",
+       "u": "https://media.hardwax.com/audio/89570_B1.mp3"
+      },
+      {
+       "s": "B",
+       "n": "1000 Years",
+       "u": "https://media.hardwax.com/audio/89570_B2.mp3"
+      }
+     ]
     }
    ],
    "country": "DE"
@@ -16976,6 +17246,127 @@
      "tr": [],
      "m": "2026-10",
      "first_seen": "2026-10-04"
+    },
+    {
+     "a": "CONRAD VAN ORTON",
+     "t": "Know How",
+     "l": "KEY VINYL",
+     "cat": "214412",
+     "f": "12\"",
+     "p": 15.98,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.phonicarecords.com/product/conrad-van-orton-know-how-key-vinyl/214412",
+     "cover": "https://d1c4rk9le5opln.cloudfront.net/a82f3a9ebe671f7a2f2a4eaa95c2216c.jpg",
+     "tr": [],
+     "st": "pre"
+    },
+    {
+     "a": "ANTONIO DE ANGELIS",
+     "t": "Krypton",
+     "l": "KEY VINYL",
+     "cat": "214044",
+     "f": "12\"",
+     "p": 15.98,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.phonicarecords.com/product/antonio-de-angelis-krypton-key-vinyl/214044",
+     "cover": "https://d1c4rk9le5opln.cloudfront.net/dd32681b118a15501d7f6fec4109bfe6.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Kryptonite",
+       "page": "https://www.phonicarecords.com/product/antonio-de-angelis-krypton-key-vinyl/214044"
+      },
+      {
+       "s": "",
+       "n": "Ground",
+       "page": "https://www.phonicarecords.com/product/antonio-de-angelis-krypton-key-vinyl/214044"
+      },
+      {
+       "s": "",
+       "n": "Partizan",
+       "page": "https://www.phonicarecords.com/product/antonio-de-angelis-krypton-key-vinyl/214044"
+      },
+      {
+       "s": "",
+       "n": "Co_Yo_",
+       "page": "https://www.phonicarecords.com/product/antonio-de-angelis-krypton-key-vinyl/214044"
+      }
+     ],
+     "st": "pre",
+     "d": "Expected 5 Oct 2026"
+    },
+    {
+     "a": "LUIGI MADONNA",
+     "t": "Flowz",
+     "l": "BCCO",
+     "cat": "212883",
+     "f": "12\"",
+     "p": 19.0,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.phonicarecords.com/product/luigi-madonna-flowz-bcco/212883",
+     "cover": "https://d1c4rk9le5opln.cloudfront.net/091acce7a0e706391a725f1ab745d770.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Purpose",
+       "page": "https://www.phonicarecords.com/product/luigi-madonna-flowz-bcco/212883"
+      },
+      {
+       "s": "",
+       "n": "Flowz",
+       "page": "https://www.phonicarecords.com/product/luigi-madonna-flowz-bcco/212883"
+      },
+      {
+       "s": "",
+       "n": "Entanglement",
+       "page": "https://www.phonicarecords.com/product/luigi-madonna-flowz-bcco/212883"
+      },
+      {
+       "s": "",
+       "n": "Perception",
+       "page": "https://www.phonicarecords.com/product/luigi-madonna-flowz-bcco/212883"
+      }
+     ],
+     "st": "pre",
+     "d": "Expected 5 Oct 2026"
+    },
+    {
+     "a": "DEADBEAT",
+     "t": "When you're down EP",
+     "l": "BRIGHT SOUNDS",
+     "cat": "213079",
+     "f": "12\"",
+     "p": 15.98,
+     "g": "Dub Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.phonicarecords.com/product/deadbeat-when-youre-down-ep-bright-sounds/213079",
+     "cover": "https://d1c4rk9le5opln.cloudfront.net/b45faf486fe976d1bb5ed9ca4531a5fd.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "When you're down",
+       "page": "https://www.phonicarecords.com/product/deadbeat-when-youre-down-ep-bright-sounds/213079"
+      },
+      {
+       "s": "",
+       "n": "There is a light",
+       "page": "https://www.phonicarecords.com/product/deadbeat-when-youre-down-ep-bright-sounds/213079"
+      },
+      {
+       "s": "",
+       "n": "When you're down (Roots mix)",
+       "page": "https://www.phonicarecords.com/product/deadbeat-when-youre-down-ep-bright-sounds/213079"
+      }
+     ],
+     "st": "pre",
+     "d": "Expected 5 Oct 2026"
     }
    ],
    "country": "UK"
@@ -22870,8 +23261,28 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/190745.mp3"
+       "n": "Everybody",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Pressure",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Keep It Coming",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Better",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Definition of House",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_5.mp3"
       }
      ],
      "st": "pre"
@@ -24171,6 +24582,231 @@
       }
      ],
      "st": "pre"
+    },
+    {
+     "a": "DJ Sprinkles, Francis Harris, Frank & Tony",
+     "t": "Frank & Tony",
+     "l": "Scissor And Thread",
+     "cat": "SATLTD008",
+     "f": "12\"",
+     "p": 14.08,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/198798-satltd008-dj-sprinkles-francis-harris-frank-and-tony/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/190931-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/190931.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Fka Boursin",
+     "t": "From Space Between (W/ Frank & Tony's Housebeat Dub)",
+     "l": "Scissor And Thread",
+     "cat": "SATLTD009",
+     "f": "12\"",
+     "p": 13.5,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200211-satltd009-fka-boursin-from-space-between-w-frank-and-tonys-housebeat-dub/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191829-2.jpg",
+     "tr": [
+      {
+       "n": "From Space Between",
+       "s": "",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a96960491918-6a97e04a7f4d1-mp3-temp.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "FRED NASEN",
+     "t": "25 YEARS VISITOR (PART 3)",
+     "l": "Visitor",
+     "cat": "VISITOR2503",
+     "f": "12\"",
+     "p": 13.02,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/198405-visitor2503-fred-nasen-25-years-visitor-part-312/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/190662-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/190662.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "FRED NASEN",
+     "t": "25 YEARS VISITOR (PART 5)",
+     "l": "Visitor",
+     "cat": "VISITOR2505",
+     "f": "12\"",
+     "p": 13.02,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/198401-visitor2505-fred-nasen-25-years-visitor-part-512/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/190658-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/190658.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Lavan",
+     "t": "Soul Baby EP (K15 Remix)",
+     "l": "Ascension On Wax",
+     "cat": "AOW006",
+     "f": "12\"",
+     "p": 16.18,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200698-aow006-lavan-soul-baby-ep-k15-remix/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192119-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192119.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Rowl",
+     "t": "Signal EP",
+     "l": "Smokin' Sessions",
+     "cat": "SMOKE046",
+     "f": "12\"",
+     "p": 14.43,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200406-smoke046-rowl-signal-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/3201397-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/3201397.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Cosmin TRG",
+     "t": "IN YOUR BODY (TWENTYSIX MIX)",
+     "l": "Sportiv",
+     "cat": "SPORTIV006",
+     "f": "12\"",
+     "p": 14.79,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/198800-sportiv006-cosmin-trg-in-your-body-twentysix-mix/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/190933-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/190933.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "D-Leria",
+     "t": "Risonanza",
+     "l": "Non Series",
+     "cat": "NON073",
+     "f": "12\"",
+     "p": 13.02,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200078-non073-d-leria-risonanza/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191756-2.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Interferenza",
+       "u": "https://media.hardwax.com/audio/89424_A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Switch",
+       "u": "https://media.hardwax.com/audio/89424_A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Voices",
+       "u": "https://media.hardwax.com/audio/89424_B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Surrender to Inertia",
+       "u": "https://media.hardwax.com/audio/89424_B2.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Franz Jäger",
+     "t": "Man With Seven Heads",
+     "l": "Hayes",
+     "cat": "HYSEP68",
+     "f": "12\"",
+     "p": 12.54,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200225-hysep68-franz-jäger-man-with-seven-heads/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191841-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191841.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "IGNACIO",
+     "t": "VIRTON",
+     "l": "Music Man",
+     "cat": "MM077",
+     "f": "12\"",
+     "p": 13.02,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://www.redeyerecords.co.uk/vinyl/198972-mm077-ignacio-virton/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191050-2.jpg",
+     "tr": [
+      {
+       "n": "Virton",
+       "s": "",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a5635c8284d1-6a563cc827edf-mp3-temp.mp3"
+      }
+     ],
+     "st": "in"
     }
    ],
    "country": "UK"
@@ -27444,6 +28080,247 @@
        "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GLUEREC00_4.mp3"
       }
      ]
+    },
+    {
+     "a": "Theo Kottis",
+     "t": "Pressure EP",
+     "l": "Theoracle",
+     "cat": "TO001",
+     "f": "12\"",
+     "p": 18.0,
+     "g": "Deep House / Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://yoyaku.io/release/theo-kottis-pressure-ep-to001/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/06/TO001-1.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Everybody",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Pressure",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Keep It Coming",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Better",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Definition of House",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TO001_5.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Sascha Dive, Robert Owens, Bengoa",
+     "t": "Back To Balance EP",
+     "l": "B2 Recordings",
+     "cat": "B2R019",
+     "f": "12\"",
+     "p": 16.0,
+     "g": "Deep House / Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://yoyaku.io/release/sascha-dive-back-to-balance-ep-b2r019/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/05/B2R019.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Back To Balance feat. Robert Owens",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Back To Balance feat. Robert Owens (Bengoa's Acid Dub)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Down To My Bones",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Rhythm In Your Soul",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/B2R019_4.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "James Mason",
+     "t": "Nightgruv / I Want Your Love",
+     "l": "Rush Hour",
+     "cat": "RHRSS3",
+     "f": "12\"",
+     "p": 16.0,
+     "g": "Deep House / Disco",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://yoyaku.io/release/james-mason-nightgruv-i-want-your-love-rhrss3/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/05/RHRSS3-1.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Nightgruv (Original Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS3_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Nightgruv (Unreleased Longer Edit)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS3_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: I Want Your Love",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS3_3.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Shed",
+     "t": "RAVE ECHOES LP",
+     "l": "Dekmantel",
+     "cat": "DKMNTL116",
+     "f": "2×12\"",
+     "p": 35.0,
+     "g": "Techno",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://yoyaku.io/release/shed-rave-echoes-lp-2x12-dkmntl116/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/04/DKMNTL116.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Loot 25",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Everybody",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Rave Predator",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Password Techno Mix",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1: Double Scoop",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2: Password Trance Mix",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1: Taking You Home",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2: Rave Echoes",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DKMNTL116_8.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "Dream 2 Science",
+     "t": "MY LOVE TURNS TO LIQUID",
+     "l": "Rush Hour",
+     "cat": "RHRSS41",
+     "f": "12\"",
+     "p": 17.0,
+     "g": "Deep House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://yoyaku.io/release/dream-2-science-my-love-turns-to-liquid-rhrss41/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/06/RHRSS41-1-1.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Track 1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS41_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 2",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS41_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 3",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS41_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 4",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS41_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 5",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RHRSS41_5.mp3"
+      }
+     ],
+     "st": "in"
+    },
+    {
+     "a": "TMRS (Todd Modes and Ryan Spencer)",
+     "t": "Zebra 003",
+     "l": "Psychic Zebra",
+     "cat": "ZEBRA003",
+     "f": "12\"",
+     "p": 19.0,
+     "g": "Deep House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://yoyaku.io/release/tmrs-todd-modes-and-ryan-spencer-zebra-003-zebra003/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/06/ZEBRA003-1.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Talk Talk (LA Guitar Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ZEBRA003_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Talk Talk (Frantic Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ZEBRA003_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Risk Of The Road",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ZEBRA003_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Weird Wave",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ZEBRA003_4.mp3"
+      }
+     ],
+     "st": "in"
     }
    ],
    "country": "FR"
@@ -28912,6 +29789,293 @@
       }
      ],
      "st": "out"
+    },
+    {
+     "a": "Paul West",
+     "t": "Nebulae",
+     "l": "eudemonia",
+     "cat": "eudemonia 022",
+     "f": "12\"",
+     "p": 13.5,
+     "g": "Electro / House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/nebulae",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/eudemonia022-nebulae.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Floating Castles In The Sky",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-01-floating_castles_in_the_sky.mp3"
+      },
+      {
+       "s": "",
+       "n": "Celestial Winds",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-02-celestial_winds.mp3"
+      },
+      {
+       "s": "",
+       "n": "Nebulae",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-03-nebulae.mp3"
+      },
+      {
+       "s": "",
+       "n": "Into Orbit",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-04-into_orbit.mp3"
+      },
+      {
+       "s": "",
+       "n": "Stardust",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-05-stardust.mp3"
+      }
+     ],
+     "d": "October 23, 2026",
+     "st": "pre"
+    },
+    {
+     "a": "Shoke",
+     "t": "Chiamami EP",
+     "l": "Cecille",
+     "cat": "CEC078",
+     "f": "12\"",
+     "p": 18.9,
+     "g": "House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/chiamami_ep",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6aa15cc4566c1-6aa1604908efb-fitted.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "After you",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aa15cf0cf62e-6aa1720308496-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Halo",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aa15cf0cf6e4-6aa1720e1957d-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Chiamami",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aa15cf0cf6f5-6aa17219c3748-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Bbuena",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aa15cf0cf702-6aa17223bfc23-mp3-temp.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Ploy",
+     "t": "Glizzy",
+     "l": "Dekmantel",
+     "cat": "DKMNTL125",
+     "f": "12\"",
+     "p": 16.5,
+     "g": "Tech House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/glizzy",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a918cb44ac07-6a91a043a05fb-fitted.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Glizzy",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09caea-6a91a052d19be-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Global Underground",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09cade-6a91a0635d705-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Yesterday Now Tomorrow",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09cad0-6a91a07da5ee1-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Slowan Dip",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09caf6-6a91a08de3ca1-mp3-temp.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Suze Ijó & Zopelar",
+     "t": "Ritual Of Dance",
+     "l": "Ritual Of Dance",
+     "cat": "ROD001",
+     "f": "12\"",
+     "p": 14.9,
+     "g": "Deep House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/ritual_of_dance",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a9ec777319ca-6a9ec8a011801-fitted.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Ritual Of Dance",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a9ec7a7b456b-6a9ec8ab7a72e-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Groove Extract",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a9ec7a7b4621-6a9ec8b6e67b3-mp3-temp.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Acid Pauli",
+     "t": "Gwar Is Not The Answer (w/Jonathan Kaspar Remix)",
+     "l": "All Is Acid",
+     "cat": "AIA003",
+     "f": "12\"",
+     "p": 16.9,
+     "g": "House · Reissue",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/gwar_is_not_the_answer_w_jonathan_kaspar_remix",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a68ad3d5f63f-6a6a01f24efa1-fitted.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Gwar Is Not The Answer",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a68ad6e20ffa-6a6a01fe510ba-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Acid Pauli - Gwar Is Not The Answer (Jonathan Kaspar Remix)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a68ad6e2100f-6a6a020a38f55-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "G.I.N.T.A. (Acid Pauli Remix)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a68ad6e2101c-6a6a021681ba3-mp3-temp.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Presence (Charles Webster)",
+     "t": "The Strength",
+     "l": "Pariter",
+     "cat": "PRTR38",
+     "f": "12\"",
+     "p": 19.9,
+     "g": "Deep House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/the_strength",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a9589685d84b-6a958db1607a1-fitted.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Gettin' Lifted",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a95899682c0c-6a958dc3f33c1-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Feelin' Lifted",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a95899682c1b-6a958dd2833f2-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "The Strength (Within)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a95899682c28-6a958dde72a04-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "The Strength (Without)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a95899682c35-6a958deb96080-mp3-temp.mp3"
+      }
+     ]
+    },
+    {
+     "a": "Rhode & Brown",
+     "t": "Multitudes (LP)",
+     "l": "Permanent Vacation",
+     "cat": "permvac379-1",
+     "f": "LP",
+     "p": 29.9,
+     "g": "House / Downtempo",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/multitudes_lp",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a7c5a00b63f5-6a7c659729c9f-fitted.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Small Hours",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590c89-6a7c65ac71ea0-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Solar Zoom",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d40-6a7c65bc43030-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Steppin' Out",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d53-6a7c65ce155e9-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Loop 4 (feat. Braga Circuit)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d60-6a7c65fd3d006-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Rayo De Luz (feat. Sianza)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d6c-6a7c661694d21-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Multitudes (feat. Ronni)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d78-6a7c662508bd5-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Different Love Patterns",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d84-6a7c663d10b0a-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Mondo (feat. Ferrari)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d8f-6a7c6834506da-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Snail Mail",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a7c5a3590d9b-6a7c68439ccdb-mp3-temp.mp3"
+      }
+     ]
+    },
+    {
+     "a": "La Marr (aka Ron Trent)",
+     "t": "Mood Programs – Extended Play",
+     "l": "Music From Memory",
+     "cat": "MFM087",
+     "f": "12\"",
+     "p": 21.5,
+     "g": "Deep House",
+     "m": "2026-10",
+     "first_seen": "2026-10-06",
+     "url": "https://kompakt.fm/releases/m_o_o_d_p_r_o_g_r_a_m_s_e_x_t_e_n_d_e_d_p_l_a_y",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a918cb4162a3-6a919f4515a44-fitted.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Good Magic",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09c6da-6a919f6606ea1-mp3-temp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Clear",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09c6ea-6a919f7b84ba7-mp3-temp.mp3"
+      }
+     ]
     }
    ]
   },
@@ -28967,9 +30131,9 @@
  ],
  "fx": {
   "CHF": 1,
-  "EUR": 0.933,
-  "GBP": 1.0977,
-  "USD": 0.829,
-  "date": "2026-10-05"
+  "EUR": 0.932,
+  "GBP": 1.0941,
+  "USD": 0.8283,
+  "date": "2026-10-06"
  }
 }
