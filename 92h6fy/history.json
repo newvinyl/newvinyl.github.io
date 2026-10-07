@@ -1,5 +1,31 @@
 [
  {
+  "date": "2026-10-07",
+  "keys": [
+   "qnete|a thing or 2",
+   "de kloe|vanity fair",
+   "ghost dubs|oblique"
+  ],
+  "titles": [
+   "Qnete – A Thing Or 2",
+   "De Kloe – Vanity Fair",
+   "Ghost Dubs – Oblique"
+  ],
+  "shops": [
+   "Redeye",
+   "Redeye",
+   "Hardwax"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261007.mp4",
+  "reel": {
+   "key": "a silent noise|reverie machine",
+   "title": "A Silent Noise – Reverie Machine",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261007.mp4",
+   "scheme": "BK-Y",
+   "v": 4
+  }
+ },
+ {
   "date": "2026-10-06",
   "keys": [
    "theo kottis|pressure ep",
