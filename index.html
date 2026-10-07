@@ -1728,10 +1728,6 @@ function renderCart(){
     sec.appendChild(foot);
     list.appendChild(sec);
   });
-  const FOOT={CH:"Swiss import: 8.1% VAT on records plus shipping. Amounts up to CHF 5 are not collected, so orders up to about CHF 62 including shipping arrive free. Above that, Swiss Post adds CHF 13 (EU) or CHF 16 (UK and elsewhere) plus 3% of the goods value.",
-    EU:"Orders from EU shops: no customs. From the UK or Switzerland: your country's VAT on records plus shipping, and since 1 July 2026 an EU flat duty of €3 on parcels up to €150. Over €150, VAT is collected on delivery with the parcel service's fee. Records themselves are duty-free.",
-    UK:"Orders from UK shops: no customs. From the EU or Switzerland: 20% UK VAT. Up to £135 the shop charges it at checkout; above that it is collected on delivery with the parcel service's fee."};
-  const hi=homeInfo();if(FOOT[hi.region]){const f=document.createElement("p");f.className="cnote";f.textContent=FOOT[hi.region]+" Estimates, not a customs ruling.";list.appendChild(f)}
   // Sekundär: Liste, Land, Export und Backup in einem kompakten Kasten am Ende
   const end=document.createElement("div");end.className="bagend";
   const acts=document.createElement("div");acts.className="bagacts";
