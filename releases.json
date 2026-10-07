@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-06",
+ "updated": "2026-10-07",
  "shops": [
   {
    "shop": "Hardwax",
@@ -3741,6 +3741,81 @@
      ],
      "m": "2026-10",
      "first_seen": "2026-10-06"
+    },
+    {
+     "a": "Ghost Dubs",
+     "t": "Oblique",
+     "l": "Pressure",
+     "cat": "030",
+     "f": "2×LP",
+     "p": 37,
+     "g": "Dub Techno",
+     "url": "https://hardwax.com/40007/ghost-dubs/oblique/",
+     "cover": "https://media.hardwax.com/images/40007x.jpg",
+     "tr": [
+      {
+       "s": "A",
+       "n": "Low Times",
+       "u": "https://media.hardwax.com/audio/40007_01.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Cold Data",
+       "u": "https://media.hardwax.com/audio/40007_02.mp3"
+      },
+      {
+       "s": "A",
+       "n": "After All",
+       "u": "https://media.hardwax.com/audio/40007_03.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Soft Collapse",
+       "u": "https://media.hardwax.com/audio/40007_04.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Long Way To Go",
+       "u": "https://media.hardwax.com/audio/40007_05.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Blackout Dust",
+       "u": "https://media.hardwax.com/audio/40007_06.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Dead Channel",
+       "u": "https://media.hardwax.com/audio/40007_07.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Attack",
+       "u": "https://media.hardwax.com/audio/40007_08.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Overthinking",
+       "u": "https://media.hardwax.com/audio/40007_09.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Decay",
+       "u": "https://media.hardwax.com/audio/40007_10.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Bombed Suburbs",
+       "u": "https://media.hardwax.com/audio/40007_11.mp3"
+      },
+      {
+       "s": "A",
+       "n": "Almost A Structure",
+       "u": "https://media.hardwax.com/audio/40007_12.mp3"
+      }
+     ],
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
     }
    ],
    "country": "DE"
@@ -18163,6 +18238,26 @@
      "tr": [],
      "m": "2026-10",
      "first_seen": "2026-10-06"
+    },
+    {
+     "a": "U-ZIQ",
+     "t": "Tango N'Vectif (Reissue of original Rephlex...)",
+     "l": "PLANET MU",
+     "cat": "",
+     "f": "2×LP",
+     "p": 29.99,
+     "g": "Ambient · Reissue",
+     "url": "https://www.phonicarecords.com/product/u-ziq-tango-nvectif-reissue-of-original-rephlex-planet-mu/214419",
+     "cover": "https://d1c4rk9le5opln.cloudfront.net/16d9023f85b987a096765985eb738196.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Tango N' Vectif",
+       "yt": "sXnN3arHSMw"
+      }
+     ],
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
     }
    ],
    "country": "UK"
@@ -18191,7 +18286,8 @@
        "n": "Preview",
        "u": "https://sounds.redeyerecords.co.uk/703262.mp3"
       }
-     ]
+     ],
+     "st": "in"
     },
     {
      "a": "YL Hooi",
@@ -18211,7 +18307,8 @@
        "n": "Preview",
        "u": "https://sounds.redeyerecords.co.uk/191981.mp3"
       }
-     ]
+     ],
+     "st": "in"
     },
     {
      "a": "Kirk Barley",
@@ -18231,7 +18328,8 @@
        "n": "Preview",
        "u": "https://sounds.redeyerecords.co.uk/702800.mp3"
       }
-     ]
+     ],
+     "st": "in"
     },
     {
      "a": "Phil Struck",
@@ -18272,7 +18370,8 @@
        "n": "Preview",
        "u": "https://sounds.redeyerecords.co.uk/703286.mp3"
       }
-     ]
+     ],
+     "st": "in"
     },
     {
      "a": "Jordi Santanach",
@@ -18292,7 +18391,8 @@
        "n": "Preview",
        "u": "https://sounds.redeyerecords.co.uk/703285.mp3"
       }
-     ]
+     ],
+     "st": "in"
     },
     {
      "a": "Uväll",
@@ -19328,7 +19428,7 @@
        "u": "https://sounds.redeyerecords.co.uk/184847.mp3"
       }
      ],
-     "st": "pre"
+     "st": "out"
     },
     {
      "a": "Ron Obvious",
@@ -19336,7 +19436,7 @@
      "l": "Healing Channel",
      "cat": "HEALING002",
      "f": "12\"",
-     "p": 13.43,
+     "p": 16.12,
      "g": "Ambient",
      "url": "https://www.redeyerecords.co.uk/vinyl/198887-healing002-ron-obvious-more-than-this/",
      "cover": "https://www.redeyerecords.co.uk/imagery/190984-2.jpg",
@@ -19523,7 +19623,7 @@
      "l": "LMD",
      "cat": "LMDSW003",
      "f": "12\"",
-     "p": 14.68,
+     "p": 17.62,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/198705-lmdsw003-cignol-interlinked/",
      "cover": "https://www.redeyerecords.co.uk/imagery/190863-2.jpg",
@@ -21262,7 +21362,7 @@
      "l": "Mutual Rytm",
      "cat": "MRX-002",
      "f": "12\"",
-     "p": 13.44,
+     "p": 13.34,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/174315-mrx-002-kink-quantum-shake/",
      "cover": "https://www.redeyerecords.co.uk/imagery/176957-2.jpg",
@@ -23492,7 +23592,7 @@
      "l": "Thank You",
      "cat": "THANKYOU047",
      "f": "12\"",
-     "p": 14.43,
+     "p": 17.32,
      "g": "Balearic / Disco",
      "url": "https://www.redeyerecords.co.uk/vinyl/200275-thankyou047-jeff-bastow-orchestra-rundflug-local-flight/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191874-2.jpg",
@@ -23527,7 +23627,7 @@
      "l": "Bless You",
      "cat": "BLESSYOU032",
      "f": "12\"",
-     "p": 20.6,
+     "p": 24.72,
      "g": "House / Disco",
      "url": "https://www.redeyerecords.co.uk/vinyl/198773-blessyou032-joao-comazzi-tucanaçai/",
      "cover": "https://www.redeyerecords.co.uk/imagery/190909-2.jpg",
@@ -24084,7 +24184,7 @@
      "l": "Bless You",
      "cat": "BLESSYOU035",
      "f": "12\"",
-     "p": 14.64,
+     "p": 17.57,
      "g": "Balearic / Downtempo",
      "url": "https://www.redeyerecords.co.uk/vinyl/200276-blessyou035-mogwaa-love-on-the-rocks/",
      "cover": "https://www.redeyerecords.co.uk/imagery/48125-2.jpg",
@@ -24123,7 +24223,7 @@
      "l": "Cwpt",
      "cat": "CWPT014",
      "f": "12\"",
-     "p": 16.25,
+     "p": 19.5,
      "g": "Balearic / Downtempo",
      "url": "https://www.redeyerecords.co.uk/vinyl/200273-cwpt014-splash-eye-for-an-eye-lipelis-remixes/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191872-2.jpg",
@@ -24159,7 +24259,7 @@
      "l": "Sound Metaphors Records",
      "cat": "SMR036",
      "f": "12\"",
-     "p": 15.55,
+     "p": 18.66,
      "g": "Balearic / Downtempo",
      "url": "https://www.redeyerecords.co.uk/vinyl/200279-smr036-tranquility-bass-they-came-in-peace/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191877-2.jpg",
@@ -24922,7 +25022,7 @@
      "l": "Hell Yeah Recordings",
      "cat": "HYR7352",
      "f": "12\"",
-     "p": 18.7,
+     "p": 22.44,
      "g": "Disco / Balearic",
      "url": "https://www.redeyerecords.co.uk/vinyl/201724-hyr7352-aura-safari-spaced-out-disco/",
      "cover": "https://www.redeyerecords.co.uk/imagery/800758-2.jpg",
@@ -25185,7 +25285,7 @@
      "l": "Quarter Moon Records",
      "cat": "QMR001LPLTD",
      "f": "LP",
-     "p": 25.95,
+     "p": 31.14,
      "g": "Balearic / Downtempo",
      "url": "https://www.redeyerecords.co.uk/vinyl/201740-qmr001lpltd-cccc-chiara-civello-and-clap!-clap!-cccc/",
      "cover": "https://www.redeyerecords.co.uk/imagery/800759-2.jpg",
@@ -26221,7 +26321,7 @@
      "l": "Odda Recordings",
      "cat": "ODA09M",
      "f": "",
-     "p": 19.66,
+     "p": 23.59,
      "g": "Ambient",
      "m": "2026-10",
      "first_seen": "2026-10-05",
@@ -26328,7 +26428,7 @@
      "l": "Aguirre",
      "cat": "ZORN118",
      "f": "",
-     "p": 22.23,
+     "p": 26.68,
      "g": "Ambient",
      "m": "2026-10",
      "first_seen": "2026-10-05",
@@ -26341,7 +26441,7 @@
        "u": "https://sounds.redeyerecords.co.uk/703381.mp3"
       }
      ],
-     "st": "pre"
+     "st": "in"
     },
     {
      "a": "Tim Hecker",
@@ -26390,7 +26490,7 @@
      "l": "Aguirre",
      "cat": "ZORN121",
      "f": "",
-     "p": 22.23,
+     "p": 26.68,
      "g": "Ambient",
      "m": "2026-10",
      "first_seen": "2026-10-05",
@@ -26403,7 +26503,7 @@
        "u": "https://sounds.redeyerecords.co.uk/703382.mp3"
       }
      ],
-     "st": "pre"
+     "st": "in"
     },
     {
      "a": "ANDRZEJ DUDEK-DÜRER",
@@ -26463,7 +26563,13 @@
      "first_seen": "2026-10-05",
      "url": "https://www.redeyerecords.co.uk/vinyl/201635-slang50626lp-skee-mask-and-north-americans-final-circle-red-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/703378-2.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Final Circle Minimegamix",
+       "yt": "nlzEoblBCI4"
+      }
+     ],
      "st": "pre",
      "tl": [
       {
@@ -26693,7 +26799,7 @@
      "l": "Existence Is Resistance",
      "cat": "ER030",
      "f": "12\"",
-     "p": 12.48,
+     "p": 14.98,
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/123490-er030-persian-and-dj-texsta-well-well-well-dub-mix/",
      "cover": "https://www.redeyerecords.co.uk/imagery/146990-2.jpg",
@@ -26714,7 +26820,7 @@
      "l": "Echospace [Detroit]",
      "cat": "ECHOSPACE313LP2",
      "f": "2×12\"",
-     "p": 28.06,
+     "p": 33.67,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/197533-echospace313lp2-cv313-echospace-[detroit]-presents-altering-illusions-[1-3]-remastered-2x12-[150-gram-transparent-red-mixed-virgin-wax]/",
      "cover": "https://www.redeyerecords.co.uk/imagery/190088-2.jpg",
@@ -26761,7 +26867,7 @@
      "l": "Ruminant Records",
      "cat": "RR001",
      "f": "12\"",
-     "p": 14.76,
+     "p": 17.71,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/200483-rr001-dj-dic-johnny-cages-stones-taro-rr001/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191998-2.jpg",
@@ -26782,7 +26888,7 @@
      "l": "Mutual Response",
      "cat": "MUTR002",
      "f": "12\"",
-     "p": 13.73,
+     "p": 16.48,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/182553-mutr002-dockett-eddy-monofly/",
      "cover": "https://www.redeyerecords.co.uk/imagery/182721-2.jpg",
@@ -26821,7 +26927,7 @@
      "l": "Cyphon Recordings",
      "cat": "CYPHN04R",
      "f": "12\"",
-     "p": 13.65,
+     "p": 16.38,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/162675-cyphn04r-flabaire-entre-deux-ep-180g/",
      "cover": "https://www.redeyerecords.co.uk/imagery/169172-2.jpg",
@@ -26842,7 +26948,7 @@
      "l": "Don't",
      "cat": "DONT050",
      "f": "12\"",
-     "p": 13.71,
+     "p": 16.45,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/201142-dont050-gary-beck-glasgow-choir/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192375-2.jpg",
@@ -26863,7 +26969,7 @@
      "l": "Boring Crew Records",
      "cat": "BCR02",
      "f": "12\"",
-     "p": 12.68,
+     "p": 15.22,
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/199770-bcr02-henrik-villard-anders-hajem-liminal-spaces-ep/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191558-2.jpg",
@@ -26884,7 +26990,7 @@
      "l": "Rubadub",
      "cat": "RAD-INTEL",
      "f": "12\"",
-     "p": 13.4,
+     "p": 16.08,
      "g": "Electro",
      "url": "https://www.redeyerecords.co.uk/vinyl/201766-rad-intel-intellitronic-pixel/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192777-2.jpg",
@@ -26898,6 +27004,552 @@
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-06"
+    },
+    {
+     "a": "Qnete",
+     "t": "A Thing Or 2",
+     "l": "Kann",
+     "cat": "KANN70",
+     "f": "",
+     "p": 15.22,
+     "g": "House",
+     "url": "https://www.redeyerecords.co.uk/vinyl/200450-kann70-qnete-a-thing-or-2/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192450-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192450.mp3"
+      }
+     ],
+     "st": "out",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "A Silent Noise",
+     "t": "Reverie Machine",
+     "l": "Oraculo Records",
+     "cat": "OR169",
+     "f": "",
+     "p": 21.91,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201830-or169-a-silent-noise-reverie-machine/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/800765-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/800765.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Alexander Kowalski",
+     "t": "No Exits EP",
+     "l": "Frameworks",
+     "cat": "FW08",
+     "f": "",
+     "p": 13.84,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201814-fw08-alexander-kowalski-no-exits-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192810-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192810.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Amotik",
+     "t": "Amotik 017",
+     "l": "Amotik",
+     "cat": "AMTK017",
+     "f": "",
+     "p": 13.33,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201812-amtk017-amotik-amotik-017/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192808-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192808.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Aöcram",
+     "t": "Pulsating Delusions In Crucial Ponderings",
+     "l": "Aöcram",
+     "cat": "AOCRAM07",
+     "f": "",
+     "p": 17.0,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201818-aocram07-aöcram-pulsating-delusions-in-crucial-ponderings/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192813-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192813.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Arthur Hnatek",
+     "t": "Undertow",
+     "l": "Hessle Audio",
+     "cat": "HES051",
+     "f": "",
+     "p": 15.91,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201837-hes051-arthur-hnatek-undertow/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/3201458-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/3201458.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "AWHM, Shugo Noss",
+     "t": "PLATES26",
+     "l": "Meganesia",
+     "cat": "MGN013",
+     "f": "",
+     "p": 17.71,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201826-mgn013-awhm-shugo-noss-plates26/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192819-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192819.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "BAUGRUPPE90",
+     "t": "Crowd Can't Sit Down",
+     "l": "Montage",
+     "cat": "MONTAGE002",
+     "f": "",
+     "p": 15.04,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201027-montage002-baugruppe90-crowd-cant-sit-down/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192293-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192293.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Brendon Moeller",
+     "t": "Codebreaker",
+     "l": "Samurai Music",
+     "cat": "SMDE60",
+     "f": "",
+     "p": 18.26,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201825-smde60-brendon-moeller-codebreaker/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/3201457-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/3201457.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "CSMS",
+     "t": "Mainrecords 10",
+     "l": "Mainrecords",
+     "cat": "MAIN010",
+     "f": "",
+     "p": 14.38,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201804-main010-csms-mainrecords-10/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192801-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192801.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "CT Kidobó, Kvrk",
+     "t": "MNTR001",
+     "l": "Manticore",
+     "cat": "MNTR001",
+     "f": "",
+     "p": 15.22,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201805-mntr001-ct-kidobó-kvrk-mntr001/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192802-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192802.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "DC Salas",
+     "t": "Fiesta EP",
+     "l": "Higher Hopes",
+     "cat": "HIGH005",
+     "f": "",
+     "p": 18.56,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199142-high005-dc-salas-fiesta-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191148-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191148.mp3"
+      }
+     ],
+     "st": "out",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Elise Massoni",
+     "t": "Holding On",
+     "l": "L0n3r",
+     "cat": "03R002",
+     "f": "",
+     "p": 15.04,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201813-03r002-elise-massoni-holding-on/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192809-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192809.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "FERGUS SWEETLAND",
+     "t": "PAIN IN THE BRAIN",
+     "l": "Wobble Wax",
+     "cat": "WOBBLE01",
+     "f": "",
+     "p": 15.04,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201815-wobble01-fergus-sweetland-pain-in-the-brain/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192811-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192811.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Gockel",
+     "t": "Otorongo",
+     "l": "Patent",
+     "cat": "PATENT002",
+     "f": "",
+     "p": 15.04,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/188895-patent002-gockel-otorongo/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/186574-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/186574.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Hiss Is Bliss",
+     "t": "Higher Me [hand-Stamped / 180 Grams]",
+     "l": "Mob Museum",
+     "cat": "MOB002",
+     "f": "",
+     "p": 13.84,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/191692-mob002-hiss-is-bliss-higher-me-[hand-stamped-180-grams]/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/187677-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/187677.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Idee Du Femelle",
+     "t": "Red Dress",
+     "l": "Oraculo Records",
+     "cat": "OR170",
+     "f": "",
+     "p": 21.91,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201828-or170-idee-du-femelle-red-dress/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/800764-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/800764.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Jos Lok",
+     "t": "Samtengle Swing EP",
+     "l": "Magic Water Records",
+     "cat": "MWR-004",
+     "f": "",
+     "p": 16.48,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/198238-mwr-004-jos-lok-samtengle-swing-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/190556-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/190556.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Luciano Esse",
+     "t": "Episode 8",
+     "l": "Lost Episodes",
+     "cat": "EPISODE8",
+     "f": "",
+     "p": 12.78,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201820-episode8-luciano-esse-episode-8/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192814-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192814.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Maåsym",
+     "t": "Angle45",
+     "l": "Lost Verses",
+     "cat": "LV007",
+     "f": "",
+     "p": 16.15,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201823-lv007-maåsym-angle45/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192817-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192817.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "MAURER",
+     "t": "KOMOREBI",
+     "l": "Boisha",
+     "cat": "BOI026",
+     "f": "",
+     "p": 13.84,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201822-boi026-maurer-komorebi/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192816-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192816.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Mella Dee",
+     "t": "Novum 002",
+     "l": "Novum",
+     "cat": "NOVUM002",
+     "f": "",
+     "p": 16.54,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201806-novum002-mella-dee-novum-002/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192803-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192803.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "µ-Ziq",
+     "t": "Tango N'Vectif (Reissue Of Original Rephlex 2LP Vinyl)",
+     "l": "Planet Mu",
+     "cat": "CAT013",
+     "f": "",
+     "p": 29.93,
+     "g": "Ambient · Reissue",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199742-cat013-µ-ziq-tango-nvectif-reissue-of-original-rephlex-2lp-vinyl/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/191538-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191538.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "De Kloe",
+     "t": "Vanity Fair",
+     "l": "Cortizona",
+     "cat": "CORTIZONA036",
+     "f": "",
+     "p": 25.94,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201163-cortizona036-de-kloe-vanity-fair/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/800727-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/800727.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Various Artists",
+     "t": "Extracellular",
+     "l": "Buried Treasure",
+     "cat": "BUTR155",
+     "f": "",
+     "p": 19.93,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/199921-butr155-various-artists-extracellular/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/703057-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/703057.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Zar / Void Control",
+     "t": "Temporary EP",
+     "l": "Void Control",
+     "cat": "VOIDCONTROL03",
+     "f": "",
+     "p": 20.57,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201767-voidcontrol03-zar-void-control-temporary-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192778-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192778.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
     }
    ],
    "country": "UK"
@@ -32828,6 +33480,154 @@
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-06"
+    },
+    {
+     "a": "Denaila",
+     "t": "DEN 01",
+     "l": "Dena",
+     "cat": "DEN01",
+     "f": "12\"",
+     "p": 12.56,
+     "g": "Tech House",
+     "url": "https://www.deejay.de/Denaila_DEN_01_DEN01_Vinyl__1239349",
+     "cover": "https://www.deejay.de/images/l/4/9/1239349.jpg",
+     "d": "07.10.2026",
+     "st": "in",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Everything About Us",
+       "page": "https://www.deejay.de/Denaila_DEN_01_DEN01_Vinyl__1239349"
+      },
+      {
+       "s": "A2",
+       "n": "Life To Give Life",
+       "page": "https://www.deejay.de/Denaila_DEN_01_DEN01_Vinyl__1239349"
+      },
+      {
+       "s": "B1",
+       "n": "Keeps Me Alive",
+       "page": "https://www.deejay.de/Denaila_DEN_01_DEN01_Vinyl__1239349"
+      },
+      {
+       "s": "B2",
+       "n": "You'll Become",
+       "page": "https://www.deejay.de/Denaila_DEN_01_DEN01_Vinyl__1239349"
+      }
+     ],
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Marcos Coya",
+     "t": "Moon Trippin EP",
+     "l": "UnExposed Records",
+     "cat": "UX-B001",
+     "f": "12\"",
+     "p": 12.56,
+     "g": "Tech House",
+     "url": "https://www.deejay.de/Marcos_Coya_Moon_Trippin_EP_UX-B001_Vinyl__1230136",
+     "cover": "https://www.deejay.de/images/l/3/6/1230136.jpg",
+     "d": "07.10.2026",
+     "st": "in",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Moon Trippin",
+       "page": "https://www.deejay.de/Marcos_Coya_Moon_Trippin_EP_UX-B001_Vinyl__1230136"
+      },
+      {
+       "s": "A2",
+       "n": "Delirium",
+       "page": "https://www.deejay.de/Marcos_Coya_Moon_Trippin_EP_UX-B001_Vinyl__1230136"
+      },
+      {
+       "s": "B1",
+       "n": "Rage Dog",
+       "page": "https://www.deejay.de/Marcos_Coya_Moon_Trippin_EP_UX-B001_Vinyl__1230136"
+      },
+      {
+       "s": "B2",
+       "n": "D N A",
+       "page": "https://www.deejay.de/Marcos_Coya_Moon_Trippin_EP_UX-B001_Vinyl__1230136"
+      }
+     ],
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Strack",
+     "t": "Voices Within EP",
+     "l": "Lok Records",
+     "cat": "LOKBLK005",
+     "f": "12\"",
+     "p": 13.4,
+     "g": "Minimal House / Tech House",
+     "url": "https://www.deejay.de/Strack_Voices_Within_EP_LOKBLK005_Vinyl__1253824",
+     "cover": "https://www.deejay.de/images/l/2/4/1253824.jpg",
+     "d": "07.10.2026",
+     "st": "in",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Where It Begins",
+       "page": "https://www.deejay.de/Strack_Voices_Within_EP_LOKBLK005_Vinyl__1253824"
+      },
+      {
+       "s": "A2",
+       "n": "Beyond The Trip",
+       "page": "https://www.deejay.de/Strack_Voices_Within_EP_LOKBLK005_Vinyl__1253824"
+      },
+      {
+       "s": "B1",
+       "n": "Inner Offering",
+       "page": "https://www.deejay.de/Strack_Voices_Within_EP_LOKBLK005_Vinyl__1253824"
+      },
+      {
+       "s": "B2",
+       "n": "Inner Offering (Crihan Remix)",
+       "page": "https://www.deejay.de/Strack_Voices_Within_EP_LOKBLK005_Vinyl__1253824"
+      }
+     ],
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
+    },
+    {
+     "a": "Extrawelt",
+     "t": "Cover Blown",
+     "l": "Kompakt",
+     "cat": "KOM508",
+     "f": "12\"",
+     "p": 13.24,
+     "g": "Minimal Techno",
+     "url": "https://www.deejay.de/Extrawelt_Cover_Blown_KOM508_Vinyl__1262560",
+     "cover": "https://www.deejay.de/images/l/6/0/1262560.jpg",
+     "d": "07.10.2026",
+     "st": "pre",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Honey Hunter",
+       "yt": "VI14Di4xVMk"
+      },
+      {
+       "s": "A2",
+       "n": "Hazinger",
+       "page": "https://www.deejay.de/Extrawelt_Cover_Blown_KOM508_Vinyl__1262560"
+      },
+      {
+       "s": "B1",
+       "n": "Cover Blown",
+       "page": "https://www.deejay.de/Extrawelt_Cover_Blown_KOM508_Vinyl__1262560"
+      },
+      {
+       "s": "B2",
+       "n": "Black Badger",
+       "page": "https://www.deejay.de/Extrawelt_Cover_Blown_KOM508_Vinyl__1262560"
+      }
+     ],
+     "m": "2026-10",
+     "first_seen": "2026-10-07"
     }
    ]
   },
@@ -32842,9 +33642,9 @@
  ],
  "fx": {
   "CHF": 1,
-  "EUR": 0.9311,
-  "GBP": 1.099,
-  "USD": 0.831,
-  "date": "2026-10-06"
+  "EUR": 0.9318,
+  "GBP": 1.1043,
+  "USD": 0.8313,
+  "date": "2026-10-07"
  }
 }
