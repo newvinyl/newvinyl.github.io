@@ -314,6 +314,10 @@ label.bbtn{cursor:pointer}
   .moretr summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   .moretr .trpop{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;margin:0;padding:2px 12px;background:var(--black);border:1.5px solid var(--rule);box-shadow:0 12px 30px rgba(0,0,0,.6)}
   #list:not(.bagview) .row{flex-wrap:nowrap;min-height:46px}
+  #list:not(.bagview) section.fresh .tracks:not(.trpop){height:var(--trh,152px)}
+  #list:not(.bagview) section.fresh.open .tracks:not(.trpop){height:auto;min-height:38px}
+  #list:not(.bagview) section.fresh.open .trfoot:empty{display:none}
+  #list:not(.bagview) section.fresh.nofoot .trfoot{display:none}
   #list:not(.bagview) .shoplink{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 }
 @media (min-width:1200px){#list:not(.bagview) section.shop{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -1194,6 +1198,13 @@ function freshBlock(es,day){
   const rail=document.createElement("div");rail.className="frail";
   es.forEach((e,i)=>{FRESHING=true;let el;try{el=releaseEl(e,i)}finally{FRESHING=false}if(i>=FRESH_DESK)el.classList.add("fx");rail.appendChild(el)});
   sec.appendChild(rail);
+  // Kompakt: Trackbereich nur so hoch wie die längste Trackliste in diesem Block
+  let trh=38,foot=false;
+  es.slice(0,10).forEach(e=>{const r=e.r,src=playable(r)?r:(e.all.find(playable)||r),trs=src.tr||[];
+    const tl=trs.length===1&&Array.isArray(src.tl)&&src.tl.length>1?src.tl:null;
+    const h=tl?38+Math.min(tl.length,6)*24+(tl.length>6?24:0):Math.min(Math.max(trs.length,1),4)*38;
+    trh=Math.max(trh,Math.min(h,152));if(trs.length>4||(src!==r&&trs.length))foot=true});
+  sec.style.setProperty("--trh",trh+"px");sec.classList.toggle("nofoot",!foot);
   if(es.length>FRESH_DESK){const b=document.createElement("button");b.className="fmore";b.type="button";
     const lab=()=>sec.classList.contains("open")?"Show fewer":`Show all ${es.length} fresh records`;b.textContent=lab();
     b.onclick=()=>{freshOpen=!sec.classList.contains("open");sec.classList.toggle("open",freshOpen);b.textContent=lab();if(!freshOpen)sec.scrollIntoView({block:"start"})};
