@@ -255,6 +255,23 @@ section.shop{margin-top:22px}
 .cust .hint{display:block;margin-top:4px}
 .empty b{color:var(--fg)}
 .databox{margin-top:30px}
+.bagend{margin-top:28px;padding:12px 14px;background:var(--black);border:2px solid var(--rule);display:flex;flex-direction:column;gap:12px}
+.bagend .bagacts{margin:0;padding:0;border:0;background:none;align-items:stretch;gap:8px}
+.bagend .databox{margin:0;padding-top:12px;border-top:1px solid var(--line)}
+.bagend .bagrow{justify-content:flex-start;gap:8px}
+.bagend .bbtn{min-height:38px;padding:4px 11px;font-size:13.5px;gap:7px}
+.bagend .bbtn svg{width:14px;height:14px}
+.bagend #bagmail{padding:5px 10px;font-size:16px;min-height:38px;box-sizing:border-box}
+.bagend .homel{flex:1 1 120px;min-width:0;max-width:240px;display:flex}
+.bagend .homesel{font-size:14px;padding:6px 8px;min-height:38px;width:100%;min-width:0}
+.bagend .dtitle{font-size:17px}
+.bagend .grand{width:auto;padding:0;border:0;gap:2px 8px}
+.bagend .grand .gv{font-size:20px}
+.bagend .grand .gs{font-size:12px}
+.bagend .dtext{font-size:12.5px;line-height:1.45}
+.bagend .bagmsg:empty{display:none}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h2.month #htot{font-weight:inherit;color:var(--fg)}
 .dhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;flex-wrap:wrap}
 .dtitle{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.02em}
 .dsum{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
@@ -1514,7 +1531,8 @@ function grandTotal(){
   const {shops,mine}=bagGroups();let g=0,imp=0,missing=0;
   shops.forEach(S=>{const c=shopCalc(S,mine(S));g+=c.total;imp+=c.imp.total||0;if(c.shipC==null)missing++});
   const el=document.getElementById("grand");if(!el)return;
-  el.innerHTML=`<span class="gl">Bag total, estimated</span><span class="gv">${chf(g)}</span><span class="gs">${missing?`Shipping not entered for ${missing} ${missing>1?"shops":"shop"} yet.`:`Records and shipping${imp?", plus estimated import costs":homeInfo().region!=="XX"?", no import costs":""}.`}</span>`;
+  const ht=document.getElementById("htot");if(ht)ht.textContent=` · ≈ ${chf(g)}`;
+  el.innerHTML=`<span class="gl">Total, est.</span><span class="gv">${chf(g)}</span><span class="gs">${missing?`Shipping not entered for ${missing} ${missing>1?"shops":"shop"} yet.`:`Records and shipping${imp?", plus estimated import costs":homeInfo().region!=="XX"?", no import costs":""}.`}</span>`;
 }
 // Backup-Code: alle persönlichen Daten (Bag, Follows, Gehört, Porto, Land) als Text zum Sichern und Wiederherstellen
 const SAVEI='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v9M4 6.5 8 10.5 12 6.5M2 11v4h12v-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
@@ -1562,11 +1580,10 @@ function dataBox(){
   const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
   const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone;
   box.innerHTML=`<div class="dhead"><span class="dtitle">Your data</span><span class="dsum">${plural(nf,"follow")} · ${plural(heard.size,"heard record")} · ${plural(cart.length,"record")} in bag</span></div>
-    <p class="dtext">Everything is saved only in this browser. Clearing the browser data deletes it, and other devices don't see it. Save your backup link: bookmark it or email it to yourself, and open it anytime to get everything back.${last?` <span class="dlast">Last backup: ${fmtDate(last)}.</span>`:` <span class="dlast warn">No backup yet.</span>`}</p>
-    <div class="bagrow"><button class="bbtn" id="bkcopy">${COPYI}Copy backup link</button><a class="bbtn" id="bkmail" href="#">${MAILI}Email it to me</a><button class="bbtn" id="bkfile">${SAVEI}Save as file</button></div>
+    <p class="dtext">Saved only in this browser. A backup link brings everything back, on any device.${last?` <span class="dlast">Last backup: ${fmtDate(last)}.</span>`:` <span class="dlast warn">No backup yet.</span>`}</p>
+    <div class="bagrow"><button class="bbtn" id="bkcopy">${COPYI}Copy link</button><a class="bbtn" id="bkmail" href="#">${MAILI}Email</a><button class="bbtn" id="bkfile">${SAVEI}File</button><button class="bbtn ghost" id="bkopen">${LOADI}Restore</button></div>
     <p class="bagmsg" id="bkmsg" role="status"></p>
-    <div class="bagrow"><button class="bbtn ghost" id="bkopen">${LOADI}Restore from a backup</button></div>
-    ${ios&&!standalone?`<p class="dtext">On iPhone and iPad, Safari deletes this data when you haven't opened the page for 7 days. Add it to your Home Screen (Share → Add to Home Screen) and open it from there to keep it.</p>`:""}`;
+    ${ios&&!standalone?`<p class="dtext">iPhone/iPad: Safari deletes it after 7 days away. Add the page to your Home Screen to keep it.</p>`:""}`;
   const msg=t=>{box.querySelector("#bkmsg").textContent=t};
   const fname=()=>`vinyl-backup-${new Date().toISOString().slice(0,10)}.txt`;
   box.querySelector("#bkcopy").onclick=async()=>{const link=await makeLink();navigator.clipboard.writeText(link).then(()=>{backupDone();msg("Backup link copied. Bookmark it, or paste it into your notes or an email to yourself.")},()=>{msg("Copy isn't allowed here. Use Email it to me or Save as file instead.")})};
@@ -1676,24 +1693,15 @@ function runBox(S,rs){
 function renderCart(){
   const {items,shops,mine}=bagGroups();
   const h=document.createElement("h2");h.className="month";
-  h.innerHTML=`My bag<span>${items.length?`${items.length} ${items.length>1?"records":"record"} · ${shops.length} ${shops.length>1?"shops":"shop"}`:""}</span>`;
+  h.innerHTML=`My bag<span>${items.length?`${items.length} ${items.length>1?"records":"record"} · ${shops.length} ${shops.length>1?"shops":"shop"}<b id="htot"></b>`:""}</span>`;
   list.appendChild(h);
   if(!items.length){
     const e=document.createElement("p");e.className="empty";
     e.innerHTML=`Your bag is empty. Tap “Add to bag” on any record, keep listening, and pack your crate as you go. <a href="#" data-go="home">Back to new releases</a>`;
     list.appendChild(e);list.appendChild(dataBox());list.querySelectorAll("[data-go]").forEach(a=>a.onclick=ev=>{ev.preventDefault();go(a.dataset.go)});return;
   }
-  const acts=document.createElement("div");acts.className="bagacts";
-  acts.innerHTML=`<div class="grand" id="grand"></div>
-    <div class="bagrow homerow"><label class="flabel" for="home">Your country</label>${homeSelect("home")}</div>
-    <div class="bagrow"><button class="bbtn" id="bagpdf">${PDFI}Export PDF</button><button class="bbtn" id="bagcopy">${COPYI}Copy list</button></div>
-    <label class="flabel" for="bagmail">Send the list by email</label>
-    <div class="bagrow"><input id="bagmail" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com"><a class="bbtn" id="bagsend" href="#">${MAILI}Send</a></div>
-    <p class="bagmsg" id="bagmsg" role="status"></p>`;
-  list.appendChild(acts);
-  wireBag(items,shops);
   const note=document.createElement("p");note.className="cnote";
-  note.textContent=`Grouped by shop, so you order each shop in one go. Converted prices are estimates at the rate of ${FXDATE?fmtDate(FXDATE):"today"}. Tap “Buy at …” to open the record in its shop and check out there.`;
+  note.textContent=`Grouped by shop: order each shop in one go. Tap “Buy at …” to check out at the shop.`;
   list.appendChild(note);
   shops.forEach(S=>{
     const rs=mine(S);
@@ -1733,7 +1741,16 @@ function renderCart(){
     EU:"Orders from EU shops: no customs. From the UK or Switzerland: your country's VAT on records plus shipping, and since 1 July 2026 an EU flat duty of €3 on parcels up to €150. Over €150, VAT is collected on delivery with the parcel service's fee. Records themselves are duty-free.",
     UK:"Orders from UK shops: no customs. From the EU or Switzerland: 20% UK VAT. Up to £135 the shop charges it at checkout; above that it is collected on delivery with the parcel service's fee."};
   const hi=homeInfo();if(FOOT[hi.region]){const f=document.createElement("p");f.className="cnote";f.textContent=FOOT[hi.region]+" Estimates, not a customs ruling.";list.appendChild(f)}
-  list.appendChild(dataBox());
+  // Sekundär: Liste, Land, Export und Backup in einem kompakten Kasten am Ende
+  const end=document.createElement("div");end.className="bagend";
+  const acts=document.createElement("div");acts.className="bagacts";
+  acts.innerHTML=`<div class="dhead"><span class="dtitle">Your list</span><div class="grand" id="grand"></div></div>
+    <div class="bagrow"><select-slot></select-slot><button class="bbtn" id="bagpdf">${PDFI}PDF</button><button class="bbtn" id="bagcopy">${COPYI}Copy</button></div>
+    <div class="bagrow"><input id="bagmail" type="email" inputmode="email" autocomplete="email" placeholder="Email the list to…" aria-label="Email the list to"><a class="bbtn" id="bagsend" href="#">${MAILI}Send</a></div>
+    <p class="bagmsg" id="bagmsg" role="status"></p>`;
+  acts.querySelector("select-slot").outerHTML=`<label class="homel"><span class="vh">Your country</span>${homeSelect("home")}</label>`;
+  end.appendChild(acts);end.appendChild(dataBox());list.appendChild(end);
+  wireBag(items,shops);
   grandTotal();
   list.querySelectorAll("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.go)});
 }
