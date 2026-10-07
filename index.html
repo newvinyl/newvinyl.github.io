@@ -746,13 +746,7 @@ section.fresh .frail>.rel{flex:0 0 84%;min-width:0;scroll-snap-align:center;bord
 .tag.gone{border-color:var(--warn);color:var(--warn)}
 /* Läuft gerade */
 article.rel.now .cover{outline:3px solid var(--yellow);outline-offset:4px}
-/* Player: Zufallsgriff */
-.pbtn.rnd{order:2}
-.pbtn.rnd svg{width:20px;height:20px}
-.pbtn.rnd.spin svg{animation:rndspin .5s cubic-bezier(.3,1.4,.5,1)}
-@keyframes rndspin{from{transform:rotate(-200deg) scale(.6)}to{transform:none}}
-@media (max-width:480px){.player .in{gap:8px}.pbtn.rnd,.pbtn.sm{width:36px;height:36px}}
-@media (prefers-reduced-motion:reduce){.pbtn.rnd.spin svg{animation:none}}
+@media (max-width:480px){.player .in{gap:8px}.pbtn.sm{width:36px;height:36px}}
 /* Schmale Handys: Platz für den Tracknamen; nach oben geht's über den Titel */
 @media (max-width:420px){.totop{display:none!important}}
 </style>
@@ -830,7 +824,6 @@ article.rel.now .cover{outline:3px solid var(--yellow);outline-offset:4px}
     <div class="pt" id="ptgo" role="button" tabindex="0" aria-label="Show this record in the list"><div class="a" id="pa">Tap a track</div><div class="b" id="pb">Previews straight from the shops</div><div class="bar"><i id="pr"></i></div></div>
     <button class="totop" id="totop" aria-label="Back to top" title="Back to top" hidden><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 16V3M3 8.5 9 2.5 15 8.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button>
     <button class="pcart" id="pcart" aria-label="Open my bag"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 7V2.5M9 7V1.8M12.5 7V2.8M16 7V2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="1.5" y="7" width="19" height="13.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11.8h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><b class="badge" data-cartcount hidden>0</b></button>
-    <button type="button" class="pbtn sm rnd" id="rnd" aria-label="Random dig: play a random record" title="Random dig (R)"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="2" y="2" width="18" height="18" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="7" r="1.7" fill="currentColor"/><circle cx="15" cy="7" r="1.7" fill="currentColor"/><circle cx="11" cy="11" r="1.7" fill="currentColor"/><circle cx="7" cy="15" r="1.7" fill="currentColor"/><circle cx="15" cy="15" r="1.7" fill="currentColor"/></svg></button>
     <button class="pbtn sm" id="nx" aria-label="Next track"><svg class="tri" viewBox="0 0 30 22" aria-hidden="true"><path d="M1 1 14 11 1 21ZM15 1 28 11 15 21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
   </div>
 </div>
@@ -1823,25 +1816,9 @@ document.addEventListener("click",e=>{
 document.addEventListener("click",e=>{document.querySelectorAll("details.moretr[open]").forEach(d=>{if(!d.contains(e.target))d.open=false})});
 // Desktop: Leertaste = Play/Pause, N = nächster Track
 addEventListener("keydown",e=>{if(e.metaKey||e.ctrlKey||e.altKey||/^(INPUT|TEXTAREA|SELECT|BUTTON|A)$/.test((e.target||{}).tagName||""))return;
-  if(e.code==="Space"){e.preventDefault();pp.click()}else if(e.key==="n"||e.key==="N"){document.getElementById("nx").click()}else if(e.key==="r"||e.key==="R"){randomDig()}});
+  if(e.code==="Space"){e.preventDefault();pp.click()}else if(e.key==="n"||e.key==="N"){document.getElementById("nx").click()}});
 pp.onclick=()=>{if(cur<0){const n=nextIdx(-1);if(n>=0)play(n);return}const q=queue[cur];if(isYT(q)){if(!yt.win){play(cur);return}ytCmd(yt.state===1||yt.state===3?"pauseVideo":"playVideo");return}if(!q.u)return;if(au.paused){au.play().then(()=>pp.innerHTML=PAU).catch(()=>fallback(queue[cur]))}else{au.pause();pp.innerHTML=TRI}};
 document.getElementById("nx").onclick=()=>{const n=advance(cur);if(n>=0){userMoved=0;play(n,true)}};
-// 6. Griff in die Kiste: zufällige hörbare Platte der letzten 30 Tage, ungehörte bevorzugt; springt hin und spielt
-function randomDig(){
-  if(!SHOPS.length)return;
-  const cut=new Date(Date.now()-30*864e5).toISOString().slice(0,10);
-  let pool=entries(viewMonths(nowKey())).filter(e=>matches(e)&&e.all.some(playable)&&firstSeen(e)>=cut);
-  if(!pool.length)pool=entries(x=>true).filter(e=>e.all.some(playable)&&firstSeen(e)>=cut);
-  const fresh=pool.filter(e=>!heard.has(e.gk)&&(!nowQ||e.gk!==nowQ.gk));if(fresh.length)pool=fresh;
-  if(!pool.length)return;
-  const pick=pool[Math.random()*pool.length|0];track("Random dig");
-  const rb=document.getElementById("rnd");rb.classList.remove("spin");void rb.offsetWidth;rb.classList.add("spin");
-  if(view==="korb")go("home");
-  let art=jumpTo(a=>a._e&&a._e.gk===pick.gk);
-  if(!art&&flt.newOnly){flt.newOnly=false;render();art=jumpTo(a=>a._e&&a._e.gk===pick.gk)}
-  const qi=queue.findIndex(q=>q.gk===pick.gk&&canPlay(q));if(qi>=0)play(qi);
-}
-document.getElementById("rnd").onclick=randomDig;
 const fmtDate=iso=>{const [y,m,d]=iso.split("-");return `${+d} ${MONTHS[+m-1].slice(0,3)} ${y}`};
 list.innerHTML='<p class="empty">Loading new releases…</p>';
 fetch("releases.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
