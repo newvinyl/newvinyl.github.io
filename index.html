@@ -1529,10 +1529,10 @@ function wireBag(items,shops){
 }
 function grandTotal(){
   const {shops,mine}=bagGroups();let g=0,imp=0,missing=0;
-  shops.forEach(S=>{const c=shopCalc(S,mine(S));g+=c.total;imp+=c.imp.total||0;if(c.shipC==null)missing++});
+  shops.forEach(S=>{const c=shopCalc(S,mine(S));g+=c.goods;imp+=c.imp.total||0;if(c.shipC==null)missing++});
   const el=document.getElementById("grand");if(!el)return;
   const ht=document.getElementById("htot");if(ht)ht.textContent=` · ≈ ${chf(g)}`;
-  el.innerHTML=`<span class="gl">Total, est.</span><span class="gv">${chf(g)}</span><span class="gs">${missing?`Shipping not entered for ${missing} ${missing>1?"shops":"shop"} yet.`:`Records and shipping${imp?", plus estimated import costs":homeInfo().region!=="XX"?", no import costs":""}.`}</span>`;
+  el.innerHTML=`<span class="gl">Total, est.</span><span class="gv">${chf(g)}</span><span class="gs">Records only, shipping comes at the shop.</span>`;
 }
 // Backup-Code: alle persönlichen Daten (Bag, Follows, Gehört, Porto, Land) als Text zum Sichern und Wiederherstellen
 const SAVEI='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v9M4 6.5 8 10.5 12 6.5M2 11v4h12v-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
@@ -1723,15 +1723,6 @@ function renderCart(){
       row.querySelector(".copen").addEventListener("click",()=>{opened.add(r.key);saveCart();setTimeout(render,50)});
       sec.appendChild(row);
     });
-    const calc=document.createElement("div");calc.className="calc";
-    const skey=S.shop+"|"+homeInfo().cur,v=ship[skey];
-    calc.innerHTML=`<label class="shipl"${typeof v==="number"?"":" hidden"}><span>Shipping from ${esc(S.shop)} in ${homeInfo().cur}</span><input type="number" inputmode="decimal" min="0" step="0.5" placeholder="e.g. 12" value="${typeof v==="number"?v:""}"></label>${typeof v==="number"?"":`<button class="addship">+ Add shipping cost from ${esc(S.shop)}</button>`}<div class="calcout"></div>`;
-    const out=calc.querySelector(".calcout"),inp=calc.querySelector("input");
-    const asb=calc.querySelector(".addship");if(asb)asb.onclick=()=>{asb.remove();calc.querySelector(".shipl").hidden=false;inp.focus()};
-    const refresh=()=>{out.innerHTML=calcBody(S,shopCalc(S,rs));grandTotal();if(wireBag.upd)wireBag.upd()};
-    inp.oninput=()=>{const n=parseFloat(String(inp.value).replace(",","."));if(inp.value===""||isNaN(n))delete ship[skey];else ship[skey]=Math.max(0,n);store.set("mvr-ship",ship);refresh()};
-    out.innerHTML=calcBody(S,shopCalc(S,rs));
-    sec.appendChild(calc);
     const foot=document.createElement("div");foot.className="cfoot";
     foot.innerHTML=`<span>${done} of ${rs.length} opened at ${S.shop}</span>`;
     sec.appendChild(foot);
