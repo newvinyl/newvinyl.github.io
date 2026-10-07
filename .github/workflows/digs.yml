@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core >/dev/null
-          pip install -q numpy pillow
+          pip install -q numpy pillow opencv-python-headless
 
       - name: Render
         id: render

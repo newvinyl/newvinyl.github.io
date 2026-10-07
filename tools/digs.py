@@ -157,13 +157,67 @@ def candidates(data, day, seen):
     cands.sort(key=lambda c: -c["score"])
     return cands
 
+# ---------------------------------------------------------------- faces
+# Instagram belohnt Gesichter: Covers mit Gesicht zuerst, dann Covers mit Menschen.
+_cv = None
+def _cvlib():
+    global _cv
+    if _cv is None:
+        try:
+            import cv2
+            d = cv2.data.haarcascades
+            _cv = (cv2, cv2.CascadeClassifier(d + "haarcascade_frontalface_default.xml"),
+                   cv2.CascadeClassifier(d + "haarcascade_profileface.xml"),
+                   cv2.CascadeClassifier(d + "haarcascade_upperbody.xml"))
+            hog = cv2.HOGDescriptor(); hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+            _cv = _cv + (hog,)
+        except Exception as e:
+            log("opencv unavailable, no face check", e)
+            _cv = False
+    return _cv
+
+def vis_level(im):
+    """2 = face, 1 = person, 0 = neither."""
+    lib = _cvlib()
+    if not lib:
+        return 0
+    cv2, front, prof, upper, hog = lib
+    g = np.array(im.convert("L").resize((400, 400)))
+    g = cv2.equalizeHist(g)
+    ms = (34, 34)
+    if len(front.detectMultiScale(g, 1.1, 7, minSize=ms)) or len(prof.detectMultiScale(g, 1.1, 8, minSize=ms)) \
+            or len(prof.detectMultiScale(cv2.flip(g, 1), 1.1, 8, minSize=ms)):
+        return 2
+    rects, w = hog.detectMultiScale(np.array(im.convert("RGB").resize((400, 400))), winStride=(8, 8), scale=1.05)
+    if any(float(x) > 0.8 for x in np.ravel(w)) or len(upper.detectMultiScale(g, 1.1, 6, minSize=(80, 80))):
+        return 1
+    return 0
+
+def rate_covers(cands, offline, limit=30):
+    """Load covers of the best candidates once and mark faces/people (c['vis'])."""
+    for n, c in enumerate(cands[:limit]):
+        if "vis" in c:
+            continue
+        try:
+            if "cover" not in c:
+                c["cover"] = get_cover(c["arr"], offline, 500 + n)
+            c["vis"] = 0 if offline else vis_level(c["cover"])
+        except Exception as e:
+            log("cover check fail", c["key"], e)
+            c["vis"] = 0
+        if c["vis"]:
+            log("cover", "face" if c["vis"] == 2 else "person", c["key"])
+    for c in cands:
+        c.setdefault("vis", 0)
+
 def choose(cands, banned):
     pool = [c for c in cands if c["key"] not in banned][:45]
     best, bk = None, None
     for combo in itertools.combinations(pool, 3):
         if len({c["key"] for c in combo}) < 3:
             continue
-        k = (len({c["shop"] for c in combo}), len({c["fam"] for c in combo}), sum(c["score"] for c in combo))
+        k = (len({c["fam"] for c in combo}), sum(c.get("vis", 0) for c in combo),
+             len({c["shop"] for c in combo}), sum(c["score"] for c in combo))
         if bk is None or k > bk:
             best, bk = combo, k
     return list(best) if best else None
@@ -538,11 +592,11 @@ def reel_mix(audio, start):
 def pick_reel(cands, digs_keys, digs_fams, offline, work):
     """Best remaining release with a real preview and a big cover; a different genre family than the digs if possible."""
     pool = [c for c in cands if c["key"] not in digs_keys]
-    pool.sort(key=lambda c: (c["fam"] in digs_fams, -(c["score"] + (0.5 if c["tracks"][0]["named"] else 0))))
+    pool.sort(key=lambda c: (-c.get("vis", 0), c["fam"] in digs_fams, -(c["score"] + (0.5 if c["tracks"][0]["named"] else 0))))
     fallback = None
     for n, c in enumerate(pool[:12]):
         try:
-            cov = get_cover(c["arr"], offline, 90 + n)
+            cov = c.get("cover") or get_cover(c["arr"], offline, 90 + n)
             aud = tr = None
             for ti, t in enumerate(c["tracks"][:3]):
                 try:
@@ -766,6 +820,7 @@ def main():
     fx = data.get("fx", {})
     cands = candidates(data, day, seen)
     log(len(cands), "candidates for", day)
+    rate_covers(cands, a.offline)
     banned, picks = set(), None
     if keep:
         return reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p)
@@ -786,7 +841,8 @@ def main():
                             log("audio fail", c["key"], e)
                     if "audio" not in c:
                         raise RuntimeError("no audio")
-                    c["cover"] = get_cover(c["arr"], a.offline, n)
+                    if "cover" not in c:
+                        c["cover"] = get_cover(c["arr"], a.offline, n)
                 except Exception as e:
                     log("drop", c["key"], e)
                     banned.add(c["key"])
