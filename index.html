@@ -691,6 +691,7 @@ html.sheet-open .igbadge{display:none}
 /* Fresh today: neuste Platten aller Shops oben; Handy als Wisch-Leiste, Desktop als Raster mit «Show all» */
 section.fresh .shop-name{color:var(--neon)}
 section.fresh .swipe{display:none}
+.tags .fshop{margin-left:auto;align-self:center;font-family:var(--display);font-weight:700;font-size:17px;line-height:1;letter-spacing:.025em;white-space:nowrap;padding-left:8px}
 .fmore{all:unset;cursor:pointer;grid-column:1/-1;justify-self:center;margin:18px 0 4px;padding:10px 18px;border:2px solid var(--rule);font-weight:700;font-size:14px}
 .fmore:hover{background:var(--rule);color:#0d0d0d}
 .fmore:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -1071,15 +1072,18 @@ function filterGenre(v){
   const f=document.getElementById(matchMedia("(max-width:899px)").matches?"filter":"search");window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-12),behavior:"smooth"});
 }
 list.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("button.gen");if(b){e.preventDefault();filterGenre(b.dataset.genre)}});
+let FRESHING=false;
 function setTags(art,e){
   const box=art.querySelector(".tags");if(!box)return;const r=e.r,t=[];
-  if(mode==="date")t.push(`<span class="tag shoptag">${esc(e.S.shop)}</span>`);
+  const inFresh=FRESHING||!!art.closest(".fresh");
+  if(mode==="date"&&!inFresh)t.push(`<span class="tag shoptag">${esc(e.S.shop)}</span>`);
   if(NEWSET.has(e.gk))t.push('<span class="tag new">New</span>');
   if(DROPS[e.gk])t.push(`<span class="tag drop">Price ↓ ${chf(DROPS[e.gk])}</span>`);
   if(GONE[e.gk])t.push(`<span class="tag gone">${e.all.length===1?"Last shop · ":""}Gone at ${esc(GONE[e.gk].join(", "))}</span>`);
   if(heard.has(e.gk))t.push('<span class="tag heard">Heard</span>');
   if(r.st&&STOCK[r.st])t.push(`<span class="tag st-${r.st}">${STOCK[r.st]}</span>`);
   if(isReissue(r))t.push('<span class="tag">Reissue</span>');
+  if(inFresh)t.push(`<span class="fshop">${esc(e.S.shop)}</span>`);
   box.innerHTML=t.join("");box.classList.toggle("none",!t.length);
   art.classList.toggle("isfol",e.all.some(isFol));art.classList.toggle("heard",heard.has(e.gk));
 }
@@ -1188,7 +1192,7 @@ function freshBlock(es,day){
   const sec=document.createElement("section");sec.className="shop fresh"+(freshOpen?" open":"");sec.id="fresh";sec.dataset.jl="Fresh";
   sec.innerHTML=`<div class="shop-head"><span class="shop-name">${title}</span><span class="shop-sum">${es.length} ${es.length>1?"records":"record"} · all shops<span class="swipe"> · swipe</span></span></div>`;
   const rail=document.createElement("div");rail.className="frail";
-  es.forEach((e,i)=>{const el=releaseEl(e,i);if(i>=FRESH_DESK)el.classList.add("fx");rail.appendChild(el)});
+  es.forEach((e,i)=>{FRESHING=true;let el;try{el=releaseEl(e,i)}finally{FRESHING=false}if(i>=FRESH_DESK)el.classList.add("fx");rail.appendChild(el)});
   sec.appendChild(rail);
   if(es.length>FRESH_DESK){const b=document.createElement("button");b.className="fmore";b.type="button";
     const lab=()=>sec.classList.contains("open")?"Show fewer":`Show all ${es.length} fresh records`;b.textContent=lab();
