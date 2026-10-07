@@ -1,15 +1,15 @@
 {
- "date": "2026-10-06",
+ "date": "2026-10-07",
  "total": {
-  "records": 918,
-  "tracks": 621,
-  "clip": 216,
-  "none": 81
+  "records": 950,
+  "tracks": 626,
+  "clip": 240,
+  "none": 84
  },
  "shops": {
   "Hardwax": {
-   "records": 95,
-   "tracks": 95,
+   "records": 96,
+   "tracks": 96,
    "clip": 0,
    "none": 0
   },
@@ -32,16 +32,16 @@
    "none": 1
   },
   "Phonica": {
-   "records": 102,
-   "tracks": 50,
+   "records": 103,
+   "tracks": 51,
    "clip": 7,
    "none": 45
   },
   "Redeye Records": {
-   "records": 258,
-   "tracks": 43,
-   "clip": 208,
-   "none": 7
+   "records": 284,
+   "tracks": 44,
+   "clip": 232,
+   "none": 8
   },
   "Yoyaku": {
    "records": 104,
@@ -51,9 +51,9 @@
   },
   "Kompakt": {
    "records": 74,
-   "tracks": 58,
+   "tracks": 59,
    "clip": 0,
-   "none": 16
+   "none": 15
   },
   "Juno Records": {
    "records": 1,
@@ -62,19 +62,21 @@
    "none": 0
   },
   "Deejay.de": {
-   "records": 14,
-   "tracks": 5,
+   "records": 18,
+   "tracks": 6,
    "clip": 1,
-   "none": 8
+   "none": 11
   }
  },
- "pages_checked": 12,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 11,
- "clips_verified": 2171,
+ "pages_checked": 208,
+ "new_from_shop_pages": 3,
+ "copied_from_other_shop": 1,
+ "broken_clips_removed": 13,
+ "clips_verified": 2207,
  "not_reachable": {
-  "Phonica: http403": 4
+  "Clone: http403": 1,
+  "Phonica: http403": 52,
+  "Redeye Records: failed:UnicodeEncodeError": 11
  },
  "clip_hosts": {
   "clone.nl": {
@@ -87,7 +89,7 @@
    ]
   },
   "media.hardwax.com": {
-   "clips": 461,
+   "clips": 473,
    "failed": 0,
    "sample": []
   },
@@ -106,7 +108,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 207,
+   "clips": 231,
    "failed": 0,
    "sample": []
   },

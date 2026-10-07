@@ -27255,7 +27255,25 @@
      ],
      "st": "out",
      "m": "2026-10",
-     "first_seen": "2026-10-07"
+     "first_seen": "2026-10-07",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Dc Salas – Darkest Dreams"
+      },
+      {
+       "s": "A2",
+       "n": "Dc Salas – Classified"
+      },
+      {
+       "s": "B1",
+       "n": "Dc Salas – Fiesta Fiesta"
+      },
+      {
+       "s": "B2",
+       "n": "Dc Salas – Lost In Memories"
+      }
+     ]
     },
     {
      "a": "Elise Massoni",
@@ -27477,13 +27495,7 @@
      "g": "Ambient · Reissue",
      "url": "https://www.redeyerecords.co.uk/vinyl/199742-cat013-µ-ziq-tango-nvectif-reissue-of-original-rephlex-2lp-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191538-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191538.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-07"
@@ -27528,7 +27540,57 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-07"
+     "first_seen": "2026-10-07",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Hidden Horse - Trespass Into The Maze"
+      },
+      {
+       "s": "A2",
+       "n": "Sophie Sleigh-Johnson - Chaldean Acts"
+      },
+      {
+       "s": "A3",
+       "n": "Johnny Richards & Dave King - Sleepless In Settle"
+      },
+      {
+       "s": "A4",
+       "n": "Domotic - Ossature / Fourrure Sounds"
+      },
+      {
+       "s": "A5",
+       "n": "Revbjelde - Non Chion"
+      },
+      {
+       "s": "A6",
+       "n": "Saiph - Tellurkraft"
+      },
+      {
+       "s": "B1",
+       "n": "Oh Mr James - The Acid Riddle"
+      },
+      {
+       "s": "B2",
+       "n": "Secluded Bronte - Unknown Information"
+      },
+      {
+       "s": "B3",
+       "n": "Time Attendant - Lapping Up Flames"
+      },
+      {
+       "s": "B4",
+       "n": "Etceteral - Minus"
+      },
+      {
+       "s": "B5",
+       "n": "Dolly Dolly & Fogroom - Clock Tower"
+      },
+      {
+       "s": "B6",
+       "n": "Gong Girl - Kinetic Kinetic Kinetic"
+      }
+     ]
     },
     {
      "a": "Zar / Void Control",
@@ -27540,13 +27602,7 @@
      "g": "Ambient",
      "url": "https://www.redeyerecords.co.uk/vinyl/201767-voidcontrol03-zar-void-control-temporary-ep/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192778-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192778.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "m": "2026-10",
      "first_seen": "2026-10-07"
@@ -31370,8 +31426,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a9589687f3ae-6a9590fac004f-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Bäume Strahlen Stress Aus",
        "s": "",
+       "n": "Bäume Strahlen Stress Aus",
        "u": ""
       }
      ]
@@ -31402,7 +31458,28 @@
      "first_seen": "2026-09-30",
      "url": "https://kompakt.fm/releases/cover_blown",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt508-cover_blown.jpg?v=2",
-     "tr": []
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Honey Hunter",
+       "yt": "VI14Di4xVMk"
+      },
+      {
+       "s": "A2",
+       "n": "Hazinger",
+       "page": "https://www.deejay.de/Extrawelt_Cover_Blown_KOM508_Vinyl__1262560"
+      },
+      {
+       "s": "B1",
+       "n": "Cover Blown",
+       "page": "https://www.deejay.de/Extrawelt_Cover_Blown_KOM508_Vinyl__1262560"
+      },
+      {
+       "s": "B2",
+       "n": "Black Badger",
+       "page": "https://www.deejay.de/Extrawelt_Cover_Blown_KOM508_Vinyl__1262560"
+      }
+     ]
     },
     {
      "a": "Barnt",
@@ -31432,8 +31509,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a8da7b198db3-6ab506439b418-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Birdwatchers",
        "s": "",
+       "n": "Birdwatchers",
        "u": ""
       }
      ]
@@ -31739,8 +31816,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a61f21d5d59e-6aabb436a1b29-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "The Experiment",
        "s": "",
+       "n": "The Experiment",
        "u": ""
       }
      ]
