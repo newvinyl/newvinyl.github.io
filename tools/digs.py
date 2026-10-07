@@ -136,6 +136,11 @@ def candidates(data, day, seen):
     for k, arr in G.items():
         if k in seen:
             continue
+        # Gleiche Regel wie «Fresh today» auf der Website: zählt nur, wenn die Platte
+        # heute zum ersten Mal in IRGENDEINEM Shop auftaucht (frühestes first_seen)
+        first = min((x.get("first_seen") or (x.get("m", "0000-00") + "-01")) for x in arr)
+        if first != day:
+            continue
         new_here = [x for x in arr if x.get("first_seen") == day]
         if not new_here:
             continue
