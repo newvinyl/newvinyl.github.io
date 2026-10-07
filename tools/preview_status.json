@@ -68,16 +68,12 @@
    "none": 11
   }
  },
- "pages_checked": 208,
- "new_from_shop_pages": 3,
- "copied_from_other_shop": 1,
- "broken_clips_removed": 13,
- "clips_verified": 2207,
- "not_reachable": {
-  "Clone: http403": 1,
-  "Phonica: http403": 52,
-  "Redeye Records: failed:UnicodeEncodeError": 11
- },
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 10,
+ "clips_verified": 2206,
+ "not_reachable": {},
  "clip_hosts": {
   "clone.nl": {
    "clips": 925,
@@ -99,8 +95,8 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 42,
-   "failed": 11,
+   "clips": 41,
+   "failed": 10,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
