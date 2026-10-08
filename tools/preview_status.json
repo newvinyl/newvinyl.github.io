@@ -1,23 +1,23 @@
 {
- "date": "2026-10-07",
+ "date": "2026-10-08",
  "total": {
-  "records": 950,
-  "tracks": 626,
-  "clip": 240,
-  "none": 84
+  "records": 1106,
+  "tracks": 708,
+  "clip": 282,
+  "none": 116
  },
  "shops": {
   "Hardwax": {
-   "records": 96,
-   "tracks": 96,
+   "records": 98,
+   "tracks": 98,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 41,
-   "tracks": 40,
+   "records": 83,
+   "tracks": 80,
    "clip": 0,
-   "none": 1
+   "none": 3
   },
   "Decks.de": {
    "records": 5,
@@ -32,28 +32,28 @@
    "none": 1
   },
   "Phonica": {
-   "records": 103,
-   "tracks": 51,
-   "clip": 7,
-   "none": 45
+   "records": 128,
+   "tracks": 54,
+   "clip": 10,
+   "none": 64
   },
   "Redeye Records": {
-   "records": 284,
-   "tracks": 44,
-   "clip": 232,
-   "none": 8
+   "records": 331,
+   "tracks": 52,
+   "clip": 270,
+   "none": 9
   },
   "Yoyaku": {
-   "records": 104,
-   "tracks": 103,
+   "records": 129,
+   "tracks": 128,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 74,
-   "tracks": 59,
+   "records": 76,
+   "tracks": 60,
    "clip": 0,
-   "none": 15
+   "none": 16
   },
   "Juno Records": {
    "records": 1,
@@ -62,22 +62,27 @@
    "none": 0
   },
   "Deejay.de": {
-   "records": 18,
-   "tracks": 6,
-   "clip": 1,
-   "none": 11
+   "records": 31,
+   "tracks": 9,
+   "clip": 2,
+   "none": 20
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 10,
- "clips_verified": 2206,
- "not_reachable": {},
+ "pages_checked": 324,
+ "new_from_shop_pages": 49,
+ "copied_from_other_shop": 5,
+ "broken_clips_removed": 17,
+ "clips_verified": 2529,
+ "not_reachable": {
+  "Clone: http403": 1,
+  "Phonica: http403": 75,
+  "Redeye Records: failed:UnicodeEncodeError": 11,
+  "Redeye Records: http403": 1
+ },
  "clip_hosts": {
   "clone.nl": {
-   "clips": 925,
-   "failed": 925,
+   "clips": 928,
+   "failed": 928,
    "sample": [
     "https://clone.nl/platen/mp3/37267/1%20Life%20Out%20Of%20Balance.mp3",
     "https://clone.nl/platen/mp3/37267/2%20It%27s%20You.mp3",
@@ -85,18 +90,18 @@
    ]
   },
   "media.hardwax.com": {
-   "clips": 473,
+   "clips": 488,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 233,
+   "clips": 397,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 41,
-   "failed": 10,
+   "clips": 43,
+   "failed": 11,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
@@ -104,7 +109,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 231,
+   "clips": 273,
    "failed": 0,
    "sample": []
   },
@@ -119,7 +124,7 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 276,
+   "clips": 373,
    "failed": 0,
    "sample": []
   },
