@@ -60,7 +60,7 @@ def choose(cands):
             return True
         try:
             a = load_audio(url, len(audio))
-            audio[url] = (a, digs.pick_start(a))
+            audio[url] = (a, float(digs.pick_start(a)[0]))
             return True
         except Exception as e:
             log("audio fail", url, e)
