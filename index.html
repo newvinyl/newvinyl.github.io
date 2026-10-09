@@ -204,6 +204,7 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <button class="ffab" id="ffab" type="button" aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 3.5h13M4 8h8M6.5 12.5h3"/></svg><span id="ffl">Filter</span></button>
 <div class="sheet" id="sheet" hidden><div class="spanel" role="dialog" aria-modal="true" aria-labelledby="sht">
   <div class="shd"><b id="sht">Filter</b><button class="sreset" id="sreset" type="button">Reset</button></div>
+  <p class="slab">When</p><div class="chips" id="cw"></div>
   <p class="slab">Genre</p><div class="chips" id="cg"></div>
   <p class="slab">Shop</p><div class="chips" id="cs"></div>
   <button class="sdone" id="sdone" type="button">Show records</button></div></div>
@@ -267,17 +268,46 @@ function build(data){
     const cover=(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
     recs.push({gk,first,all,main,key:main.key,src,tracks:(src.tr||[]).filter(t=>t.u),cover,shops:new Set(all.map(x=>x.S.shop)).size});
   }
-  const days=[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
+  ALL=recs;renderFeed();checkShareLink();
+}
+// Zeitraum (Zürcher Kalender): Woche Mo–So
+const isoZ=d=>d.toLocaleDateString("sv-SE",{timeZone:"Europe/Zurich"});
+function rangeOf(k){
+  const t=new Date(isoZ(new Date())+"T12:00:00"),add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x},iso=d=>d.toISOString().slice(0,10);
+  const mon=add(t,-((t.getDay()+6)%7));
+  if(k==="today")return [iso(t),iso(t)];
+  if(k==="yesterday")return [iso(add(t,-1)),iso(add(t,-1))];
+  if(k==="week")return [iso(mon),iso(t)];
+  if(k==="lastweek")return [iso(add(mon,-7)),iso(add(mon,-1))];
+  if(k==="month")return [iso(t).slice(0,8)+"01",iso(t)];
+  if(k==="lastmonth"){const f=new Date(t.getFullYear(),t.getMonth()-1,15);const l=new Date(t.getFullYear(),t.getMonth(),0,12);return [iso(f).slice(0,8)+"01",iso(l)]}
+  return null;
+}
+const RANGES=[["today","Today"],["yesterday","Yesterday"],["week","This week"],["lastweek","Last week"],["month","This month"],["lastmonth","Last month"]];
+function renderFeed(){
+  const recs=ALL,curGk=cur>=0&&RECS[cur]?RECS[cur].gk:null;
+  const rg=rangeOf(F.r);
+  const days=rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
+  const todayIso=isoZ(new Date()),yIso=isoZ(new Date(Date.now()-864e5));
+  if(imgIO)imgIO.disconnect();
   RECS=[];const feed=document.getElementById("feed");feed.innerHTML="";
+  if(!days.length){feed.innerHTML='<p class="empty">No records in this period yet.</p>'}
   days.forEach((d,di)=>{
     const list=recs.filter(r=>r.first===d).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
     if(!list.length)return;
-    const h=document.createElement("div");h.className="day";h.innerHTML=`<b>${di===0?"Fresh today":fmtDay(d)}</b><span>${list.length} records</span>`;feed.appendChild(h);
+    const lab=!rg&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
+    const h=document.createElement("div");h.className="day";h.innerHTML=`<b>${lab}</b><span>${list.length} records</span>`;feed.appendChild(h);
     const g=document.createElement("div");g.className="grid";feed.appendChild(g);
     list.forEach(r=>{const i=RECS.push(r)-1;g.appendChild(card(r,i))});
   });
-  paintBag();bagCount();applyFilter();checkShareLink();
+  cur=curGk?RECS.findIndex(r=>r.gk===curGk):-1;
+  if(cur>=0&&!au.paused)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing");
+  document.querySelectorAll(".front img[data-src]").forEach(im=>imgIO.observe(im));
+  paintBag();bagCount();applyFilter();
 }
+// Cover nur in Bildschirmnähe laden und weit weg wieder freigeben (sonst stürzt das iPhone bei vielen Platten ab)
+let imgIO=null;
+try{imgIO=new IntersectionObserver(es=>es.forEach(e=>{const im=e.target;if(e.isIntersecting){if(!im.getAttribute("src"))im.src=im.dataset.src}else if(im.getAttribute("src")&&Math.abs(e.boundingClientRect.top)>4000){im.removeAttribute("src")}}),{rootMargin:"1500px 0px"})}catch(e){imgIO={observe(im){im.src=im.dataset.src},disconnect(){}}}
 document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a.buy");if(a)track("Shop click",{shop:a.dataset.shop,where:"feed"})});
 // Geteilter Link (?r=slug): zur Platte springen, sonst volle Ansicht
 function checkShareLink(){
@@ -296,7 +326,7 @@ function card(r,i){
   const others=r.all.filter(x=>x!==m&&x.p!=null);
   el.innerHTML=`<div class="flip">
     <div class="face front"><div class="ph"><span style="background:${hue}">${esc(m.l)}${m.cat?"<br>"+esc(m.cat):""}</span></div>
-      ${r.cover?`<img loading="lazy" decoding="async" alt="${esc(m.a)} – ${esc(m.t)}" src="${esc(hiRes(r.cover))}" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='${esc(r.cover)}'}else this.remove()">`:""}
+      ${r.cover?`<img decoding="async" alt="${esc(m.a)} – ${esc(m.t)}" data-src="${esc(hiRes(r.cover))}" onerror="if(!this.dataset.t){this.dataset.t=1;this.dataset.src='${esc(r.cover)}';this.src='${esc(r.cover)}'}else this.remove()">`:""}
       <button class="play" type="button" aria-label="Play ${esc(m.a)} – ${esc(m.t)}">${PLAY}</button>
       <button class="add" type="button"></button>
       <button class="more" type="button" aria-label="Show details">More</button>
@@ -329,7 +359,8 @@ const NOT_GENRE=/^(reissue|repress|remaster(ed)?|lp|ep|2×12"?|12"|7")$/i;
 const BROAD=new Set(["House","Techno","Disco","Acid","Minimal","Ambient","Electro"]);
 let GENRES=[],GRANK={};
 fetch("/genre_rank.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).then(d=>{GRANK=(d&&d.clicks)||{};if(!document.getElementById("sheet").hidden)buildChips()}).catch(()=>{});
-const F={g:new Set(),s:new Set(),q:""};
+let ALL=[];
+const F={r:"",g:new Set(),s:new Set(),q:""};
 const gOf=r=>r.all.map(x=>x.g||"").join(" / ").toLowerCase();
 const gTok=r=>r._gt||(r._gt=new Set(r.all.flatMap(x=>String(x.g||"").split(/[\/·]/).map(t=>t.trim()).filter(t=>t&&!NOT_GENRE.test(t)))));
 function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
@@ -349,24 +380,28 @@ function applyFilter(){
   document.querySelectorAll(".grid").forEach(g=>{let n=0;g.querySelectorAll(".card").forEach(c=>{const ok=matches(RECS[c.dataset.i]);c.hidden=!ok;if(ok)n++});
     g.hidden=!n;const h=g.previousElementSibling;h.hidden=!n;h.querySelector("span").textContent=`${n} ${n===1?"record":"records"}`;shown+=n});
   let e=document.getElementById("empty");if(!shown){if(!e){e=document.createElement("p");e.id="empty";e.className="empty";document.getElementById("feed").appendChild(e)}e.textContent="No records match. Change the filter or search.";e.hidden=false}else if(e)e.hidden=true;
-  const nf=F.g.size+F.s.size,fb=document.getElementById("ffab");fb.classList.toggle("act",!!nf);document.getElementById("ffl").textContent=nf?`Filter · ${nf}`:"Filter";
+  const nf=F.g.size+F.s.size+(F.r?1:0),fb=document.getElementById("ffab");fb.classList.toggle("act",!!nf);document.getElementById("ffl").textContent=nf?`Filter · ${nf}`:"Filter";
   document.getElementById("sdone").textContent=`Show ${shown} ${shown===1?"record":"records"}`;
 }
 function buildChips(){
   const cnt=(fn)=>RECS.filter(fn).length;
   const mk=(box,set,vals,test)=>{box.innerHTML="";vals.forEach(v=>{const n=cnt(r=>test(r,v));if(!n)return;const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",set.has(v));b.innerHTML=`${esc(v)} <small>${n}</small>`;
     b.onclick=()=>{set.has(v)?set.delete(v):set.add(v);if(set.has(v))track("Filter",{type:box.id==="cg"?"genre":"shop",value:v});b.setAttribute("aria-pressed",set.has(v));applyFilter()};box.appendChild(b)})};
+  {const box=document.getElementById("cw");box.innerHTML="";
+   RANGES.forEach(([k,lab])=>{const rg=rangeOf(k),n=ALL.filter(r=>r.first>=rg[0]&&r.first<=rg[1]).length;if(!n)return;
+    const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",F.r===k);b.innerHTML=`${lab} <small>${n}</small>`;
+    b.onclick=()=>{F.r=F.r===k?"":k;if(F.r)track("Filter",{type:"when",value:k});renderFeed();buildChips();applyFilter()};box.appendChild(b)})}
   GENRES=genreList();
   mk(document.getElementById("cg"),F.g,GENRES,gMatch);
   const shops=[...new Set(RECS.flatMap(r=>r.all.map(x=>x.S.shop)))].sort();
   mk(document.getElementById("cs"),F.s,shops,(r,v)=>r.all.some(x=>x.S.shop===v));
 }
 const sheet=document.getElementById("sheet");
-const openSheet=()=>{track("Filter open");buildChips();applyFilter();sheet.hidden=false;document.getElementById("sdone").focus()};
+const openSheet=()=>{track("Filter open");buildChips();applyFilter();sheet.hidden=false;sheet.querySelector(".spanel").scrollTop=0;document.getElementById("sdone").focus({preventScroll:true})};
 const closeSheet=()=>{sheet.hidden=true;document.getElementById("ffab").focus()};
 document.getElementById("ffab").onclick=openSheet;
 document.getElementById("sdone").onclick=()=>{closeSheet();const f=document.querySelector(".day:not([hidden])");if(f)window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-80),behavior:"smooth"})};
-document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();buildChips();applyFilter()};
+document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const hadR=F.r;F.r="";if(hadR)renderFeed();buildChips();applyFilter()};
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
 const sb=document.getElementById("srchbtn"),srow=document.getElementById("srow"),q=document.getElementById("q");
