@@ -1920,8 +1920,13 @@ function openShare(art,btn){
     const ch=b.dataset.ch;track("Share",{channel:ch,shop:e.S.shop});
     if(ch==="more"){ev.preventDefault();try{await navigator.share({title,text:line,url})}catch(_){}}
     if(ch==="ig"){ev.preventDefault();
-      if(native){try{await navigator.share({title,text:line,url});return}catch(err){if(err&&err.name==="AbortError")return}}
-      const ok=await copyText(url,inp);msg(ok?"Link copied. In Instagram, paste it into your story with the link sticker, or into a DM.":"Copy the link above, then paste it in Instagram.")}
+      // Instagram nimmt über das Teilen-Menü keine Links an: Link kopieren und die App direkt öffnen
+      const ok=await copyText(url,inp);
+      const mobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+      msg(ok?"Link copied. Opening Instagram: paste it into a story with the link sticker, or into a DM.":"Copy the link above, then paste it in Instagram.");
+      if(mobile){location.href="instagram://story-camera";
+        setTimeout(()=>{if(!document.hidden)msg(ok?"Link copied. Open Instagram and paste it into a story (link sticker) or a DM.":"Copy the link above, then paste it in Instagram.")},1800)}
+      else window.open("https://www.instagram.com/direct/inbox/","_blank","noopener")}
   }));
   setTimeout(()=>m.querySelector("#shx").focus({preventScroll:true}),30);
 }
