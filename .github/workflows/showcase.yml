@@ -34,8 +34,18 @@ jobs:
           SHOWCASE_WORK: ${{ runner.temp }}/sc
         run: |
           mkdir -p "$SHOWCASE_WORK"
-          python3 tools/showcase.py > "$SHOWCASE_WORK/result.json"
+          python3 tools/showcase.py > "$SHOWCASE_WORK/result.json" 2> "$SHOWCASE_WORK/log.txt" || { cat "$SHOWCASE_WORK/log.txt"; exit 1; }
           cat "$SHOWCASE_WORK/result.json"
+
+      - name: Save log (readable via API)
+        if: always()
+        env:
+          SHOWCASE_WORK: ${{ runner.temp }}/sc
+        run: |
+          mkdir -p /tmp/lg && cd /tmp/lg && git init -q && git checkout -q -b showcase-log
+          tail -c 60000 "$SHOWCASE_WORK/log.txt" > log.txt 2>/dev/null || echo "no log" > log.txt
+          git add log.txt && git -c user.name=bot -c user.email=bot@x commit -qm log
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" showcase-log
 
       - name: Upload
         env:
