@@ -152,6 +152,17 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 @media (prefers-reduced-motion:reduce){.flip{transition:none}.bagtop.pop{animation:none}}
 
 .bagtop.on{border-color:var(--pink)}
+.btop{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;margin-top:18px}
+.btop[hidden]{display:none}
+.btop h1{margin:0;font:800 24px/1.1 var(--display)}
+.btop h1 span{font:400 12px var(--mono);color:var(--muted);margin-left:8px;vertical-align:3px}
+.clr{all:unset;cursor:pointer;min-height:40px;padding:0 14px;display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--white);font:700 14px var(--display);white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.clr svg{width:14px;height:14px}
+.clr.warn{border-color:var(--pink);color:var(--pink)}
+.clr:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.undo{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;margin-top:18px;padding:12px 14px;border:1.5px solid var(--neon);color:var(--neon);font:500 13px var(--mono)}
+.undo[hidden]{display:none}
+.undo button{all:unset;cursor:pointer;font:800 15px var(--display);color:var(--ink);background:var(--neon);padding:8px 14px}
 main#bag{display:flex;flex-direction:column;gap:30px;margin-top:20px;max-width:640px}
 .shop{display:flex;flex-direction:column;gap:12px}
 .sh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:2px solid var(--white);padding-bottom:8px}
@@ -209,6 +220,8 @@ main#bag{display:flex;flex-direction:column;gap:30px;margin-top:20px;max-width:6
   <a class="hic" href="/" aria-label="Back to new records"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 5 8 12l7 7"/></svg></a>
   <span class="bagtop on" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></span></div>
 </header>
+<div class="btop" id="btop" hidden><h1>My bag<span id="bcount"></span></h1><button class="clr" id="bclearall" type="button"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Clear all</span></button></div>
+<div class="undo" id="undo" role="status" hidden><span>Bag cleared.</span><button type="button" id="undob">Undo</button></div>
 <main id="bag"><p class="load">Loading your bag…</p></main>
 <section class="end" id="end" hidden>
   <div class="erow"><b>Total, est.</b><span class="gt" id="gt"></span></div>
@@ -249,6 +262,8 @@ function groups(){
 function render(){
   const {items,shops}=groups(),m=document.getElementById("bag");
   document.getElementById("bagn").textContent=items.length||"";
+  document.getElementById("btop").hidden=!items.length;
+  document.getElementById("bcount").textContent=items.length?`${items.length} ${items.length>1?"records":"record"}`:"";
   if(!items.length){m.innerHTML=`<div class="empty"><p>Your bag is empty.</p><a class="cta" href="/">Dig new records</a></div>`;document.getElementById("end").hidden=true;return}
   m.innerHTML="";
   shops.forEach(({S,rs})=>{
@@ -287,9 +302,17 @@ document.getElementById("bcopy").onclick=async()=>{track("Bag copy");msg(await c
 document.getElementById("bmail").onclick=()=>{track("Bag email");location.href=`mailto:?subject=${encodeURIComponent("My vinyl bag · Monthly Vinyl")}&body=${encodeURIComponent(listText())}`};
 document.getElementById("bsave").onclick=async()=>{track("Backup saved");const l=await makeLink();store.set("mvr-backup",new Date().toISOString().slice(0,10));
   msg(await copy(l)?"Backup link copied. Bookmark it or send it to yourself. Opening it brings your bag back on any device.":"Copying isn't allowed here.")};
-{const bc=document.getElementById("bclear");let armed=null;
-bc.onclick=()=>{if(!armed){bc.classList.add("warn");bc.textContent="Tap again to empty";armed=setTimeout(()=>{armed=null;bc.classList.remove("warn");bc.textContent="Empty bag"},3000);return}
-  clearTimeout(armed);armed=null;track("Bag emptied");cart=[];opened=new Set();save();render()}}
+// Clear all (oben rechts) und «Empty bag» (unten): zweimal tippen, danach kurz «Undo»
+{let undoT=null,backup=null;
+const undoBox=document.getElementById("undo");
+function clearAll(where){backup={cart:[...cart],opened:[...opened]};track("Bag emptied",{where});cart=[];opened=new Set();save();render();
+  undoBox.hidden=false;clearTimeout(undoT);undoT=setTimeout(()=>{undoBox.hidden=true;backup=null},8000)}
+document.getElementById("undob").onclick=()=>{if(!backup)return;cart=backup.cart;opened=new Set(backup.opened);backup=null;save();undoBox.hidden=true;clearTimeout(undoT);track("Bag restored");render()};
+function twoTap(btn,label,again,where){let armed=null;const lab=btn.querySelector("span")||btn;
+  btn.onclick=()=>{if(!armed){btn.classList.add("warn");lab.textContent=again;armed=setTimeout(()=>{armed=null;btn.classList.remove("warn");lab.textContent=label},3000);return}
+    clearTimeout(armed);armed=null;btn.classList.remove("warn");lab.textContent=label;clearAll(where)}}
+twoTap(document.getElementById("bclearall"),"Clear all","Tap again to clear","top");
+twoTap(document.getElementById("bclear"),"Empty bag","Tap again to empty","bottom");}
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);render()}});
 window.addEventListener("pageshow",()=>{if(DATA){cart=store.get("mvr-cart",[]);opened=new Set(store.get("mvr-opened",[]));render()}});
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{DATA=d;FX=d.fx||{};render()}).catch(()=>{document.getElementById("bag").innerHTML='<p class="load">Could not load your bag. Reload the page.</p>'});
