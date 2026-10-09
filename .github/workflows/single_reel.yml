@@ -1,0 +1,50 @@
+name: Single reel
+
+# Renders a reel for the release named in tools/single_reel.json (same look as the daily reel).
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/single_reel.json, tools/single_reel.py, .github/workflows/single_reel.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: single-reel
+  cancel-in-progress: true
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core >/dev/null
+          pip install -q numpy pillow opencv-python-headless
+      - name: Render
+        env:
+          REEL_WORK: ${{ runner.temp }}/r
+        run: |
+          mkdir -p "$REEL_WORK"
+          python3 tools/single_reel.py > "$REEL_WORK/result.json" 2> "$REEL_WORK/log.txt" || { cat "$REEL_WORK/log.txt"; exit 1; }
+          cat "$REEL_WORK/result.json"
+      - name: Save log (readable via API)
+        if: always()
+        env:
+          REEL_WORK: ${{ runner.temp }}/r
+        run: |
+          mkdir -p /tmp/lg && cd /tmp/lg && git init -q && git checkout -q -b single-reel-log
+          { cat "$REEL_WORK/result.json" 2>/dev/null; tail -c 50000 "$REEL_WORK/log.txt" 2>/dev/null; } > log.txt || echo "no log" > log.txt
+          git add log.txt && git -c user.name=bot -c user.email=bot@x commit -qm log
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" single-reel-log
+      - name: Upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REEL_WORK: ${{ runner.temp }}/r
+        run: |
+          gh release view showcase >/dev/null 2>&1 || gh release create showcase --prerelease --title "Showcase" --notes "Showcase videos for Instagram."
+          python3 -c "import json;r=json.load(open('$REEL_WORK/result.json'));print(r['video']);print(r['poster']);print(r['caption'])" | xargs -d '\n' gh release upload showcase --clobber
