@@ -567,7 +567,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 6   # bump to re-render today's reel after a design change
+REEL_V = 7   # bump to re-render today's reel after a design change
 DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
@@ -809,7 +809,7 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     rname = "reel-%s.mp4" % ymd
     rpath = os.path.join(a.work, rname)
     rposter = os.path.join(a.work, "reel-%s.jpg" % ymd)
-    look = reelfx.reel_single(reel_rel(R, rc["cover"]), aud, look_seed(ymd, R["key"], "reel"), rpath, rposter)
+    look = reelfx.reel_single(reel_rel(R, rc["cover"]), aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter)
     rcap = reel_caption(R, rc["arr"])
     sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
@@ -829,7 +829,9 @@ def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
             G.setdefault(gkey(it), it)
     for k in keep.get("keys", []):
         if k in G: fams.add(family(G[k].get("g")))
-    rel = make_reel(a, cands, fx, set(keep.get("keys", [])), fams, history, date_s, ymd, base)
+    # a re-render of the reel on the same day picks a different release than the reel before
+    prev = (keep.get("reel") or {}).get("key")
+    rel = make_reel(a, cands, fx, set(keep.get("keys", [])) | ({prev} if prev else set()), fams, history, date_s, ymd, base)
     video = keep.get("video", "")
     fname = video.rsplit("/", 1)[-1]
     items = "".join("<li><b>%s</b> <span class=\"m\">(%s)</span></li>" % (html.escape(t), html.escape(s_))
