@@ -47,7 +47,7 @@ button{font:inherit;color:inherit}
 .flip{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.7,.2,1)}
 .card.back .flip{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
-.front{background:var(--deep)}
+.front{background:var(--deep);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .front img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .ph span{width:62%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font:500 13px/1.3 var(--mono);color:var(--ink)}
@@ -237,7 +237,8 @@ function card(r,i){
   const back=el.querySelector(".backf"),mb=el.querySelector(".more");
   mb.onclick=()=>{el.classList.add("back");back.setAttribute("aria-hidden","false")};
   back.onclick=e=>{if(e.target.closest("button,a"))return;el.classList.remove("back");back.setAttribute("aria-hidden","true")};
-  el.querySelector(".play").onclick=()=>{if(cur===i&&!au.paused){au.pause()}else if(cur===i&&au.src){au.play()}else play(i,0)};
+  // Ganzes Cover startet/stoppt den Track; Bag und More nicht
+  el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.more"))return;if(cur===i&&!au.paused){au.pause()}else if(cur===i&&au.src){au.play()}else play(i,0)};
   el.querySelector(".add").onclick=()=>toggleBag(r);
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite hat eigene Knöpfe: Bag und zurück
