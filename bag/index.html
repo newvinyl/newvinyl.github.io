@@ -184,6 +184,8 @@ main#bag{display:flex;flex-direction:column;gap:30px;margin-top:20px;max-width:6
 .esub{margin:0;font-size:12px;color:var(--muted)}
 .ebtns{display:flex;flex-wrap:wrap;gap:8px}
 .eb{all:unset;cursor:pointer;min-height:38px;padding:0 12px;display:inline-flex;align-items:center;border:1.5px solid var(--white);font:700 13.5px var(--display)}
+.eb.ghost{border-color:var(--line);color:var(--muted)}
+.eb.warn{border-color:var(--pink);color:var(--pink)}
 .eb:active{background:var(--white);color:var(--ink)}
 .emsg{margin:0;font-size:12.5px;color:var(--neon)}.emsg:empty{display:none}
 .legal{margin:0;font-size:11px;line-height:1.45;color:var(--muted)}
@@ -211,7 +213,7 @@ main#bag{display:flex;flex-direction:column;gap:30px;margin-top:20px;max-width:6
 <section class="end" id="end" hidden>
   <div class="erow"><b>Total, est.</b><span class="gt" id="gt"></span></div>
   <p class="esub">Records only. Shipping and any customs are added at each shop's checkout.</p>
-  <div class="ebtns"><button class="eb" id="bcopy" type="button">Copy list</button><button class="eb" id="bmail" type="button">Email list</button><button class="eb" id="bsave" type="button">Save backup link</button></div>
+  <div class="ebtns"><button class="eb" id="bcopy" type="button">Copy list</button><button class="eb" id="bmail" type="button">Email list</button><button class="eb" id="bsave" type="button">Save backup link</button><button class="eb ghost" id="bclear" type="button">Empty bag</button></div>
   <p class="emsg" id="emsg" role="status"></p>
   <p class="legal">All prices without guarantee. Prices are taken from the shops; converted amounts are estimates. Shipping costs, customs duties, import taxes and fees may apply depending on the shipping country and your delivery address. The final price is set by the shop at checkout.</p>
 </section>
@@ -280,6 +282,9 @@ document.getElementById("bcopy").onclick=async()=>{track("Bag copy");msg(await c
 document.getElementById("bmail").onclick=()=>{track("Bag email");location.href=`mailto:?subject=${encodeURIComponent("My vinyl bag · Monthly Vinyl")}&body=${encodeURIComponent(listText())}`};
 document.getElementById("bsave").onclick=async()=>{track("Backup saved");const l=await makeLink();store.set("mvr-backup",new Date().toISOString().slice(0,10));
   msg(await copy(l)?"Backup link copied. Bookmark it or send it to yourself. Opening it brings your bag back on any device.":"Copying isn't allowed here.")};
+{const bc=document.getElementById("bclear");let armed=null;
+bc.onclick=()=>{if(!armed){bc.classList.add("warn");bc.textContent="Tap again to empty";armed=setTimeout(()=>{armed=null;bc.classList.remove("warn");bc.textContent="Empty bag"},3000);return}
+  clearTimeout(armed);armed=null;track("Bag emptied");cart=[];opened=new Set();save();render()}}
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);render()}});
 window.addEventListener("pageshow",()=>{if(DATA){cart=store.get("mvr-cart",[]);opened=new Set(store.get("mvr-opened",[]));render()}});
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{DATA=d;FX=d.fx||{};render()}).catch(()=>{document.getElementById("bag").innerHTML='<p class="load">Could not load your bag. Reload the page.</p>'});

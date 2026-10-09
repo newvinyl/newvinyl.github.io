@@ -112,7 +112,17 @@ button{font:inherit;color:inherit}
 .mini{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
   background:var(--deep);border-top:2px solid var(--white)}
 .mini.on{display:flex}
-.mini .mt{flex:1;min-width:0}
+.mini .mt{all:unset;cursor:pointer;flex:1;min-width:0}
+.mini .mpp{all:unset;cursor:pointer;flex:none;width:44px;height:44px;border-radius:50%;background:var(--white);color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
+.mini .mpp svg{width:20px;height:20px}
+.mini .mpp .i-pl{display:none}
+.mini.paused .mpp .i-pa{display:none}.mini.paused .mpp .i-pl{display:block}
+.mini .mbag{flex:none;position:relative;height:44px;padding:0 13px;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);color:var(--white);text-decoration:none;font:700 14px/1 var(--display)}
+.mini .mbag svg{width:18px;height:18px}
+.mini .mbag b{position:absolute;top:-8px;right:-8px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--pink);color:var(--ink);font:700 11px/18px var(--mono);text-align:center}
+.mini .mbag b:empty{display:none}
+.mini .mbag.has{border-color:var(--pink)}
+@media (max-width:380px){.mini .mbag span{display:none}}
 .mini .mt b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mini .mt span{display:block;font:400 11.5px var(--mono);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mini .madd{all:unset;cursor:pointer;white-space:nowrap;flex:none;height:44px;padding:0 16px;display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:var(--ink);font:800 15px/1 var(--display)}
@@ -198,9 +208,9 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
   <p class="slab">Shop</p><div class="chips" id="cs"></div>
   <button class="sdone" id="sdone" type="button">Show records</button></div></div>
 <div class="mini" id="mini" role="region" aria-label="Now playing">
-  <div class="mt"><b id="mtt"></b><span id="mta"></span></div>
-  <button class="madd" id="madd" type="button"></button>
-  <button class="mnx" id="mnx" type="button" aria-label="Next record"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2l8 6-8 6zM11 2h3v12h-3z"/></svg></button>
+  <button class="mpp" id="mpp" type="button" aria-label="Pause"><svg class="i-pa" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg><svg class="i-pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+  <button class="mt" id="mt" type="button"><b id="mtt"></b><span id="mta"></span></button>
+  <a class="mbag" id="mbag" href="/bag/" aria-label="Go to my bag and check out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/></svg><span>Check out</span><b id="mbn"></b></a>
 </div>
 <audio id="au" preload="none"></audio>
 <script>
@@ -208,7 +218,7 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 if(location.hash==="#korb")location.replace("/bag/");else if(location.hash==="#shops")location.replace("/about/#shops");else if(/^#(archiv|restore=)/.test(location.hash))location.replace("/all/"+location.hash);
 function track(name,data){try{if(window.umami&&typeof umami.track==="function")umami.track(name,data)}catch(e){}}
 const rslug=(a,t)=>`${a} ${t}`.normalize("NFKD").replace(/[^\x00-\x7f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,80).replace(/^-+|-+$/g,"");
-const PLAY='<svg class="pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="ps" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>';
+const PLAY='<svg class="pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="ps" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 5v14l9.5-7zM12.5 5v14l9.5-7z"/></svg>';
 const PLUS='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 2v12M2 8h12"/></svg>';
 const CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2.5 8.5 6.5 12 13.5 4"/></svg>';
 const HUES=["#d6a3d8","#b9d8a3","#e8c34a","#83b59d","#f0c98f","#f0a060","#a3c4e8","#e07a62"];
@@ -242,7 +252,7 @@ function toggleBag(rec){
 }
 function paintBag(){
   document.querySelectorAll(".card").forEach(c=>{const r=RECS[c.dataset.i],on=inBag(r);c.querySelectorAll(".add").forEach(b=>{b.classList.toggle("in",on);b.innerHTML=on?`${CHECK}In bag`:`${PLUS}Bag`})});
-  const m=document.getElementById("madd");if(cur>=0){const on=inBag(RECS[cur]);m.classList.toggle("in",on);m.innerHTML=on?`${CHECK}In bag`:`${PLUS}Bag`}
+  const mb=document.getElementById("mbag");document.getElementById("mbn").textContent=cart.length||"";mb.classList.toggle("has",cart.length>0);
 }
 
 function build(data){
@@ -302,7 +312,7 @@ function card(r,i){
   mb.onclick=()=>{track("More");el.classList.add("back");back.setAttribute("aria-hidden","false")};
   back.onclick=e=>{if(e.target.closest("button,a"))return;el.classList.remove("back");back.setAttribute("aria-hidden","true")};
   // Ganzes Cover startet/stoppt den Track; Bag und More nicht
-  el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.more"))return;if(cur===i&&!au.paused){au.pause()}else if(cur===i&&au.src){au.play()}else play(i,0)};
+  el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.more"))return;if(cur===i&&!au.paused){track("Next via cover");next(true)}else if(cur===i&&au.src){au.play().catch(()=>{})}else play(i,0)};
   el.querySelector(".add").onclick=()=>toggleBag(r);
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite hat eigene Knöpfe: Bag und zurück
@@ -363,15 +373,18 @@ function play(i,t){
 }
 function next(){
   const r=RECS[cur];if(!r)return;
+  // nächster Track dieser Platte, danach nächste sichtbare Platte
   if(trackIdx+1<r.tracks.length)return play(cur,trackIdx+1);
-  if(cur+1<RECS.length){play(cur+1,0);const c=document.querySelector(`.card[data-i="${cur}"]`);if(c)c.scrollIntoView({behavior:"smooth",block:"center"})}
+  let n=cur+1;while(n<RECS.length&&document.querySelector(`.card[data-i="${n}"]`)?.hidden)n++;
+  if(n<RECS.length){play(n,0);const c=document.querySelector(`.card[data-i="${cur}"]`);if(c)c.scrollIntoView({behavior:"smooth",block:"center"})}
 }
 au.addEventListener("ended",next);
-au.addEventListener("pause",()=>{if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.remove("playing")});
-au.addEventListener("play",()=>{if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing")});
+au.addEventListener("pause",()=>{document.getElementById("mini").classList.add("paused");document.getElementById("mpp").setAttribute("aria-label","Play");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.remove("playing")});
+au.addEventListener("play",()=>{document.getElementById("mini").classList.remove("paused");document.getElementById("mpp").setAttribute("aria-label","Pause");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing")});
 au.addEventListener("timeupdate",()=>{const c=document.querySelector(`.card[data-i="${cur}"] .bar`);if(c&&au.duration)c.style.width=(100*au.currentTime/au.duration)+"%"});
-document.getElementById("mnx").onclick=()=>{const r=RECS[cur];if(r&&cur+1<RECS.length){play(cur+1,0);document.querySelector(`.card[data-i="${cur}"]`)?.scrollIntoView({behavior:"smooth",block:"center"})}};
-document.getElementById("madd").onclick=()=>{if(cur>=0)toggleBag(RECS[cur])};
+document.getElementById("mpp").onclick=()=>{if(au.paused)au.play().catch(()=>{});else au.pause()};
+document.getElementById("mt").onclick=()=>{document.querySelector(`.card[data-i="${cur}"]`)?.scrollIntoView({behavior:"smooth",block:"center"})};
+
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintBag()}});
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{document.getElementById("feed").innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
 </script>
