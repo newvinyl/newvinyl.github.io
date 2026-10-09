@@ -567,7 +567,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 7   # bump to re-render today's reel after a design change
+REEL_V = 8   # bump to re-render today's reel after a design change
 DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
@@ -648,9 +648,20 @@ def reel_mix(audio, start):
     peak = np.abs(s).max()
     return s * (0.97 / peak) if peak > 0.97 else s
 
-def pick_reel(cands, digs_keys, digs_fams, offline, work):
+def reel_request(day):
+    """Optional wish for today's reel, e.g. 92h6fy/reel_request.json = {"date": "2026-10-09", "family": "Techno"}."""
+    p = os.path.join(OUT, "reel_request.json")
+    try:
+        r = json.load(open(p, encoding="utf-8"))
+        return r if r.get("date") == day else {}
+    except Exception:
+        return {}
+
+def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None):
     """Best remaining release with a real preview and a big cover; a different genre family than the digs if possible."""
     pool = [c for c in cands if c["key"] not in digs_keys]
+    if want_fam and any(c["fam"] == want_fam for c in pool):
+        pool = [c for c in pool if c["fam"] == want_fam]
     pool.sort(key=lambda c: (-c.get("vis", 0), c["fam"] in digs_fams, -(c["score"] + (0.5 if c["tracks"][0]["named"] else 0))))
     fallback = None
     for n, c in enumerate(pool[:12]):
@@ -798,7 +809,7 @@ def write_page(date_s, sections, history, caps):
         open(os.path.join(OUT, "caption_reel.txt"), "w", encoding="utf-8").write(caps[1] + "\n")
 
 def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
-    rc = pick_reel(cands, digs_keys, digs_fams, a.offline, a.work)
+    rc = pick_reel(cands, digs_keys, digs_fams, a.offline, a.work, want_fam=a.want_fam)
     if not rc:
         log("no reel candidate")
         return None
@@ -856,6 +867,10 @@ def main():
     ap.add_argument("--offline", action="store_true", help="synthetic media, for layout tests")
     ap.add_argument("--work", default=os.environ.get("DIGS_WORK") or tempfile.mkdtemp())
     a = ap.parse_args()
+    data_day = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))["updated"]
+    a.want_fam = reel_request(a.date or data_day).get("family")
+    if a.want_fam:
+        log("reel wish:", a.want_fam)
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
     day = a.date or data["updated"]
     date_s = dt.date.fromisoformat(day).strftime("%d.%m.%y")
