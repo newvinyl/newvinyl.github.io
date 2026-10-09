@@ -1,29 +1,29 @@
 {
- "date": "2026-10-08",
+ "date": "2026-10-09",
  "total": {
-  "records": 1106,
-  "tracks": 708,
-  "clip": 282,
-  "none": 116
+  "records": 1222,
+  "tracks": 783,
+  "clip": 319,
+  "none": 120
  },
  "shops": {
   "Hardwax": {
-   "records": 98,
-   "tracks": 98,
+   "records": 116,
+   "tracks": 116,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 83,
-   "tracks": 80,
-   "clip": 0,
-   "none": 3
-  },
-  "Decks.de": {
-   "records": 5,
-   "tracks": 3,
+   "records": 84,
+   "tracks": 82,
    "clip": 0,
    "none": 2
+  },
+  "Decks.de": {
+   "records": 6,
+   "tracks": 5,
+   "clip": 0,
+   "none": 1
   },
   "Clone": {
    "records": 224,
@@ -32,28 +32,28 @@
    "none": 1
   },
   "Phonica": {
-   "records": 128,
-   "tracks": 54,
-   "clip": 10,
-   "none": 64
+   "records": 139,
+   "tracks": 58,
+   "clip": 15,
+   "none": 66
   },
   "Redeye Records": {
-   "records": 331,
-   "tracks": 52,
-   "clip": 270,
-   "none": 9
+   "records": 377,
+   "tracks": 62,
+   "clip": 302,
+   "none": 13
   },
   "Yoyaku": {
-   "records": 129,
-   "tracks": 128,
+   "records": 149,
+   "tracks": 148,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 76,
-   "tracks": 60,
+   "records": 85,
+   "tracks": 70,
    "clip": 0,
-   "none": 16
+   "none": 15
   },
   "Juno Records": {
    "records": 1,
@@ -62,18 +62,23 @@
    "none": 0
   },
   "Deejay.de": {
-   "records": 31,
-   "tracks": 9,
+   "records": 41,
+   "tracks": 18,
    "clip": 2,
-   "none": 20
+   "none": 21
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 11,
- "clips_verified": 2525,
- "not_reachable": {},
+ "pages_checked": 338,
+ "new_from_shop_pages": 22,
+ "copied_from_other_shop": 6,
+ "broken_clips_removed": 15,
+ "clips_verified": 2706,
+ "not_reachable": {
+  "Clone: http403": 1,
+  "Phonica: http403": 81,
+  "Redeye Records: failed:UnicodeEncodeError": 13,
+  "Redeye Records: http403": 1
+ },
  "clip_hosts": {
   "clone.nl": {
    "clips": 928,
@@ -85,17 +90,17 @@
    ]
   },
   "media.hardwax.com": {
-   "clips": 488,
+   "clips": 564,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 397,
+   "clips": 401,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 43,
+   "clips": 49,
    "failed": 11,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
@@ -104,7 +109,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 269,
+   "clips": 305,
    "failed": 0,
    "sample": []
   },
@@ -119,7 +124,7 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 373,
+   "clips": 432,
    "failed": 0,
    "sample": []
   },
