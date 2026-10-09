@@ -516,6 +516,24 @@ def release_date(x, arr):
         r = ref
     return "%d %s %d" % (r.day, MONTHS[r.month - 1].title(), r.year)
 
+def recent_avoid(history, n=3):
+    """background engines and cover transformations of the last reels, so the next one looks different"""
+    out = set()
+    looks = []
+    for e in history:
+        r = e.get("reel") or {}
+        if r.get("look"):
+            looks.append(r["look"])
+        looks += e.get("looks") or []
+        if len(looks) >= n * 2:
+            break
+    for lk in looks[: n * 2]:
+        m = re.search(r"background ([a-z]+)", lk)
+        if m: out.add("bg:" + m.group(1))
+        m = re.search(r"melt: ([a-z]+)", lk)
+        if m: out.add("fx:" + m.group(1))
+    return out
+
 def look_seed(*parts):
     return int(hashlib.md5("|".join(parts).encode("utf-8")).hexdigest()[:8], 16)
 
@@ -581,7 +599,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 10   # bump to re-render today's reel after a design change
+REEL_V = 12   # bump to re-render today's reel after a design change
 DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
@@ -842,7 +860,10 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     rname = "reel-%s.mp4" % ymd
     rpath = os.path.join(a.work, rname)
     rposter = os.path.join(a.work, "reel-%s.jpg" % ymd)
-    look = reelfx.reel_single(reel_rel(R, rc["cover"]), aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter)
+    avoid = recent_avoid(history)
+    log("avoid (recent looks):", sorted(avoid))
+    look = reelfx.reel_single(reel_rel(R, rc["cover"]), aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter,
+                              avoid=avoid, cmode=getattr(a, "want_fx", None))
     rcap = reel_caption(R, rc["arr"])
     sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
@@ -868,7 +889,7 @@ def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     if prev:
         tried.add(prev)
     keep["reel_tried"] = sorted(tried)
-    rel = make_reel(a, cands, fx, set(keep.get("keys", [])) | tried, fams, history, date_s, ymd, base)
+    rel = make_reel(a, cands, fx, set(keep.get("keys", [])) | tried, fams, [keep] + history, date_s, ymd, base)
     video = keep.get("video", "")
     fname = video.rsplit("/", 1)[-1]
     items = "".join("<li><b>%s</b> <span class=\"m\">(%s)</span></li>" % (html.escape(t), html.escape(s_))
@@ -895,6 +916,7 @@ def main():
     a = ap.parse_args()
     data_day = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))["updated"]
     a.want_fam = reel_request(a.date or data_day).get("family")
+    a.want_fx = reel_request(a.date or data_day).get("fx")
     if a.want_fam:
         log("reel wish:", a.want_fam)
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
@@ -962,7 +984,7 @@ def main():
     seeds = [look_seed(ymd, p["key"], "digs") for p in P]
     offs = [max(0.0, min(p["start"] - 1.0, len(p["audio"]) / SR - 15.5)) for p in P]
     looks, _ = reelfx.reel_triple([reel_rel(p, p["cover"]) for p in P], [p["audio"] for p in P], offs, seeds,
-                                  vpath, poster)
+                                  vpath, poster, avoid=recent_avoid(history))
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
     cap = caption(P, date_s)
     nonstrict = [p for p in P if not p["strict"]]

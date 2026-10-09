@@ -9,6 +9,9 @@ filters, audio reaction), so no two reels look the same.
 """
 import math, os, subprocess, sys, json, random
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import metamorph
+
 def log(*a):
     print(*a, file=sys.stderr, flush=True)
 import numpy as np, cv2
@@ -434,14 +437,16 @@ class CoverFX:
     then stronger. Four characters: dissolve (drifts completely into the background), swing (just sways along),
     illusion (optical illusion), glitch (interference)."""
     MODES = ["dissolve", "swing", "illusion", "glitch"]
+    ALL = MODES + list(metamorph.FX)              # + freeze, pixelate, shatter, flow, particles, coexist, adapt, symbiosis, one
 
     def __init__(self, seed, dur, mode=None):
         rng = np.random.default_rng(seed + 77)
         self.mode = mode or str(rng.choice(self.MODES, p=[.27, .28, .25, .2]))
         self.dur, self.seed = dur, seed
         self.pw = rng.uniform(1.8, 2.8)                    # slow start, then stronger
-        self.emax = {"dissolve": rng.uniform(.95, 1.3), "swing": rng.uniform(.55, .8),
-                     "illusion": rng.uniform(.75, 1.0), "glitch": rng.uniform(.7, 1.0)}[self.mode]
+        em = {"dissolve": (.95, 1.3), "swing": (.55, .8), "illusion": (.75, 1.0), "glitch": (.7, 1.0)}
+        em.update(metamorph.EMAX)
+        self.emax = rng.uniform(*em[self.mode])
         self.tex = noise_tex(rng, n=256, blur=14)
         self.stripes = str(rng.choice(["rings", "diagonal", "vertical"]))
         self.sfreq = rng.uniform(10, 22)
@@ -460,6 +465,8 @@ class CoverFX:
         e = self.amount(t)
         if e <= 1e-3:
             return cov
+        if self.mode in metamorph.FX:
+            return metamorph.FX[self.mode](self, cov, bg, t, e, kick, frame)
         return getattr(self, "_" + self.mode)(cov, bg, t, e, kick, frame)
 
     def _dissolve(self, cov, bg, t, e, kick, frame):
@@ -577,14 +584,14 @@ def prep_cover(im):
     im = im.convert("RGB")
     return im, np.asarray(im.resize((COV_S, COV_S), Image.LANCZOS))
 
-def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None):
+def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None):
     dur = 20
     nfr = dur * FPS
     aud = aud[:dur * SR]
     lev, kick = analyse(aud, nfr)
     im, cov = prep_cover(rel["cover"])
     import coverlife
-    look = coverlife.make_look(im, seed)
+    look = coverlife.make_look(im, seed, avoid=avoid)
     cfx = CoverFX(seed, dur, mode=cmode or look.cfx_mode)
     log("Sorte 1 look:", look.describe())
     txl = text_layer(rel)
@@ -600,7 +607,7 @@ def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None):
     encode(fr, nfr, aud, out, poster, int(1.2 * FPS))
     return look.describe()
 
-def reel_triple(rels, auds, offs, seeds, out, poster, seg=15.0, xf=2.0, kws=None, cmodes=None):
+def reel_triple(rels, auds, offs, seeds, out, poster, seg=15.0, xf=2.0, kws=None, cmodes=None, avoid=None):
     """offs: start second inside each preview"""
     starts = [i * (seg - xf) for i in range(len(rels))]
     dur = starts[-1] + seg
@@ -627,7 +634,10 @@ def reel_triple(rels, auds, offs, seeds, out, poster, seg=15.0, xf=2.0, kws=None
         im, cov = prep_cover(r["cover"])
         covs.append(cov)
         import coverlife
-        recs.append(coverlife.make_look(im, seeds[i]))
+        av = set(avoid or ())
+        for r_ in recs:                                   # the three releases get three different looks
+            av |= {"bg:" + r_.bg.name.split("(")[0], "fx:" + r_.cfx_mode}
+        recs.append(coverlife.make_look(im, seeds[i], avoid=av))
         cfxs.append(CoverFX(seeds[i], seg, mode=(cmodes or [None] * 3)[i] or recs[-1].cfx_mode))
         txls.append(text_layer(r))
         log("Sorte 2 track %d look:" % (i + 1), recs[-1].describe())

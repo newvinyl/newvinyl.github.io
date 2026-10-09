@@ -451,35 +451,41 @@ class Life:
         return (np.clip(o, 0, 1) * 255).astype(np.uint8)
 
 # ------------------------------------------------------------------ the whole look
-CFX = {"photo": [("dissolve", .45), ("swing", .4), ("glitch", .15)],
-       "graphic": [("illusion", .35), ("glitch", .3), ("swing", .35)],
-       "geometric": [("illusion", .6), ("swing", .25), ("glitch", .15)],
-       "painterly": [("dissolve", .55), ("swing", .45)],
-       "organic": [("dissolve", .5), ("swing", .4), ("illusion", .1)],
-       "dark": [("dissolve", .4), ("glitch", .35), ("swing", .25)],
-       "record": [("illusion", .45), ("swing", .35), ("glitch", .2)]}
+CFX = {
+    "photo":     [("dissolve", .15), ("swing", .1), ("glitch", .05), ("freeze", .1), ("particles", .15), ("coexist", .1), ("adapt", .1), ("one", .15), ("pixelate", .1), ("descend", .12), ("dive", .12)],
+    "graphic":   [("illusion", .15), ("glitch", .1), ("swing", .1), ("pixelate", .2), ("shatter", .15), ("adapt", .1), ("coexist", .1), ("symbiosis", .1), ("dive", .12), ("descend", .1)],
+    "geometric": [("illusion", .25), ("shatter", .25), ("pixelate", .2), ("glitch", .1), ("coexist", .1), ("adapt", .1), ("dive", .15)],
+    "painterly": [("dissolve", .2), ("swing", .1), ("flow", .25), ("symbiosis", .15), ("one", .15), ("adapt", .15), ("dive", .15), ("descend", .1)],
+    "organic":   [("dissolve", .15), ("swing", .1), ("symbiosis", .25), ("flow", .15), ("particles", .15), ("one", .1), ("freeze", .1), ("dive", .2), ("descend", .1)],
+    "dark":      [("dissolve", .15), ("glitch", .15), ("particles", .2), ("freeze", .15), ("coexist", .15), ("one", .1), ("pixelate", .1), ("descend", .12), ("dive", .1)],
+    "record":    [("illusion", .2), ("swing", .1), ("glitch", .1), ("shatter", .2), ("pixelate", .15), ("coexist", .1), ("freeze", .15), ("dive", .12)],
+}
 
-def wchoice(rng, items):
-    names, w = zip(*items)
+def wchoice(rng, items, avoid=()):
+    """weighted choice; things in avoid (recently used) only if nothing else is left"""
+    fresh = [x for x in items if x[0] not in avoid]
+    names, w = zip(*(fresh or items))
     w = np.array(w, np.float64)
     return names[int(rng.choice(len(names), p=w / w.sum()))]
 
 class Look:
-    def __init__(self, im, seed, style=None):
+    def __init__(self, im, seed, style=None, avoid=None):
+        avoid = set(avoid or ())
         rng = np.random.default_rng(seed)
         im = im.convert("RGB")
         self.f, a = analyse(im)
         self.style = style or pick_style(self.f, rng)
         src = np.asarray(im.resize((SRC, SRC), Image.LANCZOS)).astype(np.float32) / 255
-        self.bg = make_bg(wchoice(rng, ENGINES[self.style]), src, self.f, rng, im)
+        bga = {a[3:] for a in avoid if a.startswith("bg:")}
+        self.bg = make_bg(wchoice(rng, ENGINES[self.style], {b for b, _ in ENGINES[self.style] if b.split("-")[0] in bga}), src, self.f, rng, im)
         self.life = Life(im, self.f, a, self.style, rng)
-        self.cfx_mode = wchoice(rng, CFX[self.style])
+        self.cfx_mode = wchoice(rng, CFX[self.style], {a[3:] for a in avoid if a.startswith("fx:")})
 
     def describe(self):
         return "%s cover · background %s · alive: %s · melt: %s" % (self.style, self.bg.name, self.life.describe(), self.cfx_mode)
 
-def make_look(im, seed, style=None):
-    return Look(im, seed, style)
+def make_look(im, seed, style=None, avoid=None):
+    return Look(im, seed, style, avoid)
 
 # ------------------------------------------------------------------ choosing the best cover version
 def autocrop(im):
