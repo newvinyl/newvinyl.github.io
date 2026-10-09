@@ -2,7 +2,8 @@
 """Today's Digs + Reel – picks 3 new releases from releases.json for the feed video
 ("Sorte 2": 3 x 15 s previews with crossfades, 41 s) and one other release for a 20 s Reel
 ("Sorte 1"), renders both (1080x1920, H.264/AAC) with tools/reelfx.py (full-width cover,
-living psychedelic or dreamy background from the cover colours, cover slowly melting into it)
+background built from the cover itself – its structure, colours, geometry and style – details of the
+cover slowly coming to life, then the cover melting into the background; see tools/coverlife.py)
 and writes the hidden page /92h6fy/ with both videos and captions.
 
 Rules (from the user):
@@ -566,8 +567,8 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 5   # bump to re-render today's reel after a design change
-DIGS_V = 2   # bump to re-render today's digs video after a design change
+REEL_V = 6   # bump to re-render today's reel after a design change
+DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
 SCHEMES = {
@@ -916,12 +917,9 @@ def main():
     vpath = os.path.join(a.work, fname)
     poster = os.path.join(a.work, "todays-digs-%s.jpg" % ymd)
     seeds = [look_seed(ymd, p["key"], "digs") for p in P]
-    import random
-    rnd = random.Random(seeds[0])
-    cmodes = rnd.sample(reelfx.CoverFX.MODES, 3)          # three different cover characters
     offs = [max(0.0, min(p["start"] - 1.0, len(p["audio"]) / SR - 15.5)) for p in P]
     looks, _ = reelfx.reel_triple([reel_rel(p, p["cover"]) for p in P], [p["audio"] for p in P], offs, seeds,
-                                  vpath, poster, cmodes=cmodes)
+                                  vpath, poster)
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
     cap = caption(P, date_s)
     nonstrict = [p for p in P if not p["strict"]]

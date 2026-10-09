@@ -583,21 +583,22 @@ def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None):
     aud = aud[:dur * SR]
     lev, kick = analyse(aud, nfr)
     im, cov = prep_cover(rel["cover"])
-    rec = Recipe(im, seed, **(kw or {}))
-    cfx = CoverFX(seed, dur, mode=cmode)
-    log("Sorte 1 recipe:", rec.describe(), "| cover:", cfx.mode)
+    import coverlife
+    look = coverlife.make_look(im, seed)
+    cfx = CoverFX(seed, dur, mode=cmode or look.cfx_mode)
+    log("Sorte 1 look:", look.describe())
     txl = text_layer(rel)
     trk_y = None
     def fr(f):
         t = f / FPS
         A = {"lev": lev[f], "kick": kick[f]}
-        img = upscale(rec.frame(t, A))
+        img = upscale(look.bg.frame(t, A))
         reg = img[COV_Y:COV_Y + COV_S]
-        img[COV_Y:COV_Y + COV_S] = cfx.apply(cover_frame(cov, t, dur, kick[f]), reg, t, kick[f], f)
+        img[COV_Y:COV_Y + COV_S] = cfx.apply(look.life.apply(cover_frame(cov, t, dur, kick[f]), t, A), reg, t, kick[f], f)
         img = comp(img, txl)
         return fades(img, t, dur)
     encode(fr, nfr, aud, out, poster, int(1.2 * FPS))
-    return rec.describe() + " | cover: " + cfx.mode
+    return look.describe()
 
 def reel_triple(rels, auds, offs, seeds, out, poster, seg=15.0, xf=2.0, kws=None, cmodes=None):
     """offs: start second inside each preview"""
@@ -625,10 +626,11 @@ def reel_triple(rels, auds, offs, seeds, out, poster, seg=15.0, xf=2.0, kws=None
     for i, r in enumerate(rels):
         im, cov = prep_cover(r["cover"])
         covs.append(cov)
-        recs.append(Recipe(im, seeds[i], **((kws or [{}] * 3)[i])))
-        cfxs.append(CoverFX(seeds[i], seg, mode=(cmodes or [None] * 3)[i]))
+        import coverlife
+        recs.append(coverlife.make_look(im, seeds[i]))
+        cfxs.append(CoverFX(seeds[i], seg, mode=(cmodes or [None] * 3)[i] or recs[-1].cfx_mode))
         txls.append(text_layer(r))
-        log("Sorte 2 track %d recipe:" % (i + 1), recs[-1].describe(), "| cover:", cfxs[-1].mode)
+        log("Sorte 2 track %d look:" % (i + 1), recs[-1].describe())
     def fr(f):
         t = f / FPS
         A = {"lev": lev[f], "kick": kick[f]}
@@ -638,22 +640,23 @@ def reel_triple(rels, auds, offs, seeds, out, poster, seg=15.0, xf=2.0, kws=None
         if i > 0 and t < starts[i] + xf / 2:
             i, nxt = i - 1, i
         if nxt is None:
-            bg = recs[i].frame(t, A)
-            img = upscale(bg)
+            img = upscale(recs[i].bg.frame(t, A))
             reg = img[COV_Y:COV_Y + COV_S]
-            img[COV_Y:COV_Y + COV_S] = cfxs[i].apply(cover_frame(covs[i], t - starts[i], seg, kick[f]), reg, t - starts[i], kick[f], f)
+            cv_ = recs[i].life.apply(cover_frame(covs[i], t - starts[i], seg, kick[f]), t - starts[i], A)
+            img[COV_Y:COV_Y + COV_S] = cfxs[i].apply(cv_, reg, t - starts[i], kick[f], f)
             return fades(comp(img, txls[i]), t, dur)
         c = (t - (starts[nxt] - xf / 2)) / xf          # 0..1 across the crossfade
         a = smooth(c)
-        bg = recs[i].frame(t, A) * (1 - a) + recs[nxt].frame(t, A) * a
+        bg = recs[i].bg.frame(t, A) * (1 - a) + recs[nxt].bg.frame(t, A) * a
         img = upscale(bg)
         m = math.sin(math.pi * c)                       # melt strength peaks mid-transition
         reg = img[COV_Y:COV_Y + COV_S].copy()
-        c1 = melt(cfxs[i].apply(cover_frame(covs[i], t - starts[i], seg, kick[f]), reg, t - starts[i], kick[f], f), m, t).astype(np.float32)
+        cv_ = recs[i].life.apply(cover_frame(covs[i], t - starts[i], seg, kick[f]), t - starts[i], A)
+        c1 = melt(cfxs[i].apply(cv_, reg, t - starts[i], kick[f], f), m, t).astype(np.float32)
         c2 = melt(cover_frame(covs[nxt], t - starts[nxt], seg, kick[f]), m, t + 1).astype(np.float32)
         img[COV_Y:COV_Y + COV_S] = (c1 * (1 - a) + c2 * a).astype(np.uint8)
         img = blend_layer(img, txls[i], max(0, 1 - c * 2))
         img = blend_layer(img, txls[nxt], max(0, c * 2 - 1))
         return fades(img, t, dur)
     encode(fr, nfr, mix, out, poster, int(1.2 * FPS))
-    return [r.describe() + " | cover: " + c.mode for r, c in zip(recs, cfxs)], dur
+    return [r.describe().rsplit(" · melt:", 1)[0] + " · melt: " + c.mode for r, c in zip(recs, cfxs)], dur
