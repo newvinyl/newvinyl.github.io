@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Today's Digs + Reel – picks 3 new releases from releases.json for the feed video
-(1080x1920, 21 s) and one other release for a 20 s Reel, renders both (H.264/AAC)
+("Sorte 2": 3 x 15 s previews with crossfades, 41 s) and one other release for a 20 s Reel
+("Sorte 1"), renders both (1080x1920, H.264/AAC) with tools/reelfx.py (full-width cover,
+living psychedelic or dreamy background from the cover colours, cover slowly melting into it)
 and writes the hidden page /92h6fy/ with both videos and captions.
 
 Rules (from the user):
@@ -15,8 +17,11 @@ Outputs: <WORK>/digs_<yymmdd>.mp4 + poster jpg, 92h6fy/index.html, caption.txt,
 history.json. Uploading the video is done by the workflow.
 """
 import argparse, datetime as dt, html, io, itertools, json, math, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
+import hashlib
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import reelfx
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SLUG = "92h6fy"
@@ -130,7 +135,7 @@ def candidates(data, day, seen):
     G = {}
     for s in data["shops"]:
         for it in s.get("items") or []:
-            x = dict(it, shop=s["shop"], cur=s.get("cur", "€"))
+            x = dict(it, shop=s["shop"], cur=s.get("cur", "€"), country=s.get("country", ""))
             G.setdefault(gkey(it), []).append(x)
     cands = []
     for k, arr in G.items():
@@ -453,6 +458,57 @@ def render_video(picks, date_s, mix, path, poster):
 def price_s(x):
     return "%s%.2f" % (x["cur"], x["p"]) if x.get("p") is not None else None
 
+MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+
+def parse_d(d, ref):
+    """Shop release-date text -> date, or None (week numbers, 'out now' etc.)."""
+    d = (d or "").strip().lower()
+    if not d:
+        return None
+    m = re.search(r"(20\d\d)-(\d\d)-(\d\d)", d)
+    if m:
+        return dt.date(int(m[1]), int(m[2]), int(m[3]))
+    m = re.search(r"\b(\d{1,2})\.(\d{1,2})\.(\d{2,4})\b", d)
+    if m:
+        y = int(m[3]); y = y + 2000 if y < 100 else y
+        return dt.date(y, int(m[2]), int(m[1]))
+    m = re.search(r"\b([a-z]{3})[a-z]*\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(20\d\d)", d) or \
+        re.search(r"\b(\d{1,2})(?:st|nd|rd|th)?\s+([a-z]{3})[a-z]*\.?(?:\s+(20\d\d))?", d)
+    if m:
+        g = m.groups()
+        if g[0].isdigit():
+            day_, mon, yr = int(g[0]), g[1], g[2]
+        else:
+            mon, day_, yr = g[0], int(g[1]), g[2]
+        if mon not in MONTHS:
+            return None
+        mo = MONTHS.index(mon) + 1
+        y = int(yr) if yr else ref.year + (1 if mo < ref.month - 6 else 0)
+        try:
+            return dt.date(y, mo, day_)
+        except ValueError:
+            return None
+    return None
+
+def release_date(x, arr):
+    """Release date for the reel (green line): shop date if readable, else the day it first appeared."""
+    ref = dt.date.fromisoformat(x.get("first_seen") or dt.date.today().isoformat())
+    for y in [x] + arr:
+        r = parse_d(y.get("d"), ref)
+        if r:
+            break
+    else:
+        r = ref
+    return "%d %s %d" % (r.day, MONTHS[r.month - 1].title(), r.year)
+
+def look_seed(*parts):
+    return int(hashlib.md5("|".join(parts).encode("utf-8")).hexdigest()[:8], 16)
+
+def reel_rel(p, cover):
+    """data for the reel text layer (website look)"""
+    return {"shop": p["shop_full"], "cc": p["cc"], "a": p["a"], "track": p["tname"], "date": p["rdate"],
+            "label": " · ".join(v for v in [p["l"], p["cat"]] if v) or p["shop_full"], "cover": cover}
+
 def prepare(c, fx):
     x, arr = c["feat"], c["arr"]
     meta_src = next((y for y in [x] + arr if y.get("l")), x)
@@ -470,7 +526,8 @@ def prepare(c, fx):
     rows.sort()
     tr = c["track"]
     tname = tr["n"] if tr["named"] else x["t"]
-    return {"key": c["key"], "a": x["a"], "t": x["t"], "l": meta_src.get("l") or "", "genre": genre_label(x.get("g")),
+    return {"tname": tname, "cat": cat, "shop_full": x["shop"], "cc": x.get("country") or "",
+            "rdate": release_date(x, arr), "key": c["key"], "a": x["a"], "t": x["t"], "l": meta_src.get("l") or "", "genre": genre_label(x.get("g")),
             "gfull": x.get("g") or "", "meta": meta, "prices": [(r[1], r[2]) for r in rows],
             "shop": short(x["shop"]), "shop_price": price_s(x), "url": x.get("url"),
             "track": tname + " (preview)", "strict": c["strict"]}
@@ -509,7 +566,8 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 4   # bump to re-render today's reel after a design change
+REEL_V = 5   # bump to re-render today's reel after a design change
+DIGS_V = 2   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
 SCHEMES = {
@@ -745,26 +803,19 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
         return None
     import random
     R = prepare(rc, fx)
-    R["kicker"] = "NEW IN THE SHOPS" if R["strict"] else "FRESH IN THE SHOPS"
-    R["cov880"] = rc["cover"].resize((880, 880), Image.LANCZOS)
-    last = next((e.get("reel", {}).get("scheme") for e in history if e.get("reel", {}).get("scheme")), None)
-    R["scheme"] = pick_scheme(last)
-    n_sh = len(R["prices"])
-    R["shops_line"] = ("%d shops · from %s" % (n_sh, R["prices"][0][1])) if n_sh > 1 else \
-                      ("%s · %s" % (R["shop"], R["shop_price"]) if R["shop_price"] else "at %s" % R["shop"])
     start, _ = pick_start(rc["audio"])
     aud = reel_mix(rc["audio"], max(0.0, start - 1.0))
     rname = "reel-%s.mp4" % ymd
     rpath = os.path.join(a.work, rname)
     rposter = os.path.join(a.work, "reel-%s.jpg" % ymd)
-    render_reel(R, date_s, aud, rpath, rposter)
+    look = reelfx.reel_single(reel_rel(R, rc["cover"]), aud, look_seed(ymd, R["key"], "reel"), rpath, rposter)
     rcap = reel_caption(R, rc["arr"])
-    sec = section("reel", "Reel · one release", "20 s · post as a Reel · colours %s" % R["scheme"], base + rname,
+    sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
                   "" if R["strict"] else "Note: already listed in another shop before yesterday.")
-    log("reel", R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", R["scheme"])
+    log("reel", R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", look)
     return {"files": [rpath, rposter], "cap": rcap, "section": sec,
-            "entry": {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "scheme": R["scheme"], "v": REEL_V}}
+            "entry": {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "look": look, "v": REEL_V}}
 
 def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
@@ -782,7 +833,7 @@ def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     fname = video.rsplit("/", 1)[-1]
     items = "".join("<li><b>%s</b> <span class=\"m\">(%s)</span></li>" % (html.escape(t), html.escape(s_))
                     for t, s_ in zip(keep.get("titles", []), keep.get("shops", [])))
-    digs_sec = section("digs", "Today's Digs · post video", "3 releases · 21 s · post in the feed", video,
+    digs_sec = section("digs", "Today's Digs · post video", "3 releases · 3 × 15 s · post in the feed", video,
                        video.replace(".mp4", ".jpg"), fname, cap, [], "").replace("<ol></ol>", "<ol>%s</ol>" % items).replace("<h2>Release</h2>", "<h2>Releases</h2>")
     sections, caps, files = [digs_sec], [cap], []
     if rel:
@@ -808,12 +859,14 @@ def main():
     ymd = day.replace("-", "")[2:]
     hist_p = os.path.join(OUT, "history.json")
     history = json.load(open(hist_p, encoding="utf-8")) if os.path.exists(hist_p) else []
-    if not a.force and history and history[0]["date"] == day and (history[0].get("reel") or {}).get("v") == REEL_V:
+    if not a.force and history and history[0]["date"] == day and (history[0].get("reel") or {}).get("v") == REEL_V \
+            and history[0].get("dv") == DIGS_V:
         log("digs + reel for", day, "already done")
         print(json.dumps({"skip": True}))
         return
     keep = None
-    if not a.force and history and history[0]["date"] == day and (history[0].get("reel") or {}).get("v") != REEL_V:
+    if not a.force and history and history[0]["date"] == day and history[0].get("dv") == DIGS_V \
+            and (history[0].get("reel") or {}).get("v") != REEL_V:
         keep = history[0]          # digs done earlier today: keep exactly that video, add the reel only
     history = [e for e in history if e["date"] != day]
     seen = load_seen(skip_day=day)
@@ -856,24 +909,28 @@ def main():
         p = prepare(c, fx)
         p["audio"] = c["audio"]
         p["start"], _ = pick_start(c["audio"])
-        p["cov700"] = c["cover"].resize((700, 700), Image.LANCZOS)
-        p["thumb"] = c["cover"].resize((290, 290), Image.LANCZOS)
+        p["cover"] = c["cover"]
         P.append(p)
         log("pick", p["shop"], "|", p["a"], "–", p["t"], "|", p["genre"], "| start %.1fs" % p["start"], "| strict" if p["strict"] else "| newly listed at shop")
-    mix = build_mix(P)
     fname = "todays-digs-%s.mp4" % ymd
     vpath = os.path.join(a.work, fname)
     poster = os.path.join(a.work, "todays-digs-%s.jpg" % ymd)
-    render_video(P, date_s, mix, vpath, poster)
+    seeds = [look_seed(ymd, p["key"], "digs") for p in P]
+    import random
+    rnd = random.Random(seeds[0])
+    cmodes = rnd.sample(reelfx.CoverFX.MODES, 3)          # three different cover characters
+    offs = [max(0.0, min(p["start"] - 1.0, len(p["audio"]) / SR - 15.5)) for p in P]
+    looks, _ = reelfx.reel_triple([reel_rel(p, p["cover"]) for p in P], [p["audio"] for p in P], offs, seeds,
+                                  vpath, poster, cmodes=cmodes)
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
     cap = caption(P, date_s)
     nonstrict = [p for p in P if not p["strict"]]
     note = ("Note: %s was already listed in another shop before yesterday (new at %s today)." %
             (", ".join("%s – %s" % (p["a"], p["t"]) for p in nonstrict), ", ".join(p["shop"] for p in nonstrict))) if nonstrict else ""
     entry = {"date": day, "keys": [p["key"] for p in P], "titles": ["%s – %s" % (p["a"], p["t"]) for p in P],
-             "shops": [p["shop"] for p in P], "video": base + fname}
+             "shops": [p["shop"] for p in P], "video": base + fname, "looks": looks, "dv": DIGS_V}
     files = [vpath, poster]
-    sections = [section("digs", "Today's Digs · post video", "3 releases · 21 s · post in the feed", base + fname,
+    sections = [section("digs", "Today's Digs · post video", "3 releases · 3 × 15 s · post in the feed", base + fname,
                         base + os.path.basename(poster), fname, cap, P, note)]
     caps = [cap]
     # Reel: one other release, 20 s
