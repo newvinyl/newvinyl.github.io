@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="robots" content="index,follow">
+<meta name="description" content="About Monthly Vinyl: new electronic vinyl from independent record shops, every morning. For shops, contact and privacy.">
+<link rel="canonical" href="https://monthlyvinyl.net/about/">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="56d072fe-6ab0-4180-9a6f-e9926985275c" data-domains="monthlyvinyl.net"></script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30.5' fill='%230d0d0d' stroke='%23ffffff' stroke-width='3'/%3E%3Cg fill='none' stroke='%233a3a3a' stroke-width='1.2'%3E%3Ccircle cx='32' cy='32' r='25'/%3E%3Ccircle cx='32' cy='32' r='21.5'/%3E%3Ccircle cx='32' cy='32' r='18'/%3E%3C/g%3E%3Cpath d='M14 20a22 22 0 0 1 10-8' fill='none' stroke='%23ffffff' stroke-opacity='.55' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%2393a8ff'/%3E%3Ccircle cx='32' cy='32' r='2.6' fill='%230d0d0d'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>About · Monthly Vinyl</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: nur Cover-Raster. Handy 1 Spalte, Tablet 2, Desktop 3–4. Rückseite per «More». */
+:root{
+  --bg:#0d0d0d; --deep:#1a1a1a; --fg:#ecebe7; --muted:#a0a4a9; --line:#3c4046;
+  --neon:#39ff14; --pink:#ff2bd6; --yellow:#fbed4f; --white:#ffffff; --ink:#0d0d0d;
+  --display:"Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+  --body:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
+body{padding:0 16px calc(96px + env(safe-area-inset-bottom,0px))}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin:0 -16px;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;background:var(--bg);border-bottom:2px solid var(--white)}
+.logo{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.01em;text-decoration:none;color:var(--yellow);text-transform:uppercase}
+.bagtop{all:unset;cursor:pointer;position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:2px solid var(--white);background:var(--ink)}
+.bagtop svg{width:22px;height:22px}
+.bagtop b{position:absolute;top:-8px;right:-8px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--pink);color:var(--ink);font:700 12px/20px var(--mono);text-align:center}
+.bagtop b:empty{display:none}
+.bagtop.pop{animation:pop .35s ease}
+@keyframes pop{40%{transform:scale(1.18)}}
+
+.day{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:22px 0 12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.day b{font-family:var(--display);font-size:22px;letter-spacing:0;text-transform:none;color:var(--neon)}
+
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media (min-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1400px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.card{position:relative;aspect-ratio:1/1;max-width:100%;perspective:1400px}
+.flip{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.7,.2,1)}
+.card.back .flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.front{background:var(--deep);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.front img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.ph span{width:62%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font:500 13px/1.3 var(--mono);color:var(--ink)}
+.card.playing .front{outline:4px solid var(--neon);outline-offset:-4px}
+
+.play{all:unset;cursor:pointer;position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;
+  background:var(--white);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .15s}
+.play:active{transform:scale(.92)}
+.play svg{width:30px;height:30px}
+.play .ps{display:none}
+.card.playing .play{background:var(--neon)}
+.card.playing .play .pl{display:none}
+.card.playing .play .ps{display:block}
+.play:focus-visible,.more:focus-visible,.add:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+.add{all:unset;cursor:pointer;position:absolute;left:12px;bottom:12px;height:40px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;
+  background:var(--ink);color:var(--white);border:2px solid var(--white);font:700 14px/1 var(--display)}
+.add svg{width:15px;height:15px}
+.add.in{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.more{all:unset;cursor:pointer;position:absolute;right:12px;bottom:12px;height:40px;padding:0 13px;display:inline-flex;align-items:center;
+  background:var(--ink);color:var(--white);border:2px solid var(--white);font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--neon)}
+
+.backf{transform:rotateY(180deg);background:var(--ink);border:2px solid var(--white);padding:16px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.backf .ar{font:800 23px/1.08 var(--display);text-wrap:balance}
+.backf .ti{font:400 17px/1.25 var(--body)}
+.backf .me{font:400 12px/1.6 var(--mono);color:var(--muted)}
+.backf ol{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;flex:1 1 auto;min-height:0;overflow:auto}
+.backf li button{all:unset;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:32px;width:100%;font-size:14px}
+.backf li .s{font:400 11px var(--mono);color:var(--muted);width:24px;flex:none}
+.backf li.on button{color:var(--neon)}
+.backf .pr{flex:none;padding-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.backf .price{font:800 30px/1 var(--display);font-variant-numeric:tabular-nums}
+.backf .price small{font-size:.5em;vertical-align:.6em;margin-right:2px}
+.backf .shop{font:400 12px/1.4 var(--mono);color:var(--muted);text-align:right}
+.backf .ctl{flex:none;display:flex;justify-content:space-between;gap:10px;padding-top:12px}
+.backf .ctl .add,.backf .ctl .more{position:static}
+.backf .buy{color:var(--yellow);font-weight:700;font-size:14px;text-underline-offset:3px}
+
+.mini{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:var(--deep);border-top:2px solid var(--white)}
+.mini.on{display:flex}
+.mini .mt{flex:1;min-width:0}
+.mini .mt b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .mt span{display:block;font:400 11.5px var(--mono);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .madd{all:unset;cursor:pointer;white-space:nowrap;flex:none;height:44px;padding:0 16px;display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:var(--ink);font:800 15px/1 var(--display)}
+.mini .madd svg{width:15px;height:15px}
+.mini .madd.in{background:var(--ink);color:var(--pink);box-shadow:inset 0 0 0 2px var(--pink)}
+.mini .mnx{all:unset;cursor:pointer;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--white);border-radius:50%}
+.mini .mnx svg{width:18px;height:18px}
+
+.hicons{display:flex;align-items:center;gap:8px}
+.hic{all:unset;cursor:pointer;width:40px;height:44px;display:inline-flex;align-items:center;justify-content:center;color:var(--white)}
+.hic svg{width:22px;height:22px}
+.hic[aria-expanded="true"]{color:var(--pink)}
+.top{flex-wrap:wrap}
+.srow{flex-basis:100%;display:flex;gap:8px}
+.srow input{flex:1;min-width:0;font:inherit;font-size:16px;padding:10px 12px;background:var(--deep);color:var(--fg);border:2px solid var(--white);border-radius:0;-webkit-appearance:none}
+.srow input::placeholder{color:var(--pink)}
+.srow input:focus{outline:none;border-color:var(--pink)}
+.srow .sx{all:unset;cursor:pointer;width:44px;display:inline-flex;align-items:center;justify-content:center;font-size:24px;border:2px solid var(--white)}
+.ffab{all:unset;cursor:pointer;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;height:38px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;
+  background:rgba(13,13,13,.82);color:var(--white);border:1.5px solid var(--line);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ffab svg{width:14px;height:14px}
+.ffab.act{border-color:var(--yellow);color:var(--yellow)}
+body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.sheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
+.spanel{width:100%;max-width:560px;max-height:85vh;overflow:auto;background:var(--bg);border-top:2px solid var(--white);padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+.shd{display:flex;justify-content:space-between;align-items:center}
+.shd b{font:800 22px var(--display)}
+.sreset{all:unset;cursor:pointer;font:500 13px var(--mono);color:var(--muted);text-decoration:underline;padding:8px 0}
+.slab{margin:16px 0 8px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;cursor:pointer;min-height:40px;padding:0 13px;display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);font-size:14.5px}
+.chip small{font:400 11px var(--mono);color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.chip[aria-pressed="true"] small{color:var(--ink)}
+.sdone{all:unset;cursor:pointer;display:flex;justify-content:center;align-items:center;width:100%;box-sizing:border-box;min-height:52px;margin-top:20px;background:var(--white);color:var(--ink);font:800 16px var(--display)}
+.empty{padding:30px 0;color:var(--muted)}
+.foot{margin:46px 0 0;padding-top:18px;border-top:2px solid var(--white);display:flex;flex-direction:column;gap:10px;max-width:70ch;font-size:13px;line-height:1.55;color:var(--muted)}
+.foot p{margin:0}
+.flinks{display:flex;flex-wrap:wrap;gap:8px 18px}
+.flinks a{color:var(--fg);font-weight:700;text-underline-offset:3px}
+.fgenres{margin:0}.fgenres a{color:var(--muted)}
+.seo summary{cursor:pointer;color:var(--muted)}
+.seo .static{font-size:12px}
+.seo .static h2{font-size:15px;color:var(--fg)}
+.seo .static ul{padding-left:18px}
+.seo .static h3{font-size:13px;margin:8px 0 0;color:var(--fg)}
+.seo .static p{margin:0}
+.card.hit .front{outline:4px solid var(--pink);outline-offset:-4px}
+.note{max-width:62ch;margin:30px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.load{padding:40px 0;font-family:var(--mono);color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.flip{transition:none}.bagtop.pop{animation:none}}
+
+.ab{max-width:62ch;display:flex;flex-direction:column;gap:30px;margin-top:24px;font-size:15px;line-height:1.6}
+.ab h1{margin:0;font:800 34px/1.05 var(--display);color:var(--yellow);text-wrap:balance}
+.ab h2{margin:0 0 6px;font:800 19px var(--display)}
+.ab p{margin:0 0 8px}
+.ab a{color:var(--fg);text-underline-offset:3px}
+.ab .mono{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.ab .btn{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border:2px solid var(--white);font:700 15px var(--display);text-decoration:none}
+.ab .fgenres a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/">Monthly Vinyl</a>
+  <div class="hicons"><a class="hic" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Monthly Vinyl on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a class="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg></a></div>
+</header>
+<main class="ab">
+  <h1>About Monthly Vinyl</h1>
+  <section><p>Every morning this page collects the newest electronic vinyl from independent record shops: house, techno, disco, ambient and everything in between. Listen to the previews, put what you like in your bag, and buy directly at the shop.</p>
+  <p>Not for profit. No ads, no affiliate links, no cookies.</p></section>
+  <section><h2>More to dig</h2><p><a href="/all/">All records with price comparison</a><br><a href="/all/#archiv">Past months</a></p>
+  <p class="fgenres"><p class="fgenres"><b>Browse by genre:</b> <a href="/house/">House</a> · <a href="/deep-house/">Deep House</a> · <a href="/tech-house/">Tech House</a> · <a href="/minimal/">Minimal</a> · <a href="/techno/">Techno</a> · <a href="/dub-techno/">Dub Techno</a> · <a href="/electro/">Electro</a> · <a href="/acid-house/">Acid House</a> · <a href="/balearic/">Balearic</a> · <a href="/ambient/">Ambient</a> · <a href="/disco/">Disco</a> · <a href="/italo-disco/">Italo Disco</a> · <a href="/acid/">Acid</a> · <a href="/acid-techno/">Acid Techno</a> · <a href="/breakbeat/">Breakbeat</a> · <a href="/chicago-house/">Chicago House</a> · <a href="/cosmic/">Cosmic</a> · <a href="/detroit-house/">Detroit House</a> · <a href="/downtempo/">Downtempo</a> · <a href="/electronic/">Electronic</a> · <a href="/minimal-house/">Minimal House</a> · <a href="/minimal-techno/">Minimal Techno</a></p></p></section>
+  <section id="shops"><h2>For record shops</h2>
+  <p>Your shop is not listed? We'd love to include more independent record shops, wherever they are based.</p>
+  <p>What we need: a public new-releases page or a feed that may be read automatically, with cover images and ideally audio previews. Every listing links straight to your product page. We don't sell anything ourselves.</p>
+  <p><b>One-tap checkout:</b> if your shop offers a link that puts several records into the basket at once (for example <code>/cart/add?items=123,456</code>), buyers here can send their whole order to your checkout with a single tap.</p>
+  <a class="btn" data-mail="shop" href="#">Get your shop listed</a></section>
+  <section><h2>Contact · Impressum</h2><p><b>Monthly Vinyl Releases</b><br><a data-mail="hello" href="#">contact-mvr [at] pm.me</a></p>
+  <p>Questions, corrections or a record we missed: write anytime. <a href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener">Instagram</a></p></section>
+  <section><h2>Privacy</h2>
+  <p>Monthly Vinyl Releases is an independent project and is not affiliated with any of the shops listed. Prices, stock and release dates come from the shops' public new-release pages and are updated every morning. They may have changed since; the shop's own page is binding.</p>
+  <p>No account, no cookies. Your bag and settings are stored only in your browser. In your bag you can save a backup link: the data is inside the link, nothing is stored on a server.</p>
+  <p>Covers and audio previews load directly from the shops' servers. Fonts are loaded from Google Fonts.</p>
+  <p>To improve the page, we count visits and clicks anonymously with <a href="https://umami.is" target="_blank" rel="noopener">Umami</a>: no cookies, no IP addresses stored, nothing that identifies you, and no data sold or shared.</p></section>
+</main>
+<script>
+const MAILTO=()=>["contact-mvr","pm.me"].join("@");
+const MAILS={shop:{s:"Shop listing request · Monthly Vinyl Releases",b:"Hi,\n\nwe'd like our shop to be listed on Monthly Vinyl Releases.\n\nShop name:\nCountry / city:\nLink to our new-releases page or feed:\nCover images and audio previews online (yes / no):\nContact person:\n\nThanks!\n"},hello:{s:"Hello · Monthly Vinyl Releases",b:""}};
+document.addEventListener("click",e=>{const m=e.target.closest&&e.target.closest("[data-mail]");if(!m)return;e.preventDefault();const t=MAILS[m.dataset.mail]||MAILS.hello;location.href=`mailto:${MAILTO()}?subject=${encodeURIComponent(t.s)}${t.b?`&body=${encodeURIComponent(t.b)}`:""}`});
+</script>
+</body>
+</html>
