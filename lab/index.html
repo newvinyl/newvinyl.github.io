@@ -19,6 +19,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
 body{padding:0 16px calc(96px + env(safe-area-inset-bottom,0px))}
 a{color:inherit}
@@ -98,6 +99,34 @@ button{font:inherit;color:inherit}
 .mini .mnx{all:unset;cursor:pointer;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--white);border-radius:50%}
 .mini .mnx svg{width:18px;height:18px}
 
+.hicons{display:flex;align-items:center;gap:8px}
+.hic{all:unset;cursor:pointer;width:40px;height:44px;display:inline-flex;align-items:center;justify-content:center;color:var(--white)}
+.hic svg{width:22px;height:22px}
+.hic[aria-expanded="true"]{color:var(--pink)}
+.top{flex-wrap:wrap}
+.srow{flex-basis:100%;display:flex;gap:8px}
+.srow input{flex:1;min-width:0;font:inherit;font-size:16px;padding:10px 12px;background:var(--deep);color:var(--fg);border:2px solid var(--white);border-radius:0;-webkit-appearance:none}
+.srow input::placeholder{color:var(--pink)}
+.srow input:focus{outline:none;border-color:var(--pink)}
+.srow .sx{all:unset;cursor:pointer;width:44px;display:inline-flex;align-items:center;justify-content:center;font-size:24px;border:2px solid var(--white)}
+.ffab{all:unset;cursor:pointer;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;height:38px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;
+  background:rgba(13,13,13,.82);color:var(--white);border:1.5px solid var(--line);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ffab svg{width:14px;height:14px}
+.ffab.act{border-color:var(--yellow);color:var(--yellow)}
+body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.sheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
+.spanel{width:100%;max-width:560px;max-height:85vh;overflow:auto;background:var(--bg);border-top:2px solid var(--white);padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+.shd{display:flex;justify-content:space-between;align-items:center}
+.shd b{font:800 22px var(--display)}
+.sreset{all:unset;cursor:pointer;font:500 13px var(--mono);color:var(--muted);text-decoration:underline;padding:8px 0}
+.slab{margin:16px 0 8px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;cursor:pointer;min-height:40px;padding:0 13px;display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);font-size:14.5px}
+.chip small{font:400 11px var(--mono);color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.chip[aria-pressed="true"] small{color:var(--ink)}
+.sdone{all:unset;cursor:pointer;display:flex;justify-content:center;align-items:center;width:100%;box-sizing:border-box;min-height:52px;margin-top:20px;background:var(--white);color:var(--ink);font:800 16px var(--display)}
+.empty{padding:30px 0;color:var(--muted)}
 .note{max-width:62ch;margin:30px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted)}
 .load{padding:40px 0;font-family:var(--mono);color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.flip{transition:none}.bagtop.pop{animation:none}}
@@ -106,10 +135,20 @@ button{font:inherit;color:inherit}
 <body>
 <header class="top">
   <a class="logo" href="/">Monthly Vinyl</a>
-  <a class="bagtop" id="bagtop" href="/#korb" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a>
+  <div class="hicons">
+  <button class="hic" id="srchbtn" type="button" aria-label="Search" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
+  <a class="hic" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Monthly Vinyl on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a class="bagtop" id="bagtop" href="/#korb" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a></div>
+  <div class="srow" id="srow" hidden><input id="q" type="search" placeholder="Artist, title, label, track…" aria-label="Search records" autocomplete="off"><button class="sx" id="sx" type="button" aria-label="Clear search">×</button></div>
 </header>
 <main id="feed"><p class="load">Loading today's records…</p></main>
 <p class="note">Lab preview: cover and play button only. «More» turns the cover over. Records without a playable preview are left out here. Your bag is the same as on the main page.</p>
+<button class="ffab" id="ffab" type="button" aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 3.5h13M4 8h8M6.5 12.5h3"/></svg><span id="ffl">Filter</span></button>
+<div class="sheet" id="sheet" hidden><div class="spanel" role="dialog" aria-modal="true" aria-labelledby="sht">
+  <div class="shd"><b id="sht">Filter</b><button class="sreset" id="sreset" type="button">Reset</button></div>
+  <p class="slab">Genre</p><div class="chips" id="cg"></div>
+  <p class="slab">Shop</p><div class="chips" id="cs"></div>
+  <button class="sdone" id="sdone" type="button">Show records</button></div></div>
 <div class="mini" id="mini" role="region" aria-label="Now playing">
   <div class="mt"><b id="mtt"></b><span id="mta"></span></div>
   <button class="madd" id="madd" type="button"></button>
@@ -175,7 +214,7 @@ function build(data){
     const g=document.createElement("div");g.className="grid";feed.appendChild(g);
     list.forEach(r=>{const i=RECS.push(r)-1;g.appendChild(card(r,i))});
   });
-  paintBag();bagCount();
+  paintBag();bagCount();applyFilter();
 }
 function card(r,i){
   const m=r.main,el=document.createElement("article");el.className="card";el.dataset.i=i;
@@ -209,6 +248,44 @@ function card(r,i){
   ctl.querySelector(".more").onclick=()=>{el.classList.remove("back");back.setAttribute("aria-hidden","true")};
   return el;
 }
+const GENRES=["House","Deep House","Tech House","Minimal","Techno","Dub Techno","Electro","Acid","Balearic","Ambient","Disco","Italo"];
+const F={g:new Set(),s:new Set(),q:""};
+const gOf=r=>r.all.map(x=>x.g||"").join(" / ").toLowerCase();
+function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();if(g==="House")return /(^|[^a-z])house/.test(t)&&!/^(tech|deep|acid) house$/.test(t);return t.includes(k)}
+function matches(r){
+  if(F.g.size&&![...F.g].some(g=>gMatch(r,g)))return false;
+  if(F.s.size&&!r.all.some(x=>F.s.has(x.S.shop)))return false;
+  if(F.q){const h=fold(r.all.map(x=>[x.a,x.t,x.l,x.cat,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" "));if(!F.q.split(/\s+/).every(w=>h.includes(w)))return false}
+  return true;
+}
+function applyFilter(){
+  let shown=0;
+  document.querySelectorAll(".grid").forEach(g=>{let n=0;g.querySelectorAll(".card").forEach(c=>{const ok=matches(RECS[c.dataset.i]);c.hidden=!ok;if(ok)n++});
+    g.hidden=!n;const h=g.previousElementSibling;h.hidden=!n;h.querySelector("span").textContent=`${n} ${n===1?"record":"records"}`;shown+=n});
+  let e=document.getElementById("empty");if(!shown){if(!e){e=document.createElement("p");e.id="empty";e.className="empty";document.getElementById("feed").appendChild(e)}e.textContent="No records match. Change the filter or search.";e.hidden=false}else if(e)e.hidden=true;
+  const nf=F.g.size+F.s.size,fb=document.getElementById("ffab");fb.classList.toggle("act",!!nf);document.getElementById("ffl").textContent=nf?`Filter · ${nf}`:"Filter";
+  document.getElementById("sdone").textContent=`Show ${shown} ${shown===1?"record":"records"}`;
+}
+function buildChips(){
+  const cnt=(fn)=>RECS.filter(fn).length;
+  const mk=(box,set,vals,test)=>{box.innerHTML="";vals.forEach(v=>{const n=cnt(r=>test(r,v));if(!n)return;const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",set.has(v));b.innerHTML=`${esc(v)} <small>${n}</small>`;
+    b.onclick=()=>{set.has(v)?set.delete(v):set.add(v);b.setAttribute("aria-pressed",set.has(v));applyFilter()};box.appendChild(b)})};
+  mk(document.getElementById("cg"),F.g,GENRES,gMatch);
+  const shops=[...new Set(RECS.flatMap(r=>r.all.map(x=>x.S.shop)))].sort();
+  mk(document.getElementById("cs"),F.s,shops,(r,v)=>r.all.some(x=>x.S.shop===v));
+}
+const sheet=document.getElementById("sheet");
+const openSheet=()=>{buildChips();applyFilter();sheet.hidden=false;document.getElementById("sdone").focus()};
+const closeSheet=()=>{sheet.hidden=true;document.getElementById("ffab").focus()};
+document.getElementById("ffab").onclick=openSheet;
+document.getElementById("sdone").onclick=()=>{closeSheet();const f=document.querySelector(".day:not([hidden])");if(f)window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-80),behavior:"smooth"})};
+document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();buildChips();applyFilter()};
+sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
+const sb=document.getElementById("srchbtn"),srow=document.getElementById("srow"),q=document.getElementById("q");
+sb.onclick=()=>{const open=srow.hidden;srow.hidden=!open;sb.setAttribute("aria-expanded",open);if(open)q.focus();else{q.value="";F.q="";applyFilter()}};
+q.oninput=()=>{F.q=fold(q.value.trim());applyFilter()};
+document.getElementById("sx").onclick=()=>{q.value="";F.q="";applyFilter();q.focus()};
 function play(i,t){
   const r=RECS[i];if(!r)return;
   cur=i;trackIdx=t;au.src=r.tracks[t].u;au.play().catch(()=>{});
@@ -216,7 +293,7 @@ function play(i,t){
   document.querySelectorAll(".bar").forEach(b=>b.style.width="0");
   document.getElementById("mtt").textContent=`${r.main.a} – ${r.main.t}`;
   document.getElementById("mta").textContent=`${r.tracks[t].s?r.tracks[t].s+" · ":""}${r.tracks[t].n||"Preview"} · ${r.main.S.shop}`;
-  document.getElementById("mini").classList.add("on");paintBag();
+  document.getElementById("mini").classList.add("on");document.body.classList.add("playing");paintBag();
 }
 function next(){
   const r=RECS[cur];if(!r)return;
