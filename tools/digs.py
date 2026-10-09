@@ -581,7 +581,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 9   # bump to re-render today's reel after a design change
+REEL_V = 10   # bump to re-render today's reel after a design change
 DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
@@ -683,7 +683,8 @@ def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None):
     pool.sort(key=lambda c: -(c.get("art", -9) + .6 * c.get("vis", 0) + (.3 if c["fam"] not in digs_fams else 0)
                               + .15 * c["score"] + (.1 if c["tracks"][0]["named"] else 0)))
     for c in pool[:8]:
-        log("reel cand %.2f" % c.get("art", -9), c["key"], c["fam"], c.get("cover").info.get("why") if c.get("cover") is not None else "")
+        cv_ = c.get("cover")
+        log("reel cand %.2f" % c.get("art", -9), c["key"], c["fam"], "%dpx" % cv_.width if cv_ is not None else "", cv_.info.get("why") if cv_ is not None else "")
     fallback = None
     for n, c in enumerate(pool[:12]):
         try:
@@ -701,7 +702,7 @@ def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None):
             log("reel drop", c["key"], e)
             continue
         c = dict(c, cover=cov, audio=aud, track=tr)
-        if cov.width >= 500:
+        if cov.width >= 500 or (c.get("art", -9) >= PERFECT and cov.width >= 400):
             return c
         fallback = fallback or c
     return fallback
