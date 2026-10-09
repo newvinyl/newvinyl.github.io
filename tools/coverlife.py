@@ -480,3 +480,49 @@ class Look:
 
 def make_look(im, seed, style=None):
     return Look(im, seed, style)
+
+# ------------------------------------------------------------------ choosing the best cover version
+def autocrop(im):
+    """Shop images that show the sleeve as a mockup on a plain background: cut out the artwork itself."""
+    im = im.convert("RGB")
+    if analyse(im)[0]["record"]:
+        return im                                   # a record on a plain background stays as it is
+    a = np.asarray(im.resize((256, 256))).astype(np.float32) / 255
+    edge = np.concatenate([a[:6].reshape(-1, 3), a[-6:].reshape(-1, 3), a[:, :6].reshape(-1, 3), a[:, -6:].reshape(-1, 3)])
+    if edge.std(0).max() > .07:
+        return im                                   # no plain border
+    bc = np.median(edge, 0)
+    m = (np.abs(a - bc).max(2) > .14).astype(np.uint8)
+    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    ys, xs = np.where(m > 0)
+    if len(ys) < 500:
+        return im
+    y0, y1 = np.percentile(ys, [1, 99]); x0, x1 = np.percentile(xs, [1, 99])
+    w, h = x1 - x0, y1 - y0
+    if w < 100 or h < 100 or abs(w - h) > .14 * max(w, h) or (w > 238 and h > 238):
+        return im
+    sx, sy = im.width / 256, im.height / 256
+    ins = .012 * max(w, h)
+    return im.crop((int((x0 + ins) * sx), int((y0 + ins) * sy), int((x1 - ins) * sx), int((y1 - ins) * sy)))
+
+def artwork_score(im):
+    """How well a cover image works as the hero of a reel: real, rich artwork scores high;
+    photos of the vinyl label, blank/minimal sleeves and small images score low."""
+    f, a = analyse(im)
+    g = a.mean(2)
+    yy, xx = np.mgrid[0:256, 0:256]; d = np.hypot(xx - 127.5, yy - 127.5)
+    core = g[d < 4]; ring = g[(d > 9) & (d < 18)]
+    hole = abs(core.mean() - ring.mean()) > .22 and core.std() < .09 and ring.std() < .12
+    centred = any(abs(x - 128) < 12 and abs(y - 128) < 12 and r > 40 for x, y, r in f["circles"])
+    s = (min(1.0, f["n80"] / 120) * 1.0 + min(1.0, f["sat"] / .45) * .8 + min(1.0, f["contrast"] / .25) * .6
+         + min(1.0, f["mid"] / .4) * .4)
+    why = []
+    if f["record"] or (hole and centred):
+        s -= 3.0; why.append("record label shot")
+    elif hole:
+        s -= 1.0; why.append("centre hole (record?)")
+    if f["flat"] > .7 and f["n80"] < 10:
+        s -= 1.5; why.append("blank/minimal sleeve")
+    if im.width < 480:
+        s -= 1.0; why.append("small image")
+    return round(float(s), 2), why

@@ -23,6 +23,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import reelfx
+import coverlife
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SLUG = "92h6fy"
@@ -199,7 +200,7 @@ def vis_level(im):
         return 1
     return 0
 
-def rate_covers(cands, offline, limit=30):
+def rate_covers(cands, offline, limit=50):
     """Load covers of the best candidates once and mark faces/people (c['vis'])."""
     for n, c in enumerate(cands[:limit]):
         if "vis" in c:
@@ -208,6 +209,7 @@ def rate_covers(cands, offline, limit=30):
             if "cover" not in c:
                 c["cover"] = get_cover(c["arr"], offline, 500 + n)
             c["vis"] = 0 if offline else vis_level(c["cover"])
+            c["art"] = c["cover"].info.get("art", 0.0)
         except Exception as e:
             log("cover check fail", c["key"], e)
             c["vis"] = 0
@@ -215,6 +217,7 @@ def rate_covers(cands, offline, limit=30):
             log("cover", "face" if c["vis"] == 2 else "person", c["key"])
     for c in cands:
         c.setdefault("vis", 0)
+        c.setdefault("art", -9.0)
 
 def choose(cands, banned):
     pool = [c for c in cands if c["key"] not in banned][:45]
@@ -250,22 +253,33 @@ def get_cover(arr, offline, seed):
         rng = np.random.default_rng(seed)
         a = (rng.random((8, 8, 3)) * 255).astype("uint8")
         return Image.fromarray(a).resize((600, 600), Image.NEAREST)
-    best = None
-    for u in cover_urls(arr):
-        try:
-            im = Image.open(io.BytesIO(fetch(u))).convert("RGB")
-        except Exception as e:
-            log("cover fail", u, e)
-            continue
-        if best is None or im.width > best.width:
-            best = im
-        if best.width >= 600:
-            break
+    # look at the cover of every shop that has the release and take the best version:
+    # real artwork beats a photo of the vinyl label, a blank sleeve or a small image;
+    # mockups on a plain background are cropped to the artwork
+    best, bk = None, None
+    for shop in COVER_RANK + sorted({x["shop"] for x in arr} - set(COVER_RANK)):
+        for x in arr:
+            if x["shop"] != shop or not x.get("cover"):
+                continue
+            for u in cover_urls([x]) or [x["cover"]]:   # bigger variant first, then the original
+                try:
+                    im = Image.open(io.BytesIO(fetch(u))).convert("RGB")
+                except Exception as e:
+                    log("cover fail", u, e)
+                    continue
+                im = coverlife.autocrop(im)
+                s = min(im.size)  # centre-crop square
+                l, t = (im.width - s) // 2, (im.height - s) // 2
+                im = im.crop((l, t, l + s, t + s))
+                art, why = coverlife.artwork_score(im)
+                k = (art, min(im.width, 900))
+                if bk is None or k > bk:
+                    best, bk = im, k
+                    best.info.update(art=art, why=why, src=u)
+                break
     if best is None:
         raise RuntimeError("no cover")
-    s = min(best.size)  # centre-crop square
-    l, t = (best.width - s) // 2, (best.height - s) // 2
-    return best.crop((l, t, l + s, t + s))
+    return best
 
 def decode(path):
     raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-f", "f32le", "-ac", "2", "-ar", str(SR), "-"],
@@ -567,7 +581,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 8   # bump to re-render today's reel after a design change
+REEL_V = 9   # bump to re-render today's reel after a design change
 DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
@@ -648,6 +662,8 @@ def reel_mix(audio, start):
     peak = np.abs(s).max()
     return s * (0.97 / peak) if peak > 0.97 else s
 
+PERFECT = 2.0   # artwork score of a cover that is perfect for a reel
+
 def reel_request(day):
     """Optional wish for today's reel, e.g. 92h6fy/reel_request.json = {"date": "2026-10-09", "family": "Techno"}."""
     p = os.path.join(OUT, "reel_request.json")
@@ -660,9 +676,14 @@ def reel_request(day):
 def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None):
     """Best remaining release with a real preview and a big cover; a different genre family than the digs if possible."""
     pool = [c for c in cands if c["key"] not in digs_keys]
-    if want_fam and any(c["fam"] == want_fam for c in pool):
+    # the reel lives from its cover: the best artwork first (no label photos, blank sleeves or tiny images)
+    great = [c for c in pool if c.get("art", -9) >= PERFECT]
+    if want_fam and any(c["fam"] == want_fam for c in great):
         pool = [c for c in pool if c["fam"] == want_fam]
-    pool.sort(key=lambda c: (-c.get("vis", 0), c["fam"] in digs_fams, -(c["score"] + (0.5 if c["tracks"][0]["named"] else 0))))
+    pool.sort(key=lambda c: -(c.get("art", -9) + .6 * c.get("vis", 0) + (.3 if c["fam"] not in digs_fams else 0)
+                              + .15 * c["score"] + (.1 if c["tracks"][0]["named"] else 0)))
+    for c in pool[:8]:
+        log("reel cand %.2f" % c.get("art", -9), c["key"], c["fam"], c.get("cover").info.get("why") if c.get("cover") is not None else "")
     fallback = None
     for n, c in enumerate(pool[:12]):
         try:
@@ -841,8 +862,12 @@ def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     for k in keep.get("keys", []):
         if k in G: fams.add(family(G[k].get("g")))
     # a re-render of the reel on the same day picks a different release than the reel before
+    tried = set(keep.get("reel_tried", []))
     prev = (keep.get("reel") or {}).get("key")
-    rel = make_reel(a, cands, fx, set(keep.get("keys", [])) | ({prev} if prev else set()), fams, history, date_s, ymd, base)
+    if prev:
+        tried.add(prev)
+    keep["reel_tried"] = sorted(tried)
+    rel = make_reel(a, cands, fx, set(keep.get("keys", [])) | tried, fams, history, date_s, ymd, base)
     video = keep.get("video", "")
     fname = video.rsplit("/", 1)[-1]
     items = "".join("<li><b>%s</b> <span class=\"m\">(%s)</span></li>" % (html.escape(t), html.escape(s_))
