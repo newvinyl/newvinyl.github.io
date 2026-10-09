@@ -507,6 +507,9 @@ def autocrop(im):
     w, h = x1 - x0, y1 - y0
     if w < 100 or h < 100 or abs(w - h) > .14 * max(w, h) or (w > 238 and h > 238):
         return im
+    corners = [m[int(y), int(x)] for y, x in ((y0 + 4, x0 + 4), (y0 + 4, x1 - 4), (y1 - 4, x0 + 4), (y1 - 4, x1 - 4))]
+    if sum(corners) <= 1:
+        return im                                   # a round object (record, label): keep the whole picture
     sx, sy = im.width / 256, im.height / 256
     ins = .012 * max(w, h)
     return im.crop((int((x0 + ins) * sx), int((y0 + ins) * sy), int((x1 - ins) * sx), int((y1 - ins) * sy)))

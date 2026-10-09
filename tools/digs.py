@@ -599,7 +599,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 13   # bump to re-render today's reel after a design change
+REEL_V = 14   # bump to re-render today's reel after a design change
 DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).

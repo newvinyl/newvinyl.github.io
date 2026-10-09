@@ -258,23 +258,27 @@ def dive(fx, cov, bg, t, e, kick, frame):
             pass
         fx._dv = np.array([x0, y0], np.float32)
     p = fx._dv
-    levels = 2.6                                                                 # how many times we pass through the cover
+    F = 4.0                                                                      # each level is the cover again, 4x smaller
+    levels = 2.4                                                                 # how many times we pass through the cover
     s = max(0.0, e) * levels
     f = s - int(s)
-    Z = 16 ** f * (1 + .008 * kick)
-    # zoom about the detail spot; the next copy of the cover sits there, anchored at the same spot,
-    # so at Z = 16 it has become the whole picture and the dive continues seamlessly
+    Z = F ** f * (1 + .008 * kick)
+    # zoom about the detail spot; copies of the cover sit there, anchored at the same spot,
+    # so when the camera has zoomed F times the first copy has become the whole picture
     M = np.float32([[Z, 0, p[0] * (1 - Z)], [0, Z, p[1] * (1 - Z)]])
     out = cv2.warpAffine(cov, M, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT).astype(np.float32)
-    z2 = Z / 16
-    M2 = np.float32([[z2, 0, p[0] * (1 - z2)], [0, z2, p[1] * (1 - z2)]])
-    inner = cv2.warpAffine(cov, M2, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT).astype(np.float32)
-    x0, y0 = p[0] * (1 - z2), p[1] * (1 - z2)                                   # where the inner copy lies
-    x1, y1 = x0 + z2 * S, y0 + z2 * S
-    fe = max(2.0, z2 * S * .06)
-    m = (sstep((_X - x0) / fe) * sstep((x1 - _X) / fe) * sstep((_Y - y0) / fe) * sstep((y1 - _Y) / fe))[..., None]
-    a = m * (sstep(f * 4) if s < 1 else 1.0)                                     # the first copy fades in gently
-    out = out * (1 - a) + inner * a
+    for j in (1, 2, 3):                                                          # nested copies, deeper and deeper
+        z2 = Z / F ** j
+        if z2 * S < 6:
+            break
+        M2 = np.float32([[z2, 0, p[0] * (1 - z2)], [0, z2, p[1] * (1 - z2)]])
+        inner = cv2.warpAffine(cov, M2, (S, S), flags=cv2.INTER_AREA if z2 < 1 else cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT).astype(np.float32)
+        x0, y0 = p[0] * (1 - z2), p[1] * (1 - z2)
+        x1, y1 = x0 + z2 * S, y0 + z2 * S
+        fe = max(1.5, z2 * S * .07)
+        m = (sstep((_X - x0) / fe) * sstep((x1 - _X) / fe) * sstep((_Y - y0) / fe) * sstep((y1 - _Y) / fe))[..., None]
+        a = m * (sstep(s * 3) if j == 1 else 1.0)                                # the first copy appears gently
+        out = out * (1 - a) + inner * a
     if f > .03 and s > .2:                                                       # speed: soft radial blur towards the spot
         sm = cv2.warpAffine(out, np.float32([[1.035, 0, -p[0] * .035], [0, 1.035, -p[1] * .035]]), (S, S), borderMode=cv2.BORDER_REFLECT)
         out = out * .72 + sm * .28
