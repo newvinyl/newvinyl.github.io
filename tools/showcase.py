@@ -20,7 +20,8 @@ VW, VH, DSF = 405, 720, 1080 / 405          # 9:16, ergibt 1080×1920
 
 INIT = r"""
 (()=>{
-  const css=`#__cap{position:fixed;left:16px;right:16px;top:64px;z-index:9999;pointer-events:none;display:flex;justify-content:center}
+  const css=`#__cap{position:fixed;left:16px;right:16px;bottom:calc(var(--__cb,24px));z-index:9999;pointer-events:none;display:flex;justify-content:flex-start}
+  body.playing #__cap{--__cb:84px}
   #__cap span{background:#0d0d0d;color:#ecebe7;font:500 13px/1.35 "JetBrains Mono",ui-monospace,monospace;padding:6px 9px;border:1px solid #3c4046;letter-spacing:.02em}
   #__cap[hidden]{display:none}
   .__tap{position:fixed;z-index:9998;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:2.5px solid #fff;background:rgba(255,255,255,.18);pointer-events:none;animation:__t .55s ease-out forwards}
@@ -209,8 +210,8 @@ def main():
     out = os.path.join(WORK, "showcase_%s.mp4" % ymd)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst,
                     "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", raw,
-                    "-vf", "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0x0d0d0d,fps=30,noise=alls=5:allf=t,format=yuv420p",
-                    "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-c:a", "aac", "-b:a", "192k",
+                    "-vf", "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0x0d0d0d,fps=30,noise=alls=4:allf=t,format=yuv420p",
+                    "-c:v", "libx264", "-preset", "medium", "-crf", "22", "-c:a", "aac", "-b:a", "192k",
                     "-t", "%.2f" % total, "-movflags", "+faststart", out], check=True)
     poster = out.replace(".mp4", ".jpg")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "8", "-i", out, "-frames:v", "1", "-q:v", "3", poster], check=True)

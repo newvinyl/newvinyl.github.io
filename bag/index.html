@@ -236,7 +236,12 @@ function hiRes(u){if(!u)return u;
 let cart=store.get("mvr-cart",[]),opened=new Set(store.get("mvr-opened",[])),DATA=null,FX={};
 const save=()=>{store.set("mvr-cart",cart);store.set("mvr-opened",[...opened])};
 function groups(){
-  const idx={};DATA.shops.forEach(S=>(S.items||[]).forEach(r=>{idx[S.shop+"|"+r.url]={...r,S,key:S.shop+"|"+r.url,chf:r.p==null?null:r.p*(FX[CODE[S.cur]]||NaN)}}));
+  const idx={},cov={};
+  const fold=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"");
+  const gk=r=>[r.a,r.t].map(x=>fold(x).replace(/\(.*?\)|\[.*?\]/g,"").replace(/\b(ep|lp|12"?|2x12"?)\b/g,"").replace(/[^\p{L}\p{N}]/gu,"")).join("|");
+  // bestes Cover der Platte über alle Shops (wie auf der Startseite)
+  DATA.shops.forEach(S=>(S.items||[]).forEach(r=>{if(!r.cover)return;const k=gk(r);if(!cov[k]||/yoyaku|phonica|cloudfront|kompakt/.test(r.cover))cov[k]=r.cover}));
+  DATA.shops.forEach(S=>(S.items||[]).forEach(r=>{idx[S.shop+"|"+r.url]={...r,S,key:S.shop+"|"+r.url,cover:cov[gk(r)]||r.cover,chf:r.p==null?null:r.p*(FX[CODE[S.cur]]||NaN)}}));
   const items=cart.map(k=>idx[k]).filter(Boolean),shops=[];
   items.forEach(r=>{let g=shops.find(x=>x.S===r.S);if(!g){g={S:r.S,rs:[]};shops.push(g)}g.rs.push(r)});
   return {items,shops};
