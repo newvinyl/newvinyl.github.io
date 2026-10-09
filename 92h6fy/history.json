@@ -2,27 +2,33 @@
  {
   "date": "2026-10-09",
   "keys": [
-   "grovskopa|murred ep",
-   "lucas moinet|vert emeraude ep",
-   "charonne|overload"
+   "charonne|overload",
+   "cosmin trg|in your body",
+   "heavenphetamine|the sun on a winter day lp"
   ],
   "titles": [
-   "Grovskopa – Murred EP",
-   "Lucas Moinet – Vert Emeraude EP",
-   "Charonne – Overload"
+   "Charonne – Overload",
+   "Cosmin TRG – In Your Body",
+   "Heavenphetamine – The Sun On A Winter Day LP"
   ],
   "shops": [
-   "Hardwax",
-   "Phonica",
+   "Redeye",
+   "Kompakt",
    "Yoyaku"
   ],
   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261009.mp4",
+  "looks": [
+   "wild/geheimnisvoll: liquid melting into moire, warp 0.09, rgb split, posterize, hue spin | cover: swing",
+   "wild/schrill: moire, warp 0.07, rgb split | cover: dissolve",
+   "soft/cover: breath melting into tunnel, warp 0.03 | cover: illusion"
+  ],
+  "dv": 2,
   "reel": {
    "key": "futureslowdubdisco|natureconnection",
    "title": "Futureslowdubdisco – Natureconnection",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261009.mp4",
-   "scheme": "GN",
-   "v": 4
+   "look": "wild/hell: check melting into moire, warp 0.19, rgb split | cover: swing",
+   "v": 5
   }
  },
  {
