@@ -1,0 +1,49 @@
+name: Showcase video
+
+# Records the live site on a phone-sized screen with the real previews as sound.
+# Run by hand (Actions → Showcase video → Run workflow) or when tools/showcase.py changes.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/showcase.py, .github/workflows/showcase.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: showcase
+  cancel-in-progress: true
+
+jobs:
+  showcase:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core fonts-liberation >/dev/null
+          pip install -q numpy pillow playwright
+          python3 -m playwright install --with-deps chromium >/dev/null
+
+      - name: Record
+        env:
+          SHOWCASE_WORK: ${{ runner.temp }}/sc
+        run: |
+          mkdir -p "$SHOWCASE_WORK"
+          python3 tools/showcase.py > "$SHOWCASE_WORK/result.json"
+          cat "$SHOWCASE_WORK/result.json"
+
+      - name: Upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHOWCASE_WORK: ${{ runner.temp }}/sc
+        run: |
+          gh release view showcase >/dev/null 2>&1 || gh release create showcase --prerelease --title "Showcase" --notes "Showcase videos for Instagram."
+          V=$(python3 -c "import json;print(json.load(open('$SHOWCASE_WORK/result.json'))['video'])")
+          P=$(python3 -c "import json;print(json.load(open('$SHOWCASE_WORK/result.json'))['poster'])")
+          cp "$V" "$SHOWCASE_WORK/showcase.mp4"; cp "$P" "$SHOWCASE_WORK/showcase.jpg"
+          gh release upload showcase "$V" "$P" "$SHOWCASE_WORK/showcase.mp4" "$SHOWCASE_WORK/showcase.jpg" --clobber
