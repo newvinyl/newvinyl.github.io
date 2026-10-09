@@ -68,17 +68,12 @@
    "none": 21
   }
  },
- "pages_checked": 338,
- "new_from_shop_pages": 22,
- "copied_from_other_shop": 6,
- "broken_clips_removed": 15,
- "clips_verified": 2706,
- "not_reachable": {
-  "Clone: http403": 1,
-  "Phonica: http403": 81,
-  "Redeye Records: failed:UnicodeEncodeError": 13,
-  "Redeye Records: http403": 1
- },
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 11,
+ "clips_verified": 2702,
+ "not_reachable": {},
  "clip_hosts": {
   "clone.nl": {
    "clips": 928,
@@ -109,7 +104,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 305,
+   "clips": 301,
    "failed": 0,
    "sample": []
   },
