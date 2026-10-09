@@ -323,10 +323,21 @@ function card(r,i){
   ctl.querySelector(".more").onclick=()=>{el.classList.remove("back");back.setAttribute("aria-hidden","true")};
   return el;
 }
-const GENRES=["House","Deep House","Tech House","Minimal","Techno","Dub Techno","Electro","Acid","Balearic","Ambient","Disco","Italo"];
+// Genres: alle Genres, die in den aktuellen Platten vorkommen. Reihenfolge: wie oft sie im Filter geklickt
+// werden (/genre_rank.json, aus der Statistik), sonst nach Anzahl Platten.
+const NOT_GENRE=/^(reissue|repress|remaster(ed)?|lp|ep|2×12"?|12"|7")$/i;
+const BROAD=new Set(["House","Techno","Disco","Acid","Minimal","Ambient","Electro"]);
+let GENRES=[],GRANK={};
+fetch("/genre_rank.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).then(d=>{GRANK=(d&&d.clicks)||{};if(!document.getElementById("sheet").hidden)buildChips()}).catch(()=>{});
 const F={g:new Set(),s:new Set(),q:""};
 const gOf=r=>r.all.map(x=>x.g||"").join(" / ").toLowerCase();
-function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();if(g==="House")return /(^|[^a-z])house/.test(t)&&!/^(tech|deep|acid) house$/.test(t);return t.includes(k)}
+const gTok=r=>r._gt||(r._gt=new Set(r.all.flatMap(x=>String(x.g||"").split(/[\/·]/).map(t=>t.trim()).filter(t=>t&&!NOT_GENRE.test(t)))));
+function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
+  if(g==="House")return /(^|[^a-z])house/.test(t)&&!/^(tech|deep|acid) house$/.test(t);
+  if(BROAD.has(g))return t.includes(k);
+  return gTok(r).has(g)}
+function genreList(){const n={};RECS.forEach(r=>gTok(r).forEach(g=>{n[g]=0}));Object.keys(n).forEach(g=>{n[g]=RECS.filter(r=>gMatch(r,g)).length});
+  return Object.keys(n).sort((a,b)=>(GRANK[b]||0)-(GRANK[a]||0)||n[b]-n[a]||a.localeCompare(b,"en"))}
 function matches(r){
   if(F.g.size&&![...F.g].some(g=>gMatch(r,g)))return false;
   if(F.s.size&&!r.all.some(x=>F.s.has(x.S.shop)))return false;
@@ -344,7 +355,8 @@ function applyFilter(){
 function buildChips(){
   const cnt=(fn)=>RECS.filter(fn).length;
   const mk=(box,set,vals,test)=>{box.innerHTML="";vals.forEach(v=>{const n=cnt(r=>test(r,v));if(!n)return;const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",set.has(v));b.innerHTML=`${esc(v)} <small>${n}</small>`;
-    b.onclick=()=>{set.has(v)?set.delete(v):set.add(v);b.setAttribute("aria-pressed",set.has(v));applyFilter()};box.appendChild(b)})};
+    b.onclick=()=>{set.has(v)?set.delete(v):set.add(v);if(set.has(v))track("Filter",{type:box.id==="cg"?"genre":"shop",value:v});b.setAttribute("aria-pressed",set.has(v));applyFilter()};box.appendChild(b)})};
+  GENRES=genreList();
   mk(document.getElementById("cg"),F.g,GENRES,gMatch);
   const shops=[...new Set(RECS.flatMap(r=>r.all.map(x=>x.S.shop)))].sort();
   mk(document.getElementById("cs"),F.s,shops,(r,v)=>r.all.some(x=>x.S.shop===v));
