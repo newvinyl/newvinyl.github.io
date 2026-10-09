@@ -26,7 +26,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core fonts-liberation >/dev/null
-          pip install -q numpy pillow playwright
+          pip install -q numpy pillow opencv-python-headless playwright
           python3 -m playwright install --with-deps chromium >/dev/null
 
       - name: Record
