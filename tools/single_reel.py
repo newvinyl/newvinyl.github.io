@@ -9,6 +9,33 @@ import digs, reelfx
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORK = os.environ.get("REEL_WORK") or tempfile.mkdtemp()
 
+def hires(u):
+    u2 = re.sub(r"(media\.hardwax\.com/images/[^/]+?)(?<!big)\.jpg$", r"\1big.jpg", u)
+    u2 = re.sub(r"-2\.jpg$", "-1.jpg", u2) if "redeyerecords" in u2 else u2
+    u2 = re.sub(r"-\d+x\d+(\.\w+)$", r"\1", u2) if "yoyaku" in u2 else u2
+    return u2.replace("/artwork/small/", "/artwork/large/").replace("/co_mid/", "/co_big/")
+
+def best_cover(arr):
+    """grösstes verfügbares Cover über alle Shops (inkl. Hardwax big.jpg und Deejay.de)"""
+    from PIL import Image
+    import io
+    urls = []
+    for x in arr:
+        if x.get("cover"):
+            urls += [hires(x["cover"]), x["cover"]]
+    best = None
+    for u in dict.fromkeys(urls):
+        try:
+            im = Image.open(io.BytesIO(digs.fetch(u))).convert("RGB")
+            digs.log("cover", u, im.width)
+            if best is None or im.width > best.width:
+                best = im
+        except Exception as e:
+            digs.log("cover fail", u, e)
+    if best is None:
+        best = digs.get_cover(arr, False, 1)
+    return best
+
 def main():
     want = json.load(open(os.path.join(ROOT, "tools", "single_reel.json"), encoding="utf-8"))
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
@@ -37,7 +64,7 @@ def main():
             digs.log("audio fail", t.get("u"), e)
     if aud is None:
         raise SystemExit("audio failed")
-    cov = digs.get_cover(arr, False, 1)
+    cov = best_cover(arr)
     c = {"key": k, "arr": arr, "feat": feat, "shop": feat["shop"], "fam": digs.family(feat.get("g")),
          "strict": True, "tracks": tracks, "score": 0, "track": tr, "cover": cov, "audio": aud}
     R = digs.prepare(c, fx)
