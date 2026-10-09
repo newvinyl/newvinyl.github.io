@@ -599,7 +599,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 12   # bump to re-render today's reel after a design change
+REEL_V = 13   # bump to re-render today's reel after a design change
 DIGS_V = 3   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
@@ -691,9 +691,11 @@ def reel_request(day):
     except Exception:
         return {}
 
-def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None):
+def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None, want_key=None):
     """Best remaining release with a real preview and a big cover; a different genre family than the digs if possible."""
     pool = [c for c in cands if c["key"] not in digs_keys]
+    if want_key and any(c["key"] == want_key for c in cands):
+        pool = [c for c in cands if c["key"] == want_key]                  # a release wished for by hand
     # the reel lives from its cover: the best artwork first (no label photos, blank sleeves or tiny images)
     great = [c for c in pool if c.get("art", -9) >= PERFECT]
     if want_fam and any(c["fam"] == want_fam for c in great):
@@ -720,7 +722,7 @@ def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None):
             log("reel drop", c["key"], e)
             continue
         c = dict(c, cover=cov, audio=aud, track=tr)
-        if cov.width >= 500 or (c.get("art", -9) >= PERFECT and cov.width >= 400):
+        if cov.width >= 500 or (c.get("art", -9) >= PERFECT and cov.width >= 400) or len(pool) == 1:
             return c
         fallback = fallback or c
     return fallback
@@ -849,7 +851,7 @@ def write_page(date_s, sections, history, caps):
         open(os.path.join(OUT, "caption_reel.txt"), "w", encoding="utf-8").write(caps[1] + "\n")
 
 def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
-    rc = pick_reel(cands, digs_keys, digs_fams, a.offline, a.work, want_fam=a.want_fam)
+    rc = pick_reel(cands, digs_keys, digs_fams, a.offline, a.work, want_fam=a.want_fam, want_key=getattr(a, "want_key", None))
     if not rc:
         log("no reel candidate")
         return None
@@ -917,6 +919,7 @@ def main():
     data_day = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))["updated"]
     a.want_fam = reel_request(a.date or data_day).get("family")
     a.want_fx = reel_request(a.date or data_day).get("fx")
+    a.want_key = reel_request(a.date or data_day).get("key")
     if a.want_fam:
         log("reel wish:", a.want_fam)
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))

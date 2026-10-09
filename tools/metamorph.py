@@ -58,11 +58,11 @@ def freeze(fx, cov, bg, t, e, kick, frame):
     mean = sums / np.maximum(cnt, 1)[:, None]
     facet = mean[lab] * .55 + c * .45
     g = facet.mean(2, keepdims=True)
-    ice = (g * .55 + facet * .2 + np.array([170, 205, 235], np.float32) * .35)   # cold, bluish white
+    ice = (g * .55 + facet * .2 + _bright(cov) * .35)                           # pale: the cover's own lightest colour
     ice = ice + (rnd[lab][..., None] - .5) * 30                                 # facets catch the light differently
     edge = np.exp(-border / 1.6)[..., None]
-    ice = ice * (1 - edge * .6) + 255 * edge * .6                               # white crystal edges
-    sp = (np.sin(rnd[lab] * 60 + t * 3) > .985)[..., None] * np.exp(-border / 3)[..., None] * 255
+    ice = ice * (1 - edge * .6) + _bright(cov) * edge * .6                      # crystal edges in that light colour
+    sp = (np.sin(rnd[lab] * 60 + t * 3) > .985)[..., None] * np.exp(-border / 3)[..., None] * _bright(cov) * .8
     out = c * (1 - m) + (ice + sp) * m
     return np.clip(out, 0, 255).astype(np.uint8)
 
@@ -234,136 +234,66 @@ EMAX = {"freeze": (.85, 1.1), "pixelate": (.7, 1.0), "shatter": (.75, 1.05), "fl
         "coexist": (.7, 1.0), "adapt": (.8, 1.0), "symbiosis": (.8, 1.1), "one": (.9, 1.05)}
 
 
-# ---------------------------------------------------------------- dive: nano-camera into the structure, one level deeper each time
-def _palette(cov, k=6):
+# ---------------------------------------------------------------- dive: camera flies into the cover, and inside it finds the cover again
+# Only the cover's own pixels are used: no new elements.
+def _bright(cov):
     px = cv2.resize(cov, (64, 64)).reshape(-1, 3).astype(np.float32)
-    _, lab, cen = cv2.kmeans(px, k, None, (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, .5), 2, cv2.KMEANS_PP_CENTERS)
-    cnt = np.bincount(lab.ravel(), minlength=k)
-    return cen[np.argsort(-cnt)]
-
-
-def _level_cells(cov, rng, s=540):
-    """microscope: cells with membranes and nuclei, coloured by the cover"""
-    pts, lab, border = voronoi(rng, 260, s)
-    blur = cv2.GaussianBlur(cv2.resize(cov, (s, s)), (0, 0), 6).astype(np.float32)
-    col = blur[np.clip(pts[:, 1].astype(int), 0, s - 1), np.clip(pts[:, 0].astype(int), 0, s - 1)]
-    yy, xx = np.mgrid[0:s, 0:s].astype(np.float32)
-    d = np.hypot(xx - pts[lab, 0], yy - pts[lab, 1])
-    img = col[lab] * (1.05 - np.clip(d / 40, 0, .45))[..., None]                 # cells bulge towards the centre
-    nuc = sstep((9 - d) / 3)[..., None]
-    img = img * (1 - nuc * .6) + (col[lab] * .35) * nuc * .6
-    mem = np.exp(-border / 1.4)[..., None]
-    img = img * (1 - mem * .8) + (255 - col[lab] * .3) * mem * .5
-    return np.clip(img, 0, 255).astype(np.uint8)
-
-
-def _level_atoms(cov, rng, s=540):
-    """molecules / atoms: glowing spheres on a lattice with electron orbits"""
-    pal = _palette(cov)
-    dark = pal.min(0) * .25
-    img = np.ones((s, s, 3), np.float32) * dark
-    yy, xx = np.mgrid[0:s, 0:s].astype(np.float32)
-    r0 = rng.uniform(26, 40)
-    step = r0 * 2.6
-    for j, y in enumerate(np.arange(-step, s + step, step * .87)):
-        for x in np.arange(-step + (j % 2) * step / 2, s + step, step):
-            c = pal[int(rng.integers(len(pal)))]
-            cx, cy = x + rng.normal(0, 4), y + rng.normal(0, 4)
-            d = np.hypot(xx - cx, yy - cy)
-            core = sstep((r0 - d) / 3)[..., None]
-            shade = np.clip(1.25 - np.hypot(xx - cx + r0 * .35, yy - cy + r0 * .35) / (r0 * 1.4), .25, 1.2)[..., None]
-            img = img * (1 - core) + np.clip(c * shade + 40, 0, 255) * core
-            glow = np.exp(-np.maximum(d - r0, 0) / 10)[..., None] * (d > r0)[..., None] * .35
-            img = img + c * glow
-            for ang in (rng.uniform(0, math.pi),):
-                ca, sa = math.cos(ang), math.sin(ang)
-                ex, ey = (xx - cx) * ca + (yy - cy) * sa, -(xx - cx) * sa + (yy - cy) * ca
-                ring = np.abs(np.hypot(ex / (r0 * 1.9), ey / (r0 * .7)) - 1) < .03
-                img[ring & (d > r0)] = img[ring & (d > r0)] * .4 + 230 * .6
-    return np.clip(img, 0, 255).astype(np.uint8)
-
-
-def _level_quantum(cov, rng, s=540):
-    """sub-atomic: a hot core, particle tracks spiralling out of it"""
-    pal = _palette(cov)
-    yy, xx = np.mgrid[0:s, 0:s].astype(np.float32)
-    d = np.hypot(xx - s / 2, yy - s / 2) + 1
-    th = np.arctan2(yy - s / 2, xx - s / 2)
-    hot = pal[np.argmax(pal.sum(1))]
-    img = np.zeros((s, s, 3), np.float32) + pal.min(0) * .15
-    img += hot * np.exp(-d / 45)[..., None] * 1.6
-    for i in range(70):
-        c = pal[i % len(pal)]
-        a0, curl = rng.uniform(-math.pi, math.pi), rng.uniform(-.012, .012)
-        w = np.exp(-np.abs(np.angle(np.exp(1j * (th - a0 - curl * d)))) * d / 1.5) * np.exp(-d / rng.uniform(120, 300))
-        img += c * w[..., None] * rng.uniform(.4, 1.0)
-    dots = rng.random((s, s)) > .9985
-    img[dots] = 255
-    return np.clip(img, 0, 255).astype(np.uint8)
+    return px[np.argsort(px.sum(1))[-40:]].mean(0)
 
 
 def dive(fx, cov, bg, t, e, kick, frame):
     if not hasattr(fx, "_dv"):
-        rng = np.random.default_rng(fx.seed + 51)
         gray = cv2.cvtColor(cov, cv2.COLOR_RGB2GRAY).astype(np.float32)
         det = cv2.GaussianBlur(np.abs(cv2.Laplacian(gray, cv2.CV_32F)), (0, 0), 40)
-        det[:200] = det[-200:] = 0; det[:, :200] = 0; det[:, -200:] = 0
-        y0, x0 = np.unravel_index(np.argmax(det), det.shape)                   # dive into the most detailed spot
-        lv = [cov] + [up(f(cov, rng)) for f in (_level_cells, _level_atoms, _level_quantum)]
-        fx._dv = (lv, np.array([x0, y0], np.float32))
-    lv, p0 = fx._dv
-    n = len(lv) - 1
-    s = min(n - 1e-3, max(0.0, e) * n * .98)
-    k, f = int(s), s - int(s)
-    Z = 16 ** f * (1 + .01 * kick)
-    ctr = np.array([S / 2, S / 2], np.float32)
-    c = p0 * (1 - f) + ctr * f if k == 0 else ctr
-    M = np.float32([[Z, 0, c[0] * (1 - Z)], [0, Z, c[1] * (1 - Z)]])
-    rot = .15 * f * (1 if k % 2 else -1)                                       # a slight twist on the way down
-    R = cv2.getRotationMatrix2D((float(c[0]), float(c[1])), math.degrees(rot), 1.0)
-    M = (np.vstack([R, [0, 0, 1]]) @ np.vstack([M, [0, 0, 1]]))[:2].astype(np.float32)
-    out = cv2.warpAffine(lv[k], M, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT).astype(np.float32)
-    if k + 1 <= n:
-        z2 = Z / 16
-        M2 = np.float32([[z2, 0, c[0] - z2 * S / 2], [0, z2, c[1] - z2 * S / 2]])
-        M2 = (np.vstack([R, [0, 0, 1]]) @ np.vstack([M2, [0, 0, 1]]))[:2].astype(np.float32)
-        nxt = cv2.warpAffine(lv[k + 1], M2, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT).astype(np.float32)
-        rad = z2 * S / 2
-        d = np.hypot(_X - c[0], _Y - c[1])
-        a = sstep((rad * .92 - d) / (rad * .25 + 1))[..., None] * sstep(f * 3)
-        out = out * (1 - a) + nxt * a
-    if f > .02:                                                                 # speed: a soft radial blur towards the centre
-        sm = cv2.warpAffine(out, np.float32([[1.04, 0, -c[0] * .04], [0, 1.04, -c[1] * .04]]), (S, S), borderMode=cv2.BORDER_REFLECT)
-        out = out * .7 + sm * .3
+        det[:220] = det[-220:] = 0; det[:, :220] = 0; det[:, -220:] = 0
+        y0, x0 = np.unravel_index(np.argmax(det), det.shape)                   # dive into the most detailed spot ...
+        try:                                                                     # ... or into an eye, if the cover has one
+            g8 = cv2.equalizeHist(cv2.resize(cv2.cvtColor(cov, cv2.COLOR_RGB2GRAY), (540, 540)))
+            eyes = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml").detectMultiScale(g8, 1.1, 8, minSize=(18, 18))
+            eyes = [e_ for e_ in eyes if 110 < e_[0] * 2 + e_[2] < S - 110 and 110 < e_[1] * 2 + e_[3] < S - 110]
+            if len(eyes):
+                ex, ey, ew, eh = max(eyes, key=lambda r: r[2] * r[3])
+                x0, y0 = ex * 2 + ew, ey * 2 + eh
+        except Exception:
+            pass
+        fx._dv = np.array([x0, y0], np.float32)
+    p = fx._dv
+    levels = 2.6                                                                 # how many times we pass through the cover
+    s = max(0.0, e) * levels
+    f = s - int(s)
+    Z = 16 ** f * (1 + .008 * kick)
+    # zoom about the detail spot; the next copy of the cover sits there, anchored at the same spot,
+    # so at Z = 16 it has become the whole picture and the dive continues seamlessly
+    M = np.float32([[Z, 0, p[0] * (1 - Z)], [0, Z, p[1] * (1 - Z)]])
+    out = cv2.warpAffine(cov, M, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT).astype(np.float32)
+    z2 = Z / 16
+    M2 = np.float32([[z2, 0, p[0] * (1 - z2)], [0, z2, p[1] * (1 - z2)]])
+    inner = cv2.warpAffine(cov, M2, (S, S), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT).astype(np.float32)
+    x0, y0 = p[0] * (1 - z2), p[1] * (1 - z2)                                   # where the inner copy lies
+    x1, y1 = x0 + z2 * S, y0 + z2 * S
+    fe = max(2.0, z2 * S * .06)
+    m = (sstep((_X - x0) / fe) * sstep((x1 - _X) / fe) * sstep((_Y - y0) / fe) * sstep((y1 - _Y) / fe))[..., None]
+    a = m * (sstep(f * 4) if s < 1 else 1.0)                                     # the first copy fades in gently
+    out = out * (1 - a) + inner * a
+    if f > .03 and s > .2:                                                       # speed: soft radial blur towards the spot
+        sm = cv2.warpAffine(out, np.float32([[1.035, 0, -p[0] * .035], [0, 1.035, -p[1] * .035]]), (S, S), borderMode=cv2.BORDER_REFLECT)
+        out = out * .72 + sm * .28
     return np.clip(out, 0, 255).astype(np.uint8)
 
 
-# ---------------------------------------------------------------- descend: from the sky, through the earth, into the fire
+# ---------------------------------------------------------------- descend: from the surface down into the layers below
+# The layers underneath are made of the cover itself: mirrored, stretched, darker the deeper we go.
 def _strip(cov, rng):
     s = 540
     top = cv2.resize(cov, (s, s)).astype(np.float32)
-    h = s * 4
-    img = np.zeros((h, s, 3), np.float32)
-    img[:s] = top
-    pal = _palette(cov)
-    yy, xx = np.mgrid[0:h, 0:s].astype(np.float32)
-    n = cv2.resize(cv2.GaussianBlur(rng.random((h // 8, s // 8)).astype(np.float32), (0, 0), 1.5), (s, h))
-    n2 = cv2.resize(cv2.GaussianBlur(rng.random((h // 3, s // 3)).astype(np.float32), (0, 0), 1), (s, h))
-    # earth: strata in darkened, earthy cover colours
-    earth = np.array([np.clip(c * .45 + np.array([60, 40, 20]) * .55, 0, 255) for c in pal], np.float32)
-    band = ((yy / 38 + n * 6) % len(earth)).astype(int)
-    soil = earth[band] * (.7 + .5 * n2[..., None])
-    stones = (n2 > .78)[..., None]
-    soil = soil * (1 - stones * .5) + 200 * stones * .5 * n2[..., None]
-    # fire: magma with dark crust
-    heat = np.clip(n * 1.3 + n2 * .6 - .4, 0, 1)[..., None]
-    fire = np.array([30, 0, 0], np.float32) * (1 - heat) + (np.array([255, 70, 0], np.float32) * heat + np.array([255, 220, 120], np.float32) * heat ** 4)
-    zone = np.clip((yy - s) / s, 0, 3)[..., None]
-    mirror = top[np.clip(2 * s - 1 - yy.astype(int), 0, s - 1), xx.astype(int)] * .8   # the image reflected into the ground
-    img = np.where(zone < 1, mirror * (1 - zone) + soil * zone, img)
-    img = np.where((zone >= 1) & (zone < 2), soil, img)
-    img = np.where(zone >= 2, soil * np.clip(3 - zone, 0, 1) + fire * np.clip(zone - 2, 0, 1), img)
-    img[:s] = top
+    flip = top[::-1]
+    stretch = cv2.resize(top[s // 2:], (s, s))[::-1]                            # the lower half pulled down like strata
+    deep = cv2.resize(top[s - s // 6:], (s, s))                                 # the last strip of the cover, stretched far
+    layers = [top, flip * .8, stretch * .6, deep * .42]
+    img = np.concatenate(layers, 0)
+    for k in range(1, len(layers)):                                            # soft seams between the layers
+        y = k * s
+        img[y - 30:y + 30] = cv2.GaussianBlur(img[y - 30:y + 30], (0, 0), 6)
     return np.clip(img, 0, 255).astype(np.uint8)
 
 
@@ -374,13 +304,11 @@ def descend(fx, cov, bg, t, e, kick, frame):
     s = st.shape[1]
     k = sstep(min(1.0, e))
     off = k * (st.shape[0] - s)
-    y0 = int(off)
-    win = st[y0:y0 + s].astype(np.float32)
-    win = cv2.resize(win, (S, S))
+    win = cv2.resize(st[int(off):int(off) + s].astype(np.float32), (S, S))
     depth = off / (st.shape[0] - s)
-    if depth > .55:                                                              # heat shimmer down below
-        a = (depth - .55) * 18
-        dx = (np.sin(_Y / 23 + t * 9) * a).astype(np.float32)
+    if depth > .5:                                                              # the deep layers shimmer slightly
+        a = (depth - .5) * 10
+        dx = (np.sin(_Y / 29 + t * 6) * a).astype(np.float32)
         win = cv2.remap(win, _X + dx, _Y, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
     return np.clip(win, 0, 255).astype(np.uint8)
 
