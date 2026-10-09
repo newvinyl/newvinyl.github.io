@@ -159,6 +159,17 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .ab .mono{font-family:var(--mono);font-size:13px;color:var(--muted)}
 .ab .btn{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border:2px solid var(--white);font:700 15px var(--display);text-decoration:none}
 .ab .fgenres a{color:var(--muted)}
+
+/* Header schmal und dezent; Logo im Stil der Wortmarke, nie grösser als «Fresh today» */
+.top{padding:calc(6px + env(safe-area-inset-top,0px)) 16px 6px;border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-weight:700;font-size:19px;line-height:1;letter-spacing:-.008em;color:var(--yellow);-webkit-text-stroke:.085em var(--yellow);paint-order:stroke fill;padding-inline:.045em}
+.hicons{gap:4px}
+.hic{width:36px;height:36px;color:var(--muted)}
+.hic svg{width:19px;height:19px}
+.bagtop{width:36px;height:36px;border:1.5px solid var(--line)}
+.bagtop svg{width:18px;height:18px}
+.bagtop b{top:-6px;right:-6px;min-width:18px;height:18px;line-height:18px;font-size:11px}
+
 </style>
 </head>
 <body>
