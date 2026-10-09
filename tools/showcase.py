@@ -111,7 +111,10 @@ def main():
                 pass
         cdp.on("Page.screencastFrame", on_frame)
         def rec():
-            cdp.send("Page.startScreencast", {"format": "jpeg", "quality": 88, "maxWidth": 1080, "maxHeight": 1920, "everyNthFrame": 1})
+            try:
+                cdp.send("Page.startScreencast", {"format": "jpeg", "quality": 88, "maxWidth": 1080, "maxHeight": 1920, "everyNthFrame": 1})
+            except Exception as e:
+                log("screencast", e)
 
         cap = lambda t="": pg.evaluate("t=>window.__caption&&window.__caption(t)", t)
         wait = pg.wait_for_timeout
