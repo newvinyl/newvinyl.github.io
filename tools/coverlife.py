@@ -273,13 +273,13 @@ class Pattern(Bg):
         return cv2.resize(self.rec.frame(t, A), (BW, BH), interpolation=cv2.INTER_CUBIC)
 
 ENGINES = {
-    "photo":     [("bokeh", .45), ("continue", .25), ("echo", .2), ("pattern-soft", .1)],
-    "graphic":   [("posterflow", .4), ("kaleido", .2), ("pattern-wild", .1), ("echo", .15), ("continue", .15)],
-    "geometric": [("kaleido", .45), ("posterflow", .25), ("pattern-wild", .15), ("echo", .15)],
-    "painterly": [("paintflow", .5), ("continue", .3), ("kaleido", .1), ("pattern-soft", .1)],
+    "photo":     [("bokeh", .45), ("continue", .25), ("echo", .2)],
+    "graphic":   [("posterflow", .4), ("kaleido", .2), ("echo", .15), ("continue", .15)],
+    "geometric": [("kaleido", .45), ("posterflow", .25), ("echo", .15)],
+    "painterly": [("paintflow", .5), ("continue", .3), ("kaleido", .1)],
     "organic":   [("continue", .4), ("paintflow", .35), ("kaleido", .15), ("bokeh", .1)],
-    "dark":      [("echo", .35), ("bokeh", .3), ("continue", .15), ("pattern-soft", .2)],
-    "record":    [("echo", .3), ("kaleido", .3), ("posterflow", .2), ("continue", .1), ("pattern-soft", .1)],
+    "dark":      [("echo", .35), ("bokeh", .3), ("continue", .15)],
+    "record":    [("echo", .3), ("kaleido", .3), ("posterflow", .2), ("continue", .1)],
 }
 
 def make_bg(name, src, f, rng, im):
