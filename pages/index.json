@@ -1,0 +1,230 @@
+{
+ "fetched": "2026-10-10T16:07Z",
+ "pages": [
+  {
+   "url": "https://hardwax.com/this-week/",
+   "file": "hardwax-com-this-week.txt",
+   "status": 200,
+   "chars": 66263
+  },
+  {
+   "url": "https://hardwax.com/this-week/?page=2",
+   "file": "hardwax-com-this-week-page-2.txt",
+   "status": 200,
+   "chars": 32723
+  },
+  {
+   "url": "https://hardwax.com/this-week/?page=3",
+   "file": "hardwax-com-this-week-page-3.txt",
+   "status": 200,
+   "chars": 2048
+  },
+  {
+   "url": "https://www.rushhour.nl/",
+   "file": "rushhour-nl.txt",
+   "status": 200,
+   "chars": 18949
+  },
+  {
+   "url": "https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zh&now_Was=news&now_Date=nodate&aktuell=0",
+   "file": "decks-de-decks-workfloor-lists-list-php-wo-ten-now-sub-zh-now-was-news-now-date-nodate-akt.txt",
+   "status": 200,
+   "chars": 8746
+  },
+  {
+   "url": "https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zz&now_Was=news&now_Date=nodate&aktuell=0",
+   "file": "decks-de-decks-workfloor-lists-list-php-wo-ten-now-sub-zz-now-was-news-now-date-nodate-akt.txt",
+   "status": 200,
+   "chars": 10102
+  },
+  {
+   "url": "https://www.deejay.de/m_House/sm_News",
+   "file": "deejay-de-m-house-sm-news.txt",
+   "status": 200,
+   "chars": 62712
+  },
+  {
+   "url": "https://www.deejay.de/m_House/sm_News/page_2",
+   "file": "deejay-de-m-house-sm-news-page-2.txt",
+   "status": 200,
+   "chars": 71977
+  },
+  {
+   "url": "https://www.deejay.de/m_Techno/sm_News",
+   "file": "deejay-de-m-techno-sm-news.txt",
+   "status": 200,
+   "chars": 70102
+  },
+  {
+   "url": "https://www.deejay.de/m_Techno/sm_News/page_2",
+   "file": "deejay-de-m-techno-sm-news-page-2.txt",
+   "status": 200,
+   "chars": 68750
+  },
+  {
+   "url": "https://clone.nl/all/new",
+   "file": "clone-nl-all-new.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/new?page=2",
+   "file": "clone-nl-all-new-page-2.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/tag/Dub+Techno",
+   "file": "clone-nl-all-tag-dub-techno.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/tag/Minimal",
+   "file": "clone-nl-all-tag-minimal.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/tag/Tech+House",
+   "file": "clone-nl-all-tag-tech-house.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/tag/Italo",
+   "file": "clone-nl-all-tag-italo.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/tag/Ambient",
+   "file": "clone-nl-all-tag-ambient.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/genre/Electro",
+   "file": "clone-nl-all-genre-electro.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/genre/Disco",
+   "file": "clone-nl-all-genre-disco.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://clone.nl/all/genre/Acid",
+   "file": "clone-nl-all-genre-acid.txt",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://www.phonicarecords.com/new-releases",
+   "file": "phonicarecords-com-new-releases.txt",
+   "status": 200,
+   "chars": 87139
+  },
+  {
+   "url": "https://www.phonicarecords.com/new-releases/18",
+   "file": "phonicarecords-com-new-releases-18.txt",
+   "status": 200,
+   "chars": 88027
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/house-disco/new-releases",
+   "file": "redeyerecords-co-uk-house-disco-new-releases.txt",
+   "status": 200,
+   "chars": 40332
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/techno-electro/new-releases",
+   "file": "redeyerecords-co-uk-techno-electro-new-releases.txt",
+   "status": 200,
+   "chars": 40990
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/balearic-and-downtempo/new-releases",
+   "file": "redeyerecords-co-uk-balearic-and-downtempo-new-releases.txt",
+   "status": 200,
+   "chars": 37820
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/experimental/new-releases",
+   "file": "redeyerecords-co-uk-experimental-new-releases.txt",
+   "status": 200,
+   "chars": 39276
+  },
+  {
+   "url": "https://yoyaku.io/releases/",
+   "file": "yoyaku-io-releases.txt",
+   "status": 200,
+   "chars": 50045
+  },
+  {
+   "url": "https://kompakt.fm/releases",
+   "file": "kompakt-fm-releases.txt",
+   "status": 200,
+   "chars": 36004
+  },
+  {
+   "url": "https://kompakt.fm/releases?page=2",
+   "file": "kompakt-fm-releases-page-2.txt",
+   "status": 200,
+   "chars": 37399
+  },
+  {
+   "url": "https://www.juno.co.uk/house/this-week/",
+   "file": "juno-co-uk-house-this-week.txt",
+   "status": 200,
+   "chars": 245945
+  },
+  {
+   "url": "https://www.juno.co.uk/techno/this-week/",
+   "file": "juno-co-uk-techno-this-week.txt",
+   "status": 200,
+   "chars": 239669
+  },
+  {
+   "url": "https://www.juno.co.uk/disco/this-week/",
+   "file": "juno-co-uk-disco-this-week.txt",
+   "status": 200,
+   "chars": 246779
+  },
+  {
+   "url": "https://www.juno.co.uk/downtempo/this-week/",
+   "file": "juno-co-uk-downtempo-this-week.txt",
+   "status": 200,
+   "chars": 330784
+  },
+  {
+   "url": "https://www.juno.co.uk/ambient-drone/this-week/",
+   "file": "juno-co-uk-ambient-drone-this-week.txt",
+   "status": 200,
+   "chars": 296588
+  },
+  {
+   "url": "https://www.juno.co.uk/deep-house/this-week/",
+   "file": "juno-co-uk-deep-house-this-week.txt",
+   "status": 200,
+   "chars": 257157
+  },
+  {
+   "url": "https://www.juno.co.uk/tech-house/this-week/",
+   "file": "juno-co-uk-tech-house-this-week.txt",
+   "status": 200,
+   "chars": 112487
+  },
+  {
+   "url": "https://www.juno.co.uk/minimal-tech-house/this-week/",
+   "file": "juno-co-uk-minimal-tech-house-this-week.txt",
+   "status": 200,
+   "chars": 246176
+  },
+  {
+   "url": "https://www.juno.co.uk/electro/this-week/",
+   "file": "juno-co-uk-electro-this-week.txt",
+   "status": 200,
+   "chars": 214361
+  },
+  {
+   "url": "https://www.juno.co.uk/balearic-downtempo/this-week/",
+   "file": "juno-co-uk-balearic-downtempo-this-week.txt",
+   "status": 200,
+   "chars": 112109
+  }
+ ],
+ "rushhour_products_checked": 18
+}
