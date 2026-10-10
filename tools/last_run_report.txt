@@ -1,0 +1,49 @@
+Monthly Vinyl – Diagnose-Lauf 2026-10-10 (scheduled task, cloud session)
+=========================================================================
+
+KURZBEFUND
+Jeder WebFetch auf eine Shop-Seite wird sofort vom Werkzeug selbst abgelehnt,
+bevor die Seite überhaupt angefragt wird:
+  error_type "PROVENANCE_REQUIRED": "URL not in provenance set. web_fetch can only
+  retrieve URLs that appeared in a user message, a prior web_fetch result, or an
+  approved fetch prompt."
+Die Shop-URLs stehen nur in tools/daily_update.md (Dateiinhalt), nicht in der
+Nachricht des geplanten Tasks. Deshalb darf WebFetch sie nicht laden -> 0 Releases
+gesehen -> "0 new releases". Die Shops selbst blockieren NICHT; die Seiten wurden
+gar nicht abgerufen.
+
+VORSCHLAG ZUR BEHEBUNG
+Alle Shop-Listen-URLs aus Abschnitt 4 von tools/daily_update.md wörtlich in den
+Prompt des geplanten Tasks kopieren (z.B. als Liste am Ende). Dann gelten sie als
+"in a user message" und WebFetch darf sie laden. Produktseiten-Links, die aus einem
+WebFetch-Ergebnis stammen, sind danach automatisch erlaubt.
+Hinweis: Auch Seiten wie ?page=2, /page_2, Clone-Tag-Listen und die einzelnen
+Juno-Subgenre-Seiten müssen einzeln im Prompt stehen.
+
+EINZELERGEBNISSE (Tool | URL | Ergebnis (erste 300 Zeichen) | Releases gesehen)
+WebFetch | https://hardwax.com/this-week/ | {"error_type":"PROVENANCE_REQUIRED","source":"target","message":"URL not in provenance set. web_fetch can only retrieve URLs that appeared in a user message, a prior web_fetch result, or an approved fetch prompt. Send the URL in the conversation or approve the prompt first."} | 0
+WebFetch | https://www.rushhour.nl/ | gleicher Fehler PROVENANCE_REQUIRED (identischer Text) | 0
+WebFetch | https://clone.nl/all/new | gleicher Fehler PROVENANCE_REQUIRED | 0
+WebFetch | https://www.phonicarecords.com/new-releases | gleicher Fehler PROVENANCE_REQUIRED | 0
+WebFetch | https://www.deejay.de/m_House/sm_News | gleicher Fehler PROVENANCE_REQUIRED | 0
+WebFetch | https://www.redeyerecords.co.uk/house-disco/new-releases | gleicher Fehler PROVENANCE_REQUIRED | 0
+WebFetch | https://yoyaku.io/releases/ | gleicher Fehler PROVENANCE_REQUIRED | 0
+WebFetch | https://kompakt.fm/releases | gleicher Fehler PROVENANCE_REQUIRED | 0
+WebFetch | https://www.juno.co.uk/house/this-week/ | gleicher Fehler PROVENANCE_REQUIRED | 0
+WebFetch | https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zh&now_Was=news&now_Date=nodate&aktuell=0 | gleicher Fehler PROVENANCE_REQUIRED | 0
+
+Nicht versucht (gleiche Ursache, wären identisch abgelehnt worden): hardwax ?page=2/3,
+deejay /m_Techno/sm_News, decks.de now_Sub=zz, clone ?page=2 und alle Tag/Genre-Listen,
+phonica /new-releases/18, redeye techno-electro / balearic-and-downtempo / experimental,
+kompakt ?page=2, übrige Juno-Seiten, alle Produktseiten (Rush Hour mp3s usw.).
+OYE Records: blocked (unverändert, nicht abgefragt).
+Kein Umgehungsversuch (kein curl/Python), gemäss Regeln.
+
+WEITERE SCHRITTE
+WebSearch "hardwax this week new releases" -> nur fremde Treffer (soundshelter, kerrang …), keine Shop-Daten.
+WebSearch "EUR CHF exchange rate today" -> nur Links ohne Kurswerte; fx unverändert (bereits 2026-10-10).
+Abspielbar machen: 105 Einträge (Sept./Okt.) ohne Hörprobe; Abgleich zwischen Shops: 0 Treffer.
+YouTube-Suchen (WebSearch, youtube.com): 8 (Pistaccio, Atypikal, Lorenzo Senni, Brett Johnson,
+Peverelist, Steve Bug & Stefan Braatz, Ron Trent, Palms Trax) -> kein Treffer, der Künstler UND
+Release/Track eindeutig nennt; nichts übernommen.
+releases.json: unverändert. Preview-Artefakt: nicht neu publiziert (keine Datenänderung).
