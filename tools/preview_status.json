@@ -2,9 +2,9 @@
  "date": "2026-10-10",
  "total": {
   "records": 1222,
-  "tracks": 792,
+  "tracks": 795,
   "clip": 319,
-  "none": 111
+  "none": 108
  },
  "shops": {
   "Hardwax": {
@@ -33,15 +33,15 @@
   },
   "Phonica": {
    "records": 139,
-   "tracks": 62,
+   "tracks": 64,
    "clip": 15,
-   "none": 62
+   "none": 60
   },
   "Redeye Records": {
    "records": 377,
-   "tracks": 64,
+   "tracks": 65,
    "clip": 302,
-   "none": 11
+   "none": 10
   },
   "Yoyaku": {
    "records": 149,
@@ -68,17 +68,12 @@
    "none": 18
   }
  },
- "pages_checked": 301,
- "new_from_shop_pages": 3,
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
  "copied_from_other_shop": 0,
  "broken_clips_removed": 11,
  "clips_verified": 2702,
- "not_reachable": {
-  "Clone: http403": 1,
-  "Phonica: http403": 77,
-  "Redeye Records: failed:UnicodeEncodeError": 13,
-  "Redeye Records: http403": 1
- },
+ "not_reachable": {},
  "clip_hosts": {
   "clone.nl": {
    "clips": 928,
