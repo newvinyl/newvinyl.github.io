@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09",
+ "updated": "2026-10-10",
  "shops": [
   {
    "shop": "Hardwax",
@@ -20940,6 +20940,16 @@
      "cover": "https://d1c4rk9le5opln.cloudfront.net/0ba8ebf6ffafb97e6396eebda3bce38b.jpg",
      "tr": [
       {
+       "s": "",
+       "n": "Malaa, Zaark - Feel Good",
+       "yt": "Tl6NcRbIRK4"
+      },
+      {
+       "s": "",
+       "n": "Mark Knight, Wh0 - Clap Your Hands",
+       "yt": "aS-mHq1Ekrc"
+      },
+      {
        "s": "A",
        "n": "Malaa, Zaark - Feel Good",
        "page": "https://www.phonicarecords.com/product/malaa-zaark-essel-cristoph-mark-knight-toolroom-sampler-vol-25-toolroom-records/214262"
@@ -20976,6 +20986,11 @@
      "url": "https://www.phonicarecords.com/product/elado-laura-bag-raiders-van-damn-refried-tested-002-southern-fried-records/213696",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/5e277c230cadd5678c479eecdf53d7e5.jpg",
      "tr": [
+      {
+       "s": "",
+       "n": "lau.ra, Bag Raiders - back2back",
+       "yt": "0ZLHoRyZs34"
+      },
       {
        "s": "",
        "n": "Elado - Don't Stare",
@@ -21294,6 +21309,11 @@
      "url": "https://www.phonicarecords.com/product/triform-tapes-dats-dust-hearlucinate/211660",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/54044f446e0fb4471269c858cb11c922.jpg",
      "tr": [
+      {
+       "s": "",
+       "n": "Basic House Rocker",
+       "yt": "2Vo1vg6zz14"
+      },
       {
        "s": "",
        "n": "Harmony",
@@ -22042,6 +22062,11 @@
      "url": "https://www.phonicarecords.com/product/ageless-aline-umber-dan-ghenacia-fantasies-ep-waking-dreams/213643",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/deef88ff094b24605cf175d144d627ca.jpg",
      "tr": [
+      {
+       "s": "",
+       "n": "Fantasies",
+       "yt": "2A5baB-fVu8"
+      },
       {
        "s": "",
        "n": "Fantasies",
@@ -31408,7 +31433,13 @@
      "g": "Ambient · Reissue",
      "url": "https://www.redeyerecords.co.uk/vinyl/199742-cat013-µ-ziq-tango-nvectif-reissue-of-original-rephlex-2lp-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191538-2.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Tango N' Vectif (full album)",
+       "yt": "sXnN3arHSMw"
+      }
+     ],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-07"
@@ -33711,7 +33742,13 @@
      "g": "Ambient",
      "url": "https://www.redeyerecords.co.uk/vinyl/199067-sts459lpc1-carmen-villain-memoria-clear-vinyl-lp/",
      "cover": "https://www.redeyerecords.co.uk/imagery/702914-2.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Memoria",
+       "yt": "Z_jRWJK75zk"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-09",
      "tl": [
@@ -42433,6 +42470,11 @@
      "cover": "https://www.deejay.de/images/l/8/5/1258585.jpg",
      "tr": [
       {
+       "s": "",
+       "n": "Blast Blast",
+       "yt": "xQ9GUOQXwBk"
+      },
+      {
        "s": "A1",
        "n": "Blast Blast",
        "page": "https://www.deejay.de/Wilba_Party_Tools_30_PT301_Vinyl__1258585"
@@ -42563,6 +42605,11 @@
      "url": "https://www.deejay.de/Pancratio_Be_Yourself_FAITHBEAT-15_Vinyl__1250188",
      "cover": "https://www.deejay.de/images/l/8/8/1250188.jpg",
      "tr": [
+      {
+       "s": "",
+       "n": "Be Yourself",
+       "yt": "jXXL5T0rEyc"
+      },
       {
        "s": "A1",
        "n": "Be Yourself",
@@ -43085,6 +43132,11 @@
      "cover": "https://www.deejay.de/images/l/7/2/1258927.jpg",
      "tr": [
       {
+       "s": "",
+       "n": "Send on Faders",
+       "yt": "f1RVvgfZ7i0"
+      },
+      {
        "s": "A1",
        "n": "DTX - DTH",
        "page": "https://www.deejay.de/Cityboy_aka_Troy_Anderson_Listen_Here_EP_PT007_Vinyl__1258927"
@@ -43224,9 +43276,9 @@
  ],
  "fx": {
   "CHF": 1,
-  "EUR": 0.9323,
-  "GBP": 1.0993,
-  "USD": 0.8303,
-  "date": "2026-10-09"
+  "EUR": 0.93,
+  "GBP": 1.0987,
+  "USD": 0.8298,
+  "date": "2026-10-10"
  }
 }
