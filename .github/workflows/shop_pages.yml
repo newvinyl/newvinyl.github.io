@@ -1,0 +1,32 @@
+name: Shop pages
+
+# Fetches the shops' new-release pages every morning before the daily update and stores them
+# as compact text on branch "shop-pages" (pages/*.txt). The scheduled Claude task reads them there.
+on:
+  schedule:
+    - cron: "10 4 * * *"   # 06:10 Zurich (summer) / 05:10 (winter)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/fetch_pages.py, .github/workflows/shop_pages.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shop-pages
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch
+        run: python3 tools/fetch_pages.py "$RUNNER_TEMP/sp"
+      - name: Publish to branch shop-pages
+        run: |
+          cd "$RUNNER_TEMP/sp" && git init -q && git checkout -q -b shop-pages
+          git add pages && git -c user.name="github-actions[bot]" -c user.email="41898283+github-actions[bot]@users.noreply.github.com" commit -qm "Shop pages $(date -u +%F)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" shop-pages

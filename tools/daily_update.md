@@ -60,18 +60,29 @@ today's date; otherwise leave "fx" unchanged.
 
 ## 4. Shops
 
-For each shop that is not "blocked", read its new-release pages with WebFetch. Ask WebFetch for
-compact JSON lines copied exactly from the page and to use null for anything missing. Follow "next
-page" links while the releases are still new (this week / last 7 days), max 3 pages per list.
+IMPORTANT – where the pages come from: in a scheduled task WebFetch refuses shop URLs
+(PROVENANCE_REQUIRED). Therefore a GitHub Action fetches all pages listed below every morning
+(~06:10 Zurich) and stores them as compact text on branch "shop-pages":
+`git fetch origin shop-pages && git worktree add ../shop-pages origin/shop-pages` (or
+`git show origin/shop-pages:pages/index.json`). pages/index.json lists every URL with its file name,
+HTTP status or error and the fetch time; each pages/<file>.txt starts with "SOURCE <url>" and contains
+the page text with [link: …], [img: …] and [audio: …] markers (absolute URLs). Read these files
+instead of calling WebFetch. pages/rushhour-product-mp3.json maps Rush Hour product pages to their
+mp3 URLs. Use the files only if their FETCHED date is today; if a page has an error or is missing,
+skip that page for today and name it in the final message. Do not try WebFetch, curl or Python
+requests for shop pages. Extract the release data exactly as it appears in the text (artist, title,
+label, cat. no., format, price, product link, cover image, audio links); never invent anything.
+When a shop is added, add its URLs to URLS in tools/fetch_pages.py.
+
+Pages per shop (only those that are in the saved files are read; "next page" = the ?page=2/3 files):
 
 - Hardwax (Berlin, DE): https://hardwax.com/this-week/ and ?page=2, ?page=3. Direct mp3s at
   media.hardwax.com/audio/ID_SIDE.mp3 (use the vinyl links, not "_clip"). Price €.
 - Rush Hour (Amsterdam, NL): https://www.rushhour.nl/ (new releases with week numbers; prices usually
   not shown → null; store the week as "d"; pre-orders → "st":"pre"; skip pre-orders dated "W 52",
   which is a placeholder). Rush Hour only tags coarse genres; use its Disco / Italo / Electro /
-  Ambient / Balearic tags where given. Each product page has direct mp3s on
-  objectstore.true.nl/rushhourrecords:files/tracks/… — fetch the product page and ask only for those
-  mp3 URLs; stop fetching product pages if the site answers 429.
+  Ambient / Balearic tags where given. Direct mp3s from the product pages are in
+  pages/rushhour-product-mp3.json (objectstore.true.nl/rushhourrecords:files/tracks/…).
 - Decks.de (DE): https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zh&now_Was=news&now_Date=nodate&aktuell=0
   (house) and the same with now_Sub=zz (techno); the page sometimes breaks after one entry — take what
   is there.
