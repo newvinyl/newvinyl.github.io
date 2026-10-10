@@ -1,15 +1,15 @@
 {
  "date": "2026-10-10",
  "total": {
-  "records": 1222,
-  "tracks": 795,
-  "clip": 319,
-  "none": 108
+  "records": 1547,
+  "tracks": 1082,
+  "clip": 347,
+  "none": 118
  },
  "shops": {
   "Hardwax": {
-   "records": 116,
-   "tracks": 116,
+   "records": 123,
+   "tracks": 123,
    "clip": 0,
    "none": 0
   },
@@ -20,10 +20,10 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 6,
+   "records": 8,
    "tracks": 5,
    "clip": 0,
-   "none": 1
+   "none": 3
   },
   "Clone": {
    "records": 224,
@@ -32,48 +32,51 @@
    "none": 1
   },
   "Phonica": {
-   "records": 139,
-   "tracks": 64,
+   "records": 167,
+   "tracks": 93,
    "clip": 15,
-   "none": 60
+   "none": 59
   },
   "Redeye Records": {
-   "records": 377,
-   "tracks": 65,
-   "clip": 302,
-   "none": 10
+   "records": 425,
+   "tracks": 87,
+   "clip": 325,
+   "none": 13
   },
   "Yoyaku": {
-   "records": 149,
-   "tracks": 148,
+   "records": 178,
+   "tracks": 177,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 85,
-   "tracks": 70,
+   "records": 90,
+   "tracks": 74,
    "clip": 0,
-   "none": 15
+   "none": 16
   },
   "Juno Records": {
-   "records": 1,
-   "tracks": 1,
+   "records": 180,
+   "tracks": 179,
    "clip": 0,
-   "none": 0
+   "none": 1
   },
   "Deejay.de": {
-   "records": 41,
-   "tracks": 21,
-   "clip": 2,
-   "none": 18
+   "records": 68,
+   "tracks": 39,
+   "clip": 7,
+   "none": 22
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 11,
- "clips_verified": 2702,
- "not_reachable": {},
+ "pages_checked": 74,
+ "new_from_shop_pages": 16,
+ "copied_from_other_shop": 9,
+ "broken_clips_removed": 17,
+ "clips_verified": 4205,
+ "not_reachable": {
+  "Phonica: http403": 10,
+  "Redeye Records: failed:UnicodeEncodeError": 2
+ },
  "clip_hosts": {
   "clone.nl": {
    "clips": 928,
@@ -85,7 +88,7 @@
    ]
   },
   "media.hardwax.com": {
-   "clips": 564,
+   "clips": 593,
    "failed": 0,
    "sample": []
   },
@@ -95,8 +98,8 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 49,
-   "failed": 11,
+   "clips": 51,
+   "failed": 13,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
@@ -104,7 +107,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 301,
+   "clips": 329,
    "failed": 0,
    "sample": []
   },
@@ -114,17 +117,17 @@
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 2,
+   "clips": 1393,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 432,
+   "clips": 477,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.digitaloceanspaces.com": {
-   "clips": 9,
+   "clips": 17,
    "failed": 0,
    "sample": []
   }

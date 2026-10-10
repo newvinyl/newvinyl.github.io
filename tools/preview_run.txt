@@ -1,11 +1,12 @@
-1222 Platten: 65% Einzeltracks, 26% Gesamtclip, 9% ohne Hörprobe | 0 neu von Produktseiten, 0 von anderem Shop, 11 defekte Clips entfernt
+1547 Platten: 70% Einzeltracks, 22% Gesamtclip, 8% ohne Hörprobe | 16 neu von Produktseiten, 9 von anderem Shop, 17 defekte Clips entfernt
   Clone: {'records': 224, 'tracks': 223, 'clip': 0, 'none': 1}
-  Decks.de: {'records': 6, 'tracks': 5, 'clip': 0, 'none': 1}
-  Deejay.de: {'records': 41, 'tracks': 21, 'clip': 2, 'none': 18}
-  Hardwax: {'records': 116, 'tracks': 116, 'clip': 0, 'none': 0}
-  Juno Records: {'records': 1, 'tracks': 1, 'clip': 0, 'none': 0}
-  Kompakt: {'records': 85, 'tracks': 70, 'clip': 0, 'none': 15}
-  Phonica: {'records': 139, 'tracks': 64, 'clip': 15, 'none': 60}
-  Redeye Records: {'records': 377, 'tracks': 65, 'clip': 302, 'none': 10}
+  Decks.de: {'records': 8, 'tracks': 5, 'clip': 0, 'none': 3}
+  Deejay.de: {'records': 68, 'tracks': 39, 'clip': 7, 'none': 22}
+  Hardwax: {'records': 123, 'tracks': 123, 'clip': 0, 'none': 0}
+  Juno Records: {'records': 180, 'tracks': 179, 'clip': 0, 'none': 1}
+  Kompakt: {'records': 90, 'tracks': 74, 'clip': 0, 'none': 16}
+  Phonica: {'records': 167, 'tracks': 93, 'clip': 15, 'none': 59}
+  Redeye Records: {'records': 425, 'tracks': 87, 'clip': 325, 'none': 13}
   Rush Hour: {'records': 84, 'tracks': 82, 'clip': 0, 'none': 2}
-  Yoyaku: {'records': 149, 'tracks': 148, 'clip': 0, 'none': 1}
+  Yoyaku: {'records': 178, 'tracks': 177, 'clip': 0, 'none': 1}
+  nicht erreichbar: {'Phonica: http403': 10, 'Redeye Records: failed:UnicodeEncodeError': 2}
