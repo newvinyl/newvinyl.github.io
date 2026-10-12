@@ -198,7 +198,6 @@ button{font:inherit;color:inherit}
 .ffab{background:var(--yellow);color:var(--ink);border-color:var(--yellow);font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,.5);backdrop-filter:none;-webkit-backdrop-filter:none}
 .ffab.act{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
 body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-@media (max-width:700px){.ffab,body.playing .ffab{right:0;bottom:calc(84px + env(safe-area-inset-bottom,0px));height:42px;padding:0 16px 0 14px;border-right:0;box-shadow:-4px 4px 16px rgba(0,0,0,.5)}}
 .sheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.18);display:flex;align-items:flex-end;justify-content:center}
 .spanel{width:100%;max-width:560px;max-height:74vh;overflow:auto;overscroll-behavior:contain;background:var(--bg);box-shadow:0 -10px 30px rgba(0,0,0,.55);border-top:2px solid var(--white);padding:6px 16px calc(24px + env(safe-area-inset-bottom,0px));transition:transform .26s cubic-bezier(.2,.8,.2,1);animation:sup .26s cubic-bezier(.2,.8,.2,1)}
 @keyframes sup{from{transform:translateY(100%)}}
