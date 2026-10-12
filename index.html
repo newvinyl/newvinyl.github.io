@@ -132,7 +132,12 @@ button{font:inherit;color:inherit}
 .backf .ctl{flex:none;display:flex;justify-content:space-between;gap:10px;padding-top:12px}
 .backf .ctl .add,.backf .ctl .more{position:static}
 .backf .buy{color:var(--muted);font:400 11.5px var(--mono);text-underline-offset:3px;align-self:flex-end;padding-bottom:4px}
-.backf .ctl{align-items:flex-end}
+.backf .ctl{align-items:center}
+.backf .fl{all:unset;cursor:pointer;color:var(--fg);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:1.5px;text-underline-offset:3px}
+.backf .fl:hover,.backf .fl:focus-visible{color:var(--yellow)}
+.backf .fls{color:var(--yellow);font-weight:700;text-decoration:none}
+.backf .ctl .price{text-align:left}
+.backf .ctl .price .low{text-align:left}
 .backf .lbl{all:unset;cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:2px;padding:4px 0}
 .backf .lbl b{font:700 15px var(--display);color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .backf .lbl span{font:500 12px var(--mono);color:var(--yellow)}
@@ -328,7 +333,7 @@ function renderFeed(){
   const recs=ALL,curGk=cur>=0&&RECS[cur]?RECS[cur].gk:null;
   const rg=rangeOf(F.r);
   // Shop: alle Platten dieses Shops, über alle Tage (für Sammelbestellungen)
-  const days=F.l&&!rg?[...new Set(recs.filter(r=>r.all.some(x=>x.S.shop===F.l)).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
+  const days=F.k&&!rg?[...new Set(recs.filter(chipMatch).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
   const todayIso=isoZ(new Date()),yIso=isoZ(new Date(Date.now()-864e5));
   if(imgIO)imgIO.disconnect();
   RECS=[];const feed=document.getElementById("feed");feed.innerHTML="";
@@ -374,7 +379,7 @@ function card(r,i){
     <div class="face backf" aria-hidden="true">
       <button class="shr" type="button" aria-label="Share ${esc(m.a)} – ${esc(m.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 12v8h14v-8"/></svg></button>
       <div class="ar">${esc(m.a)}</div><div class="ti">${esc(m.t)}</div>
-      <div class="me">${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+esc(m.g):""}</div>
+      <div class="me"><button type="button" class="fl fls" data-ft="shop" data-fv="${esc(m.S.shop)}">${esc(m.S.shop)} →</button> · ${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+gTokens(m.g):""}</div>
       <ol>${r.tracks.slice(0,6).map((t,ti)=>`<li data-t="${ti}"><button type="button"><span class="s">${esc(t.s||"")}</span><span>${esc(t.n||"Preview")}</span></button></li>`).join("")}</ol>
       <div class="more-tr" hidden></div>
     </div></div>`;
@@ -396,10 +401,10 @@ function card(r,i){
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite: Bag unten rechts wie vorne
   const ctl=document.createElement("div");ctl.className="ctl";
-  ctl.innerHTML=`<button type="button" class="lbl" aria-label="Show all records from ${esc(m.S.shop)}"><b>${esc(m.S.shop)}</b><span>Dig all their records →</span></button><div class="rt"><div class="price">${money(m.S.cur,m.p)}${others.length?`<small class="low">lowest of ${others.length+1}</small>`:""}</div><button class="add" type="button"></button></div>`;
+  ctl.innerHTML=`<div class="price">${money(m.S.cur,m.p)}${others.length?`<small class="low">lowest of ${others.length+1} shops</small>`:""}</div><button class="add" type="button"></button>`;
   back.appendChild(ctl);
   ctl.querySelector(".add").onclick=()=>toggleBag(r);
-  ctl.querySelector(".lbl").onclick=e=>{e.stopPropagation();setLabel(m.S.shop)};
+  back.querySelectorAll(".fl").forEach(b=>b.onclick=e=>{e.stopPropagation();setChip(b.dataset.ft,b.dataset.fv)});
   return el;
 }
 // Mehr Tracks als sichtbar: unten ausblenden und «+N more ↓» zeigen, bis ans Ende gescrollt ist
@@ -518,7 +523,7 @@ const BROAD=new Set(["House","Techno","Disco","Acid","Minimal","Ambient","Electr
 let GENRES=[],GRANK={};
 fetch("/genre_rank.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).then(d=>{GRANK=(d&&d.clicks)||{};if(!document.getElementById("sheet").hidden)buildChips()}).catch(()=>{});
 let ALL=[];
-const F={l:"",r:"",g:new Set(),s:new Set(),q:""};
+const F={k:null,l:"",r:"",g:new Set(),s:new Set(),q:""};
 const gOf=r=>r.all.map(x=>x.g||"").join(" / ").toLowerCase();
 const gTok=r=>r._gt||(r._gt=new Set(r.all.flatMap(x=>String(x.g||"").split(/[\/·]/).map(t=>t.trim()).filter(t=>t&&!NOT_GENRE.test(t)))));
 function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
@@ -528,19 +533,30 @@ function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
 function genreList(){const n={};RECS.forEach(r=>gTok(r).forEach(g=>{n[g]=0}));Object.keys(n).forEach(g=>{n[g]=RECS.filter(r=>gMatch(r,g)).length});
   return Object.keys(n).sort((a,b)=>(GRANK[b]||0)-(GRANK[a]||0)||n[b]-n[a]||a.localeCompare(b,"en"))}
 function matches(r){
-  if(F.l&&!r.all.some(x=>x.S.shop===F.l))return false;
+  if(F.k&&!chipMatch(r))return false;
   if(F.g.size&&![...F.g].some(g=>gMatch(r,g)))return false;
   if(F.s.size&&!r.all.some(x=>F.s.has(x.S.shop)))return false;
   if(F.q){const h=fold(r.all.map(x=>[x.a,x.t,x.l,x.cat,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" "));if(!F.q.split(/\s+/).every(w=>h.includes(w)))return false}
   return true;
 }
-function setLabel(l){F.l=l||"";if(F.l)track("Shop filter",{shop:F.l});renderFeed();window.scrollTo({top:0,behavior:"smooth"})}
+// Antippbare Infos auf der Rückseite (Shop, Genre, Reissue) filtern direkt; gelber Chip mit × hebt auf
+function gTokens(g){const [gen,...tags]=String(g).split(" · ");
+  const gs=gen.split(" / ").map(x=>x.trim()).filter(Boolean).map(x=>/^(reissue|repress)$/i.test(x)?`<button type="button" class="fl" data-ft="re" data-fv="${esc(x)}">${esc(x)}</button>`:`<button type="button" class="fl" data-ft="genre" data-fv="${esc(x)}">${esc(x)}</button>`);
+  const ts=tags.map(x=>x.trim()).filter(Boolean).map(x=>/reissue|repress/i.test(x)?`<button type="button" class="fl" data-ft="re" data-fv="${esc(x)}">${esc(x)}</button>`:esc(x));
+  return [gs.join(" / "),...ts].filter(Boolean).join(" · ")}
+function chipMatch(r){const k=F.k;if(!k)return true;
+  if(k.t==="shop")return r.all.some(x=>x.S.shop===k.v);
+  if(k.t==="genre")return r.all.some(x=>String(x.g||"").split(/ · | \/ /).some(t=>fold(t.trim())===fold(k.v)));
+  if(k.t==="re")return r.all.some(x=>/reissue|repress/i.test(x.g||""));
+  return true}
+function setChip(t,v){F.k=t&&v?{t,v}:null;F.l=F.k?F.k.v:"";if(F.k)track("Card filter",{type:t,value:v});renderFeed();window.scrollTo({top:0,behavior:"smooth"})}
+function setLabel(l){setChip(l?"shop":"",l)}
 // Aktiver Shop-Filter als gelber Chip neben dem ersten Tagestitel; × hebt ihn auf
 function shopChip(){
   document.querySelectorAll(".fchip").forEach(x=>x.remove());
-  if(!F.l)return;const h=document.querySelector(".day:not([hidden]) b");if(!h)return;
+  if(!F.k)return;const h=document.querySelector(".day:not([hidden]) b");if(!h)return;
   const c=document.createElement("button");c.type="button";c.className="fchip";c.setAttribute("aria-label",`Remove filter ${F.l}`);
-  c.innerHTML=`${esc(F.l)}<i aria-hidden="true">×</i>`;c.onclick=()=>setLabel("");h.after(c);
+  c.innerHTML=`${esc(F.k.t==="re"?"Reissues":F.k.v)}<i aria-hidden="true">×</i>`;c.onclick=()=>setChip("");h.after(c);
 }
 function applyFilter(){
   setTimeout(shopChip,0);
@@ -569,7 +585,7 @@ const openSheet=()=>{track("Filter open");buildChips();applyFilter();sheet.hidde
 const closeSheet=()=>{sheet.hidden=true;document.getElementById("ffab").focus()};
 document.getElementById("ffab").onclick=openSheet;
 document.getElementById("sdone").onclick=()=>{closeSheet();const f=document.querySelector(".day:not([hidden])");if(f)window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-80),behavior:"smooth"})};
-document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const had=F.r||F.l;F.r="";if(F.l)setLabel("");else if(had)renderFeed();buildChips();applyFilter()};
+document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const had=F.r||F.k;F.r="";if(F.k)setChip("");else if(had)renderFeed();buildChips();applyFilter()};
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
 const sb=document.getElementById("srchbtn"),srow=document.getElementById("srow"),q=document.getElementById("q");
