@@ -138,18 +138,18 @@ def main():
         cap("new vinyl. every morning."); wait(2200)
         # A: antippen, Musik
         scroll_to(A)
-        cap("tap the cover."); tap(card(A).locator(".front"), 0.42); started(A["u"][0]); wait(5200)
-        cap("tap again. next track."); tap(card(A).locator(".front"), 0.42); started(A["u"][1]); wait(4600)
+        cap("tap play."); tap(card(A).locator(".front .play")); started(A["u"][0]); wait(5200)
+        cap("tap again. next track."); tap(card(A).locator(".front .play")); wait(330); started(A["u"][1]); wait(4300)
         cap("like it? bag it."); tap(card(A).locator(".front .add")); wait(1600)
         cap("")
         # B
         scroll_to(B)
-        tap(card(B).locator(".front"), 0.42); started(B["u"][0]); wait(4400)
+        tap(card(B).locator(".front .play")); started(B["u"][0]); wait(4400)
         tap(card(B).locator(".front .add")); wait(1200)
         # C: More
         scroll_to(C)
-        tap(card(C).locator(".front"), 0.42); started(C["u"][0]); wait(3000)
-        cap("flip it."); tap(card(C).locator(".front .more")); wait(2900)
+        tap(card(C).locator(".front .play")); started(C["u"][0]); wait(3000)
+        cap("tap the cover. flip it."); tap(card(C).locator(".front"), 0.18); wait(2900)
         tap(card(C).locator(".backf .add")); wait(1300)
         cap("")
         # Check out

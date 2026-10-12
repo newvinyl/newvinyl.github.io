@@ -85,7 +85,7 @@ button{font:inherit;color:inherit}
 .card.playing .play .ps{display:block}
 .play:focus-visible,.more:focus-visible,.add:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
 
-.add{all:unset;cursor:pointer;position:absolute;left:12px;bottom:12px;height:40px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;
+.add{all:unset;cursor:pointer;position:absolute;right:12px;bottom:12px;height:40px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;
   background:var(--ink);color:var(--white);border:2px solid var(--white);font:700 14px/1 var(--display)}
 .add svg{width:15px;height:15px}
 .add.in{background:var(--pink);border-color:var(--pink);color:var(--ink)}
@@ -105,7 +105,15 @@ button{font:inherit;color:inherit}
 .backf .price{font:800 30px/1 var(--display);font-variant-numeric:tabular-nums}
 .backf .price small{font-size:.5em;vertical-align:.6em;margin-right:2px}
 .backf .shop{font:400 12px/1.4 var(--mono);color:var(--muted);text-align:right}
-.backf .ctl{flex:none;display:flex;justify-content:space-between;gap:10px;padding-top:12px}
+.card{touch-action:manipulation}
+.shr{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted)}
+.shr svg{width:20px;height:20px}
+.shr:active,.shr:focus-visible{color:var(--white)}
+.backf .ar{padding-right:34px}
+#toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--white);color:var(--ink);font:500 13px var(--mono);padding:8px 12px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#toast.on{opacity:1}
+.mini .mbag:not(.has){display:none}
+.backf .ctl{flex:none;display:flex;justify-content:flex-end;gap:10px;padding-top:12px}
 .backf .ctl .add,.backf .ctl .more{position:static}
 .backf .buy{color:var(--yellow);font-weight:700;font-size:14px;text-underline-offset:3px}
 
@@ -329,30 +337,48 @@ function card(r,i){
       ${r.cover?`<img decoding="async" alt="${esc(m.a)} – ${esc(m.t)}" data-src="${esc(hiRes(r.cover))}" onerror="if(!this.dataset.t){this.dataset.t=1;this.dataset.src='${esc(r.cover)}';this.src='${esc(r.cover)}'}else this.remove()">`:""}
       <button class="play" type="button" aria-label="Play ${esc(m.a)} – ${esc(m.t)}">${PLAY}</button>
       <button class="add" type="button"></button>
-      <button class="more" type="button" aria-label="Show details">More</button>
       <div class="bar"></div></div>
     <div class="face backf" aria-hidden="true">
+      <button class="shr" type="button" aria-label="Share ${esc(m.a)} – ${esc(m.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 12v8h14v-8"/></svg></button>
       <div class="ar">${esc(m.a)}</div><div class="ti">${esc(m.t)}</div>
       <div class="me">${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+esc(m.g):""}</div>
       <ol>${r.tracks.slice(0,6).map((t,ti)=>`<li data-t="${ti}"><button type="button"><span class="s">${esc(t.s||"")}</span><span>${esc(t.n||"Preview")}</span></button></li>`).join("")}</ol>
       <div class="pr"><div class="price">${money(m.S.cur,m.p)}</div>
         <div class="shop">${esc(m.S.shop)}${others.length?` · +${others.length} more ${others.length>1?"shops":"shop"}`:""}<br><a class="buy" data-shop="${esc(m.S.shop)}" href="${esc(m.url)}" target="_blank" rel="noopener">Buy at ${esc(m.S.shop)} ↗</a></div></div>
     </div></div>`;
-  const back=el.querySelector(".backf"),mb=el.querySelector(".more");
-  mb.onclick=()=>{track("More");el.classList.add("back");back.setAttribute("aria-hidden","false")};
-  back.onclick=e=>{if(e.target.closest("button,a"))return;el.classList.remove("back");back.setAttribute("aria-hidden","true")};
-  // Ganzes Cover startet/stoppt den Track; Bag und More nicht
-  el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.more"))return;if(cur===i&&!au.paused){track("Next via cover");next(true)}else if(cur===i&&au.src){au.play().catch(()=>{})}else play(i,0)};
+  const back=el.querySelector(".backf");
+  const flip=on=>{el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on)track("More")};
+  back.onclick=e=>{if(e.target.closest("button,a"))return;flip(false)};
+  // Cover antippen (ausserhalb Play) dreht es um
+  el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.play"))return;flip(true)};
+  // Play: 1× Tipp = abspielen bzw. nächster Track; 2× Tipp = Pause; Tipp in der Pause = weiter
+  let tapT=null;
+  el.querySelector(".play").onclick=()=>{
+    if(cur!==i){play(i,0);return}
+    if(au.paused){au.play().catch(()=>{});return}
+    if(tapT){clearTimeout(tapT);tapT=null;au.pause();track("Pause via double tap");return}
+    tapT=setTimeout(()=>{tapT=null;if(cur===i&&!au.paused){track("Next via cover");next(true)}},280);
+  };
+  el.querySelector(".shr").onclick=()=>shareRec(r);
   el.querySelector(".add").onclick=()=>toggleBag(r);
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
-  // Rückseite hat eigene Knöpfe: Bag und zurück
+  // Rückseite: Bag unten rechts wie vorne
   const ctl=document.createElement("div");ctl.className="ctl";
-  ctl.innerHTML=`<button class="add" type="button"></button><button class="more" type="button">Cover</button>`;
+  ctl.innerHTML=`<button class="add" type="button"></button>`;
   back.appendChild(ctl);
   ctl.querySelector(".add").onclick=()=>toggleBag(r);
-  ctl.querySelector(".more").onclick=()=>{el.classList.remove("back");back.setAttribute("aria-hidden","true")};
   return el;
 }
+// Teilen: eigene Seite pro Platte (/r/<slug>/) mit Cover als Vorschaubild
+async function shareRec(r){
+  const m=r.main,url=`https://monthlyvinyl.net/r/${rslug(m.a,m.t)}/?s=1`,title=`${m.a} – ${m.t}`;
+  track("Share",{shop:m.S.shop,where:"feed"});
+  if(navigator.share){try{await navigator.share({title,text:`${title} (${m.l}) on vinyl`,url});return}catch(e){if(e&&e.name==="AbortError")return}}
+  let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(e){}
+  toast(ok?"Link copied.":url);
+}
+function toast(t){let d=document.getElementById("toast");if(!d){d=document.createElement("div");d.id="toast";document.body.appendChild(d)}
+  d.textContent=t;d.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>d.classList.remove("on"),2200)}
 // Genres: alle Genres, die in den aktuellen Platten vorkommen. Reihenfolge: wie oft sie im Filter geklickt
 // werden (/genre_rank.json, aus der Statistik), sonst nach Anzahl Platten.
 const NOT_GENRE=/^(reissue|repress|remaster(ed)?|lp|ep|2×12"?|12"|7")$/i;
