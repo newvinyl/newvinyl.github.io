@@ -123,9 +123,15 @@ button{font:inherit;color:inherit}
 #toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--white);color:var(--ink);font:500 13px var(--mono);padding:8px 12px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #toast.on{opacity:1}
 .mini .mbag:not(.has){display:none}
-.backf .ctl{flex:none;display:flex;justify-content:flex-end;gap:10px;padding-top:12px}
+.backf .ctl{flex:none;display:flex;justify-content:space-between;gap:10px;padding-top:12px}
 .backf .ctl .add,.backf .ctl .more{position:static}
-.backf .buy{color:var(--yellow);font-weight:700;font-size:14px;text-underline-offset:3px}
+.backf .buy{color:var(--muted);font:400 11.5px var(--mono);text-underline-offset:3px;align-self:flex-end;padding-bottom:4px}
+.backf .ctl{align-items:flex-end}
+.backf .lbl{all:unset;cursor:pointer;flex:none;align-self:flex-start;margin-top:6px;color:var(--neon);font:700 14px var(--display);text-underline-offset:3px}
+.backf .lbl:hover,.backf .lbl:focus-visible{text-decoration:underline}
+.lblbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 0;padding:10px 12px;border:1.5px solid var(--neon)}
+.lblbar b{font:700 15px var(--display);color:var(--neon);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lblbar button{all:unset;cursor:pointer;font:500 12px var(--mono);color:var(--fg);text-decoration:underline;flex:none}
 
 .mini{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
   background:var(--deep);border-top:2px solid var(--white)}
@@ -306,7 +312,8 @@ const RANGES=[["today","Today"],["yesterday","Yesterday"],["week","This week"],[
 function renderFeed(){
   const recs=ALL,curGk=cur>=0&&RECS[cur]?RECS[cur].gk:null;
   const rg=rangeOf(F.r);
-  const days=rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
+  // Label: alle Platten dieses Labels, über alle Tage
+  const days=F.l&&!rg?[...new Set(recs.filter(r=>r.all.some(x=>fold(x.l)===fold(F.l))).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
   const todayIso=isoZ(new Date()),yIso=isoZ(new Date(Date.now()-864e5));
   if(imgIO)imgIO.disconnect();
   RECS=[];const feed=document.getElementById("feed");feed.innerHTML="";
@@ -355,7 +362,8 @@ function card(r,i){
       <div class="me">${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+esc(m.g):""}</div>
       <ol>${r.tracks.slice(0,6).map((t,ti)=>`<li data-t="${ti}"><button type="button"><span class="s">${esc(t.s||"")}</span><span>${esc(t.n||"Preview")}</span></button></li>`).join("")}</ol>
       <div class="pr"><div class="price">${money(m.S.cur,m.p)}</div>
-        <div class="shop">${esc(m.S.shop)}${others.length?` · +${others.length} more ${others.length>1?"shops":"shop"}`:""}<br><a class="buy" data-shop="${esc(m.S.shop)}" href="${esc(m.url)}" target="_blank" rel="noopener">Buy at ${esc(m.S.shop)} ↗</a></div></div>
+        <div class="shop">${esc(m.S.shop)}${others.length?` · +${others.length} more ${others.length>1?"shops":"shop"}`:""}</div></div>
+      ${m.l?`<button type="button" class="lbl">All from ${esc(m.l)} →</button>`:""}
     </div></div>`;
   const back=el.querySelector(".backf");
   const flip=on=>{el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r)}};
@@ -370,12 +378,13 @@ function card(r,i){
     if(tapT){clearTimeout(tapT);tapT=null;au.pause();track("Pause via double tap");return}
     tapT=setTimeout(()=>{tapT=null;if(cur===i&&!au.paused){track("Next via cover");next(true)}},280);
   };
+  const lb=el.querySelector(".lbl");if(lb)lb.onclick=e=>{e.stopPropagation();setLabel(m.l)};
   el.querySelector(".shr").onclick=e=>{e.stopPropagation();DESK?sharePop(r,el.querySelector(".shr")):shareRec(r)};
   el.querySelector(".add").onclick=()=>toggleBag(r);
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite: Bag unten rechts wie vorne
   const ctl=document.createElement("div");ctl.className="ctl";
-  ctl.innerHTML=`<button class="add" type="button"></button>`;
+  ctl.innerHTML=`<a class="buy" data-shop="${esc(m.S.shop)}" href="${esc(m.url)}" target="_blank" rel="noopener">Buy at ${esc(m.S.shop)} ↗</a><button class="add" type="button"></button>`;
   back.appendChild(ctl);
   ctl.querySelector(".add").onclick=()=>toggleBag(r);
   return el;
@@ -486,7 +495,7 @@ const BROAD=new Set(["House","Techno","Disco","Acid","Minimal","Ambient","Electr
 let GENRES=[],GRANK={};
 fetch("/genre_rank.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).then(d=>{GRANK=(d&&d.clicks)||{};if(!document.getElementById("sheet").hidden)buildChips()}).catch(()=>{});
 let ALL=[];
-const F={r:"",g:new Set(),s:new Set(),q:""};
+const F={l:"",r:"",g:new Set(),s:new Set(),q:""};
 const gOf=r=>r.all.map(x=>x.g||"").join(" / ").toLowerCase();
 const gTok=r=>r._gt||(r._gt=new Set(r.all.flatMap(x=>String(x.g||"").split(/[\/·]/).map(t=>t.trim()).filter(t=>t&&!NOT_GENRE.test(t)))));
 function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
@@ -496,17 +505,24 @@ function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
 function genreList(){const n={};RECS.forEach(r=>gTok(r).forEach(g=>{n[g]=0}));Object.keys(n).forEach(g=>{n[g]=RECS.filter(r=>gMatch(r,g)).length});
   return Object.keys(n).sort((a,b)=>(GRANK[b]||0)-(GRANK[a]||0)||n[b]-n[a]||a.localeCompare(b,"en"))}
 function matches(r){
+  if(F.l&&!r.all.some(x=>fold(x.l)===fold(F.l)))return false;
   if(F.g.size&&![...F.g].some(g=>gMatch(r,g)))return false;
   if(F.s.size&&!r.all.some(x=>F.s.has(x.S.shop)))return false;
   if(F.q){const h=fold(r.all.map(x=>[x.a,x.t,x.l,x.cat,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" "));if(!F.q.split(/\s+/).every(w=>h.includes(w)))return false}
   return true;
 }
+function setLabel(l){F.l=l||"";track("Label filter",{label:F.l});renderFeed();
+  let bar=document.getElementById("lblbar");
+  if(F.l){if(!bar){bar=document.createElement("div");bar.id="lblbar";bar.className="lblbar";document.getElementById("feed").before(bar)}
+    bar.innerHTML=`<b>All from ${esc(F.l)}</b><button type="button">Show all records</button>`;bar.querySelector("button").onclick=()=>setLabel("")}
+  else if(bar)bar.remove();
+  window.scrollTo({top:0,behavior:"smooth"})}
 function applyFilter(){
   let shown=0;
   document.querySelectorAll(".grid").forEach(g=>{let n=0;g.querySelectorAll(".card").forEach(c=>{const ok=matches(RECS[c.dataset.i]);c.hidden=!ok;if(ok)n++});
     g.hidden=!n;const h=g.previousElementSibling;h.hidden=!n;h.querySelector("span").textContent=`${n} ${n===1?"record":"records"}`;shown+=n});
   let e=document.getElementById("empty");if(!shown){if(!e){e=document.createElement("p");e.id="empty";e.className="empty";document.getElementById("feed").appendChild(e)}e.textContent="No records match. Change the filter or search.";e.hidden=false}else if(e)e.hidden=true;
-  const nf=F.g.size+F.s.size+(F.r?1:0),fb=document.getElementById("ffab");fb.classList.toggle("act",!!nf);document.getElementById("ffl").textContent=nf?`Filter · ${nf}`:"Filter";
+  const nf=F.g.size+F.s.size+(F.r?1:0)+(F.l?1:0),fb=document.getElementById("ffab");fb.classList.toggle("act",!!nf);document.getElementById("ffl").textContent=nf?`Filter · ${nf}`:"Filter";
   document.getElementById("sdone").textContent=`Show ${shown} ${shown===1?"record":"records"}`;
 }
 function buildChips(){
@@ -527,7 +543,7 @@ const openSheet=()=>{track("Filter open");buildChips();applyFilter();sheet.hidde
 const closeSheet=()=>{sheet.hidden=true;document.getElementById("ffab").focus()};
 document.getElementById("ffab").onclick=openSheet;
 document.getElementById("sdone").onclick=()=>{closeSheet();const f=document.querySelector(".day:not([hidden])");if(f)window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-80),behavior:"smooth"})};
-document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const hadR=F.r;F.r="";if(hadR)renderFeed();buildChips();applyFilter()};
+document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const had=F.r||F.l;F.r="";if(F.l)setLabel("");else if(had)renderFeed();buildChips();applyFilter()};
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
 const sb=document.getElementById("srchbtn"),srow=document.getElementById("srow"),q=document.getElementById("q");
