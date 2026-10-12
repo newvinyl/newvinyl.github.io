@@ -1,10 +1,10 @@
 {
- "date": "2026-10-11",
+ "date": "2026-10-12",
  "total": {
-  "records": 1687,
-  "tracks": 1256,
+  "records": 1707,
+  "tracks": 1271,
   "clip": 329,
-  "none": 102
+  "none": 107
  },
  "shops": {
   "Hardwax": {
@@ -38,10 +38,10 @@
    "none": 50
   },
   "Redeye Records": {
-   "records": 432,
-   "tracks": 102,
+   "records": 433,
+   "tracks": 104,
    "clip": 317,
-   "none": 13
+   "none": 12
   },
   "Yoyaku": {
    "records": 179,
@@ -50,30 +50,35 @@
    "none": 1
   },
   "Kompakt": {
-   "records": 90,
-   "tracks": 74,
+   "records": 93,
+   "tracks": 76,
    "clip": 0,
-   "none": 16
+   "none": 17
   },
   "Juno Records": {
-   "records": 308,
-   "tracks": 306,
+   "records": 317,
+   "tracks": 315,
    "clip": 0,
    "none": 2
   },
   "Deejay.de": {
-   "records": 68,
-   "tracks": 52,
+   "records": 75,
+   "tracks": 54,
    "clip": 2,
-   "none": 14
+   "none": 19
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
+ "pages_checked": 327,
+ "new_from_shop_pages": 4,
  "copied_from_other_shop": 0,
- "broken_clips_removed": 13,
- "clips_verified": 4939,
- "not_reachable": {},
+ "broken_clips_removed": 14,
+ "clips_verified": 4999,
+ "not_reachable": {
+  "Clone: http403": 1,
+  "Phonica: http403": 60,
+  "Redeye Records: failed:UnicodeEncodeError": 15,
+  "Redeye Records: http403": 1
+ },
  "clip_hosts": {
   "clone.nl": {
    "clips": 928,
@@ -95,8 +100,8 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 51,
-   "failed": 13,
+   "clips": 53,
+   "failed": 14,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
@@ -114,7 +119,7 @@
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 2140,
+   "clips": 2198,
    "failed": 0,
    "sample": []
   },

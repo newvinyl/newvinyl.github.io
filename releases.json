@@ -37804,7 +37804,73 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-12"
+     "first_seen": "2026-10-12",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Dawn"
+      },
+      {
+       "s": "A2",
+       "n": "Cycles"
+      },
+      {
+       "s": "A3",
+       "n": "Fire On The Water (Feat. Arooj Aftab)"
+      },
+      {
+       "s": "A4",
+       "n": "Drift"
+      },
+      {
+       "s": "B1",
+       "n": "Talk To Me (Feat. Nicole Miglis)"
+      },
+      {
+       "s": "B2",
+       "n": "Uncasually"
+      },
+      {
+       "s": "B3",
+       "n": "Always On Your Side (Feat. Joy"
+      },
+      {
+       "s": "",
+       "n": "crookes)"
+      },
+      {
+       "s": "B4",
+       "n": "Youth’s Fountain (Feat. Nilüfer"
+      },
+      {
+       "s": "",
+       "n": "yanya)"
+      },
+      {
+       "s": "C1",
+       "n": "Shokoufeh"
+      },
+      {
+       "s": "C2",
+       "n": "Can’t You See (Feat. Aanya Martin)"
+      },
+      {
+       "s": "C3",
+       "n": "Id700"
+      },
+      {
+       "s": "D1",
+       "n": "Me And You"
+      },
+      {
+       "s": "D2",
+       "n": "Equinoctial (Feat. Ichiko Aoba)"
+      },
+      {
+       "s": "D3",
+       "n": "Mercury (Feat. Kanako Yamamoto)"
+      }
+     ]
     }
    ],
    "country": "UK"
@@ -44322,8 +44388,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a8da7b198db3-6ab506439b418-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Birdwatchers",
        "s": "",
+       "n": "Birdwatchers",
        "u": ""
       }
      ],
@@ -44648,8 +44714,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a61f21d5d59e-6aabb436a1b29-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "The Experiment",
        "s": "",
+       "n": "The Experiment",
        "u": ""
       }
      ],
@@ -46351,7 +46417,13 @@
      "g": "Techno",
      "url": "https://kompakt.fm/releases/drifter",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a918cb3d998b-6a968a53eae28-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Now That I Have Your Attention (Let Me Tell You)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a918ce09c2f5-6a968a60b6db4-mp3-temp.mp3"
+      }
+     ],
      "st": "pre",
      "m": "2026-10",
      "first_seen": "2026-10-12"
