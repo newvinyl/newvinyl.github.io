@@ -273,8 +273,8 @@ def main():
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{SITE}/{gs}/">
 <meta property="og:image" content="{SITE}/og-image.png">
-<link rel="icon" type="image/png" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <meta name="theme-color" content="#0d0d0d">
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@type": "CollectionPage", "name": f"New {g} vinyl releases", "url": f"{SITE}/{gs}/", "isPartOf": {"@type": "WebSite", "name": "Monthly Vinyl Releases", "url": SITE + "/"}, "dateModified": today.isoformat()}, ensure_ascii=False)}</script>
 <style>
@@ -447,8 +447,8 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
 <meta property="og:image" content="{e(img)}">
 <meta property="og:image:alt" content="{e(name)} vinyl cover">
 <meta name="theme-color" content="#0d0d0d">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <script>if(/[?&]s=1/.test(location.search))location.replace("/?r={sl}")</script>
 <script type="application/ld+json">{ldj}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="56d072fe-6ab0-4180-9a6f-e9926985275c" data-domains="monthlyvinyl.net"></script>

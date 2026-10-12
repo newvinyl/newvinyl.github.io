@@ -823,7 +823,7 @@ PAGE = """<!doctype html>
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
 <title>Today's Digs + Reel</title>
-<link rel="icon" href="/favicon-32.png">
+<link rel="icon" href="/favicon-32.png?v=2">
 <style>
 :root{--bg:#0f0f0f;--fg:#fff;--mut:#9a9a9a;--acc:#ffd60a;--line:#2e2e2e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 "Helvetica Neue",Helvetica,Arial,sans-serif}
