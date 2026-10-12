@@ -43,4 +43,4 @@ jobs:
           REEL_WORK: ${{ runner.temp }}/r
         run: |
           gh release view showcase >/dev/null 2>&1 || gh release create showcase --prerelease --title "Showcase" --notes "Showcase videos for Instagram."
-          gh release upload showcase --clobber "$REEL_WORK"/digs-colour-demo.mp4 "$REEL_WORK"/demo-*.jpg
+          gh release upload showcase --clobber "$REEL_WORK"/digs-*-demo.mp4 "$REEL_WORK"/demo-*.jpg

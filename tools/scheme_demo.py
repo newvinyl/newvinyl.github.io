@@ -11,7 +11,7 @@ from single_reel import best_cover
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORK = os.environ.get("REEL_WORK") or tempfile.mkdtemp()
 SEG = 7
-SCH = ["PK", "GN", "YL"]
+VARIANTS = {"colour": ["PK", "GN", "YL"], "black": ["BK-Y", "BK-G", "BK-P"]}
 
 def main():
     hist = json.load(open(os.path.join(ROOT, "92h6fy", "history.json"), encoding="utf-8"))[0]
@@ -43,7 +43,7 @@ def main():
         side = cov.crop(((cov.width - min(cov.size)) // 2, (cov.height - min(cov.size)) // 2,
                          (cov.width + min(cov.size)) // 2, (cov.height + min(cov.size)) // 2)).resize((880, 880), Image.LANCZOS)
         shops = list(dict.fromkeys(digs.short(x["shop"]) for x in arr))
-        P.append(dict(scheme=SCH[i], kicker="TODAY'S DIGS  %d/3" % (i + 1), cov880=side, a=R["a"], t=R["t"],
+        P.append(dict(scheme=None, kicker="TODAY'S DIGS  %d/3" % (i + 1), cov880=side, a=R["a"], t=R["t"],
                       meta=R["meta"], genre=R["genre"].lower(), track=R["tname"], shops_line=" · ".join(shops[:3])))
         start, _ = digs.pick_start(aud)
         mixes.append(digs.fade(digs.seg(aud, max(0.0, start), SEG), 0.25, 0.6))
@@ -52,36 +52,39 @@ def main():
     if peak > 0.97:
         mix *= 0.97 / peak
     W, H, FPS, SR = digs.W, digs.H, digs.FPS, digs.SR
-    out = os.path.join(WORK, "digs-colour-demo.mp4")
-    wav = out + ".f32"
-    mix.astype("<f4").tofile(wav)
-    hop = SR // FPS
-    m = mix.mean(1)
-    n = SEG * 3 * FPS
-    levs = np.array([np.sqrt(np.mean(m[f * hop:(f + 1) * hop] ** 2)) for f in range(n)])
-    levs = np.minimum(1, levs / (levs.max() + 1e-9) * 1.15)
-    cmd = ["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
-           "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
-           "-c:v", "libx264", "-profile:v", "high", "-pix_fmt", "yuv420p", "-b:v", "6M", "-preset", "medium",
-           "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", out]
-    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
-    stills = []
-    for f in range(n):
-        i, t = divmod(f, SEG * FPS)
-        t /= FPS
-        p = P[i]
-        im = Image.new("RGB", (W, H), digs.SCHEMES[p["scheme"]]["bg"])
-        digs.draw_reel(im, p, date_s, t * digs.RDUR / SEG, levs[f], f)
-        if t == 2.0:
-            sp = os.path.join(WORK, "demo-%d.jpg" % (i + 1))
-            im.save(sp, quality=90)
-            stills.append(sp)
-        pr.stdin.write(im.tobytes())
-    pr.stdin.close()
-    if pr.wait() != 0:
-        raise RuntimeError("ffmpeg failed")
-    os.remove(wav)
-    print(json.dumps({"video": out, "stills": stills, "titles": hist["titles"]}))
+    res = {}
+    for name, sch in VARIANTS.items():
+        out = os.path.join(WORK, "digs-%s-demo.mp4" % name)
+        wav = out + ".f32"
+        mix.astype("<f4").tofile(wav)
+        hop = SR // FPS
+        m = mix.mean(1)
+        n = SEG * 3 * FPS
+        levs = np.array([np.sqrt(np.mean(m[f * hop:(f + 1) * hop] ** 2)) for f in range(n)])
+        levs = np.minimum(1, levs / (levs.max() + 1e-9) * 1.15)
+        cmd = ["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
+               "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
+               "-c:v", "libx264", "-profile:v", "high", "-pix_fmt", "yuv420p", "-b:v", "6M", "-preset", "medium",
+               "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", out]
+        pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+        stills = []
+        for f in range(n):
+            i, t = divmod(f, SEG * FPS)
+            t /= FPS
+            p = dict(P[i], scheme=sch[i])
+            im = Image.new("RGB", (W, H), digs.SCHEMES[p["scheme"]]["bg"])
+            digs.draw_reel(im, p, date_s, t * digs.RDUR / SEG, levs[f], f)
+            if t == 2.0:
+                sp = os.path.join(WORK, "demo-%s-%d.jpg" % (name, i + 1))
+                im.save(sp, quality=90)
+                stills.append(sp)
+            pr.stdin.write(im.tobytes())
+        pr.stdin.close()
+        if pr.wait() != 0:
+            raise RuntimeError("ffmpeg failed")
+        os.remove(wav)
+        res[name] = {"video": out, "stills": stills}
+    print(json.dumps({"variants": res, "titles": hist["titles"]}))
 
 if __name__ == "__main__":
     main()
