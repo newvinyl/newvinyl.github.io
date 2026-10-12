@@ -22,7 +22,7 @@ LW, LH = 216, 384                      # background is computed small and scaled
 SC = W // LW
 
 # website colours
-BLACK, WHITE, YEL, NEON, PINK, MUTED = (0, 0, 0), (255, 255, 255), (251, 237, 79), (57, 255, 20), (255, 43, 214), (160, 164, 169)
+BLACK, WHITE, YEL, NEON, PINK, MUTED = (0, 0, 0), (255, 255, 255), (251, 237, 79), (143, 211, 176), (239, 122, 109), (160, 164, 169)
 def _font(*cands):
     for p in cands:
         if os.path.exists(p):
@@ -65,7 +65,7 @@ def palette(cover, rng):
     # sometimes push in a brand neon or a complementary accent for extra "trip"
     r = rng.random()
     if r < 0.35:
-        out.append((float(rng.choice([108.0, 312.0, 55.0])), 1.0, 1.0))   # neon green / pink / yellow
+        out.append([(149.0, 0.32, 0.83), (6.0, 0.54, 0.94), (55.0, 0.69, 0.98)][int(rng.integers(3))])   # mint / coral / yellow
     elif r < 0.65:
         h0 = out[0][0]
         out.append(((h0 + 180) % 360, 0.9, 1.0))

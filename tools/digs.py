@@ -597,19 +597,19 @@ def caption(picks, date_s):
 # ---------------------------------------------------------------- reel (one release, 20 s)
 RDUR = 20
 
-# Brand colour schemes for the reel (profile picture: neon green + neon pink). Never the same scheme twice in a row.
-GRN, PNK, BLK, YEL = (57, 255, 20), (255, 43, 214), (13, 13, 13), (251, 237, 79)
-REEL_V = 15   # bump to re-render today's reel after a design change
-DIGS_V = 3   # bump to re-render today's digs video after a design change
+# Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
+GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
+REEL_V = 16   # bump to re-render today's reel after a design change
+DIGS_V = 4   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
-# Pink bg → green type · green bg → yellow type · yellow bg → pink type · black bg → yellow, green or pink (random).
+# Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
 SCHEMES = {
     "BK-Y": dict(bg=BLK, text=YEL, rule=RULE),
     "BK-G": dict(bg=BLK, text=GRN, rule=RULE),
     "BK-P": dict(bg=BLK, text=PNK, rule=RULE),
-    "PK":   dict(bg=PNK, text=GRN, rule=GRN),
-    "GN":   dict(bg=GRN, text=YEL, rule=YEL),
-    "YL":   dict(bg=YEL, text=PNK, rule=PNK),
+    "PK":   dict(bg=PNK, text=BLK, rule=BLK),
+    "GN":   dict(bg=GRN, text=BLK, rule=BLK),
+    "YL":   dict(bg=YEL, text=BLK, rule=BLK),
 }
 
 def pick_scheme(last):
