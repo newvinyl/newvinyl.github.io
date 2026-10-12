@@ -105,7 +105,7 @@ button{font:inherit;color:inherit}
 .backf .pr{flex:none;padding-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .backf .price{font:800 30px/1 var(--display);font-variant-numeric:tabular-nums}
 .backf .price small{font-size:.5em;vertical-align:.6em;margin-right:2px}
-.backf .shop{font:400 12px/1.4 var(--mono);color:var(--muted);text-align:right}
+.backf .shop{font:400 11.5px/1.4 var(--mono);color:var(--muted);text-align:right}
 .card{touch-action:manipulation}
 .shr{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted)}
 .shr svg{width:20px;height:20px}
@@ -124,12 +124,14 @@ button{font:inherit;color:inherit}
 #toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--white);color:var(--ink);font:500 13px var(--mono);padding:8px 12px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #toast.on{opacity:1}
 .mini .mbag:not(.has){display:none}
-.backf .ctl{flex:none;display:flex;justify-content:flex-end;gap:10px;padding-top:12px}
+.backf .ctl{flex:none;display:flex;justify-content:space-between;gap:10px;padding-top:12px}
 .backf .ctl .add,.backf .ctl .more{position:static}
 .backf .buy{color:var(--muted);font:400 11.5px var(--mono);text-underline-offset:3px;align-self:flex-end;padding-bottom:4px}
 .backf .ctl{align-items:flex-end}
-.backf .lbl{all:unset;cursor:pointer;flex:none;align-self:flex-start;margin-top:6px;color:var(--neon);font:700 14px var(--display);text-underline-offset:3px}
-.backf .lbl:hover,.backf .lbl:focus-visible{text-decoration:underline}
+.backf .lbl{all:unset;cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:2px;padding:4px 0}
+.backf .lbl b{font:700 15px var(--display);color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.backf .lbl span{font:500 12px var(--mono);color:var(--neon)}
+.backf .lbl:hover span,.backf .lbl:focus-visible span{text-decoration:underline;text-underline-offset:3px}
 .lblbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 0;padding:10px 12px;border:1.5px solid var(--neon)}
 .lblbar span{display:flex;flex-direction:column;min-width:0}
 .lblbar b{font:700 15px var(--display);color:var(--neon);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -365,8 +367,7 @@ function card(r,i){
       <div class="me">${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+esc(m.g):""}</div>
       <ol>${r.tracks.slice(0,6).map((t,ti)=>`<li data-t="${ti}"><button type="button"><span class="s">${esc(t.s||"")}</span><span>${esc(t.n||"Preview")}</span></button></li>`).join("")}</ol>
       <div class="pr"><div class="price">${money(m.S.cur,m.p)}</div>
-        <div class="shop">${esc(m.S.shop)}${others.length?` · +${others.length} more ${others.length>1?"shops":"shop"}`:""}</div></div>
-      <button type="button" class="lbl">All from ${esc(m.S.shop)} →</button>
+        ${others.length?`<div class="shop">lowest of ${others.length+1} shops</div>`:""}</div>
     </div></div>`;
   const back=el.querySelector(".backf");
   const flip=on=>{el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r)}};
@@ -381,15 +382,15 @@ function card(r,i){
     if(tapT){clearTimeout(tapT);tapT=null;au.pause();track("Pause via double tap");return}
     tapT=setTimeout(()=>{tapT=null;if(cur===i&&!au.paused){track("Next via cover");next(true)}},280);
   };
-  const lb=el.querySelector(".lbl");if(lb)lb.onclick=e=>{e.stopPropagation();setLabel(m.S.shop)};
   el.querySelector(".shr").onclick=e=>{e.stopPropagation();DESK?sharePop(r,el.querySelector(".shr")):shareRec(r)};
   el.querySelector(".add").onclick=()=>toggleBag(r);
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite: Bag unten rechts wie vorne
   const ctl=document.createElement("div");ctl.className="ctl";
-  ctl.innerHTML=`<button class="add" type="button"></button>`;
+  ctl.innerHTML=`<button type="button" class="lbl" aria-label="Show all records from ${esc(m.S.shop)}"><b>${esc(m.S.shop)}</b><span>Dig all their records →</span></button><button class="add" type="button"></button>`;
   back.appendChild(ctl);
   ctl.querySelector(".add").onclick=()=>toggleBag(r);
+  ctl.querySelector(".lbl").onclick=e=>{e.stopPropagation();setLabel(m.S.shop)};
   return el;
 }
 // Teilen: eigene Seite pro Platte (/r/<slug>/) mit Cover als Vorschaubild
