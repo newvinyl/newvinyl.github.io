@@ -133,9 +133,9 @@ button{font:inherit;color:inherit}
 .backf .ctl .add,.backf .ctl .more{position:static}
 .backf .buy{color:var(--muted);font:400 11.5px var(--mono);text-underline-offset:3px;align-self:flex-end;padding-bottom:4px}
 .backf .ctl{align-items:center}
-.backf .fl{all:unset;cursor:pointer;color:var(--fg);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:1.5px;text-underline-offset:3px}
-.backf .fl:hover,.backf .fl:focus-visible{color:var(--yellow)}
-.backf .fls{color:var(--yellow);font-weight:700;text-decoration:none}
+.backf .fl{all:unset;cursor:pointer;color:var(--fg);text-decoration:underline;text-decoration-color:rgba(236,235,231,.55);text-decoration-thickness:1px;text-underline-offset:3px;-webkit-tap-highlight-color:transparent}
+.backf .fl:hover,.backf .fl:active,.backf .fl:focus-visible,.backf .fl.on{color:var(--yellow);text-decoration-color:var(--yellow)}
+.backf .fls{font-weight:700}
 .backf .ctl .price{text-align:left}
 .backf .ctl .price .low{text-align:left}
 .backf .lbl{all:unset;cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:2px;padding:4px 0}
@@ -379,7 +379,7 @@ function card(r,i){
     <div class="face backf" aria-hidden="true">
       <button class="shr" type="button" aria-label="Share ${esc(m.a)} – ${esc(m.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 12v8h14v-8"/></svg></button>
       <div class="ar">${esc(m.a)}</div><div class="ti">${esc(m.t)}</div>
-      <div class="me"><button type="button" class="fl fls" data-ft="shop" data-fv="${esc(m.S.shop)}">${esc(m.S.shop)} →</button> · ${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+gTokens(m.g):""}</div>
+      <div class="me"><button type="button" class="fl fls" data-ft="shop" data-fv="${esc(m.S.shop)}">${esc(m.S.shop)}</button> · ${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+gTokens(m.g):""}</div>
       <ol>${r.tracks.slice(0,6).map((t,ti)=>`<li data-t="${ti}"><button type="button"><span class="s">${esc(t.s||"")}</span><span>${esc(t.n||"Preview")}</span></button></li>`).join("")}</ol>
       <div class="more-tr" hidden></div>
     </div></div>`;
@@ -404,6 +404,7 @@ function card(r,i){
   ctl.innerHTML=`<div class="price">${money(m.S.cur,m.p)}${others.length?`<small class="low">lowest of ${others.length+1} shops</small>`:""}</div><button class="add" type="button"></button>`;
   back.appendChild(ctl);
   ctl.querySelector(".add").onclick=()=>toggleBag(r);
+  back.querySelectorAll(".fl").forEach(b=>{if(F.k&&F.k.t===b.dataset.ft&&(b.dataset.ft==="re"||fold(F.k.v)===fold(b.dataset.fv)))b.classList.add("on")});
   back.querySelectorAll(".fl").forEach(b=>b.onclick=e=>{e.stopPropagation();setChip(b.dataset.ft,b.dataset.fv)});
   return el;
 }
