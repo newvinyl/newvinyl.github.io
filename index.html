@@ -444,13 +444,17 @@ function closePop(){const p=document.getElementById("spop");if(p)p.remove();docu
 function sharePop(r,btn){
   closePop();prepStory(r);
   const m=r.main,url=`https://monthlyvinyl.net/r/${rslug(m.a,m.t)}/?s=1`,title=`${m.a} – ${m.t}`,line=`${title} (${m.l}) on vinyl`,U=encodeURIComponent(url),T=encodeURIComponent(line+" "+url);
-  const opts=[["wa","WhatsApp",`https://web.whatsapp.com/send?text=${T}`],["tg","Telegram",`https://t.me/share/url?url=${U}&text=${encodeURIComponent(line)}`],
+  const opts=[["wa","WhatsApp",`https://web.whatsapp.com/send?text=${T}`,`whatsapp://send?text=${T}`],["tg","Telegram",`https://t.me/share/url?url=${U}&text=${encodeURIComponent(line)}`,`tg://msg_url?url=${U}&text=${encodeURIComponent(line)}`],
     ["ig","Instagram",null],["th","Threads",`https://www.threads.com/intent/post?text=${T}`],["fb","Facebook",`https://www.facebook.com/sharer/sharer.php?u=${U}`],
     ["em","Email",`mailto:?subject=${encodeURIComponent(title+" · Monthly Vinyl")}&body=${encodeURIComponent(line+"\n\nListen and compare prices:\n"+url+"\n")}`],["cp","Copy link",null]];
   const p=document.createElement("div");p.id="spop";p.setAttribute("role","menu");
   p.innerHTML=`<p class="sph">Share ${esc(title)}</p>`+opts.map(([k,l,h])=>h?`<a role="menuitem" class="spo" data-k="${k}" href="${esc(h)}" ${k==="em"?"":'target="_blank" rel="noopener"'}>${SHI[k]}<span>${l}</span></a>`:`<button role="menuitem" type="button" class="spo" data-k="${k}">${SHI[k]}<span>${l}</span></button>`).join("");
   btn.closest(".backf").appendChild(p);
   p.addEventListener("click",async e=>{const o=e.target.closest(".spo");if(!o)return;const k=o.dataset.k;track("Share",{channel:k,shop:m.S.shop,where:"feed"});
+    // Installierte App zuerst (whatsapp://, tg://); öffnet sich keine, nach kurzer Zeit die Web-Version
+    const app=(opts.find(x=>x[0]===k)||[])[3];
+    if(app){e.preventDefault();let left=false;const mark=()=>{left=true};addEventListener("blur",mark,{once:true});document.addEventListener("visibilitychange",mark,{once:true});
+      location.href=app;setTimeout(()=>{removeEventListener("blur",mark);if(!left)window.open(o.href,"_blank","noopener")},1600)}
     if(k==="cp"){e.preventDefault();let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(_){}toast(ok?"Link copied.":url)}
     else if(k==="ig"){e.preventDefault();try{navigator.clipboard.writeText(url).catch(()=>{})}catch(_){}
       const b=r._storyBlob||await r._story;if(b){const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=rslug(m.a,m.t).slice(0,50)+".jpg";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
