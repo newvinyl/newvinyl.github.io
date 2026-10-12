@@ -115,6 +115,10 @@ button{font:inherit;color:inherit}
 #spop .spo{all:unset;cursor:pointer;display:flex;align-items:center;gap:9px;padding:9px 8px;font-size:13.5px;color:var(--fg)}
 #spop .spo svg{width:18px;height:18px;flex:none}
 #spop .spo:hover,#spop .spo:focus-visible{background:var(--white);color:var(--ink)}
+#spop .qr{grid-column:1/-1;justify-self:center;background:#fff;padding:10px;margin:4px 0;font:400 11px var(--mono);color:var(--ink);word-break:break-all}
+#spop .qr img,#spop .qr canvas{display:block}
+#spop .qrt{grid-column:1/-1;margin:2px 8px 6px;font-size:12.5px;line-height:1.45;color:var(--fg)}
+#spop .qrb{grid-column:1/-1;border-top:1px solid var(--line)}
 #spop .spo[data-k="cp"]{grid-column:1/-1;border-top:1px solid var(--line);margin-top:2px}
 #toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--white);color:var(--ink);font:500 13px var(--mono);padding:8px 12px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #toast.on{opacity:1}
@@ -456,12 +460,20 @@ function sharePop(r,btn){
     if(app){e.preventDefault();let left=false;const mark=()=>{left=true};addEventListener("blur",mark,{once:true});document.addEventListener("visibilitychange",mark,{once:true});
       location.href=app;setTimeout(()=>{removeEventListener("blur",mark);if(!left)window.open(o.href,"_blank","noopener")},1600)}
     if(k==="cp"){e.preventDefault();let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(_){}toast(ok?"Link copied.":url)}
-    else if(k==="ig"){e.preventDefault();try{navigator.clipboard.writeText(url).catch(()=>{})}catch(_){}
-      const b=r._storyBlob||await r._story;if(b){const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=rslug(m.a,m.t).slice(0,50)+".jpg";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
-      toast("Image saved, link copied. Post it on Instagram.");window.open("https://www.instagram.com/","_blank","noopener")}
+    else if(k==="ig"){e.preventDefault();e.stopPropagation();igHandoff(p,url);return}
     setTimeout(closePop,50)});
   setTimeout(()=>document.addEventListener("click",ev=>{if(!ev.target.closest("#spop"))closePop()},{capture:true,once:true}),0);
   p.querySelector(".spo").focus({preventScroll:true});
+}
+// Instagram hat am Computer kein Teilen von Websites. Standard ist die Übergabe ans Handy:
+// QR-Code scannen, die Platte öffnet sich dort, Teilen → Instagram → Story oder Beitrag.
+function loadQR(){return window.QRCode?Promise.resolve():new Promise((ok,no)=>{const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";sc.onload=ok;sc.onerror=no;document.head.appendChild(sc)})}
+async function igHandoff(p,url){
+  const u=url.replace("?s=1","?s=1&ig=1");
+  p.innerHTML=`<p class="sph">Instagram · on your phone</p><div class="qr" id="qr"></div><p class="qrt">Scan with your phone camera. The record opens there, tap the share icon and choose Instagram: Story or Post.</p><button type="button" class="spo qrb">Done</button>`;
+  p.querySelector(".qrb").onclick=ev=>{ev.stopPropagation();closePop()};
+  try{await loadQR();new QRCode(p.querySelector("#qr"),{text:u,width:168,height:168,colorDark:"#0d0d0d",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}
+  catch(e){p.querySelector("#qr").textContent=u}
 }
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closePop()});
 function toast(t){let d=document.getElementById("toast");if(!d){d=document.createElement("div");d.id="toast";document.body.appendChild(d)}
