@@ -599,7 +599,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
-REEL_V = 17   # bump to re-render today's reel after a design change
+REEL_V = 18   # bump to re-render today's reel after a design change
 DIGS_V = 5   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
@@ -913,10 +913,15 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     rname = "reel-%s.mp4" % ymd
     rpath = os.path.join(a.work, rname)
     rposter = os.path.join(a.work, "reel-%s.jpg" % ymd)
-    # flat layout on black; the type colour changes every day (yellow, mint, coral)
+    # moving cover effects as before; type in the new site look, colour changes every day (yellow, mint, coral)
     sch = ["BK-Y", "BK-G", "BK-P"][dt.date.fromisoformat("20%s-%s-%s" % (ymd[:2], ymd[2:4], ymd[4:])).toordinal() % 3]
-    render_flat([flat_p(R, rc["cover"], sch, "TODAY'S DIG")], [aud], RDUR, rpath, rposter)
-    look = "flat black · " + sch
+    fp = flat_p(R, rc["cover"], sch, "TODAY'S DIG")
+    rel = dict(reel_rel(R, rc["cover"]), col=SCHEMES[sch]["text"], kicker="TODAY'S DIG", t=R["t"], meta=fp["meta"],
+               track=R["tname"], shop=R["shop_full"])
+    avoid = recent_avoid(history)
+    log("avoid (recent looks):", sorted(avoid))
+    look = reelfx.reel_single(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter,
+                              avoid=avoid, cmode=getattr(a, "want_fx", None)) + " · type " + sch
     rcap = reel_caption(R, rc["arr"])
     sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],

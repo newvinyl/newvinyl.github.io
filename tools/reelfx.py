@@ -396,6 +396,41 @@ def text_layer(rel):
         y += im.height + 6
     return np.asarray(L)
 
+def text_layer_flat(rel, col):
+    """New site look over the effects: brand colour type (yellow, mint or coral) in black boxes, left-aligned.
+    Returns the RGBA layer and the spot for the live equalizer (inside the track box)."""
+    L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    X = 48
+    L.alpha_composite(box_line(rel.get("kicker") or "TODAY'S DIG", F(FD, 30), col, pad=(16, 11)), SHOP_XY)
+    y = COV_Y + COV_S + 24
+    for text, font in [(rel["a"], fit_font(FD, 58, rel["a"], 880)),
+                       (rel.get("t") or "", fit_font(FDR, 42, rel.get("t") or "", 880)),
+                       ("  ·  ".join(rel.get("meta") or []), fit_font(FDR, 27, "  ·  ".join(rel.get("meta") or []), 880))]:
+        if not text:
+            continue
+        im = box_line(text, font, col)
+        L.alpha_composite(im, (X, y))
+        y += im.height + 6
+    # track line: play triangle + name + room for the live bars
+    y += 10
+    f = fit_font(FDR, 28, rel["track"], 700)
+    d0 = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+    tw = int(d0.textlength(rel["track"], font=f))
+    bh = f.size + 22
+    box = Image.new("RGBA", (16 + 22 + 14 + tw + 22 + 60 + 16, bh), (0, 0, 0, 235))
+    bd = ImageDraw.Draw(box)
+    base = 11 + f.size * .82
+    bd.polygon([(16, base - 19), (16, base), (32, base - 9.5)], fill=col)
+    bd.text((52, base), rel["track"], font=f, fill=col, anchor="ls")
+    L.alpha_composite(box, (X, y))
+    bars = (X + 52 + tw + 22 + 55, int(y + base + 1))
+    y += bh + 6
+    shop = box_line(rel["shop"], F(FD, 32), col, pad=(16, 11))
+    L.alpha_composite(shop, (X, y))
+    url = box_line("monthlyvinyl.net", F(FD, 32), col, pad=(16, 11))
+    L.alpha_composite(url, (TXT_R - url.width, y))
+    return np.asarray(L), bars
+
 def eq_bars(img, x_right, y, lev, frame, col=YEL):
     """small live equalizer left of the track line"""
     for b in range(4):
@@ -594,8 +629,11 @@ def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None):
     look = coverlife.make_look(im, seed, avoid=avoid)
     cfx = CoverFX(seed, dur, mode=cmode or look.cfx_mode)
     log("Sorte 1 look:", look.describe())
-    txl = text_layer(rel)
-    trk_y = None
+    col = rel.get("col")
+    if col:
+        txl, bars = text_layer_flat(rel, col)
+    else:
+        txl, bars = text_layer(rel), None
     def fr(f):
         t = f / FPS
         A = {"lev": lev[f], "kick": kick[f]}
@@ -603,6 +641,13 @@ def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None):
         reg = img[COV_Y:COV_Y + COV_S]
         img[COV_Y:COV_Y + COV_S] = cfx.apply(look.life.apply(cover_frame(cov, t, dur, kick[f]), t, A), reg, t, kick[f], f)
         img = comp(img, txl)
+        if bars:
+            img = np.ascontiguousarray(img)
+            for b in range(5):
+                ph = math.sin(f * .45 + b * 1.7) * .5 + .5
+                h = int(6 + 26 * lev[f] * (.4 + .6 * ph))
+                x = bars[0] - (5 - b) * 11
+                img[bars[1] - h:bars[1], x:x + 7] = col
         return fades(img, t, dur)
     encode(fr, nfr, aud, out, poster, int(1.2 * FPS))
     return look.describe()
