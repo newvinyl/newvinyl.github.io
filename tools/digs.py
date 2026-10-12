@@ -563,7 +563,7 @@ def prepare(c, fx):
             "rdate": release_date(x, arr), "key": c["key"], "a": x["a"], "t": x["t"], "l": meta_src.get("l") or "", "genre": genre_label(x.get("g")),
             "gfull": x.get("g") or "", "meta": meta, "prices": [(r[1], r[2]) for r in rows],
             "shop": short(x["shop"]), "shop_price": price_s(x), "url": x.get("url"),
-            "track": tname + " (preview)", "strict": c["strict"]}
+            "track": tname + " (preview)", "strict": c["strict"], "fmt": x.get("f") or meta_src.get("f") or ""}
 
 def tag(s):
     s = re.sub(r"[^a-z0-9]", "", norm(s))
@@ -599,8 +599,8 @@ RDUR = 20
 
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
-REEL_V = 16   # bump to re-render today's reel after a design change
-DIGS_V = 4   # bump to re-render today's digs video after a design change
+REEL_V = 17   # bump to re-render today's reel after a design change
+DIGS_V = 5   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
 SCHEMES = {
@@ -620,16 +620,17 @@ def pick_scheme(last):
     return random.choice(["BK-Y", "BK-G", "BK-P"]) if bg == "BK" else bg
 
 def draw_reel(img, p, date_s, t, lev, frame):
+    """flat layout: black background, one brand colour for all type (yellow, mint or coral)"""
     c = SCHEMES[p["scheme"]]
-    col, bg = c["text"], c["bg"]
+    col = c["text"]
     d = ImageDraw.Draw(img)
     txt(d, (96, 318), p["kicker"], 34, col, maxw=600)
-    txt(d, (984, 318), date_s, 32, col, anchor="rs")
+    if p.get("idx"):
+        txt(d, (984, 318), p["idx"], 32, col, anchor="rs")
     paste_cover(img, p["cov880"], 100, 360, 880, 1 + 0.035 * (t / RDUR))
     txt(d, (96, 1340), p["a"], 76, col)
     txt(d, (96, 1412), p["t"], 56, col, bold=False)
-    txt(d, (96, 1470), "  ·  ".join(p["meta"] + ([p["genre"].title()] if p["genre"] else [])), 32, col, bold=False)
-    d.rectangle([96, 1538, 984, 1542], fill=c["rule"] if bg == BLK else bg)
+    txt(d, (96, 1470), "  ·  ".join(p["meta"]), 32, col, bold=False)
     d.rectangle([96, 1539, 984, 1541], fill=c["rule"])
     d.rectangle([96, 1536, 96 + int(888 * min(1, t / RDUR)), 1544], fill=col)
     by = 1612
@@ -640,8 +641,58 @@ def draw_reel(img, p, date_s, t, lev, frame):
         ph = math.sin(frame * 0.45 + b * 1.7) * 0.5 + 0.5
         h = 6 + 32 * lev * (0.4 + 0.6 * ph)
         d.rectangle([bx + b * 14, by + 2 - h, bx + 8 + b * 14, by + 2], fill=col)
-    txt(d, (96, 1680), p["shops_line"], 34, col, maxw=560)
+    txt(d, (96, 1680), p["shop"], 34, col, maxw=560)
     txt(d, (984, 1680), "monthlyvinyl.net", 34, col, anchor="rs")
+
+def flat_p(R, cover, scheme, kicker, idx=""):
+    """text + square cover for the flat layout: label · release date · format · genre (no catalog number)"""
+    side = min(cover.size)
+    sq = cover.crop(((cover.width - side) // 2, (cover.height - side) // 2, (cover.width + side) // 2, (cover.height + side) // 2))
+    g = (R.get("genre") or "").title().replace("Dj", "DJ")
+    meta = [v for v in [R.get("l"), R.get("rdate"), R.get("fmt"), g] if v]
+    return dict(scheme=scheme, kicker=kicker, idx=idx, cov880=sq.resize((880, 880), Image.LANCZOS), a=R["a"], t=R["t"],
+                meta=meta, track=R["tname"], shop=R["shop_full"])
+
+def render_flat(ps, mixes, seg_s, path, poster):
+    """one or more releases one after another, seg_s seconds each, flat layout"""
+    mix = np.concatenate(mixes)
+    peak = np.abs(mix).max()
+    if peak > 0.97:
+        mix = mix * (0.97 / peak)
+    n = int(seg_s * FPS) * len(ps)
+    per = int(seg_s * FPS)
+    hop = SR // FPS
+    m = mix.mean(1)
+    levs = np.array([np.sqrt(np.mean(m[f * hop:(f + 1) * hop] ** 2)) if f * hop < len(m) else 0 for f in range(n)])
+    levs = np.minimum(1, levs / (levs.max() + 1e-9) * 1.15)
+    wav = path + ".f32"
+    mix.astype("<f4").tofile(wav)
+    cmd = ["ffmpeg", "-y", "-v", "error",
+           "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
+           "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
+           "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p",
+           "-b:v", "8M", "-maxrate", "10M", "-bufsize", "16M", "-g", "60", "-preset", "medium",
+           "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-ac", "2",
+           "-movflags", "+faststart", "-shortest", path]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    black = Image.new("RGB", (W, H), (0, 0, 0))
+    total = n / FPS
+    for f in range(n):
+        i, k = divmod(f, per)
+        t = k / FPS
+        im = Image.new("RGB", (W, H), SCHEMES[ps[i]["scheme"]]["bg"])
+        draw_reel(im, ps[i], "", t * RDUR / seg_s, levs[f], f)
+        if f == int(1.5 * FPS):
+            im.save(poster, quality=88)
+        g = f / FPS
+        a = min(1.0, g / 0.6, (total - g) / 1.0)
+        if a < 1:
+            im = Image.blend(black, im, max(0.0, a))
+        pr.stdin.write(im.tobytes())
+    pr.stdin.close()
+    if pr.wait() != 0:
+        raise RuntimeError("ffmpeg failed")
+    os.remove(wav)
 
 def render_reel(p, date_s, aud, path, poster):
     n = RDUR * FPS
@@ -862,10 +913,10 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     rname = "reel-%s.mp4" % ymd
     rpath = os.path.join(a.work, rname)
     rposter = os.path.join(a.work, "reel-%s.jpg" % ymd)
-    avoid = recent_avoid(history)
-    log("avoid (recent looks):", sorted(avoid))
-    look = reelfx.reel_single(reel_rel(R, rc["cover"]), aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter,
-                              avoid=avoid, cmode=getattr(a, "want_fx", None))
+    # flat layout on black; the type colour changes every day (yellow, mint, coral)
+    sch = ["BK-Y", "BK-G", "BK-P"][dt.date.fromisoformat("20%s-%s-%s" % (ymd[:2], ymd[2:4], ymd[4:])).toordinal() % 3]
+    render_flat([flat_p(R, rc["cover"], sch, "TODAY'S DIG")], [aud], RDUR, rpath, rposter)
+    look = "flat black · " + sch
     rcap = reel_caption(R, rc["arr"])
     sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
@@ -896,7 +947,7 @@ def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     fname = video.rsplit("/", 1)[-1]
     items = "".join("<li><b>%s</b> <span class=\"m\">(%s)</span></li>" % (html.escape(t), html.escape(s_))
                     for t, s_ in zip(keep.get("titles", []), keep.get("shops", [])))
-    digs_sec = section("digs", "Today's Digs · post video", "3 releases · 3 × 15 s · post in the feed", video,
+    digs_sec = section("digs", "Today's Digs · post video", "3 releases · 3 × 10 s · post in the feed", video,
                        video.replace(".mp4", ".jpg"), fname, cap, [], "").replace("<ol></ol>", "<ol>%s</ol>" % items).replace("<h2>Release</h2>", "<h2>Releases</h2>")
     sections, caps, files = [digs_sec], [cap], []
     if rel:
@@ -986,8 +1037,10 @@ def main():
     poster = os.path.join(a.work, "todays-digs-%s.jpg" % ymd)
     seeds = [look_seed(ymd, p["key"], "digs") for p in P]
     offs = [max(0.0, min(p["start"] - 1.0, len(p["audio"]) / SR - 15.5)) for p in P]
-    looks, _ = reelfx.reel_triple([reel_rel(p, p["cover"]) for p in P], [p["audio"] for p in P], offs, seeds,
-                                  vpath, poster, avoid=recent_avoid(history))
+    DSEG = 10
+    render_flat([flat_p(p, p["cover"], sch, "TODAY'S DIGS", "%d/3" % (i + 1)) for i, (p, sch) in enumerate(zip(P, ["BK-Y", "BK-G", "BK-P"]))],
+                [fade(seg(p["audio"], o, DSEG), 0.25, 0.6) for p, o in zip(P, offs)], DSEG, vpath, poster)
+    looks = ["flat black"]
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
     cap = caption(P, date_s)
     nonstrict = [p for p in P if not p["strict"]]
@@ -996,7 +1049,7 @@ def main():
     entry = {"date": day, "keys": [p["key"] for p in P], "titles": ["%s – %s" % (p["a"], p["t"]) for p in P],
              "shops": [p["shop"] for p in P], "video": base + fname, "looks": looks, "dv": DIGS_V}
     files = [vpath, poster]
-    sections = [section("digs", "Today's Digs · post video", "3 releases · 3 × 15 s · post in the feed", base + fname,
+    sections = [section("digs", "Today's Digs · post video", "3 releases · 3 × 10 s · post in the feed", base + fname,
                         base + os.path.basename(poster), fname, cap, P, note)]
     caps = [cap]
     # Reel: one other release, 20 s
