@@ -390,7 +390,9 @@ async function storyBlob(r){
   g.fillStyle="#fbed4f";g.font="700 64px 'Helvetica Neue',Helvetica,Arial,sans-serif";g.textBaseline="top";
   g.lineWidth=6;g.strokeStyle="#fbed4f";g.lineJoin="round";g.strokeText("MONTHLY VINYL",90,170);g.fillText("MONTHLY VINYL",90,170);
   const S=900,x=90,y=330;let drawn=false;
-  for(const u of [hiRes(r.cover),r.cover].filter(Boolean)){try{const im=await loadImg(u);const k=Math.max(S/im.width,S/im.height);
+  // Die meisten Shops erlauben kein Zeichnen ihrer Cover (CORS); darum über den Bild-Proxy wsrv.nl
+  const px=u=>"https://wsrv.nl/?w=1000&output=jpg&url="+encodeURIComponent(u);
+  for(const u of [px(hiRes(r.cover)),px(r.cover),hiRes(r.cover)].filter((v,k)=>v&&r.cover)){try{const im=await loadImg(u);const k=Math.max(S/im.width,S/im.height);
     g.save();g.beginPath();g.rect(x,y,S,S);g.clip();g.drawImage(im,x+(S-im.width*k)/2,y+(S-im.height*k)/2,im.width*k,im.height*k);g.restore();
     c.toDataURL();drawn=true;break}catch(e){if(drawn)break;g.fillStyle="#0d0d0d";g.fillRect(x,y,S,S)}}
   if(!drawn){g.fillStyle="#1a1a1a";g.fillRect(x,y,S,S);g.fillStyle=HUES[(m.a||"").length%HUES.length];g.beginPath();g.arc(x+S/2,y+S/2,S*.36,0,7);g.fill();
