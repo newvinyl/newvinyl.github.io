@@ -130,8 +130,13 @@ button{font:inherit;color:inherit}
 .backf .ctl{align-items:flex-end}
 .backf .lbl{all:unset;cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:2px;padding:4px 0}
 .backf .lbl b{font:700 15px var(--display);color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.backf .lbl span{font:500 12px var(--mono);color:var(--neon)}
+.backf .lbl span{font:500 12px var(--mono);color:var(--yellow)}
 .backf .lbl:hover span,.backf .lbl:focus-visible span{text-decoration:underline;text-underline-offset:3px}
+.day{flex-wrap:wrap}
+.fchip{all:unset;cursor:pointer;order:0;position:relative;margin:0 auto 0 18px;align-self:center;display:inline-flex;align-items:center;height:30px;padding:0 30px 0 11px;background:var(--yellow);color:var(--ink);font:700 13px var(--display);letter-spacing:0;text-transform:none;white-space:nowrap}
+@media (max-width:480px){.day:has(.fchip)>span{display:none}.fchip{margin-left:12px}}
+.fchip i{position:absolute;top:1px;right:6px;font:700 16px/1 var(--display);font-style:normal}
+.fchip:focus-visible{outline:2px solid var(--white);outline-offset:2px}
 .lblbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 0;padding:10px 12px;border:1.5px solid var(--neon)}
 .lblbar span{display:flex;flex-direction:column;min-width:0}
 .lblbar b{font:700 15px var(--display);color:var(--neon);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -174,7 +179,7 @@ button{font:inherit;color:inherit}
   background:rgba(13,13,13,.82);color:var(--white);border:1.5px solid var(--line);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .ffab svg{width:14px;height:14px}
 .ffab{background:var(--yellow);color:var(--ink);border-color:var(--yellow);font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,.5);backdrop-filter:none;-webkit-backdrop-filter:none}
-.ffab.act{background:var(--yellow);color:var(--ink);border-color:var(--pink);box-shadow:0 0 0 2px var(--pink),0 4px 16px rgba(0,0,0,.5)}
+.ffab.act{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
 body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .sheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
 .spanel{width:100%;max-width:560px;max-height:85vh;overflow:auto;background:var(--bg);border-top:2px solid var(--white);padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
@@ -515,13 +520,16 @@ function matches(r){
   if(F.q){const h=fold(r.all.map(x=>[x.a,x.t,x.l,x.cat,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" "));if(!F.q.split(/\s+/).every(w=>h.includes(w)))return false}
   return true;
 }
-function setLabel(l){F.l=l||"";track("Shop filter",{shop:F.l});renderFeed();
-  let bar=document.getElementById("lblbar");
-  if(F.l){if(!bar){bar=document.createElement("div");bar.id="lblbar";bar.className="lblbar";document.getElementById("feed").before(bar)}
-    bar.innerHTML=`<span><b>All from ${esc(F.l)}</b><small>Bundle your order, save on shipping.</small></span><button type="button">Show all shops</button>`;bar.querySelector("button").onclick=()=>setLabel("")}
-  else if(bar)bar.remove();
-  window.scrollTo({top:0,behavior:"smooth"})}
+function setLabel(l){F.l=l||"";if(F.l)track("Shop filter",{shop:F.l});renderFeed();window.scrollTo({top:0,behavior:"smooth"})}
+// Aktiver Shop-Filter als gelber Chip neben dem ersten Tagestitel; × hebt ihn auf
+function shopChip(){
+  document.querySelectorAll(".fchip").forEach(x=>x.remove());
+  if(!F.l)return;const h=document.querySelector(".day:not([hidden]) b");if(!h)return;
+  const c=document.createElement("button");c.type="button";c.className="fchip";c.setAttribute("aria-label",`Remove filter ${F.l}`);
+  c.innerHTML=`${esc(F.l)}<i aria-hidden="true">×</i>`;c.onclick=()=>setLabel("");h.after(c);
+}
 function applyFilter(){
+  setTimeout(shopChip,0);
   let shown=0;
   document.querySelectorAll(".grid").forEach(g=>{let n=0;g.querySelectorAll(".card").forEach(c=>{const ok=matches(RECS[c.dataset.i]);c.hidden=!ok;if(ok)n++});
     g.hidden=!n;const h=g.previousElementSibling;h.hidden=!n;h.querySelector("span").textContent=`${n} ${n===1?"record":"records"}`;shown+=n});
