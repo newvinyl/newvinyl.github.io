@@ -109,8 +109,7 @@ button{font:inherit;color:inherit}
 .shr{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted)}
 .shr svg{width:20px;height:20px}
 .shr:active,.shr:focus-visible{color:var(--white)}
-.backf .ar{padding-right:74px}
-.shr.shig{right:48px}
+.backf .ar{padding-right:34px}
 #toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--white);color:var(--ink);font:500 13px var(--mono);padding:8px 12px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #toast.on{opacity:1}
 .mini .mbag:not(.has){display:none}
@@ -340,7 +339,6 @@ function card(r,i){
       <button class="add" type="button"></button>
       <div class="bar"></div></div>
     <div class="face backf" aria-hidden="true">
-      <button class="shr shig" type="button" aria-label="Post ${esc(m.a)} – ${esc(m.t)} on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></button>
       <button class="shr" type="button" aria-label="Share ${esc(m.a)} – ${esc(m.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 12v8h14v-8"/></svg></button>
       <div class="ar">${esc(m.a)}</div><div class="ti">${esc(m.t)}</div>
       <div class="me">${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+esc(m.g):""}</div>
@@ -361,8 +359,7 @@ function card(r,i){
     if(tapT){clearTimeout(tapT);tapT=null;au.pause();track("Pause via double tap");return}
     tapT=setTimeout(()=>{tapT=null;if(cur===i&&!au.paused){track("Next via cover");next(true)}},280);
   };
-  el.querySelector(".shr:not(.shig)").onclick=()=>shareRec(r);
-  el.querySelector(".shig").onclick=()=>shareInsta(r);
+  el.querySelector(".shr").onclick=()=>shareRec(r);
   el.querySelector(".add").onclick=()=>toggleBag(r);
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite: Bag unten rechts wie vorne
@@ -376,7 +373,12 @@ function card(r,i){
 async function shareRec(r){
   const m=r.main,url=`https://monthlyvinyl.net/r/${rslug(m.a,m.t)}/?s=1`,title=`${m.a} – ${m.t}`;
   track("Share",{shop:m.S.shop,where:"feed"});
-  if(navigator.share){try{await navigator.share({title,text:`${title} (${m.l}) on vinyl`,url});return}catch(e){if(e&&e.name==="AbortError")return}}
+  if(navigator.share){
+    // mit fertigem Bild (Cover, Artist, Titel, Link), damit Instagram Story/Beitrag anbietet; Link zusätzlich in der Zwischenablage
+    if(r._storyBlob){const file=new File([r._storyBlob],rslug(m.a,m.t).slice(0,50)+".jpg",{type:"image/jpeg"});
+      if(navigator.canShare&&navigator.canShare({files:[file],url})){try{navigator.clipboard.writeText(url).catch(()=>{})}catch(e){}
+        try{await navigator.share({files:[file],title,text:`${title} (${m.l}) on vinyl – ${url}`,url});return}catch(e){if(e&&e.name==="AbortError")return}}}
+    try{await navigator.share({title,text:`${title} (${m.l}) on vinyl`,url});return}catch(e){if(e&&e.name==="AbortError")return}}
   let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(e){}
   toast(ok?"Link copied.":url);
 }
