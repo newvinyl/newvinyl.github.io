@@ -68,17 +68,12 @@
    "none": 19
   }
  },
- "pages_checked": 327,
- "new_from_shop_pages": 4,
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
  "copied_from_other_shop": 0,
  "broken_clips_removed": 14,
  "clips_verified": 4999,
- "not_reachable": {
-  "Clone: http403": 1,
-  "Phonica: http403": 60,
-  "Redeye Records: failed:UnicodeEncodeError": 15,
-  "Redeye Records: http403": 1
- },
+ "not_reachable": {},
  "clip_hosts": {
   "clone.nl": {
    "clips": 928,
