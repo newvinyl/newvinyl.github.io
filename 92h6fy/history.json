@@ -2,33 +2,33 @@
  {
   "date": "2026-10-12",
   "keys": [
-   "balthvs|eternal flow",
    "parker louis|lifted",
-   "maz & jp castro|all for you"
+   "maz & jp castro|all for you",
+   "millsart|drifter"
   ],
   "titles": [
-   "BALTHVS – Eternal Flow",
    "Parker LOUIS – Lifted",
-   "Maz & JP Castro – All For You"
+   "Maz & JP Castro – All For You",
+   "Millsart – Drifter"
   ],
   "shops": [
    "Juno",
-   "Juno",
-   "Deejay.de"
+   "Deejay.de",
+   "Kompakt"
   ],
   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261012.mp4",
   "looks": [
-   "record cover · background echo · alive: spin+accent+glint · melt: freeze",
    "organic cover · background continue · alive: sway+breathe+bloom+ripple · melt: dissolve",
-   "organic cover · background kaleido · alive: bloom+glint+breathe · melt: swing"
+   "organic cover · background kaleido · alive: bloom+glint+breathe · melt: swing",
+   "geometric cover · background echo · alive: wobble+sweep+spin+breathe · melt: adapt"
   ],
-  "dv": 3,
+  "dv": 4,
   "reel": {
    "key": "rollo doherty|the jelly man",
    "title": "Rollo DOHERTY – The Jelly Man",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261012.mp4",
-   "look": "organic cover · background continue · alive: ripple+bloom+breathe · melt: dissolve",
-   "v": 15
+   "look": "organic cover · background continue · alive: bloom+ripple+breathe · melt: flow",
+   "v": 16
   }
  },
  {
