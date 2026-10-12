@@ -109,7 +109,8 @@ button{font:inherit;color:inherit}
 .shr{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted)}
 .shr svg{width:20px;height:20px}
 .shr:active,.shr:focus-visible{color:var(--white)}
-.backf .ar{padding-right:34px}
+.backf .ar{padding-right:74px}
+.shr.shig{right:48px}
 #toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--white);color:var(--ink);font:500 13px var(--mono);padding:8px 12px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #toast.on{opacity:1}
 .mini .mbag:not(.has){display:none}
@@ -339,6 +340,7 @@ function card(r,i){
       <button class="add" type="button"></button>
       <div class="bar"></div></div>
     <div class="face backf" aria-hidden="true">
+      <button class="shr shig" type="button" aria-label="Post ${esc(m.a)} – ${esc(m.t)} on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></button>
       <button class="shr" type="button" aria-label="Share ${esc(m.a)} – ${esc(m.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 12v8h14v-8"/></svg></button>
       <div class="ar">${esc(m.a)}</div><div class="ti">${esc(m.t)}</div>
       <div class="me">${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+esc(m.g):""}</div>
@@ -347,7 +349,7 @@ function card(r,i){
         <div class="shop">${esc(m.S.shop)}${others.length?` · +${others.length} more ${others.length>1?"shops":"shop"}`:""}<br><a class="buy" data-shop="${esc(m.S.shop)}" href="${esc(m.url)}" target="_blank" rel="noopener">Buy at ${esc(m.S.shop)} ↗</a></div></div>
     </div></div>`;
   const back=el.querySelector(".backf");
-  const flip=on=>{el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on)track("More")};
+  const flip=on=>{el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r)}};
   back.onclick=e=>{if(e.target.closest("button,a"))return;flip(false)};
   // Cover antippen (ausserhalb Play) dreht es um
   el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.play"))return;flip(true)};
@@ -359,7 +361,8 @@ function card(r,i){
     if(tapT){clearTimeout(tapT);tapT=null;au.pause();track("Pause via double tap");return}
     tapT=setTimeout(()=>{tapT=null;if(cur===i&&!au.paused){track("Next via cover");next(true)}},280);
   };
-  el.querySelector(".shr").onclick=()=>shareRec(r);
+  el.querySelector(".shr:not(.shig)").onclick=()=>shareRec(r);
+  el.querySelector(".shig").onclick=()=>shareInsta(r);
   el.querySelector(".add").onclick=()=>toggleBag(r);
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite: Bag unten rechts wie vorne
@@ -376,6 +379,45 @@ async function shareRec(r){
   if(navigator.share){try{await navigator.share({title,text:`${title} (${m.l}) on vinyl`,url});return}catch(e){if(e&&e.name==="AbortError")return}}
   let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(e){}
   toast(ok?"Link copied.":url);
+}
+// Instagram: fertiges Story-Bild (Cover, Artist, Titel, monthlyvinyl.net) direkt an Instagram geben.
+// Im Teilen-Menü bietet Instagram dann Story, Beitrag oder Nachricht an. Der Link liegt in der Zwischenablage für den Link-Sticker.
+function loadImg(src){return new Promise((ok,no)=>{const im=new Image();im.crossOrigin="anonymous";im.onload=()=>ok(im);im.onerror=no;im.src=src})}
+async function storyBlob(r){
+  const m=r.main,W=1080,H=1920,c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
+  g.fillStyle="#0d0d0d";g.fillRect(0,0,W,H);
+  await (document.fonts&&document.fonts.ready);
+  g.fillStyle="#fbed4f";g.font="700 64px 'Helvetica Neue',Helvetica,Arial,sans-serif";g.textBaseline="top";
+  g.lineWidth=6;g.strokeStyle="#fbed4f";g.lineJoin="round";g.strokeText("MONTHLY VINYL",90,170);g.fillText("MONTHLY VINYL",90,170);
+  const S=900,x=90,y=330;let drawn=false;
+  for(const u of [hiRes(r.cover),r.cover].filter(Boolean)){try{const im=await loadImg(u);const k=Math.max(S/im.width,S/im.height);
+    g.save();g.beginPath();g.rect(x,y,S,S);g.clip();g.drawImage(im,x+(S-im.width*k)/2,y+(S-im.height*k)/2,im.width*k,im.height*k);g.restore();
+    c.toDataURL();drawn=true;break}catch(e){if(drawn)break;g.fillStyle="#0d0d0d";g.fillRect(x,y,S,S)}}
+  if(!drawn){g.fillStyle="#1a1a1a";g.fillRect(x,y,S,S);g.fillStyle=HUES[(m.a||"").length%HUES.length];g.beginPath();g.arc(x+S/2,y+S/2,S*.36,0,7);g.fill();
+    g.fillStyle="#0d0d0d";g.font="500 40px 'JetBrains Mono',monospace";g.textAlign="center";g.fillText((m.l||"").slice(0,22),x+S/2,y+S/2-30);g.fillText((m.cat||"").slice(0,22),x+S/2,y+S/2+24);g.textAlign="left"}
+  const fit=(t,font,max)=>{g.font=font;let s=String(t||"");while(g.measureText(s).width>max&&s.length>3)s=s.slice(0,-2);return s===String(t||"")?s:s.trim()+"…"};
+  g.fillStyle="#ffffff";g.font="800 76px 'Helvetica Neue',Helvetica,Arial,sans-serif";g.fillText(fit(m.a,g.font,900),90,1290);
+  g.fillStyle="#ecebe7";g.fillText(fit(m.t,"400 54px 'Helvetica Neue',Helvetica,Arial,sans-serif",900),90,1385);
+  g.fillStyle="#a0a4a9";g.fillText(fit([m.l,m.cat,m.f].filter(Boolean).join(" · "),"500 34px 'JetBrains Mono',monospace",900),90,1465);
+  g.fillStyle="#39ff14";g.font="500 36px 'JetBrains Mono',monospace";g.fillText("▶ listen & compare prices",90,1600);
+  g.fillStyle="#ffffff";g.font="700 46px 'JetBrains Mono',monospace";g.fillText("monthlyvinyl.net",90,1660);
+  return await new Promise(ok=>c.toBlob(ok,"image/jpeg",.9));
+}
+function prepStory(r){if(!r._story)r._story=storyBlob(r).then(b=>(r._storyBlob=b)).catch(()=>null)}
+async function shareInsta(r){
+  const m=r.main,url=`https://monthlyvinyl.net/r/${rslug(m.a,m.t)}/?s=1`,name=rslug(m.a,m.t).slice(0,50)+".jpg";
+  track("Share",{channel:"instagram",shop:m.S.shop,where:"feed"});
+  try{navigator.clipboard.writeText(url).catch(()=>{})}catch(e){}
+  if(!r._storyBlob){prepStory(r);toast("Preparing the image… tap again.");await r._story;return}
+  const file=new File([r._storyBlob],name,{type:"image/jpeg"});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({files:[file]});toast("Link copied. Add it in Instagram with the link sticker.")}catch(e){}
+    return}
+  // Computer: Bild speichern und Instagram öffnen
+  const a=document.createElement("a");a.href=URL.createObjectURL(file);a.download=name;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  toast("Image saved, link copied. Post it on Instagram.");
+  window.open("https://www.instagram.com/","_blank","noopener");
 }
 function toast(t){let d=document.getElementById("toast");if(!d){d=document.createElement("div");d.id="toast";document.body.appendChild(d)}
   d.textContent=t;d.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>d.classList.remove("on"),2200)}
