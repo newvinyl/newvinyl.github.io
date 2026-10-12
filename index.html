@@ -163,7 +163,7 @@ button{font:inherit;color:inherit}
   background:var(--deep);border-top:2px solid var(--white)}
 .mini.on{display:flex}
 .mini .mt{all:unset;cursor:pointer;flex:1;min-width:0}
-.mini .mpp{all:unset;cursor:pointer;flex:none;width:44px;height:44px;border-radius:50%;background:var(--white);color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
+.mini .mpp{all:unset;cursor:pointer;flex:none;width:44px;height:44px;border-radius:50%;background:var(--yellow);color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
 .mini .mpp svg{width:20px;height:20px}
 .mini .mpp .i-pl{display:none}
 .mini.paused .mpp .i-pa{display:none}.mini.paused .mpp .i-pl{display:block}
@@ -178,7 +178,8 @@ button{font:inherit;color:inherit}
 .mini .madd{all:unset;cursor:pointer;white-space:nowrap;flex:none;height:44px;padding:0 16px;display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:var(--ink);font:800 15px/1 var(--display)}
 .mini .madd svg{width:15px;height:15px}
 .mini .madd.in{background:var(--ink);color:var(--pink);box-shadow:inset 0 0 0 2px var(--pink)}
-.mini .mnx{all:unset;cursor:pointer;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--white);border-radius:50%}
+.mini .mnx{all:unset;cursor:pointer;flex:none;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--yellow);color:var(--ink)}
+.mini .mpp:active,.mini .mnx:active{transform:scale(.92)}
 .mini .mnx svg{width:18px;height:18px}
 
 .hicons{display:flex;align-items:center;gap:8px}
@@ -268,6 +269,7 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
   <p class="slab">Shop</p><div class="chips" id="cs"></div></div></div>
 <div class="mini" id="mini" role="region" aria-label="Now playing">
   <button class="mpp" id="mpp" type="button" aria-label="Pause"><svg class="i-pa" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg><svg class="i-pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+  <button class="mnx" id="mnx" type="button" aria-label="Next track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 5v14l10.5-7zM16 5h3.5v14H16z"/></svg></button>
   <button class="mt" id="mt" type="button"><b id="mtt"></b><span id="mta"></span></button>
   <a class="mbag" id="mbag" href="/bag/" aria-label="Go to my bag and check out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/></svg><span>Check out</span><b id="mbn"></b></a>
 </div>
@@ -277,7 +279,7 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 if(location.hash==="#korb")location.replace("/bag/");else if(location.hash==="#shops")location.replace("/about/#shops");else if(/^#(archiv|restore=)/.test(location.hash))location.replace("/all/"+location.hash);
 function track(name,data){try{if(window.umami&&typeof umami.track==="function")umami.track(name,data)}catch(e){}}
 const rslug=(a,t)=>`${a} ${t}`.normalize("NFKD").replace(/[^\x00-\x7f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,80).replace(/^-+|-+$/g,"");
-const PLAY='<svg class="pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="ps" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 5v14l9.5-7zM12.5 5v14l9.5-7z"/></svg>';
+const PLAY='<svg class="pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="ps" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>';
 const PLUS='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 2v12M2 8h12"/></svg>';
 const CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2.5 8.5 6.5 12 13.5 4"/></svg>';
 const HUES=["#d6a3d8","#b9d8a3","#e8c34a","#83b59d","#f0c98f","#f0a060","#a3c4e8","#e07a62"];
@@ -401,13 +403,10 @@ function card(r,i){
   back.onclick=e=>{if(e.target.closest("button,a"))return;flip(false)};
   // Cover antippen (ausserhalb Play) dreht es um
   el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.play"))return;flip(true)};
-  // Play: 1× Tipp = abspielen bzw. nächster Track; 2× Tipp = Pause; Tipp in der Pause = weiter
-  let tapT=null;
+  // Play: Tipp = abspielen / Pause / weiter (wie überall üblich); nächster Track über ⏭ in der Player-Leiste
   el.querySelector(".play").onclick=()=>{
     if(cur!==i){play(i,0);return}
-    if(au.paused){au.play().catch(()=>{});return}
-    if(tapT){clearTimeout(tapT);tapT=null;au.pause();track("Pause via double tap");return}
-    tapT=setTimeout(()=>{tapT=null;if(cur===i&&!au.paused){track("Next via cover");next(true)}},280);
+    if(au.paused)au.play().catch(()=>{});else{au.pause();track("Pause via cover")}
   };
   el.querySelector(".shr").onclick=e=>{e.stopPropagation();DESK?sharePop(r,el.querySelector(".shr")):shareRec(r)};
   el.querySelector(".add").onclick=()=>toggleBag(r);
@@ -637,6 +636,7 @@ au.addEventListener("ended",next);
 au.addEventListener("pause",()=>{document.getElementById("mini").classList.add("paused");document.getElementById("mpp").setAttribute("aria-label","Play");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.remove("playing")});
 au.addEventListener("play",()=>{document.getElementById("mini").classList.remove("paused");document.getElementById("mpp").setAttribute("aria-label","Pause");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing")});
 au.addEventListener("timeupdate",()=>{const c=document.querySelector(`.card[data-i="${cur}"] .bar`);if(c&&au.duration)c.style.width=(100*au.currentTime/au.duration)+"%"});
+document.getElementById("mnx").onclick=()=>{track("Next via player");next()};
 document.getElementById("mpp").onclick=()=>{if(au.paused)au.play().catch(()=>{});else au.pause()};
 document.getElementById("mt").onclick=()=>{document.querySelector(`.card[data-i="${cur}"]`)?.scrollIntoView({behavior:"smooth",block:"center"})};
 
