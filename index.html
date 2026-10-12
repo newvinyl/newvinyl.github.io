@@ -94,6 +94,11 @@ button{font:inherit;color:inherit}
 .bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--neon)}
 
 .backf{transform:rotateY(180deg);background:var(--ink);border:2px solid var(--white);padding:16px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+/* Rückseite unsichtbar, solange das Cover vorne ist: sonst blitzt ihr weisser Rand am Cover-Rand durch (iOS) */
+.backf{visibility:hidden;transition:visibility 0s .28s}
+.card.back .backf{visibility:visible;transition-delay:0s}
+.card.back .front{visibility:hidden;transition:visibility 0s .28s}
+.front{transition:visibility 0s 0s}
 .backf .ar{font:800 23px/1.08 var(--display);text-wrap:balance}
 .backf .ti{font:400 17px/1.25 var(--body)}
 .backf .me{font:400 12px/1.6 var(--mono);color:var(--muted)}
