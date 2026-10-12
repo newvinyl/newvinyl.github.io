@@ -197,10 +197,17 @@ button{font:inherit;color:inherit}
 .ffab{background:var(--yellow);color:var(--ink);border-color:var(--yellow);font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,.5);backdrop-filter:none;-webkit-backdrop-filter:none}
 .ffab.act{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
 body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-.sheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
-.spanel{width:100%;max-width:560px;max-height:85vh;overflow:auto;background:var(--bg);border-top:2px solid var(--white);padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
-.shd{display:flex;justify-content:space-between;align-items:center}
+.sheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.18);display:flex;align-items:flex-end;justify-content:center}
+.spanel{width:100%;max-width:560px;max-height:85vh;overflow:auto;overscroll-behavior:contain;background:rgba(13,13,13,.8);-webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);border-top:2px solid var(--white);padding:6px 16px calc(24px + env(safe-area-inset-bottom,0px));transition:transform .26s cubic-bezier(.2,.8,.2,1);animation:sup .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes sup{from{transform:translateY(100%)}}
+.spanel.drag{transition:none}
+.sgrab{display:block;width:44px;height:5px;margin:4px auto 8px;border-radius:3px;background:rgba(236,235,231,.45)}
+.shd{display:flex;justify-content:space-between;align-items:center;gap:14px}
 .shd b{font:800 22px var(--display)}
+.shd b small{font:400 12px var(--mono);color:var(--muted);margin-left:8px;letter-spacing:0}
+.shd .sr{display:flex;align-items:center;gap:16px}
+.sclose{all:unset;cursor:pointer;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;margin-right:-8px;color:var(--fg)}
+.sclose svg{width:18px;height:18px}
 .sreset{all:unset;cursor:pointer;font:500 13px var(--mono);color:var(--muted);text-decoration:underline;padding:8px 0}
 .slab{margin:16px 0 8px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
@@ -208,7 +215,6 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .chip small{font:400 11px var(--mono);color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
 .chip[aria-pressed="true"] small{color:var(--ink)}
-.sdone{all:unset;cursor:pointer;display:flex;justify-content:center;align-items:center;width:100%;box-sizing:border-box;min-height:52px;margin-top:20px;background:var(--white);color:var(--ink);font:800 16px var(--display)}
 .empty{padding:30px 0;color:var(--muted)}
 .foot{margin:46px 0 0;padding-top:18px;border-top:2px solid var(--white);display:flex;flex-direction:column;gap:10px;max-width:70ch;font-size:13px;line-height:1.55;color:var(--muted)}
 .foot p{margin:0}
@@ -254,11 +260,11 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 </footer>
 <button class="ffab" id="ffab" type="button" aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 3.5h13M4 8h8M6.5 12.5h3"/></svg><span id="ffl">Filter</span></button>
 <div class="sheet" id="sheet" hidden><div class="spanel" role="dialog" aria-modal="true" aria-labelledby="sht">
-  <div class="shd"><b id="sht">Filter</b><button class="sreset" id="sreset" type="button">Reset</button></div>
+  <span class="sgrab" aria-hidden="true"></span>
+  <div class="shd"><b id="sht">Filter<small id="scount"></small></b><span class="sr"><button class="sreset" id="sreset" type="button">Reset</button><button class="sclose" id="sclose" type="button" aria-label="Close filter"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button></span></div>
   <p class="slab">When</p><div class="chips" id="cw"></div>
   <p class="slab">Genre</p><div class="chips" id="cg"></div>
-  <p class="slab">Shop</p><div class="chips" id="cs"></div>
-  <button class="sdone" id="sdone" type="button">Show records</button></div></div>
+  <p class="slab">Shop</p><div class="chips" id="cs"></div></div></div>
 <div class="mini" id="mini" role="region" aria-label="Now playing">
   <button class="mpp" id="mpp" type="button" aria-label="Pause"><svg class="i-pa" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg><svg class="i-pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
   <button class="mt" id="mt" type="button"><b id="mtt"></b><span id="mta"></span></button>
@@ -572,7 +578,7 @@ function applyFilter(){
     g.hidden=!n;const h=g.previousElementSibling;h.hidden=!n;h.querySelector("span").textContent=`${n} ${n===1?"record":"records"}`;shown+=n});
   let e=document.getElementById("empty");if(!shown){if(!e){e=document.createElement("p");e.id="empty";e.className="empty";document.getElementById("feed").appendChild(e)}e.textContent="No records match. Change the filter or search.";e.hidden=false}else if(e)e.hidden=true;
   const nf=F.g.size+F.s.size+(F.r?1:0)+(F.l?1:0),fb=document.getElementById("ffab");fb.classList.toggle("act",!!nf);document.getElementById("ffl").textContent=nf?`Filter · ${nf}`:"Filter";
-  document.getElementById("sdone").textContent=`Show ${shown} ${shown===1?"record":"records"}`;
+  document.getElementById("scount").textContent=`${shown} ${shown===1?"record":"records"}`;
 }
 function buildChips(){
   const cnt=(fn)=>RECS.filter(fn).length;
@@ -588,10 +594,20 @@ function buildChips(){
   mk(document.getElementById("cs"),F.s,shops,(r,v)=>r.all.some(x=>x.S.shop===v));
 }
 const sheet=document.getElementById("sheet");
-const openSheet=()=>{track("Filter open");buildChips();applyFilter();sheet.hidden=false;sheet.querySelector(".spanel").scrollTop=0;document.getElementById("sdone").focus({preventScroll:true})};
-const closeSheet=()=>{sheet.hidden=true;document.getElementById("ffab").focus()};
+const spanel=sheet.querySelector(".spanel");let fsig="";
+const fSig=()=>JSON.stringify([[...F.g],[...F.s],F.r,F.k]);
+const openSheet=()=>{track("Filter open");buildChips();applyFilter();fsig=fSig();spanel.style.transform="";sheet.hidden=false;spanel.scrollTop=0;document.getElementById("sclose").focus({preventScroll:true})};
+const closeSheet=()=>{if(sheet.hidden)return;spanel.style.transform="translateY(100%)";
+  setTimeout(()=>{sheet.hidden=true;spanel.style.transform="";document.getElementById("ffab").focus({preventScroll:true});
+    if(fSig()!==fsig){const f=document.querySelector(".day:not([hidden])");if(f)window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-80),behavior:"smooth"})}},240)};
 document.getElementById("ffab").onclick=openSheet;
-document.getElementById("sdone").onclick=()=>{closeSheet();const f=document.querySelector(".day:not([hidden])");if(f)window.scrollTo({top:Math.max(0,f.getBoundingClientRect().top+scrollY-80),behavior:"smooth"})};
+document.getElementById("sclose").onclick=closeSheet;
+/* swipe down to close (from the top of the panel) */
+{let y0=null,dy=0,t0=0;
+ spanel.addEventListener("touchstart",e=>{if(spanel.scrollTop>0){y0=null;return}y0=e.touches[0].clientY;dy=0;t0=Date.now()},{passive:true});
+ spanel.addEventListener("touchmove",e=>{if(y0===null)return;dy=e.touches[0].clientY-y0;if(dy>0){spanel.classList.add("drag");spanel.style.transform=`translateY(${dy}px)`;if(e.cancelable)e.preventDefault()}else{spanel.classList.remove("drag");spanel.style.transform=""}},{passive:false});
+ spanel.addEventListener("touchend",()=>{if(y0===null)return;spanel.classList.remove("drag");const v=dy/Math.max(1,Date.now()-t0);
+   if(dy>90||(dy>30&&v>.5)){track("Filter swipe close");closeSheet()}else spanel.style.transform="";y0=null})}
 document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const had=F.r||F.k;F.r="";if(F.k)setChip("");else if(had)renderFeed();buildChips();applyFilter()};
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
