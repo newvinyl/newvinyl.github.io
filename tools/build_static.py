@@ -23,7 +23,7 @@ def slug(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
 
-RELEASE_CSS = """:root{color-scheme:dark;--bg:#0d0d0d;--fg:#ecebe7;--muted:#a0a4a9;--line:#3c4046;--yellow:#fbed4f;--neon:#39ff14}
+RELEASE_CSS = """:root{color-scheme:dark;--bg:#0d0d0d;--fg:#ecebe7;--muted:#a0a4a9;--line:#3c4046;--yellow:#fbed4f;--neon:#8fd3b0}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
 a{color:var(--fg)}
