@@ -22,12 +22,15 @@
   ],
   "dv": 5,
   "reel": {
-   "key": "rollo doherty|the jelly man",
-   "title": "Rollo DOHERTY – The Jelly Man",
+   "key": "flying lotus|1983",
+   "title": "FLYING LOTUS – 1983",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261012.mp4",
-   "look": "flat black · BK-P",
-   "v": 17
-  }
+   "look": "painterly cover · background continue · alive: accent+glint+bloom+ripple · melt: flow · type BK-P",
+   "v": 18
+  },
+  "reel_tried": [
+   "rollo doherty|the jelly man"
+  ]
  },
  {
   "date": "2026-10-11",
