@@ -124,7 +124,7 @@ button{font:inherit;color:inherit}
 #toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--white);color:var(--ink);font:500 13px var(--mono);padding:8px 12px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #toast.on{opacity:1}
 .mini .mbag:not(.has){display:none}
-.backf .ctl{flex:none;display:flex;justify-content:space-between;gap:10px;padding-top:12px}
+.backf .ctl{flex:none;display:flex;justify-content:flex-end;gap:10px;padding-top:12px}
 .backf .ctl .add,.backf .ctl .more{position:static}
 .backf .buy{color:var(--muted);font:400 11.5px var(--mono);text-underline-offset:3px;align-self:flex-end;padding-bottom:4px}
 .backf .ctl{align-items:flex-end}
@@ -387,7 +387,7 @@ function card(r,i){
   el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
   // Rückseite: Bag unten rechts wie vorne
   const ctl=document.createElement("div");ctl.className="ctl";
-  ctl.innerHTML=`<a class="buy" data-shop="${esc(m.S.shop)}" href="${esc(m.url)}" target="_blank" rel="noopener">Buy at ${esc(m.S.shop)} ↗</a><button class="add" type="button"></button>`;
+  ctl.innerHTML=`<button class="add" type="button"></button>`;
   back.appendChild(ctl);
   ctl.querySelector(".add").onclick=()=>toggleBag(r);
   return el;
