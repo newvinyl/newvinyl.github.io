@@ -198,7 +198,7 @@ button{font:inherit;color:inherit}
 .ffab.act{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
 body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .sheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.18);display:flex;align-items:flex-end;justify-content:center}
-.spanel{width:100%;max-width:560px;max-height:85vh;overflow:auto;overscroll-behavior:contain;background:rgba(13,13,13,.8);-webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);border-top:2px solid var(--white);padding:6px 16px calc(24px + env(safe-area-inset-bottom,0px));transition:transform .26s cubic-bezier(.2,.8,.2,1);animation:sup .26s cubic-bezier(.2,.8,.2,1)}
+.spanel{width:100%;max-width:560px;max-height:74vh;overflow:auto;overscroll-behavior:contain;background:var(--bg);box-shadow:0 -10px 30px rgba(0,0,0,.55);border-top:2px solid var(--white);padding:6px 16px calc(24px + env(safe-area-inset-bottom,0px));transition:transform .26s cubic-bezier(.2,.8,.2,1);animation:sup .26s cubic-bezier(.2,.8,.2,1)}
 @keyframes sup{from{transform:translateY(100%)}}
 .spanel.drag{transition:none}
 .sgrab{display:block;width:44px;height:5px;margin:4px auto 8px;border-radius:3px;background:rgba(236,235,231,.45)}
