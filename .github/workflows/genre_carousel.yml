@@ -1,0 +1,53 @@
+name: Genre carousel
+
+# Instagram carousel: title image + short video slides with the real previews. Genre/days in tools/genre_carousel.json.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/genre_carousel.json, tools/genre_carousel.py, .github/workflows/genre_carousel.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: genre-carousel
+  cancel-in-progress: true
+
+jobs:
+  carousel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core >/dev/null
+          pip install -q numpy pillow opencv-python-headless
+      - name: Render
+        env:
+          REEL_WORK: ${{ runner.temp }}/c
+        run: |
+          mkdir -p "$REEL_WORK"
+          python3 tools/genre_carousel.py > "$REEL_WORK/result.json" 2> "$REEL_WORK/log.txt" || { cat "$REEL_WORK/log.txt"; exit 1; }
+          cat "$REEL_WORK/result.json"
+      - name: Save log
+        if: always()
+        env:
+          REEL_WORK: ${{ runner.temp }}/c
+        run: |
+          mkdir -p /tmp/lg && cd /tmp/lg && git init -q && git checkout -q -b carousel-log
+          { cat "$REEL_WORK/result.json" 2>/dev/null; tail -c 40000 "$REEL_WORK/log.txt" 2>/dev/null; } > log.txt || echo "no log" > log.txt
+          git add log.txt && git -c user.name=bot -c user.email=bot@x commit -qm log
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" carousel-log
+      - name: Upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REEL_WORK: ${{ runner.temp }}/c
+        run: |
+          cd "$REEL_WORK"
+          G=$(python3 -c "import json;print(json.load(open('result.json'))['genre'].lower().replace(' ','-'))")
+          zip -q -j "carousel-$G.zip" slide-*.mp4 slide-00.jpg caption.txt
+          gh release view carousel >/dev/null 2>&1 || gh release create carousel --prerelease --title "Genre carousel" --notes "Instagram carousels: title image + video slides."
+          gh release upload carousel --clobber "carousel-$G.zip" slide-*.mp4 slide-00.jpg caption.txt
