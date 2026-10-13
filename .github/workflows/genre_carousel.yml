@@ -44,6 +44,7 @@ jobs:
       - name: Upload
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
           REEL_WORK: ${{ runner.temp }}/c
         run: |
           set +e
