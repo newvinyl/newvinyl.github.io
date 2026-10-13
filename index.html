@@ -217,6 +217,7 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .chip small{font:400 11px var(--mono);color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
 .chip[aria-pressed="true"] small{color:var(--ink)}
+.chip.zero{opacity:.38;cursor:default}
 .empty{padding:30px 0;color:var(--muted)}
 .foot{margin:46px 0 0;padding-top:18px;border-top:2px solid var(--white);display:flex;flex-direction:column;gap:10px;max-width:70ch;font-size:13px;line-height:1.55;color:var(--muted)}
 .foot p{margin:0}
@@ -582,7 +583,7 @@ function applyFilter(){
 }
 function buildChips(){
   const cnt=(fn)=>RECS.filter(fn).length;
-  const mk=(box,set,vals,test)=>{box.innerHTML="";vals.forEach(v=>{const n=cnt(r=>test(r,v));if(!n)return;const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",set.has(v));b.innerHTML=`${esc(v)} <small>${n}</small>`;
+  const mk=(box,set,vals,test,all)=>{box.innerHTML="";vals.forEach(v=>{const n=cnt(r=>test(r,v));if(!n&&!(all&&!set.has(v)))return;const b=document.createElement("button");b.type="button";b.className="chip";if(!n){b.disabled=true;b.classList.add("zero")}b.setAttribute("aria-pressed",set.has(v));b.innerHTML=`${esc(v)} <small>${n}</small>`;
     b.onclick=()=>{set.has(v)?set.delete(v):set.add(v);if(set.has(v))track("Filter",{type:box.id==="cg"?"genre":"shop",value:v});b.setAttribute("aria-pressed",set.has(v));applyFilter()};box.appendChild(b)})};
   {const box=document.getElementById("cw");box.innerHTML="";
    RANGES.forEach(([k,lab])=>{const rg=rangeOf(k),n=ALL.filter(r=>r.first>=rg[0]&&r.first<=rg[1]).length;if(!n)return;
@@ -590,8 +591,8 @@ function buildChips(){
     b.onclick=()=>{F.r=F.r===k?"":k;if(F.r)track("Filter",{type:"when",value:k});renderFeed();buildChips();applyFilter()};box.appendChild(b)})}
   GENRES=genreList();
   mk(document.getElementById("cg"),F.g,GENRES,gMatch);
-  const shops=[...new Set(RECS.flatMap(r=>r.all.map(x=>x.S.shop)))].sort();
-  mk(document.getElementById("cs"),F.s,shops,(r,v)=>r.all.some(x=>x.S.shop===v));
+  const shops=[...new Set(ALL.flatMap(r=>r.all.map(x=>x.S.shop)))].sort();
+  mk(document.getElementById("cs"),F.s,shops,(r,v)=>r.all.some(x=>x.S.shop===v),true);
 }
 const sheet=document.getElementById("sheet");
 const spanel=sheet.querySelector(".spanel");let fsig="";
