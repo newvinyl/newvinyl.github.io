@@ -916,7 +916,7 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     # moving cover effects as before; type in the new site look, colour changes every day (yellow, mint, coral)
     sch = ["BK-Y", "BK-G", "BK-P"][dt.date.fromisoformat("20%s-%s-%s" % (ymd[:2], ymd[2:4], ymd[4:])).toordinal() % 3]
     fp = flat_p(R, rc["cover"], sch, "TODAY'S DIG")
-    rel = dict(reel_rel(R, rc["cover"]), col=SCHEMES[sch]["text"], kicker="TODAY'S DIG", t=R["t"], meta=fp["meta"],
+    rel = dict(reel_rel(R, rc["cover"]), col=SCHEMES[sch]["text"], kicker=R["shop_full"].upper(), t=R["t"], meta=fp["meta"],
                track=R["tname"], shop=R["shop_full"])
     avoid = recent_avoid(history)
     log("avoid (recent looks):", sorted(avoid))
