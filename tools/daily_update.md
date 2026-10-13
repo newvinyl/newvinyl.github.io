@@ -129,12 +129,17 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
   very long and may be cut off; take only releases you can actually see with full data. If a URL does
   not exist or shows no listings, skip it.
 
-- Vinyl Underground (Northampton, UK; shop entry {"shop":"Vinyl Underground","where":"Northampton","country":"UK","cur":"£"},
-  add it after Juno Records if it does not exist yet): no page to read — the Action already turns the shop's product
-  data into finished items: pages/vinylunderground-items.json → "items" (only electronic records of the last 3 days,
-  with genre, format, £ price, stock status, cover and direct mp3 tracks). Add each item whose url is not yet in the
-  shop (drop the helper field "published", add "m" and "first_seen" as usual); for existing urls update "p" and "st".
-  Do not change genres or tracks of these items. If the file is missing or not from today, skip the shop for today.
+- Shops with structured data (no page reading): the Action already turns their product data into finished items
+  in pages/items/<id>.json, listed in pages/items/index.json with shop name, city ("where"), country, currency and
+  item count (or "error"). Currently: Vinyl Underground (Northampton, UK, £), Sound Metaphors (Berlin, DE),
+  Discos Paradiso (Barcelona, ES), Syncrophone (Paris, FR), Betino's (Paris, FR), Bordello A Parigi (Amsterdam, NL),
+  Diggers.fr (FR). For each entry: if the shop does not exist in releases.json yet, add it (after the last shop
+  before OYE Records) as {"shop", "where", "country", "cur", "items": []} from the index. Then add every item whose url
+  is not yet in that shop (also skip it if the same artist + title is already in that shop), with "m" and
+  "first_seen" as usual; for existing urls update "p" and "st". Take the items as they are – do not change their
+  genres, tracks or covers. If index.json is missing, not from today, or a shop entry has "error", skip that shop for
+  today and name it in the final message. These items already have direct mp3 tracks where the shop offers them;
+  items without tracks go through step 6 like all others.
 
 Blocked shops stay blocked: OYE Records Berlin (product links and covers on its new-releases page
 cannot be read). Swiss shops were checked (Plattfon Basel blocks automated reading; Six Pack, Sihl
