@@ -1,0 +1,79 @@
+[
+ {
+  "raw": "https://www.hhv.de/en/",
+  "status": 200,
+  "headers": {
+   "cache-control": "max-age=0, private, must-revalidate",
+   "access-control-allow-origin": "https://www.hhv.de",
+   "vary": "Accept,Accept-Encoding",
+   "strict-transport-security": "max-age=15768000",
+   "referrer-policy": "strict-origin-when-cross-origin",
+   "date": "Tue, 13 Oct 2026 19:46:09 GMT",
+   "x-permitted-cross-domain-policies": "none",
+   "x-xss-protection": "0",
+   "x-request-id": "e29a61b4-3560-4ff4-8fd8-d7c6b2d98203",
+   "access-control-allow-credentials": "true",
+   "x-hhv-vm": "vm583",
+   "x-frame-options": "SAMEORIGIN",
+   "x-runtime": "0.004491",
+   "x-content-type-options": "nosniff",
+   "access-control-request-method": "*",
+   "x-rack-cache": "miss",
+   "x-powered-by": "Phusion Passenger(R) Enterprise 6.1.0",
+   "etag": "W/\"3f89184d3fd5371eb42a16f99f7e2ba5\"",
+   "status": "200 OK",
+   "content-type": "text/html; charset=utf-8",
+   "server": "Apache/2.4.67 (Debian)",
+   "connection": "close",
+   "transfer-encoding": "chunked"
+  },
+  "len": 1978,
+  "head": "<html><head><script type=\"text/javascript\">(function(_0x1b2872,_0x1b5e52){var _0x59fc21=a0_0x4798,_0x229318=_0x1b2872();while(!![]){try{var _0xc22f61=-parseInt(_0x59fc21(0x1a1))/0x1+parseInt(_0x59fc21(0x1ae))/0x2+parseInt(_0x59fc21(0x1b1))/0x3*(-parseInt(_0x59fc21(0x19f))/0x4)+parseInt(_0x59fc21(0x1a0))/0x5*(parseInt(_0x59fc21(0x19d))/0x6)+-parseInt(_0x59fc21(0x1ad))/0x7*(-parseInt(_0x59fc21(0x1a9))/0x8)+parseInt(_0x59fc21(0x1a2))/0x9*(-parseInt(_0x59fc21(0x19c))/0xa)+-parseInt(_0x59fc21(0x1b5))/0xb*(-parseInt(_0x59fc21(0x1a5))/0xc);if(_0xc22f61===_0x1b5e52)break;else _0x229318['push'](_0x229318['shift']());}catch(_0x23e1f6){_0x229318['push'](_0x229318['shift']());}}}(a0_0x1e8c,0xcb672));function k(){return'HHV-JS-CH';}function a0_0x4798(_0x562004,_0x55393e){var _0x1e8cf6=a0_0x1e8c();return a0_0x4798=function(_0x479833,_0x5c71c6){_0x479833=_0x479833-0x19c;var _0x270079=_0x1e8cf6[_0x479833];return _0x270079;},a0_0x4798(_0x562004,_0x55393e);}function v(){return v1()+v2()+v3()+v4();}function v1(){var _0x2a1a17=a0_0x4798;return _0x2a1a17(0x1b2)+_0x2a1a17(0x1b3)+_0x2a1a17(0x1a7);}function a0_0x1e8c(){var _0x4644a=['cookie','cVhWOE','1137480sDzaIp','1EUT09','dIempoV',';\\x20path=/;','3368WnsfTm','RHRhYS','TeG1rVD','U0hFRjV','6881apSeeB','676132WbHvXs','tMTkdZ','2Y5N090','15321PfApdO','Y2JOYXd','0eUlXeW','reload','33PWuhZh','location','9494050pJtnHw','1884CNNQct','S0tQWtY','100ovPgyW','25825DspiiX','747871parjHW','9yxFwku'];a0_0x1e8c=function(){return _0x4644a;};return a0_0x1e8c();}function v2(){var _0x2877a4=a0_0x4798;return _0x2877a4(0x19e)+_0x2877a4(0x1ac)+_0x2877a4(0x1ab);}function v3(){var _0xca1d88=a0_0x4798;return'ZCbS0ta'+_0xca1d88(0x1b0)+_0xca1d88(0x1aa);}function v4(){var _0x6c14f7=a0_0x4798;return _0x6c14f7(0x1af)+_0x6c14f7(0x1a4)+_0x6c14f7(0x1a6);}function go(){var _0x2ea59d=a0_0x4798;document[_0x2ea59d(0x1a3)]=k()+'='+v()+_0x2ea59d(0x1a8),document[_0x2ea59d(0x1b6)][_0x2ea59d(0x1b4)](!![]);}</script></head><body onload=\"go()\"></body></html>"
+ },
+ {
+  "raw": "https://www.hhv.de/en/catalog/filter/new-releases",
+  "status": 200,
+  "headers": {
+   "cache-control": "max-age=0, private, must-revalidate",
+   "access-control-allow-origin": "https://www.hhv.de",
+   "vary": "Accept,Accept-Encoding",
+   "strict-transport-security": "max-age=15768000",
+   "referrer-policy": "strict-origin-when-cross-origin",
+   "x-robots-tag": "noindex",
+   "x-permitted-cross-domain-policies": "none",
+   "x-xss-protection": "0",
+   "date": "Tue, 13 Oct 2026 19:46:09 GMT",
+   "x-request-id": "ab7ef770-8ad2-413e-a254-530e73772d97",
+   "access-control-allow-credentials": "true",
+   "x-hhv-vm": "vm592",
+   "x-frame-options": "SAMEORIGIN",
+   "x-runtime": "0.005117",
+   "x-content-type-options": "nosniff",
+   "access-control-request-method": "*",
+   "x-rack-cache": "miss",
+   "x-powered-by": "Phusion Passenger(R) Enterprise 6.1.0",
+   "etag": "W/\"005241d35c915dc3fe68d2dda050cd79\"",
+   "status": "200 OK",
+   "content-type": "text/html; charset=utf-8",
+   "server": "Apache/2.4.67 (Debian)",
+   "connection": "close",
+   "transfer-encoding": "chunked"
+  },
+  "len": 1740,
+  "head": "<html><head><script type=\"text/javascript\">(function(_0x572b3e,_0x5b385d){var _0x2e35b9=a0_0xc252,_0x360e77=_0x572b3e();while(!![]){try{var _0x36bbf0=-parseInt(_0x2e35b9(0x18b))/0x1+-parseInt(_0x2e35b9(0x190))/0x2+-parseInt(_0x2e35b9(0x188))/0x3+-parseInt(_0x2e35b9(0x18e))/0x4+parseInt(_0x2e35b9(0x17f))/0x5+-parseInt(_0x2e35b9(0x187))/0x6+-parseInt(_0x2e35b9(0x184))/0x7*(-parseInt(_0x2e35b9(0x17e))/0x8);if(_0x36bbf0===_0x5b385d)break;else _0x360e77['push'](_0x360e77['shift']());}catch(_0x44ee7f){_0x360e77['push'](_0x360e77['shift']());}}}(a0_0x5282,0x91eaa));function k(){return'HHV-JS-CH';}function v(){return v1()+v2()+v3()+v4();}function v1(){var _0x45acfc=a0_0xc252;return _0x45acfc(0x183)+_0x45acfc(0x18d)+'Q4YkMzZ';}function v2(){var _0x47eb1f=a0_0xc252;return _0x47eb1f(0x181)+_0x47eb1f(0x180)+'rNS9rUV';}function a0_0x5282(){var _0xc6813a=['617001qxxgxp','UDFRQ1','c0Q4Rz','2986254yofbyc','1609389FTewjK','ZwbnE3','location','758370tVwvWI','0d3bzRV','1MFo5QW','1787868EUYLFl',';\\x20path=/;','2290694XEpuIU','288uCkMwV','4046910rxepYi','WmRUR2V','C0tVDVa','cookie','c0V0b1o'];a0_0x5282=function(){return _0xc6813a;};return a0_0x5282();}function a0_0xc252(_0xe6c914,_0x2a0b8b){var _0x5282e8=a0_0x5282();return a0_0xc252=function(_0xc25260,_0x28dc15){_0xc25260=_0xc25260-0x17e;var _0x552fb1=_0x5282e8[_0xc25260];return _0x552fb1;},a0_0xc252(_0xe6c914,_0x2a0b8b);}function v3(){var _0xe78892=a0_0xc252;return'lNQy0td'+_0xe78892(0x18c)+_0xe78892(0x186);}function v4(){var _0x4a87ac=a0_0xc252;return _0x4a87ac(0x189)+_0x4a87ac(0x185)+'B1QT09';}function go(){var _0x5361c1=a0_0xc252;document[_0x5361c1(0x182)]=k()+'='+v()+_0x5361c1(0x18f),document[_0x5361c1(0x18a)]['reload'](!![]);}</script></head><body onload=\"go()\"></body></html>"
+ },
+ {
+  "url": "https://www.hhv.de/en/",
+  "final": "about:blank",
+  "text": "ERROR Page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://www.hhv.de/en/\", waiting until \"domcontentloaded\"\n",
+  "links": [],
+  "api": []
+ },
+ {
+  "url": "https://www.hhv.de/en/catalog/filter/new-releases",
+  "final": "about:blank",
+  "text": "ERROR Page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://www.hhv.de/en/catalog/filter/new-releases\", waiting until \"domcontentloaded\"\n",
+  "links": [],
+  "api": []
+ }
+]
