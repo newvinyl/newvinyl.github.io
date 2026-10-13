@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [tools/fetch_pages.py, .github/workflows/shop_pages.yml]
+    paths: [tools/fetch_pages.py, tools/shop_feeds.py, .github/workflows/shop_pages.yml]
 
 permissions:
   contents: write
