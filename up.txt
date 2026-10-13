@@ -1,0 +1,40 @@
++ ls -la
+total 52560
+drwxr-xr-x 2 runner runner    4096 Oct 13 16:45 .
+drwxr-xr-x 5 runner runner    4096 Oct 13 16:45 ..
+-rw-r--r-- 1 runner runner 1920983 Oct 13 16:43 a_900.mp3
+-rw-r--r-- 1 runner runner 1441122 Oct 13 16:43 a_910.mp3
+-rw-r--r-- 1 runner runner 1447853 Oct 13 16:43 a_920.mp3
+-rw-r--r-- 1 runner runner 1443674 Oct 13 16:43 a_930.mp3
+-rw-r--r-- 1 runner runner 1432807 Oct 13 16:44 a_940.mp3
+-rw-r--r-- 1 runner runner 1920983 Oct 13 16:44 a_950.mp3
+-rw-r--r-- 1 runner runner 1920983 Oct 13 16:44 a_960.mp3
+-rw-r--r-- 1 runner runner 1920983 Oct 13 16:44 a_970.mp3
+-rw-r--r-- 1 runner runner     671 Oct 13 16:45 caption.txt
+-rw-r--r-- 1 runner runner    2467 Oct 13 16:45 log.txt
+-rw-r--r-- 1 runner runner    1424 Oct 13 16:45 result.json
+-rw-r--r-- 1 runner runner   49354 Oct 13 16:45 slide-00.jpg
+-rw-r--r-- 1 runner runner  101098 Oct 13 16:43 slide-01.jpg
+-rw-r--r-- 1 runner runner 6587118 Oct 13 16:43 slide-01.mp4
+-rw-r--r-- 1 runner runner  211826 Oct 13 16:43 slide-02.jpg
+-rw-r--r-- 1 runner runner 7358577 Oct 13 16:43 slide-02.mp4
+-rw-r--r-- 1 runner runner  134202 Oct 13 16:43 slide-03.jpg
+-rw-r--r-- 1 runner runner 3042511 Oct 13 16:43 slide-03.mp4
+-rw-r--r-- 1 runner runner   71739 Oct 13 16:43 slide-04.jpg
+-rw-r--r-- 1 runner runner 1615043 Oct 13 16:44 slide-04.mp4
+-rw-r--r-- 1 runner runner   74078 Oct 13 16:44 slide-05.jpg
+-rw-r--r-- 1 runner runner 1649825 Oct 13 16:44 slide-05.mp4
+-rw-r--r-- 1 runner runner  203796 Oct 13 16:44 slide-06.jpg
+-rw-r--r-- 1 runner runner 6730996 Oct 13 16:44 slide-06.mp4
+-rw-r--r-- 1 runner runner  169617 Oct 13 16:44 slide-07.jpg
+-rw-r--r-- 1 runner runner 7053993 Oct 13 16:44 slide-07.mp4
+-rw-r--r-- 1 runner runner  112363 Oct 13 16:44 slide-08.jpg
+-rw-r--r-- 1 runner runner 5136801 Oct 13 16:45 slide-08.mp4
+-rw-r--r-- 1 runner runner       9 Oct 13 16:45 up.txt
+++ python3 -c 'import json;print(json.load(open('\''result.json'\''))['\''genre'\''].lower().replace('\'' '\'','\''-'\''))'
++ G=house
++ zip -q -j carousel-house.zip slide-01.mp4 slide-02.mp4 slide-03.mp4 slide-04.mp4 slide-05.mp4 slide-06.mp4 slide-07.mp4 slide-08.mp4 slide-00.jpg caption.txt
++ gh release view carousel
++ gh release create carousel --prerelease --title 'Genre carousel' --notes 'Instagram carousels: title image + video slides.' --target main
+https://github.com/newvinyl/newvinyl.github.io/releases/tag/carousel
++ gh release upload carousel --clobber carousel-house.zip slide-01.mp4 slide-02.mp4 slide-03.mp4 slide-04.mp4 slide-05.mp4 slide-06.mp4 slide-07.mp4 slide-08.mp4 slide-00.jpg caption.txt
