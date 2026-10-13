@@ -14,6 +14,7 @@ for u in [l.strip() for l in open(sys.argv[1]) if l.strip() and not l.startswith
             c = Compact(u); c.feed(body); txt = c.text()
             txt += "\n" + "\n".join(sorted(set(" [audio: %s]" % m for m in re.findall(r"https?://[^\s\"'<>]+?\.mp3", body)))[:60])
         open("probe/" + slug(u) + ".txt", "w").write("SOURCE %s\nSTATUS %s\n\n%s" % (u, st, txt[:60000]))
+        open("probe/" + slug(u) + ".raw", "w").write(body[:1500000])
         summary.append((u, st, len(body)))
     except Exception as e:
         summary.append((u, str(e)[:100], 0))
