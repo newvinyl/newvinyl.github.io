@@ -13,6 +13,7 @@ https://hardwax.com/this-week/
 https://hardwax.com/this-week/?page=2
 https://hardwax.com/this-week/?page=3
 https://www.rushhour.nl/
+https://www.vinylunderground.co.uk/
 https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zh&now_Was=news&now_Date=nodate&aktuell=0
 https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zz&now_Was=news&now_Date=nodate&aktuell=0
 https://www.deejay.de/m_House/sm_News
