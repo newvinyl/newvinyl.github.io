@@ -4,6 +4,14 @@ import json, sys
 from playwright.sync_api import sync_playwright
 urls = sys.argv[1:]
 out = []
+import urllib.request
+for u in urls:
+    try:
+        r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36", "Accept": "text/html"}), timeout=30)
+        body = r.read().decode("utf-8", "replace")
+        out.append({"raw": u, "status": r.status, "headers": dict(r.headers), "len": len(body), "head": body[:3000]})
+    except Exception as e:
+        out.append({"raw": u, "error": str(e)})
 with sync_playwright() as p:
     b = p.chromium.launch()
     pg = b.new_page(user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36")
