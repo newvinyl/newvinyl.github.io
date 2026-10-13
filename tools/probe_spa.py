@@ -12,8 +12,8 @@ with sync_playwright() as p:
     for u in urls:
         reqs.clear()
         try:
-            pg.goto(u, wait_until="networkidle", timeout=60000)
-            pg.wait_for_timeout(3000)
+            pg.goto(u, wait_until="domcontentloaded", timeout=60000)
+            pg.wait_for_timeout(9000)
             txt = pg.inner_text("body")[:6000]
             links = pg.eval_on_selector_all("a[href]", "els=>[...new Set(els.map(e=>e.href))].slice(0,400)")
         except Exception as e:
