@@ -1,5 +1,35 @@
 [
  {
+  "date": "2026-10-13",
+  "keys": [
+   "sacred grove|sacred grove 2 ep",
+   "black tape for a blue girl|the rope",
+   "abacus|analog stories vol.9"
+  ],
+  "titles": [
+   "SACRED GROVE – Sacred Grove 2 EP",
+   "BLACK TAPE FOR A BLUE GIRL – The Rope",
+   "Abacus – Analog Stories Vol.9"
+  ],
+  "shops": [
+   "Phonica",
+   "Juno",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261013.mp4",
+  "looks": [
+   "flat black"
+  ],
+  "dv": 5,
+  "reel": {
+   "key": "antoine bourachot|expand",
+   "title": "Antoine Bourachot – Expand",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261013.mp4",
+   "look": "painterly cover · background continue · alive: ripple+accent+sway+breathe · melt: dissolve · type BK-Y",
+   "v": 18
+  }
+ },
+ {
   "date": "2026-10-12",
   "keys": [
    "parker louis|lifted",
