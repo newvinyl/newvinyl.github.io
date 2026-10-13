@@ -1,10 +1,10 @@
 {
- "date": "2026-10-12",
+ "date": "2026-10-13",
  "total": {
-  "records": 1707,
-  "tracks": 1271,
-  "clip": 329,
-  "none": 107
+  "records": 1801,
+  "tracks": 1316,
+  "clip": 370,
+  "none": 115
  },
  "shops": {
   "Hardwax": {
@@ -20,8 +20,8 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 8,
-   "tracks": 5,
+   "records": 9,
+   "tracks": 6,
    "clip": 0,
    "none": 3
   },
@@ -32,20 +32,20 @@
    "none": 1
   },
   "Phonica": {
-   "records": 171,
-   "tracks": 111,
-   "clip": 10,
+   "records": 182,
+   "tracks": 121,
+   "clip": 11,
    "none": 50
   },
   "Redeye Records": {
-   "records": 433,
-   "tracks": 104,
-   "clip": 317,
-   "none": 12
+   "records": 489,
+   "tracks": 117,
+   "clip": 357,
+   "none": 15
   },
   "Yoyaku": {
-   "records": 179,
-   "tracks": 178,
+   "records": 185,
+   "tracks": 184,
    "clip": 0,
    "none": 1
   },
@@ -56,24 +56,29 @@
    "none": 17
   },
   "Juno Records": {
-   "records": 317,
-   "tracks": 315,
+   "records": 321,
+   "tracks": 319,
    "clip": 0,
    "none": 2
   },
   "Deejay.de": {
-   "records": 75,
-   "tracks": 54,
+   "records": 91,
+   "tracks": 65,
    "clip": 2,
-   "none": 19
+   "none": 24
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 14,
- "clips_verified": 4999,
- "not_reachable": {},
+ "pages_checked": 383,
+ "new_from_shop_pages": 3,
+ "copied_from_other_shop": 3,
+ "broken_clips_removed": 17,
+ "clips_verified": 5087,
+ "not_reachable": {
+  "Clone: http403": 1,
+  "Phonica: http403": 61,
+  "Redeye Records: failed:UnicodeEncodeError": 15,
+  "Redeye Records: http403": 1
+ },
  "clip_hosts": {
   "clone.nl": {
    "clips": 928,
@@ -104,7 +109,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 316,
+   "clips": 359,
    "failed": 0,
    "sample": []
   },
@@ -114,12 +119,12 @@
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 2198,
+   "clips": 2234,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 477,
+   "clips": 486,
    "failed": 0,
    "sample": []
   },
