@@ -927,7 +927,7 @@ function buildIndex(){
     INDEX[r.key]={S,r};(GROUPS[r.gk]=GROUPS[r.gk]||[]).push(r);
   }));
 }
-const CART_URL={"Hardwax":"https://hardwax.com/basket/","Juno Records":"https://www.juno.co.uk/cart/","Phonica":"https://www.phonicarecords.com/checkout"};
+const CART_URL={"Hardwax":"https://hardwax.com/basket/","Juno Records":"https://www.juno.co.uk/cart/","Phonica":"https://www.phonicarecords.com/checkout","Vinyl Underground":"https://www.vinylunderground.co.uk/cart"};
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let cart=store.get("mvr-cart",[]);
 let opened=new Set(store.get("mvr-opened",[]));

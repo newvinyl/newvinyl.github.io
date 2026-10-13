@@ -129,6 +129,13 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
   very long and may be cut off; take only releases you can actually see with full data. If a URL does
   not exist or shows no listings, skip it.
 
+- Vinyl Underground (Northampton, UK; shop entry {"shop":"Vinyl Underground","where":"Northampton","country":"UK","cur":"£"},
+  add it after Juno Records if it does not exist yet): no page to read — the Action already turns the shop's product
+  data into finished items: pages/vinylunderground-items.json → "items" (only electronic records of the last 3 days,
+  with genre, format, £ price, stock status, cover and direct mp3 tracks). Add each item whose url is not yet in the
+  shop (drop the helper field "published", add "m" and "first_seen" as usual); for existing urls update "p" and "st".
+  Do not change genres or tracks of these items. If the file is missing or not from today, skip the shop for today.
+
 Blocked shops stay blocked: OYE Records Berlin (product links and covers on its new-releases page
 cannot be read). Swiss shops were checked (Plattfon Basel blocks automated reading; Six Pack, Sihl
 Records, Panthera, Zero Zero, Ex Libris, cede.ch have no readable list of new house/techno records) —

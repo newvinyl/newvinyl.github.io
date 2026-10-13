@@ -37,7 +37,7 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, li
 SHORT = {"Redeye Records": "Redeye", "Juno Records": "Juno", "OYE Records": "OYE"}
 CUR = {"€": "EUR", "£": "GBP", "$": "USD", "CHF": "CHF"}
 # preferred cover sources (bigger first), preferred named-track sources
-COVER_RANK = ["Phonica", "Yoyaku", "Kompakt", "Rush Hour", "Juno Records", "Decks.de", "Redeye Records", "Hardwax", "Clone"]
+COVER_RANK = ["Vinyl Underground", "Phonica", "Yoyaku", "Kompakt", "Rush Hour", "Juno Records", "Decks.de", "Redeye Records", "Hardwax", "Clone"]
 
 # ---------------------------------------------------------------- helpers
 def log(*a):
