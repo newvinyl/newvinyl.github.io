@@ -1,0 +1,20 @@
+name: Probe shop
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/probe_spa.py, tools/probe_urls.txt, .github/workflows/probe.yml]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pip install -q playwright && python3 -m playwright install --with-deps chromium >/dev/null
+          python3 tools/probe_spa.py $(cat tools/probe_urls.txt) > /tmp/probe.json 2>&1 || true
+          mkdir -p /tmp/lg && cd /tmp/lg && git init -q && git checkout -q -b probe-log && cp /tmp/probe.json . && git add probe.json
+          git -c user.name=bot -c user.email=bot@x commit -qm probe
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-log
