@@ -46,9 +46,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REEL_WORK: ${{ runner.temp }}/c
         run: |
+          set +e
           cd "$REEL_WORK"
           {
           set -x
+          ls -la
           G=$(python3 -c "import json;print(json.load(open('result.json'))['genre'].lower().replace(' ','-'))")
           zip -q -j "carousel-$G.zip" slide-*.mp4 slide-00.jpg caption.txt
           gh release view carousel >/dev/null 2>&1 || gh release create carousel --prerelease --title "Genre carousel" --notes "Instagram carousels: title image + video slides." --target main
