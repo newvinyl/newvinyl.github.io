@@ -47,7 +47,13 @@ jobs:
           REEL_WORK: ${{ runner.temp }}/c
         run: |
           cd "$REEL_WORK"
+          {
+          set -x
           G=$(python3 -c "import json;print(json.load(open('result.json'))['genre'].lower().replace(' ','-'))")
           zip -q -j "carousel-$G.zip" slide-*.mp4 slide-00.jpg caption.txt
-          gh release view carousel >/dev/null 2>&1 || gh release create carousel --prerelease --title "Genre carousel" --notes "Instagram carousels: title image + video slides."
+          gh release view carousel >/dev/null 2>&1 || gh release create carousel --prerelease --title "Genre carousel" --notes "Instagram carousels: title image + video slides." --target main
           gh release upload carousel --clobber "carousel-$G.zip" slide-*.mp4 slide-00.jpg caption.txt
+          } > up.txt 2>&1; rc=$?
+          cd /tmp/lg && cp "$REEL_WORK/up.txt" . && git add up.txt && git -c user.name=bot -c user.email=bot@x commit -qm up
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" carousel-log
+          exit $rc
