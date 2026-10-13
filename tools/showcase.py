@@ -2,8 +2,9 @@
 """Showcase-Video für Instagram: echte Bildschirmaufnahme der Live-Seite (Handy-Format),
 Platte für Platte, mit den echten Hörproben als Ton. Kein Hochglanz, harte Schnitte.
 
-Ablauf: Startseite → Cover antippen (Musik) → nochmal tippen (nächster Track) → + Bag →
-weiterscrollen, nächste Platte → More (Cover dreht) → Check out → Bag → Backup → Endkarte.
+Ablauf: Startseite durchscrollen → Play (Musik) → ⏭ nächster Track → + Bag → Filter (Genre antippen,
+Panel nach unten wischen) → Platte aus dem Genre → + Bag → Cover umdrehen → Bag von der Rückseite →
+Bag-Seite → Check out beim Shop → Endkarte.
 
 Läuft in GitHub Actions (braucht Zugriff auf monthlyvinyl.net und die Shop-Server).
 Ausgabe: <WORK>/showcase_<yymmdd>.mp4 (+ .jpg Poster), JSON auf stdout.
@@ -35,10 +36,10 @@ INIT = r"""
 """
 
 PICK = r"""
-(()=>{const out=[];const g=document.querySelector('#feed .grid');if(!g)return out;
- g.querySelectorAll('.card').forEach(c=>{const i=+c.dataset.i,r=RECS[i],img=c.querySelector('.front img');
-  if(!img||!img.complete||img.naturalWidth<280)return;
-  out.push({i,n:r.tracks.length,u:r.tracks.map(t=>t.u).slice(0,2),shop:r.main.S.shop,g:(r.main.g||'').split(/[\/·]/)[0].trim(),a:r.main.a,t:r.main.t})});
+(()=>{const out=[];const G=genreList();
+ document.querySelectorAll('#feed .card').forEach(c=>{const i=+c.dataset.i,r=RECS[i];if(c.hidden||!r.tracks.length)return;
+  out.push({i,n:r.tracks.length,u:r.tracks.map(t=>t.u).slice(0,2),shop:r.main.S.shop,g:(r.main.g||'').split(/[\/·]/)[0].trim(),
+            gs:G.filter(x=>gMatch(r,x)),a:r.main.a,t:r.main.t})});
  return out})()
 """
 
@@ -46,6 +47,8 @@ def log(*a):
     print(*a, file=sys.stderr, flush=True)
 
 def load_audio(url, n):
+    if os.environ.get("SHOWCASE_DRY"):            # lokaler Probelauf ohne Shop-Server: Rauschen statt Hörprobe
+        return (np.random.default_rng(n).standard_normal((SR * 30, 2)) * 0.05).astype("float32")
     p = os.path.join(WORK, "s%d.mp3" % n)
     open(p, "wb").write(digs.fetch(url, timeout=90))
     a = digs.decode(p)
@@ -54,7 +57,7 @@ def load_audio(url, n):
     return a
 
 def choose(cands):
-    """A (mind. 2 Tracks) + B + C, möglichst verschiedene Shops und Genres."""
+    """A (mind. 2 Tracks), dann ein Genre G mit B + C (für die Filter-Szene), möglichst verschiedene Shops."""
     audio = {}
     def ok(url):
         if url in audio:
@@ -66,20 +69,28 @@ def choose(cands):
         except Exception as e:
             log("audio fail", url, e)
             return False
-    A = next((c for c in cands if c["n"] >= 2 and ok(c["u"][0]) and ok(c["u"][1])), None)
+    main = ("House", "Techno", "Minimal", "Deep House", "Disco", "Electro", "Tech House", "Balearic")
+    pref = sorted(cands, key=lambda c: not any(g in main for g in c["gs"]))      # Einstieg mit einer Club-Platte
+    A = next((c for c in pref if c["n"] >= 2 and ok(c["u"][0]) and ok(c["u"][1])), None)
     if not A:
         raise SystemExit("no record with two playable tracks")
-    rest, picks = [c for c in cands if c["i"] != A["i"]], [A]
-    for c in rest:
-        if len(picks) == 3:
-            break
-        if any(c["shop"] == p["shop"] and c["g"] == p["g"] for p in picks):
+    from collections import Counter
+    cnt = Counter(g for c in cands if c["i"] != A["i"] for g in c["gs"])
+    for G, _ in cnt.most_common():
+        if G in A["gs"]:
             continue
-        if ok(c["u"][0]):
-            picks.append(c)
-    if len(picks) < 3:
-        raise SystemExit("not enough records")
-    return picks, audio
+        pool = [c for c in cands if c["i"] != A["i"] and G in c["gs"]]
+        picks = []
+        for c in pool:
+            if len(picks) == 2:
+                break
+            if picks and c["shop"] == picks[0]["shop"] and len(pool) > 3:
+                continue
+            if ok(c["u"][0]):
+                picks.append(c)
+        if len(picks) == 2:
+            return [A] + picks, G, audio
+    raise SystemExit("no genre with two playable records")
 
 def main():
     from playwright.sync_api import sync_playwright
@@ -94,10 +105,10 @@ def main():
         pg.goto(SITE + "/", wait_until="networkidle", timeout=90000)
         pg.wait_for_timeout(4000)
         cands = pg.evaluate(PICK)
-        log(len(cands), "candidates with loaded covers")
-        picks, audio = choose(cands)
+        log(len(cands), "candidates")
+        picks, G, audio = choose(cands)
         A, B, C = picks
-        log("picks", [(x["a"], x["t"], x["shop"]) for x in picks])
+        log("picks", G, [(x["a"], x["t"], x["shop"]) for x in picks])
 
         cdp = ctx.new_cdp_session(pg)
         def on_frame(ev):
@@ -119,45 +130,74 @@ def main():
 
         cap = lambda t="": pg.evaluate("t=>window.__caption&&window.__caption(t)", t)
         wait = pg.wait_for_timeout
-        def tap(sel_or_loc, dy=0.5):
+        def tap(sel_or_loc, dy=0.5, dx=0.5):
             loc = pg.locator(sel_or_loc) if isinstance(sel_or_loc, str) else sel_or_loc
-            loc.scroll_into_view_if_needed()
-            bb = loc.bounding_box()
-            pg.mouse.click(bb["x"] + bb["width"] / 2, bb["y"] + bb["height"] * dy)
+            loc.first.scroll_into_view_if_needed()
+            bb = loc.first.bounding_box()
+            x, y = bb["x"] + bb["width"] * dx, bb["y"] + bb["height"] * dy
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchStart", "touchPoints": [{"x": x, "y": y}]})
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchEnd", "touchPoints": []})
+        def swipe(x, y0, y1, steps=14):
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchStart", "touchPoints": [{"x": x, "y": y0}]})
+            for k in range(1, steps + 1):
+                cdp.send("Input.dispatchTouchEvent", {"type": "touchMove", "touchPoints": [{"x": x, "y": y0 + (y1 - y0) * k / steps}]})
+                wait(18)
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchEnd", "touchPoints": []})
         card = lambda r: pg.locator('.card[data-i="%d"]' % r["i"])
         def started(url):
             off = audio[url][1]
             pg.evaluate("o=>{try{au.currentTime=o}catch(e){}}", off)
             events.append((time.time(), url, off))
-        def scroll_to(r):
+        def scroll_to(r, ms=1300):
             pg.evaluate("i=>{const c=document.querySelector(`.card[data-i=\"${i}\"]`);const y=c.getBoundingClientRect().top+scrollY-60;scrollTo({top:y,behavior:'smooth'})}", r["i"])
-            wait(1300)
+            wait(ms)
+        def slow_scroll(px, ms):
+            pg.evaluate("([px,ms])=>{const y0=scrollY,t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/ms);scrollTo(0,y0+px*(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2));if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}", [px, ms])
+            wait(ms + 150)
 
         pg.evaluate("scrollTo(0,0)")
         rec(); wait(400)
-        cap("new vinyl. every morning."); wait(2200)
-        # A: antippen, Musik
+        cap("new vinyl from 10 shops. every morning."); wait(2000)
+        slow_scroll(VH * 1.6, 2600)
+        cap("")
+        # A: Play, nächster Track, Bag
         scroll_to(A)
-        cap("tap play."); tap(card(A).locator(".front .play")); started(A["u"][0]); wait(5200)
-        cap("tap again. next track."); tap(card(A).locator(".front .play")); wait(330); started(A["u"][1]); wait(4300)
+        cap("tap play."); tap(card(A).locator(".front .play")); started(A["u"][0]); wait(4600)
+        cap("next track."); tap("#mnx"); wait(250); started(A["u"][1]); wait(3800)
         cap("like it? bag it."); tap(card(A).locator(".front .add")); wait(1600)
         cap("")
-        # B
-        scroll_to(B)
-        tap(card(B).locator(".front .play")); started(B["u"][0]); wait(4400)
-        tap(card(B).locator(".front .add")); wait(1200)
-        # C: More
-        scroll_to(C)
-        tap(card(C).locator(".front .play")); started(C["u"][0]); wait(3000)
-        cap("tap the cover. flip it."); tap(card(C).locator(".front"), 0.18); wait(2900)
-        tap(card(C).locator(".backf .add")); wait(1300)
+        # Filter
+        pg.evaluate("scrollTo({top:0,behavior:'smooth'})"); wait(900)
+        cap("only %s? filter." % G.lower()); tap("#ffab"); wait(1100)
+        chip = pg.locator("#cg .chip").filter(has_text=G).first
+        tap(chip); wait(1500)
+        bb = pg.locator(".spanel").bounding_box()
+        cap("swipe down. done."); swipe(VW / 2, bb["y"] + 30, bb["y"] + 330); wait(1300)
         cap("")
-        # Check out
-        tap("#mbag"); pg.wait_for_load_state("networkidle"); rec(); wait(600)
-        cap("check out at the shop."); wait(2600)
-        pg.evaluate("scrollTo({top:document.body.scrollHeight,behavior:'smooth'})"); wait(1500)
-        cap("save your bag."); tap("#bsave"); wait(2000)
-        cap("or just leave the tab open."); wait(2600)
+        # B: Play + Bag
+        scroll_to(B)
+        tap(card(B).locator(".front .play")); started(B["u"][0]); wait(4200)
+        tap(card(B).locator(".front .add")); wait(1100)
+        # C: Play, Cover umdrehen, Bag von der Rückseite
+        scroll_to(C)
+        tap(card(C).locator(".front .play")); started(C["u"][0]); wait(2600)
+        cap("tap the cover. flip it."); tap(card(C).locator(".front"), 0.15, 0.2); wait(2800)
+        tap(card(C).locator(".backf .add")); wait(1400)
+        cap("")
+        # Bag + Check out
+        tap("#mbag"); pg.wait_for_load_state("networkidle"); rec(); wait(700)
+        cap("one bag. every shop."); wait(2600)
+        go = pg.locator(".go").first
+        go.scroll_into_view_if_needed(); wait(500)
+        cap("check out at the shop.")
+        try:
+            with ctx.expect_page(timeout=6000) as _np:
+                tap(go)
+            _np.value.close()
+        except Exception as e:
+            log("checkout tab", e)
+        wait(2400)
+        cap(""); wait(400)
         # Endkarte
         pg.set_content("""<html><body style="margin:0;background:#0d0d0d;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
           <div style="font:700 34px/1 'Helvetica Neue',Helvetica,'TeX Gyre Heros',Arial,sans-serif;color:#fbed4f;-webkit-text-stroke:.085em #fbed4f;paint-order:stroke fill;letter-spacing:-.008em">MONTHLY VINYL</div>
@@ -216,7 +256,7 @@ def main():
     poster = out.replace(".mp4", ".jpg")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "8", "-i", out, "-frames:v", "1", "-q:v", "3", poster], check=True)
     print(json.dumps({"video": out, "poster": poster, "seconds": round(total, 1),
-                      "records": [{"a": x["a"], "t": x["t"], "shop": x["shop"]} for x in picks]}))
+                      "genre": G, "records": [{"a": x["a"], "t": x["t"], "shop": x["shop"]} for x in picks]}))
 
 if __name__ == "__main__":
     main()
