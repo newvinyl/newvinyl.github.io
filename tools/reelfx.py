@@ -425,8 +425,6 @@ def text_layer_flat(rel, col):
     L.alpha_composite(box, (X, y))
     bars = (X + 52 + tw + 22 + 55, int(y + base + 1))
     y += bh + 6
-    shop = box_line(rel["shop"], F(FD, 32), col, pad=(16, 11))
-    L.alpha_composite(shop, (X, y))
     url = box_line("monthlyvinyl.net", F(FD, 32), col, pad=(16, 11))
     L.alpha_composite(url, (TXT_R - url.width, y))
     return np.asarray(L), bars
