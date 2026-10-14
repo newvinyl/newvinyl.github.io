@@ -1,10 +1,10 @@
 {
- "date": "2026-10-13",
+ "date": "2026-10-14",
  "total": {
-  "records": 1801,
-  "tracks": 1316,
-  "clip": 370,
-  "none": 115
+  "records": 2066,
+  "tracks": 1525,
+  "clip": 407,
+  "none": 134
  },
  "shops": {
   "Hardwax": {
@@ -14,16 +14,16 @@
    "none": 0
   },
   "Rush Hour": {
-   "records": 84,
-   "tracks": 82,
+   "records": 85,
+   "tracks": 83,
    "clip": 0,
    "none": 2
   },
   "Decks.de": {
-   "records": 9,
+   "records": 10,
    "tracks": 6,
    "clip": 0,
-   "none": 3
+   "none": 4
   },
   "Clone": {
    "records": 224,
@@ -32,57 +32,124 @@
    "none": 1
   },
   "Phonica": {
-   "records": 182,
-   "tracks": 121,
-   "clip": 11,
-   "none": 50
+   "records": 193,
+   "tracks": 127,
+   "clip": 12,
+   "none": 54
   },
   "Redeye Records": {
-   "records": 489,
-   "tracks": 117,
-   "clip": 357,
-   "none": 15
+   "records": 537,
+   "tracks": 128,
+   "clip": 390,
+   "none": 19
   },
   "Yoyaku": {
-   "records": 185,
-   "tracks": 184,
+   "records": 200,
+   "tracks": 199,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 93,
-   "tracks": 76,
+   "records": 95,
+   "tracks": 79,
    "clip": 0,
-   "none": 17
+   "none": 16
   },
   "Juno Records": {
-   "records": 321,
-   "tracks": 319,
+   "records": 334,
+   "tracks": 332,
    "clip": 0,
    "none": 2
   },
   "Deejay.de": {
-   "records": 91,
-   "tracks": 65,
+   "records": 94,
+   "tracks": 66,
    "clip": 2,
-   "none": 24
+   "none": 26
+  },
+  "Vinyl Underground": {
+   "records": 32,
+   "tracks": 32,
+   "clip": 0,
+   "none": 0
+  },
+  "Sound Metaphors": {
+   "records": 18,
+   "tracks": 16,
+   "clip": 1,
+   "none": 1
+  },
+  "Discos Paradiso": {
+   "records": 35,
+   "tracks": 25,
+   "clip": 2,
+   "none": 8
+  },
+  "Syncrophone": {
+   "records": 23,
+   "tracks": 23,
+   "clip": 0,
+   "none": 0
+  },
+  "Betino's": {
+   "records": 11,
+   "tracks": 11,
+   "clip": 0,
+   "none": 0
+  },
+  "Bordello A Parigi": {
+   "records": 38,
+   "tracks": 38,
+   "clip": 0,
+   "none": 0
+  },
+  "Diggers.fr": {
+   "records": 14,
+   "tracks": 14,
+   "clip": 0,
+   "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 14,
- "clips_verified": 5084,
- "not_reachable": {},
+ "pages_checked": 427,
+ "new_from_shop_pages": 12,
+ "copied_from_other_shop": 2,
+ "broken_clips_removed": 18,
+ "clips_verified": 5938,
+ "not_reachable": {
+  "Clone: http403": 1,
+  "Phonica: http403": 68,
+  "Redeye Records: failed:UnicodeEncodeError": 16,
+  "Redeye Records: http403": 1
+ },
  "clip_hosts": {
+  "bordelloaparigi.com": {
+   "clips": 141,
+   "failed": 0,
+   "sample": []
+  },
+  "cdn.shopify.com": {
+   "clips": 145,
+   "failed": 0,
+   "sample": []
+  },
   "clone.nl": {
-   "clips": 928,
-   "failed": 928,
+   "clips": 932,
+   "failed": 932,
    "sample": [
     "https://clone.nl/platen/mp3/37267/1%20Life%20Out%20Of%20Balance.mp3",
     "https://clone.nl/platen/mp3/37267/2%20It%27s%20You.mp3",
     "https://clone.nl/platen/mp3/37267/3%20Out%20From%20Under.mp3"
    ]
+  },
+  "creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com": {
+   "clips": 168,
+   "failed": 0,
+   "sample": []
+  },
+  "diggers.fr": {
+   "clips": 51,
+   "failed": 0,
+   "sample": []
   },
   "media.hardwax.com": {
    "clips": 593,
@@ -90,21 +157,26 @@
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 401,
+   "clips": 413,
+   "failed": 0,
+   "sample": []
+  },
+  "play.syncrophone.fr": {
+   "clips": 96,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
    "clips": 53,
-   "failed": 14,
+   "failed": 13,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
-    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eudemonia022-nebulae-01-floating_castles_in_the_sky.mp3"
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/kompakt509-planes_in_reverse-01-what_you_see.mp3"
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 356,
+   "clips": 389,
    "failed": 0,
    "sample": []
   },
@@ -113,13 +185,22 @@
    "failed": 0,
    "sample": []
   },
+  "www.betinos.com": {
+   "clips": 28,
+   "failed": 17,
+   "sample": [
+    "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
+    "https://www.betinos.com/sites/default/files/Anything You Wantty.mp3",
+    "https://www.betinos.com/sites/default/files/Baul Dimensi Vision Higher Self dub.mp3"
+   ]
+  },
   "www.juno.co.uk": {
-   "clips": 2234,
+   "clips": 2356,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 486,
+   "clips": 540,
    "failed": 0,
    "sample": []
   },
@@ -130,6 +211,7 @@
   }
  },
  "unverifiable_hosts": [
-  "clone.nl"
+  "clone.nl",
+  "www.betinos.com"
  ]
 }

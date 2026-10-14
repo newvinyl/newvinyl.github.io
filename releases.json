@@ -24047,7 +24047,33 @@
      "g": "Detroit House",
      "url": "https://www.phonicarecords.com/product/dez-andrs-dr-ep-2086-dolfin-records/214334",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/3c2b7d8f43b824b7e118bd57c2a69576.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Get Down",
+       "u": "https://www.juno.co.uk/MP3/SF1183286-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Hey",
+       "u": "https://www.juno.co.uk/MP3/SF1183286-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "McArthur",
+       "u": "https://www.juno.co.uk/MP3/SF1183286-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Hands",
+       "u": "https://www.juno.co.uk/MP3/SF1183286-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "That Heat",
+       "u": "https://www.juno.co.uk/MP3/SF1183286-01-02-02.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -24098,8 +24124,23 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/190068.mp3"
+       "n": "Indium",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1157101-01-01-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Patterns",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1157101-01-01-02.mp3"
+      },
+      {
+       "s": "",
+       "n": "Throughway",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1157101-01-02-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Afterdark",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1157101-01-02-02.mp3"
       }
      ],
      "m": "2026-10",
@@ -40468,13 +40509,7 @@
      "g": "Deep House",
      "url": "https://www.redeyerecords.co.uk/vinyl/201197-plt006-apoteoz-deep-baby-ep/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192413-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192413.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "m": "2026-10",
      "first_seen": "2026-10-14"
@@ -40547,7 +40582,33 @@
      "d": "Exp. 6 Nov",
      "st": "pre",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Pasta88"
+      },
+      {
+       "s": "2",
+       "n": "Tango Hustle"
+      },
+      {
+       "s": "3",
+       "n": "Masterpiece"
+      },
+      {
+       "s": "4",
+       "n": "Don't Rush Me"
+      },
+      {
+       "s": "5",
+       "n": "Chicago Cookie"
+      },
+      {
+       "s": "6",
+       "n": "On My Mind"
+      }
+     ]
     },
     {
      "a": "Chris Carrier",
@@ -40568,7 +40629,41 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Climax Community"
+      },
+      {
+       "s": "A2",
+       "n": "Infinity"
+      },
+      {
+       "s": "B1",
+       "n": "Nocturnal Energy"
+      },
+      {
+       "s": "B2",
+       "n": "Door Of Illusion"
+      },
+      {
+       "s": "C1",
+       "n": "Liquid Sky"
+      },
+      {
+       "s": "C2",
+       "n": "Parallel Effect"
+      },
+      {
+       "s": "D1",
+       "n": "Blue Trail"
+      },
+      {
+       "s": "D2",
+       "n": "Fusion"
+      }
+     ]
     },
     {
      "a": "CHRIS STASSY & Interplanetary Criminal",
@@ -40645,16 +40740,28 @@
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/197024-hl003-delazar-love-yourself/",
      "cover": "https://www.redeyerecords.co.uk/imagery/189744-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/189744.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Hello Friends"
+      },
+      {
+       "s": "A2",
+       "n": "Bell"
+      },
+      {
+       "s": "B1",
+       "n": "New House"
+      },
+      {
+       "s": "B2",
+       "n": "Love Yourself"
+      }
+     ]
     },
     {
      "a": "Ekkel",
@@ -40697,7 +40804,21 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Freak"
+      },
+      {
+       "s": "A2",
+       "n": "Carla"
+      },
+      {
+       "s": "B1",
+       "n": "Freak (DJ W!ld Remix)"
+      }
+     ]
     },
     {
      "a": "EXX009",
@@ -40718,7 +40839,29 @@
      ],
      "st": "out",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "How Does It Feel?"
+      },
+      {
+       "s": "A2",
+       "n": "A Woman’s Man"
+      },
+      {
+       "s": "B1",
+       "n": "Crystal Visions"
+      },
+      {
+       "s": "B2",
+       "n": "I’m A Man"
+      },
+      {
+       "s": "B3",
+       "n": "They Don’t Love You"
+      }
+     ]
     },
     {
      "a": "Franck Roger",
@@ -41037,13 +41180,7 @@
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/201199-mtr02-alex-dima-the-trip-within-ep/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192415-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192415.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-14"
@@ -41088,7 +41225,29 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Frecuencias Mortiferas"
+      },
+      {
+       "s": "A2",
+       "n": "Gloria O Ambulancia"
+      },
+      {
+       "s": "B1",
+       "n": "Divino Don"
+      },
+      {
+       "s": "B2",
+       "n": "Sangre Y Castigo"
+      },
+      {
+       "s": "B3",
+       "n": "Mi Don Es Mi Maldicion"
+      }
+     ]
     },
     {
      "a": "Cirkle",
@@ -41245,13 +41404,7 @@
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/202005-sy03-javier-marimon-the-future-is-behind-bas-dobbelaer-remix/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192926-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192926.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 5 Nov",
      "st": "pre",
      "m": "2026-10",
@@ -41341,7 +41494,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Xorsia - Cash For Sex"
+      },
+      {
+       "s": "A2",
+       "n": "Victor.b - Stt"
+      },
+      {
+       "s": "B1",
+       "n": "Vitya Payal'nik - Zikr Atagi"
+      },
+      {
+       "s": "B2",
+       "n": "Lisovskyi - Dyr Dyr"
+      }
+     ]
     },
     {
      "a": "Micro Driver III",
@@ -41362,7 +41533,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Groof – Lucid Dream"
+      },
+      {
+       "s": "A2",
+       "n": "Emulador – Codigo Fuente"
+      },
+      {
+       "s": "B1",
+       "n": "Spectrum Data Forces – 16 Bit"
+      },
+      {
+       "s": "B2",
+       "n": "Hd Substance – Klang07"
+      }
+     ]
     },
     {
      "a": "MIMI",
@@ -41383,7 +41572,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Omatucada"
+      },
+      {
+       "s": "A2",
+       "n": "O Lado Negro De Felix"
+      },
+      {
+       "s": "B1",
+       "n": "Vcm"
+      },
+      {
+       "s": "B2",
+       "n": "Easy Like Masters Morning"
+      }
+     ]
     },
     {
      "a": "MYKI",
@@ -41479,7 +41686,37 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "01",
+       "n": "The Alchimist"
+      },
+      {
+       "s": "02",
+       "n": "Moving Through Time"
+      },
+      {
+       "s": "03",
+       "n": "Are You Afraid Of Getting Old"
+      },
+      {
+       "s": "04",
+       "n": "I Gonna Be 40"
+      },
+      {
+       "s": "05",
+       "n": "Clinic's Voice Server"
+      },
+      {
+       "s": "06",
+       "n": "Doctor Doctor"
+      },
+      {
+       "s": "07",
+       "n": "1000 Mirrors"
+      }
+     ]
     },
     {
      "a": "Tambores En Benirras",
@@ -41522,7 +41759,33 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-14"
+     "first_seen": "2026-10-14",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Yorimichi"
+      },
+      {
+       "s": "A2",
+       "n": "After Dark"
+      },
+      {
+       "s": "A3",
+       "n": "ephemeral Colored Moments"
+      },
+      {
+       "s": "B1",
+       "n": "River Is Deep"
+      },
+      {
+       "s": "B2",
+       "n": "Midnight Blue"
+      },
+      {
+       "s": "B3",
+       "n": "just A Love Song"
+      }
+     ]
     },
     {
      "a": "Ecovillage & Purl",
@@ -47752,7 +48015,28 @@
      "g": "Deep House / Techno",
      "url": "https://yoyaku.io/release/alpi-flora-resonantia-trule023/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/03/TRULE023-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Hedera",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TRULE023_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Oxalis",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TRULE023_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Aquilegia",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TRULE023_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Paeonia",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TRULE023_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47786,7 +48070,48 @@
      "g": "Dub Techno",
      "url": "https://yoyaku.io/release/sbwtsub-basicswitch-trials-more-water-lp-2x12-tos009/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/01/TOS009-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1 November",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2 Evaporate",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1 Technique",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2 Liquify",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1 4Am",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2 Sky Dive",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1 Morning Meltdown",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2 More Water",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TOS009_8.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47800,7 +48125,38 @@
      "g": "Ambient / Dub Techno",
      "url": "https://yoyaku.io/release/big-hands-the-vulgarity-of-snow-teeth003/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/TEETH003-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Part 1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEETH003_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Part 2",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEETH003_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Part 3",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEETH003_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Part 4",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEETH003_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Il Galeone",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEETH003_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "Part 5",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEETH003_6.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47814,7 +48170,28 @@
      "g": "Electro",
      "url": "https://yoyaku.io/release/spd-genbu-snkrx015v/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/SNKRX015V-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Genbu",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SNKRX015V_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Systema",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SNKRX015V_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Willman",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SNKRX015V_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "OK",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SNKRX015V_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47868,7 +48245,28 @@
      "g": "Dub Techno",
      "url": "https://yoyaku.io/release/babaka-woodsman-blues-ep-mh016/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/MH016-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Exterminating Angel",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MH016_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A Bug In The Dark",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MH016_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Woodsman Blues",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MH016_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Hysteria",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MH016_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47882,7 +48280,38 @@
      "g": "Disco",
      "url": "https://yoyaku.io/release/black-devil-disco-club-28-after-llp58/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/LCD58_black_devil-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: The Devil In Us",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLP58_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: On Just Foot",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLP58_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Coach Me",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLP58_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: I Regret The Flower Power",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLP58_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1: Constantly No Respect",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLP58_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2: An Other Skin",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLP58_6.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47926,7 +48355,28 @@
      "g": "Deep House / Dub Techno / Tech House",
      "url": "https://yoyaku.io/release/frank-maurel-hypnotized-ep-seen004/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/08/SEEN004-1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Hypnotized",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SEEN004_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Access",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SEEN004_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Mind Trip",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SEEN004_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Take Back",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SEEN004_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47940,7 +48390,28 @@
      "g": "Deep House / House / Minimal / Tech House",
      "url": "https://yoyaku.io/release/module-one-rfl-sundays-ep-loa009/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/06/LOA009-1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Animation",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOA009_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Square One",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOA009_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sundays",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOA009_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sundays (rfl remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOA009_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47954,7 +48425,18 @@
      "g": "House",
      "url": "https://yoyaku.io/release/unknown-artist-unknown-ip03/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/IP03_ip03-a-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. IP03-a1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/IP03_ip03-a1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. IP03-b1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/IP03_ip03-b1.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47968,7 +48450,28 @@
      "g": "Deep House",
      "url": "https://yoyaku.io/release/parisian-soul-funkaphonic-ep-cr-14/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/CR-14_cr14-a-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Parisian Soul-Rush Hour",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CR-14_a1-parisian_soul-rush_hour.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Parisian Soul-Red Bus",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CR-14_a2-parisian_soul-red_bus.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Parisian Soul-BigShot",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CR-14_b1-parisian_soul-bigshot.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Parisian Soul-Acid Funk",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CR-14_b2-parisian_soul-acid_funk.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     },
@@ -47982,7 +48485,48 @@
      "g": "House",
      "url": "https://yoyaku.io/release/steve-out-of-the-closet-lp-de352/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/DE352-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Steve Goes To A Party",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Steve Saves The World",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Happy Birthday Wishes Feat Suzanne",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 4",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 5",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 6",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 7",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 8",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DE352_8.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     }
@@ -50661,7 +51205,13 @@
      "g": "Techno",
      "url": "https://kompakt.fm/releases/quince_3lp",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a96cc2f4c72b-6a96d1553e41c-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Ushba",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a96cc612b5ca-6a96d15f46347-mp3-temp.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-14"
     }
@@ -78031,11 +78581,6 @@
        "s": "A1",
        "n": "Larry Vickers At The Loft",
        "u": "https://play.syncrophone.fr/syncro/ttr027a1.mp3"
-      },
-      {
-       "s": "A2",
-       "n": "Playin 4 The Stars",
-       "u": "https://play.syncrophone.fr/syncro/ttr027a2.mp3"
       },
       {
        "s": "B1",
