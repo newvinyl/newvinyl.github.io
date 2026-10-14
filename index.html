@@ -239,6 +239,12 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .top{padding:calc(6px + env(safe-area-inset-top,0px)) 16px 6px;border-bottom:1px solid var(--line)}
 .logo{font-family:var(--display);font-weight:700;font-size:19px;line-height:1;letter-spacing:-.008em;color:var(--yellow);-webkit-text-stroke:.085em var(--yellow);paint-order:stroke fill;padding-inline:.045em}
 .hicons{gap:4px}
+.habout{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 6px}
+.habout:hover,.habout:focus-visible{color:var(--yellow)}
+.intro{margin:12px 0 0;font-size:13px;line-height:1.45;color:var(--muted);max-width:62ch}
+.intro b{color:var(--fg);font-weight:600}
+.intro a{color:var(--muted);text-underline-offset:3px}
+
 .hic{width:36px;height:36px;color:var(--muted)}
 .hic svg{width:19px;height:19px}
 .bagtop{width:36px;height:36px;border:1.5px solid var(--line)}
@@ -251,11 +257,13 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <header class="top">
   <a class="logo" href="/">Monthly Vinyl</a>
   <div class="hicons">
+  <a class="habout" href="/about/">About</a>
   <button class="hic" id="srchbtn" type="button" aria-label="Search" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
   <a class="hic" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Monthly Vinyl on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
   <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a></div>
   <div class="srow" id="srow" hidden><input id="q" type="search" placeholder="Artist, title, label, track…" aria-label="Search records" autocomplete="off"><button class="sx" id="sx" type="button" aria-label="Clear search">×</button></div>
 </header>
+<p class="intro" id="intro">New vinyl from <b id="nshops">all our</b> record shops, every morning. Listen here – buy at the shop. <a href="/about/">How it works</a></p>
 <main id="feed"><p class="load">Loading today's records…</p></main>
 <footer class="foot">
   <nav class="flinks"><a href="/about/">About &amp; more</a></nav>
@@ -319,6 +327,7 @@ function paintBag(){
 
 function build(data){
   const fx=data.fx||{},G={};
+  {const n=data.shops.filter(S=>!S.blocked&&(S.items||[]).length).length,e=document.getElementById("nshops");if(e&&n)e.textContent=n}
   data.shops.forEach(S=>(S.items||[]).forEach(r=>{const gk=norm(r.a)+"|"+norm(r.t);(G[gk]=G[gk]||[]).push({...r,S,key:S.shop+"|"+r.url,chf:r.p==null?null:r.p*(fx[CODE[S.cur]]||NaN)})}));
   const recs=[];
   for(const [gk,all] of Object.entries(G)){
