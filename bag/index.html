@@ -235,12 +235,22 @@ main#bag{display:flex;flex-direction:column;gap:30px;margin-top:20px;max-width:6
 function track(name,data){try{if(window.umami&&typeof umami.track==="function")umami.track(name,data)}catch(e){}}
 const SITE="https://monthlyvinyl.net";
 const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF"};
+// Prices in the visitor's currency: CH → CHF, UK → £, rest of Europe → €, Americas → $ (from time zone, else language)
+const LOC=(()=>{let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+  if(/Zurich|Vaduz|Busingen/.test(tz))return"CHF";if(/London|Belfast|Guernsey|Jersey|Isle_of_Man|Gibraltar/.test(tz))return"GBP";
+  if(/^Europe\/|^Atlantic\/(Canary|Madeira|Azores|Faroe)/.test(tz))return"EUR";if(/^America\//.test(tz))return"USD";
+  const r=((navigator.language||"").split("-")[1]||"").toUpperCase();return r==="CH"?"CHF":r==="GB"?"GBP":r==="US"?"USD":"EUR"})();
+const SYM={EUR:"€",GBP:"£",USD:"$",CHF:"CHF "};
+function toLoc(cur,p,fx){const c=CODE[cur]||cur;if(p==null)return null;if(c===LOC||!fx[c]||!fx[LOC])return{v:+p,c:c===LOC?LOC:c,ex:true};return{v:p*fx[c]/fx[LOC],c:LOC,ex:false}}
+const symOf=c=>SYM[c]||(Object.keys(CODE).find(k=>CODE[k]===c)||c);
+
 const CART_URL={"Hardwax":"https://hardwax.com/basket/","Juno Records":"https://www.juno.co.uk/cart/","Phonica":"https://www.phonicarecords.com/checkout","Vinyl Underground":"https://www.vinylunderground.co.uk/cart"};
 const HUES=["#d6a3d8","#b9d8a3","#e8c34a","#83b59d","#f0c98f","#f0a060","#a3c4e8","#e07a62"];
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const fmt=(cur,p)=>p==null?"price at shop":`${cur}${Number(p).toFixed(2)}`;
-const chf=n=>`CHF ${n.toFixed(2)}`;
+const chf=n=>{const v=FX[LOC]?n/FX[LOC]:n,c=FX[LOC]?LOC:"CHF";return`${symOf(c)}${v.toFixed(2)}`};
+const fmtL=(cur,p)=>{if(p==null)return"price at shop";const L=toLoc(cur,p,FX);return`${L.ex?"":"≈ "}${symOf(L.c)}${L.v.toFixed(2)}`};
 function hiRes(u){if(!u)return u;
   if(/media\.hardwax\.com\/images\//.test(u)&&!/big\.jpg$/.test(u))return u.replace(/\.jpg$/,"big.jpg");
   if(/redeyerecords\.co\.uk\/imagery\//.test(u))return u.replace(/-2\.jpg$/,"-1.jpg");
@@ -269,14 +279,14 @@ function render(){
   shops.forEach(({S,rs})=>{
     const sum=rs.reduce((a,r)=>a+(r.p||0),0),next=rs.find(r=>!opened.has(r.key)),done=rs.length-rs.filter(r=>!opened.has(r.key)).length;
     const sec=document.createElement("section");sec.className="shop";
-    sec.innerHTML=`<div class="sh"><b>${esc(S.shop)}</b><span>${rs.length} ${rs.length>1?"records":"record"}${sum?" · "+fmt(S.cur,sum):""}</span></div>
+    sec.innerHTML=`<div class="sh"><b>${esc(S.shop)}</b><span>${rs.length} ${rs.length>1?"records":"record"}${sum?" · "+fmtL(S.cur,sum):""}</span></div>
       ${next?`<a class="go" href="${esc(next.url)}" target="_blank" rel="noopener" data-k="${esc(next.key)}"><span><small>${done?`Next · ${done+1} of ${rs.length}`:`Check out at ${esc(S.shop)}`}</small>${esc(next.a)} – ${esc(next.t)}</span><svg viewBox="0 0 18 14"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>
         <p class="hint">${rs.length>1?`Opens each record at ${esc(S.shop)}. Add it to the basket there, come back, tap again.`:`Opens the record at ${esc(S.shop)}. Add it to the basket and check out there.`}</p>`
       :`${CART_URL[S.shop]?`<a class="go" href="${CART_URL[S.shop]}" target="_blank" rel="noopener"><span><small>All opened</small>Go to ${esc(S.shop)} checkout</span><svg viewBox="0 0 18 14"><path d="M1 7h14M10 1.5 15.5 7 10 12.5" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></a>`:`<p class="hint">All records opened. Check out in the ${esc(S.shop)} tab.</p>`}<button class="again" type="button">Start over</button>`}`;
     rs.forEach((r,ri)=>{const row=document.createElement("div");row.className="it"+(opened.has(r.key)?" done":"");
       row.innerHTML=`<a class="th" href="${esc(r.url)}" target="_blank" rel="noopener" data-k="${esc(r.key)}" style="background:${HUES[(r.a||"").length%HUES.length]}">${r.cover?`<img src="${esc(hiRes(r.cover))}" alt="" loading="lazy" onerror="this.remove()">`:""}</a>
         <div class="tx"><b>${esc(r.a)}</b><span>${esc(r.t)}</span><small>${esc(r.l)}${r.cat?" · "+esc(r.cat):""}</small></div>
-        <div class="pz"><b>${fmt(S.cur,r.p)}</b><button class="rm" type="button" aria-label="Remove ${esc(r.a)} – ${esc(r.t)}">Remove</button></div>`;
+        <div class="pz"><b>${fmtL(S.cur,r.p)}</b><button class="rm" type="button" aria-label="Remove ${esc(r.a)} – ${esc(r.t)}">Remove</button></div>`;
       row.querySelector(".rm").onclick=()=>{cart=cart.filter(k=>k!==r.key);save();track("Remove from bag");render()};
       sec.appendChild(row)});
     const ag=sec.querySelector(".again");if(ag)ag.onclick=()=>{rs.forEach(r=>opened.delete(r.key));save();render()};

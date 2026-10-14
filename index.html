@@ -293,6 +293,15 @@ const PLUS='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-wi
 const CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2.5 8.5 6.5 12 13.5 4"/></svg>';
 const HUES=["#d6a3d8","#b9d8a3","#e8c34a","#83b59d","#f0c98f","#f0a060","#a3c4e8","#e07a62"];
 const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF"};
+// Prices in the visitor's currency: CH → CHF, UK → £, rest of Europe → €, Americas → $ (from time zone, else language)
+const LOC=(()=>{let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+  if(/Zurich|Vaduz|Busingen/.test(tz))return"CHF";if(/London|Belfast|Guernsey|Jersey|Isle_of_Man|Gibraltar/.test(tz))return"GBP";
+  if(/^Europe\/|^Atlantic\/(Canary|Madeira|Azores|Faroe)/.test(tz))return"EUR";if(/^America\//.test(tz))return"USD";
+  const r=((navigator.language||"").split("-")[1]||"").toUpperCase();return r==="CH"?"CHF":r==="GB"?"GBP":r==="US"?"USD":"EUR"})();
+const SYM={EUR:"€",GBP:"£",USD:"$",CHF:"CHF "};
+function toLoc(cur,p,fx){const c=CODE[cur]||cur;if(p==null)return null;if(c===LOC||!fx[c]||!fx[LOC])return{v:+p,c:c===LOC?LOC:c,ex:true};return{v:p*fx[c]/fx[LOC],c:LOC,ex:false}}
+const symOf=c=>SYM[c]||(Object.keys(CODE).find(k=>CODE[k]===c)||c);
+let FX={};
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fold=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"");
 const norm=s=>fold(s).replace(/\(.*?\)|\[.*?\]/g,"").replace(/\b(ep|lp|12"?|2x12"?)\b/g,"").replace(/[^\p{L}\p{N}]/gu,"");
@@ -309,7 +318,7 @@ function hiRes(u){
   return u;
 }
 const fmtDay=d=>{const t=new Date(d+"T12:00:00");return t.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})};
-const money=(cur,p)=>p==null?"":`<small>${esc(cur)}</small>${Number(p).toFixed(2).replace(/\.00$/,"")}`;
+const money=(cur,p)=>{const L=toLoc(cur,p,FX);if(!L)return"";return`<small>${L.ex?"":"≈"}${esc(symOf(L.c).trim())}</small>${L.v.toFixed(2).replace(/\.00$/,"")}`};
 
 let cart=store.get("mvr-cart",[]),RECS=[],cur=-1,trackIdx=0;
 const au=document.getElementById("au");
@@ -326,7 +335,7 @@ function paintBag(){
 }
 
 function build(data){
-  const fx=data.fx||{},G={};
+  const fx=data.fx||{},G={};FX=fx;
   {const n=data.shops.filter(S=>!S.blocked&&(S.items||[]).length).length,e=document.getElementById("nshops");if(e&&n)e.textContent=n}
   data.shops.forEach(S=>(S.items||[]).forEach(r=>{const gk=norm(r.a)+"|"+norm(r.t);(G[gk]=G[gk]||[]).push({...r,S,key:S.shop+"|"+r.url,chf:r.p==null?null:r.p*(fx[CODE[S.cur]]||NaN)})}));
   const recs=[];
