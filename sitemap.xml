@@ -1,29 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://monthlyvinyl.net/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://monthlyvinyl.net/house/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/deep-house/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/tech-house/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/minimal/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/techno/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/dub-techno/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/electro/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/acid-house/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/balearic/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/ambient/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/disco/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/italo-disco/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/acid/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/acid-techno/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/breakbeat/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/chicago-house/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/cosmic/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/deep-techno/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/detroit-house/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/downtempo/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/electronic/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/minimal-house/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://monthlyvinyl.net/minimal-techno/</loc><lastmod>2026-10-13</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://monthlyvinyl.net/house/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/deep-house/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/tech-house/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/minimal/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/techno/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/dub-techno/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/electro/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/acid-house/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/balearic/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/ambient/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/disco/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/italo-disco/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/acid/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/acid-techno/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/breakbeat/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/chicago-house/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/cosmic/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/deep-techno/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/detroit-house/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/downtempo/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/electronic/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/minimal-house/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/minimal-techno/</loc><lastmod>2026-10-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lrnz-west-code-jose-crispy-drums-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/monsieur-van-pratt-the-move-disco-86-chis-illegal-disco-limited-005-limited-pink/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/aerofunk-at-the-tone/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/clint-foster-indiums-reissue/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/ali-black-sean-roman-toronto-hustle-shelter-me/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/surgeon-shell-wave-lp/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/helena-hauff-multiply-your-absurdites/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/echelon-jeroen-search-intercept-station/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/space-the-art-of-space-disco-1977-1978-best-of/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/apoteoz-deep-baby-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/azaad-persian-elias-mazian-origins-album-sampler/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/bress-underground-pastasoul-01/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/chris-carrier-parallel-effect-2x12/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/chris-stassy-interplanetary-criminal-dangerous/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/cromby-ignition/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/d-n-v-matteo-point-duality-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/delazar-love-yourself/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/ekkel-me-the-ghost-2lp/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/elodie-freak-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/exx009-vol-9/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/franck-roger-vib-rayshun-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/hoodrats-tha-whack-messiah/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/junior-jack-stupidisco-2021-remixes/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/katakana-unearthed/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/kelton-prima-pralines-chocolats-ep-incl-ian-pooley-radic-the-myth-remixes/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/larry-heard-presents-v-a-rebirth-10-selected-by-larry-heard-aka-mr-fingers/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/a-sl-outdated-love-letters/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/alex-dima-the-trip-within-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/american-dub-electronics-va/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/aniano-una-serie-de-crimenes-sonoros/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/cirkle-fading-trails/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/cirkle-sonic-surge/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/claus-fuss-lauft/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/deeply-armed-black-ice/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/g303-ekman-nasty-boxes-dogs-rule-outer-space/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/javier-marimon-the-future-is-behind-bas-dobbelaer-remix/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/jay-duncan-east-row-dub-w-al-wootton-remix/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/jk-flesh-orphx-death-rebirth-one/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/klint-pigment-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lis003-va/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/micro-driver-iii-va/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/mimi-omatucada/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/myki-unyclara/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/oxia-domino-20th-anniversary/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/naomie-klaus-youth-looks-so-good-on-you/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/tambores-en-benirras-alba-ambar/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/calm-ambient-jazz/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/ecovillage-purl-fragments-of-light/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lord-of-the-isles-ambient-store/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/ocean-moon-silver-ley-prismatic-fields/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/alpi-flora-resonantia/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/javano-metropolis/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sub-basics-witch-trials-sbwt-more-water-lp/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/big-hands-the-vulgarity-of-snow/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/spd-genbu/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/james-bangura-jack-sermon-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sub-basics-pugilist-control/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/babaka-woodsman-blues-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/black-devil-disco-club-28-after/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/frank-maurel-hypnotized-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/module-one-rfl-sundays-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/unknown-artist-unknown/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/parisian-soul-funkaphonic-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/steve-out-of-the-closet-lp/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-quince-3lp/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sankora-luna-sobre-el-mar/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lakej-scan-survey/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/manami-treading-dub/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/100-pure-poison-windy-c/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/leroy-hutson-betting-on-my-love/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/soulutions-listen/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/the-jacksons-the-jacksons/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/grey-october-sound-timeless-lofi-vol-2/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lily-juniper-bloom-gloom/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/saccades-golden-days/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/wound-a-sucked-orange/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/groovedesign-kollective-united-tribes-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/unknown-art001/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/young-adults-emotional-data-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/eddie-richards-destiny/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/june-jazzin-sculpturedmusic-are-you-house-sampler-2/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/visionarie-not-millionaire-electrika/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/brain-kage-909-days/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-yum-yum-records-va/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/unknown-afreaktion-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-30-years-of-freerange-volume-five/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lex-athens-lab-94-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/pub-summer/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/tiger-stripes-tiger-never-loses-its-stripes-part-1/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/the-rurals-deepest-rurals-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dennis-liber-astro-danza-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/unknown-lost-property-5/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sounds-of-the-suburbs-i-wont-stop-against-the-tide/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sounds-of-the-suburbs-morpheus-d/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-rebirth-10-selected-by-larry-heard/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/boo-williams-life/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/gino-alex-part-one/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/hot-genes-ft-yeukai-dance-with-me/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/reedale-rise-eternal-return-black-vinyl/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lance-desardi-ft-jesse-rennix-keep-on-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/yuki-kawamura-magic-in-the-sun/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/mark-de-clive-lowe-magic/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/marc-feldmann-dominik-andre-white-series-4/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/white08-spule-zwei/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/mark-fell-servitude-in-context/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/son-fm-points-of-light/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-katha-remixes/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/voice-actor-good-luck/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lowercase-cycle/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/uon-untitled/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/kantamoinen/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-v-a-not-found-001/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sancturu-the-last-romantic/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/asymetric80-frenetic-habits-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dj-funk-909-808-303-at-bloc-weekender-2015/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/jordana-physical-attraction/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/kapote-italomania-iii-the-new-wave-of-italian-disco/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/haruomi-hosono-yours-sincerely/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/gunjack-freaking-the-bubbles-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/flug-dew-at-night/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dj-rum-i-wander/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/vitalic-ok-cowboy/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/fibre-foundation-free-your-mind/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/senor-coconut-el-baile-aleman/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/raakel-bloody-raakel-roi-alkaline-traxxx-2/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/nick-leon-dj-python-esplit-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/tommaso-cappellato-anti-planeting/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/deenamic-eatherwaves/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/vick-lavender-feat-angel-a-soul-travel-day-nite-nite-day/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/life-recorder-time-moods-3/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/specter-moving-in-silence-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-mixatissimo/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/scrot-teufel-mensch/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/absent-corps-el-compuesto-desconocido/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/abe-duque-feat-blake-baxter-what-happened/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/gari-romalis-detroit-sync-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/steve-o-sullivan-turf-wars-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dj-trike-berlin-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/teflon-dons-coastal-commission-the-rendezvous-reissue/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-strange-weather-a-different-kettle-of-fish-feat-housey-doingz-th/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/souffle-caramel-club-de-jazz/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/joaquin-joe-claussell-raw-tones/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/nu-yorican-soul-the-nervous-track/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/jeff-hess-cherubim-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/greg-gow-brian-kage-d-send-to-ascend-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/omar-s-record-packer-part-2-soundtrack/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/brian-kage-909-days/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/delano-smith-feat-ash-lauryn-detroit-deep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/omar-s-it-can-be-done-but-only-i-can-do-it/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/norm-talley-the-mystic-ep-repress/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-detroit-on-the-move-vol-3/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/tour-maubourg-spaces-of-silence/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/greg-foat-blobs/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/wandour-echoterrium/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/inner-city-pennies-from-heaven/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/ludviq-julian-reca-alheli/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/soulma-23-time-space/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/another-taste-another-taste/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/souleance-movin-on/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/maytra-dusk-to-dawn/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/noahshea-danilo-braca-crossroads-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-fools-paradise-sampler-vol-5-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/omar-featuring-stevie-wonder-the-remixes-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sound-klash-you-had-it-edit-music-got-dub/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/chris-stussy-a-glimmer-of-hope-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/tonarunur-someone-else-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/jkriv-jkriv-edits-vol-2-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/mason-nite-rite-alpha-beta-gamma-delta-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/vladimir-cetkar-dr-packer-dub-mixes-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/sirs-maxi-maximal-vol-2-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/new-york-disco-machine-nydm-edits-vol-1/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-king-street-sounds-sampler-vol-7-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/franck-roger-real-tone-classics-vol-5-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/hmc-digits-science-funktion/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/luca-olivotto-underground-ensemble-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-the-sound-of-sub-urban-volume-4-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/manuel-darquart-edits-1-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/melchior-sultana-rhodes-in-the-middle-incl-gerd-janson-remix/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dirty-channels-jungle-echoes-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dj-soch-let-me-tell-you/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-the-ron-trent-collection-vol-1/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-mint-condition-vol-1/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/zeynep-erbay-sky-high/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lou-rawls-youll-never-find-loving-you/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/moxy-moxy-edits-19-20/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/boogie-down-edits-vol-2-atcq-house-edits/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/em-vee-ep-number-eight/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/pascal-moscheni-make-a-romance/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/inigo-vontier-tech-mex/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/shak-jackson-routes/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/various-artists-peppermint-jam-allstars-vol-7/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/larry-latenight-lr002/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/toronto-hustle-sean-roman-social-narcotics/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/glenn-underground-in-the-d-vol-2/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/bearface-raw-cuts-and-remakes-vol-2/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/post-analog-disorder-burning-the-edges-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/zeta-reticula-the-human-scientific-vessel/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/joyhauser-lucre-enter-the-volt/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/robert-hood-radio-slave-radio-hood/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/lna-barefoot-agna-serra-venerdi/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dan-curtin-the-lush-network/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/staffan-lindberg-y2k/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/basic-soul-unit-unbound/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/coni-caligula/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/basic-soul-unit-wallow/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/afik-naim-songs-for-tova/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/john-barera-will-martin-graceless/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/duplex-first-day-ep/</loc><lastmod>2026-10-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/sacred-grove-sacred-grove-2-ep/</loc><lastmod>2026-10-13</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/arkajo-dj-honesty-unknown-pleasures-ep-w-arkajo-remix/</loc><lastmod>2026-10-13</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/lea-lisa-various-artists-many-shades-of-house-selected-by-lea-lisa-vol-2/</loc><lastmod>2026-10-13</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -95,13 +303,14 @@
   <url><loc>https://monthlyvinyl.net/r/parker-louis-lifted/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/mick-harris-martyn-bates-murder-ballads-incest-songs/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/nurse-with-wound-a-sucked-orange/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/markus-homm-mihai-popoviciu-jay-bliss-from-the-vaults-vol-5/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/strange-glide-moxi-kamatchi-various-hybridation-ep/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/markus-homm-mihai-popoviciu-jay-bliss-from-the-vaults-vol-5/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/moreno-acido-the-messenger/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/various-25-years-mainrecords/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/flavio-diners-lo-fi-soul-food-remixes/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/darren-gate-slack-space/</loc><lastmod>2026-10-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/mike-the-connector-tessedits001/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/dez-andres-dr-ep-2086/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/exquisite-corpse-dream-night-dance-music/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/exquisite-corpse-dream-night-dance-music-2lp-10-ltd-edition/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/django-django-dont-touch-that-dial-make-a-dance-remixes/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -110,10 +319,10 @@
   <url><loc>https://monthlyvinyl.net/r/boards-of-canada-geogaddi-lp-3-x-12/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/richard-lamb-a-life-in-harmony/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/dj-rou-the-rock-ep/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/blaze-wishing-you-were-here-how-deep-is-your-love/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/ossios-drama-is-a-game/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/andy-martin-chrisitan-coiffure-andy-martin-christian-coiffure-split/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/dez-andres-dr-ep-2086/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/rene-audiard-makes-me-feel/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/blaze-wishing-you-were-here-how-deep-is-your-love-joey-negro-timmy-regisford-mix/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/chillum-trio-driftlines-ep/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/the-coastal-commission-boing-the-conversation-reissue/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/dc-salas-create-or-combust/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -128,7 +337,6 @@
   <url><loc>https://monthlyvinyl.net/r/twan-mulder-harry-robson-orbit-masi-valovariou-003/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/nanel-nanel-009/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/natural-goofy-early-hours-ep/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/ossios-drama-is-a-game/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/pirka-vinyl-cuts-pvc-09-reissue/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/sad-edit-sad-edit-01-remastered/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/saucy-lady-u-key-who-s-bad/</loc><lastmod>2026-10-11</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -246,6 +454,9 @@
   <url><loc>https://monthlyvinyl.net/r/danny-scott-lane-martini-shot/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/pye-corner-audio-more-songs-about-the-sun-summer-solstice-vinyl-w-signed-card/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/liz-harris-music-for-two-films-about-water/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/harmony-index-lights-on/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/harry-mccanna-see-001/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/knevrm-nd-knevrm-nd-vol-1/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/losoul-baby-fate/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/planetary-assault-systems-planetary-people-312/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/quelza-above-the-clouds-i-finally-found-peace/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -256,7 +467,6 @@
   <url><loc>https://monthlyvinyl.net/r/life-recorder-laak-customary-finesse-ep/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/aubrey-retrospective/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/aubrey-solid-groove-trax-vol-2/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/harry-mccanna-see-001/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/ewan-jansen-bodywash-ep/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/eddie-richards-be-still-reissue/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/triform-tapes-dats-dust-lp-212/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -295,7 +505,6 @@
   <url><loc>https://monthlyvinyl.net/r/francies-harris-frank-tony-dj-sprinkles-you-can-always-leave/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/hifi-sean-dj-versions/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/marcus-holder-tzena-hustache-devai-zybelka/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/knevrm-nd-knevrm-nd-vol-1/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/lexx-palmy-days/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/loveface-lil-chicago-various-artists-ep/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/daniel-masson-baul-dimension-ep/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -341,7 +550,6 @@
   <url><loc>https://monthlyvinyl.net/r/smart-alec-cleffor-cloggs-iffor-jim-like-it-here/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/wav4ms-priori-phorum-xphresh-mor-f-carly-barton-muck-osmosis-i/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/oren-ambarchi-cooked/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/harmony-index-lights-on/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/jennifur-mazda/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/the-leaf-library-library-music-volume-two/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/multibeat-ooo/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -751,6 +959,7 @@
   <url><loc>https://monthlyvinyl.net/r/johannes-albert-golden-seconds-vol-ii/</loc><lastmod>2026-10-06</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/valerio-vaudano-the-sampling-theory-pt-1/</loc><lastmod>2026-10-06</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/parblue-elegua-peut-etre-fous/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/fila-brazillia-black-market-gardening-lp/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/pearson-sound-marie-davidson-heat/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/theo-kottis-pressure-ep/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/carebears-carebears-808/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -776,7 +985,6 @@
   <url><loc>https://monthlyvinyl.net/r/bosco-sacro-inhabit/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/boogie-rookie-eurostar/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/caramel-3000-super-tempra/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/fila-brazillia-black-market-gardening/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/block-four-100-photography-lessons/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/dj-python-to-accomplish-many-things/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/telemakus-eight-ring-revival/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -1046,6 +1254,7 @@
   <url><loc>https://monthlyvinyl.net/r/akufen-architextures-1-2-3/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/marivs-scalene-ep/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/various-artists-electronic-civilisation/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monthlyvinyl.net/r/larry-heard-ice-castles-dark-blue-transparant-marbled/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/ignacio-virton/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/marcal-four-small-escapes-ep/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/various-artists-transient-i/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -1137,7 +1346,6 @@
   <url><loc>https://monthlyvinyl.net/r/martinou-ever-changing-ep/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/die-elektronische-wohlfahrt-zu-gross-zum-tanzen/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/t-c-o-nesreh003/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://monthlyvinyl.net/r/larry-heard-ice-castles/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/claudio-prc-self-surrender-deconstructed/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/mpu101-mpu107/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monthlyvinyl.net/r/liguna-liguna/</loc><lastmod>2026-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
