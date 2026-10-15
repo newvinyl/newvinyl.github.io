@@ -36,12 +36,13 @@ def picks(data, n=COLS * ROWS):
             continue
         if im.info.get("art", 0) < 1 or min(im.size) < 300:      # real artwork only (no label photos, blank sleeves)
             continue
-        out.append(im.resize((S, S), Image.LANCZOS))
+        out.append((im.info.get("art", 0), len(out), im.resize((S, S), Image.LANCZOS)))
         artists.add(a); labels.add(lab)
         digs.log("cover", first, arr[0]["a"], "–", arr[0]["t"], im.info.get("art"))
-        if len(out) == n:
+        if len(out) == n * 2:                                    # twice as many as needed, the best artworks win
             break
-    return out
+    best = sorted(out, key=lambda x: -x[0])[:n]
+    return [c for _, _, c in sorted(best, key=lambda x: x[1])]
 
 def render(covers, path):
     img = Image.new("RGB", (W, H), BG)
