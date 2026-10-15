@@ -161,7 +161,14 @@ button{font:inherit;color:inherit}
 .lblbar button{all:unset;cursor:pointer;font:500 12px var(--mono);color:var(--fg);text-decoration:underline;flex:none}
 
 .mini{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
-  background:var(--deep);border-top:2px solid var(--white)}
+  background:var(--deep);border-top:0}
+.mseek{position:absolute;left:0;right:0;top:-12px;height:24px;cursor:pointer;touch-action:none;z-index:2}
+.mseek i{position:absolute;left:0;right:0;top:11px;height:2px;background:rgba(236,235,231,.35)}
+.mseek b{position:absolute;left:0;top:10px;height:4px;width:0;background:var(--yellow)}
+.mseek s{position:absolute;top:5px;width:14px;height:14px;margin-left:-7px;left:0;border-radius:50%;background:var(--yellow);box-shadow:0 1px 4px rgba(0,0,0,.6);transition:transform .12s}
+.mseek.drag s,.mseek:hover s{transform:scale(1.35)}
+.mseek em{position:absolute;bottom:22px;transform:translateX(-50%);font:500 11px var(--mono);font-style:normal;background:var(--ink);color:var(--fg);border:1px solid var(--line);padding:2px 6px;display:none;white-space:nowrap}
+.mseek.drag em{display:block}
 .mini.on{display:flex}
 .mini .mt{all:unset;cursor:pointer;flex:1;min-width:0}
 .mini .mpp{all:unset;cursor:pointer;flex:none;width:44px;height:44px;border-radius:50%;background:var(--yellow);color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
@@ -278,6 +285,7 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
   <p class="slab">Genre</p><div class="chips" id="cg"></div>
   <p class="slab">Shop</p><div class="chips" id="cs"></div></div></div>
 <div class="mini" id="mini" role="region" aria-label="Now playing">
+  <div class="mseek" id="mseek" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><i></i><b></b><s></s><em></em></div>
   <button class="mpp" id="mpp" type="button" aria-label="Pause"><svg class="i-pa" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg><svg class="i-pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
   <button class="mnx" id="mnx" type="button" aria-label="Next track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 5v14l10.5-7zM16 5h3.5v14H16z"/></svg></button>
   <button class="mt" id="mt" type="button"><b id="mtt"></b><span id="mta"></span></button>
@@ -655,7 +663,18 @@ function next(){
 au.addEventListener("ended",next);
 au.addEventListener("pause",()=>{document.getElementById("mini").classList.add("paused");document.getElementById("mpp").setAttribute("aria-label","Play");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.remove("playing")});
 au.addEventListener("play",()=>{document.getElementById("mini").classList.remove("paused");document.getElementById("mpp").setAttribute("aria-label","Pause");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing")});
-au.addEventListener("timeupdate",()=>{const c=document.querySelector(`.card[data-i="${cur}"] .bar`);if(c&&au.duration)c.style.width=(100*au.currentTime/au.duration)+"%"});
+/* Seek bar in the player: drag or tap to jump; arrow keys ±5 s */
+const SK=document.getElementById("mseek");let seeking=false;
+const tfmt=t=>{t=Math.max(0,t|0);return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")};
+function seekPaint(r){r=Math.max(0,Math.min(1,r||0));SK.querySelector("b").style.width=(r*100)+"%";SK.querySelector("s").style.left=(r*100)+"%";SK.setAttribute("aria-valuenow",Math.round(r*100))}
+function seekAt(x){const bb=SK.getBoundingClientRect(),r=Math.max(0,Math.min(1,(x-bb.left)/bb.width));seekPaint(r);
+  if(au.duration){const em=SK.querySelector("em");em.style.left=(r*100)+"%";em.textContent=tfmt(r*au.duration)+" / "+tfmt(au.duration)}return r}
+SK.addEventListener("pointerdown",e=>{if(!au.duration)return;seeking=true;SK.classList.add("drag");SK.setPointerCapture(e.pointerId);seekAt(e.clientX);e.preventDefault()});
+SK.addEventListener("pointermove",e=>{if(seeking)seekAt(e.clientX)});
+const seekEnd=e=>{if(!seeking)return;seeking=false;SK.classList.remove("drag");const r=seekAt(e.clientX);if(au.duration){au.currentTime=r*au.duration;track("Seek")}};
+SK.addEventListener("pointerup",seekEnd);SK.addEventListener("pointercancel",()=>{seeking=false;SK.classList.remove("drag")});
+SK.addEventListener("keydown",e=>{if(!au.duration)return;if(e.key==="ArrowRight")au.currentTime=Math.min(au.duration,au.currentTime+5);else if(e.key==="ArrowLeft")au.currentTime=Math.max(0,au.currentTime-5);else return;e.preventDefault()});
+au.addEventListener("timeupdate",()=>{const c=document.querySelector(`.card[data-i="${cur}"] .bar`),r=au.duration?au.currentTime/au.duration:0;if(c&&au.duration)c.style.width=(100*r)+"%";if(!seeking)seekPaint(r)});
 document.getElementById("mnx").onclick=()=>{track("Next via player");next()};
 document.getElementById("mpp").onclick=()=>{if(au.paused)au.play().catch(()=>{});else au.pause()};
 document.getElementById("mt").onclick=()=>{document.querySelector(`.card[data-i="${cur}"]`)?.scrollIntoView({behavior:"smooth",block:"center"})};
