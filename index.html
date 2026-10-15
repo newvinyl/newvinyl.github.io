@@ -165,13 +165,18 @@ button{font:inherit;color:inherit}
 .mseek{position:absolute;left:0;right:0;top:-12px;height:24px;cursor:pointer;touch-action:none;z-index:2}
 .mseek i{position:absolute;left:0;right:0;top:11px;height:2px;background:rgba(236,235,231,.35)}
 .mseek b{position:absolute;left:0;top:10px;height:4px;width:0;background:var(--yellow)}
-.mseek b{transition:height .12s,top .12s}.mseek.drag b,.mseek:hover b{top:9px;height:6px}
+.mseek b{transition:height .12s,top .12s}.mseek:hover b,body.scrubbing .mseek b{top:9px;height:6px}
+.mseek em{display:none}body.scrubbing .mseek em{display:block}
+.card.playing .front{touch-action:pan-y}
+.cbub{display:none;position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:4;font:500 12px var(--mono);background:var(--ink);color:var(--fg);border:1px solid var(--line);padding:3px 8px;white-space:nowrap;pointer-events:none}
+body.scrubbing .card.playing .cbub{display:block}
+body.scrubbing .card.playing .bar{height:8px}
 .cseek{display:none;position:absolute;left:0;right:0;bottom:0;height:26px;z-index:2;cursor:pointer;touch-action:none}
 .card.playing .cseek{display:block}
-.card.playing .bar{transition:height .12s}.card.playing .front:has(.cseek.drag) .bar,.card.playing .cseek:hover~.bar{height:8px}
+.card.playing .bar{transition:height .12s}
 .front .add{z-index:3}
 .mseek em{position:absolute;bottom:22px;transform:translateX(-50%);font:500 11px var(--mono);font-style:normal;background:var(--ink);color:var(--fg);border:1px solid var(--line);padding:2px 6px;display:none;white-space:nowrap}
-.mseek.drag em{display:block}
+
 .mini.on{display:flex}
 .mini .mt{all:unset;cursor:pointer;flex:1;min-width:0}
 .mini .mpp{all:unset;cursor:pointer;flex:none;width:44px;height:44px;border-radius:50%;background:var(--yellow);color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
@@ -666,20 +671,33 @@ function next(){
 au.addEventListener("ended",next);
 au.addEventListener("pause",()=>{document.getElementById("mini").classList.add("paused");document.getElementById("mpp").setAttribute("aria-label","Play");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.remove("playing")});
 au.addEventListener("play",()=>{document.getElementById("mini").classList.remove("paused");document.getElementById("mpp").setAttribute("aria-label","Pause");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing")});
-/* Seeking: player bar and the line under the playing cover; drag or tap to jump, arrow keys ±5 s */
-const SK=document.getElementById("mseek");let seeking=null;
+/* Seeking, made for thumbs in the first seconds:
+   – drag sideways anywhere on the playing cover (or on either line): the track follows the finger relative to where it is,
+     so nobody has to grab the start of the line at the screen edge (where the phone's back-swipe lives);
+     a full cover width = the whole track
+   – tap on a line jumps there (the player line keeps 24 px free at both screen edges) */
+const SK=document.getElementById("mseek");let seeking=null,G=null,noClick=0;
 const tfmt=t=>{t=Math.max(0,t|0);return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")};
-function seekPaint(r){r=Math.max(0,Math.min(1,r||0));SK.querySelector("b").style.width=(r*100)+"%";SK.setAttribute("aria-valuenow",Math.round(r*100));
+const clamp01=r=>Math.max(0,Math.min(1,r||0));
+function seekPaint(r){r=clamp01(r);SK.querySelector("b").style.width=(r*100)+"%";SK.setAttribute("aria-valuenow",Math.round(r*100));
   const c=document.querySelector(`.card[data-i="${cur}"] .bar`);if(c)c.style.width=(r*100)+"%"}
-function seekAt(el,x){const bb=el.getBoundingClientRect(),r=Math.max(0,Math.min(1,(x-bb.left)/bb.width));seekPaint(r);
-  if(au.duration&&el===SK){const em=SK.querySelector("em");em.style.left=(r*100)+"%";em.textContent=tfmt(r*au.duration)+" / "+tfmt(au.duration)}return r}
-document.addEventListener("pointerdown",e=>{const el=e.target.closest("#mseek,.card.playing .cseek");if(!el||!au.duration)return;
-  seeking=el;el.classList.add("drag");try{el.setPointerCapture(e.pointerId)}catch(_){}seekAt(el,e.clientX);e.preventDefault();e.stopPropagation()},true);
-document.addEventListener("pointermove",e=>{if(seeking)seekAt(seeking,e.clientX)});
-document.addEventListener("pointerup",e=>{if(!seeking)return;const el=seeking;seeking=null;el.classList.remove("drag");const r=seekAt(el,e.clientX);
-  if(au.duration){au.currentTime=r*au.duration;track("Seek",{where:el===SK?"player":"cover"})}});
-document.addEventListener("pointercancel",()=>{if(seeking){seeking.classList.remove("drag");seeking=null}});
-document.addEventListener("click",e=>{if(e.target.closest(".cseek"))e.stopPropagation()},true);
+function bubble(r){const t=tfmt(r*au.duration)+" / "+tfmt(au.duration),em=SK.querySelector("em");em.style.left=Math.min(88,Math.max(12,r*100))+"%";em.textContent=t;
+  const c=document.querySelector(`.card[data-i="${cur}"]`);if(c){let bb=c.querySelector(".cbub");if(!bb){bb=document.createElement("span");bb.className="cbub";c.querySelector(".front").appendChild(bb)}bb.textContent=t}}
+function absAt(el,x){const bb=el.getBoundingClientRect(),pad=el===SK?24:0;return clamp01((x-bb.left-pad)/(bb.width-2*pad))}
+document.addEventListener("pointerdown",e=>{if(!au.duration||e.button>0)return;
+  const line=e.target.closest("#mseek,.card.playing .cseek"),front=line?null:e.target.closest(".card.playing .front");
+  if(!line&&!front)return;if(front&&e.target.closest(".add"))return;
+  const el=line||front;G={el,line:!!line,x0:e.clientX,y0:e.clientY,r0:au.currentTime/au.duration,w:(front||el.closest(".card")||el).getBoundingClientRect().width,moved:false,id:e.pointerId};
+  if(line){e.preventDefault();e.stopPropagation();try{el.setPointerCapture(e.pointerId)}catch(_){}}},true);
+document.addEventListener("pointermove",e=>{if(!G||e.pointerId!==G.id)return;const dx=e.clientX-G.x0,dy=e.clientY-G.y0;
+  if(!G.moved){if(Math.abs(dx)<8){return}if(!G.line&&Math.abs(dy)>Math.abs(dx)){G=null;return}
+    G.moved=true;seeking=G.el;document.body.classList.add("scrubbing");try{G.el.setPointerCapture(G.id)}catch(_){}}
+  const r=clamp01(G.r0+dx/G.w);G.r=r;seekPaint(r);bubble(r);if(e.cancelable)e.preventDefault()},{passive:false});
+document.addEventListener("pointerup",e=>{if(!G||e.pointerId!==G.id)return;const g=G;G=null;seeking=null;document.body.classList.remove("scrubbing");
+  let r=null;if(g.moved){r=g.r;noClick=Date.now()}else if(g.line){r=absAt(g.el,e.clientX);noClick=Date.now()}
+  if(r!=null&&au.duration){au.currentTime=r*au.duration;seekPaint(r);track("Seek",{where:g.line?(g.el===SK?"player":"line"):"cover"})}});
+document.addEventListener("pointercancel",()=>{if(G){G=null;seeking=null;document.body.classList.remove("scrubbing")}});
+document.addEventListener("click",e=>{if(Date.now()-noClick<350||e.target.closest(".cseek")){e.stopPropagation();e.preventDefault()}},true);
 SK.addEventListener("keydown",e=>{if(!au.duration)return;if(e.key==="ArrowRight")au.currentTime=Math.min(au.duration,au.currentTime+5);else if(e.key==="ArrowLeft")au.currentTime=Math.max(0,au.currentTime-5);else return;e.preventDefault()});
 au.addEventListener("timeupdate",()=>{if(!seeking&&au.duration)seekPaint(au.currentTime/au.duration)});
 document.getElementById("mnx").onclick=()=>{track("Next via player");next()};
