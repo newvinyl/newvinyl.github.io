@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+:root{--bg:#0d0d0d;--deep:#1a1a1a;--fg:#ecebe7;--muted:#a0a4a9;--line:#3c4046;
+--neon:#8fd3b0;--pink:#ef7a6d;--yellow:#fbed4f;--white:#fff;--ink:#0d0d0d}
+*{box-sizing:border-box;margin:0}
+html,body{width:1200px;height:630px;background:var(--bg);overflow:hidden}
+body{font-family:"Inter",sans-serif;color:var(--fg);position:relative}
+.top{position:absolute;left:0;right:0;top:0;height:92px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:3px solid var(--white)}
+.logo{font-family:"Inter Display";font-weight:900;font-size:40px;letter-spacing:.01em;color:var(--yellow);text-transform:uppercase}
+.bag{position:relative;width:58px;height:58px;border:3px solid var(--white);display:flex;align-items:center;justify-content:center}
+.bag svg{width:30px;height:30px}
+.bag b{position:absolute;top:-12px;right:-12px;min-width:28px;height:28px;padding:0 7px;border-radius:14px;background:var(--pink);color:var(--ink);font:700 16px/28px "DejaVu Sans Mono";text-align:center}
+.left{position:absolute;left:56px;top:132px;width:560px}
+.day{font:500 17px "DejaVu Sans Mono";letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:baseline}
+.day b{font-family:"Inter Display";font-weight:800;font-size:28px;letter-spacing:0;text-transform:none;color:var(--neon)}
+h1{font-family:"Inter Display";font-weight:900;font-size:76px;line-height:.98;letter-spacing:-.015em;color:var(--white);margin-top:26px}
+p{font-size:25px;line-height:1.35;color:var(--fg);margin-top:26px;font-weight:500}
+.url{position:absolute;left:56px;bottom:44px;font:500 22px "DejaVu Sans Mono";color:var(--yellow);letter-spacing:.02em}
+.grid{position:absolute;right:56px;top:132px;display:grid;grid-template-columns:repeat(3,142px);gap:14px}
+.t{width:142px;height:142px;position:relative;overflow:hidden;background:var(--deep)}
+.t.play::after{content:"";position:absolute;inset:0;border:5px solid var(--yellow)}
+.pb{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.45)}
+.pb i{width:0;height:0;border-left:17px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+</style></head><body>
+<header class="top">
+  <div class="logo">Monthly Vinyl</div>
+  <div class="bag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b>3</b></div>
+</header>
+<div class="left">
+  <div class="day"><b>Today</b><span>17 record shops</span></div>
+  <h1>New vinyl.<br>Every morning.</h1>
+  <p>House, techno, disco &amp; ambient from independent shops. Listen, compare, buy.</p>
+</div>
+<div class="url">monthlyvinyl.net</div>
+<div class="grid">
+  <!-- 1 concentric record -->
+  <div class="t" style="background:var(--neon)"><svg width="142" height="142"><circle cx="71" cy="71" r="58" fill="#0d0d0d"/><circle cx="71" cy="71" r="48" fill="none" stroke="#2a2a2a" stroke-width="2"/><circle cx="71" cy="71" r="38" fill="none" stroke="#2a2a2a" stroke-width="2"/><circle cx="71" cy="71" r="20" fill="var(--pink)"/><circle cx="71" cy="71" r="3" fill="#0d0d0d"/></svg></div>
+  <!-- 2 stripes -->
+  <div class="t" style="background:repeating-linear-gradient(135deg,var(--yellow) 0 14px,#0d0d0d 14px 28px)"></div>
+  <!-- 3 type cover -->
+  <div class="t" style="background:var(--pink);display:flex;align-items:flex-end;padding:12px"><span style="font:900 40px/0.9 'Inter Display';color:#0d0d0d;letter-spacing:-.02em">ACID<br>EP</span></div>
+  <!-- 4 grid dots -->
+  <div class="t" style="background:#ecebe7"><svg width="142" height="142"><g fill="#0d0d0d"><circle cx="24" cy="24" r="7"/><circle cx="56" cy="24" r="7"/><circle cx="88" cy="24" r="7"/><circle cx="120" cy="24" r="7"/><circle cx="24" cy="56" r="7"/><circle cx="56" cy="56" r="13" fill="var(--pink)"/><circle cx="88" cy="56" r="7"/><circle cx="120" cy="56" r="7"/><circle cx="24" cy="88" r="7"/><circle cx="56" cy="88" r="7"/><circle cx="88" cy="88" r="7"/><circle cx="120" cy="88" r="7"/><circle cx="24" cy="120" r="7"/><circle cx="56" cy="120" r="7"/><circle cx="88" cy="120" r="7"/><circle cx="120" cy="120" r="7"/></g></svg></div>
+  <!-- 5 playing: sunset gradient -->
+  <div class="t play" style="background:linear-gradient(180deg,#ef7a6d 0%,#fbed4f 55%,#8fd3b0 100%)"><svg width="142" height="142" style="position:absolute;inset:0"><circle cx="71" cy="96" r="34" fill="#0d0d0d" opacity=".85"/><rect x="0" y="100" width="142" height="42" fill="#0d0d0d"/></svg><div class="pb"><i></i></div></div>
+  <!-- 6 dark waves -->
+  <div class="t" style="background:#0d0d0d;border:2px solid #3c4046"><svg width="142" height="142"><g fill="none" stroke="var(--neon)" stroke-width="3"><path d="M-5 40 Q 30 20 71 40 T 147 40"/><path d="M-5 62 Q 30 42 71 62 T 147 62"/><path d="M-5 84 Q 30 64 71 84 T 147 84"/><path d="M-5 106 Q 30 86 71 106 T 147 106"/></g></svg></div>
+  <!-- 7 split -->
+  <div class="t" style="background:linear-gradient(90deg,#1a1a1a 50%,var(--yellow) 50%)"><svg width="142" height="142"><circle cx="71" cy="71" r="36" fill="var(--neon)"/></svg></div>
+  <!-- 8 big number -->
+  <div class="t" style="background:#3c4046;display:flex;align-items:center;justify-content:center"><span style="font:900 62px 'Inter Display';color:#ecebe7;letter-spacing:-.04em">303</span></div>
+  <!-- 9 squares -->
+  <div class="t" style="background:var(--neon)"><svg width="142" height="142"><rect x="22" y="22" width="98" height="98" fill="none" stroke="#0d0d0d" stroke-width="10"/><rect x="50" y="50" width="42" height="42" fill="#0d0d0d"/></svg></div>
+</div>
+</body></html>

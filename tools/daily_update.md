@@ -180,7 +180,7 @@ ensure_ascii=False). Check it parses (python3 -m json.tool) before publishing.
 Inside <dir>: copy your releases.json over <dir>/releases.json, run `python3 tools/build_static.py`
 (regenerates the crawlable list in index.html, genre pages, /r/ release pages, sitemap.xml, llms.txt).
 Do not change any other file by hand; never delete CNAME, .nojekyll, favicon-32.png,
-apple-touch-icon.png, og-image.png, robots.txt, BingSiteAuth.xml or tools/. If the build script
+apple-touch-icon.png, og-image.png, og-image-v2.png, robots.txt, BingSiteAuth.xml or tools/. If the build script
 fails, still publish releases.json alone and report the error. If nothing changed, skip this step.
 Otherwise `git add -A`, commit with author name "Claude" and email "noreply@anthropic.com" and the
 message "Daily update YYYY-MM-DD: N new releases", `git pull --rebase origin main` (rerun the build

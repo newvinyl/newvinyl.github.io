@@ -273,7 +273,7 @@ def main():
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{SITE}/{gs}/">
-<meta property="og:image" content="{SITE}/og-image.png">
+<meta property="og:image" content="{SITE}/og-image-v2.png">
 <link rel="icon" type="image/png" href="/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <meta name="theme-color" content="#0d0d0d">
@@ -359,10 +359,10 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
         meta = " · ".join(meta_bits)
         gl = R["genres"]
         reiss = bool(REISSUE.search(r.get("g") or ""))
-        img = hires(r.get("cover")) or f"{SITE}/og-image.png"
+        img = hires(r.get("cover")) or f"{SITE}/og-image-v2.png"
         # link previews (WhatsApp, iMessage, Facebook): small square JPEG via image proxy – shop CDNs are often too big or block bots
         ogimg = ("https://wsrv.nl/?url=" + urllib.parse.quote(img, safe="") + "&w=600&h=600&fit=cover&output=jpg&q=80") \
-            if r.get("cover") else f"{SITE}/og-image.png"
+            if r.get("cover") else f"{SITE}/og-image-v2.png"
         # Angebote nach Preis in CHF sortieren
         ofs = sorted(offers, key=lambda o: (chf(*o) is None, chf(*o) or 0))
         priced = [o for o in ofs if chf(*o) is not None]
