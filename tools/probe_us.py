@@ -54,6 +54,10 @@ for base in [l.strip() for l in open(sys.argv[1]) if l.strip() and not l.startsw
         for k in rec:
             e["new_%dd" % k] = len(rec[k]); e["known_%dd" % k] = sum(1 for x in rec[k] if x[2]); e["mp3_%dd" % k] = sum(1 for x in rec[k] if x[3])
         e["sample"] = rec[30][:12]
+        e["all"] = [{"title": p.get("title"), "vendor": p.get("vendor"), "type": p.get("product_type"), "tags": p.get("tags"),
+                     "pub": (p.get("published_at") or "")[:10], "created": (p.get("created_at") or "")[:10],
+                     "mp3": bool(re.search(r"\.mp3", p.get("body_html") or "")), "price": (p.get("variants") or [{}])[0].get("price"),
+                     "handle": p.get("handle")} for p in prods]
         e["tags_example"] = (prods[0].get("tags") if prods else [])[:12]
     res.append(e)
     print(json.dumps({k: v for k, v in e.items() if k != "sample"}), file=sys.stderr)
