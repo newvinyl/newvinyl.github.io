@@ -1,10 +1,10 @@
 {
- "date": "2026-10-14",
+ "date": "2026-10-15",
  "total": {
-  "records": 2066,
-  "tracks": 1525,
-  "clip": 407,
-  "none": 134
+  "records": 2191,
+  "tracks": 1613,
+  "clip": 442,
+  "none": 136
  },
  "shops": {
   "Hardwax": {
@@ -20,10 +20,10 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 10,
-   "tracks": 6,
-   "clip": 0,
-   "none": 4
+   "records": 11,
+   "tracks": 7,
+   "clip": 1,
+   "none": 3
   },
   "Clone": {
    "records": 224,
@@ -32,20 +32,20 @@
    "none": 1
   },
   "Phonica": {
-   "records": 193,
-   "tracks": 127,
-   "clip": 12,
+   "records": 203,
+   "tracks": 135,
+   "clip": 14,
    "none": 54
   },
   "Redeye Records": {
-   "records": 537,
-   "tracks": 128,
-   "clip": 390,
-   "none": 19
+   "records": 580,
+   "tracks": 137,
+   "clip": 422,
+   "none": 21
   },
   "Yoyaku": {
-   "records": 200,
-   "tracks": 199,
+   "records": 216,
+   "tracks": 215,
    "clip": 0,
    "none": 1
   },
@@ -56,22 +56,22 @@
    "none": 16
   },
   "Juno Records": {
-   "records": 334,
-   "tracks": 332,
+   "records": 340,
+   "tracks": 338,
    "clip": 0,
    "none": 2
   },
   "Deejay.de": {
-   "records": 94,
-   "tracks": 66,
+   "records": 98,
+   "tracks": 70,
    "clip": 2,
    "none": 26
   },
   "Vinyl Underground": {
-   "records": 32,
-   "tracks": 32,
+   "records": 62,
+   "tracks": 61,
    "clip": 0,
-   "none": 0
+   "none": 1
   },
   "Sound Metaphors": {
    "records": 18,
@@ -86,8 +86,8 @@
    "none": 8
   },
   "Syncrophone": {
-   "records": 23,
-   "tracks": 23,
+   "records": 26,
+   "tracks": 26,
    "clip": 0,
    "none": 0
   },
@@ -98,32 +98,37 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 38,
-   "tracks": 38,
+   "records": 39,
+   "tracks": 39,
    "clip": 0,
    "none": 0
   },
   "Diggers.fr": {
-   "records": 14,
-   "tracks": 14,
+   "records": 25,
+   "tracks": 25,
    "clip": 0,
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 13,
- "clips_verified": 5937,
- "not_reachable": {},
+ "pages_checked": 457,
+ "new_from_shop_pages": 9,
+ "copied_from_other_shop": 3,
+ "broken_clips_removed": 17,
+ "clips_verified": 6273,
+ "not_reachable": {
+  "Clone: http403": 1,
+  "Phonica: http403": 69,
+  "Redeye Records: failed:UnicodeEncodeError": 18,
+  "Redeye Records: http403": 1
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
-   "clips": 141,
+   "clips": 145,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 145,
+   "clips": 282,
    "failed": 0,
    "sample": []
   },
@@ -142,7 +147,7 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 51,
+   "clips": 128,
    "failed": 0,
    "sample": []
   },
@@ -157,7 +162,7 @@
    "sample": []
   },
   "play.syncrophone.fr": {
-   "clips": 96,
+   "clips": 107,
    "failed": 0,
    "sample": []
   },
@@ -171,7 +176,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 388,
+   "clips": 421,
    "failed": 0,
    "sample": []
   },
@@ -190,17 +195,17 @@
    ]
   },
   "www.juno.co.uk": {
-   "clips": 2356,
+   "clips": 2389,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 540,
+   "clips": 574,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.digitaloceanspaces.com": {
-   "clips": 17,
+   "clips": 24,
    "failed": 0,
    "sample": []
   }

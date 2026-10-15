@@ -20592,7 +20592,63 @@
      "g": "Ambient / Minimal",
      "url": "https://www.phonicarecords.com/product/subb-an-lotus-rising-phonica-records-special-editions/214248",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/fb8e2ac4b33f1c8f708d18acd2039067.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Lotus",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A1_Lotus_ft_Anushree_Datar_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Solstice",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A2_Solstice_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Wilderness",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A3_Wilderness_-_ft_Kate_Fleur_Young_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Forest Bathing",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A4_Forest_Bathing_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Origin",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A5_Origin_-_ft_Kate_Fleur_Young_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Lucid",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B1_Lucid_ft_Akash_Parekar_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Afterglow",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B2_Afterglow_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Stillness",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B3_Stillness_-_ft_Kate_Fleur_Young_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Unearthed",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B4_Unearthed_ft_Akash_Parekar_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Centred",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B5_Centered_-_Mixdown_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Infinite Energy",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B6_Infinite_Energy_CLIP.mp3"
+      }
+     ],
      "m": "2026-09",
      "first_seen": "2026-09-30",
      "st": "pre"
@@ -42238,7 +42294,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Dr. Willis"
+      },
+      {
+       "s": "A2",
+       "n": "Lapse"
+      },
+      {
+       "s": "B1",
+       "n": "City Fiction"
+      },
+      {
+       "s": "B2",
+       "n": "Salt Echoes"
+      }
+     ]
     },
     {
      "a": "Alexis Taylor",
@@ -42250,13 +42324,7 @@
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/200192-alnlp1278-alexis-taylor-time-remixes/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191822-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191822.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-15"
@@ -42412,7 +42480,25 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Força Major"
+      },
+      {
+       "s": "A2",
+       "n": "My Machine"
+      },
+      {
+       "s": "B1",
+       "n": "Binary War"
+      },
+      {
+       "s": "B2",
+       "n": "Computer World"
+      }
+     ]
     },
     {
      "a": "C-Soul",
@@ -42500,7 +42586,25 @@
      "st": "pre",
      "d": "Exp. 16 Oct",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Feel It"
+      },
+      {
+       "s": "A2",
+       "n": "Miss You Every Day"
+      },
+      {
+       "s": "B1",
+       "n": "Keep It High"
+      },
+      {
+       "s": "B2",
+       "n": "Keep It High (Baka G Remix)"
+      }
+     ]
     },
     {
      "a": "Duncan Thomas",
@@ -42566,7 +42670,25 @@
      "st": "pre",
      "d": "Exp. 23 Oct",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Boom!"
+      },
+      {
+       "s": "A2",
+       "n": "Feels Nice"
+      },
+      {
+       "s": "B1",
+       "n": "A Familiar Heat"
+      },
+      {
+       "s": "B2",
+       "n": "Eshgh"
+      }
+     ]
     },
     {
      "a": "Filth",
@@ -42756,7 +42878,41 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Sun Of A Gun (Original)"
+      },
+      {
+       "s": "A2",
+       "n": "Flatlet"
+      },
+      {
+       "s": "B1",
+       "n": "Backside 50"
+      },
+      {
+       "s": "B2",
+       "n": "Only On The Condition You Call Me Esteban"
+      },
+      {
+       "s": "C1",
+       "n": "Welcome (Full Lenght Meex)"
+      },
+      {
+       "s": "C2",
+       "n": "Funk In Nj (Original Mix)"
+      },
+      {
+       "s": "D1",
+       "n": "1974"
+      },
+      {
+       "s": "D2",
+       "n": "For The Music (Mandrax Dub)"
+      }
+     ]
     },
     {
      "a": "543ff",
@@ -42821,7 +42977,25 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Gadgeto Theme"
+      },
+      {
+       "s": "A2",
+       "n": "Electric Spliff"
+      },
+      {
+       "s": "B1",
+       "n": "Spooky Adventure"
+      },
+      {
+       "s": "B2",
+       "n": "Weird Science (Gadgeto Edit)"
+      }
+     ]
     },
     {
      "a": "Grad_u",
@@ -43018,7 +43192,25 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Vardae - Khori"
+      },
+      {
+       "s": "2",
+       "n": "Vardae - Kiyat"
+      },
+      {
+       "s": "3",
+       "n": "Vardae - Sunud"
+      },
+      {
+       "s": "4",
+       "n": "Vardae & Estrato Aurora - Altan Ovo"
+      }
+     ]
     },
     {
      "a": "Young Adults",
@@ -43088,13 +43280,7 @@
      "g": "Ambient",
      "url": "https://www.redeyerecords.co.uk/vinyl/200183-sp171lp-lamin-fofana-corps-perdu/",
      "cover": "https://www.redeyerecords.co.uk/imagery/703097-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703097.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "m": "2026-10",
      "first_seen": "2026-10-15"
@@ -46692,11 +46878,6 @@
       },
       {
        "s": "",
-       "n": "A2. Periferico - Soundtrack Marte Era Mix",
-       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/USR040_2.mp3"
-      },
-      {
-       "s": "",
        "n": "B1. ADSR - Object Of Desire",
        "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/USR040_3.mp3"
       },
@@ -46729,11 +46910,6 @@
        "s": "",
        "n": "E1. Wedding Acid Group - Hope (Acid Mix)",
        "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/USR040_9.mp3"
-      },
-      {
-       "s": "",
-       "n": "E2. Albert Ess - Magia",
-       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/USR040_10.mp3"
       },
       {
        "s": "",
@@ -49851,7 +50027,38 @@
      "g": "House / Minimal / Minimal Techno",
      "url": "https://yoyaku.io/release/losoul-broken-english-dubs-log89/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/04/Losoul_Broken_English_Dubs_FRONT-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Cult Rodeo",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOG89_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Shake 3",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOG89_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. No Jacks Given",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOG89_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1. Some Pals Were Sleepers",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOG89_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2. The Peek A Boo Scratch",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOG89_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1. Trap Back",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LOG89_6.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -49900,7 +50107,28 @@
      "g": "House / Minimal / Tech House",
      "url": "https://yoyaku.io/release/lenny-mailleau-the-question-votm001/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/VOTM001-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "The Question",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VOTM001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Saturday Déboch",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VOTM001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Schönleinstrasse Caval",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VOTM001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "La Femme ft. Ariachi",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VOTM001_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -49974,7 +50202,28 @@
      "g": "Acid House / Tech House",
      "url": "https://yoyaku.io/release/tripmastaz-politics-as-usual-ep-rtc005/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/03/RTC005-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Politics As Usual (Main Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTC005_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Politics As Usual (Dub)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTC005_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Coffee Smack 4 Dat Azz",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTC005_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Scarp",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTC005_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -50008,7 +50257,18 @@
      "g": "Techno",
      "url": "https://yoyaku.io/release/emi-elvis-ep-i-draga005/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/DRAGA005-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "ElVis#1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DRAGA005_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "ElVis#2",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DRAGA005_2.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -50022,7 +50282,23 @@
      "g": "House / Minimal / Tech House",
      "url": "https://yoyaku.io/release/a_r-about-time-draga004/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/DRAGA004-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "About Time",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DRAGA004_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Planet",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DRAGA004_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Receiver",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DRAGA004_3.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -50036,7 +50312,28 @@
      "g": "House / Tech House / Techno",
      "url": "https://yoyaku.io/release/per-hammar-ontario-ep-dh011/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/DH011-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Ontario",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DH011_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Off Disk",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DH011_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Oops All Sixes",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DH011_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Airex",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/DH011_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -50070,7 +50367,43 @@
      "g": "Techno",
      "url": "https://yoyaku.io/release/sladazj-second-device-2x12-arma027/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/ARMA027-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Yourfallunfurling",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ARMA027_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Skinlair",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ARMA027_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Thicanlow2theground",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ARMA027_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Within This Thornfence",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ARMA027_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Szczelina",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ARMA027_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "Roidwoven",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ARMA027_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "Misja",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ARMA027_7.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -50084,7 +50417,43 @@
      "g": "Breakbeat / Downtempo / House / Minimal / Tech House",
      "url": "https://yoyaku.io/release/cristi-cons-out-of-cycle-part-2-amp023-2/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/05/AMP023.2_e-tail_sleeve_1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Pussycat Club",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/AMP023.2_a1_cristi_cons__pussycat_club_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Senses",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/AMP023.2_a2_cristi_cons__senses_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. You Know (Domination)",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/AMP023.2_b1_cristi_cons__you_know_(domination)_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1. Your Body (Rave Mix)",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/AMP023.2_c1_cristi_cons__your_body_(rave_mix)_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2. Sleepy Hollow (I Want You)",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/AMP023.2_c2_cristi_cons__sleepy_hollow_(i_want_you)_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1. Primordial",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/AMP023.2_d1_cristi_cons__primordial_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2. Antimatter",
+       "u": "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/AMP023.2_d2_cristi_cons__antimatter_snippet.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     },
@@ -50138,7 +50507,38 @@
      "g": "Tech House",
      "url": "https://yoyaku.io/release/jon-beige-rougail-space-program-eclt-certified-weirdos-vol-1-cw01/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/09/CW01-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. rougail space program - Tamarin Sex",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CW01_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. ??? - Yes sir !",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CW01_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "A3. ECLT - Consciousness",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CW01_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. ??? - Cl₂",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CW01_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. ECLT - u&me",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CW01_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "B3. rougail space program - Late Nite Gaze",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CW01_6.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-15"
     }
@@ -74718,24 +75118,9 @@
      "cover": "https://www.deejay.de/images/l/3/9/1261339.jpg",
      "tr": [
       {
-       "s": "A1",
-       "n": "Let the Sun In",
-       "page": "https://www.deejay.de/Pistaccio_5_Knuckle_Shuffle_NUIT014_Vinyl__1261339"
-      },
-      {
-       "s": "A2",
+       "s": "",
        "n": "5 Knuckle Shuffle",
-       "page": "https://www.deejay.de/Pistaccio_5_Knuckle_Shuffle_NUIT014_Vinyl__1261339"
-      },
-      {
-       "s": "B1",
-       "n": "Delicious & Suspicious",
-       "page": "https://www.deejay.de/Pistaccio_5_Knuckle_Shuffle_NUIT014_Vinyl__1261339"
-      },
-      {
-       "s": "B2",
-       "n": "Rambutan Skank",
-       "page": "https://www.deejay.de/Pistaccio_5_Knuckle_Shuffle_NUIT014_Vinyl__1261339"
+       "yt": "STl9jnXpP4w"
       }
      ],
      "d": "07.10.2026",
@@ -77258,8 +77643,23 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192644.mp3"
+       "n": "Neural Feedback",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A1-_Neural_Feedback.mp3"
+      },
+      {
+       "s": "",
+       "n": "Crash Dummy",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A2-_Crash_Dummy.mp3"
+      },
+      {
+       "s": "",
+       "n": "Moodraiser",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A3-_Moodraiser.mp3"
+      },
+      {
+       "s": "",
+       "n": "Hypnagogia",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A4-_Hypnagogia.mp3"
       }
      ],
      "d": "14.10.2026",
