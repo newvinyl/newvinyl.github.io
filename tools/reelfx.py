@@ -617,8 +617,7 @@ def prep_cover(im):
     im = im.convert("RGB")
     return im, np.asarray(im.resize((COV_S, COV_S), Image.LANCZOS))
 
-def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None):
-    dur = 20
+def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None, dur=20):
     nfr = dur * FPS
     aud = aud[:dur * SR]
     lev, kick = analyse(aud, nfr)

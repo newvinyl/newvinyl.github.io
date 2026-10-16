@@ -69,11 +69,12 @@ def main():
          "strict": True, "tracks": tracks, "score": 0, "track": tr, "cover": cov, "audio": aud}
     R = digs.prepare(c, fx)
     start, _ = digs.pick_start(aud)
-    mix = digs.reel_mix(aud, max(0.0, start - 1.0))
+    dur = int(want.get("dur") or 20)                     # reel length in seconds (default 20)
+    mix = digs.reel_mix(aud, max(0.0, start - 1.0), dur)
     slug = re.sub(r"[^a-z0-9]+", "-", (R["a"] + " " + R["t"]).lower()).strip("-")[:60]
     out = os.path.join(WORK, "reel-%s.mp4" % slug)
     poster = out.replace(".mp4", ".jpg")
-    look = reelfx.reel_single(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, cmode=want.get("fx"))
+    look = reelfx.reel_single(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, cmode=want.get("fx"), dur=dur)
     cap = digs.reel_caption(R, arr)
     capp = out.replace(".mp4", ".txt")
     open(capp, "w", encoding="utf-8").write(cap + "\n")

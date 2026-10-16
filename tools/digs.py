@@ -726,8 +726,19 @@ def render_reel(p, date_s, aud, path, poster):
         raise RuntimeError("ffmpeg failed")
     os.remove(wav)
 
-def reel_mix(audio, start):
-    s = fade(seg(audio, start, RDUR), 0.6, 2.0)
+def reel_mix(audio, start, length=RDUR):
+    have = len(audio) / SR
+    if have >= length:
+        start = min(start, have - length)                     # longer reels: move the start back so the clip fits
+        s = seg(audio, start, length)
+    else:                                                     # preview shorter than the reel: loop it with a 2 s crossfade
+        x, xf = seg(audio, 0, have), int(2 * SR)
+        s = x
+        while len(s) < length * SR:
+            g = np.linspace(0, 1, xf, dtype="float32")[:, None]
+            s = np.concatenate([s[:-xf], s[-xf:] * (1 - g) + x[:xf] * g, x[xf:]])
+        s = s[:int(length * SR)]
+    s = fade(s, 0.6, 2.0)
     peak = np.abs(s).max()
     return s * (0.97 / peak) if peak > 0.97 else s
 
