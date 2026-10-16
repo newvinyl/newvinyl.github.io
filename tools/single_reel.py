@@ -76,7 +76,7 @@ def main():
     poster = out.replace(".mp4", ".jpg")
     if want.get("style") == "lava":
         import lava
-        look = lava.reel_lava(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur, eyes=want.get("eyes"))
+        look = lava.reel_lava(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur, eyes=want.get("eyes"), blobs=want.get("blobs", True))
     else:
         look = reelfx.reel_single(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, cmode=want.get("fx"), dur=dur, eyes=want.get("eyes"))
     cap = digs.reel_caption(R, arr)

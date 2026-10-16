@@ -100,7 +100,7 @@ class Lava:
         return tex, alpha
 
 
-def reel_lava(rel, aud, seed, out, poster, dur=60, eyes=None):
+def reel_lava(rel, aud, seed, out, poster, dur=60, eyes=None, blobs=True):
     nfr = int(dur * R.FPS)
     aud = aud[:int(dur * R.SR)]
     lev, kick = R.analyse(aud, nfr)
@@ -126,7 +126,7 @@ def reel_lava(rel, aud, seed, out, poster, dur=60, eyes=None):
     def fr(f):
         t = f / R.FPS
         img = base.copy()
-        tex, a = lava.frame(t, float(lev[f]))
+        tex, a = lava.frame(t, float(lev[f])) if blobs else (None, None)
         if tex is not None:
             tex = cv2.resize(tex, (R.W, R.H), interpolation=cv2.INTER_LINEAR)
             a = cv2.resize(a, (R.W, R.H), interpolation=cv2.INTER_LINEAR)[..., None]
@@ -141,4 +141,4 @@ def reel_lava(rel, aud, seed, out, poster, dur=60, eyes=None):
         return R.fades(img, t, dur)
 
     R.encode(fr, nfr, aud, out, poster, int(1.2 * R.FPS))
-    return "lava · %d blobs%s" % (len(lava.blobs), " · eyes" if eyes else "")
+    return ("lava · %d blobs" % len(lava.blobs) if blobs else "still cover") + (" · eyes" if eyes else "")
