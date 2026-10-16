@@ -371,7 +371,7 @@ def fit_font(path, size, text, maxw):
         size -= 2
     return F(path, size)
 
-def text_layer(rel):
+def text_layer(rel, mono=None):
     """Full-frame RGBA overlay: shop tag top-left, artist/track/date/label right-aligned under the cover."""
     L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     # shop tag like the website's shop header: yellow uppercase name + country code box
@@ -380,8 +380,8 @@ def text_layer(rel):
     if rel.get("cc"):
         cc = Image.new("RGBA", (64, name.height), (0, 0, 0, 235))
         dd = ImageDraw.Draw(cc)
-        dd.rectangle([10, 13, 53, name.height - 14], outline=WHITE, width=2)
-        dd.text((32, name.height / 2 + 1), rel["cc"], font=F(FM, 19), fill=WHITE, anchor="mm")
+        dd.rectangle([10, 13, 53, name.height - 14], outline=mono or WHITE, width=2)
+        dd.text((32, name.height / 2 + 1), rel["cc"], font=F(FM, 19), fill=mono or WHITE, anchor="mm")
         L.alpha_composite(cc, (SHOP_XY[0] + name.width - 4, SHOP_XY[1]))
     lines = [
         (rel["a"], fit_font(FD, 44, rel["a"], 820), WHITE),
@@ -391,7 +391,7 @@ def text_layer(rel):
     ]
     y = COV_Y + COV_S + 26
     for text, font, col in lines:
-        im = box_line(text, font, col)
+        im = box_line(text, font, mono or col)
         L.alpha_composite(im, (TXT_R - im.width, y))
         y += im.height + 6
     return np.asarray(L)

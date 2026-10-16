@@ -2,7 +2,6 @@
  "artist": "Marina Trench",
  "title": "Watching Back",
  "dur": 60,
- "fx": "illusion",
  "eyes": [
   {
    "cx": 0.3796,
@@ -22,5 +21,6 @@
    "iy": 0.3963,
    "r": 0.0213
   }
- ]
+ ],
+ "style": "lava"
 }
