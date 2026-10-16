@@ -13,7 +13,10 @@ def hires(u):
     u2 = re.sub(r"(media\.hardwax\.com/images/[^/]+?)(?<!big)\.jpg$", r"\1big.jpg", u)
     u2 = re.sub(r"-2\.jpg$", "-1.jpg", u2) if "redeyerecords" in u2 else u2
     u2 = re.sub(r"-\d+x\d+(\.\w+)$", r"\1", u2) if "yoyaku" in u2 else u2
-    return u2.replace("/artwork/small/", "/artwork/large/").replace("/co_mid/", "/co_big/")
+    u2 = u2.replace("/artwork/small/", "/artwork/large/").replace("/co_mid/", "/co_big/")
+    if "imagescdn.juno.co.uk" in u2:
+        u2 = re.sub(r"/\d+/(CS[^/]+?)-MED\.jpg$", r"/full/\1-BIG.jpg", u2)
+    return u2
 
 def best_cover(arr):
     """grösstes verfügbares Cover über alle Shops (inkl. Hardwax big.jpg und Deejay.de)"""
@@ -74,7 +77,11 @@ def main():
     slug = re.sub(r"[^a-z0-9]+", "-", (R["a"] + " " + R["t"]).lower()).strip("-")[:60]
     out = os.path.join(WORK, "reel-%s.mp4" % slug)
     poster = out.replace(".mp4", ".jpg")
-    if want.get("style") == "lava":
+    if want.get("style") == "crowd":
+        import crowd
+        look = crowd.reel_crowd(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur,
+                                dancers=want.get("dancers"), grid=want.get("grid"))
+    elif want.get("style") == "lava":
         import lava
         look = lava.reel_lava(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur, eyes=want.get("eyes"), blobs=want.get("blobs", True))
     else:
