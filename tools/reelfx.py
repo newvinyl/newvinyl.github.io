@@ -617,7 +617,7 @@ def prep_cover(im):
     im = im.convert("RGB")
     return im, np.asarray(im.resize((COV_S, COV_S), Image.LANCZOS))
 
-def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None, dur=20):
+def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None, dur=20, eyes=None):
     nfr = dur * FPS
     aud = aud[:dur * SR]
     lev, kick = analyse(aud, nfr)
@@ -626,6 +626,10 @@ def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None, du
     look = coverlife.make_look(im, seed, avoid=avoid)
     cfx = CoverFX(seed, dur, mode=cmode or look.cfx_mode)
     log("Sorte 1 look:", look.describe())
+    eyefx = None
+    if eyes:                                       # eyes on the cover look around and blink
+        import eyes as _eyes
+        eyefx = _eyes.Eyes(cov, eyes, seed, dur)
     col = rel.get("col")
     if col:
         txl, bars = text_layer_flat(rel, col)
@@ -636,7 +640,7 @@ def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None, du
         A = {"lev": lev[f], "kick": kick[f]}
         img = upscale(look.bg.frame(t, A))
         reg = img[COV_Y:COV_Y + COV_S]
-        img[COV_Y:COV_Y + COV_S] = cfx.apply(look.life.apply(cover_frame(cov, t, dur, kick[f]), t, A), reg, t, kick[f], f)
+        img[COV_Y:COV_Y + COV_S] = cfx.apply(look.life.apply(cover_frame(eyefx.apply(cov, t) if eyefx else cov, t, dur, kick[f]), t, A), reg, t, kick[f], f)
         img = comp(img, txl)
         if bars:
             img = np.ascontiguousarray(img)
