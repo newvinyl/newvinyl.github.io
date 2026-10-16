@@ -10062,23 +10062,23 @@
      "tr": [
       {
        "s": "A1",
-       "n": "The Orbit",
-       "page": "https://www.decks.de/track/staffan_lindberg-y2k_ep/[c28-0n]"
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4226/DOLLYDUBS003/DOLLYDUBS003-A1.mp3"
       },
       {
        "s": "A2",
-       "n": "Trevino remix - The Orbit",
-       "page": "https://www.decks.de/track/staffan_lindberg-y2k_ep/[c28-0n]"
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4226/DOLLYDUBS003/DOLLYDUBS003-A2.mp3"
       },
       {
        "s": "B1",
-       "n": "Y2K",
-       "page": "https://www.decks.de/track/staffan_lindberg-y2k_ep/[c28-0n]"
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4226/DOLLYDUBS003/DOLLYDUBS003-B1.mp3"
       },
       {
        "s": "B2",
-       "n": "Feel Like Dancing",
-       "page": "https://www.decks.de/track/staffan_lindberg-y2k_ep/[c28-0n]"
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4226/DOLLYDUBS003/DOLLYDUBS003-B2.mp3"
       }
      ],
      "d": "16.10.26",
@@ -10099,23 +10099,23 @@
      "tr": [
       {
        "s": "A1",
-       "n": "OFF / GRID - Inner Circle",
-       "page": "https://www.decks.de/track/various_artists-downtown_dubs_2/[cr0-2a]"
+       "n": "A1",
+       "u": "https://media.hardwax.com/audio/89624_A1.mp3"
       },
       {
        "s": "A2",
-       "n": "Gockel - Zinnober",
-       "page": "https://www.decks.de/track/various_artists-downtown_dubs_2/[cr0-2a]"
+       "n": "A2",
+       "u": "https://media.hardwax.com/audio/89624_A2.mp3"
       },
       {
        "s": "B1",
-       "n": "Linus Quick - The Early Days",
-       "page": "https://www.decks.de/track/various_artists-downtown_dubs_2/[cr0-2a]"
+       "n": "B1",
+       "u": "https://media.hardwax.com/audio/89624_B1.mp3"
       },
       {
        "s": "B2",
-       "n": "Volpe - Elation",
-       "page": "https://www.decks.de/track/various_artists-downtown_dubs_2/[cr0-2a]"
+       "n": "B2",
+       "u": "https://media.hardwax.com/audio/89624_B2.mp3"
       }
      ],
      "d": "16.10.26",
@@ -25742,8 +25742,33 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703179.mp3"
+       "n": "Wicked Game (Trinity Version)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A1._Fantastic_Twins_-_Wicked_Game_Trinity_Version_-_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Wicked Game (Thousand Suns Version)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A2._Fantastic_Twins_-_Wicked_Game_Thousand_Suns_Version_-_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Wicked Game (Atomic Love Version)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A3._Fantastic_Twins_-_Wicked_Game_Atomic_Love_Version_-_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Wicked Game (Core Version)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A4._Fantastic_Twins_-_Wicked_Game_Core_Version_-_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Wicked Game (Core Version Aho Ssan Remix)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B1._Fantastic_Twins_-_Wicked_Game_Core_Version_Aho_Ssan_Remix_-_CLIP.mp3"
+      },
+      {
+       "s": "",
+       "n": "Wicked Game (Thousand Suns Version Optimo (Espacio) Remix)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/B2._Fantastic_Twins_-_Wicked_Game_Thousand_Suns_Version_Optimo_Espacio_Remix_-_CLIP.mp3"
       }
      ],
      "m": "2026-10",
@@ -25881,7 +25906,18 @@
      "first_seen": "2026-10-16",
      "url": "https://www.phonicarecords.com/product/ashford-simpson-found-a-cure-groovin-recordings/213389",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/9f12ecda783295e53cf6f8e834c8b0f5.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "A",
+       "n": "Tom Moulton Mix",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/g/gr_12141_found_a_cure_-_tom_moulton_joey_negro_mixes/gr12141a.mp3"
+      },
+      {
+       "s": "B",
+       "n": "Joey Negro Found A Dub Mix",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/g/gr_12141_found_a_cure_-_tom_moulton_joey_negro_mixes/gr12141b.mp3"
+      }
+     ]
     },
     {
      "a": "ASHFORD & SIMPSON",
@@ -25895,7 +25931,23 @@
      "first_seen": "2026-10-16",
      "url": "https://www.phonicarecords.com/product/ashford-simpson-bourgi-bourgi-groovin-recordings/212653",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/4ecec83c18642375ab3a3f05714d41d3.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "1",
+       "n": "Original Version",
+       "u": "https://clone.nl/platen/mp3/84278/1%20Original%20Version.mp3"
+      },
+      {
+       "s": "2",
+       "n": "A Director's Cut Exclusive",
+       "u": "https://clone.nl/platen/mp3/84278/2%20A%20Director%27s%20Cut%20Exclusive.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Joe Claussell's Classic Mix",
+       "u": "https://clone.nl/platen/mp3/84278/3%20Joe%20Claussell%27s%20Classic%20Mix.mp3"
+      }
+     ]
     },
     {
      "a": "AZAAD / PERSIAN / ELIAS MAZIAN",
@@ -45368,7 +45420,21 @@
        "u": "https://sounds.redeyerecords.co.uk/190118.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A",
+       "n": "Inner City, Kevin Saunderson - Pennies From Heaven (Roland Leesker"
+      },
+      {
+       "s": "",
+       "n": "remix)"
+      },
+      {
+       "s": "",
+       "n": "v - Inner City, Kevin Saunderson - Pennies From Heaven (Acapella Tool)"
+      }
+     ]
     },
     {
      "a": "JKriv",
@@ -45433,7 +45499,25 @@
        "u": "https://sounds.redeyerecords.co.uk/189384.mp3"
       }
      ],
-     "st": "out"
+     "st": "out",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "prodige"
+      },
+      {
+       "s": "A2",
+       "n": "crapules"
+      },
+      {
+       "s": "B1",
+       "n": "you Don't Stop"
+      },
+      {
+       "s": "B2",
+       "n": "dress Code"
+      }
+     ]
     },
     {
      "a": "Kepler",
@@ -45558,7 +45642,25 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 15 Nov"
+     "d": "Exp. 15 Nov",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Agent Of Liberty (Original Vocal Mix)"
+      },
+      {
+       "s": "2",
+       "n": "Agent Of Liberty (Disco Computer Remix)"
+      },
+      {
+       "s": "3",
+       "n": "Agent Of Liberty (A.p. Mono DJ Edit)"
+      },
+      {
+       "s": "4",
+       "n": "Agent Of Liberty (Original Instrumental)"
+      }
+     ]
     },
     {
      "a": "Mousse T.",
@@ -45595,7 +45697,37 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 23 Oct"
+     "d": "Exp. 23 Oct",
+     "tl": [
+      {
+       "s": "",
+       "n": "Satori"
+      },
+      {
+       "s": "",
+       "n": "a2"
+      },
+      {
+       "s": "",
+       "n": "Super-Ego"
+      },
+      {
+       "s": "",
+       "n": "b1"
+      },
+      {
+       "s": "",
+       "n": "Viaje A Lxtlan"
+      },
+      {
+       "s": "",
+       "n": "b2"
+      },
+      {
+       "s": "",
+       "n": "La Muerte"
+      }
+     ]
     },
     {
      "a": "Noa Noa",
@@ -45688,7 +45820,25 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 6 Nov"
+     "d": "Exp. 6 Nov",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Planet Interface"
+      },
+      {
+       "s": "2",
+       "n": "Televise Improvise"
+      },
+      {
+       "s": "3",
+       "n": "Accepting"
+      },
+      {
+       "s": "4",
+       "n": "Sei Mai Nur Lieb"
+      }
+     ]
     },
     {
      "a": "Pocket Club",
@@ -45902,7 +46052,29 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 23 Oct"
+     "d": "Exp. 23 Oct",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Palace Palace 5:39"
+      },
+      {
+       "s": "A2",
+       "n": "Hypno Dance 4:44"
+      },
+      {
+       "s": "A3",
+       "n": "Popeden 4:29"
+      },
+      {
+       "s": "B1",
+       "n": "Roll Jacky"
+      },
+      {
+       "s": "",
+       "n": "roll 4:42 B2 Ad Libitum 80 5:08 B3 Dancin' Machine 5:10"
+      }
+     ]
     },
     {
      "a": "Wonderland Avenue",
@@ -45978,7 +46150,25 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 23 Oct"
+     "d": "Exp. 23 Oct",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Tini - Perrax En La Calle"
+      },
+      {
+       "s": "2",
+       "n": "Mogwaa - Ionic"
+      },
+      {
+       "s": "3",
+       "n": "Desirée Falessi - Scandal"
+      },
+      {
+       "s": "4",
+       "n": "Monile - Flex"
+      }
+     ]
     },
     {
      "a": "Benjamin Damage",
@@ -46022,7 +46212,41 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 20 Nov"
+     "d": "Exp. 20 Nov",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Hold On Strong 6:32"
+      },
+      {
+       "s": "A2",
+       "n": "Dopa 5:36"
+      },
+      {
+       "s": "B1",
+       "n": "What The Heck Them Expect 6:12"
+      },
+      {
+       "s": "B2",
+       "n": "Working Every Day 6:22"
+      },
+      {
+       "s": "C1",
+       "n": "Rock Of Creation 6:07"
+      },
+      {
+       "s": "C2",
+       "n": "Little Darling 6:40"
+      },
+      {
+       "s": "D1",
+       "n": "Under Cover 6:17"
+      },
+      {
+       "s": "D2",
+       "n": "Peace And Love 6:15"
+      }
+     ]
     },
     {
      "a": "Efdemin",
@@ -46087,7 +46311,25 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 23 Oct"
+     "d": "Exp. 23 Oct",
+     "tl": [
+      {
+       "s": "01",
+       "n": "Sharp"
+      },
+      {
+       "s": "02",
+       "n": "Impulse"
+      },
+      {
+       "s": "03",
+       "n": "Bright Sound"
+      },
+      {
+       "s": "04",
+       "n": "Rave Harvey"
+      }
+     ]
     },
     {
      "a": "Kasra V",
@@ -46191,7 +46433,25 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 23 Oct"
+     "d": "Exp. 23 Oct",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "I"
+      },
+      {
+       "s": "A2",
+       "n": "Ii"
+      },
+      {
+       "s": "B1",
+       "n": "Iii"
+      },
+      {
+       "s": "B2",
+       "n": "Iv"
+      }
+     ]
     },
     {
      "a": "Santtu XL",
@@ -46256,7 +46516,25 @@
        "u": "https://sounds.redeyerecords.co.uk/3201074.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "2562 - Overcome"
+      },
+      {
+       "s": "A2",
+       "n": "Yushh - Ghost Of What"
+      },
+      {
+       "s": "B1",
+       "n": "Appleblim - Ghost Coast"
+      },
+      {
+       "s": "B2",
+       "n": "Flora Yin Wong – Virga"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -46277,7 +46555,25 @@
        "u": "https://sounds.redeyerecords.co.uk/3201075.mp3"
       }
      ],
-     "st": "out"
+     "st": "out",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Kahn & Neek - Mo4on Light"
+      },
+      {
+       "s": "A2",
+       "n": "Sicaria - Rhassoul"
+      },
+      {
+       "s": "B1",
+       "n": "Gemmy - Domino Effect"
+      },
+      {
+       "s": "B2",
+       "n": "Pinch & Neffa-T -This Is This Isn’t"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -46298,7 +46594,25 @@
        "u": "https://sounds.redeyerecords.co.uk/3201076.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Shed - Scapes"
+      },
+      {
+       "s": "A2",
+       "n": "Sophia Loizou - Revenant"
+      },
+      {
+       "s": "B1",
+       "n": "J.sparrow - Genesys"
+      },
+      {
+       "s": "B2",
+       "n": "Cor4cal - Ram"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -46319,7 +46633,25 @@
        "u": "https://sounds.redeyerecords.co.uk/3201077.mp3"
       }
      ],
-     "st": "in"
+     "st": "in",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Ipman - Xenohypnos4c Mind Control"
+      },
+      {
+       "s": "A2",
+       "n": "Distance - Heresy"
+      },
+      {
+       "s": "B1",
+       "n": "Rsd - Roll Off"
+      },
+      {
+       "s": "B2",
+       "n": "Coki - Angel Of Death"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -53700,7 +54032,23 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/diogo-healiocentric-ep-ft-dj-nature-remix-heion002/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/HEION002-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Healiocentric",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/HEION002_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Traums",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/HEION002_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Healiocentric (DJ Nature remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/HEION002_3.mp3"
+      }
+     ]
     },
     {
      "a": "DJ Vandel & Benedetti",
@@ -53714,7 +54062,18 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/dj-vandel-benedetti-baby-viche-ep-cr43a003/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/CR43A003-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Vicheventura",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CR43A003_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Coco Sensación",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CR43A003_2.mp3"
+      }
+     ]
     },
     {
      "a": "Fausto",
@@ -53728,7 +54087,23 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/fausto-phda-ep-carpetcircuit05/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/CARPETCIRCUIT05-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Moonland",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPETCIRCUIT05_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Nacho",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPETCIRCUIT05_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Nirvana",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPETCIRCUIT05_3.mp3"
+      }
+     ]
     },
     {
      "a": "Infinity Plus One",
@@ -53742,7 +54117,28 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/infinity-plus-one-strong-together-ep-carpetfriends01/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/CARPETFRIENDS01-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "I Broke Your Solar System",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET-FRIENDS01-695a79_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "I Broke Your Solar System (Pluto Rock’s mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET-FRIENDS01-695a79_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Forward Together",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET-FRIENDS01-695a79_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "In The Streets",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET-FRIENDS01-695a79_4.mp3"
+      }
+     ]
     },
     {
      "a": "Ramos",
@@ -53756,7 +54152,23 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/ramos-distant-universe-bloop029/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/BLOOP029-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Cydonia",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOOP029_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Astrae",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOOP029_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Vega",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOOP029_3.mp3"
+      }
+     ]
     },
     {
      "a": "Paul Cut, Flabaire, Sara Wual, Mayan",
@@ -53770,7 +54182,28 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/sara-wual-flabaire-paul-cut-mayan-transnationality-ep-tem001/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/TEM001-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Sara Wual - Constructive Interference",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEM001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Flabaire - No More Drama",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEM001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Paul Cut - Fantasy",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEM001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Mayan - Liquid Sun",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TEM001_4.mp3"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -53784,7 +54217,33 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/various-artists-silky-beats-006-silkybeats006/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/SILKYBEATS006-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Boss Priester - Give Me My Playstation",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SILKYBEATS006_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Dingo - Brief",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SILKYBEATS006_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Lewis - Listen M8",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SILKYBEATS006_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Pete Melba - On The Beach",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SILKYBEATS006_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Ben Diggins - Wodder",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SILKYBEATS006_5.mp3"
+      }
+     ]
     },
     {
      "a": "Saramago",
@@ -53798,7 +54257,28 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/saramago-the-blackbox-ep-carpet14/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/02/CARPET14-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Flowing",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET14_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Inner Peace",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET14_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "The Blackbox",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET14_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Smile",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CARPET14_4.mp3"
+      }
+     ]
     },
     {
      "a": "Andy MARTIN, Gavsborg",
@@ -53812,7 +54292,28 @@
      "first_seen": "2026-10-16",
      "url": "https://yoyaku.io/release/andy-martin-ft-gavsborg-plato-caves-remixes-ma01rmx/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/MA01RMX-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Platos & Caves",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MA01RMX_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Plato & Dubs (Nit Yardman Version)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MA01RMX_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Plato & Caves (Dub War Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MA01RMX_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Plato & Caves (Mad Magnetism Version)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MA01RMX_4.mp3"
+      }
+     ]
     }
    ],
    "country": "FR"
@@ -54668,8 +55169,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a61f21d5d59e-6aabb436a1b29-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "The Experiment",
        "s": "",
+       "n": "The Experiment",
        "u": ""
       }
      ],
@@ -77965,11 +78466,6 @@
        "s": "A1",
        "n": "Ahu - \"The Code\"",
        "u": "https://www.juno.co.uk/MP3/SF1185810-01-01-01.mp3"
-      },
-      {
-       "s": "B1",
-       "n": "Sohrab - \"Orange Sky\"",
-       "u": "https://www.juno.co.uk/MP3/SF1185810-01-02-01.mp3"
       }
      ],
      "st": "pre",
@@ -81722,19 +82218,19 @@
      "cover": "https://www.deejay.de/images/l/6/0/1260460.jpg",
      "tr": [
       {
-       "s": "A1",
+       "s": "",
        "n": "Healiocentric",
-       "page": "https://www.deejay.de/Diogo_Healiocentric_EP_ft_DJ_Nature_remix_HEION002_Vinyl__1260460"
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/HEION002_1.mp3"
       },
       {
-       "s": "A2",
+       "s": "",
        "n": "Traums",
-       "page": "https://www.deejay.de/Diogo_Healiocentric_EP_ft_DJ_Nature_remix_HEION002_Vinyl__1260460"
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/HEION002_2.mp3"
       },
       {
-       "s": "B1",
+       "s": "",
        "n": "Healiocentric (DJ Nature remix)",
-       "page": "https://www.deejay.de/Diogo_Healiocentric_EP_ft_DJ_Nature_remix_HEION002_Vinyl__1260460"
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/HEION002_3.mp3"
       }
      ],
      "d": "05.10.2026",
@@ -85273,9 +85769,24 @@
      "cover": "https://www.deejay.de/images/l/6/0/1263860.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192239.mp3"
+       "s": "A1",
+       "n": "Weeks & Weeks",
+       "u": "https://media.hardwax.com/audio/89619_A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Marlboro Summer",
+       "u": "https://media.hardwax.com/audio/89619_A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Alloverme",
+       "u": "https://media.hardwax.com/audio/89619_B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "List of Words",
+       "u": "https://media.hardwax.com/audio/89619_B2.mp3"
       }
      ],
      "d": "16.10.2026",
