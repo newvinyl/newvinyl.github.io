@@ -1,1 +1,28 @@
-{"date": "2026-10-09", "key": "translate|misdirection", "fx": "dive", "note": "Translate - Misdirection (Hardwax), camera dive into the cover itself"}
+{
+ "date": "2026-10-17",
+ "key": "paul johnson|get get down",
+ "detail": {
+  "motion": "figure",
+  "box": [
+   0.59,
+   0.39,
+   0.79,
+   0.68
+  ],
+  "path": [
+   [
+    0.63,
+    0.626
+   ],
+   [
+    0.693,
+    0.685
+   ],
+   [
+    0.768,
+    0.75
+   ]
+  ],
+  "note": "stick figure on the stairs"
+ }
+}

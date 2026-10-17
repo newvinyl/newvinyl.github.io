@@ -15,7 +15,7 @@ import metamorph
 def log(*a):
     print(*a, file=sys.stderr, flush=True)
 import numpy as np, cv2
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageFilter, ImageDraw, ImageFont
 
 W, H, FPS, SR = 1080, 1920, 30, 44100
 LW, LH = 216, 384                      # background is computed small and scaled up (smooth + fast)
@@ -652,6 +652,36 @@ def reel_single(rel, aud, seed, out, poster, kw=None, cmode=None, avoid=None, du
         return fades(img, t, dur)
     encode(fr, nfr, aud, out, poster, int(1.2 * FPS))
     return look.describe()
+
+def reel_detail(rel, aud, detail, out, poster, dur=20, seed=1):
+    """Calm reel: the cover stands still, only one detail moves on the beat (tools/detail_fx.py).
+    Background = the cover itself, blurred and drifting very slowly."""
+    import detail_fx
+    nfr = dur * FPS
+    aud = aud[:dur * SR]
+    lev, kick = analyse(aud, nfr)
+    im, cov = prep_cover(rel["cover"])
+    D = detail_fx.Detail(np.ascontiguousarray(cov), detail, aud, SR, dur, seed=seed, log=log)
+    big = Image.fromarray(cov).resize((H, H), Image.LANCZOS).filter(ImageFilter.GaussianBlur(40))
+    big = np.asarray(big).astype(np.float32) * 0.82
+    big = big.astype(np.uint8)
+    col = rel.get("col") or YEL
+    txl, bars = text_layer_flat(rel, col)
+    def fr(f):
+        t = f / FPS
+        ox = int((H - W) / 2 + 40 * math.sin(t * 0.25))
+        img = np.ascontiguousarray(big[:, ox:ox + W].copy())
+        img[COV_Y:COV_Y + COV_S] = D.frame(t)
+        img = comp(img, txl)
+        img = np.ascontiguousarray(img)
+        for b in range(5):
+            ph = math.sin(f * .45 + b * 1.7) * .5 + .5
+            h = int(6 + 26 * lev[f] * (.4 + .6 * ph))
+            x = bars[0] - (5 - b) * 11
+            img[bars[1] - h:bars[1], x:x + 7] = col
+        return fades(img, t, dur)
+    encode(fr, nfr, aud, out, poster, int(1.5 * FPS))
+    return "detail: %s%s" % (detail.get("motion"), (" (%s)" % detail["note"]) if detail.get("note") else "")
 
 def reel_triple(rels, auds, offs, seeds, out, poster, seg=15.0, xf=2.0, kws=None, cmodes=None, avoid=None):
     """offs: start second inside each preview"""

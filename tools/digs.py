@@ -929,17 +929,33 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     fp = flat_p(R, rc["cover"], sch, "TODAY'S DIG")
     rel = dict(reel_rel(R, rc["cover"]), col=SCHEMES[sch]["text"], kicker=R["shop_full"].upper(), t=R["t"], meta=fp["meta"],
                track=R["tname"], shop=R["shop_full"])
-    avoid = recent_avoid(history)
-    log("avoid (recent looks):", sorted(avoid))
-    look = reelfx.reel_single(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter,
-                              avoid=avoid, cmode=getattr(a, "want_fx", None)) + " · type " + sch
+    rcover = os.path.join(a.work, "reel-cover-%s.jpg" % ymd)          # the clean cover, for choosing a detail to animate
+    rc["cover"].convert("RGB").resize((1080, 1080), Image.LANCZOS).save(rcover, quality=92)
+    det = getattr(a, "want_detail", None)
+    look = None
+    if det and getattr(a, "want_key", None) == R["key"]:
+        try:
+            look = reelfx.reel_detail(rel, aud, det, rpath, rposter) + " · type " + sch
+        except Exception as e:
+            log("detail reel failed, falling back to effects:", e)
+            det = None
+    else:
+        det = None
+    if look is None:
+        avoid = recent_avoid(history)
+        log("avoid (recent looks):", sorted(avoid))
+        look = reelfx.reel_single(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter,
+                                  avoid=avoid, cmode=getattr(a, "want_fx", None)) + " · type " + sch
     rcap = reel_caption(R, rc["arr"])
     sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
                   "" if R["strict"] else "Note: already listed in another shop before yesterday.")
     log("reel", R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", look)
-    return {"files": [rpath, rposter], "cap": rcap, "section": sec,
-            "entry": {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "look": look, "v": REEL_V}}
+    entry = {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "look": look, "v": REEL_V,
+             "cover": base + os.path.basename(rcover)}
+    if det:
+        entry["detail"] = json.dumps(det, sort_keys=True)
+    return {"files": [rpath, rposter, rcover], "cap": rcap, "section": sec, "entry": entry}
 
 def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
@@ -987,6 +1003,7 @@ def main():
     a.want_fam = reel_request(a.date or data_day).get("family")
     a.want_fx = reel_request(a.date or data_day).get("fx")
     a.want_key = reel_request(a.date or data_day).get("key")
+    a.want_detail = reel_request(a.date or data_day).get("detail")
     if a.want_fam:
         log("reel wish:", a.want_fam)
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
@@ -995,6 +1012,9 @@ def main():
     ymd = day.replace("-", "")[2:]
     hist_p = os.path.join(OUT, "history.json")
     history = json.load(open(hist_p, encoding="utf-8")) if os.path.exists(hist_p) else []
+    dsig = json.dumps(a.want_detail, sort_keys=True) if a.want_detail else None
+    if dsig and history and history[0]["date"] == day and (history[0].get("reel") or {}).get("detail") != dsig:
+        history[0].setdefault("reel", {})["v"] = -1                       # detail wish for today's reel: render it again
     if not a.force and history and history[0]["date"] == day and (history[0].get("reel") or {}).get("v") == REEL_V \
             and history[0].get("dv") == DIGS_V:
         log("digs + reel for", day, "already done")
