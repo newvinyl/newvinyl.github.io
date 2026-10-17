@@ -25,9 +25,14 @@
    "key": "paul johnson|get get down",
    "title": "Paul Johnson – Get Get Down",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261017.mp4",
-   "look": "organic cover · background continue · alive: breathe+sway+bloom+glint · melt: dive · type BK-G",
-   "v": 18
-  }
+   "look": "detail: figure (stick figure on the stairs) · type BK-G",
+   "v": 18,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261017.jpg",
+   "detail": "{\"box\": [0.59, 0.39, 0.79, 0.68], \"motion\": \"figure\", \"note\": \"stick figure on the stairs\", \"path\": [[0.63, 0.626], [0.693, 0.685], [0.768, 0.75]]}"
+  },
+  "reel_tried": [
+   "paul johnson|get get down"
+  ]
  },
  {
   "date": "2026-10-16",
