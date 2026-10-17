@@ -196,7 +196,48 @@ page file from step 1 (unchanged), and files = {"releases.json": "<path to your 
 releases.json>"}. Do not pass capabilities. If the publish reports a conflict, re-read and merge,
 then publish again.
 
+## 9b. Bring one detail of today's reel cover to life
+
+After the push, the GitHub Action "Today's Digs" renders today's single reel (~5–10 min) with the usual moving-cover
+effects, and uploads the clean cover. Then you choose ONE detail of that cover and the reel is rendered again: the cover
+stands still, only that detail moves on the beat of the preview.
+
+1. Wait for it: every 60 s `git pull --rebase origin main` and read 92h6fy/history.json; go on when entry [0] has
+   today's "date" and its "reel" has a "cover" URL (give up after 25 min and say so in the final message). If that
+   reel already has a "detail", skip this step.
+2. Download the cover: `curl -sSL -o /tmp/reelcover.jpg "<reel.cover>"` (1080 × 1080) and look at it with the Read tool.
+3. Pick the one detail that would be the most fun to see moving, and its motion:
+   - "figure" – a pictogram / stick figure / simple silhouette person: it is redrawn as a rig that walks along
+     footholds and dances on the beat. Give "path": footholds from where it stands to where it should walk
+     (stairs: one point per step tread, at the middle of the tread; flat ground: start and end point). The figure
+     must have room above the path (it is as tall as now) – keep it away from titles and text.
+   - "hop" – a small, separate object or creature (an invader, a ball, a fruit, a little logo, a car): jumps on the beat.
+   - "pulse" – a symbol, heart, sun, star, logo, a round shape: swells on the beat.
+   - "spin" – anything round that may turn: a record, a label, a wheel, a sun with rays, a clock (33⅓ rpm).
+     The box must be the circle itself; give "pivot" if the centre is not the box centre (e.g. the spindle hole).
+   - "sway" – a plant, a tree, a flame, a standing person in a photo, a hanging lamp: swings around its base
+     (give "pivot" = the point it is anchored at).
+   - "float" – a cloud, a balloon, a planet, a fish, an object in the air: drifts slowly.
+   - "wobble" – a jelly-like or soft shape, a blob, a drop: squashes on the beat.
+   - "eyes" – a face with clearly visible eyes: the eyes look around and blink. Instead of "box" give "eyes":
+     [{"cx","cy","a","c","ix","iy","r"}] per eye (centre, half width, half height of the eye opening, iris centre
+     and radius, all 0..1) – see tools/eyes.py.
+   Do NOT animate: whole photos of real people's bodies (looks creepy), text/titles, tiny details (< 4 % of the cover),
+   things that overlap a lot with other things. If nothing fits, skip this step – the effects reel stays.
+4. Coordinates: cover coordinates 0..1 (x from the left, y from the top). "box" = [x0, y0, x1, y1], a frame around the
+   whole detail with a little margin (~3 % of the cover) but without other objects or text in it – the detail is cut
+   out by colour inside the box. Check before you commit: crop the box out of the cover with Python and look at the
+   crop; it must show the whole detail and as little else as possible.
+5. Write 92h6fy/reel_request.json (replace the file):
+   {"date": "<today>", "key": "<reel.key from history.json>", "detail": {"motion": "...", "box": [...], (pivot/path/eyes),
+   "note": "<what it is, in English, a few words>"}}
+   Commit ("Reel detail <today>: <note>") and push. The Action renders the reel again with the same record (~5 min).
+   If it cannot cut the detail out, it keeps the effects reel – no harm done.
+   Example (Paul Johnson – Get Get Down, a pictogram walking down stairs):
+   {"motion": "figure", "box": [0.59, 0.39, 0.79, 0.68], "path": [[0.63, 0.626], [0.693, 0.685], [0.768, 0.75]],
+    "note": "stick figure on the stairs"}
+
 ## 10. Final message (German)
 
-One short line: new releases per shop, how many items became playable, whether fx was updated,
+One short line: new releases per shop, which reel detail was animated (or why none), how many items became playable, whether fx was updated,
 whether the website push succeeded (verified), and which shops were skipped and why.
