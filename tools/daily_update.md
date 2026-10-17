@@ -206,11 +206,18 @@ stands still, only that detail moves on the beat of the preview.
    today's "date" and its "reel" has a "cover" URL (give up after 25 min and say so in the final message). If that
    reel already has a "detail", skip this step.
 2. Download the cover: `curl -sSL -o /tmp/reelcover.jpg "<reel.cover>"` (1080 × 1080) and look at it with the Read tool.
-3. Pick the one detail that would be the most fun to see moving, and its motion:
+3. Pick the one detail that would be the most fun to see moving, and its motion. Read the release title (and the
+   track name) first and let the animation play with it whenever it fits: "Get Down" → the figure only walks down
+   ("loop": "down"); "Rise" / "Up" / "Higher" → something floats up or a figure walks up; "Spin" / "Turn" / "Circles"
+   → spin; "Jump" / "Bounce" → hop; "Heart" / "Pulse" / "Beat" → pulse; "Drift" / "Float" / "Cloud" → float;
+   "Sway" / "Wave" / "Tree" → sway. Keep it smooth and on the beat – no hectic moves.
    - "figure" – a pictogram / stick figure / simple silhouette person: it is redrawn as a rig that walks along
      footholds and dances on the beat. Give "path": footholds from where it stands to where it should walk
      (stairs: one point per step tread, at the middle of the tread; flat ground: start and end point). The figure
-     must have room above the path (it is as tall as now) – keep it away from titles and text.
+     must have room above the path (it is as tall as now) – keep it away from titles and text. Options:
+     "loop": "back" (walk there and back, default) or "down" (only forwards, again and again: fades out at the end,
+     reappears at the start – use it when the title is about going down/forward/away); "energy": "calm" (smooth
+     groove, default – use this) or "wild" (big dance moves, only for clearly wild party titles).
    - "hop" – a small, separate object or creature (an invader, a ball, a fruit, a little logo, a car): jumps on the beat.
    - "pulse" – a symbol, heart, sun, star, logo, a round shape: swells on the beat.
    - "spin" – anything round that may turn: a record, a label, a wheel, a sun with rays, a clock (33⅓ rpm).
@@ -233,9 +240,9 @@ stands still, only that detail moves on the beat of the preview.
    "note": "<what it is, in English, a few words>"}}
    Commit ("Reel detail <today>: <note>") and push. The Action renders the reel again with the same record (~5 min).
    If it cannot cut the detail out, it keeps the effects reel – no harm done.
-   Example (Paul Johnson – Get Get Down, a pictogram walking down stairs):
-   {"motion": "figure", "box": [0.59, 0.39, 0.79, 0.68], "path": [[0.63, 0.626], [0.693, 0.685], [0.768, 0.75]],
-    "note": "stick figure on the stairs"}
+   Example (Paul Johnson – Get Get Down, a pictogram on stairs → it only walks down, down, down):
+   {"motion": "figure", "box": [0.59, 0.39, 0.79, 0.68], "path": [[0.63, 0.626], [0.693, 0.685], [0.768, 0.75],
+    [0.80, 0.75]], "loop": "down", "energy": "calm", "note": "stick figure walking down the stairs (Get Get Down)"}
 
 ## 10. Final message (German)
 

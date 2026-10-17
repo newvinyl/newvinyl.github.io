@@ -7,6 +7,9 @@ The daily update looks at the cover and writes a spec into 92h6fy/reel_request.j
    "pivot": [x, y]            – sway/spin centre (optional; sway: bottom centre, spin: box centre)
    "path":  [[x, y], ...]     – figure only: footholds from where it stands to where it goes (stairs: one per step;
                                  flat ground: start and end are enough); snapped to the surface below
+   "loop":  "back" | "down"   – figure only: walk the path and back (default) or only forwards, over and over
+                                 (fades out at the end, reappears at the start) – e.g. for a title like "Get Down"
+   "energy": "calm" | "wild"  – figure only: smooth groove (default) or big dance moves
    "eyes":  [...]             – eyes only: spec of tools/eyes.py
    "note":  "what it is"}     – free text, shown in the log
 Everything moves on the beat of the preview (tempo and phase are measured from the audio).
@@ -185,9 +188,21 @@ class Figure:
                 holds.append((q[0] + (p[0] - q[0]) * i / n, q[1] + (p[1] - q[1]) * i / n))
         self.holds = holds
         n = len(holds) - 1
+        self.energy = spec.get("energy", "calm")
+        loop = spec.get("loop", "back")
         self.plan = [("stand", 0, 2)]
-        while sum(p[-1] for p in self.plan) < dur / beat + 4:
-            self.plan += [("walk", 1, n), ("dance", n, 8), ("walk", -1, n), ("party", 0, 8)]
+        k = 0
+        while sum(p[-1] for p in self.plan) < dur / beat + 8:
+            if loop in ("down", "forward", "up"):
+                # only ever in one direction: walk the path, fade out at its end, reappear at the start
+                self.plan += [("walk", 1, n)]
+                if k % 2 == 1:
+                    self.plan += [("groove", n, 4)]
+                self.plan += [("fade", n, 1), ("appear", 0, 1)]
+            else:
+                self.plan += [("walk", 1, n), ("groove" if self.energy == "calm" else "dance", n, 8),
+                              ("walk", -1, n), ("groove" if self.energy == "calm" else "party", 0, 8)]
+            k += 1
 
     def _snap(self, bg, p, Hf):
         """foothold onto the surface: nearest strong horizontal edge within ±12 % of the figure height"""
@@ -220,6 +235,26 @@ class Figure:
             acc += item[2]
         name = seg[0]
         H = self.holds
+        self.alpha = 1.0
+        if name in ("fade", "appear"):
+            i = len(H) - 1 if name == "fade" else 0
+            fx, fy = H[i]
+            k = self.k
+            self.alpha = 1 - _ease(min(1, sb)) if name == "fade" else _ease(min(1, sb))
+            facing = 1 if H[-1][0] >= H[0][0] else -1
+            L, R = (fx - 12 * k, fy), (fx + 12 * k, fy)
+            hip = (fx, fy - self._hip_h(0.94) + 2 * k * bounce)
+            return hip, L, R, (math.radians(95), math.radians(85)), facing, 0.0
+        if name == "groove":                               # calm: knees on the beat, a little shoulder sway, feet stay
+            fx, fy = H[seg[1]] if seg[1] < len(H) else H[-1]
+            k = self.k
+            soft = 0.5 + 0.5 * math.cos(bp * 2 * math.pi)                       # smooth, no snap
+            sway = math.sin((b - self.ph) * math.pi / 2)                       # one sway over two beats
+            L, R = (fx - 18 * k, fy), (fx + 18 * k, fy)
+            hip = (fx + 5 * k * sway, fy - self._hip_h(0.92) + 6 * k * soft)
+            facing = 1 if H[-1][0] >= H[0][0] else -1
+            arms = (math.radians(100 + 14 * sway), math.radians(80 + 14 * sway))
+            return hip, L, R, arms, facing, 0.04 * sway
         if name in ("stand", "dance", "party"):
             i = 0 if name in ("stand", "party") else len(H) - 1
             fx, fy = H[i]
@@ -254,14 +289,15 @@ class Figure:
         (ax, ay), (bx, by) = H[ai], H[bi]
         facing = 1 if bx >= ax else -1
         upstairs = by < ay - 4
-        lift = math.sin(f * math.pi) * (36 if upstairs else 22) * self.k
+        lift = math.sin(f * math.pi) * ((36 if upstairs else 22) if self.energy != "calm" else (28 if upstairs else 16)) * self.k
         swing = (ax + (bx - ax) * f, ay + (by - ay) * f - lift)
         stance = (ax, ay)
         L, R = (swing, stance) if i % 2 == 0 else (stance, swing)
         hip = ((ax + swing[0]) / 2 + 10 * self.k * facing,
                min(ay, ay + (by - ay) * f) - self._hip_h(0.9) + 5 * self.k * math.sin(f * math.pi))
         s = math.sin(kk * math.pi)
-        return hip, L, R, (math.radians(90 + 38 * s), math.radians(90 - 38 * s)), facing, 0.08 * facing
+        amp = 38 if self.energy != "calm" else 24
+        return hip, L, R, (math.radians(90 + amp * s), math.radians(90 - amp * s)), facing, (0.08 if self.energy != "calm" else 0.05) * facing
 
     def draw(self, img, t, ss=2):
         from PIL import Image, ImageDraw
@@ -289,7 +325,7 @@ class Figure:
         limb([hip, neck], self.w)
         r = self.head_r * ss
         d.ellipse([P(head)[0] - r, P(head)[1] - r, P(head)[0] + r, P(head)[1] + r], fill=255)
-        m = np.asarray(lay.resize((S, S), Image.LANCZOS)).astype(np.float32)[..., None] / 255
+        m = np.asarray(lay.resize((S, S), Image.LANCZOS)).astype(np.float32)[..., None] / 255 * getattr(self, "alpha", 1.0)
         return (img * (1 - m) + np.array(self.col, np.float32) * m).astype(np.uint8)
 
 # ---------------------------------------------------------------- the detail

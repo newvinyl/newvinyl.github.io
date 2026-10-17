@@ -21,8 +21,14 @@
    [
     0.768,
     0.75
+   ],
+   [
+    0.8,
+    0.75
    ]
   ],
-  "note": "stick figure on the stairs"
+  "loop": "down",
+  "energy": "calm",
+  "note": "stick figure walking down the stairs (Get Get Down)"
  }
 }
