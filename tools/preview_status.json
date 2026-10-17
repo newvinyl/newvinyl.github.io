@@ -1,10 +1,10 @@
 {
- "date": "2026-10-16",
+ "date": "2026-10-17",
  "total": {
-  "records": 2449,
-  "tracks": 1816,
-  "clip": 463,
-  "none": 170
+  "records": 2594,
+  "tracks": 1913,
+  "clip": 509,
+  "none": 172
  },
  "shops": {
   "Hardwax": {
@@ -20,58 +20,58 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 13,
+   "records": 14,
    "tracks": 9,
-   "clip": 1,
+   "clip": 2,
    "none": 3
   },
   "Clone": {
-   "records": 224,
-   "tracks": 223,
+   "records": 264,
+   "tracks": 262,
    "clip": 0,
-   "none": 1
+   "none": 2
   },
   "Phonica": {
    "records": 213,
-   "tracks": 141,
-   "clip": 14,
-   "none": 58
+   "tracks": 143,
+   "clip": 15,
+   "none": 55
   },
   "Redeye Records": {
-   "records": 634,
-   "tracks": 171,
-   "clip": 440,
-   "none": 23
+   "records": 690,
+   "tracks": 183,
+   "clip": 483,
+   "none": 24
   },
   "Yoyaku": {
-   "records": 225,
-   "tracks": 224,
+   "records": 234,
+   "tracks": 233,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 96,
-   "tracks": 81,
+   "records": 98,
+   "tracks": 82,
    "clip": 0,
-   "none": 15
+   "none": 16
   },
   "Juno Records": {
-   "records": 424,
-   "tracks": 414,
+   "records": 427,
+   "tracks": 417,
    "clip": 0,
    "none": 10
   },
   "Deejay.de": {
-   "records": 134,
-   "tracks": 83,
-   "clip": 5,
-   "none": 46
+   "records": 151,
+   "tracks": 98,
+   "clip": 6,
+   "none": 47
   },
   "Vinyl Underground": {
-   "records": 78,
-   "tracks": 76,
+   "records": 88,
+   "tracks": 85,
    "clip": 0,
-   "none": 2
+   "none": 3
   },
   "Sound Metaphors": {
    "records": 18,
@@ -86,14 +86,14 @@
    "none": 8
   },
   "Syncrophone": {
-   "records": 28,
-   "tracks": 28,
+   "records": 34,
+   "tracks": 34,
    "clip": 0,
    "none": 0
   },
   "Betino's": {
-   "records": 11,
-   "tracks": 11,
+   "records": 12,
+   "tracks": 12,
    "clip": 0,
    "none": 0
   },
@@ -110,12 +110,16 @@
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 12,
- "clips_verified": 6909,
- "not_reachable": {},
+ "pages_checked": 549,
+ "new_from_shop_pages": 10,
+ "copied_from_other_shop": 6,
+ "broken_clips_removed": 42,
+ "clips_verified": 7189,
+ "not_reachable": {
+  "Phonica: http307": 72,
+  "Redeye Records: failed:UnicodeEncodeError": 22,
+  "Redeye Records: http403": 2
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 214,
@@ -123,17 +127,17 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 362,
+   "clips": 395,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 932,
-   "failed": 932,
+   "clips": 1082,
+   "failed": 4,
    "sample": [
-    "https://clone.nl/platen/mp3/37267/1%20Life%20Out%20Of%20Balance.mp3",
-    "https://clone.nl/platen/mp3/37267/2%20It%27s%20You.mp3",
-    "https://clone.nl/platen/mp3/37267/3%20Out%20From%20Under.mp3"
+    "https://clone.nl/platen/mp3/85077/A1.mp3",
+    "https://clone.nl/platen/mp3/85077/A2.mp3",
+    "https://clone.nl/platen/mp3/85077/B1.mp3"
    ]
   },
   "creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com": {
@@ -152,17 +156,17 @@
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 413,
+   "clips": 417,
    "failed": 0,
    "sample": []
   },
   "play.syncrophone.fr": {
-   "clips": 121,
+   "clips": 139,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 52,
+   "clips": 53,
    "failed": 12,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
@@ -171,7 +175,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 438,
+   "clips": 484,
    "failed": 0,
    "sample": []
   },
@@ -181,8 +185,8 @@
    "sample": []
   },
   "www.betinos.com": {
-   "clips": 28,
-   "failed": 17,
+   "clips": 31,
+   "failed": 19,
    "sample": [
     "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
     "https://www.betinos.com/sites/default/files/Anything You Wantty.mp3",
@@ -190,12 +194,12 @@
    ]
   },
   "www.juno.co.uk": {
-   "clips": 2682,
+   "clips": 2693,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 606,
+   "clips": 620,
    "failed": 0,
    "sample": []
   },
@@ -206,7 +210,6 @@
   }
  },
  "unverifiable_hosts": [
-  "clone.nl",
   "www.betinos.com"
  ]
 }
