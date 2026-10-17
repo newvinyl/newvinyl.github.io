@@ -1,0 +1,75 @@
+{
+ "fetched": "2026-10-17T04:40Z",
+ "shops": [
+  {
+   "id": "vinylunderground",
+   "shop": "Vinyl Underground",
+   "where": "Northampton",
+   "country": "UK",
+   "cur": "£",
+   "file": "items/vinylunderground.json",
+   "items": 26,
+   "playable": 23
+  },
+  {
+   "id": "soundmetaphors",
+   "shop": "Sound Metaphors",
+   "where": "Berlin",
+   "country": "DE",
+   "cur": "€",
+   "file": "items/soundmetaphors.json",
+   "items": 18,
+   "playable": 13
+  },
+  {
+   "id": "discosparadiso",
+   "shop": "Discos Paradiso",
+   "where": "Barcelona",
+   "country": "ES",
+   "cur": "€",
+   "file": "items/discosparadiso.json",
+   "items": 35,
+   "playable": 15
+  },
+  {
+   "id": "syncrophone",
+   "shop": "Syncrophone",
+   "where": "Paris",
+   "country": "FR",
+   "cur": "€",
+   "file": "items/syncrophone.json",
+   "items": 22,
+   "playable": 22
+  },
+  {
+   "id": "betinos",
+   "shop": "Betino's",
+   "where": "Paris",
+   "country": "FR",
+   "cur": "€",
+   "file": "items/betinos.json",
+   "items": 11,
+   "playable": 10
+  },
+  {
+   "id": "bordello",
+   "shop": "Bordello A Parigi",
+   "where": "Amsterdam",
+   "country": "NL",
+   "cur": "€",
+   "file": "items/bordello.json",
+   "items": 39,
+   "playable": 39
+  },
+  {
+   "id": "diggers",
+   "shop": "Diggers.fr",
+   "where": "France",
+   "country": "FR",
+   "cur": "€",
+   "file": "items/diggers.json",
+   "items": 16,
+   "playable": 16
+  }
+ ]
+}
