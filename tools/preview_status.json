@@ -110,16 +110,12 @@
    "none": 0
   }
  },
- "pages_checked": 549,
- "new_from_shop_pages": 10,
- "copied_from_other_shop": 6,
- "broken_clips_removed": 42,
- "clips_verified": 7189,
- "not_reachable": {
-  "Phonica: http307": 72,
-  "Redeye Records: failed:UnicodeEncodeError": 22,
-  "Redeye Records: http403": 2
- },
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 16,
+ "clips_verified": 7186,
+ "not_reachable": {},
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 214,
@@ -175,7 +171,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 484,
+   "clips": 481,
    "failed": 0,
    "sample": []
   },
