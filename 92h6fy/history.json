@@ -25,10 +25,10 @@
    "key": "paul johnson|get get down",
    "title": "Paul Johnson – Get Get Down",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261017.mp4",
-   "look": "detail: figure (stick figure walking down the stairs (Get Get Down)) · type BK-G",
+   "look": "detail: figure (stick figure walks down the stairs, dances back up (Get Get Down)) · type BK-G",
    "v": 18,
    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261017.jpg",
-   "detail": "{\"box\": [0.59, 0.39, 0.79, 0.68], \"energy\": \"calm\", \"loop\": \"down\", \"motion\": \"figure\", \"note\": \"stick figure walking down the stairs (Get Get Down)\", \"path\": [[0.63, 0.626], [0.693, 0.685], [0.768, 0.75], [0.8, 0.75]]}"
+   "detail": "{\"box\": [0.59, 0.39, 0.79, 0.68], \"energy\": \"calm\", \"motion\": \"figure\", \"note\": \"stick figure walks down the stairs, dances back up (Get Get Down)\", \"path\": [[0.63, 0.626], [0.693, 0.685], [0.768, 0.75], [0.8, 0.75]]}"
   },
   "reel_tried": [
    "paul johnson|get get down"
