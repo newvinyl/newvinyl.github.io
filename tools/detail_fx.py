@@ -199,9 +199,11 @@ class Figure:
                 if k % 2 == 1:
                     self.plan += [("groove", n, 4)]
                 self.plan += [("fade", n, 1), ("appear", 0, 1)]
+            elif self.energy == "calm":
+                # walk there, groove, dance-walk back on the beat, groove a moment – then again
+                self.plan += [("walk", 1, n), ("groove", n, 4), ("dwalk", -1, n), ("groove", 0, 2)]
             else:
-                self.plan += [("walk", 1, n), ("groove" if self.energy == "calm" else "dance", n, 8),
-                              ("walk", -1, n), ("groove" if self.energy == "calm" else "party", 0, 8)]
+                self.plan += [("walk", 1, n), ("dance", n, 8), ("walk", -1, n), ("party", 0, 8)]
             k += 1
 
     def _snap(self, bg, p, Hf):
@@ -222,17 +224,30 @@ class Figure:
         return (self.L["thigh"] + self.L["shin"]) * f
 
     def pose(self, t):
-        B = self.beat
-        b = (t - self.ph) / B
-        bp = b - math.floor(b)
-        bounce = math.cos(bp * 2 * math.pi)
-        acc = -1.0
-        seg = self.plan[-1]; sb = 0
-        for item in self.plan:
+        """pose of the current plan segment, softly blended out of the previous one (no jumps between moves)"""
+        b = (t - self.ph) / self.beat
+        acc, idx, sb = -1.0, len(self.plan) - 1, 0.0
+        for i, item in enumerate(self.plan):
             if b < acc + item[2]:
-                seg, sb = item, b - acc
+                idx, sb = i, b - acc
                 break
             acc += item[2]
+        cur = self._seg_pose(self.plan[idx], sb, b)
+        a_cur = self.alpha
+        BL, BA = 0.45, 1.1                                                   # body blends quickly, arms slowly
+        if idx > 0 and sb < BA:
+            prev = self._seg_pose(self.plan[idx - 1], self.plan[idx - 1][2] - 1e-3, b)
+            w = _ease(min(1, sb / BL)); wa = _ease(min(1, sb / BA))
+            mix = lambda p, q: (p[0] + (q[0] - p[0]) * w, p[1] + (q[1] - p[1]) * w)
+            cur = (mix(prev[0], cur[0]), mix(prev[1], cur[1]), mix(prev[2], cur[2]),
+                   (prev[3][0] + (cur[3][0] - prev[3][0]) * wa, prev[3][1] + (cur[3][1] - prev[3][1]) * wa),
+                   cur[4], prev[5] + (cur[5] - prev[5]) * wa)
+        self.alpha = a_cur
+        return cur
+
+    def _seg_pose(self, seg, sb, b):
+        bp = b - math.floor(b)
+        bounce = math.cos(bp * 2 * math.pi)
         name = seg[0]
         H = self.holds
         self.alpha = 1.0
@@ -281,7 +296,8 @@ class Figure:
             arms = (math.radians(-35 - 25 * wv), math.radians(-145 - 25 * wv)) if int(sb) % 8 < 4 else \
                    (math.radians(-20 + 50 * wv), math.radians(-160 - 50 * wv))
             return hip, L, R, arms, 1 if math.cos(sb * math.pi / 4) > 0 else -1, 0.0
-        # walk: one foothold per beat
+        # walk: one foothold per beat ("dwalk": the same steps, danced – hips bounce, arms groove)
+        dance = name == "dwalk"
         d = seg[1]; n = seg[2]
         kk = min(sb, n - 1e-3); i = int(kk); f = _ease(kk - i)
         ai = i if d > 0 else n - i
@@ -290,12 +306,29 @@ class Figure:
         facing = 1 if bx >= ax else -1
         upstairs = by < ay - 4
         lift = math.sin(f * math.pi) * ((36 if upstairs else 22) if self.energy != "calm" else (28 if upstairs else 16)) * self.k
-        swing = (ax + (bx - ax) * f, ay + (by - ay) * f - lift)
+        # the swing foot comes from where it last stood (the foothold before), so feet never jump
+        pi_ = max(0, min(n, ai - d))
+        if i == 0:
+            pi_ = ai
+        (px_, py_) = H[pi_]
+        swing = (px_ + (bx - px_) * f, py_ + (by - py_) * f - lift)
         stance = (ax, ay)
         L, R = (swing, stance) if i % 2 == 0 else (stance, swing)
-        hip = ((ax + swing[0]) / 2 + 10 * self.k * facing,
-               min(ay, ay + (by - ay) * f) - self._hip_h(0.9) + 5 * self.k * math.sin(f * math.pi))
+        # the body glides continuously from foothold to foothold (no jump when the feet swap)
+        g = (kk - i)                                                         # linear inside the step …
+        g = 0.5 * g + 0.5 * f                                                # … softened a little
+        hip = (ax + (bx - ax) * g + 10 * self.k * facing,
+               ay + (by - ay) * g - self._hip_h(0.9) - 4 * self.k * math.sin(f * math.pi))
         s = math.sin(kk * math.pi)
+        if dance:
+            k = self.k
+            soft = 0.5 + 0.5 * math.cos(bp * 2 * math.pi)
+            hip = (hip[0], hip[1] + 7 * k * soft)
+            sway = math.sin(kk * math.pi / 2)
+            up = 0.5 + 0.5 * math.sin(kk * math.pi / 2 - math.pi / 2)        # arms rise and fall in one wave over 4 beats
+            bob = 8 * (soft - 0.5)
+            arms = (math.radians(40 - 75 * up + bob), math.radians(140 + 75 * up - bob))
+            return hip, L, R, arms, facing, 0.05 * sway
         amp = 38 if self.energy != "calm" else 24
         return hip, L, R, (math.radians(90 + amp * s), math.radians(90 - amp * s)), facing, (0.08 if self.energy != "calm" else 0.05) * facing
 
