@@ -389,7 +389,7 @@ class Detail:
             ang = 2.5 * math.sin(t * 2 * math.pi / (self.beat * 8) + 1)
         elif mo == "wobble":
             w = env * math.cos(bp * self.beat * 2 * math.pi * 4)
-            sx, sy = 1 + 0.07 * w, 1 - 0.07 * w
+            sx, sy = 1 + 0.13 * w, 1 - 0.13 * w
         M = cv2.getRotationMatrix2D((px, py), ang, 1.0)
         M[0, 0] *= sx; M[0, 1] *= sx; M[1, 0] *= sy; M[1, 1] *= sy
         M[0, 2] = px - (M[0, 0] * px + M[0, 1] * py) + dx
