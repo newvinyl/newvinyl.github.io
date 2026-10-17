@@ -1,5 +1,35 @@
 [
  {
+  "date": "2026-10-17",
+  "keys": [
+   "various artists|mech02",
+   "various artist|xuntanza vol. viii",
+   "beppe loda|universal waves"
+  ],
+  "titles": [
+   "Various Artists – MECH02",
+   "Various Artist – Xuntanza Vol. VIII",
+   "Beppe Loda – Universal Waves"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Clone",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261017.mp4",
+  "looks": [
+   "flat black"
+  ],
+  "dv": 5,
+  "reel": {
+   "key": "paul johnson|get get down",
+   "title": "Paul Johnson – Get Get Down",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261017.mp4",
+   "look": "organic cover · background continue · alive: breathe+sway+bloom+glint · melt: dive · type BK-G",
+   "v": 18
+  }
+ },
+ {
   "date": "2026-10-16",
   "keys": [
    "beat boys (peter slaghuis & michiel van der kuy)|space dream ep",
