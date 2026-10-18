@@ -1,5 +1,36 @@
 [
  {
+  "date": "2026-10-18",
+  "keys": [
+   "ian fink|secrets, vol.1",
+   "asphalt dj|sntmnt 002",
+   "gigi & molly aka gigi d'agostino / molella|con il nastro rosa/soleado (reissue)"
+  ],
+  "titles": [
+   "Ian Fink – Secrets, Vol.1",
+   "ASPHALT DJ – SNTMNT 002",
+   "GIGI & MOLLY aka GIGI D'AGOSTINO / MOLELLA – Con Il Nastro Rosa/Soleado (reissue)"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Juno",
+   "Juno"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261018.mp4",
+  "looks": [
+   "flat black"
+  ],
+  "dv": 5,
+  "reel": {
+   "key": "torre|phocaea vol 2",
+   "title": "TORRE – Phocaea Vol 2",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261018.mp4",
+   "look": "painterly cover · background continue · alive: breathe+glint+bloom · melt: flow · type BK-P",
+   "v": 18,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261018.jpg"
+  }
+ },
+ {
   "date": "2026-10-17",
   "keys": [
    "various artists|mech02",
