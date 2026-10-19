@@ -53666,7 +53666,25 @@
      "st": "pre",
      "d": "Exp. 23 Oct",
      "m": "2026-10",
-     "first_seen": "2026-10-19"
+     "first_seen": "2026-10-19",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Live Pt. 2"
+      },
+      {
+       "s": "2",
+       "n": "Live Pt. 1"
+      },
+      {
+       "s": "3",
+       "n": "Live Pt. 8"
+      },
+      {
+       "s": "4",
+       "n": "Univherz"
+      }
+     ]
     },
     {
      "a": "S.O.N.S",
@@ -53687,7 +53705,37 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-19"
+     "first_seen": "2026-10-19",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Apparition"
+      },
+      {
+       "s": "A2",
+       "n": "Heat"
+      },
+      {
+       "s": "B",
+       "n": "Corrosive Desire"
+      },
+      {
+       "s": "C1",
+       "n": "Zzya"
+      },
+      {
+       "s": "C2",
+       "n": "Mystification"
+      },
+      {
+       "s": "D1",
+       "n": "Glitterdust"
+      },
+      {
+       "s": "D2",
+       "n": "First Light"
+      }
+     ]
     },
     {
      "a": "YokoO",
@@ -53709,7 +53757,21 @@
      "st": "pre",
      "d": "Exp. 30 Oct",
      "m": "2026-10",
-     "first_seen": "2026-10-19"
+     "first_seen": "2026-10-19",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Yokoo - Nadir"
+      },
+      {
+       "s": "A2",
+       "n": "Yokoo - Occasus"
+      },
+      {
+       "s": "B1",
+       "n": "Yokoo - The Rise"
+      }
+     ]
     },
     {
      "a": "Zima Stulecia",
@@ -53753,7 +53815,21 @@
      "st": "pre",
      "d": "Exp. 30 Oct",
      "m": "2026-10",
-     "first_seen": "2026-10-19"
+     "first_seen": "2026-10-19",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Lucid"
+      },
+      {
+       "s": "A2",
+       "n": "Lucid (Instrumental)"
+      },
+      {
+       "s": "B",
+       "n": "Feel So"
+      }
+     ]
     }
    ],
    "country": "UK"
@@ -61648,8 +61724,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Black Swords",
        "s": "",
+       "n": "Black Swords",
        "u": ""
       }
      ],

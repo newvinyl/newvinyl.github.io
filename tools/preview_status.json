@@ -1,10 +1,10 @@
 {
- "date": "2026-10-18",
+ "date": "2026-10-19",
  "total": {
-  "records": 2822,
-  "tracks": 2179,
-  "clip": 506,
-  "none": 137
+  "records": 2849,
+  "tracks": 2201,
+  "clip": 514,
+  "none": 134
  },
  "shops": {
   "Hardwax": {
@@ -27,21 +27,21 @@
   },
   "Clone": {
    "records": 298,
-   "tracks": 295,
+   "tracks": 296,
    "clip": 0,
-   "none": 3
+   "none": 2
   },
   "Phonica": {
    "records": 213,
-   "tracks": 152,
+   "tracks": 153,
    "clip": 13,
-   "none": 48
+   "none": 47
   },
   "Redeye Records": {
-   "records": 711,
-   "tracks": 205,
-   "clip": 483,
-   "none": 23
+   "records": 718,
+   "tracks": 206,
+   "clip": 490,
+   "none": 22
   },
   "Yoyaku": {
    "records": 234,
@@ -50,22 +50,22 @@
    "none": 1
   },
   "Kompakt": {
-   "records": 98,
-   "tracks": 82,
+   "records": 102,
+   "tracks": 86,
    "clip": 0,
    "none": 16
   },
   "Juno Records": {
-   "records": 594,
-   "tracks": 587,
+   "records": 601,
+   "tracks": 593,
    "clip": 0,
-   "none": 7
+   "none": 8
   },
   "Deejay.de": {
-   "records": 151,
-   "tracks": 121,
-   "clip": 5,
-   "none": 25
+   "records": 156,
+   "tracks": 126,
+   "clip": 6,
+   "none": 24
   },
   "Vinyl Underground": {
    "records": 94,
@@ -98,8 +98,8 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 55,
-   "tracks": 55,
+   "records": 59,
+   "tracks": 59,
    "clip": 0,
    "none": 0
   },
@@ -110,15 +110,19 @@
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
+ "pages_checked": 516,
+ "new_from_shop_pages": 1,
  "copied_from_other_shop": 0,
- "broken_clips_removed": 16,
- "clips_verified": 8503,
- "not_reachable": {},
+ "broken_clips_removed": 12,
+ "clips_verified": 8536,
+ "not_reachable": {
+  "Phonica: http307": 34,
+  "Redeye Records: failed:UnicodeEncodeError": 25,
+  "Redeye Records: http403": 2
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
-   "clips": 214,
+   "clips": 250,
    "failed": 0,
    "sample": []
   },
@@ -129,12 +133,8 @@
   },
   "clone.nl": {
    "clips": 1201,
-   "failed": 4,
-   "sample": [
-    "https://clone.nl/platen/mp3/85077/A1.mp3",
-    "https://clone.nl/platen/mp3/85077/A2.mp3",
-    "https://clone.nl/platen/mp3/85077/B1.mp3"
-   ]
+   "failed": 0,
+   "sample": []
   },
   "creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com": {
    "clips": 168,
@@ -171,7 +171,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 481,
+   "clips": 488,
    "failed": 0,
    "sample": []
   },
@@ -190,7 +190,7 @@
    ]
   },
   "www.juno.co.uk": {
-   "clips": 3870,
+   "clips": 3860,
    "failed": 0,
    "sample": []
   },
