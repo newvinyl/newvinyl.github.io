@@ -110,16 +110,12 @@
    "none": 0
   }
  },
- "pages_checked": 516,
- "new_from_shop_pages": 1,
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
  "copied_from_other_shop": 0,
  "broken_clips_removed": 12,
  "clips_verified": 8536,
- "not_reachable": {
-  "Phonica: http307": 34,
-  "Redeye Records: failed:UnicodeEncodeError": 25,
-  "Redeye Records: http403": 2
- },
+ "not_reachable": {},
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 250,
