@@ -942,10 +942,24 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     else:
         det = None
     if look is None:
+        # liquid metal (tools/liquid.py): asked for via reel_request "fx": "liquid", or automatically when the
+        # cover suits it (textured / colourful, no big type, no people) and none of the last 2 reels was liquid
+        import liquid
+        want = getattr(a, "want_fx", None)
+        recent = [(e.get("reel") or {}).get("look", "") for e in history[:2]]
+        score, why = liquid.suits(rc["cover"])
+        log("liquid suitability %.2f (%s)" % (score, why))
+        if want == "liquid" or (want is None and score >= .5 and not any("liquid" in lk for lk in recent)):
+            try:
+                look = liquid.reel_liquid(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter, dur=20) + " · type " + sch
+            except Exception as e:
+                log("liquid reel failed, falling back to effects:", e)
+                look = None
+    if look is None:
         avoid = recent_avoid(history)
         log("avoid (recent looks):", sorted(avoid))
         look = reelfx.reel_single(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter,
-                                  avoid=avoid, cmode=getattr(a, "want_fx", None)) + " · type " + sch
+                                  avoid=avoid, cmode=(getattr(a, "want_fx", None) if getattr(a, "want_fx", None) != "liquid" else None)) + " · type " + sch
     rcap = reel_caption(R, rc["arr"])
     sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],

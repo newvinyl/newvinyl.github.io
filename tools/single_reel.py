@@ -83,7 +83,13 @@ def main():
                                 dancers=want.get("dancers"), grid=want.get("grid"))
     elif want.get("style") == "liquid":
         import liquid
-        look = liquid.reel_liquid(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur)
+        rel = digs.reel_rel(R, cov)
+        if want.get("daily"):                      # same text look as the daily reel (flat site type, live bars)
+            sch = want.get("scheme") or "BK-G"
+            fp = digs.flat_p(R, cov, sch, "TODAY'S DIG")
+            rel = dict(rel, col=digs.SCHEMES[sch]["text"], kicker=R["shop_full"].upper(), t=R["t"], meta=fp["meta"],
+                       track=R["tname"], shop=R["shop_full"])
+        look = liquid.reel_liquid(rel, mix, digs.look_seed(slug, "single"), out, poster, dur=dur)
     elif want.get("style") == "lava":
         import lava
         look = lava.reel_lava(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur, eyes=want.get("eyes"), blobs=want.get("blobs", True))

@@ -13,6 +13,7 @@ Timeline (default 60 s):
 import math
 import numpy as np
 import cv2
+from PIL import Image
 import reelfx as R
 
 HW, HH = R.W // 2, R.H // 2                      # simulation at half resolution
@@ -84,7 +85,7 @@ class Liquid:
         vx *= swirl * gate
         vy *= swirl * gate
         # outward growth: above the cover everything flows up, below it flows down (drips with different speeds)
-        grow = _s((t - tl(4)) / tl(3)) * (1 - .7 * _s((t - tl(24)) / tl(8)))
+        grow = _s((t - tl(4)) / tl(3)) * (1 - .7 * _s((t - tl(30)) / tl(8))) * max(1.0, (60.0 / self.dur) ** .5)
         if grow > 0:
             d = np.zeros(HW, np.float32)
             xs = np.arange(HW, dtype=np.float32)
@@ -147,13 +148,41 @@ class Liquid:
         return np.clip(col, 0, 255)
 
 
+def suits(im):
+    """Is this cover a good candidate for the liquid-metal reel? Best: textured, colourful or high-contrast art
+    without big type and without people. Returns a score 0..1 (>= .5 = yes) and a short reason.
+    (No face detector available in the Action's OpenCV; people are only guessed from skin tones.)"""
+    a = np.asarray(im.convert("RGB").resize((256, 256), Image.LANCZOS)).astype(np.float32)
+    hsv = cv2.cvtColor(a.astype(np.uint8), cv2.COLOR_RGB2HSV).astype(np.float32)
+    sat = hsv[..., 1].mean() / 255
+    lum = a.mean(2)
+    contrast = lum.std() / 255
+    # people: skin-tone share
+    h, s_, v = hsv[..., 0], hsv[..., 1], hsv[..., 2]
+    skin = ((h < 25) & (s_ > 40) & (s_ < 180) & (v > 80)).mean()
+    # big type: long straight horizontal / vertical edges
+    ed = cv2.Canny(a.astype(np.uint8), 80, 160)
+    hor = cv2.morphologyEx(ed, cv2.MORPH_OPEN, np.ones((1, 15), np.uint8)).mean() / 255
+    ver = cv2.morphologyEx(ed, cv2.MORPH_OPEN, np.ones((15, 1), np.uint8)).mean() / 255
+    typ = hor + ver
+    texture = ed.mean() / 255
+    score = .2 + .6 * min(sat, .5) + .5 * min(contrast, .35) + 2.5 * min(texture, .14) - 9 * typ - 2 * max(0, skin - .05)
+    score = float(np.clip(score, 0, 1))
+    why = "sat %.2f contrast %.2f texture %.3f type %.3f skin %.2f" % (sat, contrast, texture, typ, skin)
+    return score, why
+
+
 def reel_liquid(rel, aud, seed, out, poster, dur=60):
     nfr = int(dur * R.FPS)
     aud = aud[:int(dur * R.SR)]
     lev, kick = R.analyse(aud, nfr)
     _, cov = R.prep_cover(rel["cover"])
     liq = Liquid(cov, seed, dur)
-    txl = R.text_layer(rel, mono=R.YEL)
+    col = rel.get("col")
+    if col:                                       # daily reel: flat site look with live bars
+        txl, bars = R.text_layer_flat(rel, col)
+    else:
+        txl, bars = R.text_layer(rel, mono=R.YEL), None
     covf = cov.astype(np.float32)
     R.log("Liquid metal reel:", dur, "s")
 
@@ -169,7 +198,14 @@ def reel_liquid(rel, aud, seed, out, poster, dur=60):
             img[R.COV_Y:R.COV_Y + R.COV_S] = covf * sharp + reg * (1 - sharp)
         img = np.clip(img, 0, 255).astype(np.uint8)
         img = R.comp(img, txl)
+        if bars:
+            img = np.ascontiguousarray(img)
+            for b in range(5):
+                ph = math.sin(f * .45 + b * 1.7) * .5 + .5
+                hh = int(6 + 26 * lev[f] * (.4 + .6 * ph))
+                x = bars[0] - (5 - b) * 11
+                img[bars[1] - hh:bars[1], x:x + 7] = col
         return R.fades(img, t, dur)
 
-    R.encode(fr, nfr, aud, out, poster, int(30 * R.FPS))
+    R.encode(fr, nfr, aud, out, poster, int(min(30, dur / 2) * R.FPS))
     return "liquid metal · grows out top and bottom, fills the screen, mixes"
