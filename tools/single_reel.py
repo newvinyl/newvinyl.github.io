@@ -37,6 +37,11 @@ def best_cover(arr):
             digs.log("cover fail", u, e)
     if best is None:
         best = digs.get_cover(arr, False, 1)
+    else:
+        import coverlife
+        best = coverlife.autocrop(best)             # mockup frame / plain border around the artwork: cut it off
+        s = min(best.size)
+        best = best.crop(((best.width - s) // 2, (best.height - s) // 2, (best.width + s) // 2, (best.height + s) // 2))
     return best
 
 def main():
