@@ -25,10 +25,14 @@
    "key": "elements of life featuring lisa fischer|soar",
    "title": "Elements Of Life Featuring Lisa Fischer – Soar",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261020.mp4",
-   "look": "dark cover · background bokeh · alive: grain+glint+sweep+breathe · melt: dissolve · type BK-G",
+   "look": "detail: float (Vega Records hat-man logo floats up gently (Soar)) · type BK-G",
    "v": 18,
-   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261020.jpg"
-  }
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261020.jpg",
+   "detail": "{\"box\": [0.048, 0.86, 0.118, 0.953], \"motion\": \"float\", \"note\": \"Vega Records hat-man logo floats up gently (Soar)\"}"
+  },
+  "reel_tried": [
+   "elements of life featuring lisa fischer|soar"
+  ]
  },
  {
   "date": "2026-10-19",
