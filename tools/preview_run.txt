@@ -1,18 +1,19 @@
-2849 Platten: 77% Einzeltracks, 18% Gesamtclip, 5% ohne Hörprobe | 0 neu von Produktseiten, 0 von anderem Shop, 12 defekte Clips entfernt
-  Betino's: {'records': 12, 'tracks': 12, 'clip': 0, 'none': 0}
+2942 Platten: 76% Einzeltracks, 19% Gesamtclip, 5% ohne Hörprobe | 8 neu von Produktseiten, 0 von anderem Shop, 17 defekte Clips entfernt
+  Betino's: {'records': 13, 'tracks': 13, 'clip': 0, 'none': 0}
   Bordello A Parigi: {'records': 59, 'tracks': 59, 'clip': 0, 'none': 0}
-  Clone: {'records': 298, 'tracks': 296, 'clip': 0, 'none': 2}
+  Clone: {'records': 309, 'tracks': 307, 'clip': 0, 'none': 2}
   Decks.de: {'records': 14, 'tracks': 10, 'clip': 2, 'none': 2}
-  Deejay.de: {'records': 156, 'tracks': 126, 'clip': 6, 'none': 24}
-  Diggers.fr: {'records': 25, 'tracks': 25, 'clip': 0, 'none': 0}
-  Discos Paradiso: {'records': 35, 'tracks': 25, 'clip': 2, 'none': 8}
+  Deejay.de: {'records': 165, 'tracks': 130, 'clip': 6, 'none': 29}
+  Diggers.fr: {'records': 26, 'tracks': 26, 'clip': 0, 'none': 0}
+  Discos Paradiso: {'records': 35, 'tracks': 26, 'clip': 2, 'none': 7}
   Hardwax: {'records': 151, 'tracks': 151, 'clip': 0, 'none': 0}
-  Juno Records: {'records': 601, 'tracks': 593, 'clip': 0, 'none': 8}
-  Kompakt: {'records': 102, 'tracks': 86, 'clip': 0, 'none': 16}
+  Juno Records: {'records': 604, 'tracks': 596, 'clip': 0, 'none': 8}
+  Kompakt: {'records': 103, 'tracks': 87, 'clip': 0, 'none': 16}
   Phonica: {'records': 213, 'tracks': 153, 'clip': 13, 'none': 47}
-  Redeye Records: {'records': 718, 'tracks': 206, 'clip': 490, 'none': 22}
-  Rush Hour: {'records': 85, 'tracks': 83, 'clip': 0, 'none': 2}
+  Redeye Records: {'records': 767, 'tracks': 215, 'clip': 523, 'none': 29}
+  Rush Hour: {'records': 86, 'tracks': 84, 'clip': 0, 'none': 2}
   Sound Metaphors: {'records': 18, 'tracks': 16, 'clip': 1, 'none': 1}
   Syncrophone: {'records': 34, 'tracks': 34, 'clip': 0, 'none': 0}
-  Vinyl Underground: {'records': 94, 'tracks': 93, 'clip': 0, 'none': 1}
-  Yoyaku: {'records': 234, 'tracks': 233, 'clip': 0, 'none': 1}
+  Vinyl Underground: {'records': 104, 'tracks': 103, 'clip': 0, 'none': 1}
+  Yoyaku: {'records': 241, 'tracks': 240, 'clip': 0, 'none': 1}
+  nicht erreichbar: {'Phonica: http307': 34, 'Redeye Records: failed:UnicodeEncodeError': 29, 'Redeye Records: http403': 2}

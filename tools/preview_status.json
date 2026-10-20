@@ -1,10 +1,10 @@
 {
- "date": "2026-10-19",
+ "date": "2026-10-20",
  "total": {
-  "records": 2849,
-  "tracks": 2201,
-  "clip": 514,
-  "none": 134
+  "records": 2942,
+  "tracks": 2250,
+  "clip": 547,
+  "none": 145
  },
  "shops": {
   "Hardwax": {
@@ -14,8 +14,8 @@
    "none": 0
   },
   "Rush Hour": {
-   "records": 85,
-   "tracks": 83,
+   "records": 86,
+   "tracks": 84,
    "clip": 0,
    "none": 2
   },
@@ -26,8 +26,8 @@
    "none": 2
   },
   "Clone": {
-   "records": 298,
-   "tracks": 296,
+   "records": 309,
+   "tracks": 307,
    "clip": 0,
    "none": 2
   },
@@ -38,38 +38,38 @@
    "none": 47
   },
   "Redeye Records": {
-   "records": 718,
-   "tracks": 206,
-   "clip": 490,
-   "none": 22
+   "records": 767,
+   "tracks": 215,
+   "clip": 523,
+   "none": 29
   },
   "Yoyaku": {
-   "records": 234,
-   "tracks": 233,
+   "records": 241,
+   "tracks": 240,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 102,
-   "tracks": 86,
+   "records": 103,
+   "tracks": 87,
    "clip": 0,
    "none": 16
   },
   "Juno Records": {
-   "records": 601,
-   "tracks": 593,
+   "records": 604,
+   "tracks": 596,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
-   "records": 156,
-   "tracks": 126,
+   "records": 165,
+   "tracks": 130,
    "clip": 6,
-   "none": 24
+   "none": 29
   },
   "Vinyl Underground": {
-   "records": 94,
-   "tracks": 93,
+   "records": 104,
+   "tracks": 103,
    "clip": 0,
    "none": 1
   },
@@ -81,9 +81,9 @@
   },
   "Discos Paradiso": {
    "records": 35,
-   "tracks": 25,
+   "tracks": 26,
    "clip": 2,
-   "none": 8
+   "none": 7
   },
   "Syncrophone": {
    "records": 34,
@@ -92,8 +92,8 @@
    "none": 0
   },
   "Betino's": {
-   "records": 12,
-   "tracks": 12,
+   "records": 13,
+   "tracks": 13,
    "clip": 0,
    "none": 0
   },
@@ -104,18 +104,22 @@
    "none": 0
   },
   "Diggers.fr": {
-   "records": 25,
-   "tracks": 25,
+   "records": 26,
+   "tracks": 26,
    "clip": 0,
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
+ "pages_checked": 567,
+ "new_from_shop_pages": 8,
  "copied_from_other_shop": 0,
- "broken_clips_removed": 12,
- "clips_verified": 8536,
- "not_reachable": {},
+ "broken_clips_removed": 17,
+ "clips_verified": 8710,
+ "not_reachable": {
+  "Phonica: http307": 34,
+  "Redeye Records: failed:UnicodeEncodeError": 29,
+  "Redeye Records: http403": 2
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 250,
@@ -123,12 +127,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 416,
+   "clips": 461,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1201,
+   "clips": 1243,
    "failed": 0,
    "sample": []
   },
@@ -138,7 +142,7 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 128,
+   "clips": 132,
    "failed": 0,
    "sample": []
   },
@@ -148,7 +152,7 @@
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 417,
+   "clips": 425,
    "failed": 0,
    "sample": []
   },
@@ -158,7 +162,7 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 53,
+   "clips": 54,
    "failed": 12,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
@@ -167,7 +171,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 488,
+   "clips": 521,
    "failed": 0,
    "sample": []
   },
@@ -177,21 +181,21 @@
    "sample": []
   },
   "www.betinos.com": {
-   "clips": 31,
-   "failed": 19,
+   "clips": 34,
+   "failed": 22,
    "sample": [
     "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
     "https://www.betinos.com/sites/default/files/Anything You Wantty.mp3",
-    "https://www.betinos.com/sites/default/files/Baul Dimensi Vision Higher Self dub.mp3"
+    "https://www.betinos.com/sites/default/files/April RaApril Rain.mp3"
    ]
   },
   "www.juno.co.uk": {
-   "clips": 3860,
+   "clips": 3871,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 620,
+   "clips": 647,
    "failed": 0,
    "sample": []
   },
