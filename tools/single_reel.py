@@ -81,6 +81,9 @@ def main():
         import crowd
         look = crowd.reel_crowd(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur,
                                 dancers=want.get("dancers"), grid=want.get("grid"))
+    elif want.get("style") == "liquid":
+        import liquid
+        look = liquid.reel_liquid(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur)
     elif want.get("style") == "lava":
         import lava
         look = lava.reel_lava(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur, eyes=want.get("eyes"), blobs=want.get("blobs", True))
