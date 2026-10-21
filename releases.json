@@ -28257,9 +28257,24 @@
      "cover": "https://d1c4rk9le5opln.cloudfront.net/c1ded23d296a545ae7115f64b7583437.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/190567.mp3"
+       "s": "A1",
+       "n": "Vert Emeraude (main mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1162230-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Franklin Avenue",
+       "u": "https://www.juno.co.uk/MP3/SF1162230-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "The Deep (937 dub mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1162230-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Dark Woods (Deeper mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1162230-01-02-02.mp3"
       }
      ],
      "m": "2026-10",
@@ -48858,8 +48873,23 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191781.mp3"
+       "n": "There Is No Question",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Romantic Engineerings",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Outdated Love Letters",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Private Exit",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_4.mp3"
       }
      ],
      "st": "pre",
@@ -51815,7 +51845,25 @@
       }
      ],
      "st": "pre",
-     "d": "Exp. 15 Nov"
+     "d": "Exp. 15 Nov",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "The Parture"
+      },
+      {
+       "s": "A2",
+       "n": "Livetrip"
+      },
+      {
+       "s": "B1",
+       "n": "Rear Wheel Steering"
+      },
+      {
+       "s": "B2",
+       "n": "Prairie Madness"
+      }
+     ]
     },
     {
      "a": "Altered Circuits",
@@ -56390,7 +56438,25 @@
      "st": "pre",
      "d": "Exp. 30 Oct",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Blaze Presents Udaufl Feat. Barbara Tucker ??? Most Precious Love (Df???s Future 3000 Mix)"
+      },
+      {
+       "s": "A2",
+       "n": "Blaze Presents Udaufl Feat. Barbara Tucker ??? Most Precious Love (Michael Gray Remix)"
+      },
+      {
+       "s": "B1",
+       "n": "Nico De Andrea X Blaze Presents Udaufl Feat. Barbara Tucker ??? Most Precious Love"
+      },
+      {
+       "s": "B2",
+       "n": "Sam Divine X Blaze Presents Udaufl Feat. Barbara Tucker ??? Most Precious Love"
+      }
+     ]
     },
     {
      "a": "Boo Williams",
@@ -56582,7 +56648,41 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Mogeri"
+      },
+      {
+       "s": "A2",
+       "n": "Rainbow Road"
+      },
+      {
+       "s": "B1",
+       "n": "Sober"
+      },
+      {
+       "s": "B2",
+       "n": "Fever"
+      },
+      {
+       "s": "C1",
+       "n": "Moving"
+      },
+      {
+       "s": "C2",
+       "n": "Focus"
+      },
+      {
+       "s": "D1",
+       "n": "Actually"
+      },
+      {
+       "s": "D2",
+       "n": "Raro"
+      }
+     ]
     },
     {
      "a": "Dani Labb, Cosenza, Franco Cinelli, Lucio De Rosa, Travis",
@@ -56705,7 +56805,17 @@
      "st": "pre",
      "d": "Exp. 20 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "I Feel So Free (Hardrock Striker X-Rated Version)"
+      },
+      {
+       "s": "B1",
+       "n": "Hardrock Striker X-Rated - Instrumental"
+      }
+     ]
     },
     {
      "a": "Haris",
@@ -56768,7 +56878,21 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "",
+       "n": "A You Know"
+      },
+      {
+       "s": "B1",
+       "n": "Con Amor"
+      },
+      {
+       "s": "B2",
+       "n": "You Know (Dub)"
+      }
+     ]
     },
     {
      "a": "18 Figures",
@@ -56834,7 +56958,41 @@
      "st": "pre",
      "d": "Exp. 11 Dec",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Dark Grey Version"
+      },
+      {
+       "s": "2",
+       "n": "Foil"
+      },
+      {
+       "s": "3",
+       "n": "Another Version"
+      },
+      {
+       "s": "4",
+       "n": "Dizzy"
+      },
+      {
+       "s": "5",
+       "n": "Camellia Version"
+      },
+      {
+       "s": "6",
+       "n": "Nothing"
+      },
+      {
+       "s": "7",
+       "n": "White"
+      },
+      {
+       "s": "8",
+       "n": "Alley"
+      }
+     ]
     },
     {
      "a": "393AD",
@@ -57055,7 +57213,29 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "01",
+       "n": "Night Sweats"
+      },
+      {
+       "s": "02",
+       "n": "Cypress"
+      },
+      {
+       "s": "03",
+       "n": "Lucent"
+      },
+      {
+       "s": "04",
+       "n": "Slider"
+      },
+      {
+       "s": "05",
+       "n": "Tall Tree"
+      }
+     ]
     },
     {
      "a": "Cristina Lazic",
@@ -57281,7 +57461,41 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Heavy Sound"
+      },
+      {
+       "s": "A2",
+       "n": "No One Plays The Game W/ Duval Timothy"
+      },
+      {
+       "s": "B1",
+       "n": "Phantom Jazz"
+      },
+      {
+       "s": "B2",
+       "n": "Musa At Erbil"
+      },
+      {
+       "s": "C1",
+       "n": "Hypnotoxic Laser"
+      },
+      {
+       "s": "C2",
+       "n": "Whiplashed W/ Mark Cisneros"
+      },
+      {
+       "s": "D1",
+       "n": "Remnants W/ Lucinda Chua & Duval Timothy"
+      },
+      {
+       "s": "D2",
+       "n": "When The Sleeper Wakes"
+      }
+     ]
     },
     {
      "a": "Now Always Fades",
@@ -57317,7 +57531,45 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "",
+       "n": "08 Peace Wall"
+      },
+      {
+       "s": "",
+       "n": "09 2 Clocks"
+      },
+      {
+       "s": "",
+       "n": "07 Four Hands"
+      },
+      {
+       "s": "",
+       "n": "06 Rem"
+      },
+      {
+       "s": "",
+       "n": "04 Coalesce"
+      },
+      {
+       "s": "",
+       "n": "05 Dwell"
+      },
+      {
+       "s": "",
+       "n": "02 Dummy"
+      },
+      {
+       "s": "",
+       "n": "03 Facless Angel"
+      },
+      {
+       "s": "",
+       "n": "01 Faithless"
+      }
+     ]
     },
     {
      "a": "Olsvangèr",
@@ -57384,7 +57636,61 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-21"
+     "first_seen": "2026-10-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Rocky Winters - Vicious Circle"
+      },
+      {
+       "s": "A2",
+       "n": "Buzy - Keep Cool (Version Maxi)"
+      },
+      {
+       "s": "A3",
+       "n": "Linda Myers - Shine On Me"
+      },
+      {
+       "s": "B1",
+       "n": "Life - Castles"
+      },
+      {
+       "s": "B2",
+       "n": "Paul Atreides - Arrakis Walk"
+      },
+      {
+       "s": "B3",
+       "n": "Vincent Maclin - Should’ve Took A Chance"
+      },
+      {
+       "s": "B4",
+       "n": "Wolfhound - Another Moon Song"
+      },
+      {
+       "s": "C1",
+       "n": "Venus - Strange How You Move"
+      },
+      {
+       "s": "C2",
+       "n": "Noah - Two For Four"
+      },
+      {
+       "s": "C3",
+       "n": "Stigma - Remember (Dub. Style)"
+      },
+      {
+       "s": "D1",
+       "n": "Endgames – Ecstasy (Centurion Mix)"
+      },
+      {
+       "s": "D2",
+       "n": "Lifesighs - Get Serious (Inst) (Ext)"
+      },
+      {
+       "s": "D3",
+       "n": "Pinky - I Wanna Be The One (Instrumental Groove"
+      }
+     ]
     }
    ],
    "country": "UK"
@@ -65417,8 +65723,23 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191781.mp3"
+       "n": "There Is No Question",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Romantic Engineerings",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Outdated Love Letters",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Private Exit",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SCORN01_4.mp3"
       }
      ],
      "m": "2026-10",
@@ -65434,7 +65755,13 @@
      "g": "Ambient / Breakbeat / House",
      "url": "https://yoyaku.io/release/que-sakamoto-nt-feat-paulo-santos-bruma-%e9%9d%84-planetmushroom001/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/09/PLANETMUSHROOM001-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Misterioso 不思議な",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PLANETMUSHROOM001_1.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-21"
     },
@@ -65488,7 +65815,28 @@
      "g": "Tech House / Techno",
      "url": "https://yoyaku.io/release/robin-ordell-civic-tv-ep-ntc004/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/04/NTC004-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Civic Tv",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/NTC004_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Nebulous",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/NTC004_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: T-Rent",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/NTC004_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Flux",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/NTC004_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-21"
     },
@@ -65502,7 +65850,33 @@
      "g": "House",
      "url": "https://yoyaku.io/release/olson-dj-ohm-groan-new-roots-cdar001/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/CDAR001-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Dj Ohm Groan & i ..o... - Hope Evergreen",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CDAR001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Olson - Solo Dancer",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CDAR001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Dj Ohm Groan - Polish Spring",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CDAR001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Olson - Drift State",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CDAR001_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 5",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CDAR001_5.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-21"
     },
@@ -65516,7 +65890,28 @@
      "g": "Acid House / Downtempo / Minimal House",
      "url": "https://yoyaku.io/release/tin-man-shooting-stars-salon018/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/SALON018-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Electric Blue (Monkey Nenufar Vata Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON018_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. 0Electric Blue ( Monkey Nenufar Pita Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON018_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Love Sickness (Tobias. 2022 Version Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON018_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Shooting Stars",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON018_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-21"
     },
@@ -65530,7 +65925,28 @@
      "g": "Minimal / Minimal House / Tech House",
      "url": "https://yoyaku.io/release/moritz-piske-on-the-raw-salon017/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/SALON017-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Mess",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON017_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Stomp",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON017_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Shutcliff",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON017_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Pok",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON017_4.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-21"
     }
@@ -65694,14 +66110,9 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "1",
+       "s": "",
        "n": "Black Swords",
-       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Timeless Time",
-       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
+       "u": ""
       }
      ],
      "st": "in"
@@ -108434,12 +108845,12 @@
       {
        "s": "A1",
        "n": "Hot Ivy",
-       "page": "https://www.deejay.de/Tonbe_Small_Edits_3_7_SMALL03_Vinyl__1264088"
+       "u": "https://www.juno.co.uk/MP3/SF1180102-01-01-01.mp3"
       },
       {
        "s": "B1",
        "n": "Letters From The Past",
-       "page": "https://www.deejay.de/Tonbe_Small_Edits_3_7_SMALL03_Vinyl__1264088"
+       "u": "https://www.juno.co.uk/MP3/SF1180102-01-02-01.mp3"
       }
      ],
      "d": "20.10.2026",
