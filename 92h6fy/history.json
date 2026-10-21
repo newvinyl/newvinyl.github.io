@@ -25,10 +25,14 @@
    "key": "malik kassim aka retromigration|choices ep vol 2",
    "title": "Malik Kassim aka Retromigration – Choices EP Vol 2",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261021.mp4",
-   "look": "photo cover · background bokeh · alive: bloom+parallax+grain · melt: glitch · type BK-P",
+   "look": "detail: spin (Wolf Music record label spins at 33 rpm) · type BK-P",
    "v": 18,
-   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261021.jpg"
-  }
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261021.jpg",
+   "detail": "{\"box\": [0.318, 0.285, 0.688, 0.655], \"motion\": \"spin\", \"note\": \"Wolf Music record label spins at 33 rpm\", \"pivot\": [0.503, 0.47]}"
+  },
+  "reel_tried": [
+   "malik kassim aka retromigration|choices ep vol 2"
+  ]
  },
  {
   "date": "2026-10-20",
