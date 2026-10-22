@@ -600,7 +600,7 @@ RDUR = 20
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
 REEL_V = 18   # bump to re-render today's reel after a design change
-DIGS_V = 6   # bump to re-render today's digs video after a design change
+DIGS_V = 7   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
 SCHEMES = {
@@ -1087,7 +1087,7 @@ def main():
     poster = os.path.join(a.work, "todays-digs-%s.jpg" % ymd)
     seeds = [look_seed(ymd, p["key"], "digs") for p in P]
     offs = [max(0.0, min(p["start"] - 1.0, len(p["audio"]) / SR - 15.5)) for p in P]
-    DSEG = 10
+    DSEG = 15
     render_flat([flat_p(p, p["cover"], sch, "TODAY'S DIGS", "%d/3" % (i + 1)) for i, (p, sch) in enumerate(zip(P, ["BK-Y", "BK-G", "BK-P"]))],
                 [fade(seg(p["audio"], o, DSEG), 0.25, 0.6) for p, o in zip(P, offs)], DSEG, vpath, poster)
     looks = ["flat black"]
