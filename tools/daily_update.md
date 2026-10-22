@@ -49,7 +49,11 @@ or {"s":..,"n":..,"page":product URL} (last resort, not playable on the page).
 Keep every existing item (never delete; the start page shows this month and last month, older months
 are on the "Past" page). Keep shop order. The same record may appear in several shops — keep each
 shop's item; the page merges them into one card with a price comparison, so keep artist and title
-spelled as the shop does. Keep any extra fields other automation added to items (e.g. preview-check
+spelled as the shop does. Shops spell the same record differently ("Various" / "VARIOUS ARTISTS",
+"Title - Green Vinyl", "X Presents Title"); tools/group_keys.py (run automatically by
+tools/build_static.py) detects these and writes a shared group key "gk" into the items. Never edit or
+remove "gk" by hand; if two different records were merged or one record still shows twice, fix the
+rules in tools/group_keys.py. Keep any extra fields other automation added to items (e.g. preview-check
 fields); do not remove them.
 
 ## 3. Exchange rates

@@ -11,6 +11,9 @@ Aufruf im Repo-Ordner:  python3 tools/build_static.py
 import urllib.parse
 import json, re, os, html, unicodedata, datetime
 from zoneinfo import ZoneInfo
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from group_keys import assign_group_keys, group_key
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://monthlyvinyl.net"
@@ -190,7 +193,9 @@ def main():
     tls = add_redeye_tracklists(data)
     if tls:
         print(f"Redeye: Tracklisten für {tls} Einträge ergänzt")
-    if fixed or tls:
+    gk_changed, gk_groups = assign_group_keys(data)
+    print(f"Gruppen: {gk_groups} Platten aus verschieden geschriebenen Shop-Einträgen zusammengefasst")
+    if fixed or tls or gk_changed:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=1)
         print(f"Redeye: {fixed} Einträge mit vollständiger Trackliste aus anderem Shop")
@@ -209,7 +214,7 @@ def main():
         if S.get("blocked"): continue
         for r in S.get("items", []):
             if r.get("m") not in months: continue
-            k = norm(r["a"]) + "|" + norm(r["t"])
+            k = group_key(r)
             if k not in groups: groups[k] = []; order.append(k)
             groups[k].append((S, r))
     recs = []
@@ -332,7 +337,7 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
     for S in data["shops"]:
         if S.get("blocked"): continue
         for r in S.get("items", []):
-            k = norm(r["a"]) + "|" + norm(r["t"])
+            k = group_key(r)
             if k not in allg: allg[k] = []; allo.append(k)
             allg[k].append((S, r))
     # Hauptslug pro Platte festlegen (für Links und canonical)
