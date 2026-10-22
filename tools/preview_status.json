@@ -1,10 +1,10 @@
 {
- "date": "2026-10-21",
+ "date": "2026-10-22",
  "total": {
-  "records": 3068,
-  "tracks": 2350,
-  "clip": 566,
-  "none": 152
+  "records": 3159,
+  "tracks": 2399,
+  "clip": 600,
+  "none": 160
  },
  "shops": {
   "Hardwax": {
@@ -15,9 +15,9 @@
   },
   "Rush Hour": {
    "records": 86,
-   "tracks": 84,
+   "tracks": 83,
    "clip": 0,
-   "none": 2
+   "none": 3
   },
   "Decks.de": {
    "records": 14,
@@ -26,8 +26,8 @@
    "none": 2
   },
   "Clone": {
-   "records": 317,
-   "tracks": 315,
+   "records": 318,
+   "tracks": 316,
    "clip": 0,
    "none": 2
   },
@@ -38,38 +38,38 @@
    "none": 47
   },
   "Redeye Records": {
-   "records": 810,
-   "tracks": 240,
-   "clip": 541,
-   "none": 29
+   "records": 855,
+   "tracks": 248,
+   "clip": 576,
+   "none": 31
   },
   "Yoyaku": {
-   "records": 249,
-   "tracks": 248,
+   "records": 254,
+   "tracks": 253,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 103,
+   "records": 105,
    "tracks": 87,
    "clip": 0,
-   "none": 16
+   "none": 18
   },
   "Juno Records": {
-   "records": 610,
-   "tracks": 602,
+   "records": 623,
+   "tracks": 615,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
-   "records": 182,
-   "tracks": 138,
-   "clip": 8,
-   "none": 36
+   "records": 189,
+   "tracks": 143,
+   "clip": 7,
+   "none": 39
   },
   "Vinyl Underground": {
-   "records": 111,
-   "tracks": 110,
+   "records": 124,
+   "tracks": 123,
    "clip": 0,
    "none": 1
   },
@@ -98,8 +98,8 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 59,
-   "tracks": 59,
+   "records": 64,
+   "tracks": 64,
    "clip": 0,
    "none": 0
   },
@@ -110,25 +110,29 @@
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 12,
- "clips_verified": 9020,
- "not_reachable": {},
+ "pages_checked": 627,
+ "new_from_shop_pages": 6,
+ "copied_from_other_shop": 1,
+ "broken_clips_removed": 40,
+ "clips_verified": 9245,
+ "not_reachable": {
+  "Phonica: http307": 24,
+  "Redeye Records: failed:UnicodeEncodeError": 35,
+  "Redeye Records: http403": 3
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
-   "clips": 250,
+   "clips": 266,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 491,
+   "clips": 539,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1275,
+   "clips": 1279,
    "failed": 0,
    "sample": []
   },
@@ -149,8 +153,12 @@
   },
   "objectstore.true.nl": {
    "clips": 425,
-   "failed": 0,
-   "sample": []
+   "failed": 6,
+   "sample": [
+    "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
+    "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/02-luca_formentini-have_bridges_find_rivers.mp3",
+    "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/03-luca_formentini-traced.mp3"
+   ]
   },
   "play.syncrophone.fr": {
    "clips": 144,
@@ -158,16 +166,16 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 54,
-   "failed": 12,
+   "clips": 56,
+   "failed": 14,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
-    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/kompakt509-planes_in_reverse-01-what_you_see.mp3"
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3"
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 540,
+   "clips": 576,
    "failed": 0,
    "sample": []
   },
@@ -186,12 +194,12 @@
    ]
   },
   "www.juno.co.uk": {
-   "clips": 3909,
+   "clips": 4003,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 669,
+   "clips": 694,
    "failed": 0,
    "sample": []
   },
