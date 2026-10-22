@@ -599,7 +599,7 @@ RDUR = 20
 
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
-REEL_V = 18   # bump to re-render today's reel after a design change
+REEL_V = 19   # bump to re-render today's reel after a design change
 DIGS_V = 7   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
@@ -1017,7 +1017,7 @@ def main():
     a.want_fam = reel_request(a.date or data_day).get("family")
     a.want_fx = reel_request(a.date or data_day).get("fx")
     a.want_key = reel_request(a.date or data_day).get("key")
-    a.want_detail = reel_request(a.date or data_day).get("detail")
+    a.want_detail = None                                                  # detail animation dropped (22.10.26)
     if a.want_fam:
         log("reel wish:", a.want_fam)
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
