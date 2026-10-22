@@ -1,5 +1,36 @@
 [
  {
+  "date": "2026-10-22",
+  "keys": [
+   "rick wade|late night basix (reissue)",
+   "various|10 year madback part 2",
+   "ivan|fotonovela"
+  ],
+  "titles": [
+   "Rick Wade – Late Night Basix (Reissue)",
+   "VARIOUS – 10 Year Madback Part 2",
+   "Ivan – Fotonovela"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Juno",
+   "Bordello A Parigi"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261022.mp4",
+  "looks": [
+   "flat black"
+  ],
+  "dv": 5,
+  "reel": {
+   "key": "kyle hall|smooth architecture ep",
+   "title": "Kyle HALL – Smooth Architecture EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261022.mp4",
+   "look": "photo cover · background bokeh · alive: sweep+breathe+parallax · melt: dissolve · type BK-Y",
+   "v": 18,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261022.jpg"
+  }
+ },
+ {
   "date": "2026-10-21",
   "keys": [
    "otto benson|songs before bed",
