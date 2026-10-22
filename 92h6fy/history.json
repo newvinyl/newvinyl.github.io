@@ -25,10 +25,14 @@
    "key": "kyle hall|smooth architecture ep",
    "title": "Kyle HALL – Smooth Architecture EP",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261022.mp4",
-   "look": "photo cover · background bokeh · alive: sweep+breathe+parallax · melt: dissolve · type BK-Y",
+   "look": "detail: hop (silver suitcase hops on the beat) · type BK-Y",
    "v": 18,
-   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261022.jpg"
-  }
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261022.jpg",
+   "detail": "{\"box\": [0.675, 0.12, 0.98, 0.8], \"motion\": \"hop\", \"note\": \"silver suitcase hops on the beat\"}"
+  },
+  "reel_tried": [
+   "kyle hall|smooth architecture ep"
+  ]
  },
  {
   "date": "2026-10-21",
