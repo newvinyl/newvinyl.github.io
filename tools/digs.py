@@ -600,7 +600,7 @@ RDUR = 20
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
 REEL_V = 18   # bump to re-render today's reel after a design change
-DIGS_V = 5   # bump to re-render today's digs video after a design change
+DIGS_V = 6   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
 SCHEMES = {
@@ -627,7 +627,7 @@ def draw_reel(img, p, date_s, t, lev, frame):
     txt(d, (96, 318), p["kicker"], 34, col, maxw=600)
     if p.get("idx"):
         txt(d, (984, 318), p["idx"], 32, col, anchor="rs")
-    paste_cover(img, p["cov880"], 100, 360, 880, 1 + 0.035 * (t / RDUR))
+    img.paste(p["cov880"], (100, 360))                                  # cover stands still (no zoom: it stepped by whole pixels)
     txt(d, (96, 1340), p["a"], 76, col)
     txt(d, (96, 1412), p["t"], 56, col, bold=False)
     txt(d, (96, 1470), "  ·  ".join(p["meta"]), 32, col, bold=False)
