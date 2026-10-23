@@ -38039,8 +38039,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192763.mp3"
+       "n": "Shining Force",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aca23d22b238-6acde9f98514f-mp3-temp.mp3"
       }
      ],
      "m": "2026-10",
@@ -50316,7 +50316,33 @@
      "st": "pre",
      "d": "Exp. 14 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Baldo & Revivis - On That Love"
+      },
+      {
+       "s": "A2",
+       "n": "Manuel Darquart - Conga Calling"
+      },
+      {
+       "s": "A3",
+       "n": "Daisybelle & Medlar - Que Calor"
+      },
+      {
+       "s": "B1",
+       "n": "Etienne B - Eyes On Me"
+      },
+      {
+       "s": "B2",
+       "n": "Strath - Regazzi"
+      },
+      {
+       "s": "B3",
+       "n": "Regularfantasy - Clean Up In Aisle 5"
+      }
+     ]
     },
     {
      "a": "BB. Angel",
@@ -54759,11 +54785,6 @@
        "s": "",
        "n": "Deepzone",
        "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_3_Pete_Blaker_-_Deepzone.mp3"
-      },
-      {
-       "s": "",
-       "n": "Hustlers of Life",
-       "u": "/files/1/0525/7435/5631/files/1_4_Pete_Blaker_-_Hustlers_of_Life.mp3"
       }
      ],
      "st": "pre",
@@ -57415,8 +57436,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191454.mp3"
+       "n": "You Know",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a708b72e0227-6a708e694cf25-mp3-temp.mp3"
       }
      ],
      "st": "in",
@@ -59684,15 +59705,59 @@
      "first_seen": "2026-10-23",
      "url": "https://www.redeyerecords.co.uk/vinyl/191945-frvr-2-lp-fila-brazillia-old-codes-new-chaos-3lp-regular-edition/",
      "cover": "https://www.redeyerecords.co.uk/imagery/800460-2.jpg",
-     "tr": [
+     "tr": [],
+     "d": "Exp. 30 Oct",
+     "st": "pre",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Old Codes"
+      },
+      {
+       "s": "A2",
+       "n": "Mermaids"
+      },
+      {
+       "s": "A3",
+       "n": "Whose Money"
+      },
+      {
+       "s": "B1",
+       "n": "Brazilification"
+      },
+      {
+       "s": "B2",
+       "n": "Serratia Marcescens"
+      },
+      {
+       "s": "C1",
+       "n": "The Sheriff"
+      },
+      {
+       "s": "C2",
+       "n": "Feinman"
+      },
+      {
+       "s": "D1",
+       "n": "The Light Of Jesus"
+      },
+      {
+       "s": "D2",
+       "n": "Strange Thoughts"
+      },
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/800460.mp3"
+       "n": "e1. Fila Funk"
+      },
+      {
+       "s": "",
+       "n": "f1. Pots & Pans"
+      },
+      {
+       "s": "",
+       "n": "f2. New Chaos"
       }
-     ],
-     "d": "Exp. 30 Oct",
-     "st": "pre"
+     ]
     },
     {
      "a": "Full Phatt",
@@ -59860,13 +59925,7 @@
      "first_seen": "2026-10-23",
      "url": "https://www.redeyerecords.co.uk/vinyl/200896-inc31lp-loidis-from-the-toolkit-of-lovers-3x12/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192228-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192228.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in"
     },
     {
@@ -59911,7 +59970,33 @@
       }
      ],
      "d": "Exp. 30 Oct",
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Martin Peter - Loveless"
+      },
+      {
+       "s": "A2",
+       "n": "Martin Peter - Accacia Avenue"
+      },
+      {
+       "s": "A3",
+       "n": "Martin Peter - EP isode Done"
+      },
+      {
+       "s": "B1",
+       "n": "Martin Peter - Brain And Pleasure"
+      },
+      {
+       "s": "B2",
+       "n": "Martin Peter - Discodeath"
+      },
+      {
+       "s": "B3",
+       "n": "Martin Peter - Coffeeshop"
+      }
+     ]
     },
     {
      "a": "Medlar & Stu Clark",
@@ -60153,7 +60238,29 @@
       }
      ],
      "d": "Exp. 30 Oct",
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "The Warning (Remastered) 04:22 2. /"
+      },
+      {
+       "s": "A2",
+       "n": "Ghost (Remastered) 05:57 3. /"
+      },
+      {
+       "s": "B1",
+       "n": "Ex- (Remastered) 04:55 4. /"
+      },
+      {
+       "s": "B2",
+       "n": "Dark Bässe (Remastered) 04:58 5. /"
+      },
+      {
+       "s": "B3",
+       "n": "Luv Is Blind (Remastered) 02:06"
+      }
+     ]
     },
     {
      "a": "BRIZMAN",
@@ -60297,13 +60404,7 @@
      "first_seen": "2026-10-23",
      "url": "https://www.redeyerecords.co.uk/vinyl/202364-dbl50lp-faltydl-vega/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193166-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193166.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 11 Dec",
      "st": "pre"
     },
@@ -60385,7 +60486,25 @@
        "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/t/tresor_389_godspeed/1_4_nvst_-_firewall.mp3"
       }
      ],
-     "st": "out"
+     "st": "out",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Solid Baxter 06:47 2. /"
+      },
+      {
+       "s": "A2",
+       "n": "Wide Spectrum 06:27 3. /"
+      },
+      {
+       "s": "B1",
+       "n": "The Wind Became Thunder 06:57 4. /"
+      },
+      {
+       "s": "B2",
+       "n": "Firewall 06:57 5. / Dx Firliner (Digital Bonus) 07:30"
+      }
+     ]
     },
     {
      "a": "Patricia",
@@ -60451,7 +60570,25 @@
       }
      ],
      "d": "Exp. 20 Nov",
-     "st": "pre"
+     "st": "pre",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Earth To"
+      },
+      {
+       "s": "A2",
+       "n": "Not That Deep"
+      },
+      {
+       "s": "B1",
+       "n": "Maintain The Bliss"
+      },
+      {
+       "s": "B2",
+       "n": "Head On A Swivel"
+      }
+     ]
     },
     {
      "a": "Rosati",
@@ -69004,7 +69141,28 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/various-artists-electronic-civilisation-utr008/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/08/UTR008-1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "DJ SCSI 7 Miles",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/UTR008_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Bohm Closed",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/UTR008_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Wildplanet Movement",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/UTR008_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "D-UFO Space Dimension",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/UTR008_4.mp3"
+      }
+     ],
      "gk": "variousartists|electroniccivilisation"
     },
     {
@@ -69049,7 +69207,53 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/santtu-xl-myos-yo-on-aurinko-lp-2x12-sofyi05/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/SOFYI05-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Myos yo on aurinko",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Otsoni",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Tuolla puolen",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Anna palaa",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Gummi",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "Taivaan karryt",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "Ota ylos",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "Kierros",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_8.mp3"
+      },
+      {
+       "s": "",
+       "n": "Ikuinen paluu",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SOFYI05_9.mp3"
+      }
+     ]
     },
     {
      "a": "Malik Kassim aka Retromigration",
@@ -69063,7 +69267,28 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/malik-kassim-aka-retromigration-i-do-dance-ep-potency010/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/POTENCY010-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Track 1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/POTENCY010_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 2",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/POTENCY010_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 3",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/POTENCY010_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 4",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/POTENCY010_4.mp3"
+      }
+     ]
     },
     {
      "a": "Beste Hira",
@@ -69112,7 +69337,28 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/o-wells-mp08-mp08/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/03/MP08-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Pillar I",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MP08_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Pillar Ii",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MP08_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Pillar Iii",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MP08_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Pillar Iv",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MP08_4.mp3"
+      }
+     ]
     },
     {
      "a": "Boo Williams",
@@ -69336,7 +69582,18 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/anthony-nicholson-with-brandon-markell-holmes-chris-rob-you-ytcwvyl08/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/02/YTCWVYL08_1-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Side 1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/YTCWVYL08_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "1. \"You\"",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/YTCWVYL08_2.mp3"
+      }
+     ]
     },
     {
      "a": "Boo Williams",
@@ -69350,7 +69607,18 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/boo-williams-continuous-play-txr104/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/TXR104-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Continuous Play",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TXR104_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Continuous Play",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/TXR104_2.mp3"
+      }
+     ]
     },
     {
      "a": "Glenn Underground",
@@ -69364,7 +69632,48 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/glenn-underground-grass-root-tech-house-lp-sjudlp2/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/03/R-36301495-1771606884-7038-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. GrassRoot(I Control Your P",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Transparent Sreets",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Bending & Stretching",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Mama's House(Homan & Harr",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1. Flight Zone",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2. Jack Magnanimous",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1. Dance-R",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2. Eli Opus Omnis(Main)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SJUDLP2_8.mp3"
+      }
+     ]
     },
     {
      "a": "Fugitive Artifact",
@@ -69413,7 +69722,28 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/manooz-time-4-houze-ep-sc1253/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/170506_689B7F4D-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Manooz - Nitelife (feat. Robert Owens)",
+       "u": "https://srv8.beanet-hosting.eu/mp3_samples/170506_333850_01_01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Manooz - Virgo 505",
+       "u": "https://srv8.beanet-hosting.eu/mp3_samples/170506_333851_01_02.mp3"
+      },
+      {
+       "s": "",
+       "n": "Manooz - Jack The Bass",
+       "u": "https://srv8.beanet-hosting.eu/mp3_samples/170506_333852_01_03.mp3"
+      },
+      {
+       "s": "",
+       "n": "Manooz - Time 4 Houze!",
+       "u": "https://srv8.beanet-hosting.eu/mp3_samples/170506_333853_01_04.mp3"
+      }
+     ]
     },
     {
      "a": "Natural Rhythm",
@@ -69427,7 +69757,28 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/natural-rhythm-disco-daze-root011/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/08/ROOT011-1-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Buy Your Soul",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ROOT011_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Hairy Inside",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ROOT011_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Rollin On Disco",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ROOT011_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Not Happy, Not Sad",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ROOT011_4.mp3"
+      }
+     ]
     },
     {
      "a": "Glenn Underground",
@@ -69441,7 +69792,23 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/glenn-underground-chicago-state-of-mind-pt-2-orgs004v/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/ORGS004V-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Chicago State Of Mind Part 2\" (326 Lower Wacker Drive Main Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORGS004V_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Chicago State Of Mind Part 2\" (326 Lower Wacker Drive Dub Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORGS004V_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Chicago State Of Mind Part 1\" (GU's Euphoric Disco Ride Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORGS004V_3.mp3"
+      }
+     ]
     },
     {
      "a": "Mark De Clive-Lowe",
@@ -69490,7 +69857,28 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/gu-aka-glenn-underground-classiques-vol-21-guclssqs21/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/03/GUCLSSQS21-1-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: You & Me (Guakacvobreak Down)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GUCLSSQS21_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Play It For Me (One More Time) (Gu Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GUCLSSQS21_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Earth Can Be Just Like Heaven (Gu Re-Edit)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GUCLSSQS21_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Hawkeye (Gu Remaster)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/GUCLSSQS21_4.mp3"
+      }
+     ]
     },
     {
      "a": "Glenn Underground",
@@ -69524,7 +69912,18 @@
      "first_seen": "2026-10-23",
      "url": "https://yoyaku.io/release/anthony-nicholson-say-goodbye-bmv-87/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/170504_D511B987-400x400.jpg",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Anthony Nicholson - Say Goodbye (Vocal)",
+       "u": "https://srv8.beanet-hosting.eu/mp3_samples/170504_333846_01_01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Anthony Nicholson - Say Goodbye (Instrumental)",
+       "u": "https://srv8.beanet-hosting.eu/mp3_samples/170504_333847_01_02.mp3"
+      }
+     ]
     },
     {
      "a": "Boo Williams",
@@ -69751,8 +70150,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Black Swords",
        "s": "",
+       "n": "Black Swords",
        "u": ""
       }
      ],
@@ -72639,7 +73038,13 @@
      "first_seen": "2026-10-23",
      "url": "https://kompakt.fm/releases/ep_2",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6acce2c299eb5-6acce5412a6f7-fitted.jpg?v=2",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Sue Can Wait",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6acce2f07b2f6-6acce54edb9ed-mp3-temp.mp3"
+      }
+     ]
     },
     {
      "a": "Ian Pooley",
@@ -72656,8 +73061,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191454.mp3"
+       "n": "You Know",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a708b72e0227-6a708e694cf25-mp3-temp.mp3"
       }
      ]
     },
@@ -72673,7 +73078,13 @@
      "first_seen": "2026-10-23",
      "url": "https://kompakt.fm/releases/i_do_dance_ep",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4742cac-6a708f5b70e61-fitted.jpg?v=2",
-     "tr": []
+     "tr": [
+      {
+       "s": "",
+       "n": "Love Rock",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a708b72dffc3-6a708f67bc138-mp3-temp.mp3"
+      }
+     ]
     },
     {
      "a": "Intellitronic",
@@ -72725,8 +73136,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192763.mp3"
+       "n": "Shining Force",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aca23d22b238-6acde9f98514f-mp3-temp.mp3"
       }
      ],
      "st": "out"
@@ -72743,7 +73154,13 @@
      "first_seen": "2026-10-23",
      "url": "https://kompakt.fm/releases/explorer",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6ac3a07a60f19-6ac4a696dcedf-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Atlas (Chapter 1)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6ac3a0a80cee1-6ac4a6b0219ee-mp3-temp.mp3"
+      }
+     ],
      "st": "out"
     },
     {
@@ -114954,24 +115371,9 @@
      "cover": "https://www.deejay.de/images/l/5/4/1266554.jpg",
      "tr": [
       {
-       "s": "A1",
+       "s": "",
        "n": "Atlas (Chapter 1)",
-       "page": "https://www.deejay.de/Sven_Tasnadi_Explorer_SAT073_Vinyl__1266554"
-      },
-      {
-       "s": "A2",
-       "n": "Atlas (Chapter 2)",
-       "page": "https://www.deejay.de/Sven_Tasnadi_Explorer_SAT073_Vinyl__1266554"
-      },
-      {
-       "s": "B1",
-       "n": "Explorer",
-       "page": "https://www.deejay.de/Sven_Tasnadi_Explorer_SAT073_Vinyl__1266554"
-      },
-      {
-       "s": "B2",
-       "n": "Megasektor",
-       "page": "https://www.deejay.de/Sven_Tasnadi_Explorer_SAT073_Vinyl__1266554"
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6ac3a0a80cee1-6ac4a6b0219ee-mp3-temp.mp3"
       }
      ],
      "st": "in"
@@ -120420,11 +120822,6 @@
        "s": "",
        "n": "Deepzone",
        "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_3_Pete_Blaker_-_Deepzone.mp3"
-      },
-      {
-       "s": "",
-       "n": "Hustlers of Life",
-       "u": "/files/1/0525/7435/5631/files/1_4_Pete_Blaker_-_Hustlers_of_Life.mp3"
       }
      ],
      "st": "in",

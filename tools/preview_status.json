@@ -1,29 +1,29 @@
 {
- "date": "2026-10-22",
+ "date": "2026-10-23",
  "total": {
-  "records": 3159,
-  "tracks": 2399,
-  "clip": 600,
-  "none": 160
+  "records": 3295,
+  "tracks": 2484,
+  "clip": 636,
+  "none": 175
  },
  "shops": {
   "Hardwax": {
-   "records": 152,
-   "tracks": 152,
+   "records": 160,
+   "tracks": 160,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 86,
-   "tracks": 83,
+   "records": 87,
+   "tracks": 84,
    "clip": 0,
    "none": 3
   },
   "Decks.de": {
-   "records": 14,
+   "records": 16,
    "tracks": 10,
-   "clip": 2,
-   "none": 2
+   "clip": 3,
+   "none": 3
   },
   "Clone": {
    "records": 318,
@@ -38,40 +38,40 @@
    "none": 47
   },
   "Redeye Records": {
-   "records": 855,
-   "tracks": 248,
-   "clip": 576,
-   "none": 31
+   "records": 896,
+   "tracks": 258,
+   "clip": 604,
+   "none": 34
   },
   "Yoyaku": {
-   "records": 254,
-   "tracks": 253,
+   "records": 278,
+   "tracks": 277,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 105,
-   "tracks": 87,
+   "records": 117,
+   "tracks": 98,
    "clip": 0,
-   "none": 18
+   "none": 19
   },
   "Juno Records": {
-   "records": 623,
-   "tracks": 615,
+   "records": 627,
+   "tracks": 619,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
-   "records": 189,
-   "tracks": 143,
-   "clip": 7,
-   "none": 39
+   "records": 214,
+   "tracks": 152,
+   "clip": 14,
+   "none": 48
   },
   "Vinyl Underground": {
-   "records": 124,
-   "tracks": 123,
+   "records": 139,
+   "tracks": 137,
    "clip": 0,
-   "none": 1
+   "none": 2
   },
   "Sound Metaphors": {
    "records": 18,
@@ -98,8 +98,8 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 64,
-   "tracks": 64,
+   "records": 68,
+   "tracks": 68,
    "clip": 0,
    "none": 0
   },
@@ -110,20 +110,24 @@
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 20,
- "clips_verified": 9244,
- "not_reachable": {},
+ "pages_checked": 659,
+ "new_from_shop_pages": 19,
+ "copied_from_other_shop": 3,
+ "broken_clips_removed": 28,
+ "clips_verified": 9508,
+ "not_reachable": {
+  "Phonica: http307": 15,
+  "Redeye Records: failed:UnicodeEncodeError": 36,
+  "Redeye Records: http403": 3
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
-   "clips": 266,
+   "clips": 284,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 539,
+   "clips": 602,
    "failed": 0,
    "sample": []
   },
@@ -143,12 +147,12 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 729,
+   "clips": 763,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 425,
+   "clips": 429,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -162,8 +166,8 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 56,
-   "failed": 14,
+   "clips": 62,
+   "failed": 15,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
@@ -171,12 +175,12 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 575,
+   "clips": 605,
    "failed": 0,
    "sample": []
   },
   "srv8.beanet-hosting.eu": {
-   "clips": 16,
+   "clips": 22,
    "failed": 0,
    "sample": []
   },
@@ -190,14 +194,17 @@
    ]
   },
   "www.juno.co.uk": {
-   "clips": 4003,
+   "clips": 4060,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 694,
-   "failed": 0,
-   "sample": []
+   "clips": 740,
+   "failed": 2,
+   "sample": [
+    "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/YTCWVYL08_3.mp3",
+    "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/YTCWVYL08_4.mp3"
+   ]
   },
   "yydistribution.ams3.digitaloceanspaces.com": {
    "clips": 24,
