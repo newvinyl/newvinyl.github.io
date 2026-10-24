@@ -1,21 +1,21 @@
 {
- "date": "2026-10-23",
+ "date": "2026-10-24",
  "total": {
-  "records": 3295,
-  "tracks": 2484,
-  "clip": 636,
-  "none": 175
+  "records": 3432,
+  "tracks": 2575,
+  "clip": 668,
+  "none": 189
  },
  "shops": {
   "Hardwax": {
-   "records": 160,
-   "tracks": 160,
+   "records": 180,
+   "tracks": 180,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 87,
-   "tracks": 84,
+   "records": 89,
+   "tracks": 86,
    "clip": 0,
    "none": 3
   },
@@ -26,10 +26,10 @@
    "none": 3
   },
   "Clone": {
-   "records": 318,
-   "tracks": 316,
+   "records": 327,
+   "tracks": 324,
    "clip": 0,
-   "none": 2
+   "none": 3
   },
   "Phonica": {
    "records": 213,
@@ -38,38 +38,38 @@
    "none": 47
   },
   "Redeye Records": {
-   "records": 896,
-   "tracks": 258,
-   "clip": 604,
-   "none": 34
+   "records": 936,
+   "tracks": 274,
+   "clip": 631,
+   "none": 31
   },
   "Yoyaku": {
-   "records": 278,
-   "tracks": 277,
+   "records": 281,
+   "tracks": 280,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 117,
-   "tracks": 98,
+   "records": 118,
+   "tracks": 99,
    "clip": 0,
    "none": 19
   },
   "Juno Records": {
-   "records": 627,
-   "tracks": 619,
+   "records": 631,
+   "tracks": 623,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
-   "records": 214,
-   "tracks": 152,
-   "clip": 14,
-   "none": 48
+   "records": 246,
+   "tracks": 163,
+   "clip": 19,
+   "none": 64
   },
   "Vinyl Underground": {
-   "records": 139,
-   "tracks": 137,
+   "records": 154,
+   "tracks": 152,
    "clip": 0,
    "none": 2
   },
@@ -98,37 +98,41 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 68,
-   "tracks": 68,
+   "records": 69,
+   "tracks": 69,
    "clip": 0,
    "none": 0
   },
   "Diggers.fr": {
-   "records": 49,
-   "tracks": 49,
+   "records": 59,
+   "tracks": 59,
    "clip": 0,
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 21,
- "clips_verified": 9504,
- "not_reachable": {},
+ "pages_checked": 674,
+ "new_from_shop_pages": 2,
+ "copied_from_other_shop": 3,
+ "broken_clips_removed": 22,
+ "clips_verified": 9818,
+ "not_reachable": {
+  "Phonica: http307": 12,
+  "Redeye Records: failed:UnicodeEncodeError": 36,
+  "Redeye Records: http403": 3
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
-   "clips": 284,
+   "clips": 288,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 602,
+   "clips": 654,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1279,
+   "clips": 1309,
    "failed": 0,
    "sample": []
   },
@@ -138,17 +142,17 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 256,
+   "clips": 320,
    "failed": 0,
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 763,
+   "clips": 869,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 429,
+   "clips": 445,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -171,7 +175,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 603,
+   "clips": 631,
    "failed": 0,
    "sample": []
   },
@@ -190,12 +194,12 @@
    ]
   },
   "www.juno.co.uk": {
-   "clips": 4060,
+   "clips": 4072,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 738,
+   "clips": 740,
    "failed": 0,
    "sample": []
   },
