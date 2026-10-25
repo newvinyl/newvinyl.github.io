@@ -1,10 +1,10 @@
 {
- "date": "2026-10-24",
+ "date": "2026-10-25",
  "total": {
-  "records": 3432,
-  "tracks": 2575,
-  "clip": 668,
-  "none": 189
+  "records": 3626,
+  "tracks": 2795,
+  "clip": 670,
+  "none": 161
  },
  "shops": {
   "Hardwax": {
@@ -26,22 +26,22 @@
    "none": 3
   },
   "Clone": {
-   "records": 327,
-   "tracks": 324,
+   "records": 328,
+   "tracks": 325,
    "clip": 0,
    "none": 3
   },
   "Phonica": {
    "records": 213,
-   "tracks": 154,
+   "tracks": 155,
    "clip": 12,
-   "none": 47
+   "none": 46
   },
   "Redeye Records": {
-   "records": 936,
-   "tracks": 274,
-   "clip": 631,
-   "none": 31
+   "records": 969,
+   "tracks": 303,
+   "clip": 636,
+   "none": 30
   },
   "Yoyaku": {
    "records": 281,
@@ -50,28 +50,28 @@
    "none": 1
   },
   "Kompakt": {
-   "records": 118,
-   "tracks": 99,
+   "records": 124,
+   "tracks": 107,
    "clip": 0,
-   "none": 19
+   "none": 17
   },
   "Juno Records": {
-   "records": 631,
-   "tracks": 623,
+   "records": 776,
+   "tracks": 768,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
    "records": 246,
-   "tracks": 163,
-   "clip": 19,
-   "none": 64
+   "tracks": 191,
+   "clip": 16,
+   "none": 39
   },
   "Vinyl Underground": {
-   "records": 154,
-   "tracks": 152,
+   "records": 160,
+   "tracks": 157,
    "clip": 0,
-   "none": 2
+   "none": 3
   },
   "Sound Metaphors": {
    "records": 18,
@@ -104,18 +104,22 @@
    "none": 0
   },
   "Diggers.fr": {
-   "records": 59,
-   "tracks": 59,
+   "records": 62,
+   "tracks": 62,
    "clip": 0,
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 21,
- "clips_verified": 9817,
- "not_reachable": {},
+ "pages_checked": 698,
+ "new_from_shop_pages": 2,
+ "copied_from_other_shop": 6,
+ "broken_clips_removed": 25,
+ "clips_verified": 10593,
+ "not_reachable": {
+  "Phonica: http307": 7,
+  "Redeye Records: failed:UnicodeEncodeError": 38,
+  "Redeye Records: http403": 3
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 288,
@@ -123,12 +127,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 654,
+   "clips": 676,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1309,
+   "clips": 1313,
    "failed": 0,
    "sample": []
   },
@@ -138,7 +142,7 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 320,
+   "clips": 332,
    "failed": 0,
    "sample": []
   },
@@ -162,7 +166,7 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 62,
+   "clips": 63,
    "failed": 15,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
@@ -171,7 +175,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 630,
+   "clips": 640,
    "failed": 0,
    "sample": []
   },
@@ -190,7 +194,7 @@
    ]
   },
   "www.juno.co.uk": {
-   "clips": 4072,
+   "clips": 4799,
    "failed": 0,
    "sample": []
   },

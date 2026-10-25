@@ -63759,7 +63759,41 @@
      "d": "Exp. 30 Oct",
      "st": "pre",
      "m": "2026-10",
-     "first_seen": "2026-10-25"
+     "first_seen": "2026-10-25",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Peace & Happy"
+      },
+      {
+       "s": "A2",
+       "n": "Uher"
+      },
+      {
+       "s": "A3",
+       "n": "Pro Bono"
+      },
+      {
+       "s": "B1",
+       "n": "Trio"
+      },
+      {
+       "s": "B2",
+       "n": "Caramelli"
+      },
+      {
+       "s": "B3",
+       "n": "Running Out"
+      },
+      {
+       "s": "B4",
+       "n": "Obsolescence"
+      },
+      {
+       "s": "B5",
+       "n": "Voco"
+      }
+     ]
     },
     {
      "a": "Andrea Dama",
@@ -63859,7 +63893,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-25"
+     "first_seen": "2026-10-25",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Dis World"
+      },
+      {
+       "s": "A2",
+       "n": "Looperz"
+      },
+      {
+       "s": "B1",
+       "n": "Soda"
+      },
+      {
+       "s": "B2",
+       "n": "Looperz (Ion Ludwig Southern Intentions Remix)"
+      }
+     ]
     },
     {
      "a": "Costas",
@@ -64207,7 +64259,25 @@
      "d": "Exp. 6 Nov",
      "st": "pre",
      "m": "2026-10",
-     "first_seen": "2026-10-25"
+     "first_seen": "2026-10-25",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Rocking Music (Main Vocal)"
+      },
+      {
+       "s": "A2",
+       "n": "Rocking Music (Joey Negro Club Edit)"
+      },
+      {
+       "s": "B1",
+       "n": "Everybody (Vinyl Edit)"
+      },
+      {
+       "s": "B2",
+       "n": "Everybody (Radio Edit)"
+      }
+     ]
     },
     {
      "a": "Match Box & Mixolydian",
@@ -64327,7 +64397,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-25"
+     "first_seen": "2026-10-25",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Nuron - Mirage (7:10)"
+      },
+      {
+       "s": "A2",
+       "n": "Nuron - In Motion (6:05)"
+      },
+      {
+       "s": "B1",
+       "n": "Fugue - Contrapoint (7:03)"
+      },
+      {
+       "s": "B2",
+       "n": "Fugue - Interlagos (7:00)"
+      }
+     ]
     },
     {
      "a": "Hackney Electronica",
@@ -64403,13 +64491,7 @@
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/201406-bp013-matük-sendero/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192544-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192544.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-25"
@@ -74185,14 +74267,9 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "1",
+       "s": "",
        "n": "Black Swords",
-       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Timeless Time",
-       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
+       "u": ""
       }
      ],
      "st": "in"
@@ -74536,7 +74613,63 @@
      "first_seen": "2026-09-30",
      "url": "https://kompakt.fm/releases/after_completing_the_hex",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/magazine025lp-after_completing_the_hex.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Trig Graphs Don't Match??",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "0221 490y-26",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Over 3",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Emi",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Ax^2",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Primesub",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-02-03.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "Lack Of Worldliness",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-03-01.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "After Completing The Hex I Have Questions",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-03-02.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "1swerves",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-04-01.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "Over 5",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-04-02.mp3"
+      },
+      {
+       "s": "D3",
+       "n": "Kliff",
+       "u": "https://www.juno.co.uk/MP3/SF1175968-01-04-03.mp3"
+      }
+     ],
      "st": "in"
     },
     {
@@ -77030,13 +77163,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -77644,7 +77771,13 @@
      "g": "Deep House · Repress",
      "url": "https://kompakt.fm/releases/flocking_behaviour_2026_repress_full_cover",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a575b543d85f-6a5764f93d05b-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Cheetah Nights",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a575b81b0d21-6a57650b71b75-mp3-temp.mp3"
+      }
+     ],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-25"
@@ -112958,11 +113091,6 @@
        "u": "https://www.juno.co.uk/MP3/SF1176921-01-02-03.mp3"
       },
       {
-       "s": "B4",
-       "n": "Fog",
-       "u": "https://www.juno.co.uk/MP3/SF1176921-01-02-04.mp3"
-      },
-      {
        "s": "B5",
        "n": "4th Cloud (feat Gregory Uhlmann)",
        "u": "https://www.juno.co.uk/MP3/SF1176921-01-02-05.mp3"
@@ -124460,29 +124588,24 @@
      "cover": "https://www.deejay.de/images/l/2/7/1253827.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192621.mp3"
-      },
-      {
        "s": "A1",
-       "n": "Hustache - That Beautiful Place",
-       "page": "https://www.deejay.de/Hustache_Lungo_Tom_Cler_Numero_6_Mustard_%26_Pickles_EP_02_MP02_Vinyl__1253827"
+       "n": "Hustache - \"That Beautiful Place\"",
+       "u": "https://www.juno.co.uk/MP3/SF1183041-01-01-01.mp3"
       },
       {
        "s": "A2",
-       "n": "Lungo - I Can't",
-       "page": "https://www.deejay.de/Hustache_Lungo_Tom_Cler_Numero_6_Mustard_%26_Pickles_EP_02_MP02_Vinyl__1253827"
+       "n": "Lungo - \"I Can't\"",
+       "u": "https://www.juno.co.uk/MP3/SF1183041-01-01-02.mp3"
       },
       {
        "s": "B1",
-       "n": "Tom Cler - Love Will Tear Us Apart",
-       "page": "https://www.deejay.de/Hustache_Lungo_Tom_Cler_Numero_6_Mustard_%26_Pickles_EP_02_MP02_Vinyl__1253827"
+       "n": "Tom Cler - \"Love Will Tear Us Apart\"",
+       "u": "https://www.juno.co.uk/MP3/SF1183041-01-02-01.mp3"
       },
       {
        "s": "B2",
-       "n": "Numero 6 - Way To Paris",
-       "page": "https://www.deejay.de/Hustache_Lungo_Tom_Cler_Numero_6_Mustard_%26_Pickles_EP_02_MP02_Vinyl__1253827"
+       "n": "Numero 6 - \"Way To Paris\"",
+       "u": "https://www.juno.co.uk/MP3/SF1183041-01-02-02.mp3"
       }
      ],
      "d": "20.10.2026",
@@ -124828,29 +124951,24 @@
      "cover": "https://www.deejay.de/images/l/6/6/1247266.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191934.mp3"
-      },
-      {
        "s": "A1",
        "n": "Want To Be",
-       "page": "https://www.deejay.de/Elia_Nafzger_Loose_In_The_Function_EP_PTX035_Vinyl__1247266"
+       "u": "https://www.juno.co.uk/MP3/SF1177066-01-01-01.mp3"
       },
       {
        "s": "A2",
        "n": "Wet Walls",
-       "page": "https://www.deejay.de/Elia_Nafzger_Loose_In_The_Function_EP_PTX035_Vinyl__1247266"
+       "u": "https://www.juno.co.uk/MP3/SF1177066-01-01-02.mp3"
       },
       {
        "s": "B1",
        "n": "Chicks From The Scene",
-       "page": "https://www.deejay.de/Elia_Nafzger_Loose_In_The_Function_EP_PTX035_Vinyl__1247266"
+       "u": "https://www.juno.co.uk/MP3/SF1177066-01-02-01.mp3"
       },
       {
        "s": "B2",
        "n": "Quick Love",
-       "page": "https://www.deejay.de/Elia_Nafzger_Loose_In_The_Function_EP_PTX035_Vinyl__1247266"
+       "u": "https://www.juno.co.uk/MP3/SF1177066-01-02-02.mp3"
       }
      ],
      "d": "21.10.2026",
@@ -125854,9 +125972,24 @@
      "cover": "https://www.deejay.de/images/l/6/5/1255165.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192648.mp3"
+       "s": "A1",
+       "n": "Supreme Schemes",
+       "u": "https://www.juno.co.uk/MP3/SF1183279-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Shibuya",
+       "u": "https://www.juno.co.uk/MP3/SF1183279-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Junesburgh",
+       "u": "https://www.juno.co.uk/MP3/SF1183279-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Loopii",
+       "u": "https://www.juno.co.uk/MP3/SF1183279-01-02-02.mp3"
       }
      ],
      "st": "in"
@@ -126651,9 +126784,19 @@
      "cover": "https://www.deejay.de/images/l/2/0/1251220.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191024.mp3"
+       "s": "A1",
+       "n": "You Can Dance",
+       "u": "https://www.juno.co.uk/MP3/SF1165421-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Get Happy",
+       "u": "https://www.juno.co.uk/MP3/SF1165421-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Gotta Have Lovin'",
+       "u": "https://www.juno.co.uk/MP3/SF1165421-01-02-02.mp3"
       }
      ],
      "st": "in"
@@ -126958,9 +127101,14 @@
      "cover": "https://www.deejay.de/images/l/6/4/1239064.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/189783.mp3"
+       "s": "A1",
+       "n": "Sinner Man",
+       "u": "https://www.juno.co.uk/MP3/SF1153766-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Street Player",
+       "u": "https://www.juno.co.uk/MP3/SF1153766-01-02-01.mp3"
       }
      ],
      "st": "in"
