@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Text-Hook für Reels und «Today's Digs»: gelbe Box, schwarze Schrift (Schibsted Grotesk Black, Versal),
-immer einzeilig, leicht schräg, zufällig über dem Cover platziert. Sichtbar ab Sekunde 0, blendet nach 3 s aus.
+immer einzeilig, leicht schräg, zufällig über dem Cover platziert. Erscheint kurz nach dem Start (0,5 s), bleibt 2,5 s und blendet dann aus.
 
 apply(path, kind, seed, ...) legt den Hook über ein fertiges Video (in place)."""
 import os, random, re, subprocess
@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 FONT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "SchibstedGrotesk.ttf")
 YELLOW, BLACK = (0xF2, 0xE3, 0x3A, 255), (0, 0, 0, 255)
-SHOW, FADE = 3.0, 0.4          # seconds fully visible, fade-out
+START, FIN, SHOW, FADE = 0.5, 0.25, 2.5, 0.4   # appears right after playback starts, stays, fades out
 
 HOOKS = {
     "new": ["WHAT A BANGER!", "MASTERPIECE.", "PURE FIRE.", "INSTANT CLASSIC.", "BIG ONE.", "HEAVY.",
@@ -65,9 +65,10 @@ def apply(path, kind, seed, reissue=False, avoid=()):
     x = rnd.randint(x0, max(x0, x1 - w))
     y = rnd.randint(y0, max(y0, y1 - h))
     tmp = path + ".hook.mp4"
-    cmd = ["ffmpeg", "-y", "-v", "error", "-i", path, "-loop", "1", "-t", str(SHOW + FADE + .2), "-i", png,
-           "-filter_complex", "[1]format=rgba,fade=t=out:st=%s:d=%s:alpha=1[h];[0:v][h]overlay=x=%d:y=%d:eof_action=pass[v]"
-           % (SHOW, FADE, x, y),
+    end = START + FIN + SHOW
+    cmd = ["ffmpeg", "-y", "-v", "error", "-i", path, "-loop", "1", "-t", str(end + FADE + .2), "-i", png,
+           "-filter_complex", "[1]format=rgba,fade=t=in:st=%s:d=%s:alpha=1,fade=t=out:st=%s:d=%s:alpha=1,setpts=PTS+0/TB[h];"
+           "[0:v][h]overlay=x=%d:y=%d:eof_action=pass[v]" % (START, FIN, end, FADE, x, y),
            "-map", "[v]", "-map", "0:a?", "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p",
            "-b:v", "8M", "-maxrate", "10M", "-bufsize", "16M", "-g", "60", "-preset", "medium",
            "-c:a", "copy", "-movflags", "+faststart", tmp]
