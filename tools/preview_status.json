@@ -110,16 +110,12 @@
    "none": 0
   }
  },
- "pages_checked": 698,
- "new_from_shop_pages": 2,
- "copied_from_other_shop": 6,
- "broken_clips_removed": 25,
- "clips_verified": 10593,
- "not_reachable": {
-  "Phonica: http307": 7,
-  "Redeye Records: failed:UnicodeEncodeError": 38,
-  "Redeye Records: http403": 3
- },
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 20,
+ "clips_verified": 10587,
+ "not_reachable": {},
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 288,
@@ -166,8 +162,8 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 63,
-   "failed": 15,
+   "clips": 62,
+   "failed": 14,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
@@ -175,7 +171,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 640,
+   "clips": 635,
    "failed": 0,
    "sample": []
   },
