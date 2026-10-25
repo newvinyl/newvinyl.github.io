@@ -569,30 +569,26 @@ def tag(s):
     s = re.sub(r"[^a-z0-9]", "", norm(s))
     return "#" + s if 2 < len(s) <= 24 else None
 
-def caption(picks, date_s):
-    nums = ["1️⃣", "2️⃣", "3️⃣"]
-    lines = ["Today's Digs %s 👇" % date_s, "🔊 Sound on", ""]
-    for n, p in zip(nums, picks):
-        lab = " (%s)" % p["l"] if p["l"] else ""
-        lines.append("%s %s – %s%s" % (n, p["a"], p["t"], lab))
-        g = p["genre"].title().replace("Dj", "DJ")
-        lines.append("%s · %s at %s" % (g, p["shop_price"], p["shop"]) if p["shop_price"] else "%s · at %s" % (g, p["shop"]))
-        lines.append("")
-    lines += ["Full price comparison + previews of all three 👉", "monthlyvinyl.net (link in bio)", "",
-              "Which one goes in your bag – 1, 2 or 3?", ""]
-    tags = ["#newvinyl", "#vinylrelease"]
-    for p in picks:
-        tags.append(tag(p["genre"]))
-    for p in picks:
-        tags += [tag(p["a"]), tag(p["l"])]
-    tags += ["#vinylcollection", "#recordshop", "#monthlyvinyl"]
+def cap_title(t):
+    """title without pressing details like '(Dark Blue Transparent Marbled Vinyl)'"""
+    return re.sub(r"\s*\((?=[^)]*\b(vinyl|colou?red|marbled|splatter|transparent|clear)\b)[^)]*\)", "", t or "", flags=re.I).strip() or t
+
+def cap_tags(ps):
+    tags = ["#newvinyl"] + [tag(p["genre"]) for p in ps] + ["#monthlyvinyl"]
     out = []
     for t in tags:
         if t and t not in out:
             out.append(t)
-    lines.append(" ".join(out[:16]))
-    return "\n".join(lines)
+    return " ".join(out)
 
+def caption(picks, date_s):
+    """minimal: findable via search (artist, title, label) + the site. Nobody reads captions."""
+    nums = ["1️⃣", "2️⃣", "3️⃣"]
+    lines = [" · ".join(p["a"] for p in picks), ""]
+    for n, p in zip(nums, picks):
+        lines.append("%s %s – %s%s" % (n, p["a"], cap_title(p["t"]), " (%s)" % p["l"] if p["l"] else ""))
+    lines += ["", "monthlyvinyl.net", "", cap_tags(picks)]
+    return "\n".join(lines)
 
 # ---------------------------------------------------------------- reel (one release, 45 s)
 RDUR = 45
@@ -801,31 +797,9 @@ def tracklist(arr):
     return out[:10]
 
 def reel_caption(p, arr):
-    cat = [v for v in p["meta"][1:2]]
-    head = "%s – %s" % (p["a"], p["t"])
-    inside = ", ".join(v for v in [p["l"]] + cat if v)
-    lines = [head + (" (%s)" % inside if inside else ""),
-             "%s 🔊 Sound on: \"%s\"" % ("New in the shops" if p["strict"] else "Fresh in the shops", p["track"].replace(" (preview)", "")), ""]
-    tl = tracklist(arr)
-    if len(tl) > 1:
-        lines += tl + [""]
-    fmt = p["meta"][-1] if p["meta"] else "Vinyl"
-    if len(p["prices"]) > 1:
-        lines.append("💿 %s – %d shops compared:" % (fmt, len(p["prices"])))
-        for j, (shop, pr) in enumerate(p["prices"][:5]):
-            lines.append("%s %s%s" % (shop, pr, "  ← cheapest" if j == 0 else ""))
-    elif p["shop_price"]:
-        lines.append("💿 %s – %s at %s" % (fmt, p["shop_price"], p["shop"]))
-    else:
-        lines.append("💿 %s – at %s" % (fmt, p["shop"]))
-    lines += ["", "Listen to all previews + compare prices 👉", "monthlyvinyl.net (link in bio)", "", "Cop or drop?", ""]
-    tags = ["#newvinyl", "#vinylrelease", tag(p["genre"]), tag(p["a"]), tag(p["l"]), "#vinyldj", "#vinylcollection", "#recordshop", "#nowspinning", "#monthlyvinyl"]
-    out = []
-    for t in tags:
-        if t and t not in out:
-            out.append(t)
-    lines.append(" ".join(out))
-    return "\n".join(lines)
+    """minimal: artist – title (label), the site, a few tags"""
+    head = "%s – %s%s" % (p["a"], cap_title(p["t"]), " (%s)" % p["l"] if p["l"] else "")
+    return "\n".join([head, "", "monthlyvinyl.net", "", cap_tags([p])])
 
 # ---------------------------------------------------------------- page
 PAGE = """<!doctype html>
