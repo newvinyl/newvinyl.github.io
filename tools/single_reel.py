@@ -77,7 +77,7 @@ def main():
          "strict": True, "tracks": tracks, "score": 0, "track": tr, "cover": cov, "audio": aud}
     R = digs.prepare(c, fx)
     start, _ = digs.pick_start(aud)
-    dur = int(want.get("dur") or 20)                     # reel length in seconds (default 20)
+    dur = int(want.get("dur") or 45)                     # reel length in seconds (default 45)
     mix = digs.reel_mix(aud, max(0.0, start - 1.0), dur)
     slug = re.sub(r"[^a-z0-9]+", "-", (R["a"] + " " + R["t"]).lower()).strip("-")[:60]
     out = os.path.join(WORK, "reel-%s.mp4" % slug)

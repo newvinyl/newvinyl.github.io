@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Today's Digs + Reel – picks 3 new releases from releases.json for the feed video
-("Sorte 2": 3 x 15 s previews with crossfades, 41 s) and one other release for a 20 s Reel
+("Sorte 2": 3 x 15 s previews with crossfades, 41 s) and one other release for a 45 s Reel
 ("Sorte 1"), renders both (1080x1920, H.264/AAC) with tools/reelfx.py (full-width cover,
 background built from the cover itself – its structure, colours, geometry and style – details of the
 cover slowly coming to life, then the cover melting into the background; see tools/coverlife.py)
@@ -594,8 +594,8 @@ def caption(picks, date_s):
     return "\n".join(lines)
 
 
-# ---------------------------------------------------------------- reel (one release, 20 s)
-RDUR = 20
+# ---------------------------------------------------------------- reel (one release, 45 s)
+RDUR = 45
 
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
@@ -935,7 +935,7 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     look = None
     if det and getattr(a, "want_key", None) == R["key"]:
         try:
-            look = reelfx.reel_detail(rel, aud, det, rpath, rposter) + " · type " + sch
+            look = reelfx.reel_detail(rel, aud, det, rpath, rposter, dur=RDUR) + " · type " + sch
         except Exception as e:
             log("detail reel failed, falling back to effects:", e)
             det = None
@@ -951,17 +951,17 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
         log("liquid suitability %.2f (%s)" % (score, why))
         if want == "liquid" or (want is None and score >= .5 and not any("liquid" in lk for lk in recent)):
             try:
-                look = liquid.reel_liquid(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter, dur=20) + " · type " + sch
+                look = liquid.reel_liquid(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter, dur=RDUR) + " · type " + sch
             except Exception as e:
                 log("liquid reel failed, falling back to effects:", e)
                 look = None
     if look is None:
         avoid = recent_avoid(history)
         log("avoid (recent looks):", sorted(avoid))
-        look = reelfx.reel_single(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter,
+        look = reelfx.reel_single(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter, dur=RDUR,
                                   avoid=avoid, cmode=(getattr(a, "want_fx", None) if getattr(a, "want_fx", None) != "liquid" else None)) + " · type " + sch
     rcap = reel_caption(R, rc["arr"])
-    sec = section("reel", "Reel · one release", "20 s · post as a Reel · look: %s" % look, base + rname,
+    sec = section("reel", "Reel · one release", "%d s · post as a Reel · look: %s" % (RDUR, look), base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
                   "" if R["strict"] else "Note: already listed in another shop before yesterday.")
     log("reel", R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", look)
@@ -1102,7 +1102,7 @@ def main():
     sections = [section("digs", "Today's Digs · post video", "3 releases · 3 × 10 s · post in the feed", base + fname,
                         base + os.path.basename(poster), fname, cap, P, note)]
     caps = [cap]
-    # Reel: one other release, 20 s
+    # Reel: one other release, RDUR (45) s
     rel = make_reel(a, cands, fx, {p["key"] for p in P}, {c["fam"] for c in picks}, history, date_s, ymd, base)
     if rel:
         files += rel["files"]; caps.append(rel["cap"]); sections.insert(0, rel["section"]); entry["reel"] = rel["entry"]
