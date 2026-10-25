@@ -1,5 +1,36 @@
 [
  {
+  "date": "2026-10-25",
+  "keys": [
+   "steffi|half an owl and a full moon rising",
+   "dj hell|geteert und gefedert",
+   "roy ayers|delfonic reworked number 2"
+  ],
+  "titles": [
+   "STEFFI – HALF AN OWL AND A FULL MOON RISING",
+   "DJ Hell – Geteert und Gefedert",
+   "Roy AYERS – Delfonic Reworked Number 2"
+  ],
+  "shops": [
+   "Redeye",
+   "Kompakt",
+   "Juno"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261025.mp4",
+  "looks": [
+   "flat black"
+  ],
+  "dv": 7,
+  "reel": {
+   "key": "larry heard|ice castles (dark blue transparent marbled vinyl)",
+   "title": "Larry Heard – Ice Castles (Dark Blue Transparent Marbled Vinyl)",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261025.mp4",
+   "look": "painterly cover · background paintflow · alive: sway+glint+bloom+ripple · melt: dissolve · type BK-Y",
+   "v": 19,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261025.jpg"
+  }
+ },
+ {
   "date": "2026-10-24",
   "keys": [
    "kleeer|intimate connection",
