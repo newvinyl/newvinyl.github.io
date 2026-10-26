@@ -268,6 +268,36 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .bagtop svg{width:18px;height:18px}
 .bagtop b{top:-6px;right:-6px;min-width:18px;height:18px;line-height:18px;font-size:11px}
 
+/* Mobile: 1 oder 2 Spalten (Umschalter im Header) */
+#gridbtn .g2i{display:none}
+html.g2 #gridbtn .g1i{display:none}
+html.g2 #gridbtn .g2i{display:inline-flex}
+#gridbtn span{display:inline-flex}
+@media (min-width:600px){#gridbtn{display:none}}
+@media (max-width:599px){
+  html.g2 .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  html.g2 .card{contain-intrinsic-size:auto 180px}
+  html.g2 .play{width:46px;height:46px;margin:-23px 0 0 -23px}
+  html.g2 .play svg{width:19px;height:19px}
+  html.g2 .front .add{font-size:0;gap:0;padding:0;width:32px;height:32px;justify-content:center;right:6px;bottom:6px;border-width:1.5px}
+  html.g2 .front .add svg{width:14px;height:14px}
+  html.g2 .ph span{font-size:9.5px;padding:6px}
+  html.g2 .card.playing .front{outline-width:3px;outline-offset:-3px}
+  html.g2 .backf{padding:9px;gap:2px;border-width:1.5px}
+  html.g2 .backf .ar{font-size:14px;padding-right:26px}
+  html.g2 .backf .ti{font-size:12px}
+  html.g2 .backf .me{font-size:9.5px;line-height:1.45}
+  html.g2 .backf ol{margin-top:3px}
+  html.g2 .backf li button{font-size:11.5px;min-height:24px;gap:6px}
+  html.g2 .backf li .s{width:18px;font-size:9.5px}
+  html.g2 .backf .more-tr{margin-left:24px;font-size:10px}
+  html.g2 .backf .ctl{padding-top:5px;gap:6px}
+  html.g2 .backf .price{font-size:15px}
+  html.g2 .backf .price .low{display:none}
+  html.g2 .backf .ctl .add{font-size:0;gap:0;padding:0;width:30px;height:30px;justify-content:center;border-width:1.5px}
+  html.g2 .backf .shr{transform:scale(.8);transform-origin:top right}
+  html.g2 .day{margin-top:22px}
+}
 </style>
 </head>
 <body>
@@ -275,6 +305,7 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
   <a class="logo" href="/">Monthly Vinyl</a>
   <div class="hicons">
   <a class="habout" href="/about/">About</a>
+  <button class="hic" id="gridbtn" type="button" aria-label="Two columns" aria-pressed="false"><span class="g1i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7.5" height="7.5"/><rect x="13.5" y="4" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></svg></span><span class="g2i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg></span></button>
   <button class="hic" id="srchbtn" type="button" aria-label="Search" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
   <a class="hic" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Monthly Vinyl on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
   <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a></div>
@@ -407,6 +438,13 @@ function renderFeed(){
   paintBag();bagCount();applyFilter();
 }
 // Cover nur in Bildschirmnähe laden und weit weg wieder freigeben (sonst stürzt das iPhone bei vielen Platten ab)
+// Mobile-Raster: 1 oder 2 Spalten, Wahl bleibt gespeichert; die oberste sichtbare Platte bleibt beim Umschalten im Blick
+(()=>{const h=document.documentElement,b=document.getElementById("gridbtn");if(!b)return;
+  const set=on=>{h.classList.toggle("g2",on);b.setAttribute("aria-pressed",on);b.setAttribute("aria-label",on?"One column":"Two columns")};
+  set(!!store.get("mvr-g2",false));
+  b.onclick=()=>{const top=[...document.querySelectorAll(".card:not([hidden])")].find(c=>c.getBoundingClientRect().bottom>90);
+    const on=!h.classList.contains("g2");set(on);store.set("mvr-g2",on);track("Grid",{cols:on?2:1});
+    if(top&&window.scrollY>100)requestAnimationFrame(()=>top.scrollIntoView({block:"start"}))}})();
 let imgIO=null;
 try{imgIO=new IntersectionObserver(es=>es.forEach(e=>{const im=e.target.querySelector(".front img[data-src]");if(!im)return;if(e.isIntersecting){if(!im.getAttribute("src"))im.src=im.dataset.src}else if(im.getAttribute("src")&&Math.abs(e.boundingClientRect.top)>4000){im.removeAttribute("src")}}),{rootMargin:"1500px 0px"})}catch(e){imgIO={observe(c){const im=c.querySelector(".front img[data-src]");if(im)im.src=im.dataset.src},disconnect(){}}}
 document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a.buy");if(a)track("Shop click",{shop:a.dataset.shop,where:"feed"})});
