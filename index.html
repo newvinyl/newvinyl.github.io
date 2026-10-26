@@ -66,7 +66,7 @@ button{font:inherit;color:inherit}
 @media (min-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (min-width:1400px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
-.card{position:relative;aspect-ratio:1/1;max-width:100%;perspective:1400px}
+.card{position:relative;aspect-ratio:1/1;max-width:100%;perspective:1400px;content-visibility:auto;contain-intrinsic-size:auto 360px}
 .flip{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.7,.2,1)}
 .card.back .flip{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
@@ -323,6 +323,9 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&g
 const fold=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"");
 const norm=s=>fold(s).replace(/\(.*?\)|\[.*?\]/g,"").replace(/\b(ep|lp|12"?|2x12"?)\b/g,"").replace(/[^\p{L}\p{N}]/gu,"");
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+// Raster-Cover als kleines WebP über den Bild-Proxy (Originale sind oft 1–3 MB); scheitert das, Original, dann kleine Version
+const thumb=u=>u?"https://wsrv.nl/?w=720&output=webp&q=80&url="+encodeURIComponent(u):u;
+function coverFail(im){const n=+(im.dataset.t||0)+1;im.dataset.t=n;const nx=n===1?im.dataset.o:n===2&&im.dataset.lo!==im.dataset.o?im.dataset.lo:null;if(nx){im.dataset.src=nx;im.src=nx}else im.remove()}
 function hiRes(u){
   if(!u)return u;
   if(/media\.hardwax\.com\/images\//.test(u)&&!/big\.jpg$/.test(u))return u.replace(/\.jpg$/,"big.jpg");
@@ -399,12 +402,12 @@ function renderFeed(){
   });
   cur=curGk?RECS.findIndex(r=>r.gk===curGk):-1;
   if(cur>=0&&!au.paused)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing");
-  document.querySelectorAll(".front img[data-src]").forEach(im=>imgIO.observe(im));
+  document.querySelectorAll(".front img[data-src]").forEach(im=>imgIO.observe(im.closest(".card")));   // observe the card: with content-visibility the img of a far card has no box
   paintBag();bagCount();applyFilter();
 }
 // Cover nur in Bildschirmnähe laden und weit weg wieder freigeben (sonst stürzt das iPhone bei vielen Platten ab)
 let imgIO=null;
-try{imgIO=new IntersectionObserver(es=>es.forEach(e=>{const im=e.target;if(e.isIntersecting){if(!im.getAttribute("src"))im.src=im.dataset.src}else if(im.getAttribute("src")&&Math.abs(e.boundingClientRect.top)>4000){im.removeAttribute("src")}}),{rootMargin:"1500px 0px"})}catch(e){imgIO={observe(im){im.src=im.dataset.src},disconnect(){}}}
+try{imgIO=new IntersectionObserver(es=>es.forEach(e=>{const im=e.target.querySelector(".front img[data-src]");if(!im)return;if(e.isIntersecting){if(!im.getAttribute("src"))im.src=im.dataset.src}else if(im.getAttribute("src")&&Math.abs(e.boundingClientRect.top)>4000){im.removeAttribute("src")}}),{rootMargin:"1500px 0px"})}catch(e){imgIO={observe(c){const im=c.querySelector(".front img[data-src]");if(im)im.src=im.dataset.src},disconnect(){}}}
 document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a.buy");if(a)track("Shop click",{shop:a.dataset.shop,where:"feed"})});
 // Geteilter Link (?r=slug): zur Platte springen, sonst volle Ansicht
 function checkShareLink(){
@@ -423,7 +426,7 @@ function card(r,i){
   const others=r.all.filter(x=>x!==m&&x.p!=null);
   el.innerHTML=`<div class="flip">
     <div class="face front"><div class="ph"><span style="background:${hue}">${esc(m.l)}${m.cat?"<br>"+esc(m.cat):""}</span></div>
-      ${r.cover?`<img decoding="async" alt="${esc(m.a)} – ${esc(m.t)}" data-src="${esc(hiRes(r.cover))}" onerror="if(!this.dataset.t){this.dataset.t=1;this.dataset.src='${esc(r.cover)}';this.src='${esc(r.cover)}'}else this.remove()">`:""}
+      ${r.cover?`<img decoding="async" alt="${esc(m.a)} – ${esc(m.t)}" data-src="${esc(thumb(hiRes(r.cover)))}" data-o="${esc(hiRes(r.cover))}" data-lo="${esc(r.cover)}" onerror="coverFail(this)">`:""}
       <button class="play" type="button" aria-label="Play ${esc(m.a)} – ${esc(m.t)}">${PLAY}</button>
       <button class="add" type="button"></button>
       <div class="bar"></div><div class="cseek" aria-hidden="true"></div></div>
