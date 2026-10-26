@@ -381,8 +381,9 @@ function toggleBag(rec){
   if(cart.includes(rec.key))cart=cart.filter(k=>k!==rec.key);else{track("Add to bag",{shop:rec.main.S.shop,where:"feed"});cart.push(rec.key);const t=document.getElementById("bagtop");t.classList.remove("pop");void t.offsetWidth;t.classList.add("pop")}
   store.set("mvr-cart",cart);bagCount();paintBag();
 }
+function paintCard(c){const r=RECS[c.dataset.i],on=inBag(r);c.querySelectorAll(".add").forEach(b=>{b.classList.toggle("in",on);b.innerHTML=on?`${CHECK}In bag`:`${PLUS}Bag`})}
 function paintBag(){
-  document.querySelectorAll(".card").forEach(c=>{const r=RECS[c.dataset.i],on=inBag(r);c.querySelectorAll(".add").forEach(b=>{b.classList.toggle("in",on);b.innerHTML=on?`${CHECK}In bag`:`${PLUS}Bag`})});
+  document.querySelectorAll(".card").forEach(paintCard);
   const mb=document.getElementById("mbag");document.getElementById("mbn").textContent=cart.length||"";mb.classList.toggle("has",cart.length>0);
 }
 
@@ -415,6 +416,9 @@ function rangeOf(k){
   return null;
 }
 const RANGES=[["today","Today"],["yesterday","Yesterday"],["week","This week"],["lastweek","Last week"],["month","This month"],["lastmonth","Last month"]];
+// Feed häppchenweise: alle Platten stehen sofort in RECS (Zähler, Player, Filter rechnen mit den Daten),
+// gebaut werden aber nur die Karten bis knapp unter den Bildschirm; der Rest folgt beim Scrollen
+let PLAN=[],PP={d:0,k:0},BUILT=0,moreIO=null;
 function renderFeed(){
   const recs=ALL,curGk=cur>=0&&RECS[cur]?RECS[cur].gk:null;
   const rg=rangeOf(F.r);
@@ -422,21 +426,39 @@ function renderFeed(){
   const days=F.k&&!rg?[...new Set(recs.filter(chipMatch).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
   const todayIso=isoZ(new Date()),yIso=isoZ(new Date(Date.now()-864e5));
   if(imgIO)imgIO.disconnect();
-  RECS=[];const feed=document.getElementById("feed");feed.innerHTML="";
+  RECS=[];PLAN=[];PP={d:0,k:0};BUILT=0;const feed=document.getElementById("feed");feed.innerHTML="";
   if(!days.length){feed.innerHTML='<p class="empty">No records in this period yet.</p>'}
   days.forEach((d,di)=>{
     const list=recs.filter(r=>r.first===d&&chipMatch(r)).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
     if(!list.length)return;
     const lab=!rg&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
-    const h=document.createElement("div");h.className="day";h.innerHTML=`<b>${lab}</b><span>${list.length} records</span>`;feed.appendChild(h);
-    const g=document.createElement("div");g.className="grid";feed.appendChild(g);
-    list.forEach(r=>{const i=RECS.push(r)-1;g.appendChild(card(r,i))});
+    PLAN.push({lab,idx:list.map(r=>RECS.push(r)-1),g:null,h:null});
   });
   cur=curGk?RECS.findIndex(r=>r.gk===curGk):-1;
-  if(cur>=0&&!au.paused)document.querySelector(`.card[data-i="${cur}"]`)?.classList.add("playing");
-  document.querySelectorAll(".front img[data-src]").forEach(im=>imgIO.observe(im.closest(".card")));   // observe the card: with content-visibility the img of a far card has no box
+  let sen=document.getElementById("fmore");if(!sen){sen=document.createElement("div");sen.id="fmore";sen.setAttribute("aria-hidden","true");feed.after(sen)}
+  if(!moreIO){try{moreIO=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting))fill()},{rootMargin:"2200px 0px"});moreIO.observe(sen)}catch(e){moreIO={}}}
+  buildMore(24);
   paintBag();bagCount();applyFilter();
 }
+// n weitere passende Karten bauen (nicht passende werden versteckt mitgebaut, damit die Reihenfolge stimmt)
+function buildMore(n){
+  const feed=document.getElementById("feed");let shown=0;
+  while(PP.d<PLAN.length&&shown<n){
+    const P=PLAN[PP.d];
+    if(!P.g){P.h=document.createElement("div");P.h.className="day";P.h.innerHTML=`<b>${P.lab}</b><span></span>`;P.g=document.createElement("div");P.g.className="grid";feed.append(P.h,P.g);dayCount(P)}
+    const end=Math.min(P.idx.length,PP.k+Math.max(8,n-shown)),frag=document.createDocumentFragment();
+    for(;PP.k<end;PP.k++){const i=P.idx[PP.k],r=RECS[i],c=card(r,i);c.hidden=!matches(r);paintCard(c);if(!c.hidden)shown++;
+      if(i===cur&&!au.paused)c.classList.add("playing");frag.appendChild(c);if(imgIO&&c.querySelector(".front img[data-src]"))imgIO.observe(c);BUILT=i+1}
+    P.g.appendChild(frag);
+    if(PP.k>=P.idx.length){PP.d++;PP.k=0}
+  }
+}
+// solange das Ende des Feeds in Reichweite ist, nachbauen
+function fill(){const sen=document.getElementById("fmore");let guard=0;
+  while(PP.d<PLAN.length&&sen&&sen.getBoundingClientRect().top<innerHeight+2200&&guard++<20)buildMore(24)}
+// bis Platte i gebaut ist (Player, geteilte Links)
+function buildTo(i){let guard=0;while(BUILT<=i&&PP.d<PLAN.length&&guard++<400)buildMore(24)}
+function dayCount(P){const n=P.idx.reduce((a,i)=>a+(matches(RECS[i])?1:0),0);P.h.hidden=P.g.hidden=!n;P.h.querySelector("span").textContent=`${n} ${n===1?"record":"records"}`;return n}
 // Cover nur in Bildschirmnähe laden und weit weg wieder freigeben (sonst stürzt das iPhone bei vielen Platten ab)
 // Mobile-Raster: 1 oder 2 Spalten, Wahl bleibt gespeichert; die oberste sichtbare Platte bleibt beim Umschalten im Blick
 (()=>{const h=document.documentElement,b=document.getElementById("gridbtn");if(!b)return;
@@ -456,7 +478,7 @@ function checkShareLink(){
   if(i<0){location.replace("/all/?r="+encodeURIComponent(sl));return}
   try{history.replaceState(null,"",location.pathname)}catch(e){}
   track("Shared link opened");
-  const c=document.querySelector(`.card[data-i="${i}"]`);if(!c)return;
+  buildTo(i);const c=document.querySelector(`.card[data-i="${i}"]`);if(!c)return;
   c.hidden=false;c.classList.add("hit");setTimeout(()=>c.scrollIntoView({block:"center"}),60);
 }
 function card(r,i){
@@ -656,8 +678,9 @@ function shopChip(){
 function applyFilter(){
   setTimeout(shopChip,0);
   let shown=0;
-  document.querySelectorAll(".grid").forEach(g=>{let n=0;g.querySelectorAll(".card").forEach(c=>{const ok=matches(RECS[c.dataset.i]);c.hidden=!ok;if(ok)n++});
-    g.hidden=!n;const h=g.previousElementSibling;h.hidden=!n;h.querySelector("span").textContent=`${n} ${n===1?"record":"records"}`;shown+=n});
+  document.querySelectorAll("#feed .card").forEach(c=>{c.hidden=!matches(RECS[c.dataset.i])});
+  PLAN.forEach(P=>{shown+=P.g?dayCount(P):P.idx.reduce((a,i)=>a+(matches(RECS[i])?1:0),0)});
+  requestAnimationFrame(fill);
   let e=document.getElementById("empty");if(!shown){if(!e){e=document.createElement("p");e.id="empty";e.className="empty";document.getElementById("feed").appendChild(e)}e.textContent="No records match. Change the filter or search.";e.hidden=false}else if(e)e.hidden=true;
   const nf=F.g.size+F.s.size+(F.r?1:0)+(F.l?1:0),fb=document.getElementById("ffab");fb.classList.toggle("act",!!nf);document.getElementById("ffl").textContent=nf?`Filter · ${nf}`:"Filter";
   document.getElementById("scount").textContent=`${shown} ${shown===1?"record":"records"}`;
@@ -711,8 +734,8 @@ function next(){
   const r=RECS[cur];if(!r)return;
   // nächster Track dieser Platte, danach nächste sichtbare Platte
   if(trackIdx+1<r.tracks.length)return play(cur,trackIdx+1);
-  let n=cur+1;while(n<RECS.length&&document.querySelector(`.card[data-i="${n}"]`)?.hidden)n++;
-  if(n<RECS.length){play(n,0);const c=document.querySelector(`.card[data-i="${cur}"]`);if(c)c.scrollIntoView({behavior:"smooth",block:"center"})}
+  let n=cur+1;while(n<RECS.length&&!matches(RECS[n]))n++;
+  if(n<RECS.length){buildTo(n);play(n,0);const c=document.querySelector(`.card[data-i="${cur}"]`);if(c)c.scrollIntoView({behavior:"smooth",block:"center"})}
 }
 au.addEventListener("ended",next);
 au.addEventListener("pause",()=>{document.getElementById("mini").classList.add("paused");document.getElementById("mpp").setAttribute("aria-label","Play");if(cur>=0)document.querySelector(`.card[data-i="${cur}"]`)?.classList.remove("playing")});
@@ -748,7 +771,7 @@ SK.addEventListener("keydown",e=>{if(!au.duration)return;if(e.key==="ArrowRight"
 au.addEventListener("timeupdate",()=>{if(!seeking&&au.duration)seekPaint(au.currentTime/au.duration)});
 document.getElementById("mnx").onclick=()=>{track("Next via player");next()};
 document.getElementById("mpp").onclick=()=>{if(au.paused)au.play().catch(()=>{});else au.pause()};
-document.getElementById("mt").onclick=()=>{document.querySelector(`.card[data-i="${cur}"]`)?.scrollIntoView({behavior:"smooth",block:"center"})};
+document.getElementById("mt").onclick=()=>{buildTo(cur);document.querySelector(`.card[data-i="${cur}"]`)?.scrollIntoView({behavior:"smooth",block:"center"})};
 
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintBag()}});
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{document.getElementById("feed").innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
