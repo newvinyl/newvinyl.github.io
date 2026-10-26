@@ -22,13 +22,16 @@
   ],
   "dv": 9,
   "reel": {
-   "key": "mlo|lo",
-   "title": "MLO – lo",
+   "key": "kamyar keramati|jungle ep",
+   "title": "Kamyar Keramati – Jungle EP",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261026.mp4",
-   "look": "painterly cover · background paintflow · alive: bloom+sway+accent · melt: descend · type BK-G",
-   "v": 20,
+   "look": "shapeloop 126 bpm · round 5 angular 4 beat 4",
+   "v": 21,
    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261026.jpg"
-  }
+  },
+  "reel_tried": [
+   "mlo|lo"
+  ]
  },
  {
   "date": "2026-10-25",
