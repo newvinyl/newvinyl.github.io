@@ -1,0 +1,11 @@
+{
+  "_note": "Verified Instagram handles of artists and labels (found via official pages, checked on Instagram). Key = name as written in releases.json, lower case. null = checked, no account to tag.",
+  "dopplereffekt": {"handle": "__dopplereffekt__", "kind": "artist", "followers": 17593, "checked": "2026-10-26"},
+  "de:tuned": {"handle": "de_tunedrecords", "kind": "label", "followers": 1703, "checked": "2026-10-26"},
+  "ismael pinkler": {"handle": "ismael.pinkler", "kind": "artist", "followers": 1584, "checked": "2026-10-26"},
+  "nick hanzo": {"handle": "nickhanzo", "kind": "artist", "followers": 2010, "checked": "2026-10-26"},
+  "belly dance services": {"handle": "bellydanceservices", "kind": "label", "followers": 1192, "checked": "2026-10-26"},
+  "belly dance services germany": {"handle": "bellydanceservices", "kind": "label", "followers": 1192, "checked": "2026-10-26"},
+  "angelo d'onorio": {"handle": "angelo_donorio", "kind": "artist", "followers": 1277, "checked": "2026-10-26"},
+  "anacalypto records": {"handle": "anacalyptorecords", "kind": "label", "followers": 889, "checked": "2026-10-26"}
+}
