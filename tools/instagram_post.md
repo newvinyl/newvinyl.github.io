@@ -1,4 +1,4 @@
-# Instagram – tägliche Vorschau und Posting von «Today's Digs» (@monthlyvinyl)
+# Instagram – tägliche Vorschau und Posting von «Today's Digs» und dem Einzel-Reel (@monthlyvinyl)
 
 Einzige Quelle für die tägliche Instagram-Aufgabe. Sprache gegenüber dem Nutzer: Deutsch, Schweizer
 Schreibweise (ss statt ß), kurz und sachlich.
@@ -22,9 +22,13 @@ Video herunterladen, die Bilder bei 0 s, 3 s, 18 s und 33 s ansehen und prüfen:
 Startbild, Titel lesbar, Cover sauber (kein Aufkleber/Mockup, richtige Platte), Shop-Zeile vorhanden.
 Fehler dem Nutzer melden statt zu posten.
 
-**Nur «Today's Digs».** Das Einzel-Reel (`reel-<yymmdd>.mp4`, `92h6fy/caption_reel.txt`) gehört
-vorerst NICHT zu dieser Aufgabe: nicht vorlegen, nicht posten, nicht erwähnen. Der Nutzer postet es
-weiterhin selbst über die versteckte Seite /92h6fy/ (alter Workflow).
+**Zusätzlich das Einzel-Reel (seit 26.10.26).** `92h6fy/history.json`, erster Eintrag, `reel`: `video`
+(`reel-<yymmdd>.mp4`, quadratisch, 45 s, Form- und Farb-Loop aus `tools/shapeloop.py`) und `look`.
+Startbild: `reel-<yymmdd>.jpg`. Caption: `92h6fy/caption_reel.txt`. Prüfen: Bilder bei 0 s, 10 s, 25 s, 40 s
+ansehen – Cover erkennbar, nichts zerrissen, keine Schrift gedreht oder gewellt. Beginnt `look` nicht mit
+«shapeloop», war kein grafisches Cover dabei: dann das Reel in der Vorschau als Ausnahme kennzeichnen.
+Für das Reel gelten dieselben Schritte 2–4 (eigene Markierungen: Artist, Label, Shop; eigene Vorschau;
+eigener Post nach dem OK). Genre weglassen, wenn sich die Shops beim Genre widersprechen.
 
 ## 2. Markierungen recherchieren
 
