@@ -614,7 +614,7 @@ RDUR = 45
 
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
-REEL_V = 20   # bump to re-render today's reel after a design change
+REEL_V = 21   # bump to re-render today's reel after a design change
 DIGS_V = 9   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
@@ -782,10 +782,23 @@ def pick_reel(cands, digs_keys, digs_fams, offline, work, want_fam=None, want_ke
     for c in pool[:8]:
         cv_ = c.get("cover")
         log("reel cand %.2f" % c.get("art", -9), c["key"], c["fam"], "%dpx" % cv_.width if cv_ is not None else "", cv_.info.get("why") if cv_ is not None else "")
-    fallback = None
+    # daily single reel = shape & colour loop (tools/shapeloop.py): among the best 12, graphic covers come first
+    import shapeloop
+    ranked = []
     for n, c in enumerate(pool[:12]):
         try:
             cov = c.get("cover") or get_cover(c["arr"], offline, 90 + n)
+            sl, why = shapeloop.suits(cov)
+        except Exception as e:
+            log("reel drop", c["key"], e)
+            continue
+        log("shapeloop %.2f" % sl, c["key"], why)
+        ranked.append((sl >= .6, sl if sl >= .6 else 0, -n, dict(c, cover=cov, sl=sl)))
+    ranked.sort(key=lambda r: r[:3], reverse=True)
+    fallback = None
+    for n, (_, _, _, c) in enumerate(ranked):
+        try:
+            cov = c["cover"]
             aud = tr = None
             for ti, t in enumerate(c["tracks"][:3]):
                 try:
@@ -926,7 +939,15 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     rc["cover"].convert("RGB").resize((1080, 1080), Image.LANCZOS).save(rcover, quality=92)
     det = getattr(a, "want_detail", None)
     look = None
-    if det and getattr(a, "want_key", None) == R["key"]:
+    if rc.get("sl", 0) >= .6 and getattr(a, "want_fx", None) in (None, "shapeloop"):
+        try:
+            import shapeloop
+            look = shapeloop.render(rc["cover"], aud, SR, rpath, rposter, dur=RDUR, seed=look_seed(ymd, R["key"], "reel", str(REEL_V)))
+            det = None
+        except Exception as e:
+            log("shapeloop failed, falling back:", e)
+            look = None
+    if look is None and det and getattr(a, "want_key", None) == R["key"]:
         try:
             look = reelfx.reel_detail(rel, aud, det, rpath, rposter, dur=RDUR) + " · type " + sch
         except Exception as e:
