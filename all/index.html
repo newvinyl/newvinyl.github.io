@@ -910,7 +910,7 @@ const mLabel=k=>{const [y,m]=k.split("-");return `${MONTHS[+m-1]} ${y}`};
 const mKey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
 // Jede Platte bekommt den Monat, in dem sie im Shop als neu erschien
 let INDEX={},GROUPS={},FX={CHF:1,EUR:0.9461,GBP:1.105,USD:0.8333};
-const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF"};
+const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF","zł":"PLN"};
 const chfOf=(S,p)=>{if(p==null)return null;const f=FX[CODE[S.cur]||S.cur];return f?p*f:null};
 const SYM={CHF:"CHF ",EUR:"€ ",GBP:"£ "};
 const chf=v=>{if(v==null)return "";const c=homeInfo().cur;return SYM[c]+(v/(FX[c]||1)).toFixed(2)};

@@ -99,7 +99,7 @@ def genres_of(g):
             out.append(x)
     return out
 
-SYM = {"€": "€", "£": "£", "$": "$", "CHF": "CHF "}
+SYM = {"€": "€", "£": "£", "$": "$", "CHF": "CHF ", "zł": "zł "}
 def price(S, p):
     if p is None: return "price in shop"
     return f'{SYM.get(S.get("cur"), S.get("cur", ""))}{p:.2f}'.replace(".00", "")
@@ -327,7 +327,7 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
     rdir = os.path.join(ROOT, "r")
     if os.path.isdir(rdir): shutil.rmtree(rdir)
     fx = data.get("fx") or {}
-    CURK = {"€": "EUR", "£": "GBP", "$": "USD", "CHF": "CHF"}
+    CURK = {"€": "EUR", "£": "GBP", "$": "USD", "CHF": "CHF", "zł": "PLN"}
     def chf(Sx, o):
         p = o.get("p")
         if p is None: return None

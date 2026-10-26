@@ -234,13 +234,13 @@ main#bag{display:flex;flex-direction:column;gap:30px;margin-top:20px;max-width:6
 <script>
 function track(name,data){try{if(window.umami&&typeof umami.track==="function")umami.track(name,data)}catch(e){}}
 const SITE="https://monthlyvinyl.net";
-const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF"};
+const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF","zł":"PLN"};
 // Prices in the visitor's currency: CH → CHF, UK → £, rest of Europe → €, Americas → $ (from time zone, else language)
 const LOC=(()=>{let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
   if(/Zurich|Vaduz|Busingen/.test(tz))return"CHF";if(/London|Belfast|Guernsey|Jersey|Isle_of_Man|Gibraltar/.test(tz))return"GBP";
   if(/^Europe\/|^Atlantic\/(Canary|Madeira|Azores|Faroe)/.test(tz))return"EUR";if(/^America\//.test(tz))return"USD";
   const r=((navigator.language||"").split("-")[1]||"").toUpperCase();return r==="CH"?"CHF":r==="GB"?"GBP":r==="US"?"USD":"EUR"})();
-const SYM={EUR:"€",GBP:"£",USD:"$",CHF:"CHF "};
+const SYM={EUR:"€",GBP:"£",USD:"$",CHF:"CHF ",PLN:"zł "};
 function toLoc(cur,p,fx){const c=CODE[cur]||cur;if(p==null)return null;if(c===LOC||!fx[c]||!fx[LOC])return{v:+p,c:c===LOC?LOC:c,ex:true};return{v:p*fx[c]/fx[LOC],c:LOC,ex:false}}
 const symOf=c=>SYM[c]||(Object.keys(CODE).find(k=>CODE[k]===c)||c);
 

@@ -35,7 +35,7 @@ W, H, FPS, DUR, SR, SY = 1080, 1920, 30, 21, 44100, 285
 BG, ACC, WH, GR, RULE = (15, 15, 15), (255, 214, 10), (255, 255, 255), (154, 154, 154), (46, 46, 46)
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
 SHORT = {"Redeye Records": "Redeye", "Juno Records": "Juno", "OYE Records": "OYE"}
-CUR = {"€": "EUR", "£": "GBP", "$": "USD", "CHF": "CHF"}
+CUR = {"€": "EUR", "£": "GBP", "$": "USD", "CHF": "CHF", "zł": "PLN"}
 # preferred cover sources (bigger first), preferred named-track sources
 COVER_RANK = ["Vinyl Underground", "Phonica", "Yoyaku", "Kompakt", "Rush Hour", "Juno Records", "Decks.de", "Redeye Records", "Hardwax", "Clone"]
 

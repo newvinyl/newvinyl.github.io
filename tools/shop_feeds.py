@@ -107,6 +107,8 @@ def feed_commonground(fetch, base, list_path, max_items=40):
     """list page = newest first; each release page has description, styles, price and the audio snippets"""
     st, body = fetch(base + list_path)
     paths = list(dict.fromkeys(re.findall(r'href="(/release/\d+/[^"]+)"', body)))[:max_items]
+    SNIP = r'creators-audio-snippets-production\.fra1\.cdn\.digitaloceanspaces\.com/((?:custom/)?\d+)/'
+    listed = set(re.findall(SNIP, body))                      # some shops keep the snippets under custom/<release id>
     out = []
     for path in paths:
         try:
@@ -126,10 +128,17 @@ def feed_commonground(fetch, base, list_path, max_items=40):
         a, t = [x.strip() for x in left.split(" - ", 1)]
         lm = re.match(r"(.*?)\s*\(([^()]*)\)\s*$", right)
         label, cat = (lm.group(1).strip(), lm.group(2).strip()) if lm else (right.strip(), "")
-        fm = re.search(r'creators-audio-snippets-production\.fra1\.cdn\.digitaloceanspaces\.com/(\d+)/', own)
+        rid = re.match(r"/release/(\d+)/", path).group(1)
+        fm = re.search(SNIP, own)
+        folder = fm.group(1) if fm else ("custom/" + rid if "custom/" + rid in listed else None)
+        if not folder:                                         # snippet links further down the page: the folder used most often
+            cnt = {}
+            for f in re.findall(SNIP, rb):
+                cnt[f] = cnt.get(f, 0) + 1
+            folder = max(cnt, key=lambda k: (cnt[k], -rb.find(k))) if cnt else None
         trs = []
-        if fm:
-            snip = "https://creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com/%s/" % fm.group(1)
+        if folder:
+            snip = "https://creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com/%s/" % folder
             for pos, name in re.findall(r'data-track-position="([^"]+)"[^>]*class="track playable[^"]*".*?class="description"><span>(.*?)</span>', rb, re.S):
                 if any(x["s"] == pos for x in trs):
                     continue
