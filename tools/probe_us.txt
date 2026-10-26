@@ -1,6 +1,2 @@
-submerge_api https://www.somewhereindetroit.com/wp-json/wc/store/v1/products?per_page=20&orderby=date&order=desc
-submerge_shop https://www.somewhereindetroit.com/shop/
-earcave https://earcave.com/collections/house-techno
-earcave_json https://earcave.com/products.json?limit=30
-further_ht https://furtherrecords.com/collections/house-techno-electro
-ttl_ht https://www.turntablelab.com/collections/underground-house-and-techno
+https://furtherrecords.com
+https://earcave.com
