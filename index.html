@@ -280,27 +280,28 @@ html.g2 #gridbtn .g2i{display:inline-flex}
 @keyframes gblink{50%{opacity:.15;transform:scale(1.18)}}
 @media (prefers-reduced-motion:reduce){#gridbtn.blink{animation:none}}
 @media (max-width:599px){
-  html.g2 .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  html.g2 .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;grid-auto-flow:dense}
+  html.g2 .card.big{grid-column:1/-1;contain-intrinsic-size:auto 360px}   /* umgedrehte Karte: volle Breite */
   html.g2 .card{contain-intrinsic-size:auto 180px}
-  html.g2 .play{width:46px;height:46px;margin:-23px 0 0 -23px}
-  html.g2 .play svg{width:19px;height:19px}
-  html.g2 .front .add{font-size:0;gap:0;padding:0;width:32px;height:32px;justify-content:center;right:6px;bottom:6px;border-width:1.5px}
-  html.g2 .front .add svg{width:14px;height:14px}
-  html.g2 .ph span{font-size:9.5px;padding:6px}
-  html.g2 .card.playing .front{outline-width:3px;outline-offset:-3px}
-  html.g2 .backf{padding:9px;gap:2px;border-width:1.5px}
-  html.g2 .backf .ar{font-size:14px;padding-right:26px}
-  html.g2 .backf .ti{font-size:12px}
-  html.g2 .backf .me{font-size:9.5px;line-height:1.45}
-  html.g2 .backf ol{margin-top:3px}
-  html.g2 .backf li button{font-size:11.5px;min-height:24px;gap:6px}
-  html.g2 .backf li .s{width:18px;font-size:9.5px}
-  html.g2 .backf .more-tr{margin-left:24px;font-size:10px}
-  html.g2 .backf .ctl{padding-top:5px;gap:6px}
-  html.g2 .backf .price{font-size:15px}
-  html.g2 .backf .price .low{display:none}
-  html.g2 .backf .ctl .add{font-size:0;gap:0;padding:0;width:30px;height:30px;justify-content:center;border-width:1.5px}
-  html.g2 .backf .shr{transform:scale(.8);transform-origin:top right}
+  html.g2 .card:not(.big) .play{width:46px;height:46px;margin:-23px 0 0 -23px}
+  html.g2 .card:not(.big) .play svg{width:19px;height:19px}
+  html.g2 .card:not(.big) .front .add{font-size:0;gap:0;padding:0;width:32px;height:32px;justify-content:center;right:6px;bottom:6px;border-width:1.5px}
+  html.g2 .card:not(.big) .front .add svg{width:14px;height:14px}
+  html.g2 .card:not(.big) .ph span{font-size:9.5px;padding:6px}
+  html.g2 .card.playing:not(.big) .front{outline-width:3px;outline-offset:-3px}
+  html.g2 .card:not(.big) .backf{padding:9px;gap:2px;border-width:1.5px}
+  html.g2 .card:not(.big) .backf .ar{font-size:14px;padding-right:26px}
+  html.g2 .card:not(.big) .backf .ti{font-size:12px}
+  html.g2 .card:not(.big) .backf .me{font-size:9.5px;line-height:1.45}
+  html.g2 .card:not(.big) .backf ol{margin-top:3px}
+  html.g2 .card:not(.big) .backf li button{font-size:11.5px;min-height:24px;gap:6px}
+  html.g2 .card:not(.big) .backf li .s{width:18px;font-size:9.5px}
+  html.g2 .card:not(.big) .backf .more-tr{margin-left:24px;font-size:10px}
+  html.g2 .card:not(.big) .backf .ctl{padding-top:5px;gap:6px}
+  html.g2 .card:not(.big) .backf .price{font-size:15px}
+  html.g2 .card:not(.big) .backf .price .low{display:none}
+  html.g2 .card:not(.big) .backf .ctl .add{font-size:0;gap:0;padding:0;width:30px;height:30px;justify-content:center;border-width:1.5px}
+  html.g2 .card:not(.big) .backf .shr{transform:scale(.8);transform-origin:top right}
   html.g2 .day{margin-top:22px}
 }
 </style>
@@ -516,7 +517,7 @@ function card(r,i){
     back.querySelectorAll(".fl").forEach(b=>{if(F.k&&F.k.t===b.dataset.ft&&(b.dataset.ft==="re"||fold(F.k.v)===fold(b.dataset.fv)))b.classList.add("on")});
     back.querySelectorAll(".fl").forEach(b=>b.onclick=e=>{e.stopPropagation();setChip(b.dataset.ft,b.dataset.fv)});
   };
-  const flip=on=>{if(on)build();el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r);requestAnimationFrame(()=>moreTracks(el))}};
+  const flip=on=>{if(on)build();if(innerWidth<600&&document.documentElement.classList.contains("g2"))grow(el,on);el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r);requestAnimationFrame(()=>moreTracks(el))}};
   back.onclick=e=>{if(e.target.closest("button,a"))return;flip(false)};
   // Cover antippen (ausserhalb Play) dreht es um
   el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.play,.cseek"))return;flip(true)};
@@ -527,6 +528,17 @@ function card(r,i){
   };
   el.querySelector(".add").onclick=()=>toggleBag(r);
   return el;
+}
+// 2er-Raster: umgedrehte Karte wächst auf volle Breite, die Nachbarn rutschen weich mit (FLIP)
+function grow(el,on){
+  const g=el.parentElement,vis=c=>{const r=c.getBoundingClientRect();return r.bottom>-400&&r.top<innerHeight+400};
+  const cs=[...g.children].filter(c=>!c.hidden&&vis(c)),before=new Map(cs.map(c=>[c,c.getBoundingClientRect()]));
+  el.classList.toggle("big",on);
+  const ease="cubic-bezier(.2,.8,.2,1)";
+  before.forEach((f,c)=>{const l=c.getBoundingClientRect();if(!l.width)return;
+    const dx=f.left-l.left,dy=f.top-l.top,sx=f.width/l.width;if(Math.abs(dx)<1&&Math.abs(dy)<1&&Math.abs(sx-1)<.01)return;
+    try{c.animate([{transformOrigin:"0 0",transform:`translate(${dx}px,${dy}px) scale(${sx})`},{transformOrigin:"0 0",transform:"none"}],{duration:340,easing:ease})}catch(e){}});
+  if(on)setTimeout(()=>{const r=el.getBoundingClientRect();if(r.bottom>innerHeight-70||r.top<60)el.scrollIntoView({behavior:"smooth",block:"center"})},360);
 }
 // Mehr Tracks als sichtbar: unten ausblenden und «+N more ↓» zeigen, bis ans Ende gescrollt ist
 function moreTracks(el){
