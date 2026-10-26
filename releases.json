@@ -39280,8 +39280,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703212.mp3"
+       "n": "Being Colours",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6ab29c21a41a6-6abf9b87450a0-mp3-temp.mp3"
       }
      ],
      "st": "in",
@@ -39801,8 +39801,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192769.mp3"
+       "n": "Rana",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aca23d22bf20-6acdea8d427e8-mp3-temp.mp3"
       }
      ],
      "m": "2026-10",
@@ -61051,8 +61051,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/190563.mp3"
+       "n": "Schöneberg (Marmion Remix)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a300726101db-6a32c4e0cffb5-mp3-temp.mp3"
       }
      ],
      "st": "in",
@@ -64961,7 +64961,21 @@
      "d": "Exp. 6 Nov",
      "st": "pre",
      "m": "2026-10",
-     "first_seen": "2026-10-26"
+     "first_seen": "2026-10-26",
+     "tl": [
+      {
+       "s": "A",
+       "n": "Because Of My Dream"
+      },
+      {
+       "s": "B1",
+       "n": "Last Night"
+      },
+      {
+       "s": "B2",
+       "n": "Dance"
+      }
+     ]
     }
    ],
    "country": "UK"
@@ -74529,8 +74543,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Black Swords",
        "s": "",
+       "n": "Black Swords",
        "u": ""
       }
      ],
@@ -77425,13 +77439,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -78061,7 +78069,13 @@
      "g": "Techno",
      "url": "https://kompakt.fm/releases/spiritual_reflection_ep",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6ac7868cabf55-6ac78de0355b6-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Spiritual Reflection",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6ac786b92da33-6ac78df237260-mp3-temp.mp3"
+      }
+     ],
      "st": "out",
      "m": "2026-10",
      "first_seen": "2026-10-26"
@@ -78130,8 +78144,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703212.mp3"
+       "n": "Being Colours",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6ab29c21a41a6-6abf9b87450a0-mp3-temp.mp3"
       }
      ],
      "st": "in",
@@ -78151,8 +78165,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192769.mp3"
+       "n": "Rana",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aca23d22bf20-6acdea8d427e8-mp3-temp.mp3"
       }
      ],
      "st": "in",
@@ -78169,7 +78183,13 @@
      "g": "Techno",
      "url": "https://kompakt.fm/releases/soul_kraft",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6ada22231ab66-6ada273a5d648-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Soul Kraft Intro",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6ada22524afa7-6ada274a9a937-mp3-temp.mp3"
+      }
+     ],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-26"
@@ -78184,7 +78204,13 @@
      "g": "Ambient",
      "url": "https://kompakt.fm/releases/lo",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a68ad3d25abc-6a6a032de0e1c-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Wimborne",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a68ad6e20b7d-6a6a033b6b485-mp3-temp.mp3"
+      }
+     ],
      "st": "in",
      "m": "2026-10",
      "first_seen": "2026-10-26"
@@ -78265,8 +78291,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/190563.mp3"
+       "n": "Schöneberg (Marmion Remix)",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6a300726101db-6a32c4e0cffb5-mp3-temp.mp3"
       }
      ],
      "st": "in",
