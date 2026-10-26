@@ -582,13 +582,30 @@ def cap_tags(ps):
             out.append(t)
     return " ".join(out)
 
+_IG = None
+def shop_ig(shop):
+    """'@handle' of a listed shop (tools/shop_instagram.json), else the shop name"""
+    global _IG
+    if _IG is None:
+        try:
+            _IG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "shop_instagram.json"), encoding="utf-8"))
+        except Exception:
+            _IG = {}
+    h = _IG.get(shop)
+    return "@" + h if h else shop
+
+def where(p):
+    return ("Pre-order at %s" if p.get("pre") else "Available at %s") % shop_ig(p["shop_full"])
+
 def caption(picks, date_s):
     """minimal: findable via search (artist, title, label) + the site. Nobody reads captions."""
     nums = ["1️⃣", "2️⃣", "3️⃣"]
     lines = [" · ".join(p["a"] for p in picks), ""]
     for n, p in zip(nums, picks):
         lines.append("%s %s – %s%s" % (n, p["a"], cap_title(p["t"]), " (%s)" % p["l"] if p["l"] else ""))
-    lines += ["", "monthlyvinyl.net", "", cap_tags(picks)]
+        lines.append(where(p))
+        lines.append("")
+    lines += ["monthlyvinyl.net", "", cap_tags(picks)]
     return "\n".join(lines)
 
 # ---------------------------------------------------------------- reel (one release, 45 s)
@@ -597,7 +614,7 @@ RDUR = 45
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
 REEL_V = 20   # bump to re-render today's reel after a design change
-DIGS_V = 8   # bump to re-render today's digs video after a design change
+DIGS_V = 9   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
 SCHEMES = {
@@ -800,7 +817,7 @@ def tracklist(arr):
 def reel_caption(p, arr):
     """minimal: artist – title (label), the site, a few tags"""
     head = "%s – %s%s" % (p["a"], cap_title(p["t"]), " (%s)" % p["l"] if p["l"] else "")
-    return "\n".join([head, "", "monthlyvinyl.net", "", cap_tags([p])])
+    return "\n".join([head, where(p), "", "monthlyvinyl.net", "", cap_tags([p])])
 
 # ---------------------------------------------------------------- page
 PAGE = """<!doctype html>

@@ -12,7 +12,7 @@ W, H, FPS, SR = digs.W, digs.H, digs.FPS, digs.SR
 BG, INK = (13, 13, 13), (251, 237, 79)
 
 # Grid: margin 96, gutter 24, width 888 = big + gutter + small, big = 2 small + gutter
-G, X0, Y0 = 24, 96, 600
+G, X0, Y0 = 24, 96, 700
 SS = (888 - 2 * G) // 3          # 280
 BS = 2 * SS + G                  # 584
 
@@ -88,17 +88,22 @@ def page(img, r, a, dy, frame, lev):
     fa = F(110, True)
     if fa.getlength(r["a"]) > 888:
         fa = fit(r["a"], 888, 110, True)
-    d.text((90, 316 + dy), r["a"], font=fa, fill=c, anchor="ls")
+    d.text((90, 470 + dy), r["a"], font=fa, fill=c, anchor="ls")
     ft = F(72, False)
     lines = wrap(r["t"], ft, 888)
-    if len(lines) > 2:                                     # very long titles: smaller, still max 2-3 lines
-        ft = F(58, False); lines = wrap(r["t"], ft, 888)[:3]
-    y = 396 + dy
-    for ln in lines[:3]:
+    if len(lines) > 2:                                     # very long titles: smaller, max 2 lines
+        ft = F(58, False); lines = wrap(r["t"], ft, 888)
+        if len(lines) > 2:
+            lines = [lines[0], " ".join(lines[1:])]
+            while ft.getlength(lines[1] + "…") > 888 and " " in lines[1]:
+                lines[1] = lines[1].rsplit(" ", 1)[0]
+            lines[1] += "…"
+    y = 548 + dy
+    for ln in lines[:2]:
         d.text((92, y), ln, font=ft, fill=c, anchor="ls"); y += int(ft.size * 1.11)
     yb = Y0 + BS
     d.text((94, yb + 78 + dy), r["meta"], font=fit(r["meta"], 888, 48, False), fill=c, anchor="ls")
-    by = yb + 150 + dy
+    by = yb + 143 + dy
     d.polygon([(96, by - 30), (96, by - 2), (120, by - 16)], fill=c)
     ftr = fit(r["tr"], 760, 44, False)
     d.text((140, by), r["tr"], font=ftr, fill=c, anchor="ls")
@@ -107,22 +112,22 @@ def page(img, r, a, dy, frame, lev):
         ph = math.sin(frame * 0.45 + k * 1.7) * 0.5 + 0.5
         h = 6 + 30 * lev * (0.4 + 0.6 * ph)
         d.rectangle([bx + k * 14, by - h, bx + 8 + k * 14, by], fill=c)
-    d.text((96, 1572 + dy), r["shop"], font=fit(r["shop"], 560, 38, True), fill=c, anchor="ls")
+    d.text((96, yb + 218 + dy), r["shop"], font=fit(r["shop"], 888, 46, True), fill=c, anchor="ls")   # where to buy: inside the grid crop
     img.paste(lay, (0, 0), lay)
 
 def chrome(img, date_s, t, seg_s, n):
     d = ImageDraw.Draw(img)
-    d.text((96, 170), "TODAY'S DIGS", font=F(34, True), fill=INK, anchor="ls")
-    d.text((984, 170), date_s, font=F(34, True), fill=INK, anchor="rs")
-    d.text((984, 1572), "monthlyvinyl.net", font=F(38, True), fill=INK, anchor="rs")
+    # everything sits inside the 3:4 crop of the profile grid (y 240..1680)
+    d.text((96, 330), "TODAY'S DIGS  ·  " + date_s, font=F(34, True), fill=INK, anchor="ls")
+    d.text((984, 330), "monthlyvinyl.net", font=F(34, True), fill=INK, anchor="rs")
     pw = (888 - 2 * 14) / n
     faint = tuple(int(b + (c - b) * .25) for b, c in zip(BG, INK))
     for k in range(n):
         x0 = 96 + k * (pw + 14)
-        d.rectangle([x0, 1496, x0 + pw, 1500], fill=faint)
+        d.rectangle([x0, Y0 + BS + 266, x0 + pw, Y0 + BS + 270], fill=faint)
         p_ = 1.0 if k < t // seg_s else (min(1.0, (t - k * seg_s) / seg_s) if k == t // seg_s else 0.0)
         if p_ > 0:
-            d.rectangle([x0, 1494, x0 + pw * p_, 1502], fill=INK)
+            d.rectangle([x0, Y0 + BS + 264, x0 + pw * p_, Y0 + BS + 272], fill=INK)
 
 def render(ps, mixes, seg_s, date_s, path, poster):
     """ps: digs.prepare() dicts with 'cover'; mixes: one audio segment per release (seg_s seconds each)"""
