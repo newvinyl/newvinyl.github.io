@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""One-off probe: raw products.json + a few product pages per shop (to find audio players), saved to probe/."""
-import json, os, re, sys, time, urllib.request
+"""One-off probe: which US shops expose audio previews? Saves list page + first product page, counts audio refs."""
+import json, os, re, sys, time, urllib.request, urllib.parse
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+AUD = re.compile(r"""(?:https?:)?//[^\s"'<>]+?\.(?:mp3|m4a|ogg|wav)(?:\?[^\s"'<>]*)?""", re.I)
 def get(u):
     try:
         r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA}), timeout=30)
@@ -9,20 +10,23 @@ def get(u):
     except Exception as e:
         return str(e)[:100], ""
 os.makedirs("probe", exist_ok=True)
-for base in [l.strip() for l in open(sys.argv[1]) if l.strip() and not l.startswith("#")]:
-    name = re.sub(r"\W+", "_", base.split("//")[1]).strip("_")
-    st, body = get(base.rstrip("/") + "/products.json?limit=40")
-    open("probe/%s_products.json" % name, "w").write(body)
-    try:
-        prods = json.loads(body)["products"]
-    except Exception:
-        prods = []
-    vin = [p for p in prods if "record" in (p.get("product_type") or "").lower() or "vinyl" in (p.get("product_type") or "").lower()][:3]
-    for i, p in enumerate(vin):
+res = []
+for line in [l.strip() for l in open(sys.argv[1]) if l.strip() and not l.startswith("#")]:
+    name, url = line.split(" ", 1)
+    st, body = get(url)
+    open("probe/%s_list.html" % name, "w").write(body)
+    e = {"name": name, "url": url, "status": st, "len": len(body), "audio_list": len(set(AUD.findall(body))),
+         "shopify": "cdn.shopify.com" in body, "sample_audio": list(dict.fromkeys(AUD.findall(body)))[:3]}
+    links = [urllib.parse.urljoin(url, h) for h in re.findall(r'href="([^"#]+)"', body)]
+    prod = [l for l in links if re.search(r"/(products?|item|release|records?|detail|catalog)/[^/]+", l) and urllib.parse.urlparse(l).netloc == urllib.parse.urlparse(url).netloc]
+    prod = list(dict.fromkeys(prod))
+    e["n_prod_links"] = len(prod)
+    if prod:
         time.sleep(1)
-        st, pb = get(base.rstrip("/") + "/products/" + p["handle"])
-        open("probe/%s_page%d.html" % (name, i), "w").write(pb)
-        time.sleep(1)
-        st, js = get(base.rstrip("/") + "/products/" + p["handle"] + ".js")
-        open("probe/%s_page%d.js.json" % (name, i), "w").write(js)
-    print(base, st, len(prods), file=sys.stderr)
+        st2, pb = get(prod[0])
+        open("probe/%s_prod.html" % name, "w").write(pb)
+        e["prod"] = prod[0]; e["audio_prod"] = len(set(AUD.findall(pb))); e["sample_prod"] = list(dict.fromkeys(AUD.findall(pb)))[:3]
+        e["embeds"] = sorted(set(re.findall(r"(soundcloud|bandcamp|youtube|discogs)\.com", pb)))
+    res.append(e); print(json.dumps(e), file=sys.stderr)
+    time.sleep(1)
+json.dump(res, open("probe/audio.json", "w"), indent=1)
