@@ -280,8 +280,11 @@ html.g2 #gridbtn .g2i{display:inline-flex}
 @keyframes gblink{50%{opacity:.15;transform:scale(1.18)}}
 @media (prefers-reduced-motion:reduce){#gridbtn.blink{animation:none}}
 @media (max-width:599px){
-  html.g2 .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;grid-auto-flow:dense}
-  html.g2 .card.big{grid-column:1/-1;contain-intrinsic-size:auto 360px}   /* umgedrehte Karte: volle Breite */
+  html.g2 .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  /* umgedrehte Karte: legt sich in voller Breite ÜBER das Raster, nichts verschiebt sich */
+  html.g2 .card.big{content-visibility:visible;z-index:30}
+  html.g2 .card.big .flip{transition:transform .55s cubic-bezier(.3,.7,.2,1),left .34s cubic-bezier(.2,.8,.2,1),top .34s cubic-bezier(.2,.8,.2,1),width .34s cubic-bezier(.2,.8,.2,1),height .34s cubic-bezier(.2,.8,.2,1)}
+  html.g2 .card.big .backf{box-shadow:0 18px 50px rgba(0,0,0,.7)}
   html.g2 .card{contain-intrinsic-size:auto 180px}
   html.g2 .card:not(.big) .play{width:46px;height:46px;margin:-23px 0 0 -23px}
   html.g2 .card:not(.big) .play svg{width:19px;height:19px}
@@ -517,8 +520,9 @@ function card(r,i){
     back.querySelectorAll(".fl").forEach(b=>{if(F.k&&F.k.t===b.dataset.ft&&(b.dataset.ft==="re"||fold(F.k.v)===fold(b.dataset.fv)))b.classList.add("on")});
     back.querySelectorAll(".fl").forEach(b=>b.onclick=e=>{e.stopPropagation();setChip(b.dataset.ft,b.dataset.fv)});
   };
-  const flip=on=>{if(on)build();if(innerWidth<600&&document.documentElement.classList.contains("g2"))grow(el,on);el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r);requestAnimationFrame(()=>moreTracks(el))}};
+  const flip=on=>{if(on)build();if(on?innerWidth<600&&document.documentElement.classList.contains("g2"):el.classList.contains("big"))grow(el,on);el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r);requestAnimationFrame(()=>moreTracks(el))}};
   back.onclick=e=>{if(e.target.closest("button,a"))return;flip(false)};
+  el._flip=flip;
   // Cover antippen (ausserhalb Play) dreht es um
   el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.play,.cseek"))return;flip(true)};
   // Play: Tipp = abspielen / Pause / weiter (wie überall üblich); nächster Track über ⏭ in der Player-Leiste
@@ -529,16 +533,25 @@ function card(r,i){
   el.querySelector(".add").onclick=()=>toggleBag(r);
   return el;
 }
-// 2er-Raster: umgedrehte Karte wächst auf volle Breite, die Nachbarn rutschen weich mit (FLIP)
+// Tipp ausserhalb der vergrösserten Karte: nur zurückdrehen, nichts darunter auslösen
+document.addEventListener("click",e=>{const big=document.querySelector(".card.big.back");
+  if(big&&!big.contains(e.target)&&!e.target.closest("header,.mini,#mini,.sheet,#sheet,.ffab,#ffab")){e.preventDefault();e.stopPropagation();big._flip&&big._flip(false)}},true);
+// 2er-Raster: die umgedrehte Karte wächst als Ebene über das Raster auf volle Breite – ohne dass sich
+// irgendetwas verschiebt oder scrollt; beim Zurückdrehen schrumpft sie exakt in ihre Zelle
 function grow(el,on){
-  const g=el.parentElement,vis=c=>{const r=c.getBoundingClientRect();return r.bottom>-400&&r.top<innerHeight+400};
-  const cs=[...g.children].filter(c=>!c.hidden&&vis(c)),before=new Map(cs.map(c=>[c,c.getBoundingClientRect()]));
-  el.classList.toggle("big",on);
-  const ease="cubic-bezier(.2,.8,.2,1)";
-  before.forEach((f,c)=>{const l=c.getBoundingClientRect();if(!l.width)return;
-    const dx=f.left-l.left,dy=f.top-l.top,sx=f.width/l.width;if(Math.abs(dx)<1&&Math.abs(dy)<1&&Math.abs(sx-1)<.01)return;
-    try{c.animate([{transformOrigin:"0 0",transform:`translate(${dx}px,${dy}px) scale(${sx})`},{transformOrigin:"0 0",transform:"none"}],{duration:340,easing:ease})}catch(e){}});
-  if(on)setTimeout(()=>{const r=el.getBoundingClientRect();if(r.bottom>innerHeight-70||r.top<60)el.scrollIntoView({behavior:"smooth",block:"center"})},360);
+  const f=el.querySelector(".flip"),c=el.getBoundingClientRect(),gr=el.parentElement.getBoundingClientRect();
+  const box=(l,t,w,h)=>{f.style.inset="auto";f.style.left=l+"px";f.style.top=t+"px";f.style.width=w+"px";f.style.height=h+"px"};
+  clearTimeout(el._gt);
+  if(on){
+    const W=gr.width,H=W,minT=64,maxT=innerHeight-(document.getElementById("mini")?.offsetHeight||0)-12-H;
+    const T=Math.max(Math.min(c.top,maxT),Math.min(minT,c.top));            // möglichst an Ort, aber ganz sichtbar
+    const L=gr.left-c.left,Tp=T-c.top;
+    el.classList.add("big");box(0,0,c.width,c.height);f.getBoundingClientRect();
+    el.style.perspectiveOrigin=`${L+W/2}px ${Tp+H/2}px`;box(L,Tp,W,H);
+  }else{
+    box(0,0,c.width,c.height);
+    el._gt=setTimeout(()=>{el.classList.remove("big");["inset","left","top","width","height"].forEach(k=>f.style[k]="");el.style.perspectiveOrigin=""},560);
+  }
 }
 // Mehr Tracks als sichtbar: unten ausblenden und «+N more ↓» zeigen, bis ans Ende gescrollt ist
 function moreTracks(el){
