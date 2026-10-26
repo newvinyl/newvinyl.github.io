@@ -274,6 +274,11 @@ html.g2 #gridbtn .g1i{display:none}
 html.g2 #gridbtn .g2i{display:inline-flex}
 #gridbtn span{display:inline-flex}
 @media (min-width:600px){#gridbtn{display:none}}
+/* bis zum ersten Antippen gelb, nach dem Laden dreimal kurz aufblinken */
+#gridbtn.new{color:var(--yellow)}
+#gridbtn.blink{animation:gblink .5s ease-in-out 1.2s 3}
+@keyframes gblink{50%{opacity:.15;transform:scale(1.18)}}
+@media (prefers-reduced-motion:reduce){#gridbtn.blink{animation:none}}
 @media (max-width:599px){
   html.g2 .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   html.g2 .card{contain-intrinsic-size:auto 180px}
@@ -464,7 +469,8 @@ function dayCount(P){const n=P.idx.reduce((a,i)=>a+(matches(RECS[i])?1:0),0);P.h
 (()=>{const h=document.documentElement,b=document.getElementById("gridbtn");if(!b)return;
   const set=on=>{h.classList.toggle("g2",on);b.setAttribute("aria-pressed",on);b.setAttribute("aria-label",on?"One column":"Two columns")};
   set(!!store.get("mvr-g2",false));
-  b.onclick=()=>{const top=[...document.querySelectorAll(".card:not([hidden])")].find(c=>c.getBoundingClientRect().bottom>90);
+  if(!store.get("mvr-gseen",false))b.classList.add("new","blink");
+  b.onclick=()=>{if(b.classList.contains("new")){b.classList.remove("new","blink");store.set("mvr-gseen",true)}const top=[...document.querySelectorAll(".card:not([hidden])")].find(c=>c.getBoundingClientRect().bottom>90);
     const on=!h.classList.contains("g2");set(on);store.set("mvr-g2",on);track("Grid",{cols:on?2:1});
     if(top&&window.scrollY>100)requestAnimationFrame(()=>top.scrollIntoView({block:"start"}))}})();
 let imgIO=null;
