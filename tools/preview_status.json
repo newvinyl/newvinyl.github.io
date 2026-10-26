@@ -1,10 +1,10 @@
 {
  "date": "2026-10-26",
  "total": {
-  "records": 3651,
-  "tracks": 2824,
-  "clip": 666,
-  "none": 161
+  "records": 3893,
+  "tracks": 3073,
+  "clip": 646,
+  "none": 174
  },
  "shops": {
   "Hardwax": {
@@ -33,14 +33,14 @@
   },
   "Phonica": {
    "records": 213,
-   "tracks": 155,
+   "tracks": 156,
    "clip": 12,
-   "none": 46
+   "none": 45
   },
   "Redeye Records": {
    "records": 970,
-   "tracks": 308,
-   "clip": 632,
+   "tracks": 327,
+   "clip": 613,
    "none": 30
   },
   "Yoyaku": {
@@ -63,9 +63,9 @@
   },
   "Deejay.de": {
    "records": 249,
-   "tracks": 195,
-   "clip": 16,
-   "none": 38
+   "tracks": 198,
+   "clip": 15,
+   "none": 36
   },
   "Vinyl Underground": {
    "records": 161,
@@ -108,13 +108,49 @@
    "tracks": 62,
    "clip": 0,
    "none": 0
+  },
+  "Carpet & Snares": {
+   "records": 23,
+   "tracks": 12,
+   "clip": 0,
+   "none": 11
+  },
+  "KMA60": {
+   "records": 36,
+   "tracks": 36,
+   "clip": 0,
+   "none": 0
+  },
+  "Side One": {
+   "records": 40,
+   "tracks": 40,
+   "clip": 0,
+   "none": 0
+  },
+  "SoundGround": {
+   "records": 103,
+   "tracks": 98,
+   "clip": 0,
+   "none": 5
+  },
+  "Divert Records": {
+   "records": 1,
+   "tracks": 1,
+   "clip": 0,
+   "none": 0
+  },
+  "Ultrasuoni": {
+   "records": 39,
+   "tracks": 39,
+   "clip": 0,
+   "none": 0
   }
  },
  "pages_checked": 0,
  "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 21,
- "clips_verified": 10642,
+ "copied_from_other_shop": 36,
+ "broken_clips_removed": 25,
+ "clips_verified": 11631,
  "not_reachable": {},
  "clip_hosts": {
   "bordelloaparigi.com": {
@@ -133,12 +169,17 @@
    "sample": []
   },
   "creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com": {
-   "clips": 168,
+   "clips": 321,
    "failed": 0,
    "sample": []
   },
   "diggers.fr": {
    "clips": 332,
+   "failed": 0,
+   "sample": []
+  },
+  "imvbzrbcpbpwuwjizeyo.supabase.co": {
+   "clips": 448,
    "failed": 0,
    "sample": []
   },
@@ -189,8 +230,27 @@
     "https://www.betinos.com/sites/default/files/April RaApril Rain.mp3"
    ]
   },
+  "www.divertrecords.sk": {
+   "clips": 2,
+   "failed": 0,
+   "sample": []
+  },
   "www.juno.co.uk": {
    "clips": 4830,
+   "failed": 0,
+   "sample": []
+  },
+  "www.sideone.pl": {
+   "clips": 231,
+   "failed": 187,
+   "sample": [
+    "https://www.sideone.pl/settings.php?getAttachmentp=236058_47999_e2d1c91e4003dbde730cd18ef6d6dbc0",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236059_47999_7f498a3c9ad9b28278b30e9c282fd838",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236060_48000_98861156afccb03d440a4dcee0f8a3cd"
+   ]
+  },
+  "www.ultrasuonirecords.com": {
+   "clips": 155,
    "failed": 0,
    "sample": []
   },
@@ -206,6 +266,7 @@
   }
  },
  "unverifiable_hosts": [
-  "www.betinos.com"
+  "www.betinos.com",
+  "www.sideone.pl"
  ]
 }
