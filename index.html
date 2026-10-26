@@ -66,6 +66,7 @@ button{font:inherit;color:inherit}
 @media (min-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (min-width:1400px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
+html.busy #feed{opacity:.4;transition:opacity .1s}html.busy{cursor:progress}
 .card{position:relative;aspect-ratio:1/1;max-width:100%;perspective:1400px;content-visibility:auto;contain-intrinsic-size:auto 360px}
 .flip{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.7,.2,1)}
 .card.back .flip{transform:rotateY(180deg)}
@@ -393,7 +394,7 @@ function renderFeed(){
   RECS=[];const feed=document.getElementById("feed");feed.innerHTML="";
   if(!days.length){feed.innerHTML='<p class="empty">No records in this period yet.</p>'}
   days.forEach((d,di)=>{
-    const list=recs.filter(r=>r.first===d).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
+    const list=recs.filter(r=>r.first===d&&chipMatch(r)).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
     if(!list.length)return;
     const lab=!rg&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
     const h=document.createElement("div");h.className="day";h.innerHTML=`<b>${lab}</b><span>${list.length} records</span>`;feed.appendChild(h);
@@ -430,15 +431,26 @@ function card(r,i){
       <button class="play" type="button" aria-label="Play ${esc(m.a)} – ${esc(m.t)}">${PLAY}</button>
       <button class="add" type="button"></button>
       <div class="bar"></div><div class="cseek" aria-hidden="true"></div></div>
-    <div class="face backf" aria-hidden="true">
-      <button class="shr" type="button" aria-label="Share ${esc(m.a)} – ${esc(m.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 12v8h14v-8"/></svg></button>
+    <div class="face backf" aria-hidden="true"></div></div>`;
+  const back=el.querySelector(".backf");
+  // Rückseite (Trackliste, Teilen, Preis) erst beim ersten Umdrehen bauen: halbiert die Seite
+  const build=()=>{if(back.dataset.b)return;back.dataset.b=1;
+    back.innerHTML=`      <button class="shr" type="button" aria-label="Share ${esc(m.a)} – ${esc(m.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 12v8h14v-8"/></svg></button>
       <div class="ar">${esc(m.a)}</div><div class="ti">${esc(m.t)}</div>
       <div class="me"><button type="button" class="fl fls" data-ft="shop" data-fv="${esc(m.S.shop)}">${esc(m.S.shop)}</button> · ${esc(m.l)}${m.cat?" · "+esc(m.cat):""}${m.f?" · "+esc(m.f):""}${m.g?"<br>"+gTokens(m.g):""}</div>
       <ol>${r.tracks.slice(0,6).map((t,ti)=>`<li data-t="${ti}"><button type="button"><span class="s">${esc(t.s||"")}</span><span>${esc(t.n||"Preview")}</span></button></li>`).join("")}</ol>
-      <div class="more-tr" hidden></div>
-    </div></div>`;
-  const back=el.querySelector(".backf");
-  const flip=on=>{el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r);requestAnimationFrame(()=>moreTracks(el))}};
+      <div class="more-tr" hidden></div>`;
+    el.querySelector(".shr").onclick=e=>{e.stopPropagation();DESK?sharePop(r,el.querySelector(".shr")):shareRec(r)};
+    back.querySelectorAll("li").forEach(li=>{li.querySelector("button").onclick=()=>play(i,+li.dataset.t);li.classList.toggle("on",cur===i&&+li.dataset.t===trackIdx)});
+    const ctl=document.createElement("div");ctl.className="ctl";
+    ctl.innerHTML=`<div class="price">${money(m.S.cur,m.p)}${others.length?`<small class="low">lowest of ${others.length+1} shops</small>`:""}</div><button class="add" type="button"></button>`;
+    back.appendChild(ctl);
+    ctl.querySelector(".add").onclick=()=>toggleBag(r);
+    const on=inBag(r),ab=ctl.querySelector(".add");ab.classList.toggle("in",on);ab.innerHTML=on?`${CHECK}In bag`:`${PLUS}Bag`;
+    back.querySelectorAll(".fl").forEach(b=>{if(F.k&&F.k.t===b.dataset.ft&&(b.dataset.ft==="re"||fold(F.k.v)===fold(b.dataset.fv)))b.classList.add("on")});
+    back.querySelectorAll(".fl").forEach(b=>b.onclick=e=>{e.stopPropagation();setChip(b.dataset.ft,b.dataset.fv)});
+  };
+  const flip=on=>{if(on)build();el.classList.toggle("back",on);back.setAttribute("aria-hidden",on?"false":"true");if(on){track("More");prepStory(r);requestAnimationFrame(()=>moreTracks(el))}};
   back.onclick=e=>{if(e.target.closest("button,a"))return;flip(false)};
   // Cover antippen (ausserhalb Play) dreht es um
   el.querySelector(".front").onclick=e=>{if(e.target.closest(".add,.play,.cseek"))return;flip(true)};
@@ -447,16 +459,7 @@ function card(r,i){
     if(cur!==i){play(i,0);return}
     if(au.paused)au.play().catch(()=>{});else{au.pause();track("Pause via cover")}
   };
-  el.querySelector(".shr").onclick=e=>{e.stopPropagation();DESK?sharePop(r,el.querySelector(".shr")):shareRec(r)};
   el.querySelector(".add").onclick=()=>toggleBag(r);
-  el.querySelectorAll(".backf li").forEach(li=>li.querySelector("button").onclick=()=>play(i,+li.dataset.t));
-  // Rückseite: Bag unten rechts wie vorne
-  const ctl=document.createElement("div");ctl.className="ctl";
-  ctl.innerHTML=`<div class="price">${money(m.S.cur,m.p)}${others.length?`<small class="low">lowest of ${others.length+1} shops</small>`:""}</div><button class="add" type="button"></button>`;
-  back.appendChild(ctl);
-  ctl.querySelector(".add").onclick=()=>toggleBag(r);
-  back.querySelectorAll(".fl").forEach(b=>{if(F.k&&F.k.t===b.dataset.ft&&(b.dataset.ft==="re"||fold(F.k.v)===fold(b.dataset.fv)))b.classList.add("on")});
-  back.querySelectorAll(".fl").forEach(b=>b.onclick=e=>{e.stopPropagation();setChip(b.dataset.ft,b.dataset.fv)});
   return el;
 }
 // Mehr Tracks als sichtbar: unten ausblenden und «+N more ↓» zeigen, bis ans Ende gescrollt ist
@@ -601,7 +604,9 @@ function chipMatch(r){const k=F.k;if(!k)return true;
   if(k.t==="genre")return r.all.some(x=>String(x.g||"").split(/ · | \/ /).some(t=>fold(t.trim())===fold(k.v)));
   if(k.t==="re")return r.all.some(x=>/reissue|repress/i.test(x.g||""));
   return true}
-function setChip(t,v){F.k=t&&v?{t,v}:null;F.l=F.k?F.k.v:"";if(F.k)track("Card filter",{type:t,value:v});renderFeed();window.scrollTo({top:0,behavior:"smooth"})}
+// Schwere Neuaufbauten erst im nächsten Frame: zuerst sichtbares Feedback (gedimmter Feed), dann die Arbeit
+function soon(fn){const h=document.documentElement;h.classList.add("busy");requestAnimationFrame(()=>setTimeout(()=>{try{fn()}finally{h.classList.remove("busy")}},0))}
+function setChip(t,v){F.k=t&&v?{t,v}:null;F.l=F.k?F.k.v:"";if(F.k)track("Card filter",{type:t,value:v});soon(()=>{renderFeed();window.scrollTo({top:0,behavior:"smooth"})})}
 function setLabel(l){setChip(l?"shop":"",l)}
 // Aktiver Shop-Filter als gelber Chip neben dem ersten Tagestitel; × hebt ihn auf
 function shopChip(){
@@ -626,7 +631,7 @@ function buildChips(){
   {const box=document.getElementById("cw");box.innerHTML="";
    RANGES.forEach(([k,lab])=>{const rg=rangeOf(k),n=ALL.filter(r=>r.first>=rg[0]&&r.first<=rg[1]).length;if(!n)return;
     const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",F.r===k);b.innerHTML=`${lab} <small>${n}</small>`;
-    b.onclick=()=>{F.r=F.r===k?"":k;if(F.r)track("Filter",{type:"when",value:k});renderFeed();buildChips();applyFilter()};box.appendChild(b)})}
+    b.onclick=()=>{F.r=F.r===k?"":k;if(F.r)track("Filter",{type:"when",value:k});box.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b&&!!F.r));soon(()=>{renderFeed();buildChips()})};box.appendChild(b)})}
   GENRES=genreList();
   mk(document.getElementById("cg"),F.g,GENRES,gMatch);
   const shops=[...new Set(ALL.flatMap(r=>r.all.map(x=>x.S.shop)))].sort();
@@ -647,7 +652,7 @@ document.getElementById("sclose").onclick=closeSheet;
  spanel.addEventListener("touchmove",e=>{if(y0===null)return;dy=e.touches[0].clientY-y0;if(dy>0){spanel.classList.add("drag");spanel.style.transform=`translateY(${dy}px)`;if(e.cancelable)e.preventDefault()}else{spanel.classList.remove("drag");spanel.style.transform=""}},{passive:false});
  spanel.addEventListener("touchend",()=>{if(y0===null)return;spanel.classList.remove("drag");const v=dy/Math.max(1,Date.now()-t0);
    if(dy>90||(dy>30&&v>.5)){track("Filter swipe close");closeSheet()}else spanel.style.transform="";y0=null})}
-document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const had=F.r||F.k;F.r="";if(F.k)setChip("");else if(had)renderFeed();buildChips();applyFilter()};
+document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const had=F.r||F.k;F.r="";F.k=null;F.l="";if(had)soon(()=>{renderFeed();buildChips()});else{buildChips();applyFilter()}};
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
 const sb=document.getElementById("srchbtn"),srow=document.getElementById("srow"),q=document.getElementById("q");
