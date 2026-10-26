@@ -1,27 +1,20 @@
 #!/usr/bin/env python3
-"""One-off: run the new shop feeds for real and save their items (test before they go into the daily update)."""
-import json, os, sys, time
-sys.path.insert(0, os.path.dirname(__file__))
-import shop_feeds as SF
-from fetch_pages import fetch
+"""One-off: Common Ground product pages (track markup) + Divert audio with browser headers."""
+import json, os, re, sys, time, urllib.request
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
 os.makedirs("probe", exist_ok=True)
-ids = [l.strip() for l in open(sys.argv[1]) if l.strip() and not l.startswith("#")]
-for fid, shop, where, country, cur, fn in SF.FEEDS:
-    if fid not in ids:
-        continue
-    t = time.time()
+def get(u, h=None):
     try:
-        items = fn(fetch); err = None
+        r = urllib.request.urlopen(urllib.request.Request(u, headers=dict({"User-Agent": UA}, **(h or {}))), timeout=30)
+        return r.status, r.read(3000 if u.endswith(".mp3") else 10**8)
     except Exception as e:
-        items, err = [], repr(e)[:300]
-    chk = []
-    import urllib.request
-    for it in [i for i in items if i.get("tr")][:3]:
-        for u in (it["tr"][0]["u"], it.get("cover")):
-            try:
-                r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0", "Range": "bytes=0-1000"}), timeout=30)
-                chk.append([u[:120], r.status, r.headers.get("Content-Type"), r.headers.get("Content-Range")])
-            except Exception as e:
-                chk.append([u[:120], repr(e)[:80]])
-    json.dump({"check": chk, "shop": shop, "err": err, "secs": round(time.time() - t), "items": items}, open("probe/%s.json" % fid, "w"), indent=1, ensure_ascii=False)
-    print(fid, len(items), sum(1 for i in items if i.get("tr")), err, file=sys.stderr)
+        return repr(e)[:100], b""
+for name, base, path in (("carpet", "https://shop.carpetandsnares.com", "/catalogue?sort=added&order=-1"), ("kma", "https://www.kma60.com", "/collection/2/new-arrivals?sort=added&order=-1")):
+    st, b = get(base + path); b = b.decode("utf-8", "replace")
+    paths = list(dict.fromkeys(re.findall(r'href="(/release/\d+/[^"]+)"', b)))[:2]
+    for i, p in enumerate(paths):
+        time.sleep(1); st, pb = get(base + p); open("probe/%s_rel%d.html" % (name, i), "wb").write(pb); print(name, p, st, len(pb), file=sys.stderr)
+u = "https://www.divertrecords.sk/wp-content/uploads/2026/10/a-sirob-leon-ge-mini-where-is-my-lipgloss-wiml001-vinyl.mp3"
+for h in ({}, {"Referer": "https://monthlyvinyl.net/"}, {"Referer": "https://www.divertrecords.sk/", "Accept": "audio/*,*/*", "Range": "bytes=0-1000"},
+          {"Accept": "*/*", "Accept-Language": "en", "Sec-Fetch-Dest": "audio", "Range": "bytes=0-"}):
+    st, x = get(u, h); print("divert", h, st, len(x), file=sys.stderr); time.sleep(1)
