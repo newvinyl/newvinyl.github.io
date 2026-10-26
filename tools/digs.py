@@ -77,13 +77,14 @@ def fetch(url, timeout=40):
         return r.read()
 
 def font_path(bold):
-    cands = (["/usr/share/texmf/fonts/opentype/public/tex-gyre/texgyreheros-bold.otf",
+    here = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")     # bundled: no apt needed for the type
+    cands = ([os.path.join(here, "texgyreheros-bold.otf"), "/usr/share/texmf/fonts/opentype/public/tex-gyre/texgyreheros-bold.otf",
               "/usr/share/fonts/opentype/tex-gyre/texgyreheros-bold.otf",
               "/usr/share/fonts/opentype/inter/Inter-Bold.otf",
               "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
               "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
               "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"] if bold else
-             ["/usr/share/texmf/fonts/opentype/public/tex-gyre/texgyreheros-regular.otf",
+             [os.path.join(here, "texgyreheros-regular.otf"), "/usr/share/texmf/fonts/opentype/public/tex-gyre/texgyreheros-regular.otf",
               "/usr/share/fonts/opentype/tex-gyre/texgyreheros-regular.otf",
               "/usr/share/fonts/opentype/inter/Inter-Regular.otf",
               "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",

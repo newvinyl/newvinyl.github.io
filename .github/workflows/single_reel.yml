@@ -22,8 +22,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install tools
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core >/dev/null
+          # apt mirrors sometimes hang for 30 min: cap it, and fall back to a static ffmpeg from pip
+          timeout 180 sudo apt-get update -qq || echo "apt update timed out"
+          timeout 300 sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core >/dev/null || echo "apt install failed"
+          if ! command -v ffmpeg >/dev/null; then
+            pip install -q imageio-ffmpeg
+            sudo ln -sf "$(python3 -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" /usr/local/bin/ffmpeg
+          fi
+          ffmpeg -version | head -1
           pip install -q numpy pillow opencv-python-headless
       - name: Render
         env:
