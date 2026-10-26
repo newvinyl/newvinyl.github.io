@@ -1,14 +1,6 @@
-divert_api.json https://www.divertrecords.sk/wp-json/wc/store/v1/products?per_page=20&orderby=date&order=desc
-ultra_api.json https://www.ultrasuonirecords.com/wp-json/wc/store/v1/products?per_page=20&orderby=date&order=desc
-ultra_prod.html https://www.ultrasuonirecords.com/shop/upstate-ep/
-carpet_cat.html https://shop.carpetandsnares.com/catalogue?sort=added&order=-1
-carpet_robots.txt https://shop.carpetandsnares.com/robots.txt
-kma_new.html https://www.kma60.com/collection/2/new-arrivals?sort=added&order=-1
-kma_robots.txt https://www.kma60.com/robots.txt
-sideone_p2.html https://www.sideone.pl/NOWOSCI-snewproducts-pol.html?counter=1
-sideone_robots.txt https://www.sideone.pl/robots.txt
-sg_house.html https://www.soundground.bg/collections/house-vinyl
-sg_new.html https://www.soundground.bg/music?sort=newest
-sg_robots.txt https://www.soundground.bg/robots.txt
-divert_robots.txt https://www.divertrecords.sk/robots.txt
-ultra_robots.txt https://www.ultrasuonirecords.com/robots.txt
+carpetsnares
+kma60
+sideone
+soundground
+divert
+ultrasuoni
