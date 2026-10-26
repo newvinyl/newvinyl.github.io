@@ -1,5 +1,39 @@
 [
  {
+  "date": "2026-10-26",
+  "keys": [
+   "dopplereffekt|infinion regress (black vinyl)",
+   "ismael pinkler / nick hanzo|planet 126",
+   "angelo d'onorio|because of my dream"
+  ],
+  "titles": [
+   "DOPPLEREFFEKT – Infinion Regress (Black vinyl)",
+   "Ismael PINKLER / NICK HANZO – Planet 126",
+   "Angelo D'Onorio – Because Of My Dream"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Juno",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261026.mp4",
+  "looks": [
+   "flat black",
+   "hook HOT OFF THE PRESS."
+  ],
+  "dv": 7,
+  "hook": "HOT OFF THE PRESS.",
+  "reel": {
+   "key": "tomocomo|prism of echoes",
+   "title": "TOMOCOMO – Prism Of Echoes",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261026.mp4",
+   "look": "painterly cover · background paintflow · alive: glint+ripple+bloom · melt: descend · type BK-G · hook MASTERPIECE.",
+   "v": 20,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261026.jpg",
+   "hook": "MASTERPIECE."
+  }
+ },
+ {
   "date": "2026-10-25",
   "keys": [
    "steffi|half an owl and a full moon rising",
