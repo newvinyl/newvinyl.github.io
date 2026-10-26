@@ -1,4 +1,4 @@
-# Instagram – tägliche Vorschau und Posting (@monthlyvinyl)
+# Instagram – tägliche Vorschau und Posting von «Today's Digs» (@monthlyvinyl)
 
 Einzige Quelle für die tägliche Instagram-Aufgabe. Sprache gegenüber dem Nutzer: Deutsch, Schweizer
 Schreibweise (ss statt ß), kurz und sachlich.
@@ -22,8 +22,9 @@ Video herunterladen, die Bilder bei 0 s, 3 s, 18 s und 33 s ansehen und prüfen:
 Startbild, Titel lesbar, Cover sauber (kein Aufkleber/Mockup, richtige Platte), Shop-Zeile vorhanden.
 Fehler dem Nutzer melden statt zu posten.
 
-Das Einzel-Reel (`reel-<yymmdd>.mp4`, `92h6fy/caption_reel.txt`) nur vorlegen, wenn der Nutzer es
-ausdrücklich verlangt.
+**Nur «Today's Digs».** Das Einzel-Reel (`reel-<yymmdd>.mp4`, `92h6fy/caption_reel.txt`) gehört
+vorerst NICHT zu dieser Aufgabe: nicht vorlegen, nicht posten, nicht erwähnen. Der Nutzer postet es
+weiterhin selbst über die versteckte Seite /92h6fy/ (alter Workflow).
 
 ## 2. Markierungen recherchieren
 
