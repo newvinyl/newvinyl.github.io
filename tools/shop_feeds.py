@@ -137,12 +137,24 @@ def feed_commonground(fetch, base, list_path, max_items=40):
                 cnt[f] = cnt.get(f, 0) + 1
             folder = max(cnt, key=lambda k: (cnt[k], -rb.find(k))) if cnt else None
         trs = []
+        # the release's own tracklist in the page data carries the snippet uri per track (also when the
+        # rendered track rows are not marked "playable", e.g. releases imported from Discogs)
+        k = data.find('"tracklist":[', i)
+        if 0 <= k < i + 20000:
+            seg = data[k:data.find("]", data.find("}]", k) + 1) + 1] if data.find("}]", k) > 0 else ""
+            for tm in re.finditer(r'"type_":"track","title":"((?:[^"\\]|\\.)*)","position":"([^"]*)"([^{}]*)\}', seg):
+                um = re.search(r'"uri":"(https://creators-audio-snippets-production[^"]+?\.mp3[^"]*)"', tm.group(3))
+                if um:
+                    fu = re.search(SNIP, um.group(1))
+                    folder = folder or (fu.group(1) if fu else None)
+                    trs.append({"s": tm.group(2), "n": clean(json.loads('"%s"' % tm.group(1))), "u": um.group(1)})
         if folder:
             snip = "https://creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com/%s/" % folder
             for pos, name in re.findall(r'data-track-position="([^"]+)"[^>]*class="track playable[^"]*".*?class="description"><span>(.*?)</span>', rb, re.S):
                 if any(x["s"] == pos for x in trs):
                     continue
                 trs.append({"s": pos, "n": clean(name), "u": snip + pos + ".mp3?version=1"})
+            trs.sort(key=lambda x: (len(x["s"]) > 3, x["s"]))
         img = (re.search(r'"images":\[\{"uri":"([^"]+)"', own) or [None, ""])[1]
         pm = re.search(r'"prices":\{"sale":([\d.]+)', data)
         sb = re.search(r'<div class="styles">(.*?)</div>', rb, re.S)
@@ -413,7 +425,7 @@ def urllib_unquote(s):
 # ---------------------------------------------------------------- Divert Records (Bratislava) + Ultrasuoni (Rome): WooCommerce, audio on the product page
 def feed_divert(fetch):
     out, year = [], dt.date.today().year
-    for p in _woo(fetch, "https://www.divertrecords.sk"):
+    for p in _woo(fetch, "https://www.divertrecords.sk", 100):              # newest by date is mostly restocks of old records
         at = _attrs(p)
         rel = " ".join(at.get("Released", []) + at.get("Rok vydania", []))
         ym = re.search(r"(20\d\d)", rel)
