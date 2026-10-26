@@ -934,15 +934,7 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
         log("avoid (recent looks):", sorted(avoid))
         look = reelfx.reel_single(rel, aud, look_seed(ymd, R["key"], "reel", str(REEL_V)), rpath, rposter, dur=RDUR,
                                   avoid=avoid, cmode=(getattr(a, "want_fx", None) if getattr(a, "want_fx", None) != "liquid" else None)) + " · type " + sch
-    hk = None
-    try:                                                  # text hook over the cover (tools/hook.py)
-        import hook
-        hk = hook.apply(rpath, "reel", ymd + "|" + R["key"],
-                        reissue=hook.is_reissue(R["t"], R.get("fmt"), R.get("tname"), " ".join(R.get("meta") or [])),
-                        avoid=[(e.get("reel") or {}).get("hook") for e in history[:3]])
-        look += " · hook " + hk
-    except Exception as e:
-        log("hook failed (reel stays without):", e)
+    hk = None                                             # text hook removed (26.10.26)
     rcap = reel_caption(R, rc["arr"])
     sec = section("reel", "Reel · one release", "%d s · post as a Reel · look: %s" % (RDUR, look), base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
@@ -1076,13 +1068,7 @@ def main():
     render_flat([flat_p(p, p["cover"], sch, "TODAY'S DIGS", "%d/3" % (i + 1)) for i, (p, sch) in enumerate(zip(P, ["BK-Y", "BK-G", "BK-P"]))],
                 [fade(seg(p["audio"], o, DSEG), 0.25, 0.6) for p, o in zip(P, offs)], DSEG, vpath, poster)
     looks = ["flat black"]
-    dhook = None
-    try:                                                  # text hook over the first cover (tools/hook.py)
-        import hook
-        dhook = hook.apply(vpath, "digs", ymd, avoid=[e.get("hook") for e in history[:3]])
-        looks.append("hook " + dhook)
-    except Exception as e:
-        log("hook failed (digs stay without):", e)
+    dhook = None                                          # text hook removed (26.10.26)
     base = "https://github.com/%s/releases/download/%s/" % (REPO, RELEASE_TAG)
     cap = caption(P, date_s)
     nonstrict = [p for p in P if not p["strict"]]

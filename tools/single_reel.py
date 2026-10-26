@@ -100,12 +100,6 @@ def main():
         look = lava.reel_lava(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur, eyes=want.get("eyes"), blobs=want.get("blobs", True))
     else:
         look = reelfx.reel_single(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, cmode=want.get("fx"), dur=dur, eyes=want.get("eyes"))
-    try:                                                  # text hook over the cover (tools/hook.py)
-        import hook
-        look += " · hook " + hook.apply(out, "reel", slug,
-                                        reissue=hook.is_reissue(R["t"], R.get("fmt"), R.get("tname"), " ".join(R.get("meta") or [])))
-    except Exception as e:
-        digs.log("hook failed (reel stays without):", e)
     cap = digs.reel_caption(R, arr)
     capp = out.replace(".mp4", ".txt")
     open(capp, "w", encoding="utf-8").write(cap + "\n")
