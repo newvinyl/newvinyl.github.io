@@ -168,19 +168,16 @@ def render(ps, mixes, seg_s, date_s, path, poster):
         sa, sb = slots(prev, n), slots(sg, n)
         for i in sorted(range(n), key=lambda i: (i == sg, i == prev)):
             x, y, s = lerp(sa[i], sb[i], mv)
-            if sg == 0:                                                 # opening: covers rise in one after another
-                k = ease((t - 0.12 * i) / 0.45)
-                y += 60 * (1 - k)
-                if k <= 0:
-                    continue
+            if sg == 0:                                                 # opening: covers glide into place one after another,
+                k = ease((t - 0.12 * i) / 0.6)                          # fully visible from the very first frame
+                z = 0.9 + 0.1 * k                                       # (first frame = profile thumbnail, never black):
+                x, y, s = x + s * (1 - z) / 2, y + s * (1 - z) / 2, s * z   # grow from 90 % around their centre
             c = cov(i, s)
-            if sg == 0 and k < 1:
-                c = Image.blend(Image.new("RGB", c.size, BG), c, k)
             im.paste(c, (int(x), int(y)))
         if mv < 1:
             page(im, R[prev], 1 - ease(mv / 0.5), -30 * ease(mv / 0.5), f, levs[f])
-        a = ease((mv - 0.4) / 0.6) if sg > 0 else ease(t / 0.4)
-        page(im, R[sg], a, 30 * (1 - ease((mv - 0.4) / 0.6)) if sg > 0 else 20 * (1 - a), f, levs[f])
+        a = ease((mv - 0.4) / 0.6) if sg > 0 else 1.0                 # type fully there from the first frame
+        page(im, R[sg], a, 30 * (1 - ease((mv - 0.4) / 0.6)) if sg > 0 else 0, f, levs[f])
         if f == int(1.5 * FPS):
             im.save(poster, quality=88)
         g = (total - f) / FPS
