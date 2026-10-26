@@ -116,6 +116,12 @@ class Shapes:
                 kinds[i] = "text"; continue
             x, y, w, h, area = st[i]
             mk = (comp[y:y + h, x:x + w] == i).astype(np.uint8)
+            allc, hier = cv2.findContours(mk, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+            hc = [] if hier is None else [allc[q] for q, hh in enumerate(hier[0]) if hh[3] >= 0 and cv2.contourArea(allc[q]) > 20]
+            holes = len(hc)
+            hm_ = [cv2.moments(q) for q in hc]
+            hcen = [(q["m10"] / q["m00"] + x, q["m01"] / q["m00"] + y) for q in hm_ if q["m00"] > 0]
+            concentric = bool(hcen) and all(math.hypot(px - cen[i][0], py - cen[i][1]) < 0.18 * max(w, h) for px, py in hcen)
             cnts, _ = cv2.findContours(mk, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
             c = max(cnts, key=cv2.contourArea)
             hull = cv2.convexHull(c); ha = max(1.0, cv2.contourArea(hull)); hp = max(1.0, cv2.arcLength(hull, True))
@@ -134,7 +140,7 @@ class Shapes:
             else:
                 kind = "angular"
             kinds[i] = kind
-            it = {"id": i, "kind": kind, "c": np.float32(cen[i]), "stroke": stroke, "area": float(area),
+            it = {"conc": concentric, "holes": holes, "id": i, "kind": kind, "c": np.float32(cen[i]), "stroke": stroke, "area": float(area),
                   "axis": math.radians(rang if rw >= rh else rang + 90), "len": float(max(rw, rh)),
                   "ph": rng.uniform(0, 2 * math.pi), "m": int(rng.choice([3, 4, 5, 6, 7, 8, 9])), "m2": int(rng.choice([2, 3, 4])),
                   "amp": rng.uniform(0.6, 1.0)}
@@ -165,8 +171,8 @@ class Shapes:
                     z["kind"] = "beat"; z["alt"] = k % 2
         # one round shape turns all the way (the biggest), the others rock
         rounds = sorted([z for z in self.items if z["kind"] == "round"], key=lambda z: -z["area"])
-        for k, z in enumerate(rounds):
-            z["full"] = (k == 0)
+        for k, z in enumerate(rounds):                                # lettering cut into a ring (many holes) never turns round
+            z["full"] = (k == 0 and (z["holes"] == 0 or z["conc"]) and z["area"] < 0.06 * A)   # faces / big emblems only rock a little
         main = max([z for z in self.items if z["kind"] != "text"] or [{"c": np.float32([S / 2, S / 2])}], key=lambda z: z.get("area", 0))
         self.focus = main["c"]
         self.rr = np.hypot(xx - self.focus[0], yy - self.focus[1]) / S
@@ -191,7 +197,7 @@ class Shapes:
     @staticmethod
     def _text(comps, st, cen):
         """letters: rows of 3+ small shapes with similar heights, close together"""
-        cand = [i for i in comps if 0.008 * S < st[i, 3] < 0.09 * S and st[i, 4] < 0.004 * S * S]
+        cand = [i for i in comps if 0.008 * S < st[i, 3] < 0.11 * S and st[i, 4] < 0.005 * S * S]
         text = set()
         for i in cand:
             row = [j for j in cand if abs(cen[j][1] - cen[i][1]) < 0.5 * st[i, 3] and 0.6 < st[j, 3] / st[i, 3] < 1.6
@@ -227,7 +233,8 @@ class Shapes:
             c = z["c"]; k = z["kind"]; amp = z["amp"] * e * (0.65 + 0.35 * math.sin(W * z["m2"] * t + z["ph"]))
             sx = X; sy = Y; s = 1.0; th = 0.0
             if k == "round":
-                ang = (-2 * math.pi * float(sstep((t - 1) / (self.dur - 1))) if z["full"] else 0.0) + math.radians(12) * amp * math.sin(W * z["m"] * t + z["ph"])
+                rock = math.radians(3 if ((z["holes"] > 2 and not z["conc"]) or z["area"] > 0.06 * S * S) else 12)
+                ang = (-2 * math.pi * float(sstep((t - 1) / (self.dur - 1))) if z["full"] else 0.0) + rock * amp * math.sin(W * z["m"] * t + z["ph"])
                 ca, sa = math.cos(-ang), math.sin(-ang)
                 dx, dy = X - c[0], Y - c[1]
                 sx = c[0] + dx * ca - dy * sa; sy = c[1] + dx * sa + dy * ca
