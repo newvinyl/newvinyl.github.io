@@ -364,6 +364,8 @@ def feed_sideone(fetch, pages=3):
                 sm = re.match(r"([A-Da-d]?\d{1,2})[\s.\-_]+(.*)", n)
                 trs.append({"s": sm.group(1).upper() if sm else "", "n": sm.group(2) if sm else n, "u": u.replace("pl//settings", "pl/settings")})
             stock = clean((re.search(r'class="prod_aviability">(.*?)</span>', blk, re.S) or [None, ""])[1]).lower()
+            if re.search(r"used|second[ -]hand", t, re.I):
+                continue                                               # second-hand listings
             out.append({"a": artist, "t": re.sub(r"\s*\((180g|LP|EP|12\"|Repress|Reissue)\)\s*$", "", t, flags=re.I), "l": label, "cat": cat,
                         "f": fmt_of(fmt), "p": price_of((re.search(r'class="price">(.*?)</span>', blk, re.S) or [None, ""])[1]), "g": g,
                         "url": SO + nm.group(1), "cover": (SO + "/" + img.lstrip("/")).replace("/pol_il_", "/pol_pl_") if img else "", "tr": trs,

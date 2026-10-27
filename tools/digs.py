@@ -116,8 +116,8 @@ def load_seen(skip_day=None):
                     continue
                 for k in e.get("keys", []):
                     seen.add(k)
-                if e.get("reel"):
-                    seen.add(e["reel"].get("key"))
+                for r in (e.get("reels") or []) + ([e["reel"]] if e.get("reel") else []):
+                    seen.add(r.get("key"))
     return seen
 
 def playable(arr):
@@ -144,6 +144,8 @@ def candidates(data, day, seen):
     for k, arr in G.items():
         if k in seen:
             continue
+        if any(re.search(r"\b(used|second[ -]hand|2nd hand)\b", (x.get("t") or "") + " " + (x.get("g") or ""), re.I) for x in arr):
+            continue                                                          # second-hand copies are no new release
         # Gleiche Regel wie «Fresh today» auf der Website: zählt nur, wenn die Platte
         # heute zum ersten Mal in IRGENDEINEM Shop auftaucht (frühestes first_seen)
         first = min((x.get("first_seen") or (x.get("m", "0000-00") + "-01")) for x in arr)
@@ -614,7 +616,7 @@ RDUR = 45
 
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
-REEL_V = 21   # bump to re-render today's reel after a design change
+REEL_V = 22   # bump to re-render today's reel after a design change
 DIGS_V = 9   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
@@ -915,11 +917,23 @@ def write_page(date_s, sections, history, caps):
     os.makedirs(OUT, exist_ok=True)
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(page)
     open(os.path.join(OUT, "caption.txt"), "w", encoding="utf-8").write(caps[0] + "\n")
+    for j, c in enumerate(caps[1:], 1):
+        open(os.path.join(OUT, "caption_reel_%d.txt" % j), "w", encoding="utf-8").write(c + "\n")
     if len(caps) > 1:
         open(os.path.join(OUT, "caption_reel.txt"), "w", encoding="utf-8").write(caps[1] + "\n")
 
-def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
-    rc = pick_reel(cands, digs_keys, digs_fams, a.offline, a.work, want_fam=a.want_fam, want_key=getattr(a, "want_key", None))
+def make_reels(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base, n=3):
+    """three reels a day (since 27.10.26), each a different release"""
+    out, used = [], set(digs_keys)
+    for i in range(1, n + 1):
+        r = make_reel(a, cands, fx, used, digs_fams, history, date_s, ymd, base, idx=i, want_key=(getattr(a, "want_key", None) if i == 1 else None))
+        if not r:
+            break
+        out.append(r); used.add(r["entry"]["key"])
+    return out
+
+def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base, idx=1, want_key=None):
+    rc = pick_reel(cands, digs_keys, digs_fams, a.offline, a.work, want_fam=a.want_fam, want_key=want_key)
     if not rc:
         log("no reel candidate")
         return None
@@ -927,22 +941,23 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
     R = prepare(rc, fx)
     start, _ = pick_start(rc["audio"])
     aud = reel_mix(rc["audio"], max(0.0, start - 1.0))
-    rname = "reel-%s.mp4" % ymd
+    rname = "reel-%s-%d.mp4" % (ymd, idx)
     rpath = os.path.join(a.work, rname)
-    rposter = os.path.join(a.work, "reel-%s.jpg" % ymd)
+    rposter = os.path.join(a.work, "reel-%s-%d.jpg" % (ymd, idx))
     # moving cover effects as before; type in the new site look, colour changes every day (yellow, mint, coral)
     sch = ["BK-Y", "BK-G", "BK-P"][dt.date.fromisoformat("20%s-%s-%s" % (ymd[:2], ymd[2:4], ymd[4:])).toordinal() % 3]
     fp = flat_p(R, rc["cover"], sch, "TODAY'S DIG")
     rel = dict(reel_rel(R, rc["cover"]), col=SCHEMES[sch]["text"], kicker=R["shop_full"].upper(), t=R["t"], meta=fp["meta"],
                track=R["tname"], shop=R["shop_full"])
-    rcover = os.path.join(a.work, "reel-cover-%s.jpg" % ymd)          # the clean cover, for choosing a detail to animate
+    rcover = os.path.join(a.work, "reel-cover-%s-%d.jpg" % (ymd, idx))   # the clean cover
     rc["cover"].convert("RGB").resize((1080, 1080), Image.LANCZOS).save(rcover, quality=92)
     det = getattr(a, "want_detail", None)
     look = None
-    if rc.get("sl", 0) >= .6 and getattr(a, "want_fx", None) in (None, "shapeloop"):
+    if rc.get("sl", 0) >= .6 and getattr(a, "want_fx", None) in (None, "shapeloop", "poster"):
         try:
-            import shapeloop
-            look = shapeloop.render(rc["cover"], aud, SR, rpath, rposter, dur=RDUR, seed=look_seed(ymd, R["key"], "reel", str(REEL_V)))
+            import poster916                                               # 9:16: the cover's own ground continued, shape & colour loop, yellow type
+            look = poster916.render(rc["cover"], {"a": R["a"], "t": R["t"], "l": R["l"], "shop": R["shop_full"]}, aud, SR, rpath, rposter,
+                                    dur=RDUR, seed=look_seed(ymd, R["key"], "reel", str(REEL_V)))
             det = None
         except Exception as e:
             log("shapeloop failed, falling back:", e)
@@ -976,10 +991,10 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base):
                                   avoid=avoid, cmode=(getattr(a, "want_fx", None) if getattr(a, "want_fx", None) != "liquid" else None)) + " · type " + sch
     hk = None                                             # text hook removed (26.10.26)
     rcap = reel_caption(R, rc["arr"])
-    sec = section("reel", "Reel · one release", "%d s · post as a Reel · look: %s" % (RDUR, look), base + rname,
+    sec = section("reel%d" % idx, "Reel %d · one release" % idx, "%d s · post as a Reel · look: %s" % (RDUR, look), base + rname,
                   base + os.path.basename(rposter), rname, rcap, [R],
                   "" if R["strict"] else "Note: already listed in another shop before yesterday.")
-    log("reel", R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", look)
+    log("reel %d" % idx, R["shop"], "|", R["a"], "–", R["t"], "|", R["genre"], "|", look)
     entry = {"key": R["key"], "title": "%s – %s" % (R["a"], R["t"]), "video": base + rname, "look": look, "v": REEL_V,
              "cover": base + os.path.basename(rcover)}
     if hk:
@@ -1001,11 +1016,11 @@ def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
         if k in G: fams.add(family(G[k].get("g")))
     # a re-render of the reel on the same day picks a different release than the reel before
     tried = set(keep.get("reel_tried", []))
-    prev = (keep.get("reel") or {}).get("key")
-    if prev:
-        tried.add(prev)
+    for r in keep.get("reels") or ([keep["reel"]] if keep.get("reel") else []):
+        if r.get("key"):
+            tried.add(r["key"])
     keep["reel_tried"] = sorted(tried)
-    rel = make_reel(a, cands, fx, set(keep.get("keys", [])) | tried, fams, [keep] + history, date_s, ymd, base)
+    rels = make_reels(a, cands, fx, set(keep.get("keys", [])) | tried, fams, [keep] + history, date_s, ymd, base)
     video = keep.get("video", "")
     fname = video.rsplit("/", 1)[-1]
     items = "".join("<li><b>%s</b> <span class=\"m\">(%s)</span></li>" % (html.escape(t), html.escape(s_))
@@ -1013,10 +1028,10 @@ def reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p):
     digs_sec = section("digs", "Today's Digs · post video", "3 releases · 3 × 10 s · post in the feed", video,
                        video.replace(".mp4", ".jpg"), fname, cap, [], "").replace("<ol></ol>", "<ol>%s</ol>" % items).replace("<h2>Release</h2>", "<h2>Releases</h2>")
     sections, caps, files = [digs_sec], [cap], []
-    if rel:
-        sections.insert(0, rel["section"]); caps.append(rel["cap"]); files = rel["files"]; keep["reel"] = rel["entry"]
-    else:
-        keep["reel"] = {"key": "", "title": "(none)", "video": ""}
+    for j, rel in enumerate(rels):
+        sections.insert(j, rel["section"]); caps.append(rel["cap"]); files += rel["files"]
+    keep["reels"] = [r["entry"] for r in rels]
+    keep["reel"] = rels[0]["entry"] if rels else {"key": "", "title": "(none)", "video": ""}
     history.insert(0, keep)
     write_page(date_s, sections, history, caps)
     json.dump(history[:60], open(hist_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -1125,11 +1140,11 @@ def main():
                         base + os.path.basename(poster), fname, cap, P, note)]
     caps = [cap]
     # Reel: one other release, RDUR (45) s
-    rel = make_reel(a, cands, fx, {p["key"] for p in P}, {c["fam"] for c in picks}, history, date_s, ymd, base)
-    if rel:
-        files += rel["files"]; caps.append(rel["cap"]); sections.insert(0, rel["section"]); entry["reel"] = rel["entry"]
-    else:
-        entry["reel"] = {"key": "", "title": "(none)", "video": ""}
+    rels = make_reels(a, cands, fx, {p["key"] for p in P}, {c["fam"] for c in picks}, history, date_s, ymd, base)
+    for j, rel in enumerate(rels):
+        files += rel["files"]; caps.append(rel["cap"]); sections.insert(j, rel["section"])
+    entry["reels"] = [r["entry"] for r in rels]
+    entry["reel"] = rels[0]["entry"] if rels else {"key": "", "title": "(none)", "video": ""}
     history.insert(0, entry)
     write_page(date_s, sections, history, caps)
     json.dump(history[:60], open(hist_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
