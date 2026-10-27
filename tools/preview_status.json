@@ -1,10 +1,10 @@
 {
  "date": "2026-10-27",
  "total": {
-  "records": 3998,
-  "tracks": 3156,
+  "records": 4005,
+  "tracks": 3162,
   "clip": 661,
-  "none": 181
+  "none": 182
  },
  "shops": {
   "Hardwax": {
@@ -144,18 +144,20 @@
    "tracks": 39,
    "clip": 0,
    "none": 0
+  },
+  "Rubadub": {
+   "records": 7,
+   "tracks": 6,
+   "clip": 0,
+   "none": 1
   }
  },
- "pages_checked": 726,
- "new_from_shop_pages": 1,
- "copied_from_other_shop": 4,
- "broken_clips_removed": 27,
- "clips_verified": 11949,
- "not_reachable": {
-  "Phonica: http403": 6,
-  "Redeye Records: failed:UnicodeEncodeError": 38,
-  "Redeye Records: http403": 4
- },
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 21,
+ "clips_verified": 11983,
+ "not_reachable": {},
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 288,
@@ -163,7 +165,7 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 731,
+   "clips": 739,
    "failed": 0,
    "sample": []
   },
@@ -179,6 +181,11 @@
   },
   "diggers.fr": {
    "clips": 332,
+   "failed": 0,
+   "sample": []
+  },
+  "dl.dropbox.com": {
+   "clips": 28,
    "failed": 0,
    "sample": []
   },
@@ -216,7 +223,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 631,
+   "clips": 629,
    "failed": 0,
    "sample": []
   },
