@@ -3,7 +3,12 @@
 Einzige Quelle für die tägliche Instagram-Aufgabe. Sprache gegenüber dem Nutzer: Deutsch, Schweizer
 Schreibweise (ss statt ß), kurz und sachlich.
 
-**Grundregel: Nie posten ohne ausdrückliches OK des Nutzers.** Zuerst immer eine Vorschau
+**Grundregel: Nie posten ohne ausdrückliches OK des Nutzers.**
+
+**Zweite Grundregel: Nur Platten posten, die auf monthlyvinyl.net unter «Fresh today» stehen** – also
+`first_seen` = heute in `releases.json` (frühestes Datum über alle Shops). Die automatischen Videos halten das
+ein; bei allem, was von Hand gewählt wird (Nutzerwunsch, Ersatz-Reel), vor dem Posten prüfen. Eine Platte, die
+Besucher auf der Startseite nicht finden, wird nicht gepostet (27.10.26: TRANSPAC war seit dem 4.10. bei Redeye). Zuerst immer eine Vorschau
 (Video, Caption, Markierungen) schicken. Gepostet wird erst, wenn er in derselben Unterhaltung
 zustimmt. Änderungswünsche zuerst umsetzen und neu vorlegen.
 
