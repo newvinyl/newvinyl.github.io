@@ -22,39 +22,42 @@
   ],
   "dv": 9,
   "reel": {
-   "key": "peter kir ft. grna sax|bar groove",
-   "title": "Peter Kir ft. Grna Sax – Bar Groove",
+   "key": "linea aspera|preservation bias",
+   "title": "Linea Aspera – Preservation Bias",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-1.mp4",
-   "look": "organic cover · background bokeh · alive: glint+ripple+breathe · melt: freeze · type BK-P",
-   "v": 22,
+   "look": "poster916 133 bpm · motion 0.5",
+   "v": 23,
    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-1.jpg"
   },
   "reel_tried": [
-   "bashkka|core"
+   "atrice|default settings",
+   "bashkka|core",
+   "launch dat & l.s. diezel|aliens",
+   "peter kir ft. grna sax|bar groove"
   ],
   "reels": [
    {
-    "key": "peter kir ft. grna sax|bar groove",
-    "title": "Peter Kir ft. Grna Sax – Bar Groove",
+    "key": "linea aspera|preservation bias",
+    "title": "Linea Aspera – Preservation Bias",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-1.mp4",
-    "look": "organic cover · background bokeh · alive: glint+ripple+breathe · melt: freeze · type BK-P",
-    "v": 22,
+    "look": "poster916 133 bpm · motion 0.5",
+    "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-1.jpg"
    },
    {
-    "key": "launch dat & l.s. diezel|aliens",
-    "title": "Launch DAT & L.S. Diezel – Aliens",
+    "key": "lonefront|exegesis iii",
+    "title": "Lonefront – Exegesis III",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-2.mp4",
-    "look": "photo cover · background echo · alive: sweep+grain+glint · melt: adapt · type BK-P",
-    "v": 22,
+    "look": "poster916 135 bpm",
+    "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-2.jpg"
    },
    {
-    "key": "atrice|default settings",
-    "title": "Atrice – Default Settings",
+    "key": "josh ludlow|brain music",
+    "title": "Josh Ludlow – Brain Music",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-3.mp4",
-    "look": "liquid metal · grows out top and bottom, fills the screen, mixes · type BK-P",
-    "v": 22,
+    "look": "poster916 128 bpm · colours only",
+    "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-3.jpg"
    }
   ]
