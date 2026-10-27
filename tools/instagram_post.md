@@ -1,4 +1,4 @@
-# Instagram – tägliche Vorschau und Posting von «Today's Digs» und dem Einzel-Reel (@monthlyvinyl)
+# Instagram – tägliche Vorschau und Posting von «Today's Digs» und drei Einzel-Reels (@monthlyvinyl)
 
 Einzige Quelle für die tägliche Instagram-Aufgabe. Sprache gegenüber dem Nutzer: Deutsch, Schweizer
 Schreibweise (ss statt ß), kurz und sachlich.
@@ -22,13 +22,16 @@ Video herunterladen, die Bilder bei 0 s, 3 s, 18 s und 33 s ansehen und prüfen:
 Startbild, Titel lesbar, Cover sauber (kein Aufkleber/Mockup, richtige Platte), Shop-Zeile vorhanden.
 Fehler dem Nutzer melden statt zu posten.
 
-**Zusätzlich das Einzel-Reel (seit 26.10.26).** `92h6fy/history.json`, erster Eintrag, `reel`: `video`
-(`reel-<yymmdd>.mp4`, quadratisch, 45 s, Form- und Farb-Loop aus `tools/shapeloop.py`) und `look`.
-Startbild: `reel-<yymmdd>.jpg`. Caption: `92h6fy/caption_reel.txt`. Prüfen: Bilder bei 0 s, 10 s, 25 s, 40 s
-ansehen – Cover erkennbar, nichts zerrissen, keine Schrift gedreht oder gewellt. Beginnt `look` nicht mit
-«shapeloop», war kein grafisches Cover dabei: dann das Reel in der Vorschau als Ausnahme kennzeichnen.
-Für das Reel gelten dieselben Schritte 2–4 (eigene Markierungen: Artist, Label, Shop; eigene Vorschau;
-eigener Post nach dem OK). Genre weglassen, wenn sich die Shops beim Genre widersprechen.
+**Zusätzlich drei Einzel-Reels (seit 27.10.26).** `92h6fy/history.json`, erster Eintrag, Liste `reels`
+(je `title`, `video` = `reel-<yymmdd>-1.mp4` … `-3.mp4`, `look`). Startbild: gleiche URL mit `.jpg`.
+Captions: `92h6fy/caption_reel_1.txt` … `caption_reel_3.txt`. Format 9:16: das Cover läuft oben und unten in
+seiner eigenen Fläche weiter, Form- und Farb-Loop (`tools/shapeloop.py` / `tools/poster916.py`), gelbe Typo
+unter dem Cover (Artist, Titel, Label · Shop, monthlyvinyl.net). Prüfen: Bilder bei 0 s, 4 s, 20 s, 40 s –
+Cover erkennbar, nichts zerrissen, Typo vorhanden. Beginnt `look` nicht mit «poster916», war kein grafisches
+Cover dabei (alter Effekt-Look): in der Vorschau als Ausnahme kennzeichnen.
+Für jedes Reel gelten die Schritte 2–4 (eigene Markierungen: Artist, Label, Shop; eigene Vorschau; eigener
+Post nach dem OK). Reihenfolge: Today's Digs zuerst, dann Reel 1–3. Genre weglassen, wenn sich die Shops
+beim Genre widersprechen. Fehlt ein Reel (Liste kürzer), nur die vorhandenen vorlegen und es erwähnen.
 
 ## 2. Markierungen recherchieren
 
