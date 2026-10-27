@@ -1,6 +1,10 @@
 name: Cover pick
 on:
   workflow_dispatch:
+    inputs:
+      want:
+        description: artist/title substring (any day)
+        required: false
   push:
     branches: [main]
     paths: [tools/cover_pick.py]
@@ -14,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: pip install pillow numpy -q
       - run: |
-          python3 tools/cover_pick.py 2>/tmp/pick.log || true
+          python3 tools/cover_pick.py "${{ github.event.inputs.want }}" 2>/tmp/pick.log || true
           mkdir -p /tmp/lg && cp -r pick /tmp/lg/ 2>/dev/null; cp /tmp/pick.log /tmp/lg/; cd /tmp/lg && git init -q && git checkout -q -b cover-pick && git add .
           git -c user.name=bot -c user.email=bot@x commit -qm pick
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" cover-pick

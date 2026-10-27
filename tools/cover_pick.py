@@ -11,7 +11,9 @@ d = json.load(open("releases.json")); day = d["updated"]
 cands = []
 for S in d["shops"]:
     for x in S.get("items") or []:
-        if x.get("first_seen") == day and x.get("cover") and any(t.get("u") for t in x.get("tr") or []):
+        want = sys.argv[1].lower() if len(sys.argv) > 1 else None          # optional: only this artist/title (any day)
+        hit = (want in (x["a"] + " " + x["t"]).lower()) if want else (x.get("first_seen") == day)
+        if hit and x.get("cover") and any(t.get("u") for t in x.get("tr") or []):
             cands.append(dict(x, shop=S["shop"]))
 os.makedirs("pick", exist_ok=True)
 res = []
@@ -40,6 +42,8 @@ for i, r in enumerate(res[:36]):
     r["im"].resize((1080, 1080), Image.LANCZOS).save("pick/c%02d.jpg" % i, quality=93)
     try:
         open("pick/a%02d.mp3" % i, "wb").write(get(r["tr"][0]["u"], 60))
+        for k, t in enumerate(r["tr"][1:3], 1):
+            open("pick/a%02d_%d.mp3" % (i, k), "wb").write(get(t["u"], 60))
     except Exception:
         pass
 sheet.save("pick/sheet.jpg", quality=85)
