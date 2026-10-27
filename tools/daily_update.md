@@ -138,7 +138,7 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
   item count (or "error"). Currently: Vinyl Underground (Northampton, UK, £), Sound Metaphors (Berlin, DE),
   Discos Paradiso (Barcelona, ES), Syncrophone (Paris, FR), Betino's (Paris, FR), Bordello A Parigi (Amsterdam, NL),
   Diggers.fr (FR), Carpet & Snares (Lisbon, PT), KMA60 (Paris, FR), Side One (Warsaw, PL, zł), SoundGround (Sofia, BG),
-  Divert Records (Bratislava, SK), Ultrasuoni (Rome, IT). For each entry: if the shop does not exist in releases.json yet, add it (after the last shop
+  Divert Records (Bratislava, SK), Ultrasuoni (Rome, IT), Rubadub (Glasgow, UK, £). For each entry: if the shop does not exist in releases.json yet, add it (after the last shop
   before OYE Records) as {"shop", "where", "country", "cur", "items": []} from the index. Then add every item whose url
   is not yet in that shop (also skip it if the same artist + title is already in that shop), with "m" and
   "first_seen" as usual; for existing urls update "p" and "st". Take the items as they are – do not change their
