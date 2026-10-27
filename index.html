@@ -318,7 +318,7 @@ html.g2 #gridbtn .g2i{display:inline-flex}
   <button class="hic" id="srchbtn" type="button" aria-label="Search" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
   <a class="hic" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Monthly Vinyl on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
   <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a></div>
-  <div class="srow" id="srow" hidden><input id="q" type="search" placeholder="Artist, title, label, track…" aria-label="Search records" autocomplete="off"><button class="sx" id="sx" type="button" aria-label="Clear search">×</button></div>
+  <div class="srow" id="srow" hidden><input id="q" type="search" placeholder="Artist, title, label, track – fragments are fine" aria-label="Search records" autocomplete="off"><button class="sx" id="sx" type="button" aria-label="Clear search">×</button></div>
 </header>
 <p class="intro" id="intro">New vinyl from <b id="nshops">all our</b> record shops, every morning. Listen here – buy at the shop. <a href="/about/">How it works</a></p>
 <main id="feed"><p class="load">Loading today's records…</p></main>
@@ -432,15 +432,16 @@ function renderFeed(){
   const recs=ALL,curGk=cur>=0&&RECS[cur]?RECS[cur].gk:null;
   const rg=rangeOf(F.r);
   // Shop: alle Platten dieses Shops, über alle Tage (für Sammelbestellungen)
-  const days=F.q?[...new Set(recs.filter(qMatch).map(r=>r.first))].sort().reverse():F.k&&!rg?[...new Set(recs.filter(chipMatch).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
+  const days=F.q?["search"]:F.k&&!rg?[...new Set(recs.filter(chipMatch).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
   const todayIso=isoZ(new Date()),yIso=isoZ(new Date(Date.now()-864e5));
   if(imgIO)imgIO.disconnect();
   RECS=[];PLAN=[];PP={d:0,k:0};BUILT=0;const feed=document.getElementById("feed");feed.innerHTML="";
   if(!days.length){feed.innerHTML='<p class="empty">No records in this period yet.</p>'}
   days.forEach((d,di)=>{
-    const list=recs.filter(r=>r.first===d&&chipMatch(r)).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
+    const list=d==="search"?recs.map(r=>[qScore(r),r]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||(b[1].first>a[1].first?1:-1)).map(x=>x[1])
+      :recs.filter(r=>r.first===d&&chipMatch(r)).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
     if(!list.length)return;
-    const lab=!rg&&!F.q&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
+    const lab=d==="search"?"Search":!rg&&!F.q&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
     PLAN.push({lab,idx:list.map(r=>RECS.push(r)-1),g:null,h:null});
   });
   cur=curGk?RECS.findIndex(r=>r.gk===curGk):-1;
@@ -678,8 +679,23 @@ function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
   return gTok(r).has(g)}
 function genreList(){const n={};RECS.forEach(r=>gTok(r).forEach(g=>{n[g]=0}));Object.keys(n).forEach(g=>{n[g]=RECS.filter(r=>gMatch(r,g)).length});
   return Object.keys(n).sort((a,b)=>(GRANK[b]||0)-(GRANK[a]||0)||n[b]-n[a]||a.localeCompare(b,"en"))}
-// Suche: über ALLE Platten (nicht nur die letzten 5 Tage)
-function qMatch(r){const h=fold(r.all.map(x=>[x.a,x.t,x.l,x.cat,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" "));return F.q.split(/\s+/).every(w=>h.includes(w))}
+// Suche: über ALLE Platten, Fragmente reichen, Tippfehler erlaubt. Jedes Wort der Suche muss passen –
+// als Wortanfang/Teilwort irgendwo in Artist, Titel, Label, Katalog-Nr. oder Tracknamen, oder mit einem
+// Buchstaben Abstand (ab 5 Zeichen; zwei ab 9). Treffer werden nach Güte sortiert (Artist > Titel > Rest).
+const toks=s=>fold(s).replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim().split(" ").filter(Boolean);
+function qPrep(r){if(!r._q){const a=r.all.map(x=>x.a).join(" "),t=r.all.map(x=>x.t).join(" "),o=r.all.map(x=>[x.l,x.cat,x.g,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" ");
+  r._q={a:toks(a),t:toks(t),o:toks(o),aj:" "+toks(a).join(" ")+" ",tj:" "+toks(t).join(" ")+" ",oj:" "+toks(o).join(" ")+" "}}return r._q}
+function lev(a,b,max){if(Math.abs(a.length-b.length)>max)return max+1;let p=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let c=[i],best=i;for(let j=1;j<=b.length;j++){const v=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));c.push(v);if(v<best)best=v}if(best>max)return max+1;p=c}return p[b.length]}
+function wScore(w,q){ // 3 ganzes Wort · 2 Wortanfang · 1.5 Teilwort · 1 Tippfehler · 0 nichts
+  if(q.aj.includes(" "+w+" ")||q.tj.includes(" "+w+" ")||q.oj.includes(" "+w+" "))return 3;
+  if(q.aj.includes(" "+w)||q.tj.includes(" "+w)||q.oj.includes(" "+w))return 2;
+  if(q.aj.includes(w)||q.tj.includes(w)||q.oj.includes(w))return 1.5;
+  const m=w.length>=9?2:w.length>=5?1:0;if(!m)return 0;
+  for(const list of [q.a,q.t,q.o])for(const x of list)if(x[0]===w[0]&&lev(w,x,m)<=m)return 1;return 0}   // Tippfehler: erster Buchstabe muss stimmen
+function qScore(r){const q=qPrep(r),ws=toks(F.q);if(!ws.length)return 1;let s=0;
+  for(const w of ws){const v=wScore(w,q);if(!v)return 0;s+=v+(q.aj.includes(w)?1:q.tj.includes(w)?.5:0)}
+  return s}
+function qMatch(r){return qScore(r)>0}
 function matches(r){
   if(F.k&&!chipMatch(r))return false;
   if(F.g.size&&![...F.g].some(g=>gMatch(r,g)))return false;
