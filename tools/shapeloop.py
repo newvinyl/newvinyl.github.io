@@ -25,9 +25,9 @@ def sstep(x):
 # ------------------------------------------------------------------ analysis
 def segment(im):
     """k-means in Lab → background cluster (most border pixels) vs. foreground"""
-    a = np.asarray(im.convert("RGB").resize((S, S), Image.LANCZOS))
+    a = np.asarray(im.convert("RGB").resize((S, S), Image.LANCZOS)) if not isinstance(im, np.ndarray) else im
     lab = cv2.cvtColor(a, cv2.COLOR_RGB2LAB).astype(np.float32)
-    small = cv2.resize(lab, (180, 180), interpolation=cv2.INTER_AREA).reshape(-1, 3)
+    small = cv2.resize(lab, (180, int(180 * a.shape[0] / a.shape[1])), interpolation=cv2.INTER_AREA).reshape(-1, 3)
     crit = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.5)
     _, _, cent = cv2.kmeans(small, 4, None, crit, 3, cv2.KMEANS_PP_CENTERS)
     # merge near-identical clusters
@@ -72,11 +72,13 @@ def suits(im):
     return score, "soft %.2f sat %.0f shapes %d fg %.2f white %.2f skin %.2f" % (soft, sat, shapes, frac, white, skin)
 
 class Shapes:
-    def __init__(self, im, seed=1, dur=45.0):
+    def __init__(self, im, seed=1, dur=45.0, canvas=None):
+        """canvas: optional RGB array (e.g. the 9:16 poster built around the cover); shapes and colours then live on it"""
         self.dur = dur
         rng = np.random.default_rng(seed)
-        a, lab, fg, _ = segment(im)
+        a, lab, fg, _ = segment(canvas if canvas is not None else im)
         self.a = a.astype(np.float32)
+        hh_, ww_ = a.shape[:2]; self.hw = (hh_, ww_)
         hard = fg
         din = cv2.distanceTransform(hard, cv2.DIST_L2, 5); dout = cv2.distanceTransform(1 - hard, cv2.DIST_L2, 5)
         self.sdf = cv2.GaussianBlur(np.where(hard > 0, din, -dout).astype(np.float32), (0, 0), 1.2)
@@ -85,17 +87,16 @@ class Shapes:
         ys, xs = np.nonzero(hard); pc = np.zeros(near.max() + 1, np.int32); pc[near[ys, xs]] = comp[ys, xs]
         owner = np.where(hard > 0, comp, pc[near]).astype(np.int32)
         # colour fields: foreground colours pushed outwards, background with the shapes removed
-        half = cv2.resize(self.a, (S // 2, S // 2)).astype(np.uint8)
-        hm = cv2.resize(hard, (S // 2, S // 2), interpolation=cv2.INTER_NEAREST)
+        half = cv2.resize(self.a, (ww_ // 2, hh_ // 2)).astype(np.uint8)
+        hm = cv2.resize(hard, (ww_ // 2, hh_ // 2), interpolation=cv2.INTER_NEAREST)
         dil = cv2.dilate(hm, np.ones((5, 5), np.uint8))
-        ground = cv2.resize(cv2.inpaint(half, dil, 9, cv2.INPAINT_TELEA), (S, S)).astype(np.float32)
-        inkx = cv2.resize(cv2.inpaint(half, ((1 - hm) * cv2.dilate(1 - hm, np.ones((1, 1), np.uint8))).astype(np.uint8), 9, cv2.INPAINT_TELEA), (S, S)).astype(np.float32)
+        ground = cv2.resize(cv2.inpaint(half, dil, 9, cv2.INPAINT_TELEA), (ww_, hh_)).astype(np.float32)
+        inkx = cv2.resize(cv2.inpaint(half, ((1 - hm) * cv2.dilate(1 - hm, np.ones((1, 1), np.uint8))).astype(np.uint8), 9, cv2.INPAINT_TELEA), (ww_, hh_)).astype(np.float32)
         inkx = np.where(hard[..., None] > 0, cv2.GaussianBlur(self.a, (0, 0), 1.0), inkx)
         self.ink = inkx
-        self.grain_g = (cv2.resize(cv2.inpaint(half, dil, 9, cv2.INPAINT_TELEA), (S, S)).astype(np.float32) - cv2.GaussianBlur(ground, (0, 0), 3)) * 0.0
         g_full = np.where(cv2.dilate(hard, np.ones((7, 7), np.uint8))[..., None] > 0, ground, self.a)
         self.grain_g = g_full - cv2.GaussianBlur(g_full, (0, 0), 3)
-        self.grain_i = rng.normal(0, 4, (S, S, 1)).astype(np.float32)
+        self.grain_i = rng.normal(0, 4, (hh_, ww_, 1)).astype(np.float32)
         gl = cv2.cvtColor(np.clip(ground, 0, 255).astype(np.uint8), cv2.COLOR_RGB2LAB)[..., 0].astype(np.float32)
         gmed = max(8.0, float(np.median(gl[hard == 0]))) if (hard == 0).any() else 128.0
         self.glum = np.clip(cv2.GaussianBlur(gl, (0, 0), 5) / gmed, 0.6, 1.45)[..., None]
@@ -107,7 +108,7 @@ class Shapes:
         text = self._text(comps, st, cen)
         letters = self._letters([i for i in comps if i not in text], st, cen)   # big lettering: a gentle bounce, never turned
         self.items = []
-        yy, xx = np.mgrid[0:S, 0:S].astype(np.float32)
+        yy, xx = np.mgrid[0:hh_, 0:ww_].astype(np.float32)
         self.xx, self.yy = xx, yy
         small_inflate = []
         kinds = {}
@@ -146,7 +147,7 @@ class Shapes:
                   "amp": rng.uniform(0.6, 1.0)}
             # crop for its own distance field (room to move / turn)
             mg = int(0.3 * max(w, h) + 30)
-            x0, y0, x1, y1 = max(0, x - mg), max(0, y - mg), min(S, x + w + mg), min(S, y + h + mg)
+            x0, y0, x1, y1 = max(0, x - mg), max(0, y - mg), min(ww_, x + w + mg), min(hh_, y + h + mg)
             mk_full = (comp[y0:y1, x0:x1] == i).astype(np.uint8)
             it["box"] = (x0, y0, x1, y1)
             it["own"] = cv2.GaussianBlur(np.where(mk_full > 0, cv2.distanceTransform(mk_full, cv2.DIST_L2, 5),
@@ -173,7 +174,7 @@ class Shapes:
         rounds = sorted([z for z in self.items if z["kind"] == "round"], key=lambda z: -z["area"])
         for k, z in enumerate(rounds):                                # lettering cut into a ring (many holes) never turns round
             z["full"] = (k == 0 and (z["holes"] == 0 or z["conc"]) and z["area"] < 0.06 * A)   # faces / big emblems only rock a little
-        main = max([z for z in self.items if z["kind"] != "text"] or [{"c": np.float32([S / 2, S / 2])}], key=lambda z: z.get("area", 0))
+        main = max([z for z in self.items if z["kind"] != "text"] or [{"c": np.float32([ww_ / 2, hh_ / 2])}], key=lambda z: z.get("area", 0))
         self.focus = main["c"]
         self.rr = np.hypot(xx - self.focus[0], yy - self.focus[1]) / S
         self.text = text
@@ -226,7 +227,6 @@ class Shapes:
         W, e = self.W, self.env(t)
         sd = self.base.copy()
         inkf = self.ink.copy()
-        off = np.zeros((S, S), np.float32)
         for z in self.items:
             x0, y0, x1, y1 = z["box"]
             X = self.xx[y0:y1, x0:x1]; Y = self.yy[y0:y1, x0:x1]
