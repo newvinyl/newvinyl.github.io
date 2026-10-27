@@ -1,5 +1,36 @@
 [
  {
+  "date": "2026-10-27",
+  "keys": [
+   "uvb|2éme nouveau dossier contenant des éléments anciens",
+   "various|a guide to the birdsong remixed",
+   "lawrence asher|little world ep"
+  ],
+  "titles": [
+   "UVB – 2éme Nouveau dossier contenant des éléments anciens",
+   "VARIOUS – A Guide To The Birdsong Remixed",
+   "Lawrence Asher – Little World EP"
+  ],
+  "shops": [
+   "Hardwax",
+   "Juno",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261027.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reel": {
+   "key": "bashkka|core",
+   "title": "BASHKKA – CORE",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027.mp4",
+   "look": "shapeloop 128 bpm · round 1 long 1 angular 1 beat 3",
+   "v": 21,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027.jpg"
+  }
+ },
+ {
   "date": "2026-10-26",
   "keys": [
    "dopplereffekt|infinion regress (black vinyl)",
