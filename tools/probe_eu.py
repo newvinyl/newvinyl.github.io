@@ -1,35 +1,16 @@
 #!/usr/bin/env python3
-"""One-off: where does Rubadub's track player get its audio from?"""
-import json, os, re, sys, time, urllib.request, urllib.parse
+"""One-off: are Rubadub's Dropbox previews playable directly (status, type, range support)?"""
+import json, os, urllib.request
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
-def get(u):
-    try:
-        r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA}), timeout=30)
-        return r.status, r.read().decode("utf-8", "replace")
-    except Exception as e:
-        return getattr(e, "code", None) or str(e)[:80], ""
+U = "https://dl.dropbox.com/scl/fi/qo1pb5evjg0sv0q12ixhh/01-Cro-Magnon-A1-Eclipse-DJ-Mitsu-The-Beats-Remix.mp3?rlkey=ntup3e9pqrqtejeqzhqlvmvor&st=xxxf3wjp&dl=0"
 os.makedirs("probe", exist_ok=True)
-B = "https://rubadub.co.uk"
-log = {}
-hit = None
-for page in range(1, 5):
-    st, b = get(B + "/products.json?limit=250&page=%d" % page)
-    for p in json.loads(b or '{"products":[]}').get("products", []):
-        if "jazzy sport" in p["title"].lower():
-            hit = p; break
-    if hit: break
-    time.sleep(1)
-log["hit"] = hit and {k: hit[k] for k in ("id", "handle", "title", "tags")}
-h = hit["handle"] if hit else "teyas-1"
-for name, u in [("page", B + "/products/" + h), ("js", B + "/products/" + h + ".js"), ("json", B + "/products/" + h + ".json"),
-                ("agents", B + "/agents.md")]:
-    st, b = get(u); open("probe/r_%s.txt" % name, "w").write(b); log[name] = [u, st, len(b)]; time.sleep(1)
-pg = open("probe/r_page.txt").read()
-srcs = re.findall(r'<script[^>]+src="([^"]+)"', pg)
-log["scripts"] = srcs
-log["urls_media"] = sorted(set(re.findall(r'https?:[^"\'\s<>\\]+?(?:mp3|m4a|ogg|wav|audio|cloudfront|amazonaws|storage\.googleapis|firebase)[^"\'\s<>\\]*', pg)))[:60]
-# fetch app scripts that look like a player
-for j, s in enumerate([s for s in srcs if re.search(r"audio|player|track|sound|music|preview|app", s, re.I)][:8]):
-    u = urllib.parse.urljoin(B, s if not s.startswith("//") else "https:" + s)
-    st, b = get(u); open("probe/r_script%d.txt" % j, "w").write(b); log["script%d" % j] = [u, st, len(b)]; time.sleep(1)
-json.dump(log, open("probe/log.json", "w"), indent=1)
+res = {}
+for name, h in (("plain", {}), ("range", {"Range": "bytes=1000-1999"}), ("referer", {"Referer": "https://monthlyvinyl.net/", "Range": "bytes=0-99"})):
+    try:
+        r = urllib.request.urlopen(urllib.request.Request(U, headers=dict(h, **{"User-Agent": UA})), timeout=30)
+        b = r.read(4000)
+        res[name] = [r.status, r.geturl()[:120], r.headers.get("Content-Type"), r.headers.get("Content-Length"), r.headers.get("Accept-Ranges"),
+                     r.headers.get("Access-Control-Allow-Origin"), b[:4].hex()]
+    except Exception as e:
+        res[name] = [getattr(e, "code", None), str(e)[:100]]
+json.dump(res, open("probe/log.json", "w"), indent=1)

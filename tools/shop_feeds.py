@@ -493,6 +493,48 @@ def feed_ultrasuoni(fetch):
                     "tr": trs, "st": "pre" if "Upcoming" in cats else ("in" if p.get("is_in_stock") else "out")})
     return out
 
+# ---------------------------------------------------------------- Rubadub (Glasgow, Shopify): previews per track on Dropbox, linked in the product page
+RB = "https://rubadub.co.uk"
+
+def feed_rubadub(fetch, days=3):
+    st, body = fetch(RB + "/products.json?limit=250")
+    since = (dt.date.today() - dt.timedelta(days=days - 1)).isoformat()
+    out = []
+    for pr in json.loads(body).get("products") or []:
+        if (pr.get("published_at") or "")[:10] < since or (pr.get("product_type") or "").lower() != "records":
+            continue
+        tags = [t.strip() for t in pr.get("tags") or []]
+        tv = lambda k: [t.split("|", 1)[1].strip() for t in tags if t.lower().startswith(k.lower() + "|")]
+        fmts = tv("Format")
+        if any(f.lower() in ("tape", "cassette", "cd") for f in fmts) and not any(f.lower() in ("vinyl", "12\"", "10\"", "7\"", "lp", "2xlp") for f in fmts):
+            continue
+        low = [t.lower() for t in tags]
+        g = genres(tv("Genre"), reissue=any("reissue" in t or "repress" in t for t in low))
+        if not g:
+            continue
+        artists = tv("Artist") + tv("Artists")
+        if not artists:
+            continue
+        trs = []
+        try:
+            time.sleep(0.8)
+            _, pb = fetch(RB + "/products/" + pr["handle"])
+            for u, n in re.findall(r'class="rp-track"\s+data-src="([^"]+)".*?aria-label="Play ([^"]*)"', pb, re.S):
+                u = H.unescape(u); n = clean(n)
+                sm = re.match(r"([A-H]\d{0,2})\s*[.:]\s*(.*)", n)
+                trs.append({"s": sm.group(1) if sm else "", "n": sm.group(2) if sm else n, "u": u})
+        except Exception:
+            pass
+        var = (pr.get("variants") or [{}])[0]
+        img = (pr.get("images") or [{}])[0].get("src") or ""
+        pre = any("pre-order" in t for t in low)
+        out.append({"a": " & ".join(dict.fromkeys(artists)), "t": clean(pr.get("title") or ""), "l": (tv("Label") or [pr.get("vendor") or ""])[0],
+                    "cat": var.get("sku") or "", "f": next((fmt_of(f) for f in fmts if fmt_of(f)), "") or ('12"' if "Vinyl" in fmts else ""),
+                    "p": price_of(var.get("price")), "g": g, "url": "%s/products/%s" % (RB, pr["handle"]),
+                    "cover": img + ("&" if "?" in img else "?") + "width=800" if img else "", "tr": trs,
+                    "st": "pre" if pre else ("in" if var.get("available") else "out")})
+    return out
+
 # ---------------------------------------------------------------- registry
 FEEDS = [
     # id, shop name in releases.json, city, country, currency, function
@@ -509,4 +551,5 @@ FEEDS = [
     ("soundground", "SoundGround", "Sofia", "BG", "€", feed_soundground),
     ("divert", "Divert Records", "Bratislava", "SK", "€", feed_divert),
     ("ultrasuoni", "Ultrasuoni", "Rome", "IT", "€", feed_ultrasuoni),
+    ("rubadub", "Rubadub", "Glasgow", "UK", "£", feed_rubadub),
 ]
