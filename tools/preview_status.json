@@ -1,33 +1,33 @@
 {
- "date": "2026-10-26",
+ "date": "2026-10-27",
  "total": {
-  "records": 3893,
-  "tracks": 3073,
-  "clip": 646,
-  "none": 174
+  "records": 3998,
+  "tracks": 3156,
+  "clip": 661,
+  "none": 181
  },
  "shops": {
   "Hardwax": {
-   "records": 180,
-   "tracks": 180,
+   "records": 199,
+   "tracks": 199,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 89,
-   "tracks": 86,
+   "records": 92,
+   "tracks": 89,
    "clip": 0,
    "none": 3
   },
   "Decks.de": {
-   "records": 16,
+   "records": 17,
    "tracks": 10,
    "clip": 3,
-   "none": 3
+   "none": 4
   },
   "Clone": {
-   "records": 333,
-   "tracks": 330,
+   "records": 344,
+   "tracks": 341,
    "clip": 0,
    "none": 3
   },
@@ -38,14 +38,14 @@
    "none": 45
   },
   "Redeye Records": {
-   "records": 970,
-   "tracks": 327,
-   "clip": 613,
-   "none": 30
+   "records": 1004,
+   "tracks": 342,
+   "clip": 628,
+   "none": 34
   },
   "Yoyaku": {
-   "records": 281,
-   "tracks": 280,
+   "records": 283,
+   "tracks": 282,
    "clip": 0,
    "none": 1
   },
@@ -56,22 +56,22 @@
    "none": 18
   },
   "Juno Records": {
-   "records": 780,
-   "tracks": 772,
+   "records": 787,
+   "tracks": 779,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
-   "records": 249,
-   "tracks": 198,
+   "records": 260,
+   "tracks": 207,
    "clip": 15,
-   "none": 36
+   "none": 38
   },
   "Vinyl Underground": {
-   "records": 161,
-   "tracks": 158,
+   "records": 174,
+   "tracks": 170,
    "clip": 0,
-   "none": 3
+   "none": 4
   },
   "Sound Metaphors": {
    "records": 18,
@@ -111,9 +111,9 @@
   },
   "Carpet & Snares": {
    "records": 23,
-   "tracks": 12,
+   "tracks": 13,
    "clip": 0,
-   "none": 11
+   "none": 10
   },
   "KMA60": {
    "records": 36,
@@ -122,8 +122,8 @@
    "none": 0
   },
   "Side One": {
-   "records": 40,
-   "tracks": 40,
+   "records": 42,
+   "tracks": 42,
    "clip": 0,
    "none": 0
   },
@@ -134,8 +134,8 @@
    "none": 5
   },
   "Divert Records": {
-   "records": 1,
-   "tracks": 1,
+   "records": 3,
+   "tracks": 3,
    "clip": 0,
    "none": 0
   },
@@ -146,12 +146,16 @@
    "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 36,
- "broken_clips_removed": 25,
- "clips_verified": 11631,
- "not_reachable": {},
+ "pages_checked": 726,
+ "new_from_shop_pages": 1,
+ "copied_from_other_shop": 4,
+ "broken_clips_removed": 27,
+ "clips_verified": 11949,
+ "not_reachable": {
+  "Phonica: http403": 6,
+  "Redeye Records: failed:UnicodeEncodeError": 38,
+  "Redeye Records: http403": 4
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 288,
@@ -159,12 +163,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 676,
+   "clips": 731,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1334,
+   "clips": 1377,
    "failed": 0,
    "sample": []
   },
@@ -184,12 +188,12 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 869,
+   "clips": 953,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 445,
+   "clips": 457,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -231,22 +235,22 @@
    ]
   },
   "www.divertrecords.sk": {
-   "clips": 2,
+   "clips": 11,
    "failed": 0,
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 4830,
+   "clips": 4943,
    "failed": 0,
    "sample": []
   },
   "www.sideone.pl": {
-   "clips": 231,
-   "failed": 187,
+   "clips": 233,
+   "failed": 188,
    "sample": [
-    "https://www.sideone.pl/settings.php?getAttachmentp=236058_47999_e2d1c91e4003dbde730cd18ef6d6dbc0",
     "https://www.sideone.pl/settings.php?getAttachmentp=236059_47999_7f498a3c9ad9b28278b30e9c282fd838",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236060_48000_98861156afccb03d440a4dcee0f8a3cd"
+    "https://www.sideone.pl/settings.php?getAttachmentp=236060_48000_98861156afccb03d440a4dcee0f8a3cd",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236061_48000_9271b5ffe95e88529d0b00ded7bb44e1"
    ]
   },
   "www.ultrasuonirecords.com": {

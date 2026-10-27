@@ -28759,16 +28759,6 @@
        "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-02.mp3"
       },
       {
-       "s": "A3",
-       "n": "La Disco Segreta",
-       "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-03.mp3"
-      },
-      {
-       "s": "A4",
-       "n": "Confidenza (NOIA remix)",
-       "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-04.mp3"
-      },
-      {
        "s": "A1",
        "n": "Get Up & Dance",
        "u": "https://www.juno.co.uk/MP3/SF1183206-01-01-01.mp3"
@@ -29362,11 +29352,6 @@
        "s": "A2",
        "n": "[audio: https://www.juno.co.uk/MP3/SF1182711-01-01-03.mp3]",
        "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-02.mp3"
-      },
-      {
-       "s": "A4",
-       "n": "[audio: https://www.juno.co.uk/MP3/SF1182736-01-01-01.mp3]",
-       "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-04.mp3"
       },
       {
        "s": "A2",
@@ -66841,8 +66826,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192275.mp3"
+       "n": "The Nervous Chill EP",
+       "yt": "j1rF7xlmRZM"
       }
      ],
      "st": "out",
@@ -77180,8 +77165,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "n": "Black Swords",
        "s": "",
+       "n": "Black Swords",
        "u": ""
       }
      ],
@@ -80076,13 +80061,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -86034,16 +86013,6 @@
        "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-02.mp3"
       },
       {
-       "s": "A3",
-       "n": "La Disco Segreta",
-       "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-03.mp3"
-      },
-      {
-       "s": "A4",
-       "n": "Confidenza (NOIA remix)",
-       "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-04.mp3"
-      },
-      {
        "s": "A1",
        "n": "Get Up & Dance",
        "u": "https://www.juno.co.uk/MP3/SF1183206-01-01-01.mp3"
@@ -86637,11 +86606,6 @@
        "s": "A2",
        "n": "[audio: https://www.juno.co.uk/MP3/SF1182711-01-01-03.mp3]",
        "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-02.mp3"
-      },
-      {
-       "s": "A4",
-       "n": "[audio: https://www.juno.co.uk/MP3/SF1182736-01-01-01.mp3]",
-       "u": "https://www.juno.co.uk/MP3/SF1182711-01-01-04.mp3"
       },
       {
        "s": "A2",
@@ -130732,9 +130696,24 @@
      "cover": "https://www.deejay.de/images/l/4/6/1264346.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192273.mp3"
+       "s": "01",
+       "n": "Behind The Red Curtains",
+       "u": "https://media.hardwax.com/audio/07878_01.mp3"
+      },
+      {
+       "s": "02",
+       "n": "Irritation Realm",
+       "u": "https://media.hardwax.com/audio/07878_02.mp3"
+      },
+      {
+       "s": "03",
+       "n": "We're Going There",
+       "u": "https://media.hardwax.com/audio/07878_03.mp3"
+      },
+      {
+       "s": "04",
+       "n": "Look Into My Soul And Tell Me What You See",
+       "u": "https://media.hardwax.com/audio/07878_04.mp3"
       }
      ],
      "st": "in"
@@ -132269,43 +132248,43 @@
      "tr": [
       {
        "s": "A1",
-       "n": "midnight tint",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Midnight Tint",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-01-01.mp3"
       },
       {
        "s": "A2",
-       "n": "equinox cherry",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Equinox Cherry",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-01-02.mp3"
       },
       {
        "s": "A3",
-       "n": "turned on a dime",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Turned On A Dime",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-01-03.mp3"
       },
       {
        "s": "A4",
-       "n": "cool heaven",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Cool Heaven",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-01-04.mp3"
       },
       {
        "s": "B1",
-       "n": "intricate link",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Intricate Link",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-02-01.mp3"
       },
       {
        "s": "B2",
-       "n": "plants at work",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Plants At Work",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-02-02.mp3"
       },
       {
        "s": "B3",
-       "n": "shifted apsis",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Shifted Apsis",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-02-03.mp3"
       },
       {
        "s": "B4",
-       "n": "oom becomes a mirror",
-       "page": "https://www.deejay.de/Alien_D_Smoker’s_Choice_LP_TT015_Vinyl__1260403"
+       "n": "Room Becomes A Mirror",
+       "u": "https://www.juno.co.uk/MP3/SF1176849-01-02-04.mp3"
       }
      ],
      "st": "in",
@@ -132390,23 +132369,23 @@
      "tr": [
       {
        "s": "A1",
-       "n": "Dedication (Original Mix)",
-       "page": "https://www.deejay.de/Mach-Jamm_Dedication_LP_PKWST07_Vinyl__1262185"
+       "n": "Dedication Original Mix",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/p/pkwst_07_dedication/a1._dedication_original_mix.mp3"
       },
       {
        "s": "A2",
-       "n": "Dedication (NYC Mix)",
-       "page": "https://www.deejay.de/Mach-Jamm_Dedication_LP_PKWST07_Vinyl__1262185"
+       "n": "Dedication Nyc Mix",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/p/pkwst_07_dedication/a2._dedication_nyc_mix.mp3"
       },
       {
-       "s": "B1",
-       "n": "Good Love (Praise)",
-       "page": "https://www.deejay.de/Mach-Jamm_Dedication_LP_PKWST07_Vinyl__1262185"
+       "s": "",
+       "n": "Aa1. Good Love Praise",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/p/pkwst_07_dedication/aa1._good_love_praise.mp3"
       },
       {
-       "s": "B2",
-       "n": "Lost In The Maze",
-       "page": "https://www.deejay.de/Mach-Jamm_Dedication_LP_PKWST07_Vinyl__1262185"
+       "s": "",
+       "n": "Aa2. Lost In The Maze",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/p/pkwst_07_dedication/aa2._lost_in_the_maze.mp3"
       }
      ],
      "st": "in",
