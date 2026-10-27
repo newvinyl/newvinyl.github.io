@@ -22,13 +22,42 @@
   ],
   "dv": 9,
   "reel": {
-   "key": "bashkka|core",
-   "title": "BASHKKA – CORE",
-   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027.mp4",
-   "look": "shapeloop 128 bpm · round 1 long 1 angular 1 beat 3",
-   "v": 21,
-   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027.jpg"
-  }
+   "key": "peter kir ft. grna sax|bar groove",
+   "title": "Peter Kir ft. Grna Sax – Bar Groove",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-1.mp4",
+   "look": "organic cover · background bokeh · alive: glint+ripple+breathe · melt: freeze · type BK-P",
+   "v": 22,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-1.jpg"
+  },
+  "reel_tried": [
+   "bashkka|core"
+  ],
+  "reels": [
+   {
+    "key": "peter kir ft. grna sax|bar groove",
+    "title": "Peter Kir ft. Grna Sax – Bar Groove",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-1.mp4",
+    "look": "organic cover · background bokeh · alive: glint+ripple+breathe · melt: freeze · type BK-P",
+    "v": 22,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-1.jpg"
+   },
+   {
+    "key": "launch dat & l.s. diezel|aliens",
+    "title": "Launch DAT & L.S. Diezel – Aliens",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-2.mp4",
+    "look": "photo cover · background echo · alive: sweep+grain+glint · melt: adapt · type BK-P",
+    "v": 22,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-2.jpg"
+   },
+   {
+    "key": "atrice|default settings",
+    "title": "Atrice – Default Settings",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261027-3.mp4",
+    "look": "liquid metal · grows out top and bottom, fills the screen, mixes · type BK-P",
+    "v": 22,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261027-3.jpg"
+   }
+  ]
  },
  {
   "date": "2026-10-26",
