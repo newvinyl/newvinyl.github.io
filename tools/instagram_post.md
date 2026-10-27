@@ -12,6 +12,14 @@ Besucher auf der Startseite nicht finden, wird nicht gepostet (27.10.26: TRANSPA
 (Video, Caption, Markierungen) schicken. Gepostet wird erst, wenn er in derselben Unterhaltung
 zustimmt. Änderungswünsche zuerst umsetzen und neu vorlegen.
 
+**Dritte Grundregel: Respekt vor dem Cover.** Das Artwork gehört Artist, Label und Designer. Darum:
+- Das Original muss im Reel klar erkennbar bleiben: in den ersten Sekunden (sobald die Kamera zurückgezogen hat)
+  und kurz vor Schluss ist das Cover vollständig und praktisch unverändert zu sehen. Ist es das nicht (zu stark verzerrt, Formen unkenntlich), nicht vorlegen, sondern melden.
+- Ist der Cover-Designer bekannt (Bandcamp-Credits, Discogs «Artwork By»/«Design»), kommt eine Zeile
+  `Cover art: <Name>` bzw. `Cover art: @handle` (Handle nur verifiziert, siehe Schritt 2) in die Caption.
+- Bittet jemand (Artist, Label, Designer) darum, ein Video zu löschen: sofort entfernen, ohne Diskussion, freundlich
+  bestätigen und dem Nutzer melden.
+
 ## 1. Ist das Video von heute fertig?
 
 - Repo `newvinyl/newvinyl.github.io` (Branch `main`) holen bzw. `git pull`.
@@ -62,6 +70,7 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 - Video als Datei
 - Caption im Wortlaut (Codeblock)
 - Liste der Markierungen: @handle, wer das ist, Follower, Quelle der Prüfung
+- Cover-Designer (gefunden oder nicht) und ob das Original am Anfang und am Schluss klar erkennbar ist
 - Auffälligkeiten (fehlendes Format, Pre-order, unsichere Handles)
 - Frage: «Soll ich posten?»
 
