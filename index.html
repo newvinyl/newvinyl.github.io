@@ -432,7 +432,7 @@ function renderFeed(){
   const recs=ALL,curGk=cur>=0&&RECS[cur]?RECS[cur].gk:null;
   const rg=rangeOf(F.r);
   // Shop: alle Platten dieses Shops, über alle Tage (für Sammelbestellungen)
-  const days=F.k&&!rg?[...new Set(recs.filter(chipMatch).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
+  const days=F.q?[...new Set(recs.filter(qMatch).map(r=>r.first))].sort().reverse():F.k&&!rg?[...new Set(recs.filter(chipMatch).map(r=>r.first))].sort().reverse():rg?[...new Set(recs.map(r=>r.first))].filter(d=>d>=rg[0]&&d<=rg[1]).sort().reverse():[...new Set(recs.map(r=>r.first))].sort().reverse().slice(0,5);
   const todayIso=isoZ(new Date()),yIso=isoZ(new Date(Date.now()-864e5));
   if(imgIO)imgIO.disconnect();
   RECS=[];PLAN=[];PP={d:0,k:0};BUILT=0;const feed=document.getElementById("feed");feed.innerHTML="";
@@ -440,7 +440,7 @@ function renderFeed(){
   days.forEach((d,di)=>{
     const list=recs.filter(r=>r.first===d&&chipMatch(r)).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
     if(!list.length)return;
-    const lab=!rg&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
+    const lab=!rg&&!F.q&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
     PLAN.push({lab,idx:list.map(r=>RECS.push(r)-1),g:null,h:null});
   });
   cur=curGk?RECS.findIndex(r=>r.gk===curGk):-1;
@@ -678,11 +678,13 @@ function gMatch(r,g){const t=gOf(r),k=g.toLowerCase();
   return gTok(r).has(g)}
 function genreList(){const n={};RECS.forEach(r=>gTok(r).forEach(g=>{n[g]=0}));Object.keys(n).forEach(g=>{n[g]=RECS.filter(r=>gMatch(r,g)).length});
   return Object.keys(n).sort((a,b)=>(GRANK[b]||0)-(GRANK[a]||0)||n[b]-n[a]||a.localeCompare(b,"en"))}
+// Suche: über ALLE Platten (nicht nur die letzten 5 Tage)
+function qMatch(r){const h=fold(r.all.map(x=>[x.a,x.t,x.l,x.cat,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" "));return F.q.split(/\s+/).every(w=>h.includes(w))}
 function matches(r){
   if(F.k&&!chipMatch(r))return false;
   if(F.g.size&&![...F.g].some(g=>gMatch(r,g)))return false;
   if(F.s.size&&!r.all.some(x=>F.s.has(x.S.shop)))return false;
-  if(F.q){const h=fold(r.all.map(x=>[x.a,x.t,x.l,x.cat,...(x.tr||[]).map(t=>t.n)].join(" ")).join(" "));if(!F.q.split(/\s+/).every(w=>h.includes(w)))return false}
+  if(F.q&&!qMatch(r))return false;
   return true;
 }
 // Antippbare Infos auf der Rückseite (Shop, Genre, Reissue) filtern direkt; gelber Chip mit × hebt auf
@@ -748,9 +750,9 @@ document.getElementById("sreset").onclick=()=>{F.g.clear();F.s.clear();const had
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
 const sb=document.getElementById("srchbtn"),srow=document.getElementById("srow"),q=document.getElementById("q");
-sb.onclick=()=>{const open=srow.hidden;srow.hidden=!open;sb.setAttribute("aria-expanded",open);if(open)q.focus();else{q.value="";F.q="";applyFilter()}};
-q.oninput=()=>{F.q=fold(q.value.trim());applyFilter()};
-document.getElementById("sx").onclick=()=>{q.value="";F.q="";applyFilter();q.focus()};
+sb.onclick=()=>{const open=srow.hidden;srow.hidden=!open;sb.setAttribute("aria-expanded",open);if(open)q.focus();else{q.value="";const had=F.q;F.q="";if(had)renderFeed();else applyFilter()}};
+q.oninput=()=>{const was=F.q;F.q=fold(q.value.trim());if(!!was!==!!F.q||F.q)renderFeed();else applyFilter()};
+document.getElementById("sx").onclick=()=>{q.value="";F.q="";renderFeed();q.focus()};
 function play(i,t){
   const r=RECS[i];if(!r)return;
   if(cur!==i)track("Play",{shop:r.src.S.shop,where:"feed"});
