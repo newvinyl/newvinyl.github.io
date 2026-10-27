@@ -84,9 +84,13 @@ def type_layer(rel):
     return np.asarray(L).astype(np.float32)[..., None] / 255
 
 class Poster:
-    def __init__(self, im, rel, seed=1, dur=45.0):
+    def __init__(self, im, rel, seed=1, dur=45.0, motion=1.0):
         self.canvas = build_canvas(im)
-        self.sh = SL.Shapes(im, seed, dur, canvas=self.canvas)
+        self.sh = SL.Shapes(im, seed, dur, canvas=self.canvas, motion=motion)
+        if motion < 1:                                                      # keep the artwork's own colours, feathered 90 px past the cover edge
+            yy = np.arange(H, dtype=np.float32)[:, None]
+            pr = sstep((yy - (CY - 90)) / 90) * sstep(((CY + 1080 + 90) - yy) / 90)
+            self.sh.protect = np.repeat(pr, W, axis=1)
         self.dur = dur
         self.mask = type_layer(rel)
         fy0 = CY + 1080 + 40
@@ -115,9 +119,9 @@ class Poster:
             fr = cv2.warpAffine(fr, M, (W, H), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT)
         return np.clip(fr, 0, 255).astype(np.uint8)
 
-def render(im, rel, aud, sr, out, poster, dur=45.0, seed=1):
+def render(im, rel, aud, sr, out, poster, dur=45.0, seed=1, motion=1.0):
     import detail_fx as DF
-    P = Poster(im, rel, seed, dur)
+    P = Poster(im, rel, seed, dur, motion)
     mono = aud.mean(1) if aud.ndim == 2 else aud
     bpm, ph = DF.beat_grid(mono, sr)
     beat = 60 / bpm
@@ -142,7 +146,7 @@ def render(im, rel, aud, sr, out, poster, dur=45.0, seed=1):
         pr.stdin.write(fr.tobytes())
     pr.stdin.close(); assert pr.wait() == 0
     os.remove(wav)
-    return "poster916 %.0f bpm" % bpm
+    return "poster916 %.0f bpm" % bpm + ("" if motion >= 1 else " · colours only" if motion <= 0 else " · motion %.1f" % motion)
 
 if __name__ == "__main__":     # cover.jpg audio.mp3 out.mp4|sheet.jpg "Artist" "Title" "Label" "Shop"
     im = Image.open(sys.argv[1]); rel = dict(a=sys.argv[4], t=sys.argv[5], l=sys.argv[6], shop=sys.argv[7])

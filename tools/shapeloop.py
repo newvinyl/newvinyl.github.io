@@ -72,9 +72,11 @@ def suits(im):
     return score, "soft %.2f sat %.0f shapes %d fg %.2f white %.2f skin %.2f" % (soft, sat, shapes, frac, white, skin)
 
 class Shapes:
-    def __init__(self, im, seed=1, dur=45.0, canvas=None):
+    def __init__(self, im, seed=1, dur=45.0, canvas=None, motion=1.0):
         """canvas: optional RGB array (e.g. the 9:16 poster built around the cover); shapes and colours then live on it"""
         self.dur = dur
+        self.motion = motion                                             # 0 = colours only (photo / illustrated covers)
+        self.protect = None                                              # optional HxW weight: where the colour flow stays off the artwork
         rng = np.random.default_rng(seed)
         a, lab, fg, _ = segment(canvas if canvas is not None else im)
         self.a = a.astype(np.float32)
@@ -182,6 +184,8 @@ class Shapes:
         log("shapes:", {k: sum(1 for z in self.items if z["kind"] == k) for k in ("big", "round", "long", "angular", "beat", "letter")}, "text", len(text))
         # moving regions start empty; static ones keep the global field
         self.base = self.sdf.copy()
+        if motion <= 0:
+            self.items = []                                              # nothing moves: the cover keeps its shapes as they are
         for z in self.items:
             self.base.ravel()[z["regout"]] = -12
         # colour worlds: start from the cover's own background colour and travel round the hue circle
@@ -230,7 +234,7 @@ class Shapes:
         for z in self.items:
             x0, y0, x1, y1 = z["box"]
             X = self.xx[y0:y1, x0:x1]; Y = self.yy[y0:y1, x0:x1]
-            c = z["c"]; k = z["kind"]; amp = z["amp"] * e * (0.65 + 0.35 * math.sin(W * z["m2"] * t + z["ph"]))
+            c = z["c"]; k = z["kind"]; amp = z["amp"] * e * self.motion * (0.65 + 0.35 * math.sin(W * z["m2"] * t + z["ph"]))
             sx = X; sy = Y; s = 1.0; th = 0.0
             if k == "round":
                 rock = math.radians(3 if ((z["holes"] > 2 and not z["conc"]) or z["area"] > 0.06 * S * S) else 12)
@@ -252,7 +256,7 @@ class Shapes:
                 s = 1 + 0.05 * amp * math.sin(W * 6 * t - c[0] / 140)
                 sx = c[0] + (X - c[0]) / s; sy = c[1] + (Y - c[1]) / s + 6 * amp * math.sin(W * 6 * t - c[0] / 140 - 1.2)
             elif k == "beat":
-                p = beatf(t, z["alt"]) * e
+                p = beatf(t, z["alt"]) * e * self.motion
                 s = 1 + 0.22 * p
                 sx = c[0] + (X - c[0]) / s; sy = c[1] + (Y - c[1]) / s
             sx = (sx - x0).astype(np.float32); sy = (sy - y0).astype(np.float32)
@@ -265,13 +269,16 @@ class Shapes:
         # colours
         u = 12 * (t / self.dur) - self.rr * 1.6 + 0.25 * math.sin(W * 3 * t) * np.sin(self.xx / 260)
         mix = e * (0.72 + 0.28 * math.sin(W * 4 * t))
+        if self.protect is not None:                                    # photo / illustration: the artwork keeps its colours, the poster ground flows
+            mix = mix * (1 - self.protect * (1 - self.motion))
         kk = len(self.cyc); uu = np.mod(u, kk); fl = np.floor(uu); f = sstep(uu - fl)[..., None]; i0 = fl.astype(int) % kk
         P = np.stack(self.cyc); pal = P[i0] * (1 - f) + P[(i0 + 1) % kk] * f
-        gcol = self.ground * (1 - mix) + pal * self.glum * mix
+        mixm = mix if np.isscalar(mix) else mix[..., None]
+        gcol = self.ground * (1 - mixm) + pal * self.glum * mixm
         # ink: keeps its own colours, takes on a bit of the complementary world
         Q = np.stack([255 - c_ * 0.6 for c_ in self.cyc]); tint = Q[(i0 + 3) % kk] * (1 - f) + Q[(i0 + 4) % kk] * f
         lum = inkf.mean(2, keepdims=True) / 255
-        ink = inkf * (1 - 0.35 * mix) + tint * (0.4 + 0.6 * lum) * 0.35 * mix
+        ink = inkf * (1 - 0.35 * mixm) + tint * (0.4 + 0.6 * lum) * 0.35 * mixm
         out = (gcol + self.grain_g) * (1 - m) + (ink + self.grain_i) * m
         return np.clip(out, 0, 255).astype(np.uint8)
 

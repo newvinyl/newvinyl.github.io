@@ -616,7 +616,7 @@ RDUR = 45
 
 # Brand colour schemes for the reel (site colours: yellow, mint, coral on black). Never the same scheme twice in a row.
 GRN, PNK, BLK, YEL = (143, 211, 176), (239, 122, 109), (13, 13, 13), (251, 237, 79)   # mint #8fd3b0, coral #ef7a6d
-REEL_V = 22   # bump to re-render today's reel after a design change
+REEL_V = 23   # bump to re-render today's reel after a design change
 DIGS_V = 9   # bump to re-render today's digs video after a design change
 # One text colour per reel (type, play button, bars, progress all in that colour).
 # Black bg → yellow, mint or coral type (random) · coral, mint or yellow bg → black type (light brand colours need dark type).
@@ -953,11 +953,13 @@ def make_reel(a, cands, fx, digs_keys, digs_fams, history, date_s, ymd, base, id
     rc["cover"].convert("RGB").resize((1080, 1080), Image.LANCZOS).save(rcover, quality=92)
     det = getattr(a, "want_detail", None)
     look = None
-    if rc.get("sl", 0) >= .6 and getattr(a, "want_fx", None) in (None, "shapeloop", "poster"):
+    if getattr(a, "want_fx", None) in (None, "shapeloop", "poster"):
         try:
             import poster916                                               # 9:16: the cover's own ground continued, shape & colour loop, yellow type
+            sl = rc.get("sl", 0)                                           # graphic covers: shapes move; photos / illustrations: colours only
+            motion = 1.0 if sl >= .6 else (0.5 if sl >= .5 else 0.0)
             look = poster916.render(rc["cover"], {"a": R["a"], "t": R["t"], "l": R["l"], "shop": R["shop_full"]}, aud, SR, rpath, rposter,
-                                    dur=RDUR, seed=look_seed(ymd, R["key"], "reel", str(REEL_V)))
+                                    dur=RDUR, seed=look_seed(ymd, R["key"], "reel", str(REEL_V)), motion=motion)
             det = None
         except Exception as e:
             log("shapeloop failed, falling back:", e)
