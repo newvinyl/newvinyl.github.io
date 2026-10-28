@@ -1,9 +1,9 @@
 {
- "date": "2026-10-27",
+ "date": "2026-10-28",
  "total": {
-  "records": 4005,
-  "tracks": 3162,
-  "clip": 661,
+  "records": 4146,
+  "tracks": 3278,
+  "clip": 686,
   "none": 182
  },
  "shops": {
@@ -20,14 +20,14 @@
    "none": 3
   },
   "Decks.de": {
-   "records": 17,
-   "tracks": 10,
+   "records": 18,
+   "tracks": 11,
    "clip": 3,
    "none": 4
   },
   "Clone": {
-   "records": 344,
-   "tracks": 341,
+   "records": 347,
+   "tracks": 344,
    "clip": 0,
    "none": 3
   },
@@ -38,14 +38,14 @@
    "none": 45
   },
   "Redeye Records": {
-   "records": 1004,
-   "tracks": 342,
-   "clip": 628,
+   "records": 1045,
+   "tracks": 359,
+   "clip": 652,
    "none": 34
   },
   "Yoyaku": {
-   "records": 283,
-   "tracks": 282,
+   "records": 309,
+   "tracks": 308,
    "clip": 0,
    "none": 1
   },
@@ -56,20 +56,20 @@
    "none": 18
   },
   "Juno Records": {
-   "records": 787,
-   "tracks": 779,
+   "records": 793,
+   "tracks": 785,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
-   "records": 260,
-   "tracks": 207,
-   "clip": 15,
-   "none": 38
+   "records": 272,
+   "tracks": 216,
+   "clip": 16,
+   "none": 40
   },
   "Vinyl Underground": {
-   "records": 174,
-   "tracks": 170,
+   "records": 203,
+   "tracks": 199,
    "clip": 0,
    "none": 4
   },
@@ -81,13 +81,13 @@
   },
   "Discos Paradiso": {
    "records": 35,
-   "tracks": 26,
+   "tracks": 27,
    "clip": 2,
-   "none": 7
+   "none": 6
   },
   "Syncrophone": {
-   "records": 35,
-   "tracks": 35,
+   "records": 50,
+   "tracks": 50,
    "clip": 0,
    "none": 0
   },
@@ -98,8 +98,8 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 69,
-   "tracks": 69,
+   "records": 74,
+   "tracks": 74,
    "clip": 0,
    "none": 0
   },
@@ -140,37 +140,41 @@
    "none": 0
   },
   "Ultrasuoni": {
-   "records": 39,
-   "tracks": 39,
+   "records": 41,
+   "tracks": 41,
    "clip": 0,
    "none": 0
   },
   "Rubadub": {
-   "records": 7,
-   "tracks": 6,
+   "records": 8,
+   "tracks": 8,
    "clip": 0,
-   "none": 1
+   "none": 0
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 21,
- "clips_verified": 11983,
- "not_reachable": {},
+ "pages_checked": 781,
+ "new_from_shop_pages": 16,
+ "copied_from_other_shop": 5,
+ "broken_clips_removed": 33,
+ "clips_verified": 12361,
+ "not_reachable": {
+  "Phonica: http307": 5,
+  "Redeye Records: failed:UnicodeEncodeError": 39,
+  "Redeye Records: http403": 4
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
-   "clips": 288,
+   "clips": 314,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 739,
+   "clips": 879,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1377,
+   "clips": 1387,
    "failed": 0,
    "sample": []
   },
@@ -185,7 +189,7 @@
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 28,
+   "clips": 40,
    "failed": 0,
    "sample": []
   },
@@ -209,7 +213,7 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 144,
+   "clips": 198,
    "failed": 0,
    "sample": []
   },
@@ -223,12 +227,12 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 629,
+   "clips": 655,
    "failed": 0,
    "sample": []
   },
   "srv8.beanet-hosting.eu": {
-   "clips": 22,
+   "clips": 32,
    "failed": 0,
    "sample": []
   },
@@ -247,26 +251,26 @@
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 4943,
+   "clips": 4972,
    "failed": 0,
    "sample": []
   },
   "www.sideone.pl": {
    "clips": 233,
-   "failed": 188,
+   "failed": 187,
    "sample": [
-    "https://www.sideone.pl/settings.php?getAttachmentp=236059_47999_7f498a3c9ad9b28278b30e9c282fd838",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236060_48000_98861156afccb03d440a4dcee0f8a3cd",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236061_48000_9271b5ffe95e88529d0b00ded7bb44e1"
+    "https://www.sideone.pl/settings.php?getAttachmentp=236058_47999_e2d1c91e4003dbde730cd18ef6d6dbc0",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236061_48000_9271b5ffe95e88529d0b00ded7bb44e1",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236062_48000_9ddb056f49dba2cda73cc94af09f73e0"
    ]
   },
   "www.ultrasuonirecords.com": {
-   "clips": 155,
+   "clips": 161,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 740,
+   "clips": 805,
    "failed": 0,
    "sample": []
   },
