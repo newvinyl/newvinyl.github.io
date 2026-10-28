@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-10-28",
+  "keys": [
+   "robot 84|robot edits vol 2",
+   "sasha / john digweed / various|northern exposure: redux (north) (30th anniversary edition)",
+   "wax fruit|whispers"
+  ],
+  "titles": [
+   "Robot 84 – Robot Edits Vol 2",
+   "SASHA / JOHN DIGWEED / VARIOUS – Northern Exposure: Redux (North) (30th Anniversary Edition)",
+   "Wax Fruit – Whispers"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Juno",
+   "Syncrophone"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261028.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "electric mind|electric mind ep",
+    "title": "Electric Mind – Electric Mind EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261028-1.mp4",
+    "look": "poster916 117 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261028-1.jpg"
+   },
+   {
+    "key": "underground evolution|soul searcher (joe clausell remix) / walk on water",
+    "title": "Underground Evolution – Soul Searcher (Joe Clausell Remix) / Walk On Water",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261028-2.mp4",
+    "look": "poster916 122 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261028-2.jpg"
+   },
+   {
+    "key": "los hermanos|keep hold tight ep",
+    "title": "Los Hermanos – Keep Hold Tight EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261028-3.mp4",
+    "look": "poster916 127 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261028-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "electric mind|electric mind ep",
+   "title": "Electric Mind – Electric Mind EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261028-1.mp4",
+   "look": "poster916 117 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261028-1.jpg"
+  }
+ },
+ {
   "date": "2026-10-27",
   "keys": [
    "uvb|2éme nouveau dossier contenant des éléments anciens",
