@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-10-29",
+  "keys": [
+   "sascha dive ft robert owens|my definition of house music vol. 3",
+   "pirmaut x nu.ma|no heat just lies ep",
+   "various artists|dub meets techno 2"
+  ],
+  "titles": [
+   "Sascha Dive ft Robert Owens – My Definition of House Music vol. 3",
+   "Pirmaut X NU.MA – No Heat Just Lies EP",
+   "Various Artists – Dub Meets Techno 2"
+  ],
+  "shops": [
+   "Syncrophone",
+   "Bordello A Parigi",
+   "Side One"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261029.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "feater|positive people (2026 re-release)",
+    "title": "Feater – Positive People (2026 re-release)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261029-1.mp4",
+    "look": "poster916 134 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261029-1.jpg"
+   },
+   {
+    "key": "picture|uuuuuuuu",
+    "title": "Picture – Uuuuuuuu",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261029-2.mp4",
+    "look": "poster916 138 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261029-2.jpg"
+   },
+   {
+    "key": "etnobotanika|kosmobotanika (2027 repress!)",
+    "title": "ETNOBOTANIKA – KOSMOBOTANIKA (2027 Repress!)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261029-3.mp4",
+    "look": "poster916 125 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261029-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "feater|positive people (2026 re-release)",
+   "title": "Feater – Positive People (2026 re-release)",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261029-1.mp4",
+   "look": "poster916 134 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261029-1.jpg"
+  }
+ },
+ {
   "date": "2026-10-28",
   "keys": [
    "robot 84|robot edits vol 2",
