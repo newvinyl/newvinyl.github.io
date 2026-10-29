@@ -12463,19 +12463,14 @@
      "cover": "https://gfx9.decks.de/decks/gfx/co_mid/front/end_j/[cr8-j7].jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192795.mp3"
-      },
-      {
        "s": "A1",
-       "n": "Joris Voorn Remix",
-       "page": "https://www.decks.de/track/dave_clarke-wisdom_to_the_wise/[cr8-j7]"
+       "n": "Wisdom To The Wise (Joris Voorn remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1184868-01-01-01.mp3"
       },
       {
        "s": "B1",
-       "n": "2023 Remaster",
-       "page": "https://www.decks.de/track/dave_clarke-wisdom_to_the_wise/[cr8-j7]"
+       "n": "Wisdom To The Wise (2023 Remaster)",
+       "u": "https://www.juno.co.uk/MP3/SF1184868-01-02-01.mp3"
       }
      ],
      "d": "30.10.26",
@@ -69487,7 +69482,33 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Dam Swindle - I Met Her Last Summer"
+      },
+      {
+       "s": "A2",
+       "n": "Rocco Rodamaal Ft Oliver Night - Body & Soul"
+      },
+      {
+       "s": "A3",
+       "n": "Andy Ash - Bailey"
+      },
+      {
+       "s": "B1",
+       "n": "Black Loops - Body Frequencies"
+      },
+      {
+       "s": "B2",
+       "n": "L.d.f. & Trinidadian Deep - African Dream"
+      },
+      {
+       "s": "B3",
+       "n": "Greg Paulus - Waitin' (Krol Mix)"
+      }
+     ]
     },
     {
      "a": "VA",
@@ -69508,7 +69529,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Riccardo Giagni - Passeggera (Mudd Edit)"
+      },
+      {
+       "s": "A2",
+       "n": "Mario Acquaviva - Notturno Italiano (Relative Feat. Club Soda Remix)"
+      },
+      {
+       "s": "B1",
+       "n": "Sth. Notional - Yawn Yawn Yawn (Be.lanuit & Phil Cooper Balearic Life Reality Remix)"
+      },
+      {
+       "s": "B2",
+       "n": "Tony Esposito - Veronica Song (Hear & Now Remix)"
+      }
+     ]
     },
     {
      "a": "Ben Böhmer",
@@ -69520,13 +69559,7 @@
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/202529-anjdee434r-ben-böhmer-breathing-7-year-anniversary-release/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193276-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193276.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "Exp. 27 Nov",
      "m": "2026-10",
@@ -69640,7 +69673,41 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Chaos In The Cbd Feat. Nathan Haines &"
+      },
+      {
+       "s": "",
+       "n": "dave Koor – Emotional Intelligence"
+      },
+      {
+       "s": "B1",
+       "n": "Chaos In The Cbd & Lee Pearson Jnr"
+      },
+      {
+       "s": "",
+       "n": "collective Feat. K. Ladawn & Joe Armon-Jones –"
+      },
+      {
+       "s": "",
+       "n": "it’s Up To Me (Vocal)"
+      },
+      {
+       "s": "B2",
+       "n": "Chaos In The Cbd & Lee Pearson Jnr"
+      },
+      {
+       "s": "",
+       "n": "collective Feat. Joe Armon-Jones –"
+      },
+      {
+       "s": "",
+       "n": "it’s Up To Me (Instrumental)"
+      }
+     ]
     },
     {
      "a": "Colosimo",
@@ -69819,7 +69886,25 @@
      "st": "pre",
      "d": "Exp. 4 Dec",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Jonattan Levingstone - Llicorella"
+      },
+      {
+       "s": "A2",
+       "n": "Jonattan Levingstone - Nufsaid"
+      },
+      {
+       "s": "B1",
+       "n": "DJ Monchan With Alfonso Bottone - Eyes"
+      },
+      {
+       "s": "B2",
+       "n": "Tears From Stars (DJ Monchan Remix)"
+      }
+     ]
     },
     {
      "a": "Dynamix",
@@ -69840,7 +69925,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Bang Bang"
+      },
+      {
+       "s": "A2",
+       "n": "Bang Bang (House)"
+      },
+      {
+       "s": "B1",
+       "n": "Bang Bang (Marcoradi Remix)"
+      },
+      {
+       "s": "B2",
+       "n": "Bang Bang (Marcoradi Ambient Remix)"
+      }
+     ]
     },
     {
      "a": "Felipe Gordon",
@@ -69905,7 +70008,37 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "",
+       "n": "Paradise"
+      },
+      {
+       "s": "",
+       "n": "a2"
+      },
+      {
+       "s": "",
+       "n": "Don't Look Any Further"
+      },
+      {
+       "s": "",
+       "n": "b1"
+      },
+      {
+       "s": "",
+       "n": "Live Foreva"
+      },
+      {
+       "s": "",
+       "n": "b2"
+      },
+      {
+       "s": "",
+       "n": "Only You"
+      }
+     ]
     },
     {
      "a": "Giuseppe Scarano",
@@ -70443,7 +70576,25 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Public Request - Transformation"
+      },
+      {
+       "s": "A2",
+       "n": "Molen - Pesadillas En Coreano"
+      },
+      {
+       "s": "B1",
+       "n": "Sarda Etcetera - Flip N Drift"
+      },
+      {
+       "s": "B2",
+       "n": "Lanzieri - Stab"
+      }
+     ]
     },
     {
      "a": "Life Recorder",
@@ -70563,7 +70714,25 @@
      ],
      "st": "in",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Life"
+      },
+      {
+       "s": "A2",
+       "n": "Infinite"
+      },
+      {
+       "s": "B1",
+       "n": "End Of Time"
+      },
+      {
+       "s": "B2",
+       "n": "Let It Rain"
+      }
+     ]
     }
    ],
    "country": "UK"
@@ -80930,7 +81099,28 @@
      "p": 11.67,
      "url": "https://yoyaku.io/release/various-safe-anniversary-1-sanni1/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/SANNI1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Desire",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SANNI1_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Pepper Skin",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SANNI1_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Ego Aside",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SANNI1_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Supra (Spoiler Dub)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SANNI1_4.mp3"
+      }
+     ],
      "g": "House / Techno",
      "m": "2026-10",
      "first_seen": "2026-10-29"
@@ -80944,7 +81134,48 @@
      "p": 19.58,
      "url": "https://yoyaku.io/release/digital-twin-hyperlink-2x12-rts003/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/RTS003-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Track 1",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 2",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 3",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 4",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 5",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 6",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 7",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "Track 8",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RTS003_8.mp3"
+      }
+     ],
      "g": "House / Techno",
      "m": "2026-10",
      "first_seen": "2026-10-29"
@@ -81023,7 +81254,28 @@
      "p": 11.67,
      "url": "https://yoyaku.io/release/track-trace-a-push-lvn004/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/LVN004-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "1: Confront Upfront",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LVN004_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "2: Hope Still",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LVN004_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "3: I Look To My Side, You Smile",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LVN004_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "4: Intuition Bound",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LVN004_4.mp3"
+      }
+     ],
      "g": "House",
      "m": "2026-10",
      "first_seen": "2026-10-29"
@@ -81037,7 +81289,28 @@
      "p": 15.83,
      "url": "https://yoyaku.io/release/unknown-rainfuck-06-fuck06/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/08/FUCK06-1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Unknown",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FUCK06_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Unknown",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FUCK06_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Unknown",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FUCK06_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Unknown",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FUCK06_4.mp3"
+      }
+     ],
      "g": "House",
      "m": "2026-10",
      "first_seen": "2026-10-29"
@@ -84120,13 +84393,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
