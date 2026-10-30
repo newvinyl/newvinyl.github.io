@@ -1,186 +1,186 @@
 {
-  "_note": "Verified Instagram handles of artists and labels (found via official pages, checked on Instagram). Key = name as written in releases.json, lower case. null = checked, no account to tag.",
-  "dopplereffekt": {
-    "handle": "__dopplereffekt__",
-    "kind": "artist",
-    "followers": 17593,
-    "checked": "2026-10-26"
-  },
-  "de:tuned": {
-    "handle": "de_tunedrecords",
-    "kind": "label",
-    "followers": 1703,
-    "checked": "2026-10-26"
-  },
-  "ismael pinkler": {
-    "handle": "ismael.pinkler",
-    "kind": "artist",
-    "followers": 1584,
-    "checked": "2026-10-26"
-  },
-  "nick hanzo": {
-    "handle": "nickhanzo",
-    "kind": "artist",
-    "followers": 2010,
-    "checked": "2026-10-26"
-  },
-  "belly dance services": {
-    "handle": "bellydanceservices",
-    "kind": "label",
-    "followers": 1192,
-    "checked": "2026-10-26"
-  },
-  "belly dance services germany": {
-    "handle": "bellydanceservices",
-    "kind": "label",
-    "followers": 1192,
-    "checked": "2026-10-26"
-  },
-  "angelo d'onorio": {
-    "handle": "angelo_donorio",
-    "kind": "artist",
-    "followers": 1277,
-    "checked": "2026-10-26"
-  },
-  "anacalypto records": {
-    "handle": "anacalyptorecords",
-    "kind": "label",
-    "followers": 889,
-    "checked": "2026-10-26"
-  },
-  "system revival": {
-    "handle": "systemrevival",
-    "kind": "label",
-    "followers": 2958,
-    "checked": "2026-10-27"
-  },
-  "shika shika collective": {
-    "handle": "shikashikacollective",
-    "kind": "label",
-    "followers": 7624,
-    "checked": "2026-10-27"
-  },
-  "shika shika": {
-    "handle": "shikashikacollective",
-    "kind": "label",
-    "followers": 7624,
-    "checked": "2026-10-27"
-  },
-  "lawrence asher": {
-    "handle": "lawrenceasher",
-    "kind": "artist",
-    "followers": 1938,
-    "checked": "2026-10-27"
-  },
-  "mood waves": {
-    "handle": "moodwavesrecords",
-    "kind": "label",
-    "followers": 11739,
-    "checked": "2026-10-27"
-  },
-  "bashkka": {
-    "handle": "bashkka",
-    "kind": "artist",
-    "followers": 27978,
-    "checked": "2026-10-27"
-  },
-  "robot 84": {
-    "handle": "robot84music",
-    "kind": "artist",
-    "followers": 2720,
-    "checked": "2026-10-28"
-  },
-  "robot 84 records": {
-    "handle": "robot84music",
-    "kind": "label",
-    "followers": 2720,
-    "checked": "2026-10-28"
-  },
-  "sasha": {
-    "handle": "djsashaofficial",
-    "kind": "artist",
-    "followers": 289998,
-    "checked": "2026-10-28"
-  },
-  "john digweed": {
-    "handle": "djjohndigweed",
-    "kind": "artist",
-    "followers": 337129,
-    "checked": "2026-10-28"
-  },
-  "late night tales": {
-    "handle": "latenighttalesofficial",
-    "kind": "label",
-    "followers": 40779,
-    "checked": "2026-10-28"
-  },
-  "los hermanos": {
-    "handle": "loshermanosdetroit",
-    "kind": "artist",
-    "followers": 7830,
-    "checked": "2026-10-28"
-  },
-  "the very polish cut outs": {
-    "handle": "theverypolishcutouts",
-    "kind": "label",
-    "followers": 11462,
-    "checked": "2026-10-29"
-  },
-  "paolo rocco": {
-    "handle": "djpaolorocco",
-    "kind": "artist",
-    "followers": 22831,
-    "checked": "2026-10-30"
-  },
-  "up the stuss": {
-    "handle": "upthestuss",
-    "kind": "label",
-    "followers": 55111,
-    "checked": "2026-10-30"
-  },
-  "delsin": {
-    "handle": "delsinrecords",
-    "kind": "label",
-    "followers": 23354,
-    "checked": "2026-10-30"
-  },
-  "delsin records": {
-    "handle": "delsinrecords",
-    "kind": "label",
-    "followers": 23354,
-    "checked": "2026-10-30"
-  },
-  "tripmastaz": {
-    "handle": "tripmastaz",
-    "kind": "artist",
-    "followers": 12578,
-    "checked": "2026-10-30"
-  },
-  "respect the craft": null,
-  "klint": {
-    "handle": "klint.music",
-    "kind": "artist",
-    "followers": 8586,
-    "checked": "2026-10-30"
-  },
-  "planet rhythm": {
-    "handle": "planetrhythmrecords",
-    "kind": "label",
-    "followers": 30153,
-    "checked": "2026-10-30"
-  },
-  "panick panick!": {
-    "handle": "panickpanick",
-    "kind": "label",
-    "followers": 3089,
-    "checked": "2026-10-30"
-  },
-  "carl finlow": null,
-  "asa tone": null,
-  "music from memory": {
-    "handle": "music_from_memory",
-    "kind": "label",
-    "followers": 48853,
-    "checked": "2026-10-30"
-  }
+ "_note": "Verified Instagram handles of artists and labels (found via official pages, checked on Instagram). Key = name as written in releases.json, lower case. null = checked, no account to tag.",
+ "dopplereffekt": {
+  "handle": "__dopplereffekt__",
+  "kind": "artist",
+  "followers": 17593,
+  "checked": "2026-10-26"
+ },
+ "de:tuned": {
+  "handle": "de_tunedrecords",
+  "kind": "label",
+  "followers": 1703,
+  "checked": "2026-10-26"
+ },
+ "ismael pinkler": {
+  "handle": "ismael.pinkler",
+  "kind": "artist",
+  "followers": 1584,
+  "checked": "2026-10-26"
+ },
+ "nick hanzo": {
+  "handle": "nickhanzo",
+  "kind": "artist",
+  "followers": 2010,
+  "checked": "2026-10-26"
+ },
+ "belly dance services": {
+  "handle": "bellydanceservices",
+  "kind": "label",
+  "followers": 1192,
+  "checked": "2026-10-26"
+ },
+ "belly dance services germany": {
+  "handle": "bellydanceservices",
+  "kind": "label",
+  "followers": 1192,
+  "checked": "2026-10-26"
+ },
+ "angelo d'onorio": {
+  "handle": "angelo_donorio",
+  "kind": "artist",
+  "followers": 1277,
+  "checked": "2026-10-26"
+ },
+ "anacalypto records": {
+  "handle": "anacalyptorecords",
+  "kind": "label",
+  "followers": 889,
+  "checked": "2026-10-26"
+ },
+ "system revival": {
+  "handle": "systemrevival",
+  "kind": "label",
+  "followers": 2958,
+  "checked": "2026-10-27"
+ },
+ "shika shika collective": {
+  "handle": "shikashikacollective",
+  "kind": "label",
+  "followers": 7624,
+  "checked": "2026-10-27"
+ },
+ "shika shika": {
+  "handle": "shikashikacollective",
+  "kind": "label",
+  "followers": 7624,
+  "checked": "2026-10-27"
+ },
+ "lawrence asher": {
+  "handle": "lawrenceasher",
+  "kind": "artist",
+  "followers": 1938,
+  "checked": "2026-10-27"
+ },
+ "mood waves": {
+  "handle": "moodwavesrecords",
+  "kind": "label",
+  "followers": 11739,
+  "checked": "2026-10-27"
+ },
+ "bashkka": {
+  "handle": "bashkka",
+  "kind": "artist",
+  "followers": 27978,
+  "checked": "2026-10-27"
+ },
+ "robot 84": {
+  "handle": "robot84music",
+  "kind": "artist",
+  "followers": 2720,
+  "checked": "2026-10-28"
+ },
+ "robot 84 records": {
+  "handle": "robot84music",
+  "kind": "label",
+  "followers": 2720,
+  "checked": "2026-10-28"
+ },
+ "sasha": {
+  "handle": "djsashaofficial",
+  "kind": "artist",
+  "followers": 289998,
+  "checked": "2026-10-28"
+ },
+ "john digweed": {
+  "handle": "djjohndigweed",
+  "kind": "artist",
+  "followers": 337129,
+  "checked": "2026-10-28"
+ },
+ "late night tales": {
+  "handle": "latenighttalesofficial",
+  "kind": "label",
+  "followers": 40779,
+  "checked": "2026-10-28"
+ },
+ "los hermanos": {
+  "handle": "loshermanosdetroit",
+  "kind": "artist",
+  "followers": 7830,
+  "checked": "2026-10-28"
+ },
+ "the very polish cut outs": {
+  "handle": "theverypolishcutouts",
+  "kind": "label",
+  "followers": 11462,
+  "checked": "2026-10-29"
+ },
+ "paolo rocco": {
+  "handle": "djpaolorocco",
+  "kind": "artist",
+  "followers": 22831,
+  "checked": "2026-10-30"
+ },
+ "up the stuss": {
+  "handle": "upthestuss",
+  "kind": "label",
+  "followers": 55111,
+  "checked": "2026-10-30"
+ },
+ "delsin": {
+  "handle": "delsinrecords",
+  "kind": "label",
+  "followers": 23354,
+  "checked": "2026-10-30"
+ },
+ "delsin records": {
+  "handle": "delsinrecords",
+  "kind": "label",
+  "followers": 23354,
+  "checked": "2026-10-30"
+ },
+ "tripmastaz": {
+  "handle": "tripmastaz",
+  "kind": "artist",
+  "followers": 12578,
+  "checked": "2026-10-30"
+ },
+ "respect the craft": null,
+ "klint": {
+  "handle": "klint.music",
+  "kind": "artist",
+  "followers": 8586,
+  "checked": "2026-10-30"
+ },
+ "planet rhythm": {
+  "handle": "planetrhythmrecords",
+  "kind": "label",
+  "followers": 30153,
+  "checked": "2026-10-30"
+ },
+ "panick panick!": {
+  "handle": "panickpanick",
+  "kind": "label",
+  "followers": 3089,
+  "checked": "2026-10-30"
+ },
+ "carl finlow": null,
+ "asa tone": null,
+ "music from memory": {
+  "handle": "music_from_memory",
+  "kind": "label",
+  "followers": 48853,
+  "checked": "2026-10-30"
+ }
 }
