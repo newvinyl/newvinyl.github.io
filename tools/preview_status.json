@@ -1,59 +1,59 @@
 {
- "date": "2026-10-29",
+ "date": "2026-10-30",
  "total": {
-  "records": 4251,
-  "tracks": 3342,
-  "clip": 718,
-  "none": 191
+  "records": 4432,
+  "tracks": 3507,
+  "clip": 731,
+  "none": 194
  },
  "shops": {
   "Hardwax": {
-   "records": 199,
-   "tracks": 199,
+   "records": 204,
+   "tracks": 204,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 92,
-   "tracks": 89,
+   "records": 96,
+   "tracks": 93,
    "clip": 0,
    "none": 3
   },
   "Decks.de": {
-   "records": 19,
-   "tracks": 12,
+   "records": 20,
+   "tracks": 13,
    "clip": 3,
    "none": 4
   },
   "Clone": {
-   "records": 348,
-   "tracks": 345,
+   "records": 371,
+   "tracks": 368,
    "clip": 0,
    "none": 3
   },
   "Phonica": {
    "records": 213,
    "tracks": 156,
-   "clip": 12,
-   "none": 45
+   "clip": 13,
+   "none": 44
   },
   "Redeye Records": {
-   "records": 1088,
-   "tracks": 376,
-   "clip": 677,
-   "none": 35
+   "records": 1122,
+   "tracks": 399,
+   "clip": 686,
+   "none": 37
   },
   "Yoyaku": {
-   "records": 316,
-   "tracks": 315,
+   "records": 347,
+   "tracks": 346,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 136,
-   "tracks": 118,
+   "records": 140,
+   "tracks": 126,
    "clip": 0,
-   "none": 18
+   "none": 14
   },
   "Juno Records": {
    "records": 793,
@@ -62,14 +62,14 @@
    "none": 8
   },
   "Deejay.de": {
-   "records": 289,
-   "tracks": 220,
-   "clip": 23,
-   "none": 46
+   "records": 310,
+   "tracks": 234,
+   "clip": 26,
+   "none": 50
   },
   "Vinyl Underground": {
-   "records": 211,
-   "tracks": 207,
+   "records": 228,
+   "tracks": 224,
    "clip": 0,
    "none": 4
   },
@@ -104,8 +104,8 @@
    "none": 0
   },
   "Diggers.fr": {
-   "records": 62,
-   "tracks": 62,
+   "records": 89,
+   "tracks": 89,
    "clip": 0,
    "none": 0
   },
@@ -128,10 +128,10 @@
    "none": 2
   },
   "SoundGround": {
-   "records": 112,
-   "tracks": 107,
+   "records": 124,
+   "tracks": 118,
    "clip": 0,
-   "none": 5
+   "none": 6
   },
   "Divert Records": {
    "records": 3,
@@ -146,20 +146,20 @@
    "none": 0
   },
   "Rubadub": {
-   "records": 12,
-   "tracks": 12,
+   "records": 14,
+   "tracks": 13,
    "clip": 0,
-   "none": 0
+   "none": 1
   }
  },
- "pages_checked": 800,
- "new_from_shop_pages": 5,
- "copied_from_other_shop": 1,
- "broken_clips_removed": 22,
- "clips_verified": 12591,
+ "pages_checked": 833,
+ "new_from_shop_pages": 14,
+ "copied_from_other_shop": 10,
+ "broken_clips_removed": 26,
+ "clips_verified": 13045,
  "not_reachable": {
-  "Phonica: http307": 4,
-  "Redeye Records: failed:UnicodeEncodeError": 41,
+  "Phonica: http307": 2,
+  "Redeye Records: failed:UnicodeEncodeError": 42,
   "Redeye Records: http403": 4
  },
  "clip_hosts": {
@@ -169,12 +169,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 911,
+   "clips": 1006,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1389,
+   "clips": 1464,
    "failed": 0,
    "sample": []
   },
@@ -184,27 +184,27 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 332,
+   "clips": 439,
    "failed": 0,
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 52,
+   "clips": 56,
    "failed": 0,
    "sample": []
   },
   "imvbzrbcpbpwuwjizeyo.supabase.co": {
-   "clips": 502,
+   "clips": 548,
    "failed": 0,
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 953,
+   "clips": 972,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 457,
+   "clips": 492,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -218,7 +218,7 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 69,
+   "clips": 70,
    "failed": 15,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
@@ -227,7 +227,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 679,
+   "clips": 693,
    "failed": 0,
    "sample": []
   },
@@ -261,11 +261,11 @@
   },
   "www.sideone.pl": {
    "clips": 272,
-   "failed": 222,
+   "failed": 225,
    "sample": [
-    "https://www.sideone.pl/settings.php?getAttachmentp=236063_47998_59ba3248874a67b78c0cf784b5ea8973",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236065_47998_ba897d1fe7658fd5009f680b6cd9baae",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236066_47998_e6403ef7ebcc6e763d66ca57da39659d"
+    "https://www.sideone.pl/settings.php?getAttachmentp=236061_48000_9271b5ffe95e88529d0b00ded7bb44e1",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236062_48000_9ddb056f49dba2cda73cc94af09f73e0",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236063_47998_59ba3248874a67b78c0cf784b5ea8973"
    ]
   },
   "www.ultrasuonirecords.com": {
@@ -274,7 +274,7 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 825,
+   "clips": 883,
    "failed": 0,
    "sample": []
   },

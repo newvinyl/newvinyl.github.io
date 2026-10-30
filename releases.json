@@ -50270,8 +50270,18 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/167245.mp3"
+       "n": "Make Your Own Reality",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CAB63_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Three in One",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CAB63_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Drippin",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CAB63_3.mp3"
       }
      ],
      "d": "Exp. 30 Oct",
@@ -55690,8 +55700,13 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192971.mp3"
+       "n": "A: EV -2",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RDSCL03RP_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B: EV -6",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RDSCL03RP_2.mp3"
       }
      ],
      "st": "pre",
@@ -72172,7 +72187,21 @@
      "st": "out",
      "g": "House / Techno",
      "m": "2026-10",
-     "first_seen": "2026-10-30"
+     "first_seen": "2026-10-30",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Abe Duque & Blake Baxter - Disco Nights"
+      },
+      {
+       "s": "B1",
+       "n": "Abe Duque & Blake Baxter - Acid"
+      },
+      {
+       "s": "B2",
+       "n": "Abe Duque & Blake Baxter - What Happened ?"
+      }
+     ]
     },
     {
      "a": "Bas Dobbelaer",
@@ -72313,7 +72342,25 @@
      "st": "in",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-30"
+     "first_seen": "2026-10-30",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Detroit V.i.p"
+      },
+      {
+       "s": "A2",
+       "n": "City Under Siege"
+      },
+      {
+       "s": "B1",
+       "n": "Scatter Dance"
+      },
+      {
+       "s": "B2",
+       "n": "Stay Ready"
+      }
+     ]
     },
     {
      "a": "HAL",
@@ -72366,13 +72413,7 @@
      "p": 15.01,
      "url": "https://www.redeyerecords.co.uk/vinyl/200390-wb033-kurulo-psalm-of-the-sleepless/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191938-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191938.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "House / Techno",
      "m": "2026-10",
@@ -72390,8 +72431,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191160.mp3"
+       "n": "El Ritmo De Verdad (Original Mix)",
+       "yt": "cJNWNLontnQ"
       }
      ],
      "st": "pre",
@@ -72485,7 +72526,25 @@
      "st": "out",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-30"
+     "first_seen": "2026-10-30",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Level 7"
+      },
+      {
+       "s": "A2",
+       "n": "They Do They Did"
+      },
+      {
+       "s": "B1",
+       "n": "123 Acid"
+      },
+      {
+       "s": "B2",
+       "n": "Magenta"
+      }
+     ]
     },
     {
      "a": "Max Kernmayer",
@@ -72517,13 +72576,7 @@
      "p": 38.38,
      "url": "https://www.redeyerecords.co.uk/vinyl/202603-pfg212-moodymann-moments-with-moodymann/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193334-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193334.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "g": "House",
      "m": "2026-10",
@@ -72548,7 +72601,25 @@
      "st": "in",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-30"
+     "first_seen": "2026-10-30",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Pitch Black"
+      },
+      {
+       "s": "A2",
+       "n": "Pitch Black (Steve Bug Remix)"
+      },
+      {
+       "s": "B1",
+       "n": "Strawberry Pink"
+      },
+      {
+       "s": "B2",
+       "n": "tiger Orange"
+      }
+     ]
     },
     {
      "a": "AgainstMe",
@@ -83571,7 +83642,28 @@
      "p": 18.33,
      "url": "https://yoyaku.io/release/lo-kee-organised-sound-pl001-pl001/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/08/PL001-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Second Sight",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PL001_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Touch This Space",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PL001_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Human Affects",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PL001_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Earth Humm",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PL001_4.mp3"
+      }
+     ],
      "g": "Tech House",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -83585,7 +83677,28 @@
      "p": 16.67,
      "url": "https://yoyaku.io/release/nate-oldfield-ooz006-ooz006/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/05/OOZ006-400x400.webp",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Dialog",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/OOZ006_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Bar Fight",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/OOZ006_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Cucina",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/OOZ006_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Pilgrim’s Way",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/OOZ006_4.mp3"
+      }
+     ],
      "g": "Minimal Techno / Tech House",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -83682,8 +83795,13 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192971.mp3"
+       "n": "A: EV -2",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RDSCL03RP_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B: EV -6",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/RDSCL03RP_2.mp3"
       }
      ],
      "g": "Dub Techno · Repress",
@@ -83699,7 +83817,28 @@
      "p": 14.58,
      "url": "https://yoyaku.io/release/niko-dalagelis-satoshi-tomiie-ekho-satoshi-tomie-remix-colored-vinyl-pcss14o/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/09/PCSS14O_pcss14o-backside-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Ekho Forge",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCSS14O_pcss14o-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Ekho Resonance",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCSS14O_pcss14o-02.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1.Ekho Resonance (Satoshi Tomiie rmx)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCSS14O_pcss14o-03.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Ekho Drift",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCSS14O_pcss14o-04.mp3"
+      }
+     ],
      "g": "Deep Techno / Dub Techno",
      "m": "2026-10",
      "first_seen": "2026-10-30",
@@ -83744,7 +83883,23 @@
      "p": 14.58,
      "url": "https://yoyaku.io/release/12db-time-masks-lp-12dbep002/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/12DBEP002-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A: Time",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/12DBEP002_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Masks",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/12DBEP002_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Masks (Version)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/12DBEP002_3.mp3"
+      }
+     ],
      "g": "Deep House",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -83758,7 +83913,28 @@
      "p": 14.58,
      "url": "https://yoyaku.io/release/praymond-guy-from-downstairs-cabanne-lodeur-des-reves-lp-vrltd008/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/VRLTD008-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "L'odeur des reves",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VRLTD008_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "L'odeur des reves (Guy From Downstairs Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VRLTD008_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "73 Infuse",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VRLTD008_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "73 Infuse (Cabanne Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/VRLTD008_4.mp3"
+      }
+     ],
      "g": "Deep House",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -83795,8 +83971,18 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/167245.mp3"
+       "n": "Make Your Own Reality",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CAB63_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Three in One",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CAB63_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Drippin",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/CAB63_3.mp3"
       }
      ],
      "g": "House",
@@ -83882,7 +84068,48 @@
      "p": 23.33,
      "url": "https://yoyaku.io/release/orion-debut-lp-ornlp01/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/ORNLP01-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "CRYSTAL 5:21",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "PAL6 4:00",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "R_N 5:16",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "VOLUME 2:00",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "ERYEL 3:43",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "R_J 4:27",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "ENDLESSRUN 6:31",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "NEON 3:12",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_8.mp3"
+      }
+     ],
      "g": "Techno",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -83896,7 +84123,28 @@
      "p": 16.67,
      "url": "https://yoyaku.io/release/xtal-off-axis-mule312/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/MULE312-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Off-Axis 6:19",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Arches 7:34",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Lilt 8:04",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Morse Signals 6:28",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_4.mp3"
+      }
+     ],
      "g": "Minimal",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -83910,7 +84158,28 @@
      "p": 16.67,
      "url": "https://yoyaku.io/release/alex-albrecht-in-the-turpid-heat-of-the-afternoon-mule311/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/MULE311-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: In Service",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: In The Turpid Heat Of The Afternoon",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Shutter Encoder",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Folding & Unfolding",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_4.mp3"
+      }
+     ],
      "g": "Ambient / Deep House",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -84199,7 +84468,63 @@
      "p": 30.83,
      "url": "https://yoyaku.io/release/chip-e-the-architect-of-house-chicago-1984-88-volume-1-classics-lp-2x12-stillmdlp018/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/06/STILLMDLP018-1-1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Time To Jack",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "It's House",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "MB Dance",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Like This (Club Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "If You Only Knew (If You Dance Mix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "Godfather of House (Club Version)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "It's Dub",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "Time to Track",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_8.mp3"
+      },
+      {
+       "s": "",
+       "n": "Get On Up",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_9.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sensuous House",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_10.mp3"
+      },
+      {
+       "s": "",
+       "n": "House Energy",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/STILLMDLP018_11.mp3"
+      }
+     ],
      "g": "Chicago House · Reissue",
      "m": "2026-10",
      "first_seen": "2026-10-30",
@@ -84234,7 +84559,43 @@
      "p": 29.17,
      "url": "https://yoyaku.io/release/alegria-phonogen-lp-2x12-slush004/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/02/SLUSH004-1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Rheinbringer",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SLUSH004_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "One",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SLUSH004_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Arabon",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SLUSH004_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Buddy Groof",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SLUSH004_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Mdma-Test",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SLUSH004_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "The Mission",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SLUSH004_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "Chicachilla",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SLUSH004_7.mp3"
+      }
+     ],
      "g": "Breakbeat / House",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -84439,14 +84800,9 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "1",
+       "s": "",
        "n": "Black Swords",
-       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Timeless Time",
-       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
+       "u": ""
       }
      ],
      "st": "in"
@@ -84608,7 +84964,13 @@
      "first_seen": "2026-09-30",
      "url": "https://kompakt.fm/releases/planes_in_reverse_lp_dl",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt509-planes_in_reverse.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "yt": "FB0-SShJgjY",
+       "n": "Planes In Reverse"
+      }
+     ],
      "st": "pre"
     },
     {
@@ -84623,7 +84985,28 @@
      "first_seen": "2026-09-30",
      "url": "https://kompakt.fm/releases/in_the_turpid_heat_of_the_afternoon",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/mulemusiq311-in_the_turpid_heat_of_the_afternoon.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: In Service",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: In The Turpid Heat Of The Afternoon",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Shutter Encoder",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Folding & Unfolding",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE311_4.mp3"
+      }
+     ],
      "st": "pre"
     },
     {
@@ -86897,7 +87280,28 @@
      "g": "House",
      "url": "https://kompakt.fm/releases/off_axis",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/mulemusiq312-off_axis.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Off-Axis 6:19",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Arches 7:34",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Lilt 8:04",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Morse Signals 6:28",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/MULE312_4.mp3"
+      }
+     ],
      "d": "November 20",
      "st": "pre",
      "m": "2026-10",
@@ -87031,7 +87435,48 @@
      "g": "Deep Techno / Dub Techno",
      "url": "https://kompakt.fm/releases/debut",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/ornlp01-debut.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "CRYSTAL 5:21",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "PAL6 4:00",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "R_N 5:16",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "VOLUME 2:00",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "ERYEL 3:43",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "R_J 4:27",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "ENDLESSRUN 6:31",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "NEON 3:12",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/ORNLP01_8.mp3"
+      }
+     ],
      "st": "pre",
      "d": "November 20",
      "m": "2026-10",
@@ -87342,13 +87787,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -88309,7 +88748,13 @@
      "p": 18.9,
      "url": "https://kompakt.fm/releases/carry_on_mezzh",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6adf5b40a4f1b-6ae32adc3849d-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Carry On feat. Tee Amara",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6adf5b6ff3522-6ae32ae965143-mp3-temp.mp3"
+      }
+     ],
      "g": "House",
      "m": "2026-10",
      "first_seen": "2026-10-30"
@@ -135765,9 +136210,24 @@
      "cover": "https://www.deejay.de/images/l/1/0/1252510.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191104.mp3"
+       "s": "1",
+       "n": "drwillis",
+       "u": "https://clone.nl/platen/mp3/84288/1%20drwillis.mp3"
+      },
+      {
+       "s": "2",
+       "n": "lapse",
+       "u": "https://clone.nl/platen/mp3/84288/2%20lapse.mp3"
+      },
+      {
+       "s": "3",
+       "n": "cityfiction",
+       "u": "https://clone.nl/platen/mp3/84288/3%20cityfiction.mp3"
+      },
+      {
+       "s": "4",
+       "n": "saltechoes",
+       "u": "https://clone.nl/platen/mp3/84288/4%20saltechoes.mp3"
       }
      ],
      "d": "16.10.2026",
@@ -137647,9 +138107,24 @@
      "cover": "https://www.deejay.de/images/l/5/0/1251250.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192827.mp3"
+       "s": "1",
+       "n": "Tommys place",
+       "u": "https://clone.nl/platen/mp3/85333/1%20Tommys%20place.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Track ID",
+       "u": "https://clone.nl/platen/mp3/85333/2%20Track%20ID.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Non Sleep dreamer",
+       "u": "https://clone.nl/platen/mp3/85333/3%20Non%20Sleep%20dreamer.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Hypnagogia",
+       "u": "https://clone.nl/platen/mp3/85333/4%20Hypnagogia.mp3"
       }
      ],
      "st": "in"
@@ -139578,9 +140053,24 @@
      "cover": "https://www.deejay.de/images/l/7/7/1266377.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192469.mp3"
+       "s": "1",
+       "n": "OG",
+       "u": "https://clone.nl/platen/mp3/84964/1%20OG.mp3"
+      },
+      {
+       "s": "2",
+       "n": "OH YEAH",
+       "u": "https://clone.nl/platen/mp3/84964/2%20OH%20YEAH.mp3"
+      },
+      {
+       "s": "3",
+       "n": "DOWNTOWN OWL",
+       "u": "https://clone.nl/platen/mp3/84964/3%20DOWNTOWN%20OWL.mp3"
+      },
+      {
+       "s": "4",
+       "n": "THE SPIRIT",
+       "u": "https://clone.nl/platen/mp3/84964/4%20THE%20SPIRIT.mp3"
       }
      ],
      "st": "in"
@@ -172663,13 +173153,7 @@
      "g": "Detroit House",
      "url": "https://rubadub.co.uk/products/moments-with-moodymann",
      "cover": "https://cdn.shopify.com/s/files/1/0267/6952/2736/files/moments-with-moodymann.png?v=1793281694&width=800",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193334.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "m": "2026-10",
      "first_seen": "2026-10-30"
