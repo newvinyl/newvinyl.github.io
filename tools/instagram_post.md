@@ -1,4 +1,4 @@
-# Instagram – tägliche Vorschau und Posting von «Today's Digs» und drei Einzel-Reels (@monthlyvinyl)
+# Instagram – tägliche Vorschau und Posting von «Today's Digs» (@monthlyvinyl)
 
 Einzige Quelle für die tägliche Instagram-Aufgabe. Sprache gegenüber dem Nutzer: Deutsch, Schweizer
 Schreibweise (ss statt ß), kurz und sachlich.
@@ -7,14 +7,13 @@ Schreibweise (ss statt ß), kurz und sachlich.
 
 **Zweite Grundregel: Nur Platten posten, die auf monthlyvinyl.net unter «Fresh today» stehen** – also
 `first_seen` = heute in `releases.json` (frühestes Datum über alle Shops). Die automatischen Videos halten das
-ein; bei allem, was von Hand gewählt wird (Nutzerwunsch, Ersatz-Reel), vor dem Posten prüfen. Eine Platte, die
+ein; bei allem, was von Hand gewählt wird (Nutzerwunsch), vor dem Posten prüfen. Eine Platte, die
 Besucher auf der Startseite nicht finden, wird nicht gepostet (27.10.26: TRANSPAC war seit dem 4.10. bei Redeye). Zuerst immer eine Vorschau
 (Video, Caption, Markierungen) schicken. Gepostet wird erst, wenn er in derselben Unterhaltung
 zustimmt. Änderungswünsche zuerst umsetzen und neu vorlegen.
 
 **Dritte Grundregel: Respekt vor dem Cover.** Das Artwork gehört Artist, Label und Designer. Darum:
-- Das Original muss im Reel klar erkennbar bleiben: in den ersten Sekunden (sobald die Kamera zurückgezogen hat)
-  und kurz vor Schluss ist das Cover vollständig und praktisch unverändert zu sehen. Ist es das nicht (zu stark verzerrt, Formen unkenntlich), nicht vorlegen, sondern melden.
+- Das Cover wird nicht verfremdet, sondern unverändert gezeigt.
 - Ist der Cover-Designer bekannt (Bandcamp-Credits, Discogs «Artwork By»/«Design»), kommt eine Zeile
   `Cover art: <Name>` bzw. `Cover art: @handle` (Handle nur verifiziert, siehe Schritt 2) in die Caption.
 - Bittet jemand (Artist, Label, Designer) darum, ein Video zu löschen: sofort entfernen, ohne Diskussion, freundlich
@@ -35,16 +34,10 @@ Video herunterladen, die Bilder bei 0 s, 3 s, 18 s und 33 s ansehen und prüfen:
 Startbild, Titel lesbar, Cover sauber (kein Aufkleber/Mockup, richtige Platte), Shop-Zeile vorhanden.
 Fehler dem Nutzer melden statt zu posten.
 
-**Zusätzlich drei Einzel-Reels (seit 27.10.26).** `92h6fy/history.json`, erster Eintrag, Liste `reels`
-(je `title`, `video` = `reel-<yymmdd>-1.mp4` … `-3.mp4`, `look`). Startbild: gleiche URL mit `.jpg`.
-Captions: `92h6fy/caption_reel_1.txt` … `caption_reel_3.txt`. Format 9:16: das Cover läuft oben und unten in
-seiner eigenen Fläche weiter, Form- und Farb-Loop (`tools/shapeloop.py` / `tools/poster916.py`), gelbe Typo
-unter dem Cover (Artist, Titel, Label · Shop, monthlyvinyl.net). Prüfen: Bilder bei 0 s, 4 s, 20 s, 40 s –
-Cover erkennbar, nichts zerrissen, Typo vorhanden. Beginnt `look` nicht mit «poster916», war kein grafisches
-Cover dabei (alter Effekt-Look): in der Vorschau als Ausnahme kennzeichnen.
-Für jedes Reel gelten die Schritte 2–4 (eigene Markierungen: Artist, Label, Shop; eigene Vorschau; eigener
-Post nach dem OK). Reihenfolge: Today's Digs zuerst, dann Reel 1–3. Genre weglassen, wenn sich die Shops
-beim Genre widersprechen. Fehlt ein Reel (Liste kürzer), nur die vorhandenen vorlegen und es erwähnen.
+**Keine Show-Case-Reels (Einzel-Reels) mehr (seit 30.10.26).** Sie brachten kaum Views und Reaktionen;
+der Nutzer hat sie gestoppt. Die Action rendert sie eventuell weiter (`reels` in `history.json`,
+`caption_reel_*.txt`): ignorieren, nicht vorlegen, nicht posten. Genre weglassen, wenn sich die Shops beim
+Genre widersprechen.
 
 ## 2. Markierungen recherchieren
 
@@ -70,7 +63,7 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 - Video als Datei
 - Caption im Wortlaut (Codeblock)
 - Liste der Markierungen: @handle, wer das ist, Follower, Quelle der Prüfung
-- Cover-Designer (gefunden oder nicht) und ob das Original am Anfang und am Schluss klar erkennbar ist
+- Cover-Designer (gefunden oder nicht)
 - Auffälligkeiten (fehlendes Format, Pre-order, unsichere Handles)
 - Frage: «Soll ich posten?»
 
