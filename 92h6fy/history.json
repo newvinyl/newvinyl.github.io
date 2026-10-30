@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-10-30",
+  "keys": [
+   "bison|travellers (2×12″)",
+   "various artists|bridgeport records sessions vol 1",
+   "the optic crux / random xs|djax-up-beats 1990-2005: the acid trip ep 3"
+  ],
+  "titles": [
+   "Bison – Travellers (2×12″)",
+   "Various Artists – Bridgeport Records Sessions Vol 1",
+   "The Optic Crux / Random XS – Djax-Up-Beats 1990-2005: The Acid Trip EP 3"
+  ],
+  "shops": [
+   "Yoyaku",
+   "Vinyl Underground",
+   "Clone"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261030.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "malin genie|phaethon",
+    "title": "Malin Genie – Phaethon",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261030-1.mp4",
+    "look": "poster916 126 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261030-1.jpg"
+   },
+   {
+    "key": "paolo rocco|to the stars and beyond",
+    "title": "Paolo Rocco – To the Stars and Beyond",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261030-2.mp4",
+    "look": "poster916 129 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261030-2.jpg"
+   },
+   {
+    "key": "michael j. blood|cause & effect vol 1",
+    "title": "Michael J. Blood – Cause & Effect Vol 1",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261030-3.mp4",
+    "look": "poster916 99 bpm · motion 0.5",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261030-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "malin genie|phaethon",
+   "title": "Malin Genie – Phaethon",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261030-1.mp4",
+   "look": "poster916 126 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261030-1.jpg"
+  }
+ },
+ {
   "date": "2026-10-29",
   "keys": [
    "sascha dive ft robert owens|my definition of house music vol. 3",
