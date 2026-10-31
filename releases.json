@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30",
+ "updated": "2026-10-31",
  "fx": {
   "CHF": 1,
   "EUR": 0.9298,
@@ -84800,9 +84800,14 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "",
+       "s": "1",
        "n": "Black Swords",
-       "u": ""
+       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Timeless Time",
+       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
       }
      ],
      "st": "in"
@@ -87787,7 +87792,13 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
+      }
+     ],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -141505,7 +141516,7 @@
       {
        "s": "A1",
        "n": "Love's Got Me High (Tribute Mix)",
-       "page": "https://www.deejay.de/Terrence_Parker_Tribute_To_Can_Collier_INT-7000_Vinyl__172178"
+       "yt": "Clu8ttTIjJY"
       },
       {
        "s": "A2",
