@@ -1,0 +1,53 @@
+{
+ "fetched": "2026-10-31T10:31Z",
+ "shop": "Rubadub",
+ "items": [
+  {
+   "a": "Moodymann",
+   "t": "Moments with Moodymann",
+   "l": "Peacefrog",
+   "cat": "PFG212",
+   "f": "12\"",
+   "p": 39.0,
+   "g": "Detroit House",
+   "url": "https://rubadub.co.uk/products/moments-with-moodymann",
+   "cover": "https://cdn.shopify.com/s/files/1/0267/6952/2736/files/moments-with-moodymann.png?v=1793281694&width=800",
+   "tr": [],
+   "st": "pre"
+  },
+  {
+   "a": "[g]",
+   "t": "curtain",
+   "l": "dexp",
+   "cat": "dexp001",
+   "f": "12\"",
+   "p": 21.0,
+   "g": "Electro",
+   "url": "https://rubadub.co.uk/products/curtain",
+   "cover": "https://cdn.shopify.com/s/files/1/0267/6952/2736/files/f9b2a857-198d-3fd0-abb0-9ef911265698_1.jpg?v=1793279954&width=800",
+   "tr": [
+    {
+     "s": "A1",
+     "n": "curtain",
+     "u": "https://dl.dropbox.com/scl/fi/jlqztycthadllf9rewxak/A1.-g-curtain.mp3?rlkey=r0vbuok3raki68smmbs8w50o1&st=77pdvbd9&dl=0"
+    },
+    {
+     "s": "A2",
+     "n": "shade",
+     "u": "https://dl.dropbox.com/scl/fi/0ne6zjamfdldm27iybu0u/A2.-g-shade.mp3?rlkey=o9g496yyosaxjca6srvurm5bs&st=zc18rakb&dl=0"
+    },
+    {
+     "s": "B1",
+     "n": "blind",
+     "u": "https://dl.dropbox.com/scl/fi/f5lazsyifu8mk4adwjljc/B1.-g-blind.mp3?rlkey=22prcptswzvnhbzl93yjozecl&st=jd560mp1&dl=0"
+    },
+    {
+     "s": "B2",
+     "n": "drape",
+     "u": "https://dl.dropbox.com/scl/fi/e07jorfsm01h8rith63yw/B2.-g-drape.mp3?rlkey=xdl24it53p6qk59jrra55a7dy&st=qsjrp6sb&dl=0"
+    }
+   ],
+   "st": "pre"
+  }
+ ]
+}

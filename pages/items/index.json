@@ -1,0 +1,144 @@
+{
+ "fetched": "2026-10-31T10:31Z",
+ "shops": [
+  {
+   "id": "vinylunderground",
+   "shop": "Vinyl Underground",
+   "where": "Northampton",
+   "country": "UK",
+   "cur": "£",
+   "file": "items/vinylunderground.json",
+   "items": 27,
+   "playable": 26
+  },
+  {
+   "id": "soundmetaphors",
+   "shop": "Sound Metaphors",
+   "where": "Berlin",
+   "country": "DE",
+   "cur": "€",
+   "file": "items/soundmetaphors.json",
+   "items": 18,
+   "playable": 4
+  },
+  {
+   "id": "discosparadiso",
+   "shop": "Discos Paradiso",
+   "where": "Barcelona",
+   "country": "ES",
+   "cur": "€",
+   "file": "items/discosparadiso.json",
+   "items": 35,
+   "playable": 10
+  },
+  {
+   "id": "syncrophone",
+   "shop": "Syncrophone",
+   "where": "Paris",
+   "country": "FR",
+   "cur": "€",
+   "file": "items/syncrophone.json",
+   "items": 23,
+   "playable": 23
+  },
+  {
+   "id": "betinos",
+   "shop": "Betino's",
+   "where": "Paris",
+   "country": "FR",
+   "cur": "€",
+   "file": "items/betinos.json",
+   "error": "HTTP Error 429: Too Many Requests"
+  },
+  {
+   "id": "bordello",
+   "shop": "Bordello A Parigi",
+   "where": "Amsterdam",
+   "country": "NL",
+   "cur": "€",
+   "file": "items/bordello.json",
+   "items": 34,
+   "playable": 34
+  },
+  {
+   "id": "diggers",
+   "shop": "Diggers.fr",
+   "where": "France",
+   "country": "FR",
+   "cur": "€",
+   "file": "items/diggers.json",
+   "items": 28,
+   "playable": 28
+  },
+  {
+   "id": "carpetsnares",
+   "shop": "Carpet & Snares",
+   "where": "Lisbon",
+   "country": "PT",
+   "cur": "€",
+   "file": "items/carpetsnares.json",
+   "items": 23,
+   "playable": 1
+  },
+  {
+   "id": "kma60",
+   "shop": "KMA60",
+   "where": "Paris",
+   "country": "FR",
+   "cur": "€",
+   "file": "items/kma60.json",
+   "items": 36,
+   "playable": 36
+  },
+  {
+   "id": "sideone",
+   "shop": "Side One",
+   "where": "Warsaw",
+   "country": "PL",
+   "cur": "zł",
+   "file": "items/sideone.json",
+   "items": 26,
+   "playable": 24
+  },
+  {
+   "id": "soundground",
+   "shop": "SoundGround",
+   "where": "Sofia",
+   "country": "BG",
+   "cur": "€",
+   "file": "items/soundground.json",
+   "items": 99,
+   "playable": 94
+  },
+  {
+   "id": "divert",
+   "shop": "Divert Records",
+   "where": "Bratislava",
+   "country": "SK",
+   "cur": "€",
+   "file": "items/divert.json",
+   "items": 3,
+   "playable": 3
+  },
+  {
+   "id": "ultrasuoni",
+   "shop": "Ultrasuoni",
+   "where": "Rome",
+   "country": "IT",
+   "cur": "€",
+   "file": "items/ultrasuoni.json",
+   "items": 37,
+   "playable": 36
+  },
+  {
+   "id": "rubadub",
+   "shop": "Rubadub",
+   "where": "Glasgow",
+   "country": "UK",
+   "cur": "£",
+   "file": "items/rubadub.json",
+   "items": 2,
+   "playable": 1
+  }
+ ]
+}
