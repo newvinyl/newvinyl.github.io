@@ -84800,14 +84800,9 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "1",
+       "s": "",
        "n": "Black Swords",
-       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Timeless Time",
-       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
+       "u": ""
       }
      ],
      "st": "in"
@@ -87792,13 +87787,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -171096,11 +171085,6 @@
        "s": "A2",
        "n": ": Bar Groove (Red Meat Therapy Remix)",
        "u": "https://www.divertrecords.sk/wp-content/uploads/2026/08/a2-peter-kir-ft-grna-sax-bar-groove-sofa-movements-records-smrfts021-vinyl.mp3"
-      },
-      {
-       "s": "B1",
-       "n": "Bar Groove (DJ M4SH rmx)",
-       "u": "https://www.divertrecords.sk/wp-content/uploads/2026/08/b1-peter-kir-ft-grna-sax-bar-groove-sofa-movements-records-smrfts021-vinyl.mp3"
       },
       {
        "s": "B2",
