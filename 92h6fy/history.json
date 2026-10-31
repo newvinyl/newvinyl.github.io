@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-10-31",
+  "keys": [
+   "r-010 & venerandi|phenomena",
+   "dandolo|vischio",
+   "various|from the vaults vol. 5"
+  ],
+  "titles": [
+   "R-010 & Venerandi – Phenomena",
+   "Dandolo – Vischio",
+   "Various – From The Vaults Vol. 5"
+  ],
+  "shops": [
+   "Clone",
+   "Bordello A Parigi",
+   "Vinyl Underground"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261031.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "chez damier|can you feel it underground resistance remixes",
+    "title": "Chez Damier – Can You Feel It Underground Resistance Remixes",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261031-1.mp4",
+    "look": "poster916 122 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261031-1.jpg"
+   },
+   {
+    "key": "simoncino|traxxx ep",
+    "title": "Simoncino – Traxxx EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261031-2.mp4",
+    "look": "poster916 120 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261031-2.jpg"
+   },
+   {
+    "key": "mindreaders|the dawn ep (re-issue)",
+    "title": "Mindreaders – The Dawn EP (Re-issue)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261031-3.mp4",
+    "look": "poster916 125 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261031-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "chez damier|can you feel it underground resistance remixes",
+   "title": "Chez Damier – Can You Feel It Underground Resistance Remixes",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261031-1.mp4",
+   "look": "poster916 122 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261031-1.jpg"
+  }
+ },
+ {
   "date": "2026-10-30",
   "keys": [
    "bison|travellers (2×12″)",
