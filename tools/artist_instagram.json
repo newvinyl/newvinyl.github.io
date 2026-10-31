@@ -183,8 +183,28 @@
   "followers": 48853,
   "checked": "2026-10-30"
  },
- "markus homm": "markushomm",
- "lapsus": "lapsus_barcelona",
- "lapsus records": "lapsus_barcelona",
- "mirella records": "mirella_records"
+ "markus homm": {
+  "handle": "markushomm",
+  "kind": "artist",
+  "followers": 15359,
+  "checked": "2026-10-31"
+ },
+ "lapsus": {
+  "handle": "lapsus_barcelona",
+  "kind": "label",
+  "followers": 14718,
+  "checked": "2026-10-31"
+ },
+ "lapsus records": {
+  "handle": "lapsus_barcelona",
+  "kind": "label",
+  "followers": 14718,
+  "checked": "2026-10-31"
+ },
+ "mirella records": {
+  "handle": "mirella_records",
+  "kind": "label",
+  "followers": 1522,
+  "checked": "2026-10-31"
+ }
 }
