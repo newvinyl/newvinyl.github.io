@@ -1,0 +1,26 @@
++ ls -la
+total 86364
+drwxr-xr-x 2 runner runner     4096 Oct 31 13:28 .
+drwxr-xr-x 5 runner runner     4096 Oct 31 13:28 ..
+-rw-r--r-- 1 runner runner  4917248 Oct 31 13:26 a_900.mp3
+-rw-r--r-- 1 runner runner  1441122 Oct 31 13:27 a_910.mp3
+-rw-r--r-- 1 runner runner  5211916 Oct 31 13:27 a_920.mp3
+-rw-r--r-- 1 runner runner  2510609 Oct 31 13:27 a_930.mp3
+-rw-r--r-- 1 runner runner      361 Oct 31 13:28 caption.txt
+-rw-r--r-- 1 runner runner     1684 Oct 31 13:28 log.txt
+-rw-r--r-- 1 runner runner     1332 Oct 31 13:28 result.json
+-rw-r--r-- 1 runner runner   175291 Oct 31 13:28 slide-00.jpg
+-rw-r--r-- 1 runner runner   175291 Oct 31 13:26 slide-01.jpg
+-rw-r--r-- 1 runner runner 17638121 Oct 31 13:27 slide-01.mp4
+-rw-r--r-- 1 runner runner   272253 Oct 31 13:27 slide-02.jpg
+-rw-r--r-- 1 runner runner 20486795 Oct 31 13:27 slide-02.mp4
+-rw-r--r-- 1 runner runner   343920 Oct 31 13:27 slide-03.jpg
+-rw-r--r-- 1 runner runner 20699411 Oct 31 13:27 slide-03.mp4
+-rw-r--r-- 1 runner runner   166884 Oct 31 13:27 slide-04.jpg
+-rw-r--r-- 1 runner runner 14353058 Oct 31 13:28 slide-04.mp4
+-rw-r--r-- 1 runner runner        9 Oct 31 13:28 up.txt
+++ python3 -c 'import json;print(json.load(open('\''result.json'\''))['\''genre'\''].lower().replace('\'' '\'','\''-'\''))'
++ G=fresh-2026-10-31
++ zip -q -j carousel-fresh-2026-10-31.zip slide-01.mp4 slide-02.mp4 slide-03.mp4 slide-04.mp4 slide-00.jpg caption.txt
++ gh release view carousel
++ gh release upload carousel --clobber carousel-fresh-2026-10-31.zip slide-01.mp4 slide-02.mp4 slide-03.mp4 slide-04.mp4 slide-00.jpg caption.txt
