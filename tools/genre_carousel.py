@@ -84,7 +84,9 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out):
     sq = cov.convert("RGB").crop(((cov.width - side) // 2, (cov.height - side) // 2, (cov.width + side) // 2, (cov.height + side) // 2))
     sq = sq.resize((960, 960), Image.LANCZOS)
     title = ov.clean_title(R["t"])
-    meta = " · ".join(v for v in [R.get("l"), date_s, R.get("fmt"), R.get("genre")] if v)
+    lab = R.get("l") if R.get("l") and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
+    gen = (R.get("gfull") or "").split(" · ")[0].split(" / ")[0].strip()
+    meta = " · ".join(v for v in [lab, date_s, R.get("fmt"), gen] if v)
     base = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(base)
     digs.txt(d, (100, 1048), R["a"], 64, INK, maxw=880)
@@ -169,7 +171,8 @@ def main_fresh(want):
                 start = max(0.0, min(start, len(aud) / SR - seg_s - 0.5))
                 out = os.path.join(WORK, "slide-%02d.mp4" % (len(slides) + 1))
                 fresh_slide(R, cov, aud, start, seg_s, date_s, out)
-                slides.append({"key": c["key"], "video": out, "a": R["a"], "t": R["t"], "l": R["l"], "shop": R["shop_full"],
+                lab = R["l"] if R["l"] and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
+                slides.append({"key": c["key"], "video": out, "a": R["a"], "t": R["t"], "l": lab, "shop": R["shop_full"],
                                "track": R["tname"], "pre": R["pre"], "genre": R["genre"]})
                 used_a.add(digs.norm(x["a"])); used_shop[c["shop"]] = used_shop.get(c["shop"], 0) + 1
                 used_fam[c["fam"]] = used_fam.get(c["fam"], 0) + 1
