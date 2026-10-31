@@ -28849,11 +28849,6 @@
      "cover": "https://clone.nl/platen/artwork/large/plaatimage81990.jpg",
      "tr": [
       {
-       "s": "1",
-       "n": "FLINT",
-       "u": "https://clone.nl/platen/mp3/82885/1%20FLINT.mp3"
-      },
-      {
        "s": "2",
        "n": "Private JIT",
        "u": "https://clone.nl/platen/mp3/82885/2%20Private%20JIT.mp3"
@@ -29238,11 +29233,6 @@
        "s": "3",
        "n": "Red-Neb (feat Reset Robot)",
        "u": "https://clone.nl/platen/mp3/85079/3%20Red-Neb%20%28feat%20Reset%20Robot%29.mp3"
-      },
-      {
-       "s": "4",
-       "n": "I Thought I Knew You",
-       "u": "https://clone.nl/platen/mp3/85079/4%20I%20Thought%20I%20Knew%20You.mp3"
       }
      ],
      "st": "in",
@@ -29269,11 +29259,6 @@
        "s": "2",
        "n": "Baby's First Blade Of Grass",
        "u": "https://clone.nl/platen/mp3/85075/2%20Baby%27s%20First%20Blade%20Of%20Grass.mp3"
-      },
-      {
-       "s": "3",
-       "n": "I Believe In You",
-       "u": "https://clone.nl/platen/mp3/85075/3%20I%20Believe%20In%20You.mp3"
       },
       {
        "s": "4",
@@ -29340,11 +29325,6 @@
        "s": "2",
        "n": "Run it Up",
        "u": "https://clone.nl/platen/mp3/84838/2%20Run%20it%20Up.mp3"
-      },
-      {
-       "s": "3",
-       "n": "l00k",
-       "u": "https://clone.nl/platen/mp3/84838/3%20l00k.mp3"
       },
       {
        "s": "4",
@@ -63552,11 +63532,6 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/191611-2.jpg",
      "tr": [
       {
-       "s": "1",
-       "n": "FLINT",
-       "u": "https://clone.nl/platen/mp3/82885/1%20FLINT.mp3"
-      },
-      {
        "s": "2",
        "n": "Private JIT",
        "u": "https://clone.nl/platen/mp3/82885/2%20Private%20JIT.mp3"
@@ -74679,7 +74654,25 @@
      "st": "in",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Black Eyes - Scuba Republic"
+      },
+      {
+       "s": "A2",
+       "n": "Black Eyes - Intercity Fish Vibez"
+      },
+      {
+       "s": "B1",
+       "n": "Black Eyes - Something Sweeter N Deeper"
+      },
+      {
+       "s": "B2",
+       "n": "Black Eyes - Scuba Republic (An Abacus Story)"
+      }
+     ]
     },
     {
      "a": "Boo Williams",
@@ -75483,7 +75476,25 @@
      "st": "in",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "",
+       "n": "A1- I'm Begging Myself"
+      },
+      {
+       "s": "",
+       "n": "a2- Social Neuroscience"
+      },
+      {
+       "s": "",
+       "n": "b1- Digitakt At 5am"
+      },
+      {
+       "s": "",
+       "n": "b2- Concentrated"
+      }
+     ]
     },
     {
      "a": "DJ Face",
@@ -75527,7 +75538,25 @@
      "g": "House",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Dr Packer, Elektrik Disko - My Lovin (Extended Mix)"
+      },
+      {
+       "s": "A2",
+       "n": "Dr Packer, Elektrik Disko - My Lovin (Elektrik Disko Extended Mix)"
+      },
+      {
+       "s": "B1",
+       "n": "Mattei & Omich, Re-Tide (Feat. Katy Alex) - Give Me Your Love (Extended Mix)"
+      },
+      {
+       "s": "B2",
+       "n": "Re-Tide, Lukas Setto - Me & You (Dr Packer Extended Mix)"
+      }
+     ]
     },
     {
      "a": "FORT ROMEAU",
@@ -75548,7 +75577,21 @@
      "st": "in",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Sunlight"
+      },
+      {
+       "s": "A2",
+       "n": "Hows Music"
+      },
+      {
+       "s": "B1",
+       "n": "Moonlight"
+      }
+     ]
     },
     {
      "a": "Fresh & Low",
@@ -75559,17 +75602,29 @@
      "p": 16.64,
      "url": "https://www.redeyerecords.co.uk/vinyl/183946-rxt-02g-fresh-and-low-open-spance-ep-limited-crystal-clear-green-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/183556-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/183556.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Sea Of Desire"
+      },
+      {
+       "s": "A2",
+       "n": "Espresso"
+      },
+      {
+       "s": "B1",
+       "n": "Where The Wolves Once Roamed"
+      },
+      {
+       "s": "B2",
+       "n": "Where The Wolves Return"
+      }
+     ]
     },
     {
      "a": "GOME",
@@ -75654,7 +75709,25 @@
      "st": "in",
      "g": "House",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Back 2 Jack"
+      },
+      {
+       "s": "A2",
+       "n": "X Transmission"
+      },
+      {
+       "s": "B1",
+       "n": "Bass Utility"
+      },
+      {
+       "s": "B2",
+       "n": "Modem Funk"
+      }
+     ]
     },
     {
      "a": "Jon E.",
@@ -75687,13 +75760,7 @@
      "p": 15.48,
      "url": "https://www.redeyerecords.co.uk/vinyl/202617-esc017-k15-liminality/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193345-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193345.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "g": "House",
      "d": "Exp. 30 Nov",
@@ -75719,7 +75786,25 @@
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Cressida - Moonwalk"
+      },
+      {
+       "s": "A2",
+       "n": "Volpe - Flow State"
+      },
+      {
+       "s": "B1",
+       "n": "Heritage - Colibri Verde"
+      },
+      {
+       "s": "B2",
+       "n": "Kid Kun - They Can't"
+      }
+     ]
     },
     {
      "a": "Carnal Savana Vol. 1",
@@ -75741,7 +75826,25 @@
      "g": "Techno",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Karaba - Microfreak"
+      },
+      {
+       "s": "A2",
+       "n": "Ross Mvnro - Ambush"
+      },
+      {
+       "s": "B1",
+       "n": "Ffrvnco - Somos Y Seremos"
+      },
+      {
+       "s": "B2",
+       "n": "Caballo Loco - A Campo Traviesa"
+      }
+     ]
     },
     {
      "a": "FARRON",
@@ -75762,7 +75865,25 @@
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "We Are The Wave"
+      },
+      {
+       "s": "A2",
+       "n": "Switch Odd"
+      },
+      {
+       "s": "B1",
+       "n": "Gx100"
+      },
+      {
+       "s": "B2",
+       "n": "Talking To Them"
+      }
+     ]
     },
     {
      "a": "GUY FROM DOWNSTAIRS",
@@ -75798,7 +75919,25 @@
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Guy From Downstairs - Don't Change"
+      },
+      {
+       "s": "A2",
+       "n": "Guy From Downstairs & Direkt - 16 22"
+      },
+      {
+       "s": "B1",
+       "n": "Guy From Downstairs - Dream Untitled"
+      },
+      {
+       "s": "B2",
+       "n": "Guy From Downstairs - Perfect Endlessness"
+      }
+     ]
     },
     {
      "a": "John Beltran",
@@ -75871,7 +76010,25 @@
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "My Soul, Your Soul"
+      },
+      {
+       "s": "A2",
+       "n": "Electricity (Feat. David Holness)"
+      },
+      {
+       "s": "B1",
+       "n": "Walk Walk"
+      },
+      {
+       "s": "B2",
+       "n": "E-180"
+      }
+     ]
     },
     {
      "a": "Rambal Cochet",
@@ -75906,15 +76063,29 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/174421-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/174421.mp3"
+       "s": "A",
+       "n": "808 The Bassqueen",
+       "yt": "qzL9xn2fjDQ"
       }
      ],
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A",
+       "n": "808 The Bassqueen (Queen Of Bass Mix)"
+      },
+      {
+       "s": "B1",
+       "n": "808 The Bassqueen (Extended Loop)"
+      },
+      {
+       "s": "B2",
+       "n": "808 The Bassqueen (Dubstar'z Shorthack)"
+      }
+     ]
     },
     {
      "a": "Ricardo Villalobos",
@@ -75961,7 +76132,17 @@
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A",
+       "n": "Wings"
+      },
+      {
+       "s": "B",
+       "n": "Wings 2"
+      }
+     ]
     },
     {
      "a": "S-CT",
@@ -76073,7 +76254,25 @@
      "g": "Techno",
      "d": "Exp. 6 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-31"
+     "first_seen": "2026-10-31",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Desert Grows"
+      },
+      {
+       "s": "A2",
+       "n": "Nostalgic Paradox"
+      },
+      {
+       "s": "B1",
+       "n": "Into The Void"
+      },
+      {
+       "s": "B2",
+       "n": "Into The Void (Under.time Edit)"
+      }
+     ]
     },
     {
      "a": "Tinkertoy",
@@ -76128,13 +76327,7 @@
      "p": 15.0,
      "url": "https://www.redeyerecords.co.uk/vinyl/200012-mainrecords13-various-artists-25-years-mainrecords/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191711-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191711.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
@@ -87853,7 +88046,28 @@
      "p": 22.31,
      "url": "https://yoyaku.io/release/various-artists-split-02-llesssplit02/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/08/LLESSSPLIT02-2-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Mersel - Blessing",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLESSSPLIT02_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Mersel - Plaits Modulation",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLESSSPLIT02_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Anechoic - A Fantasy",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLESSSPLIT02_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Anechoic - Optical Irritation Of Consciousness",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/LLESSSPLIT02_4.mp3"
+      }
+     ],
      "g": "Deep Techno",
      "m": "2026-10",
      "first_seen": "2026-10-31"
@@ -88063,8 +88277,8 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "",
        "n": "Black Swords",
+       "s": "",
        "u": ""
       }
      ],
@@ -144487,9 +144701,24 @@
      "cover": "https://www.deejay.de/images/l/1/0/1263110.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192146.mp3"
+       "s": "1",
+       "n": "The Principle Of Infinite Happiness",
+       "u": "https://clone.nl/platen/mp3/85112/1%20The%20Principle%20Of%20Infinite%20Happiness.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Terraform",
+       "u": "https://clone.nl/platen/mp3/85112/2%20Terraform.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Blue Chamber",
+       "u": "https://clone.nl/platen/mp3/85112/3%20Blue%20Chamber.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Hiko",
+       "u": "https://clone.nl/platen/mp3/85112/4%20Hiko.mp3"
       }
      ],
      "st": "in",
@@ -144529,9 +144758,24 @@
      "cover": "https://www.deejay.de/images/l/9/1/1260391.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191941.mp3"
+       "s": "1",
+       "n": "Dawl - State Of Disorder",
+       "u": "https://clone.nl/platen/mp3/84782/1%20Dawl%20-%20State%20Of%20Disorder.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Dawl - Animated Frame Of Mind Pt One",
+       "u": "https://clone.nl/platen/mp3/84782/2%20Dawl%20-%20Animated%20Frame%20Of%20Mind%20Pt%20One.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Dawl - Animated Frame Of Mind Pt Two",
+       "u": "https://clone.nl/platen/mp3/84782/3%20Dawl%20-%20Animated%20Frame%20Of%20Mind%20Pt%20Two.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Rickie - The Robots Play The Drums",
+       "u": "https://clone.nl/platen/mp3/84782/4%20Rickie%20-%20The%20Robots%20Play%20The%20Drums.mp3"
       }
      ],
      "st": "in",
@@ -144700,9 +144944,24 @@
      "cover": "https://www.deejay.de/images/l/7/9/1258579.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/191730.mp3"
+       "s": "1",
+       "n": "Diesel Funk",
+       "u": "https://clone.nl/platen/mp3/84777/1%20Diesel%20Funk.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Average Tricks",
+       "u": "https://clone.nl/platen/mp3/84777/2%20Average%20Tricks.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Myths Untold",
+       "u": "https://clone.nl/platen/mp3/84777/3%20Myths%20Untold.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Distant Planes",
+       "u": "https://clone.nl/platen/mp3/84777/4%20Distant%20Planes.mp3"
       }
      ],
      "st": "in",
@@ -144851,24 +145110,24 @@
      "cover": "https://www.deejay.de/images/l/6/7/1258567.jpg",
      "tr": [
       {
-       "s": "A1",
+       "s": "1",
        "n": "Signal Beyond Orion",
-       "page": "https://www.deejay.de/Zeta_Reticula_Return_To_Zeta_Prime_Incl_Zobol_Remix_DSP007_Vinyl__1258567"
+       "u": "https://clone.nl/platen/mp3/84773/1%20Signal%20Beyond%20Orion.mp3"
       },
       {
-       "s": "A2",
+       "s": "2",
        "n": "Return To Zeta Prime",
-       "page": "https://www.deejay.de/Zeta_Reticula_Return_To_Zeta_Prime_Incl_Zobol_Remix_DSP007_Vinyl__1258567"
+       "u": "https://clone.nl/platen/mp3/84773/2%20Return%20To%20Zeta%20Prime.mp3"
       },
       {
-       "s": "B1",
+       "s": "3",
        "n": "Reticuli Contact Protocol",
-       "page": "https://www.deejay.de/Zeta_Reticula_Return_To_Zeta_Prime_Incl_Zobol_Remix_DSP007_Vinyl__1258567"
+       "u": "https://clone.nl/platen/mp3/84773/3%20Reticuli%20Contact%20Protocol.mp3"
       },
       {
-       "s": "B2",
+       "s": "4",
        "n": "Reticuli Contact Protocol (Zobol Remix)",
-       "page": "https://www.deejay.de/Zeta_Reticula_Return_To_Zeta_Prime_Incl_Zobol_Remix_DSP007_Vinyl__1258567"
+       "u": "https://clone.nl/platen/mp3/84773/4%20Reticuli%20Contact%20Protocol%20%28Zobol%20Remix%29%20.mp3"
       }
      ],
      "st": "in",
@@ -145518,9 +145777,34 @@
      "cover": "https://www.deejay.de/images/l/9/0/1266590.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192482.mp3"
+       "s": "01",
+       "n": "Take A Hike",
+       "u": "https://media.hardwax.com/audio/07733_01.mp3"
+      },
+      {
+       "s": "02",
+       "n": "Twisted",
+       "u": "https://media.hardwax.com/audio/07733_02.mp3"
+      },
+      {
+       "s": "03",
+       "n": "JSPRV35 and Deniro: Twisted (Deniro Remix)",
+       "u": "https://media.hardwax.com/audio/07733_03.mp3"
+      },
+      {
+       "s": "04",
+       "n": "Weight",
+       "u": "https://media.hardwax.com/audio/07733_04.mp3"
+      },
+      {
+       "s": "05",
+       "n": "Perko",
+       "u": "https://media.hardwax.com/audio/07733_05.mp3"
+      },
+      {
+       "s": "06",
+       "n": "JSPRV35 and Mathys Lenne: Perko (Mathys Lenne Remix)",
+       "u": "https://media.hardwax.com/audio/07733_06.mp3"
       }
      ],
      "st": "in",
@@ -145539,9 +145823,24 @@
      "cover": "https://www.deejay.de/images/l/7/0/1270170.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192810.mp3"
+       "s": "01",
+       "n": "No Exits",
+       "u": "https://media.hardwax.com/audio/08407_01.mp3"
+      },
+      {
+       "s": "02",
+       "n": "No Exits (Process)",
+       "u": "https://media.hardwax.com/audio/08407_02.mp3"
+      },
+      {
+       "s": "03",
+       "n": "Motion",
+       "u": "https://media.hardwax.com/audio/08407_03.mp3"
+      },
+      {
+       "s": "04",
+       "n": "Sub Level",
+       "u": "https://media.hardwax.com/audio/08407_04.mp3"
       }
      ],
      "st": "in",
@@ -145560,9 +145859,34 @@
      "cover": "https://www.deejay.de/images/l/0/0/1264400.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192290.mp3"
+       "s": "01",
+       "n": "The Physics",
+       "u": "https://media.hardwax.com/audio/89652_01.mp3"
+      },
+      {
+       "s": "02",
+       "n": "The Pressure",
+       "u": "https://media.hardwax.com/audio/89652_02.mp3"
+      },
+      {
+       "s": "03",
+       "n": "True North",
+       "u": "https://media.hardwax.com/audio/89652_03.mp3"
+      },
+      {
+       "s": "04",
+       "n": "The Exit Door",
+       "u": "https://media.hardwax.com/audio/89652_04.mp3"
+      },
+      {
+       "s": "05",
+       "n": "Spend My Lifetime Wondering",
+       "u": "https://media.hardwax.com/audio/89652_05.mp3"
+      },
+      {
+       "s": "06",
+       "n": "Quest",
+       "u": "https://media.hardwax.com/audio/89652_06.mp3"
       }
      ],
      "st": "in",
