@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-01",
+  "keys": [
+   "sleep d, mosam howieson|syphon filter",
+   "regal|red dress",
+   "volkan akin|petrol ep (incl. insert & dl code)"
+  ],
+  "titles": [
+   "Sleep D, Mosam Howieson – Syphon Filter",
+   "Regal – Red Dress",
+   "Volkan Akin – Petrol EP (Incl. Insert & DL Code)"
+  ],
+  "shops": [
+   "Yoyaku",
+   "Diggers.fr",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261101.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "discoteca tropicana|discoteca tropicana ep",
+    "title": "Discoteca Tropicana – Discoteca Tropicana EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-1.mp4",
+    "look": "poster916 120 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-1.jpg"
+   },
+   {
+    "key": "feater|time million feat. vilja larjos - pepe bradock bonus bit & villalobos dubs",
+    "title": "Feater – Time Million Feat. Vilja Larjos - Pepe Bradock Bonus Bit & Villalobos Dubs",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-2.mp4",
+    "look": "poster916 138 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-2.jpg"
+   },
+   {
+    "key": "feater|time million feat. vilja larjos - pepe bradock & villalobos remixes",
+    "title": "Feater – Time Million Feat. Vilja Larjos - Pepe Bradock & Villalobos Remixes",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-3.mp4",
+    "look": "poster916 124 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "discoteca tropicana|discoteca tropicana ep",
+   "title": "Discoteca Tropicana – Discoteca Tropicana EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-1.mp4",
+   "look": "poster916 120 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-1.jpg"
+  }
+ },
+ {
   "date": "2026-10-31",
   "keys": [
    "r-010 & venerandi|phenomena",
