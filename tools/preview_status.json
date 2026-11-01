@@ -1,71 +1,71 @@
 {
- "date": "2026-10-31",
+ "date": "2026-11-01",
  "total": {
-  "records": 4542,
-  "tracks": 3602,
-  "clip": 741,
-  "none": 199
+  "records": 4109,
+  "tracks": 3243,
+  "clip": 696,
+  "none": 170
  },
  "shops": {
   "Hardwax": {
-   "records": 214,
-   "tracks": 214,
+   "records": 165,
+   "tracks": 165,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 96,
-   "tracks": 93,
+   "records": 59,
+   "tracks": 57,
    "clip": 0,
-   "none": 3
+   "none": 2
   },
   "Decks.de": {
-   "records": 21,
-   "tracks": 14,
+   "records": 19,
+   "tracks": 12,
    "clip": 3,
    "none": 4
   },
   "Clone": {
-   "records": 399,
-   "tracks": 396,
+   "records": 230,
+   "tracks": 228,
    "clip": 0,
-   "none": 3
+   "none": 2
   },
   "Phonica": {
-   "records": 213,
-   "tracks": 156,
-   "clip": 13,
-   "none": 44
+   "records": 173,
+   "tracks": 133,
+   "clip": 9,
+   "none": 31
   },
   "Redeye Records": {
-   "records": 1163,
-   "tracks": 421,
-   "clip": 702,
-   "none": 40
+   "records": 1100,
+   "tracks": 403,
+   "clip": 660,
+   "none": 37
   },
   "Yoyaku": {
-   "records": 350,
-   "tracks": 349,
+   "records": 307,
+   "tracks": 306,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 141,
-   "tracks": 127,
+   "records": 112,
+   "tracks": 104,
    "clip": 0,
-   "none": 14
+   "none": 8
   },
   "Juno Records": {
-   "records": 793,
-   "tracks": 785,
+   "records": 792,
+   "tracks": 784,
    "clip": 0,
    "none": 8
   },
   "Deejay.de": {
    "records": 314,
    "tracks": 243,
-   "clip": 20,
-   "none": 51
+   "clip": 21,
+   "none": 50
   },
   "Vinyl Underground": {
    "records": 239,
@@ -111,9 +111,9 @@
   },
   "Carpet & Snares": {
    "records": 23,
-   "tracks": 13,
+   "tracks": 17,
    "clip": 0,
-   "none": 10
+   "none": 6
   },
   "KMA60": {
    "records": 36,
@@ -152,12 +152,15 @@
    "none": 1
   }
  },
- "pages_checked": 42,
- "new_from_shop_pages": 1,
- "copied_from_other_shop": 8,
- "broken_clips_removed": 25,
- "clips_verified": 13293,
- "not_reachable": {},
+ "pages_checked": 839,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 15,
+ "clips_verified": 12248,
+ "not_reachable": {
+  "Redeye Records: failed:UnicodeEncodeError": 42,
+  "Redeye Records: http403": 4
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 369,
@@ -170,7 +173,7 @@
    "sample": []
   },
   "clone.nl": {
-   "clips": 1558,
+   "clips": 1013,
    "failed": 0,
    "sample": []
   },
@@ -195,12 +198,12 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 1022,
+   "clips": 841,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 492,
+   "clips": 328,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -214,16 +217,16 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 66,
-   "failed": 11,
+   "clips": 54,
+   "failed": 7,
    "sample": [
-    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/acker099-lost_in_this_moment-01-lost_in_this_moment-extended.mp3",
-    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv142-liber_eleven_remastered-01-black_chamber_order-remastered.mp3",
-    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3"
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3",
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eg03-stardiving_mit_joerg_burger-01-10_minutes_of_stardiving_91.mp3",
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/kompakt511-the_hill_ep-01-the_hill-extended.mp3"
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 709,
+   "clips": 666,
    "failed": 0,
    "sample": []
   },
@@ -247,8 +250,8 @@
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 4972,
-   "failed": 4972,
+   "clips": 4970,
+   "failed": 4970,
    "sample": [
     "https://www.juno.co.uk/MP3/SF1043543-01-01-01.mp3",
     "https://www.juno.co.uk/MP3/SF1043543-01-02-01.mp3",
@@ -259,8 +262,8 @@
    "clips": 272,
    "failed": 226,
    "sample": [
-    "https://www.sideone.pl/settings.php?getAttachmentp=235995_47995_96df09cf8f4caab95c390c350c1d1b17",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236061_48000_9271b5ffe95e88529d0b00ded7bb44e1",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236058_47999_e2d1c91e4003dbde730cd18ef6d6dbc0",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236060_48000_98861156afccb03d440a4dcee0f8a3cd",
     "https://www.sideone.pl/settings.php?getAttachmentp=236062_48000_9ddb056f49dba2cda73cc94af09f73e0"
    ]
   },
@@ -270,12 +273,12 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 887,
+   "clips": 798,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.digitaloceanspaces.com": {
-   "clips": 24,
+   "clips": 15,
    "failed": 0,
    "sample": []
   }
