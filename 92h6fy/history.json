@@ -2,17 +2,17 @@
  {
   "date": "2026-11-01",
   "keys": [
-   "sleep d, mosam howieson|syphon filter",
+   "discoteca tropicana|discoteca tropicana ep",
    "regal|red dress",
    "volkan akin|petrol ep (incl. insert & dl code)"
   ],
   "titles": [
-   "Sleep D, Mosam Howieson – Syphon Filter",
+   "Discoteca Tropicana – Discoteca Tropicana EP",
    "Regal – Red Dress",
    "Volkan Akin – Petrol EP (Incl. Insert & DL Code)"
   ],
   "shops": [
-   "Yoyaku",
+   "Bordello A Parigi",
    "Diggers.fr",
    "Redeye"
   ],
@@ -23,35 +23,35 @@
   "dv": 9,
   "reels": [
    {
-    "key": "discoteca tropicana|discoteca tropicana ep",
-    "title": "Discoteca Tropicana – Discoteca Tropicana EP",
+    "key": "feater|time million feat. vilja larjos - pepe bradock & villalobos remixes",
+    "title": "Feater – Time Million Feat. Vilja Larjos - Pepe Bradock & Villalobos Remixes",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-1.mp4",
-    "look": "poster916 120 bpm",
+    "look": "poster916 124 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-1.jpg"
    },
    {
-    "key": "feater|time million feat. vilja larjos - pepe bradock bonus bit & villalobos dubs",
-    "title": "Feater – Time Million Feat. Vilja Larjos - Pepe Bradock Bonus Bit & Villalobos Dubs",
+    "key": "various artists|boccaccio life – 1987-1993 part 2",
+    "title": "Various Artists – Boccaccio Life – 1987-1993 Part 2",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-2.mp4",
-    "look": "poster916 138 bpm",
+    "look": "poster916 123 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-2.jpg"
    },
    {
-    "key": "feater|time million feat. vilja larjos - pepe bradock & villalobos remixes",
-    "title": "Feater – Time Million Feat. Vilja Larjos - Pepe Bradock & Villalobos Remixes",
+    "key": "bella boo, kurt. & aasthma|kurt's. jam",
+    "title": "Bella Boo, KURT. & Aasthma – KURT's. Jam",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-3.mp4",
-    "look": "poster916 124 bpm",
+    "look": "poster916 128 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-3.jpg"
    }
   ],
   "reel": {
-   "key": "discoteca tropicana|discoteca tropicana ep",
-   "title": "Discoteca Tropicana – Discoteca Tropicana EP",
+   "key": "feater|time million feat. vilja larjos - pepe bradock & villalobos remixes",
+   "title": "Feater – Time Million Feat. Vilja Larjos - Pepe Bradock & Villalobos Remixes",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261101-1.mp4",
-   "look": "poster916 120 bpm",
+   "look": "poster916 124 bpm",
    "v": 23,
    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261101-1.jpg"
   }
