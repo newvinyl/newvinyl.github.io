@@ -1,10 +1,10 @@
 {
  "date": "2026-11-01",
  "total": {
-  "records": 4109,
-  "tracks": 3243,
-  "clip": 696,
-  "none": 170
+  "records": 4162,
+  "tracks": 3271,
+  "clip": 719,
+  "none": 172
  },
  "shops": {
   "Hardwax": {
@@ -38,20 +38,20 @@
    "none": 31
   },
   "Redeye Records": {
-   "records": 1100,
-   "tracks": 403,
-   "clip": 660,
-   "none": 37
+   "records": 1130,
+   "tracks": 409,
+   "clip": 683,
+   "none": 38
   },
   "Yoyaku": {
-   "records": 307,
-   "tracks": 306,
+   "records": 319,
+   "tracks": 318,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 112,
-   "tracks": 104,
+   "records": 113,
+   "tracks": 105,
    "clip": 0,
    "none": 8
   },
@@ -68,8 +68,8 @@
    "none": 50
   },
   "Vinyl Underground": {
-   "records": 239,
-   "tracks": 234,
+   "records": 241,
+   "tracks": 236,
    "clip": 0,
    "none": 5
   },
@@ -98,14 +98,14 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 84,
-   "tracks": 84,
+   "records": 86,
+   "tracks": 86,
    "clip": 0,
    "none": 0
   },
   "Diggers.fr": {
-   "records": 90,
-   "tracks": 90,
+   "records": 95,
+   "tracks": 95,
    "clip": 0,
    "none": 0
   },
@@ -122,10 +122,10 @@
    "none": 0
   },
   "Side One": {
-   "records": 48,
+   "records": 49,
    "tracks": 46,
    "clip": 0,
-   "none": 2
+   "none": 3
   },
   "SoundGround": {
    "records": 124,
@@ -152,28 +152,25 @@
    "none": 1
   }
  },
- "pages_checked": 839,
- "new_from_shop_pages": 0,
+ "pages_checked": 37,
+ "new_from_shop_pages": 7,
  "copied_from_other_shop": 0,
- "broken_clips_removed": 15,
- "clips_verified": 12248,
- "not_reachable": {
-  "Redeye Records: failed:UnicodeEncodeError": 42,
-  "Redeye Records: http403": 4
- },
+ "broken_clips_removed": 14,
+ "clips_verified": 12403,
+ "not_reachable": {},
  "clip_hosts": {
   "bordelloaparigi.com": {
-   "clips": 369,
+   "clips": 376,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 1048,
+   "clips": 1052,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1013,
+   "clips": 1031,
    "failed": 0,
    "sample": []
   },
@@ -183,7 +180,7 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 445,
+   "clips": 502,
    "failed": 0,
    "sample": []
   },
@@ -226,7 +223,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 666,
+   "clips": 689,
    "failed": 0,
    "sample": []
   },
@@ -273,7 +270,7 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 798,
+   "clips": 844,
    "failed": 0,
    "sample": []
   },

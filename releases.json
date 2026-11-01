@@ -77071,7 +77071,25 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-11",
-     "first_seen": "2026-11-01"
+     "first_seen": "2026-11-01",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Oblivion"
+      },
+      {
+       "s": "A2",
+       "n": "Androgena"
+      },
+      {
+       "s": "B1",
+       "n": "Exodus"
+      },
+      {
+       "s": "B2",
+       "n": "Until We Arrive"
+      }
+     ]
     },
     {
      "a": "STEFAN GOLDMANN",
@@ -77083,13 +77101,7 @@
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/202682-macrom86-stefan-goldmann-atelier-lp/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193385-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193385.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "Exp. 13 Nov",
      "m": "2026-11",
@@ -88995,7 +89007,58 @@
      "p": 34.0,
      "url": "https://yoyaku.io/release/yosi-horikawa-vapor-fw108lp/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/FW108LP-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Intro",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Bump",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Maki",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Splash",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1: Beer",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2: Wandering",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1: Interlude",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2: Summer in 1987",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_8.mp3"
+      },
+      {
+       "s": "",
+       "n": "E1: Kingdom Of Frogs",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_9.mp3"
+      },
+      {
+       "s": "",
+       "n": "E2: Rainbow",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FW108LP_10.mp3"
+      }
+     ],
      "g": "Ambient",
      "m": "2026-11",
      "first_seen": "2026-11-01"
@@ -89009,7 +89072,33 @@
      "p": 25.0,
      "url": "https://yoyaku.io/release/7fo-ryu-no-nukegara-em1178lp2/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/EM1178LP2-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Hou",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/EM1178LP2_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Ten",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/EM1178LP2_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Mi",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/EM1178LP2_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sou",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/EM1178LP2_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Ryu no Nukegara",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/EM1178LP2_5.mp3"
+      }
+     ],
      "g": "Ambient",
      "m": "2026-11",
      "first_seen": "2026-11-01"
@@ -89058,7 +89147,28 @@
      "p": 19.0,
      "url": "https://yoyaku.io/release/various-artists-still-blowing-blow19/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/BLOW19-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Matti Turunen - Antilon",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW19_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Qwerty & EDMX - Full Ranks",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW19_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Mono Junk - Tahti",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW19_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sleep Mathew - Cripple Fabric",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW19_4.mp3"
+      }
+     ],
      "g": "Electro / House / Techno",
      "m": "2026-11",
      "first_seen": "2026-11-01"
@@ -89072,7 +89182,38 @@
      "p": 13.5,
      "url": "https://yoyaku.io/release/the-jaffa-kid-s-t-blow09/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/BLOW09-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Itled",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW09_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "Ppatch",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW09_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "Rainbow Eyes",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW09_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "Tearing Inside Out",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW09_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "Krout",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW09_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "Dolt",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW09_6.mp3"
+      }
+     ],
      "g": "Acid Techno",
      "m": "2026-11",
      "first_seen": "2026-11-01"
@@ -89086,7 +89227,58 @@
      "p": 20.5,
      "url": "https://yoyaku.io/release/atonal-bridge-blow07/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/BLOW07-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Braid Hills",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Codeine",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: CP1919",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: This Heat",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1: No Escape",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2: Molly",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1: Flight",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2: Edina H",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_8.mp3"
+      },
+      {
+       "s": "",
+       "n": "E1: Eyeless",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_9.mp3"
+      },
+      {
+       "s": "",
+       "n": "E2: Arkanoids",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BLOW07_10.mp3"
+      }
+     ],
      "g": "Ambient / Techno",
      "m": "2026-11",
      "first_seen": "2026-11-01"
@@ -89140,7 +89332,48 @@
      "p": 25.0,
      "url": "https://yoyaku.io/release/east-coast-love-affair-musica-para-todos-aotnlp069/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/AOTNLP069-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Musica Para Todos (feat. For Mankind)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Ullal De Da Coloms",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Punta Moscarter",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Xylocopa Violacea",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1: The Morrígan Sings (feat. For Mankind)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2: Stay Above with Love (feat. For Mankind)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1: I Can't Wait (feat. Philomenah)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2: A Gradual Precipitation",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/AOTNLP069_8.mp3"
+      }
+     ],
      "g": "Balearic / Deep House",
      "m": "2026-11",
      "first_seen": "2026-11-01"
@@ -89154,7 +89387,23 @@
      "p": 12.0,
      "url": "https://yoyaku.io/release/k15-resonance-2054black/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/2054BLACK-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Resonance",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/2054BLACK_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Within Reach",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/2054BLACK_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Resistance",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/2054BLACK_3.mp3"
+      }
+     ],
      "g": "Deep House",
      "m": "2026-11",
      "first_seen": "2026-11-01"
