@@ -24,6 +24,7 @@ from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import reelfx
 import coverlife
+from group_keys import group_key as site_key
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SLUG = "92h6fy"
@@ -139,10 +140,11 @@ def candidates(data, day, seen):
     for s in data["shops"]:
         for it in s.get("items") or []:
             x = dict(it, shop=s["shop"], cur=s.get("cur", "€"), country=s.get("country", ""))
-            G.setdefault(gkey(it), []).append(x)
+            G.setdefault(site_key(it), []).append(x)                   # same grouping as the website
     cands = []
-    for k, arr in G.items():
-        if k in seen:
+    for _sk, arr in G.items():
+        k = gkey(arr[0])
+        if any(gkey(x) in seen for x in arr):
             continue
         if any(re.search(r"\b(used|second[ -]hand|2nd hand)\b", (x.get("t") or "") + " " + (x.get("g") or ""), re.I) for x in arr):
             continue                                                          # second-hand copies are no new release
