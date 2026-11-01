@@ -1,12 +1,12 @@
 {
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "fx": {
   "CHF": 1,
-  "EUR": 0.9298,
-  "GBP": 1.0983,
-  "USD": 0.824,
-  "date": "2026-10-18",
-  "PLN": 0.2119
+  "EUR": 0.9194,
+  "GBP": 1.1027,
+  "USD": 0.823,
+  "date": "2026-11-01",
+  "PLN": 0.2088
  },
  "shops": [
   {
@@ -72475,7 +72475,13 @@
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/202529-anjdee434r-ben-böhmer-breathing-7-year-anniversary-release/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193276-2.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Breathing (Full Album)",
+       "yt": "JBJtuDuHvoU"
+      }
+     ],
      "st": "pre",
      "d": "Exp. 27 Nov",
      "m": "2026-10",
@@ -75602,7 +75608,28 @@
      "p": 16.64,
      "url": "https://www.redeyerecords.co.uk/vinyl/183946-rxt-02g-fresh-and-low-open-spance-ep-limited-crystal-clear-green-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/183556-2.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "1. Sea Of Desire",
+       "u": "https://play.syncrophone.fr/syncro/rxt021.mp3"
+      },
+      {
+       "s": "",
+       "n": "2. Espresso",
+       "u": "https://play.syncrophone.fr/syncro/rxt022.mp3"
+      },
+      {
+       "s": "",
+       "n": "3. Where The Wolves Once Roamed",
+       "u": "https://play.syncrophone.fr/syncro/rxt023.mp3"
+      },
+      {
+       "s": "",
+       "n": "4. Where The Wolves Return",
+       "u": "https://play.syncrophone.fr/syncro/rxt024.mp3"
+      }
+     ],
      "st": "in",
      "g": "House",
      "m": "2026-10",
@@ -88277,9 +88304,14 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
+       "s": "1",
        "n": "Black Swords",
-       "s": "",
-       "u": ""
+       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Timeless Time",
+       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
       }
      ],
      "st": "in"
@@ -91264,7 +91296,13 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
+      }
+     ],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -141839,19 +141877,9 @@
      "cover": "https://www.deejay.de/images/l/4/1/1244641.jpg",
      "tr": [
       {
-       "s": "A1",
-       "n": "Sunlight",
-       "page": "https://www.deejay.de/FORT_ROMEAU_Sunlight_EP_RAWAX0361_Vinyl__1244641"
-      },
-      {
-       "s": "A2",
-       "n": "Hows Music",
-       "page": "https://www.deejay.de/FORT_ROMEAU_Sunlight_EP_RAWAX0361_Vinyl__1244641"
-      },
-      {
-       "s": "B1",
-       "n": "Moonlight",
-       "page": "https://www.deejay.de/FORT_ROMEAU_Sunlight_EP_RAWAX0361_Vinyl__1244641"
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/190319.mp3"
       }
      ],
      "st": "in"
@@ -167157,7 +167185,23 @@
      "g": "Techno",
      "url": "https://shop.carpetandsnares.com/release/7498665172/c-and-g-southsystem-dual-ep",
      "cover": "https://creators-images-production.fra1.cdn.digitaloceanspaces.com/releases/7770895472/img-c-2435439763.jpeg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Dual EP A1",
+       "yt": "0ZQmTFwyOHU"
+      },
+      {
+       "s": "B1",
+       "n": "Dual EP B1",
+       "yt": "1_LLEVVSWR8"
+      },
+      {
+       "s": "B2",
+       "n": "Dual EP B2",
+       "yt": "HOwKxSxPK00"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-26"
     },
@@ -167185,7 +167229,13 @@
      "g": "Minimal",
      "url": "https://shop.carpetandsnares.com/release/7000649620/samuel-rohrer-range-of-regularity",
      "cover": "https://creators-images-production.fra1.cdn.digitaloceanspaces.com/releases/8780197134/img-c-2332619042.jpeg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Uncertain Grace",
+       "yt": "FKLHhUaISZE"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-26"
     },
@@ -167199,7 +167249,13 @@
      "g": "Minimal Techno / Ambient",
      "url": "https://shop.carpetandsnares.com/release/8249674/Ambiq-Ambiq-2-Remixed:-Thomas-Fehlmann-and-Margaret-Dygas",
      "cover": "https://static.common-ground.io/shops/37/releases/8249674/img-d-rneWTxXaCb.jpeg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "The Mother (Margaret Dygas Remix)",
+       "yt": "jfu9VX9_Yoo"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-26"
     },
@@ -167213,7 +167269,13 @@
      "g": "House",
      "url": "https://shop.carpetandsnares.com/release/7632263574/aquatherium-full-moon-ep",
      "cover": "https://creators-images-production.fra1.cdn.digitaloceanspaces.com/releases/2157051030/img-c-9521488841.jpeg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Full Moon (Desert Mix)",
+       "yt": "niCVLUdBRvk"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-26"
     },
