@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-02",
  "fx": {
   "CHF": 1,
   "EUR": 0.9194,
@@ -12643,6 +12643,41 @@
      "g": "Techno · Reissue",
      "m": "2026-10",
      "first_seen": "2026-10-30"
+    },
+    {
+     "a": "DISCOTECA TROPICANA",
+     "t": "DISCOTECA TROPICANA",
+     "l": "SELVA DISCOS",
+     "cat": "SLVDSCS11",
+     "f": "12\"",
+     "g": "Disco",
+     "url": "https://www.rushhour.nl/record/vinyl/discoteca-tropicana",
+     "cover": "https://objectstore.true.nl/rushhourrecords:files/styles/cover_medium/storage-api-public/discoteca-tropicana-thumb_presale.jpg?itok=ldbUjC9k",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/s/slvdscs11_discoteca_tropicana/a1_discoteca_tropicana_-_corpos_celestes_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/s/slvdscs11_discoteca_tropicana/a2_-_discoteca_tropicana_-_corpo_treme_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/s/slvdscs11_discoteca_tropicana/b1_-_discoteca_tropicana_-_tobina_snippet.mp3"
+      },
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/s/slvdscs11_discoteca_tropicana/b2_-_discoteca_tropicana_-_nao_pode_acabar_snippet.mp3"
+      }
+     ],
+     "d": "W 45 - 2026",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ],
    "country": "NL"
@@ -29623,6 +29658,150 @@
      "g": "House / Ambient",
      "m": "2026-10",
      "first_seen": "2026-10-31"
+    },
+    {
+     "a": "Michael J. Blood",
+     "t": "Fixed Fire",
+     "l": "Clone Royal Oak",
+     "cat": "Royal066",
+     "f": "12\"",
+     "p": 14.99,
+     "url": "https://clone.nl/item85131.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage84207.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "FIXED FIRE",
+       "u": "https://clone.nl/platen/mp3/85131/1%20FIXED%20FIRE.mp3"
+      },
+      {
+       "s": "02",
+       "n": "CARDINAL EARTH",
+       "u": "https://clone.nl/platen/mp3/85131/2%20CARDINAL%20EARTH.mp3"
+      },
+      {
+       "s": "03",
+       "n": "MUTABLE WATER",
+       "u": "https://clone.nl/platen/mp3/85131/3%20MUTABLE%20WATER.mp3"
+      },
+      {
+       "s": "04",
+       "n": "FIXED AIR",
+       "u": "https://clone.nl/platen/mp3/85131/4%20FIXED%20AIR.mp3"
+      }
+     ],
+     "g": "House",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Michael J. Blood",
+     "t": "Fixed Fire (Marbled vinyl)",
+     "l": "Clone Royal Oak",
+     "cat": "Royal066C",
+     "f": "12\"",
+     "p": 15.99,
+     "url": "https://clone.nl/item85130.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage84206.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "FIXED FIRE",
+       "u": "https://clone.nl/platen/mp3/85130/1%20FIXED%20FIRE.mp3"
+      },
+      {
+       "s": "02",
+       "n": "CARDINAL EARTH",
+       "u": "https://clone.nl/platen/mp3/85130/2%20CARDINAL%20EARTH.mp3"
+      },
+      {
+       "s": "03",
+       "n": "MUTABLE WATER",
+       "u": "https://clone.nl/platen/mp3/85130/3%20MUTABLE%20WATER.mp3"
+      },
+      {
+       "s": "04",
+       "n": "FIXED AIR",
+       "u": "https://clone.nl/platen/mp3/85130/4%20FIXED%20AIR.mp3"
+      }
+     ],
+     "g": "House",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Hodge",
+     "t": "Magenta Glow EP",
+     "l": "Interdimensional Transmissions",
+     "cat": "IT056",
+     "f": "EP",
+     "p": 15.99,
+     "url": "https://clone.nl/item84867.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage83947.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "Floating On Air",
+       "u": "https://clone.nl/platen/mp3/84867/1%20Floating%20On%20Air.mp3"
+      },
+      {
+       "s": "02",
+       "n": "Magenta Glow",
+       "u": "https://clone.nl/platen/mp3/84867/2%20Magenta%20Glow.mp3"
+      },
+      {
+       "s": "03",
+       "n": "Tension Release",
+       "u": "https://clone.nl/platen/mp3/84867/3%20Tension%20Release.mp3"
+      },
+      {
+       "s": "04",
+       "n": "Oankali",
+       "u": "https://clone.nl/platen/mp3/84867/4%20Oankali.mp3"
+      }
+     ],
+     "g": "Techno",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "INVT",
+     "t": "8 AM Swim",
+     "l": "INVT",
+     "cat": "INVT-001",
+     "f": "LP",
+     "p": 17.99,
+     "url": "https://clone.nl/item83961.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage83052.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "DIP TEK",
+       "u": "https://clone.nl/platen/mp3/83961/1%20DIP%20TEK.mp3"
+      },
+      {
+       "s": "02",
+       "n": "CARINOSA",
+       "u": "https://clone.nl/platen/mp3/83961/2%20CARINOSA.mp3"
+      },
+      {
+       "s": "03",
+       "n": "SALSA SWING",
+       "u": "https://clone.nl/platen/mp3/83961/3%20SALSA%20SWING.mp3"
+      },
+      {
+       "s": "04",
+       "n": "LENS BLUR",
+       "u": "https://clone.nl/platen/mp3/83961/4%20LENS%20BLUR.mp3"
+      }
+     ],
+     "g": "House / Techno",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ],
    "country": "NL"
@@ -29961,7 +30140,13 @@
      "first_seen": "2026-10-06",
      "url": "https://www.phonicarecords.com/product/conrad-van-orton-know-how-key-vinyl/214412",
      "cover": "https://d1c4rk9le5opln.cloudfront.net/a82f3a9ebe671f7a2f2a4eaa95c2216c.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192382.mp3"
+      }
+     ],
      "st": "pre"
     },
     {
@@ -65590,9 +65775,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193131-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193131.mp3"
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-B2.mp3"
       }
      ],
      "st": "pre",
@@ -72880,8 +73080,23 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193287.mp3"
+       "n": "Nine Lives",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-01-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "I Know, You Know",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-01-02.mp3"
+      },
+      {
+       "s": "",
+       "n": "Hear Me Out",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-02-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Love, No Control",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -76354,7 +76569,33 @@
      "p": 15.0,
      "url": "https://www.redeyerecords.co.uk/vinyl/200012-mainrecords13-various-artists-25-years-mainrecords/",
      "cover": "https://www.redeyerecords.co.uk/imagery/191711-2.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Z Ric Aka Cedric Dewoski - \"Naoma\"",
+       "u": "https://www.juno.co.uk/MP3/SF1157285-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "CSMS - \"Solaris\"",
+       "u": "https://www.juno.co.uk/MP3/SF1157285-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Default Mode Network - \"Fusion\"",
+       "u": "https://www.juno.co.uk/MP3/SF1157285-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Ruper Hartick - \"Funk Tion\"",
+       "u": "https://www.juno.co.uk/MP3/SF1157285-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Synthias - \"Journey Through Time & Space\"",
+       "u": "https://www.juno.co.uk/MP3/SF1157285-01-02-03.mp3"
+      }
+     ],
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
@@ -77253,6 +77494,193 @@
      "d": "Exp. 13 Nov",
      "m": "2026-11",
      "first_seen": "2026-11-01"
+    },
+    {
+     "a": "Levan Grdzelidze",
+     "t": "Izamat",
+     "l": "Griffé",
+     "cat": "GRFF021",
+     "f": "",
+     "p": 16.37,
+     "g": "House",
+     "url": "https://www.redeyerecords.co.uk/vinyl/188060-grff021-levan-grdzelidze-izamat/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/186048-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/186048.mp3"
+      }
+     ],
+     "st": "pre",
+     "d": "Exp. 6 Nov",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Mr. Barcode",
+     "t": "Battlestar",
+     "l": "Mr Barcode",
+     "cat": "QR001",
+     "f": "",
+     "p": 16.49,
+     "g": "House",
+     "url": "https://www.redeyerecords.co.uk/vinyl/181058-qr001-mr-barcode-battlestar/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/181764-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/181764.mp3"
+      }
+     ],
+     "st": "pre",
+     "d": "Exp. 13 Nov",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Cabin Luv Affair",
+     "t": "Bien Suave EP",
+     "l": "Chiwax",
+     "cat": "CWX09",
+     "f": "",
+     "p": 14.68,
+     "g": "House",
+     "url": "https://www.redeyerecords.co.uk/vinyl/189495-cwx09-cabin-luv-affair-bien-suave-ep/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/186944-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/186944.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Matthew Dexter",
+     "t": "Year After Lightyear",
+     "l": "Subplanet",
+     "cat": "S-PL02",
+     "f": "",
+     "p": 25.08,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/180284-s-pl02-matthew-dexter-year-after-lightyear/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/181279-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/181279.mp3"
+      }
+     ],
+     "st": "pre",
+     "d": "Exp. 6 Nov",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Arapu",
+     "t": "Acompañado",
+     "l": "Rawax",
+     "cat": "RWX016",
+     "f": "",
+     "p": 14.17,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/134595-rwx016-arapu-acompañado/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/153667-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/153667.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Heritage",
+     "t": "The Shadow Boxer",
+     "l": "Shaw Cuts",
+     "cat": "SC025",
+     "f": "",
+     "p": 15.0,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/201299-sc025-heritage-the-shadow-boxer/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/192476-2.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "Looking Back, Moving Forward",
+       "u": "https://media.hardwax.com/audio/88713_01.mp3"
+      },
+      {
+       "s": "02",
+       "n": "Dancehall",
+       "u": "https://media.hardwax.com/audio/88713_02.mp3"
+      },
+      {
+       "s": "03",
+       "n": "2003",
+       "u": "https://media.hardwax.com/audio/88713_03.mp3"
+      },
+      {
+       "s": "04",
+       "n": "Haywire",
+       "u": "https://media.hardwax.com/audio/88713_04.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Various Artists",
+     "t": "Massage Brain Cult EP - MBC004",
+     "l": "Massage Brain Cult",
+     "cat": "MBC004",
+     "f": "",
+     "p": 16.64,
+     "g": "Techno",
+     "url": "https://www.redeyerecords.co.uk/vinyl/193308-mbc004-massage-brain-cult-ep-mbc004-va/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/188659-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/188659.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Pedro Vian",
+     "t": "Before The Strings (Lim 250 Handnumbered)",
+     "l": "Modern Obscure Music",
+     "cat": "MOM071",
+     "f": "",
+     "p": 36.4,
+     "g": "Ambient",
+     "url": "https://www.redeyerecords.co.uk/vinyl/202681-mom071-pedro-vian-before-the-strings-lim-250-handnumbered/",
+     "cover": "https://www.redeyerecords.co.uk/imagery/703528-2.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/703528.mp3"
+      }
+     ],
+     "st": "pre",
+     "d": "Exp. 1 Dec",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ],
    "country": "UK"
@@ -89407,6 +89835,69 @@
      "g": "Deep House",
      "m": "2026-11",
      "first_seen": "2026-11-01"
+    },
+    {
+     "a": "Ishio Dai",
+     "t": "Coco Dub / Bs",
+     "l": "effective96",
+     "cat": "EF007",
+     "f": "12\"",
+     "p": 10.0,
+     "url": "https://yoyaku.io/release/ishio-dai-coco-dub-bs-ef007/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/10/EF007-400x400.jpg",
+     "tr": [],
+     "g": "Dub Techno",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Various Artists",
+     "t": "Documents Of Different Reality",
+     "l": "Cold Blow",
+     "cat": "BLOW23",
+     "f": "2×12\"",
+     "p": 31.67,
+     "url": "https://yoyaku.io/release/various-artists-documents-of-different-reality-2x12-blow23/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/07/BLOW23-400x400.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Eternal Life - 2000 and One - Sandy Huner",
+       "u": "https://clone.nl/platen/mp3/83958/1%20Eternal%20Life%20-%202000%20and%20One%20-%20Sandy%20Huner.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Life For Ever (Infinite Dream Mix) - Mind Control",
+       "u": "https://clone.nl/platen/mp3/83958/2%20Life%20For%20Ever%20%28Infinite%20Dream%20Mix%29%20-%20Mind%20Control.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Positive Negative - LA Synthesis",
+       "u": "https://clone.nl/platen/mp3/83958/3%20Positive%20Negative%20-%20LA%20Synthesis.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Break It - Thor",
+       "u": "https://clone.nl/platen/mp3/83958/4%20Break%20It%20-%20Thor.mp3"
+      }
+     ],
+     "g": "Electro / Techno",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Piero Umiliani",
+     "t": "Fantasy",
+     "l": "Four Flies Records",
+     "cat": "FLIES83",
+     "f": "12\"",
+     "p": 35.83,
+     "url": "https://yoyaku.io/release/piero-umiliani-fantasy-flies83/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/10/FLIES83-400x400.jpg",
+     "tr": [],
+     "g": "Ambient",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ],
    "country": "FR"
@@ -92555,7 +93046,13 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
+      }
+     ],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -93682,6 +94179,105 @@
      "g": "House",
      "m": "2026-11",
      "first_seen": "2026-11-01"
+    },
+    {
+     "a": "Ian Pooley",
+     "t": "Rollerkate Disco EP",
+     "l": "Definitive Recordings",
+     "cat": "DEFCLAS034V",
+     "f": "12\"",
+     "p": null,
+     "g": "House",
+     "url": "https://kompakt.fm/releases/rollerkate_disco_ep",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a7c5a00e5e57-6a7c7554c330f-fitted.jpg?v=2",
+     "tr": [
+      {
+       "s": "",
+       "n": "Roller Skate Disco",
+       "yt": "4oICEM5WBqw"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "V/A(D.Bortz/M.Pagliara/SamGoku/NewJackson/ ... )",
+     "t": "Permanent Vacation XX EP3",
+     "l": "Permanent Vacation",
+     "cat": "Permvac380-5",
+     "f": "12\"",
+     "p": null,
+     "g": "Disco / House",
+     "url": "https://kompakt.fm/releases/permanent_vacation_xx_ep3",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6ac3a07a524fa-6ac4aa70d2d5e-fitted.jpg?v=2",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192766.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02",
+     "gk": "variousartists|permanentvacationxxep3"
+    },
+    {
+     "a": "Kapote presents",
+     "t": "Italomania Vol. 4 (2LP)",
+     "l": "Toy Tonics",
+     "cat": "TOYT201",
+     "f": "2×LP",
+     "p": null,
+     "g": "Italo Disco",
+     "url": "https://kompakt.fm/releases/italomania_vol_4_2lp",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a918cb46fef7-6a91aa05c2108-fitted.jpg?v=2",
+     "tr": [
+      {
+       "s": "",
+       "n": "Italiani Brava Gente",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_2_Giorgio_Lopez_feat._Sueno_-_Italiani_Brava_Gente.mp3"
+      },
+      {
+       "s": "",
+       "n": "Saper Ringraziare Extended Version",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_3_The_Cube_Guys_-_Saper_Ringraziare_Extended_Version.mp3"
+      },
+      {
+       "s": "",
+       "n": "Italomexicano",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_4_Juan_Soto_Sam_Ruffillo_-_Italomexicano.mp3"
+      },
+      {
+       "s": "",
+       "n": "I Cant Understand Extended Version",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_5_KOKO_feat._Elena_Moroder_-_I_Cant_Understand_Extended_Version.mp3"
+      },
+      {
+       "s": "",
+       "n": "Le Luci Della Pista",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_6_Luca_Averna_-_Le_Luci_Della_Pista.mp3"
+      },
+      {
+       "s": "",
+       "n": "E Venerdi",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_7_Ricardo_Baez_-_E_Venerdi.mp3"
+      },
+      {
+       "s": "",
+       "n": "La Notte Chiama",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_8_Euro_Nettuno_-_La_Notte_Chiama.mp3"
+      },
+      {
+       "s": "",
+       "n": "JAdore Napoli",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/kapote-presents-italomania-vol-4-2lp/1_9_Paccone_feat._Ellynora_-_JAdore_Napoli.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ]
   },
@@ -147468,6 +148064,183 @@
      "d": "30.10.26",
      "m": "2026-10",
      "first_seen": "2026-10-31"
+    },
+    {
+     "a": "Unknown",
+     "t": "What is Love EP",
+     "l": "Kaveon",
+     "cat": "KAVEON001",
+     "f": "12\"",
+     "p": 11.72,
+     "g": "Minimal House / Tech House",
+     "url": "https://www.deejay.de/Unknown_What_is_Love_EP_KAVEON001_Vinyl__1249111",
+     "cover": "https://www.deejay.de/images/l/1/1/1249111.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Against",
+       "page": "https://www.deejay.de/Unknown_What_is_Love_EP_KAVEON001_Vinyl__1249111"
+      },
+      {
+       "s": "B1",
+       "n": "What Is Love",
+       "page": "https://www.deejay.de/Unknown_What_is_Love_EP_KAVEON001_Vinyl__1249111"
+      },
+      {
+       "s": "B2",
+       "n": "Dreamed About",
+       "page": "https://www.deejay.de/Unknown_What_is_Love_EP_KAVEON001_Vinyl__1249111"
+      }
+     ],
+     "d": "02.11.2026",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Various",
+     "t": "MOTHERV005",
+     "l": "Mother Recordings",
+     "cat": "MOTHERV005",
+     "f": "12\"",
+     "p": 11.72,
+     "g": "Tech House",
+     "url": "https://www.deejay.de/Various_MOTHERV005_MOTHERV005_Vinyl__1245037",
+     "cover": "https://www.deejay.de/images/l/3/7/1245037.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Mat Joe - Love Stream (Nick Curly Remix)",
+       "yt": "AMwlcwo5DQo"
+      },
+      {
+       "s": "A2",
+       "n": "Leon, Shaf Huse - Power To The People (Tube & Berger Remix)",
+       "page": "https://www.deejay.de/Various_MOTHERV005_MOTHERV005_Vinyl__1245037"
+      },
+      {
+       "s": "B1",
+       "n": "Nesi, Mr V - Feel Blessed (Kristin Velvet Remix)",
+       "page": "https://www.deejay.de/Various_MOTHERV005_MOTHERV005_Vinyl__1245037"
+      },
+      {
+       "s": "B2",
+       "n": "The Deepshakerz - Take My Body (Tigerstripes Remix)",
+       "page": "https://www.deejay.de/Various_MOTHERV005_MOTHERV005_Vinyl__1245037"
+      }
+     ],
+     "d": "02.11.2026",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Westcoast Goddess",
+     "t": "Happy Planet",
+     "l": "Chiwax",
+     "cat": "CWX010",
+     "f": "12\"",
+     "p": 12.56,
+     "g": "Acid House",
+     "url": "https://www.deejay.de/Westcoast_Goddess_Happy_Planet_CWX010_Vinyl__1234666",
+     "cover": "https://www.deejay.de/images/l/6/6/1234666.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "BABY GRAND",
+       "page": "https://www.deejay.de/Westcoast_Goddess_Happy_Planet_CWX010_Vinyl__1234666"
+      },
+      {
+       "s": "A2",
+       "n": "80'S TRIP",
+       "page": "https://www.deejay.de/Westcoast_Goddess_Happy_Planet_CWX010_Vinyl__1234666"
+      },
+      {
+       "s": "B1",
+       "n": "PREGNANT RAVER",
+       "page": "https://www.deejay.de/Westcoast_Goddess_Happy_Planet_CWX010_Vinyl__1234666"
+      },
+      {
+       "s": "B2",
+       "n": "ACID KISS",
+       "page": "https://www.deejay.de/Westcoast_Goddess_Happy_Planet_CWX010_Vinyl__1234666"
+      }
+     ],
+     "d": "02.11.2026",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Cherrymoon Trax / Thomas Schumacher",
+     "t": "The House Of House / When I Rock Remixes",
+     "l": "Electric Ballroom",
+     "cat": "EBM036",
+     "f": "12\"",
+     "p": 14.24,
+     "g": "Techno",
+     "url": "https://www.deejay.de/Cherrymoon_Trax_Thomas_Schumacher_The_House_Of_House_When_I_Rock_Remixes_EBM036_Vinyl__1028651",
+     "cover": "https://www.deejay.de/images/l/5/1/1028651.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "The House Of House (Thomas Schumacher 1994 Remix)",
+       "page": "https://www.deejay.de/Cherrymoon_Trax_Thomas_Schumacher_The_House_Of_House_When_I_Rock_Remixes_EBM036_Vinyl__1028651"
+      },
+      {
+       "s": "B1",
+       "n": "Thomas Schumacher – When I Rock (A D.H.S. Remix)",
+       "yt": "mvue_08Hp98"
+      }
+     ],
+     "d": "02.11.2026",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "LIS SARROCA",
+     "t": "Rare Ocassion",
+     "l": "Rawax Records",
+     "cat": "RAWAX030LTD",
+     "f": "12\"",
+     "p": 13.23,
+     "g": "Techno",
+     "url": "https://www.deejay.de/LIS_SARROCA_Rare_Ocassion_RAWAX030LTD_Vinyl__1261843",
+     "cover": "https://www.deejay.de/images/l/4/3/1261843.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/191824.mp3"
+      }
+     ],
+     "d": "02.11.2026",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Len Lewis",
+     "t": "Paradise People +",
+     "l": "Dzungla",
+     "cat": "DZUN004",
+     "f": "12\"",
+     "p": 14.24,
+     "g": "Minimal House / Tech House / Techno",
+     "url": "https://www.deejay.de/Len_Lewis_Paradise_People_+_DZUN004_Vinyl__1269740",
+     "cover": "https://www.deejay.de/images/l/4/0/1269740.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/192752.mp3"
+      }
+     ],
+     "d": "01.11.2026",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ]
   },
@@ -156715,6 +157488,89 @@
      "st": "pre",
      "m": "2026-11",
      "first_seen": "2026-11-01"
+    },
+    {
+     "a": "TWILITE TONE",
+     "t": "Joy & Work",
+     "l": "Star Creature",
+     "cat": "SC7095",
+     "f": "7\"",
+     "p": 21.0,
+     "g": "Deep House",
+     "url": "https://www.vinylunderground.co.uk/products/twilite-tone-joy-work",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/CS1188729-01A-BIG.jpg?v=1793602855&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Joy",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188729-01-01-01.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Felipe GORDON",
+     "t": "The Multicolor EP",
+     "l": "Star Creature",
+     "cat": "SC1280",
+     "f": "12\"",
+     "p": 22.0,
+     "g": "Deep House",
+     "url": "https://www.vinylunderground.co.uk/products/felipe-gordon-the-multicolor-ep",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/CS1188718-01A-BIG.jpg?v=1793602692&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Nine Lives",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-01-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "I Know, You Know",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-01-02.mp3"
+      },
+      {
+       "s": "",
+       "n": "Hear Me Out",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-02-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Love, No Control",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1188718-01-02-02.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Richard Grey & Daniel Poli",
+     "t": "Contemplating Evil",
+     "l": "Slow-Wave",
+     "cat": "SW12",
+     "f": "12\"",
+     "p": 24.0,
+     "g": "Tech House",
+     "url": "https://www.vinylunderground.co.uk/products/richard-grey-daniel-poli-contemplating-evil",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/front_fd709cfd-7df6-4653-9ec4-f1649c5606cd.jpg?v=1793602534&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Respect In Effect",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1271964a.mp3"
+      },
+      {
+       "s": "",
+       "n": "Contemplating Evil",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1271964b.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ]
   },
@@ -168581,6 +169437,1155 @@
      "st": "pre",
      "m": "2026-11",
      "first_seen": "2026-11-01"
+    },
+    {
+     "a": "The Buffalo Bunch",
+     "t": "A Musical Journey With Play Paul & Raw Man",
+     "l": "",
+     "cat": "TMSLP002",
+     "f": "2×LP",
+     "p": 45.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/the-buffalo-bunch-a-musical-journey-with-play-paul-raw-man/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TMSLP002/TMSLP002-FRONTCOVER.webp",
+     "tr": [],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Four Tet",
+     "t": "Ringer",
+     "l": "",
+     "cat": "TEXT060LP",
+     "f": "LP",
+     "p": 32.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/four-tet-ringer/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TEXT060LP/TEXT060LP-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "Ringer (full EP)",
+       "yt": "UloOMFsS7_c"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Various Artists",
+     "t": "Tectonic Sound: Vol. 2",
+     "l": "",
+     "cat": "TECLP029",
+     "f": "2×LP",
+     "p": 40.99,
+     "g": "Techno",
+     "url": "https://diggers.fr/various-artists-tectonic-sound-vol-2/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-A3.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-B3.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-C2.mp3"
+      },
+      {
+       "s": "C3",
+       "n": "C3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-C3.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-D1.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "D2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-D2.mp3"
+      },
+      {
+       "s": "D3",
+       "n": "D3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/TECLP029/TECLP029-D3.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Gigi Fm",
+     "t": "Ventus In Anima",
+     "l": "",
+     "cat": "SRN005",
+     "f": "2×LP",
+     "p": 35.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/gigi-fm-ventus-in-anima/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-A3.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-B2.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-C2.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-D1.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "D2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/SRN005/SRN005-D2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Raymond Van Het Groenewoud",
+     "t": "Live In Paradiso",
+     "l": "",
+     "cat": "RVHG002LP",
+     "f": "2×LP",
+     "p": 35.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/raymond-van-het-groenewoud-live-in-paradiso/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-A3.mp3"
+      },
+      {
+       "s": "A4",
+       "n": "A4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-A4.mp3"
+      },
+      {
+       "s": "A5",
+       "n": "A5",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-A5.mp3"
+      },
+      {
+       "s": "A6",
+       "n": "A6",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-A6.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-B3.mp3"
+      },
+      {
+       "s": "B4",
+       "n": "B4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-B4.mp3"
+      },
+      {
+       "s": "B5",
+       "n": "B5",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-B5.mp3"
+      },
+      {
+       "s": "B6",
+       "n": "B6",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-B6.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-C2.mp3"
+      },
+      {
+       "s": "C3",
+       "n": "C3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-C3.mp3"
+      },
+      {
+       "s": "C4",
+       "n": "C4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-C4.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-D1.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "D2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-D2.mp3"
+      },
+      {
+       "s": "D3",
+       "n": "D3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-D3.mp3"
+      },
+      {
+       "s": "D4",
+       "n": "D4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/RVHG002LP/RVHG002LP-D4.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Richard Skelton & Lawrence English",
+     "t": "Noon",
+     "l": "",
+     "cat": "PHNTM62",
+     "f": "LP",
+     "p": 32.49,
+     "g": "Ambient",
+     "url": "https://diggers.fr/richard-skelton-lawrence-english-noon/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/PHNTM62/PHNTM62-FRONTCOVER.webp",
+     "tr": [],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Ron Trent",
+     "t": "Primitive Arts",
+     "l": "",
+     "cat": "PF92XXXV",
+     "f": "3×LP",
+     "p": 56.99,
+     "g": "Electro",
+     "url": "https://diggers.fr/ron-trent-primitive-arts/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/PF92XXXV/PF92XXXV-FRONTCOVER.webp",
+     "tr": [],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Moodymann",
+     "t": "Mahogany Brown",
+     "l": "",
+     "cat": "PF74XXXV",
+     "f": "2×LP",
+     "p": 51.49,
+     "g": "House",
+     "url": "https://diggers.fr/moodymann-mahogany-brown/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/PF74XXXV/PF74XXXV-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "Radio",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/1_radio.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sunshine",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/2_sunshine.mp3"
+      },
+      {
+       "s": "",
+       "n": "On The Run",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/3_on_the_run.mp3"
+      },
+      {
+       "s": "",
+       "n": "M.E.A.N.D.N.J.B",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/4_m.e.a.n.d.n.j.b.mp3"
+      },
+      {
+       "s": "",
+       "n": "Mahogany Brown",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/5_mahogany_brown.mp3"
+      },
+      {
+       "s": "",
+       "n": "Me And My Peoples Eyes",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/6_me_and_my_peoples_eyes.mp3"
+      },
+      {
+       "s": "",
+       "n": "Stoneodenjoe (House)",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/7_stoneodenjoe_house.mp3"
+      },
+      {
+       "s": "",
+       "n": "Joy Part III",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/8_joy_part_iii.mp3"
+      },
+      {
+       "s": "",
+       "n": "Black Sunday",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/m/62290_mahogany_brown_peacefrog_20_yrs/9_black_sunday.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Paul Johnson",
+     "t": "Bump Talkin’",
+     "l": "",
+     "cat": "PF41XXXV",
+     "f": "2×LP",
+     "p": 48.49,
+     "g": "House",
+     "url": "https://diggers.fr/paul-johnson-bump-talkin/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/PF41XXXV/PF41XXXV-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "Paul Johnson - Bump Talkin",
+       "yt": "tiwHa14kn60"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Caribou",
+     "t": "The Milk Of Human Kindness",
+     "l": "",
+     "cat": "PEF003LP",
+     "f": "LP",
+     "p": 30.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/caribou-the-milk-of-human-kindness/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/PEF003LP/PEF003LP-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "The Milk Of Human Kindness",
+       "yt": "AtTxSz8OGns"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Caribou",
+     "t": "Up In Flames",
+     "l": "",
+     "cat": "PEF002LP",
+     "f": "LP",
+     "p": 25.99,
+     "g": "Electro",
+     "url": "https://diggers.fr/caribou-up-in-flames/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/PEF002LP/PEF002LP-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "Up In Flames (full album)",
+       "yt": "uQDfpcBnHCQ"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Caribou",
+     "t": "Start Breaking My Heart",
+     "l": "",
+     "cat": "PEF001LP",
+     "f": "LP",
+     "p": 30.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/caribou-start-breaking-my-heart/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/PEF001LP/PEF001LP-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "Start Breaking My Heart (full album)",
+       "yt": "TDVym1SRedk"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Acid Casuals",
+     "t": "Omni",
+     "l": "",
+     "cat": "NEXUS003",
+     "f": "LP",
+     "p": 32.99,
+     "g": "Electro",
+     "url": "https://diggers.fr/acid-casuals-omni/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/NEXUS003/NEXUS003-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "Omni (full album)",
+       "yt": "zuNuXTHmsDU"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Various Artists",
+     "t": "No Drama Vol. 3",
+     "l": "",
+     "cat": "NDXP007",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "House",
+     "url": "https://diggers.fr/various-artists-no-drama-vol-3/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/NDXP007/NDXP007-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/NDXP007/NDXP007-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/NDXP007/NDXP007-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/NDXP007/NDXP007-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/NDXP007/NDXP007-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Mike Risk",
+     "t": "Now Is Forever",
+     "l": "",
+     "cat": "MWR003LP",
+     "f": "2×LP",
+     "p": 33.99,
+     "g": "House",
+     "url": "https://diggers.fr/mike-risk-now-is-forever/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-B2.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-C2.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-D1.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "D2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MWR003LP/MWR003LP-D2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Robert Hood",
+     "t": "Red Passion 3",
+     "l": "",
+     "cat": "MPM57",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/robert-hood-red-passion-3/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM57/MPM57-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM57/MPM57-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM57/MPM57-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM57/MPM57-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM57/MPM57-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Robert Hood",
+     "t": "Red Passion 2",
+     "l": "",
+     "cat": "MPM56",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/robert-hood-red-passion-2/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM56/MPM56-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM56/MPM56-A1.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPM56/MPM56-B1.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Ramjac Corporation",
+     "t": "88-92 It Is What It Was",
+     "l": "",
+     "cat": "MPD055",
+     "f": "2×LP",
+     "p": 36.99,
+     "g": "Breakbeat",
+     "url": "https://diggers.fr/ramjac-corporation-88-92-it-is-what-it-was/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-B2.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-C2.mp3"
+      },
+      {
+       "s": "C3",
+       "n": "C3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-C3.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-D1.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "D2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/MPD055/MPD055-D2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Dialog",
+     "t": "Symbol Of The Land",
+     "l": "",
+     "cat": "KYNEX006",
+     "f": "2×12\"",
+     "p": 34.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/dialog-symbol-of-the-land/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-A3.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-B3.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-C2.mp3"
+      },
+      {
+       "s": "C3",
+       "n": "C3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-C3.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-D1.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "D2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KYNEX006/KYNEX006-D2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Alarico",
+     "t": "Klockworks 42",
+     "l": "",
+     "cat": "KW42",
+     "f": "12\"",
+     "p": 15.99,
+     "g": "Techno",
+     "url": "https://diggers.fr/alarico-klockworks-42/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KW42/KW42-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KW42/KW42-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KW42/KW42-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KW42/KW42-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/KW42/KW42-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Dj Hs",
+     "t": "Booty Shake Ep",
+     "l": "",
+     "cat": "GHOST2602",
+     "f": "12\"",
+     "p": 20.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/dj-hs-booty-shake-ep/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/GHOST2602/GHOST2602-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/GHOST2602/GHOST2602-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/GHOST2602/GHOST2602-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/GHOST2602/GHOST2602-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/GHOST2602/GHOST2602-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Various Artists",
+     "t": "Kisah Pasar Baru: The Modern Sound Of 1950S Indonesia",
+     "l": "",
+     "cat": "ELE042",
+     "f": "LP",
+     "p": 42.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/various-artists-kisah-pasar-baru-the-modern-sound-of-1950s-indonesia/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-A3.mp3"
+      },
+      {
+       "s": "A4",
+       "n": "A4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-A4.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-B3.mp3"
+      },
+      {
+       "s": "B4",
+       "n": "B4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ELE042/ELE042-B4.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Norken & Mijaga",
+     "t": "Arp Pussy",
+     "l": "",
+     "cat": "DUKE222DJV",
+     "f": "2×LP",
+     "p": 42.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/norken-mijaga-arp-pussy/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/DUKE222DJV/DUKE222DJV-FRONTCOVER.webp",
+     "tr": [],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "The Night Service Commute",
+     "t": "Interpretation",
+     "l": "",
+     "cat": "CSOULP004",
+     "f": "LP",
+     "p": 29.49,
+     "g": "Breakbeat",
+     "url": "https://diggers.fr/the-night-service-commute-interpretation/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-A3.mp3"
+      },
+      {
+       "s": "A4",
+       "n": "A4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-A4.mp3"
+      },
+      {
+       "s": "A5",
+       "n": "A5",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-A5.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-B3.mp3"
+      },
+      {
+       "s": "B4",
+       "n": "B4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-B4.mp3"
+      },
+      {
+       "s": "B5",
+       "n": "B5",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-B5.mp3"
+      },
+      {
+       "s": "B6",
+       "n": "B6",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/CSOULP004/CSOULP004-B6.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Nastia Reigel",
+     "t": "Find Yourself",
+     "l": "",
+     "cat": "BP091",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/nastia-reigel-find-yourself/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP091/BP091-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP091/BP091-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP091/BP091-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP091/BP091-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP091/BP091-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP091/BP091-B3.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Kerrie",
+     "t": "Pressure Signal",
+     "l": "",
+     "cat": "BP090",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/kerrie-pressure-signal/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP090/BP090-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP090/BP090-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP090/BP090-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP090/BP090-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BP090/BP090-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Border One",
+     "t": "Atonia Ep",
+     "l": "",
+     "cat": "BORDER05",
+     "f": "12\"",
+     "p": 15.99,
+     "g": "Techno",
+     "url": "https://diggers.fr/border-one-atonia-ep/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/BORDER05/BORDER05-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Tiga & Zyntherius",
+     "t": "Sunglasses At Night",
+     "l": "",
+     "cat": "ARMNWSV019",
+     "f": "12\"",
+     "p": 20.49,
+     "g": "Electro",
+     "url": "https://diggers.fr/tiga-zyntherius-sunglasses-at-night/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ARMNWSV019/ARMNWSV019-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ARMNWSV019/ARMNWSV019-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ARMNWSV019/ARMNWSV019-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ARMNWSV019/ARMNWSV019-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ARMNWSV019/ARMNWSV019-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
+    },
+    {
+     "a": "Scaler",
+     "t": "Reflex",
+     "l": "",
+     "cat": "ACRE107V",
+     "f": "12\"",
+     "p": 29.99,
+     "g": "Electro",
+     "url": "https://diggers.fr/scaler-reflex/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4526NS2/ACRE107V/ACRE107V-FRONTCOVER.webp",
+     "tr": [],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-02"
     }
    ]
   },
