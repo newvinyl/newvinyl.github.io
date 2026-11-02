@@ -3,12 +3,12 @@
   "date": "2026-11-02",
   "keys": [
    "twilite tone|joy & work",
-   "raymond van het groenewoud|live in paradiso",
+   "ramjac corporation|88-92 it is what it was",
    "arapu|acompañado"
   ],
   "titles": [
    "TWILITE TONE – Joy & Work",
-   "Raymond Van Het Groenewoud – Live In Paradiso",
+   "Ramjac Corporation – 88-92 It Is What It Was",
    "Arapu – Acompañado"
   ],
   "shops": [
@@ -23,33 +23,33 @@
   "dv": 9,
   "reels": [
    {
-    "key": "ramjac corporation|88-92 it is what it was",
-    "title": "Ramjac Corporation – 88-92 It Is What It Was",
+    "key": "gigi fm|ventus in anima",
+    "title": "Gigi Fm – Ventus In Anima",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261102-1.mp4",
     "look": "poster916 130 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261102-1.jpg"
    },
    {
-    "key": "gigi fm|ventus in anima",
-    "title": "Gigi Fm – Ventus In Anima",
+    "key": "pedro vian|before the strings (lim 250 handnumbered)",
+    "title": "Pedro Vian – Before The Strings (Lim 250 Handnumbered)",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261102-2.mp4",
-    "look": "poster916 130 bpm",
+    "look": "poster916 135 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261102-2.jpg"
    },
    {
-    "key": "pedro vian|before the strings (lim 250 handnumbered)",
-    "title": "Pedro Vian – Before The Strings (Lim 250 Handnumbered)",
+    "key": "mike risk|now is forever",
+    "title": "Mike Risk – Now Is Forever",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261102-3.mp4",
-    "look": "poster916 135 bpm",
+    "look": "poster916 124 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261102-3.jpg"
    }
   ],
   "reel": {
-   "key": "ramjac corporation|88-92 it is what it was",
-   "title": "Ramjac Corporation – 88-92 It Is What It Was",
+   "key": "gigi fm|ventus in anima",
+   "title": "Gigi Fm – Ventus In Anima",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261102-1.mp4",
    "look": "poster916 130 bpm",
    "v": 23,
