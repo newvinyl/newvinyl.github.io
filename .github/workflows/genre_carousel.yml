@@ -7,6 +7,11 @@ on:
     workflows: ["Today's Digs"]
     types: [completed]
   workflow_dispatch:
+    inputs:
+      pick:
+        description: "Hand-picked records from tools/carousel_pick.json (release carousel-pick) instead of the daily carousel"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: [tools/genre_carousel.json, tools/genre_carousel.py, .github/workflows/genre_carousel.yml]
@@ -55,6 +60,7 @@ jobs:
           PY
             then echo '{"skip": true, "genre": "already-done"}' > "$REEL_WORK/result.json"; echo "carousel already done"; exit 0; fi
           fi
+          if [ "${{ github.event.inputs.pick }}" = "true" ]; then export CAROUSEL_PICK=1; fi
           python3 tools/genre_carousel.py > "$REEL_WORK/result.json" 2> "$REEL_WORK/log.txt" || { cat "$REEL_WORK/log.txt"; exit 1; }
           cat "$REEL_WORK/result.json"
       - name: Save log
@@ -80,8 +86,9 @@ jobs:
           ls -la
           G=$(python3 -c "import json;print(json.load(open('result.json'))['genre'].lower().replace(' ','-'))")
           zip -q -j "carousel-$G.zip" slide-*.mp4 slide-*.jpg caption.txt carousel.json
-          gh release view carousel >/dev/null 2>&1 || gh release create carousel --prerelease --title "Genre carousel" --notes "Instagram carousels: title image + video slides." --target main
-          gh release upload carousel --clobber "carousel-$G.zip" slide-*.mp4 slide-*.jpg caption.txt carousel.json
+          REL=carousel; [ "${{ github.event.inputs.pick }}" = "true" ] && REL=carousel-pick
+          gh release view $REL >/dev/null 2>&1 || gh release create $REL --prerelease --title "Instagram carousel ($REL)" --notes "Instagram carousels: video slides." --target main
+          gh release upload $REL --clobber "carousel-$G.zip" slide-*.mp4 slide-*.jpg caption.txt carousel.json
           } > up.txt 2>&1; rc=$?
           cd /tmp/lg && cp "$REEL_WORK/up.txt" . && git add up.txt && git -c user.name=bot -c user.email=bot@x commit -qm up
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" carousel-log

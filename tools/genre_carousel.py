@@ -198,7 +198,69 @@ def main_fresh(want):
               open(os.path.join(WORK, "carousel.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps(res))
 
+# ---------------------------------------------------------------- pick mode (since 2.11.26)
+# Hand-picked records (e.g. a tribute), same look as fresh mode. Config tools/carousel_pick.json:
+# {"name": "...", "seg": 30, "items": [{"a": "artist part", "t": "title part", "shop": "preferred shop", "artist"/"title": shown names,
+#   "track_has": "part of mp3 url", "track_name": "shown track name", "note": "extra meta"}]}
+# Run with CAROUSEL_PICK=1 (workflow input pick=true); output goes to release «carousel-pick».
+def main_pick():
+    want = json.load(open(os.path.join(ROOT, "tools", "carousel_pick.json"), encoding="utf-8"))
+    data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
+    fx, seg_s = data.get("fx", {}), int(want.get("seg", 30))
+    slides = []
+    for it in want["items"]:
+        arr = []
+        for s in data["shops"]:
+            for x in s.get("items") or []:
+                if digs.norm(it["a"]) in digs.norm(x["a"]) and digs.norm(it["t"]) in digs.norm(x["t"]):
+                    arr.append(dict(x, shop=s["shop"], cur=s.get("cur", "€"), country=s.get("country", "")))
+        if not arr:
+            digs.log("not found", it); continue
+        feat = next((x for x in arr if x["shop"] == it.get("shop")), arr[0])
+        feat = dict(feat, a=it.get("artist") or feat["a"], t=it.get("title") or feat["t"])   # optional clean names
+        arr = [feat] + [x for x in arr if x["shop"] != feat["shop"]]
+        tracks = digs.playable(arr)
+        if it.get("track_has"):
+            tracks.sort(key=lambda t: it["track_has"].lower() not in t["u"].lower())
+        try:
+            cov = best_cover(arr)
+        except Exception as e:
+            digs.log("cover fail", it, e); cov = None
+        if cov is None or not tracks:
+            digs.log("no cover/audio", it); continue
+        aud = tr = None
+        for j, t in enumerate(tracks[:3]):
+            try:
+                aud, tr = digs.get_audio(t, False, WORK, 700 + len(slides) * 10 + j), t
+                break
+            except Exception as e:
+                digs.log("audio fail", t.get("u"), e)
+        if aud is None:
+            continue
+        if "track_name" in it:
+            tr = dict(tr, n=it["track_name"] or feat["t"], named=True)
+        c = {"key": digs.gkey(feat), "arr": arr, "feat": feat, "shop": feat["shop"], "fam": digs.family(feat.get("g")),
+             "strict": True, "tracks": tracks, "score": 0, "track": tr, "cover": cov, "audio": aud}
+        R = digs.prepare(c, fx)
+        start, _ = digs.pick_start(aud)
+        start = max(0.0, min(start, len(aud) / SR - seg_s - 0.5))
+        out = os.path.join(WORK, "slide-%02d.mp4" % (len(slides) + 1))
+        fresh_slide(R, cov, aud, start, seg_s, it.get("note", ""), out)
+        lab = R["l"] if R["l"] and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
+        slides.append({"key": c["key"], "video": os.path.basename(out), "a": R["a"], "t": R["t"], "l": lab, "shop": R["shop_full"],
+                       "track": R["tname"], "pre": R["pre"], "genre": R["genre"], "cover_w": cov.width})
+        digs.log("slide", len(slides), R["a"], "–", R["t"], "|", R["shop_full"], "| cover", cov.width)
+    if not slides:
+        raise SystemExit("no slides")
+    open(os.path.join(WORK, "caption.txt"), "w", encoding="utf-8").write(
+        "\n".join("%d. %s – %s · %s" % (i, s["a"], s["t"], s["shop"]) for i, s in enumerate(slides, 1)) + "\n")
+    res = {"name": want.get("name", "pick"), "date": data["updated"], "slides": slides}
+    json.dump(res, open(os.path.join(WORK, "carousel.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(json.dumps(dict(res, genre="pick-" + res["name"])))
+
 def main():
+    if os.environ.get("CAROUSEL_PICK") == "1":
+        return main_pick()
     want = json.load(open(os.path.join(ROOT, "tools", "genre_carousel.json"), encoding="utf-8"))
     if want.get("mode") == "fresh":
         return main_fresh(want)
