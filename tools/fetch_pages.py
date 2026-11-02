@@ -106,10 +106,17 @@ def shop_feeds(pdir):
     idir = os.path.join(pdir, "items")
     os.makedirs(idir, exist_ok=True)
     idx = []
+    try:   # releases that are not ours (tools/not_ours.json)
+        no = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "not_ours.json"), encoding="utf-8"))["items"]
+    except Exception:
+        no = []
+    no_urls = {x.get("url") for x in no}
+    no_keys = {x.get("key") for x in no}
     for fid, shop, where, country, cur, fn in SF.FEEDS:
         e = {"id": fid, "shop": shop, "where": where, "country": country, "cur": cur, "file": "items/%s.json" % fid}
         try:
-            items = fn(fetch)
+            items = [i for i in fn(fetch) if i.get("url") not in no_urls
+                     and ("%s|%s" % (i.get("a", ""), i.get("t", ""))).lower() not in no_keys]
             json.dump({"fetched": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "shop": shop, "items": items},
                       open(os.path.join(idir, fid + ".json"), "w"), indent=1, ensure_ascii=False)
             e.update(items=len(items), playable=sum(1 for i in items if i.get("tr")))

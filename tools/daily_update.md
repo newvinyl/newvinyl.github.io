@@ -173,6 +173,9 @@ are and do not retry that page. Do not work around a blocked site.
 
 ## 5. New vs. existing
 
+Never add a release listed in tools/not_ours.json (match by url or lower-case "artist|title"); the user removed
+these because they are not our genres. If one is still in releases.json or in the artifact data, remove it.
+
 A release is new if no existing item in that shop has the same url or the same artist + title. For
 each new one add an ITEM with "m" = current month (YYYY-MM, Europe/Zurich) and "first_seen" = today.
 For existing items you see again today, update "p" and "st" if the page shows new values (a pre-order
