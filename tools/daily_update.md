@@ -73,7 +73,21 @@ HTTP status or error and the fetch time; each pages/<file>.txt starts with "SOUR
 the page text with [link: …], [img: …] and [audio: …] markers (absolute URLs). Read these files
 instead of calling WebFetch. pages/rushhour-product-mp3.json maps Rush Hour product pages to their
 mp3 URLs. Use the files only if their FETCHED date is today; if a page has an error or is missing,
-skip that page for today and name it in the final message. Do not try WebFetch, curl or Python
+skip that page for today and name it in the final message.
+
+If pages/index.json is not from today (GitHub often starts the scheduled Action hours late or
+skips it), start the Action yourself and wait for it. Do not finish with "0 new releases" before
+doing this:
+1. Start it: GitHub MCP tool actions_run_trigger (method "run_workflow", owner "newvinyl", repo
+   "newvinyl.github.io", workflow_id "shop_pages.yml", ref "main"). If that tool is not available
+   or fails, append one line "requested <UTC time>" to tools/shop_pages_request.txt, commit it
+   (author "Claude" / noreply@anthropic.com, message "Request shop pages <date>"), pull --rebase and
+   push to main; the push starts the Action.
+2. Wait in one background shell loop (the Action takes 10–15 minutes), e.g.
+   `until git fetch -q origin shop-pages && git show origin/shop-pages:pages/index.json | grep -q "\"fetched\": \"$(date -u +%F)"; do sleep 60; done`
+   with a limit of 45 minutes. pages/items/index.json is written by the same run.
+3. If the pages are still not from today after 45 minutes, stop without publishing and say so
+   clearly in the final message (it must not look like a normal day without new records). Do not try WebFetch, curl or Python
 requests for shop pages. Extract the release data exactly as it appears in the text (artist, title,
 label, cat. no., format, price, product link, cover image, audio links); never invent anything.
 When a shop is added, add its URLs to URLS in tools/fetch_pages.py.
