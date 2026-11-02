@@ -134,6 +134,10 @@ def main_fresh(want):
     d_ = dt.date.fromisoformat(day)
     date_s = "%d %s %d" % (d_.day, MONTHS[d_.month - 1], d_.year)
     hist = json.load(open(os.path.join(ROOT, "92h6fy", "history.json"), encoding="utf-8"))
+    if not any(e.get("date") == day for e in hist):            # Today's Digs first, so the carousel never repeats its records
+        digs.log("no Today's Digs for", day, "yet: skip")
+        print(json.dumps({"skip": True, "genre": "fresh-" + day}))
+        return
     digs_keys = set(next((e.get("keys", []) for e in hist if e.get("date") == day), []))
     seen = set()
     for e in hist:
@@ -189,7 +193,10 @@ def main_fresh(want):
         lines.append("%d. %s – %s%s · %s" % (i, s["a"], s["t"], lab, s["shop"]))
     cap = os.path.join(WORK, "caption.txt")
     open(cap, "w", encoding="utf-8").write("\n".join(lines) + "\n")
-    print(json.dumps({"title": os.path.join(WORK, "slide-00.jpg"), "slides": slides, "caption": cap, "genre": "fresh-" + day}))
+    res = {"date": day, "digs_keys": sorted(digs_keys), "title": os.path.join(WORK, "slide-00.jpg"), "slides": slides, "caption": cap, "genre": "fresh-" + day}
+    json.dump(dict(res, slides=[dict(s, video=os.path.basename(s["video"])) for s in slides]),
+              open(os.path.join(WORK, "carousel.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(json.dumps(res))
 
 def main():
     want = json.load(open(os.path.join(ROOT, "tools", "genre_carousel.json"), encoding="utf-8"))

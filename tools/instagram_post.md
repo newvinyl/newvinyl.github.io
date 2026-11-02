@@ -1,4 +1,4 @@
-# Instagram – tägliche Vorschau und Posting von «Today's Digs» (@monthlyvinyl)
+# Instagram – tägliche Vorschau und Posting von «Today's Digs» und Karussell «Fresh today» (@monthlyvinyl)
 
 Einzige Quelle für die tägliche Instagram-Aufgabe. Sprache gegenüber dem Nutzer: Deutsch, Schweizer
 Schreibweise (ss statt ß), kurz und sachlich.
@@ -75,3 +75,49 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 2. `INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH` mit der `creation_id`, `max_wait_seconds: 240`.
 3. Mit `INSTAGRAM_GET_IG_USER_MEDIA` (limit 1) prüfen, dass der Post live ist; Link (permalink) melden.
 Nie Erfolg melden, ohne den Post gesehen zu haben.
+
+## 5. Karussell «Fresh today» (täglich, seit 2.11.26)
+
+Zweiter Post jeden Tag, **nach** Today's Digs: 4 weitere Platten von heute («Fresh today»), die nicht im
+Digs-Video sind, je eine Video-Slide (4:5, 30 s, eigene Hörprobe). Gleiche Grundregeln wie oben (OK des
+Nutzers, nur Fresh today, Respekt vor dem Cover). Digs-Vorschau und Karussell-Vorschau dürfen in derselben
+Nachricht kommen; das OK muss klar sagen, was gepostet werden soll (z. B. «beide», «nur Digs»).
+
+**Ist es fertig?** Die Action «Genre carousel» (`tools/genre_carousel.py`, Modus `fresh` in
+`tools/genre_carousel.json`) läuft automatisch nach jedem Today's-Digs-Lauf. Release `carousel`:
+`https://github.com/newvinyl/newvinyl.github.io/releases/download/carousel/carousel.json` muss
+`date` = heute haben und `digs_keys` = `keys` des heutigen Eintrags in `92h6fy/history.json`. Sonst bis zu
+45 Minuten warten; dann Action von Hand starten (workflow_dispatch `genre_carousel.yml`) oder dem Nutzer melden.
+Slides: `…/download/carousel/slide-01.mp4` … `slide-04.mp4` (Anzahl = `slides` in carousel.json),
+Standbilder `slide-01.jpg` … ansehen: Cover sauber, richtige Platte, Typo lesbar.
+Jede Platte gegen `releases.json` prüfen (`first_seen` = heute, nicht in `tools/not_ours.json`).
+
+**Caption** (aus carousel.json bauen, Format wie bisher):
+```
+Fresh today: 4 new records, swipe to listen →
+
+1. Artist – Title (@label oder Label)
+2. …
+
+Artists: @artist1 · @artist2
+Available at @shop (1), @shop2 (2–3) and Shop ohne Handle (4, pre-order)
+
+Previews and prices for all new releases: monthlyvinyl.net
+
+#newvinyl #<genre> … #monthlyvinyl
+```
+Label nur in Klammern, wenn bekannt; Pre-order beim Shop vermerken; Hashtags aus den Genres (ohne Dubletten,
+Genre weglassen bei Widerspruch). `Cover art: …` je Platte, wenn bekannt (Grundregel 3).
+**Markierungen:** wie Schritt 2 (Shops, Artists, Labels, max. 20), neue Handles in `artist_instagram.json`.
+Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu der das Konto gehört).
+
+**Vorschau:** die Slides als Dateien, Caption im Codeblock, Markierungen pro Slide, Auffälligkeiten, «Soll ich posten?».
+
+**Posten nach dem OK:**
+1. Pro Slide `INSTAGRAM_POST_IG_USER_MEDIA`: `ig_user_id: "me"`, `video_url` = Slide-URL, `is_carousel_item: true`,
+   `user_tags` = `[{"username": "...", "x": 0.5, "y": 0.5}]` (bei Karussell-Items mit x/y). `creation_id`s merken.
+   Wenn ein Item mit Tags scheitert: ohne Tags neu anlegen und die Konten in der Caption erwähnen.
+2. `INSTAGRAM_CREATE_CAROUSEL_CONTAINER` bzw. `INSTAGRAM_POST_IG_USER_MEDIA` mit `media_type: "CAROUSEL"`,
+   `children` = die IDs in Reihenfolge, `caption`.
+3. `INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH` (`max_wait_seconds: 240`), dann mit `INSTAGRAM_GET_IG_USER_MEDIA` den
+   Post prüfen und den Link melden.
