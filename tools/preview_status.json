@@ -152,15 +152,12 @@
    "none": 1
   }
  },
- "pages_checked": 878,
- "new_from_shop_pages": 2,
- "copied_from_other_shop": 1,
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
  "broken_clips_removed": 13,
  "clips_verified": 12554,
- "not_reachable": {
-  "Redeye Records: failed:UnicodeEncodeError": 43,
-  "Redeye Records: http403": 4
- },
+ "not_reachable": {},
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 376,
