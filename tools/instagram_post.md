@@ -115,7 +115,8 @@ Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu de
 
 **Posten nach dem OK:**
 1. Pro Slide `INSTAGRAM_POST_IG_USER_MEDIA`: `ig_user_id: "me"`, `video_url` = Slide-URL, `is_carousel_item: true`,
-   `user_tags` = `[{"username": "...", "x": 0.5, "y": 0.5}]` (bei Karussell-Items mit x/y). `creation_id`s merken.
+   `user_tags` = `[{"username": "..."}]` (nur username, Video-Items lehnen x/y ab). `creation_id`s merken.
+   Dann ca. 60 s warten, bis die Items verarbeitet sind (2.11.26 so erfolgreich gepostet).
    Wenn ein Item mit Tags scheitert: ohne Tags neu anlegen und die Konten in der Caption erwähnen.
 2. `INSTAGRAM_CREATE_CAROUSEL_CONTAINER` bzw. `INSTAGRAM_POST_IG_USER_MEDIA` mit `media_type: "CAROUSEL"`,
    `children` = die IDs in Reihenfolge, `caption`.
