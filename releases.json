@@ -77515,7 +77515,25 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-11",
-     "first_seen": "2026-11-02"
+     "first_seen": "2026-11-02",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "First Sip Of Wine"
+      },
+      {
+       "s": "A2",
+       "n": "Marienstraße"
+      },
+      {
+       "s": "B1",
+       "n": "Prince Of East Side"
+      },
+      {
+       "s": "B2",
+       "n": "On Se Reverra"
+      }
+     ]
     },
     {
      "a": "Mr. Barcode",
@@ -77537,7 +77555,21 @@
      "st": "pre",
      "d": "Exp. 13 Nov",
      "m": "2026-11",
-     "first_seen": "2026-11-02"
+     "first_seen": "2026-11-02",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Original Mix"
+      },
+      {
+       "s": "B1",
+       "n": "Dub"
+      },
+      {
+       "s": "B2",
+       "n": "Break"
+      }
+     ]
     },
     {
      "a": "Cabin Luv Affair",
@@ -77558,7 +77590,25 @@
      ],
      "st": "in",
      "m": "2026-11",
-     "first_seen": "2026-11-02"
+     "first_seen": "2026-11-02",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Bien Suave"
+      },
+      {
+       "s": "A2",
+       "n": "Tes Yeux"
+      },
+      {
+       "s": "B1",
+       "n": "Dreaming About You"
+      },
+      {
+       "s": "B2",
+       "n": "I Get Drunk To See You Twice"
+      }
+     ]
     },
     {
      "a": "Matthew Dexter",
@@ -77580,7 +77630,41 @@
      "st": "pre",
      "d": "Exp. 6 Nov",
      "m": "2026-11",
-     "first_seen": "2026-11-02"
+     "first_seen": "2026-11-02",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "– Code Of Existence"
+      },
+      {
+       "s": "A2",
+       "n": "– The Dawn Chorus"
+      },
+      {
+       "s": "B1",
+       "n": "– Vacuum"
+      },
+      {
+       "s": "B2",
+       "n": "– Gatekeepers"
+      },
+      {
+       "s": "C1",
+       "n": "– Past This Realism"
+      },
+      {
+       "s": "C2",
+       "n": "– Fly Higher"
+      },
+      {
+       "s": "D1",
+       "n": "– Eternal"
+      },
+      {
+       "s": "D2",
+       "n": "– Beyond"
+      }
+     ]
     },
     {
      "a": "Arapu",
@@ -89845,7 +89929,18 @@
      "p": 10.0,
      "url": "https://yoyaku.io/release/ishio-dai-coco-dub-bs-ef007/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/EF007-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "CoCo Dub",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/EF007_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "BS",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/EF007_2.mp3"
+      }
+     ],
      "g": "Dub Techno",
      "m": "2026-11",
      "first_seen": "2026-11-02"
@@ -89894,7 +89989,58 @@
      "p": 35.83,
      "url": "https://yoyaku.io/release/piero-umiliani-fantasy-flies83/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/FLIES83-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1: Grand Canyon",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2: Dune",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1: Placida notte",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2: Ruscelli",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_4.mp3"
+      },
+      {
+       "s": "",
+       "n": "C1: Pianeta spento",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_5.mp3"
+      },
+      {
+       "s": "",
+       "n": "C2: Cammina cammina",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_6.mp3"
+      },
+      {
+       "s": "",
+       "n": "D1: Roulette",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_7.mp3"
+      },
+      {
+       "s": "",
+       "n": "D2: Self-Made Man",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_8.mp3"
+      },
+      {
+       "s": "",
+       "n": "E1: Fantasy",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_9.mp3"
+      },
+      {
+       "s": "",
+       "n": "E2: Giocando",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/FLIES83_10.mp3"
+      }
+     ],
      "g": "Ambient",
      "m": "2026-11",
      "first_seen": "2026-11-02"
@@ -93046,13 +93192,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "out",
      "g": "Techno",
      "m": "2026-10",
@@ -94214,8 +94354,23 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192766.mp3"
+       "n": "Midnight Mirage",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/v-a-d-bortz-m-pagliara-samgoku-newjackson-permanent-vacation-xx-ep3/1_2_Massimiliano_Pagliara_-_Midnight_Mirage.mp3"
+      },
+      {
+       "s": "",
+       "n": "Unattached Voices",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/v-a-d-bortz-m-pagliara-samgoku-newjackson-permanent-vacation-xx-ep3/1_3_Sam_Goku_-_Unattached_Voices.mp3"
+      },
+      {
+       "s": "",
+       "n": "See You Again",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/v-a-d-bortz-m-pagliara-samgoku-newjackson-permanent-vacation-xx-ep3/1_4_Bostro_Pesopeo_Tom_Bioly_-_See_You_Again.mp3"
+      },
+      {
+       "s": "",
+       "n": "There Will Always Be This Love OOPS POP Version",
+       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/v-a-d-bortz-m-pagliara-samgoku-newjackson-permanent-vacation-xx-ep3/1_5_New_Jackson_-_There_Will_Always_Be_This_Love_OOPS_POP_Version.mp3"
       }
      ],
      "st": "pre",

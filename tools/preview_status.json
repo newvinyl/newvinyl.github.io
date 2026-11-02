@@ -1,10 +1,10 @@
 {
- "date": "2026-11-01",
+ "date": "2026-11-02",
  "total": {
-  "records": 4162,
-  "tracks": 3271,
-  "clip": 719,
-  "none": 172
+  "records": 4218,
+  "tracks": 3314,
+  "clip": 727,
+  "none": 177
  },
  "shops": {
   "Hardwax": {
@@ -14,8 +14,8 @@
    "none": 0
   },
   "Rush Hour": {
-   "records": 59,
-   "tracks": 57,
+   "records": 60,
+   "tracks": 58,
    "clip": 0,
    "none": 2
   },
@@ -26,32 +26,32 @@
    "none": 4
   },
   "Clone": {
-   "records": 230,
-   "tracks": 228,
+   "records": 234,
+   "tracks": 232,
    "clip": 0,
    "none": 2
   },
   "Phonica": {
    "records": 173,
    "tracks": 133,
-   "clip": 9,
-   "none": 31
+   "clip": 10,
+   "none": 30
   },
   "Redeye Records": {
-   "records": 1130,
-   "tracks": 409,
-   "clip": 683,
-   "none": 38
+   "records": 1138,
+   "tracks": 413,
+   "clip": 688,
+   "none": 37
   },
   "Yoyaku": {
-   "records": 319,
-   "tracks": 318,
+   "records": 322,
+   "tracks": 321,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 113,
-   "tracks": 105,
+   "records": 116,
+   "tracks": 108,
    "clip": 0,
    "none": 8
   },
@@ -62,14 +62,14 @@
    "none": 8
   },
   "Deejay.de": {
-   "records": 314,
-   "tracks": 243,
-   "clip": 21,
-   "none": 50
+   "records": 320,
+   "tracks": 245,
+   "clip": 23,
+   "none": 52
   },
   "Vinyl Underground": {
-   "records": 241,
-   "tracks": 236,
+   "records": 244,
+   "tracks": 239,
    "clip": 0,
    "none": 5
   },
@@ -104,10 +104,10 @@
    "none": 0
   },
   "Diggers.fr": {
-   "records": 95,
-   "tracks": 95,
+   "records": 123,
+   "tracks": 118,
    "clip": 0,
-   "none": 0
+   "none": 5
   },
   "Carpet & Snares": {
    "records": 23,
@@ -152,12 +152,15 @@
    "none": 1
   }
  },
- "pages_checked": 37,
- "new_from_shop_pages": 7,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 14,
- "clips_verified": 12403,
- "not_reachable": {},
+ "pages_checked": 878,
+ "new_from_shop_pages": 2,
+ "copied_from_other_shop": 1,
+ "broken_clips_removed": 13,
+ "clips_verified": 12554,
+ "not_reachable": {
+  "Redeye Records: failed:UnicodeEncodeError": 43,
+  "Redeye Records: http403": 4
+ },
  "clip_hosts": {
   "bordelloaparigi.com": {
    "clips": 376,
@@ -165,12 +168,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 1052,
+   "clips": 1059,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1031,
+   "clips": 1051,
    "failed": 0,
    "sample": []
   },
@@ -180,7 +183,7 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 502,
+   "clips": 605,
    "failed": 0,
    "sample": []
   },
@@ -200,7 +203,7 @@
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 328,
+   "clips": 332,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -223,7 +226,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 689,
+   "clips": 694,
    "failed": 0,
    "sample": []
   },
@@ -257,11 +260,11 @@
   },
   "www.sideone.pl": {
    "clips": 272,
-   "failed": 226,
+   "failed": 224,
    "sample": [
-    "https://www.sideone.pl/settings.php?getAttachmentp=236058_47999_e2d1c91e4003dbde730cd18ef6d6dbc0",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236060_48000_98861156afccb03d440a4dcee0f8a3cd",
-    "https://www.sideone.pl/settings.php?getAttachmentp=236062_48000_9ddb056f49dba2cda73cc94af09f73e0"
+    "https://www.sideone.pl/settings.php?getAttachmentp=236062_48000_9ddb056f49dba2cda73cc94af09f73e0",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236063_47998_59ba3248874a67b78c0cf784b5ea8973",
+    "https://www.sideone.pl/settings.php?getAttachmentp=236064_47998_4a28f5731b34f229eb3180fbee5eb8a0"
    ]
   },
   "www.ultrasuonirecords.com": {
@@ -270,7 +273,7 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 844,
+   "clips": 856,
    "failed": 0,
    "sample": []
   },
