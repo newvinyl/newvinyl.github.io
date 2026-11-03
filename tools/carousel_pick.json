@@ -1,10 +1,10 @@
 {
- "name": "juan-atkins",
+ "name": "photo-test-2026-11-03",
  "seg": 30,
  "items": [
-  {"a": "infiniti", "t": "collection", "shop": "Kompakt", "title": "The Infiniti Collection", "track_has": "game_one", "track_name": "Game One"},
-  {"a": "model 500", "t": "i.d.l.e", "shop": "Yoyaku", "title": "I.D.L.E. (DJ Stingray Remixes)", "track_name": ""},
-  {"a": "cybotron", "t": "parallel shift", "shop": "Redeye Records", "track_name": "Parallel Shift"},
-  {"a": "juan atkins", "t": "back to basics part 1", "shop": "Vinyl Underground", "track_name": "Track Ten"}
+  {"a": "trentemoller", "t": "last resort", "shop": "SoundGround", "artist": "Trentemøller", "title": "The Last Resort"},
+  {"a": "bruno spoerri", "t": "controlled risk", "shop": "SoundGround", "title": "Controlled Risk"},
+  {"a": "a.s.h.a", "t": "j.j. tribute", "shop": "Bordello A Parigi"},
+  {"a": "love from the archipelago", "t": "reworks", "shop": "Vinyl Underground"}
  ]
 }

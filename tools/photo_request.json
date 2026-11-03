@@ -1,8 +1,12 @@
 {"slides": [
- {"url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Carsten-nicolai-2009-wuschanski.jpg",
-  "name": "Alva Noto", "sub": "aka Carsten Nicolai", "credit": "Photo: Dieter Wuschanski, CC BY-SA 4.0, via Wikimedia Commons", "focus": 0.3, "out": "photo-01a.jpg"},
- {"url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Alva_Noto_Live_at_Middlesex_%283600580332%29.jpg",
-  "name": "Alva Noto", "sub": "aka Carsten Nicolai", "credit": "Photo: Non Event, CC BY-SA 2.0, via Wikimedia Commons", "focus": 0.3, "out": "photo-01b.jpg"},
- {"url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Carsten_Nicolai_Sound_Check_%283599769063%29.jpg",
-  "name": "Alva Noto", "sub": "aka Carsten Nicolai", "credit": "Photo: Non Event, CC BY-SA 2.0, via Wikimedia Commons", "focus": 0.3, "out": "photo-01c.jpg"}
+ {"url": "https://upload.wikimedia.org/wikipedia/commons/d/db/RF_3006_Trentemoller%40Arena_Krists_Luhaers-6_%2835512840910%29.jpg",
+  "name": "Trentemøller", "sub": "live in Riga", "credit": "Photo: Krists Luhaers, CC BY 2.0, via Wikimedia Commons (cropped)", "focus": 0.25, "out": "photo-t1.jpg"},
+ {"url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Trentem%C3%B8ller.jpg",
+  "name": "Trentemøller", "sub": "", "credit": "Photo: Kristian Bertel, CC BY 2.0, via Wikimedia Commons (cropped)", "focus": 0.3, "out": "photo-t2.jpg"},
+ {"url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Trentem%C3%B8ller_-_James_Lavelle%27s_Meltdown.jpg",
+  "name": "Trentemøller", "sub": "", "credit": "Photo: Southbank Centre, CC BY 2.0, via Wikimedia Commons (cropped)", "focus": 0.3, "out": "photo-t3.jpg"},
+ {"url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Bruno_Spoerri_2.jpg",
+  "name": "Bruno Spoerri", "sub": "Swiss electronic music pioneer", "credit": "Photo: Armineaghayan, CC BY-SA 4.0, via Wikimedia Commons (cropped)", "focus": 0.2, "out": "photo-s1.jpg"},
+ {"url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Bruno_Spoerri_in_Klang_und_Kleid%2C_St._Gallen.jpg",
+  "name": "Bruno Spoerri", "sub": "Swiss electronic music pioneer", "credit": "Photo: Armineaghayan, CC BY-SA 4.0, via Wikimedia Commons (cropped)", "focus": 0.25, "out": "photo-s2.jpg"}
 ]}
