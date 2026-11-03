@@ -1,0 +1,54 @@
+name: Photo slide (test)
+
+# TEST (3.11.26): artist-photo slides for carousels. Requests in tools/photo_request.json:
+# {"slides": [{"url": "...", "name": "...", "credit": "Photo: ... (CC BY-SA 4.0)", "sub": "...", "focus": 0.3, "out": "photo-01.jpg"}]}
+# Only photos with a clear licence/permission. Output: release «photo-test».
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/photo_request.json]
+
+permissions:
+  contents: write
+
+jobs:
+  photo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render
+        run: |
+          pip install -q numpy pillow opencv-python-headless
+          mkdir -p /tmp/ph
+          python3 - <<'PY'
+          import json, subprocess, urllib.request
+          from PIL import Image
+          req = json.load(open("tools/photo_request.json"))
+          origs = []
+          for i, s in enumerate(req["slides"], 1):
+              src = "/tmp/ph/src-%02d.jpg" % i
+              r = urllib.request.Request(s["url"], headers={"User-Agent": "monthlyvinyl/1.0 (https://monthlyvinyl.net)"})
+              open(src, "wb").write(urllib.request.urlopen(r, timeout=60).read())
+              origs.append(src)
+              cmd = ["python3", "tools/photo_slide.py", src, s["name"], s["credit"], "/tmp/ph/" + s.get("out", "photo-%02d.jpg" % i),
+                     "--focus", str(s.get("focus", 0.3))]
+              if s.get("sub"):
+                  cmd += ["--sub", s["sub"]]
+              subprocess.run(cmd, check=True)
+          th = [Image.open(o).convert("RGB") for o in origs]
+          th = [t.resize((int(t.width * 300 / t.height), 300)) for t in th]
+          sheet = Image.new("RGB", (sum(t.width for t in th), 300)); x = 0
+          for t in th:
+              sheet.paste(t, (x, 0)); x += t.width
+          sheet.save("/tmp/ph/sheet.jpg", quality=80)
+          PY
+          ls -la /tmp/ph
+      - name: Upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view photo-test >/dev/null 2>&1 || gh release create photo-test --prerelease --title "Photo slides (test)" --notes "Test: artist-photo slides." --target main
+          gh release upload photo-test --clobber /tmp/ph/*.jpg
