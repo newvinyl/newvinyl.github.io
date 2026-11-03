@@ -308,5 +308,47 @@
   "kind": "label",
   "followers": 304095,
   "checked": "2026-11-02"
+ },
+ "apt 9": {
+  "handle": "apt9recordings",
+  "kind": "label",
+  "followers": 1237,
+  "checked": "2026-11-03"
+ },
+ "zyx": {
+  "handle": "zyxmusic",
+  "kind": "label",
+  "followers": 7798,
+  "checked": "2026-11-03"
+ },
+ "dave clarke": {
+  "handle": "daveclarkeofficial",
+  "kind": "artist",
+  "followers": 86389,
+  "checked": "2026-11-03"
+ },
+ "joris voorn": {
+  "handle": "jorisvoorn",
+  "kind": "artist",
+  "followers": 464459,
+  "checked": "2026-11-03"
+ },
+ "spectrum": {
+  "handle": "spectrummusicnl",
+  "kind": "label",
+  "followers": 21023,
+  "checked": "2026-11-03"
+ },
+ "alva noto": {
+  "handle": "alvanoto",
+  "kind": "artist",
+  "followers": 55948,
+  "checked": "2026-11-03"
+ },
+ "noton": {
+  "handle": "notoninfo",
+  "kind": "label",
+  "followers": 10424,
+  "checked": "2026-11-03"
  }
 }
