@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-03",
+  "keys": [
+   "various|apt 9 recordings vol iii",
+   "radiorama|desire",
+   "dave clarke, joris voorn|wisdom to the wise (joris voorn remix) red vinyl"
+  ],
+  "titles": [
+   "VARIOUS – APT 9 Recordings Vol III",
+   "Radiorama – Desire",
+   "Dave Clarke, Joris Voorn – Wisdom To The Wise (Joris Voorn Remix) Red Vinyl"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Bordello A Parigi",
+   "Side One"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261103.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "808 prince|808 prince",
+    "title": "808 PRINCE – 808 PRINCE",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261103-1.mp4",
+    "look": "poster916 124 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261103-1.jpg"
+   },
+   {
+    "key": "the rah band|messages from the stars",
+    "title": "THE RAH BAND – MESSAGES FROM THE STARS",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261103-2.mp4",
+    "look": "poster916 113 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261103-2.jpg"
+   },
+   {
+    "key": "vince watson|introspection ii ep",
+    "title": "Vince Watson – Introspection II EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261103-3.mp4",
+    "look": "poster916 130 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261103-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "808 prince|808 prince",
+   "title": "808 PRINCE – 808 PRINCE",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261103-1.mp4",
+   "look": "poster916 124 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261103-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-02",
   "keys": [
    "twilite tone|joy & work",
