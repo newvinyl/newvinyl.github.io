@@ -132,3 +132,28 @@ Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu de
 Items aus einem gescheiterten Karussell-Container nicht wiederverwenden (der nächste scheitert auch), immer neu anlegen.
 10 Video-Items mit Markierungen (16 Tags) führten zum ERROR, 5 markierte Items und 10 Items ohne Markierungen gingen:
 bei 10 Slides die Items ohne `user_tags` anlegen und die Konten in der Caption erwähnen.
+
+## 6. Stories (täglich um 16:30, seit 4.11.26)
+
+Dritter Teil jeden Tag: **höchstens 5 Stories**, gepostet **zwischen 13:00 und 22:45** (Europe/Zurich). Nur nach
+Today's Digs und dem Karussell (beide müssen gepostet sein). Gleiche Grundregeln (OK des Nutzers, nur Fresh today,
+Respekt vor dem Cover).
+
+**Bauen:** `python3 tools/stories.py --date <heute> --work <tmp> --out stories/<yymmdd>` holt Digs-Video und
+Karussell-Slides aus den Releases (kein Shop-Zugriff nötig) und wählt die 5 Platten mit den meisten geprüften
+Handles (Digs bei Gleichstand zuerst). Design (vom Nutzer am 4.11.26 abgenommen): reduziert, Cover gross, Artist fett,
+Titel, monthlyvinyl.net, gelb auf Schwarz; @handles (Shop, Label, Artist, nur aus `shop_instagram.json` und
+`artist_instagram.json`) als Typewriter-Sticker, weiss auf schwarzem Kasten, leicht schräg, auf einer Kante des Covers,
+jedes Mal an einer anderen Stelle. Ton: Hörprobe (Digs 10 s, Karussell 15 s). Ergebnis: `story-01.mp4` … und
+`stories.json` (Datei, Handles).
+
+**Vorschau:** Übersichtsbild + die Videos, Handles pro Story, «Soll ich posten?».
+
+**Posten nach dem OK** (nur zwischen 13:00 und 22:45):
+1. Dateien in `stories/<yymmdd>/` committen und pushen (GitHub Pages, ca. 1 Min.), URL
+   `https://monthlyvinyl.net/stories/<yymmdd>/story-NN.mp4`.
+2. Pro Story `INSTAGRAM_POST_IG_USER_MEDIA`: `ig_user_id: "me"`, `media_type: "STORIES"`, `video_url`,
+   `user_tags` = `[{"username": "..."}]` (wie in stories.json; am 4.11.26 so akzeptiert).
+3. In der Reihenfolge `INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH` (`max_wait_seconds: 240`), dann mit
+   `INSTAGRAM_GET_IG_USER_STORIES` prüfen und die Links melden.
+4. `stories/<yymmdd>/` wieder löschen, committen, pushen.
