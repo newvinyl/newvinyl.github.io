@@ -133,9 +133,10 @@ Items aus einem gescheiterten Karussell-Container nicht wiederverwenden (der nä
 10 Video-Items mit Markierungen (16 Tags) führten zum ERROR, 5 markierte Items und 10 Items ohne Markierungen gingen:
 bei 10 Slides die Items ohne `user_tags` anlegen und die Konten in der Caption erwähnen.
 
-## 6. Stories (täglich um 16:30, seit 4.11.26)
+## 6. Stories (nur auf Wunsch des Nutzers, seit 4.11.26)
 
-Dritter Teil jeden Tag: **höchstens 5 Stories**, gepostet **zwischen 13:00 und 22:45** (Europe/Zurich). Nur nach
+**Nicht automatisch und nicht geplant** – nur wenn der Nutzer Stories verlangt (4.11.26: «nicht planen, zu aggressiv»).
+**Höchstens 5 Stories** pro Tag, gepostet **zwischen 13:00 und 22:45** (Europe/Zurich). Nur nach
 Today's Digs und dem Karussell (beide müssen gepostet sein). Gleiche Grundregeln (OK des Nutzers, nur Fresh today,
 Respekt vor dem Cover).
 
