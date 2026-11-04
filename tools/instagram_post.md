@@ -122,3 +122,8 @@ Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu de
    `children` = die IDs in Reihenfolge, `caption`.
 3. `INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH` (`max_wait_seconds: 240`), dann mit `INSTAGRAM_GET_IG_USER_MEDIA` den
    Post prüfen und den Link melden.
+
+**Erfahrung 4.11.26 (10 Video-Slides):** Den Karussell-Container erst anlegen, wenn alle Items `FINISHED` sind.
+Items aus einem gescheiterten Karussell-Container nicht wiederverwenden (der nächste scheitert auch), immer neu anlegen.
+10 Video-Items mit Markierungen (16 Tags) führten zum ERROR, 5 markierte Items und 10 Items ohne Markierungen gingen:
+bei 10 Slides die Items ohne `user_tags` anlegen und die Konten in der Caption erwähnen.
