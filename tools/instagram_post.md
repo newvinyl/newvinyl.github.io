@@ -56,6 +56,10 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 - Gefundene und geprüfte Handles in `tools/artist_instagram.json` ergänzen (auch `null`, wenn sicher
   kein Konto existiert) und committen/pushen.
 - Der Nutzer will gezielt auch kleine, aktive Konten pushen: grosse Konten sind kein Muss.
+- **So viele Markierungen wie möglich (Standard seit 4.11.26):** mehr Markierungen bringen mehr Reichweite.
+  Für jede Platte gründlich suchen (Artist, Label, Remixer, Cover-Designer, Shop) und das Maximum von 20
+  pro Post möglichst ausschöpfen. Nur das Kriterium «eindeutig» bleibt: lieber eine Markierung weniger als
+  ein falsches Konto.
 - Maximal 20 Markierungen pro Post.
 
 ## 3. Vorschau schicken (SendUserMessage + SendUserFile)
@@ -78,8 +82,9 @@ Nie Erfolg melden, ohne den Post gesehen zu haben.
 
 ## 5. Karussell «Fresh today» (täglich, seit 2.11.26)
 
-Zweiter Post jeden Tag, **nach** Today's Digs: 4 weitere Platten von heute («Fresh today»), die nicht im
-Digs-Video sind, je eine Video-Slide (4:5, 30 s, eigene Hörprobe). Gleiche Grundregeln wie oben (OK des
+Zweiter Post jeden Tag, **nach** Today's Digs: **10 weitere Platten** von heute («Fresh today», Standard seit
+4.11.26 = Instagram-Maximum; mehr Releases = mehr Reichweite; `n: 10` in `tools/genre_carousel.json`, weniger
+nur, wenn es nicht genug frische Platten gibt), die nicht im Digs-Video sind, je eine Video-Slide (4:5, 30 s, eigene Hörprobe). Gleiche Grundregeln wie oben (OK des
 Nutzers, nur Fresh today, Respekt vor dem Cover). Digs-Vorschau und Karussell-Vorschau dürfen in derselben
 Nachricht kommen; das OK muss klar sagen, was gepostet werden soll (z. B. «beide», «nur Digs»).
 
@@ -94,7 +99,7 @@ Jede Platte gegen `releases.json` prüfen (`first_seen` = heute, nicht in `tools
 
 **Caption** (aus carousel.json bauen, Format wie bisher):
 ```
-Fresh today: 4 new records, swipe to listen →
+Fresh today: <n> new records, swipe to listen →
 
 1. Artist – Title (@label oder Label)
 2. …
