@@ -489,7 +489,41 @@ def make_look(im, seed, style=None, avoid=None):
 
 # ------------------------------------------------------------------ choosing the best cover version
 def autocrop(im):
-    """Shop images that show the sleeve as a mockup on a plain background: cut out the artwork itself."""
+    """Shop images that show the sleeve as a mockup on a plain background: cut out the artwork itself,
+    then remove thin frame lines / sleeve edges around it (trim_frame)."""
+    return trim_frame(_autocrop(im))
+
+def _frame_width(a, cap):
+    """Outer lines of one side (a: lines x pixels x 3, outermost first) that belong to a frame: neutral
+    (white / grey / black, e.g. a white edge + black sleeve rim) and nearly uniform. The artwork starts at the
+    first coloured or structured line. Returns the width, or None if there is no frame or it is wider than cap
+    (then it is the cover's own plain background, not a frame)."""
+    n = a.shape[1]
+    core = a[:, int(n * .1):int(n * .9)]
+    mean, std = core.mean(1), core.std(1).max(1)
+    sat = mean.max(1) - mean.min(1)
+    k = 0
+    while k <= cap and k < len(a) and std[k] < .12 and sat[k] < .08:
+        k += 1
+    return k if 0 < k <= cap else None
+
+def trim_frame(im, inset=.012):
+    """Cut off frames the shops put around the artwork (1-px lines, sleeve rims, scan edges):
+    1. a uniform band (up to 4 % per side) on all four sides is removed;
+    2. then a small inset (1.2 %) on every side, so no light or dark edge line remains."""
+    im = im.convert("RGB")
+    w, h = im.size
+    if min(w, h) < 200:
+        return im
+    a = np.asarray(im).astype(np.float32) / 255
+    cap = int(.04 * min(w, h))
+    sides = [_frame_width(a, cap), _frame_width(a[::-1], cap),
+             _frame_width(a.transpose(1, 0, 2), cap), _frame_width(a.transpose(1, 0, 2)[::-1], cap)]
+    t, b, l, r = sides if all(sides) else (0, 0, 0, 0)
+    d = int(round(inset * min(w, h)))
+    return im.crop((l + d, t + d, w - r - d, h - b - d))
+
+def _autocrop(im):
     im = im.convert("RGB")
     if analyse(im)[0]["record"]:
         return im                                   # a record on a plain background stays as it is
