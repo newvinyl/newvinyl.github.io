@@ -130,7 +130,7 @@ def main_fresh(want):
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
     fx = data.get("fx", {})
     day = want.get("date") or data["updated"]
-    N, seg_s = int(want.get("n", 4)), int(want.get("seg", 30))
+    N, seg_s = int((want.get("n_by_date") or {}).get(day, want.get("n", 4))), int(want.get("seg", 30))   # e.g. 10 slides on request
     d_ = dt.date.fromisoformat(day)
     date_s = "%d %s %d" % (d_.day, MONTHS[d_.month - 1], d_.year)
     hist = json.load(open(os.path.join(ROOT, "92h6fy", "history.json"), encoding="utf-8"))
@@ -147,6 +147,7 @@ def main_fresh(want):
     cands.sort(key=lambda c: (-c["score"], -len({x["shop"] for x in c["arr"]})))
     digs.log(len(cands), "fresh candidates for", day)
     slides, used_a, used_shop, used_fam = [], set(), {}, {}
+    used_a |= {digs.norm(t.split(" – ")[0]) for e in hist if e.get("date") == day for t in e.get("titles", [])}   # never an artist from the digs
     for rnd in range(2):                                   # 1st round: spread shops and genres, 2nd: fill up
         for c in cands:
             if len(slides) == N:

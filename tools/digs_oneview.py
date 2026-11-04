@@ -44,7 +44,33 @@ def wrap(text, f, maxw):
 def ease(x):
     x = max(0.0, min(1.0, x)); return x * x * (3 - 2 * x)
 
+# Bottom offsets under the big cover: meta, track, shop, progress bar
+OFF = dict(meta=78, track=143, shop=218, bar=266)
+SG = G
+
+def layout(n):
+    """3 records: big 584 + column of two 280. More (e.g. 6): one column of n-1 small covers next to a bigger cover,
+    tighter text block below so everything stays inside the 3:4 grid crop."""
+    global SS, BS, SG, OFF
+    if n <= 3:
+        SS, BS, SG = (888 - 2 * G) // 3, 2 * ((888 - 2 * G) // 3) + G, G
+        OFF = dict(meta=78, track=143, shop=218, bar=266)
+    else:
+        SG = 14
+        SS = (888 - SG - (n - 2) * SG) // n          # n-1 small + gaps == big height, big + gap + small == 888
+        BS = (n - 1) * SS + (n - 2) * SG
+        OFF = dict(meta=66, track=122, shop=184, bar=222)
+
 def slots(active, n):
+    if n > 3:
+        others = [(active + k) % n for k in range(1, n)]
+        left = active % 2 == 0
+        bx = X0 if left else X0 + SS + SG
+        sx = X0 + BS + SG if left else X0
+        r = {active: (bx, Y0, BS)}
+        for k, i in enumerate(others):
+            r[i] = (sx, Y0 + k * (SS + SG), SS)
+        return r
     others = [(active + k) % n for k in range(1, n)]
     left = active % 2 == 0
     bx = X0 if left else X0 + SS + G
@@ -102,8 +128,8 @@ def page(img, r, a, dy, frame, lev):
     for ln in lines[:2]:
         d.text((92, y), ln, font=ft, fill=c, anchor="ls"); y += int(ft.size * 1.11)
     yb = Y0 + BS
-    d.text((94, yb + 78 + dy), r["meta"], font=fit(r["meta"], 888, 48, False), fill=c, anchor="ls")
-    by = yb + 143 + dy
+    d.text((94, yb + OFF["meta"] + dy), r["meta"], font=fit(r["meta"], 888, 48, False), fill=c, anchor="ls")
+    by = yb + OFF["track"] + dy
     d.polygon([(96, by - 30), (96, by - 2), (120, by - 16)], fill=c)
     ftr = fit(r["tr"], 760, 44, False)
     d.text((140, by), r["tr"], font=ftr, fill=c, anchor="ls")
@@ -112,7 +138,7 @@ def page(img, r, a, dy, frame, lev):
         ph = math.sin(frame * 0.45 + k * 1.7) * 0.5 + 0.5
         h = 6 + 30 * lev * (0.4 + 0.6 * ph)
         d.rectangle([bx + k * 14, by - h, bx + 8 + k * 14, by], fill=c)
-    d.text((96, yb + 218 + dy), r["shop"], font=fit(r["shop"], 888, 46, True), fill=c, anchor="ls")   # where to buy: inside the grid crop
+    d.text((96, yb + OFF["shop"] + dy), r["shop"], font=fit(r["shop"], 888, 46, True), fill=c, anchor="ls")   # where to buy: inside the grid crop
     img.paste(lay, (0, 0), lay)
 
 def chrome(img, date_s, t, seg_s, n):
@@ -120,18 +146,19 @@ def chrome(img, date_s, t, seg_s, n):
     # everything sits inside the 3:4 crop of the profile grid (y 240..1680)
     d.text((96, 330), "TODAY'S DIGS  ·  " + date_s, font=F(34, True), fill=INK, anchor="ls")
     d.text((984, 330), "monthlyvinyl.net", font=F(34, True), fill=INK, anchor="rs")
-    pw = (888 - 2 * 14) / n
+    pw = (888 - (n - 1) * 14) / n
     faint = tuple(int(b + (c - b) * .25) for b, c in zip(BG, INK))
     for k in range(n):
         x0 = 96 + k * (pw + 14)
-        d.rectangle([x0, Y0 + BS + 266, x0 + pw, Y0 + BS + 270], fill=faint)
+        d.rectangle([x0, Y0 + BS + OFF["bar"], x0 + pw, Y0 + BS + OFF["bar"] + 4], fill=faint)
         p_ = 1.0 if k < t // seg_s else (min(1.0, (t - k * seg_s) / seg_s) if k == t // seg_s else 0.0)
         if p_ > 0:
-            d.rectangle([x0, Y0 + BS + 264, x0 + pw * p_, Y0 + BS + 272], fill=INK)
+            d.rectangle([x0, Y0 + BS + OFF["bar"] - 2, x0 + pw * p_, Y0 + BS + OFF["bar"] + 6], fill=INK)
 
 def render(ps, mixes, seg_s, date_s, path, poster):
     """ps: digs.prepare() dicts with 'cover'; mixes: one audio segment per release (seg_s seconds each)"""
     n = len(ps)
+    layout(n)
     covs = []
     for p in ps:
         c = p["cover"].convert("RGB"); s = min(c.size)

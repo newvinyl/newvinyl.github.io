@@ -224,8 +224,18 @@ def rate_covers(cands, offline, limit=50):
         c.setdefault("vis", 0)
         c.setdefault("art", -9.0)
 
-def choose(cands, banned):
+def choose(cands, banned, n=3):
     pool = [c for c in cands if c["key"] not in banned][:45]
+    if n > 3:                                   # bigger digs (user wish): greedy, combinations would explode
+        out = []
+        while len(out) < n:
+            taken = {c["key"] for c in out} | {norm(c["feat"]["a"]) for c in out} | {gkey(c["feat"]) for c in out}
+            rest = [c for c in pool if c["key"] not in taken and norm(c["feat"]["a"]) not in taken and gkey(c["feat"]) not in taken]
+            if not rest:
+                return None
+            fams, shops = {c["fam"] for c in out}, {c["shop"] for c in out}
+            out.append(max(rest, key=lambda c: (c["fam"] not in fams, c["shop"] not in shops, c.get("vis", 0), c["score"])))
+        return out
     best, bk = None, None
     for combo in itertools.combinations(pool, 3):
         if len({c["key"] for c in combo}) < 3:
@@ -604,7 +614,7 @@ def where(p):
 
 def caption(picks, date_s):
     """minimal: findable via search (artist, title, label) + the site. Nobody reads captions."""
-    nums = ["1️⃣", "2️⃣", "3️⃣"]
+    nums = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
     lines = [" · ".join(p["a"] for p in picks), ""]
     for n, p in zip(nums, picks):
         lines.append("%s %s – %s%s" % (n, p["a"], cap_title(p["t"]), " (%s)" % p["l"] if p["l"] else ""))
@@ -1081,10 +1091,11 @@ def main():
     log(len(cands), "candidates for", day)
     rate_covers(cands, a.offline)
     banned, picks = set(), None
+    NP = int(reel_request(day).get("n") or 3)        # number of digs records (default 3; e.g. 6 on request)
     if keep:
         return reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p)
     while True:
-        combo = choose(cands, banned)
+        combo = choose(cands, banned, NP)
         if not combo:
             raise SystemExit("not enough releases with previews for %s" % day)
         ok = []
@@ -1107,7 +1118,7 @@ def main():
                     banned.add(c["key"])
                     break
             ok.append(c)
-        if len(ok) == 3:
+        if len(ok) == NP:
             picks = ok
             break
     P = []
@@ -1123,7 +1134,7 @@ def main():
     poster = os.path.join(a.work, "todays-digs-%s.jpg" % ymd)
     seeds = [look_seed(ymd, p["key"], "digs") for p in P]
     offs = [max(0.0, min(p["start"] - 1.0, len(p["audio"]) / SR - 15.5)) for p in P]
-    DSEG = 15
+    DSEG = 15 if NP <= 3 else 10
     import digs_oneview                                   # one view, all three covers (since 26.10.26)
     d_ = dt.date.fromisoformat(day)
     digs_oneview.render(P, [fade(seg(p["audio"], o, DSEG), 0.25, 0.6) for p, o in zip(P, offs)], DSEG,
@@ -1140,7 +1151,7 @@ def main():
     if dhook:
         entry["hook"] = dhook
     files = [vpath, poster]
-    sections = [section("digs", "Today's Digs · post video", "3 releases · 3 × 10 s · post in the feed", base + fname,
+    sections = [section("digs", "Today's Digs · post video", "%d releases · %d × %d s · post in the feed" % (NP, NP, DSEG), base + fname,
                         base + os.path.basename(poster), fname, cap, P, note)]
     caps = [cap]
     # Reel: one other release, RDUR (45) s
