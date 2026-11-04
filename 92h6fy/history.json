@@ -1,5 +1,71 @@
 [
  {
+  "date": "2026-11-04",
+  "keys": [
+   "letta mbulu|in the music... the village never ends",
+   "glenn underground / anthony nicholson / vick lavender / dejay cease|bridgeport records sessions vol 1",
+   "brian kage|timeless times",
+   "cvbox|pattern based on",
+   "model 500|sonic sunset",
+   "daniel / ricardo angeles|diving under the grass"
+  ],
+  "titles": [
+   "Letta Mbulu – In The Music... The Village Never Ends",
+   "GLENN UNDERGROUND / ANTHONY NICHOLSON / VICK LAVENDER / DEJAY CEASE – Bridgeport Records Sessions Vol 1",
+   "Brian Kage – Timeless Times",
+   "CVBox – Pattern Based On",
+   "Model 500 – Sonic Sunset",
+   "Daniel / Ricardo Angeles – Diving Under The Grass"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Juno",
+   "Clone",
+   "Redeye",
+   "Vinyl Underground",
+   "Deejay.de"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261104.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "savage|don't you want me (reissue)",
+    "title": "SAVAGE – Don't You Want Me (reissue)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261104-1.mp4",
+    "look": "poster916 133 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261104-1.jpg"
+   },
+   {
+    "key": "xclusiv|fools are friendly",
+    "title": "Xclusiv – Fools Are Friendly",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261104-2.mp4",
+    "look": "poster916 117 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261104-2.jpg"
+   },
+   {
+    "key": "zentaskai & joshua tree|metro vice 313/030 (w/ dj t-1000 remix)",
+    "title": "ZentaSkai & Joshua Tree – Metro Vice 313/030 (w/ DJ T-1000 Remix)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261104-3.mp4",
+    "look": "poster916 134 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261104-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "savage|don't you want me (reissue)",
+   "title": "SAVAGE – Don't You Want Me (reissue)",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261104-1.mp4",
+   "look": "poster916 133 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261104-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-03",
   "keys": [
    "various|apt 9 recordings vol iii",
