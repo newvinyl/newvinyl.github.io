@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-05",
+  "keys": [
+   "cornelius|refractions",
+   "various artists|diamonds in the night vol. 10 ep",
+   "isaiah|periodical"
+  ],
+  "titles": [
+   "CORNELIUS – Refractions",
+   "Various Artists – Diamonds In The Night Vol. 10 EP",
+   "Isaiah – Periodical"
+  ],
+  "shops": [
+   "Juno",
+   "Bordello A Parigi",
+   "Diggers.fr"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261105.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "clima|appx:lp05 healing patterns",
+    "title": "Clima – APPX:LP05 Healing Patterns",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261105-1.mp4",
+    "look": "poster916 116 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261105-1.jpg"
+   },
+   {
+    "key": "michele manzo|echoes in the dust ep",
+    "title": "Michele MANZO – Echoes In The Dust EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261105-2.mp4",
+    "look": "poster916 126 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261105-2.jpg"
+   },
+   {
+    "key": "ricardo villalobos / underground resistance /  baris k|when there is no sun vol 2",
+    "title": "Ricardo VILLALOBOS / UNDERGROUND RESISTANCE /  BARIS K – When There Is No Sun Vol 2",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261105-3.mp4",
+    "look": "poster916 128 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261105-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "clima|appx:lp05 healing patterns",
+   "title": "Clima – APPX:LP05 Healing Patterns",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261105-1.mp4",
+   "look": "poster916 116 bpm · colours only",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261105-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-04",
   "keys": [
    "letta mbulu|in the music... the village never ends",
