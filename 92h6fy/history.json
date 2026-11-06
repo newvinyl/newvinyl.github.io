@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-06",
+  "keys": [
+   "haldi & ans flamingo|keegi",
+   "kjell samkopf|music for solo percussion & electronics",
+   "pascal benjamin / makz|constant black 40"
+  ],
+  "titles": [
+   "HALDI & ANS FLAMINGO – Keegi",
+   "Kjell SAMKOPF – Music For Solo Percussion & Electronics",
+   "Pascal BENJAMIN / MAKZ – Constant Black 40"
+  ],
+  "shops": [
+   "Juno",
+   "Juno",
+   "Juno"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261106.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "sunlightsquare|super people (reissue)",
+    "title": "SUNLIGHTSQUARE – Super People (reissue)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261106-1.mp4",
+    "look": "poster916 126 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261106-1.jpg"
+   },
+   {
+    "key": "viikatory|virtual oomms ep",
+    "title": "VIIKATORY – Virtual Oomms EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261106-2.mp4",
+    "look": "poster916 139 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261106-2.jpg"
+   },
+   {
+    "key": "goncalo f cardoso|variations on mass tourism: songs from the modular coast",
+    "title": "Goncalo F CARDOSO – Variations On Mass Tourism: Songs From The Modular Coast",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261106-3.mp4",
+    "look": "poster916 106 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261106-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "sunlightsquare|super people (reissue)",
+   "title": "SUNLIGHTSQUARE – Super People (reissue)",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261106-1.mp4",
+   "look": "poster916 126 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261106-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-05",
   "keys": [
    "cornelius|refractions",
