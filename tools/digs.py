@@ -1094,8 +1094,20 @@ def main():
     NP = int(reel_request(day).get("n") or 3)        # number of digs records (default 3; e.g. 6 on request)
     if keep:
         return reel_only(a, data, day, date_s, ymd, history, keep, cands, fx, hist_p)
+    want_keys = [k.lower() for k in (reel_request(day).get("keys") or [])]   # hand-picked digs in this order (user wish)
+    if want_keys:
+        NP = len(want_keys)
     while True:
-        combo = choose(cands, banned, NP)
+        if want_keys:
+            by = {}
+            for c in cands:
+                by.setdefault(c["key"], c)
+            missing = [k for k in want_keys if k not in by or k in banned]
+            if missing:
+                raise SystemExit("requested digs not available: %s" % ", ".join(missing))
+            combo = [by[k] for k in want_keys]
+        else:
+            combo = choose(cands, banned, NP)
         if not combo:
             raise SystemExit("not enough releases with previews for %s" % day)
         ok = []
