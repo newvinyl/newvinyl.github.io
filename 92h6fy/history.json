@@ -1,5 +1,68 @@
 [
  {
+  "date": "2026-11-07",
+  "keys": [
+   "air|moon safari",
+   "first choice|let no man put asunder (ron hardy edit)",
+   "chez damier|can you feel it (underground resistance remixes)",
+   "scan 7|you have the right (reimagined)",
+   "robert hood|invincible"
+  ],
+  "titles": [
+   "AIR – Moon Safari",
+   "First Choice – Let No Man Put Asunder (Ron Hardy Edit)",
+   "Chez Damier – Can You Feel It (Underground Resistance Remixes)",
+   "Scan 7 – You Have The Right (Reimagined)",
+   "Robert Hood – Invincible"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Vinyl Underground",
+   "Clone",
+   "Rubadub",
+   "Diggers.fr"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261107.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "vertigo inc.|message from space",
+    "title": "Vertigo Inc. – Message From Space",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261107-1.mp4",
+    "look": "poster916 120 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261107-1.jpg"
+   },
+   {
+    "key": "broshuda|spells",
+    "title": "Broshuda – Spells",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261107-2.mp4",
+    "look": "poster916 138 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261107-2.jpg"
+   },
+   {
+    "key": "capetini|sound system",
+    "title": "Capetini – Sound System",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261107-3.mp4",
+    "look": "poster916 127 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261107-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "vertigo inc.|message from space",
+   "title": "Vertigo Inc. – Message From Space",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261107-1.mp4",
+   "look": "poster916 120 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261107-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-06",
   "keys": [
    "haldi & ans flamingo|keegi",
