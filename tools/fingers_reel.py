@@ -48,18 +48,13 @@ def build_stage(cover, S=2200):
         im = cv2.addWeighted(im, 1.35, bl, -0.35, 0)
     elif side > S:
         im = cv2.resize(im, (S, S), interpolation=cv2.INTER_AREA)
-    ext = cv2.GaussianBlur(im, (0, 0), S / 40)
-    ext = (ext.astype(np.float32) * 0.42).astype(np.uint8)
-    stage = np.zeros((3 * S, S, 3), np.uint8)
-    stage[0:S] = ext[::-1]
-    stage[S:2 * S] = im
-    stage[2 * S:3 * S] = ext[::-1]
-    # soften the seams: blend 6 % of S on both sides of each seam
-    k = int(S * 0.06)
-    for y0 in (S, 2 * S):
-        a = np.linspace(0, 1, 2 * k, dtype=np.float32)[:, None, None]
-        top = cv2.GaussianBlur(stage[y0 - k:y0 + k], (0, 0), S / 150).astype(np.float32)
-        stage[y0 - k:y0 + k] = (stage[y0 - k:y0 + k] * (0.2 + 0.8 * np.abs(a - 0.5) * 2) + top * (0.8 - 0.8 * np.abs(a - 0.5) * 2)).astype(np.uint8)
+    # extension on all sides: the cover mirrored outwards, heavily blurred and darkened (a soft dark halo in the reveal)
+    big = np.pad(im, ((S, S), (S, S), (0, 0)), mode="reflect")
+    small = cv2.resize(big, (3 * S // 8, 3 * S // 8), interpolation=cv2.INTER_AREA)
+    small = cv2.GaussianBlur(small, (0, 0), S / 40 / 8)
+    stage = cv2.resize(small, (3 * S, 3 * S), interpolation=cv2.INTER_CUBIC)
+    stage = (stage.astype(np.float32) * 0.40).astype(np.uint8)
+    stage[S:2 * S, S:2 * S] = im
     return stage, im, src_px
 
 def hand_mask(im):
@@ -105,7 +100,8 @@ class Motion:
         for wx, wy in WRISTS:
             d = np.minimum(d, np.hypot(u - wx, v - wy))
         tip = np.clip(d / 0.9, 0, 1) ** 1.3
-        return m * (0.25 + 0.75 * tip)
+        edge = np.clip(np.minimum(np.minimum(u, 1 - u), np.minimum(v, 1 - v)) / 0.07, 0, 1)   # the cover edge stays straight
+        return m * (0.25 + 0.75 * tip) * edge * edge
 
     def field(self, u, v, t, speed=1.0):
         """displacement in cover units at (u,v) for time t (seconds, already speed-warped)"""
@@ -184,13 +180,21 @@ def text_layers(info):
     tracked(d, (72, y), info["avail"], light(26), INK + (200,), 2); y += 74
     tracked(d, (72, y), "monthlyvinyl.net", light(24), INK + (190,), 3)
     L["b"] = np.asarray(im)
+    for k, lay in L.items():                       # soft shadow under the type, for legibility on the lace
+        a = lay[..., 3].astype(np.float32) / 255
+        sh = cv2.GaussianBlur(a, (0, 0), 6) * 0.55
+        rgb = lay[..., :3].astype(np.float32)
+        tot = np.clip(a + sh * (1 - a), 0, 1)
+        col = (rgb * a[..., None] + 0 * (1 - a[..., None])) / np.maximum(tot[..., None], 1e-4)
+        out = np.dstack([np.clip(col, 0, 255), tot * 255]).astype(np.uint8)
+        L[k] = out
     return L
 
 # ---------------------------------------------------------------- post
 def vignette():
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     r = np.hypot((xx - W / 2) / (W / 2), (yy - H / 2) / (H / 2))
-    v = 1 - 0.30 * np.clip((r - 0.55) / 0.9, 0, 1) ** 1.6
+    v = 1 - 0.22 * np.clip((r - 0.55) / 0.9, 0, 1) ** 1.6
     return v[..., None].astype(np.float32)
 
 def grain_bank(n=16, seed=3, amp=4.5):
@@ -274,6 +278,7 @@ class Renderer:
         dx, dy = self.motion.field(lu, lv, self.warp_t[i])
         mx = ((lu + dx) * S).astype(np.float32)
         my = ((lv + dy) * S + S).astype(np.float32)
+        mx += S                                 # stage: cover starts at x = S too
         return mx, my, t
 
     def frame(self, i):
