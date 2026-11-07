@@ -2,22 +2,22 @@
  {
   "date": "2026-11-07",
   "keys": [
-   "air|moon safari",
-   "first choice|let no man put asunder (ron hardy edit)",
+   "pigeon steve|dialect",
+   "cc:disco!|prize winning horse ep",
    "chez damier|can you feel it (underground resistance remixes)",
    "scan 7|you have the right (reimagined)",
    "robert hood|invincible"
   ],
   "titles": [
-   "AIR – Moon Safari",
-   "First Choice – Let No Man Put Asunder (Ron Hardy Edit)",
+   "Pigeon Steve – Dialect",
+   "CC:DISCO! – Prize Winning Horse EP",
    "Chez Damier – Can You Feel It (Underground Resistance Remixes)",
    "Scan 7 – You Have The Right (Reimagined)",
    "Robert Hood – Invincible"
   ],
   "shops": [
-   "Vinyl Underground",
-   "Vinyl Underground",
+   "Rubadub",
+   "Redeye",
    "Clone",
    "Rubadub",
    "Diggers.fr"
@@ -37,18 +37,18 @@
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261107-1.jpg"
    },
    {
-    "key": "broshuda|spells",
-    "title": "Broshuda – Spells",
+    "key": "capetini|sound system",
+    "title": "Capetini – Sound System",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261107-2.mp4",
-    "look": "poster916 138 bpm",
+    "look": "poster916 127 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261107-2.jpg"
    },
    {
-    "key": "capetini|sound system",
-    "title": "Capetini – Sound System",
+    "key": "air|moon safari",
+    "title": "AIR – Moon Safari",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261107-3.mp4",
-    "look": "poster916 127 bpm",
+    "look": "poster916 106 bpm · colours only",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261107-3.jpg"
    }
