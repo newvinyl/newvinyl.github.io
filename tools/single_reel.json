@@ -1,8 +1,14 @@
 {
- "artist": "TORRE",
- "title": "Phocaea Vol 2",
- "dur": 20,
- "style": "liquid",
- "daily": true,
- "scheme": "BK-G"
+ "artist": "Vanessa Wagner",
+ "title": "Philip Glass Piano Etudes",
+ "track": "Etude No. 2",
+ "style": "fingers",
+ "info": {
+  "composer": "Philip Glass",
+  "work": "Piano Etudes – Versions",
+  "artist": "Vanessa Wagner",
+  "track": "Etude No. 2 (Tauceti Version)",
+  "meta": "InFiné · IF2083LP · 12\"",
+  "avail": "Available at Rubadub"
+ }
 }

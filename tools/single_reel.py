@@ -14,6 +14,8 @@ def hires(u):
     u2 = re.sub(r"-2\.jpg$", "-1.jpg", u2) if "redeyerecords" in u2 else u2
     u2 = re.sub(r"-\d+x\d+(\.\w+)$", r"\1", u2) if "yoyaku" in u2 else u2
     u2 = u2.replace("/artwork/small/", "/artwork/large/").replace("/co_mid/", "/co_big/")
+    if "cdn.shopify.com" in u2:
+        u2 = re.sub(r"([?&])width=\d+", r"\1width=2048", u2)
     if "imagescdn.juno.co.uk" in u2:
         u2 = re.sub(r"/\d+/(CS[^/]+?)-MED\.jpg$", r"/full/\1-BIG.jpg", u2)
     return u2
@@ -82,6 +84,21 @@ def main():
     slug = re.sub(r"[^a-z0-9]+", "-", (R["a"] + " " + R["t"]).lower()).strip("-")[:60]
     out = os.path.join(WORK, "reel-%s.mp4" % slug)
     poster = out.replace(".mp4", ".jpg")
+    if want.get("style") == "fingers":          # whole preview, slow-motion hands (Vanessa Wagner / Philip Glass, 7.11.26)
+        import fingers_reel
+        dur = min(len(aud) / digs.SR, float(want.get("max_dur") or 900))
+        info = dict(want.get("info") or {})
+        info.setdefault("composer", R["a"]); info.setdefault("work", R["t"]); info.setdefault("artist", R["a"])
+        info.setdefault("track", tr.get("n") or R["t"])
+        info.setdefault("meta", " · ".join(v for v in [R["l"], R["cat"], R["fmt"]] if v))
+        info.setdefault("avail", ("Pre-order at %s" if R.get("pre") else "Available at %s") % R["shop_full"])
+        look = fingers_reel.render(cov, aud, dur, info, out, poster, workers=os.cpu_count() or 2)
+        cap = digs.reel_caption(R, arr)
+        capp = out.replace(".mp4", ".txt")
+        open(capp, "w", encoding="utf-8").write(cap + "\n")
+        print(json.dumps({"video": out, "poster": poster, "caption": capp, "look": look, "release": "%s – %s" % (R["a"], R["t"]),
+                          "track": tr.get("n"), "cover_px": cov.width, "dur": dur}))
+        return
     if want.get("style") == "crowd":
         import crowd
         look = crowd.reel_crowd(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur,
