@@ -317,7 +317,8 @@ class Renderer:
 
     def overlay(self, out, i, t):
         p = t / self.dur
-        reveal = ease((p - 0.82) / 0.06)             # 0 close-up text … 1 final block
+        reveal = ease((p - 0.845) / 0.055)           # final block fades in once the cover has settled
+        gone = ease((p - 0.735) / 0.08)              # close-up text leaves as the camera starts to pull back
         def put(name, alpha):
             if alpha <= 0.003:
                 return
@@ -325,7 +326,7 @@ class Renderer:
             L = self.layers[name][y0:y1, x0:x1]
             a = L[..., 3:4].astype(np.float32) / 255 * alpha
             out[y0:y1, x0:x1] = (out[y0:y1, x0:x1] * (1 - a) + L[..., :3] * a).astype(np.uint8)
-        A = 1 - reveal
+        A = 1 - gone
         put("a1", sstep((t - 2.4) / 2.0) * A)
         put("a2", sstep((t - 3.6) / 2.0) * A)
         put("a3", sstep((t - 7.0) / 2.0) * A)
