@@ -506,5 +506,41 @@
   "kind": "artist",
   "followers": 13701,
   "checked": "2026-11-06"
+ },
+ "air": {
+  "handle": "airfrenchband",
+  "kind": "artist",
+  "followers": 182752,
+  "checked": "2026-11-07"
+ },
+ "parlophone": {
+  "handle": "parlophone",
+  "kind": "label",
+  "followers": 53046,
+  "checked": "2026-11-07"
+ },
+ "salsoul": {
+  "handle": "salsoulrecords",
+  "kind": "label",
+  "followers": 15029,
+  "checked": "2026-11-07"
+ },
+ "robert hood": {
+  "handle": "roberthood313",
+  "kind": "artist",
+  "followers": 69176,
+  "checked": "2026-11-07"
+ },
+ "underground resistance": {
+  "handle": "undergroundresistance313",
+  "kind": "artist",
+  "followers": 84918,
+  "checked": "2026-11-07"
+ },
+ "scan 7": {
+  "handle": "scanseven",
+  "kind": "artist",
+  "followers": 9489,
+  "checked": "2026-11-07"
  }
 }
