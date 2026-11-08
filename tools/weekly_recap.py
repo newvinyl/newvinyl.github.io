@@ -138,6 +138,7 @@ def main():
     work = os.environ.get("RECAP_WORK") or tempfile.mkdtemp()
     want = json.load(open(a.config, encoding="utf-8"))
     seg_s = float(want.get("seg") or 6)
+    intro = float(want.get("intro") or 0)          # title card first (seconds); the Monday preview already plays under it
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
     G = {}
     for s in data["shops"]:
@@ -159,7 +160,7 @@ def main():
             raise SystemExit("no audio: %s – %s" % (p["artist"], p["title"]))
         cov = best_cover(arr, a.offline, 50 + i)
         start, _ = digs.pick_start(aud)
-        L = seg_s + (XF if i < len(want["picks"]) - 1 else 0)
+        L = seg_s + (XF if i < len(want["picks"]) - 1 else 0) + (intro if i == 0 else 0)
         mixes.append(digs.fade(digs.seg(aud, max(0.0, start), L), 0.15, XF if i < len(want["picks"]) - 1 else 0.8))
         artist = p.get("show_artist") or feat["a"]
         title = clean_title(p.get("show_title") or feat["t"])
@@ -168,10 +169,10 @@ def main():
         digs.log("pick", p["day"], artist, "–", title, "| cover", cov.width, cov.info.get("src", ""))
     # audio: overlap XF between records
     n = len(recs)
-    total = n * seg_s
+    total = intro + n * seg_s
     out_a = np.zeros((int((total + 1) * SR), 2), "float32")
     for i, m in enumerate(mixes):
-        o = int(i * seg_s * SR)
+        o = int((i * seg_s + (intro if i else 0)) * SR)
         out_a[o:o + len(m)] += m[:len(out_a) - o]
     out_a = out_a[:int(total * SR)]
     wav = os.path.join(work, "recap.wav")
@@ -187,6 +188,9 @@ def main():
     title = title_frame(recs, want)
     title_p = out.replace(".mp4", "-title.jpg")
     title.save(title_p, quality=93)
+    tb = title.tobytes()
+    for f in range(int(round(intro * FPS))):
+        enc.stdin.write(tb)
     poster_i = int(want.get("poster_index", 0))
     for i, r in enumerate(recs):
         base = base_frame(r["day"], r["artist"], r["title"])
