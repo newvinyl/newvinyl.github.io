@@ -49,6 +49,34 @@ def clean_title(t):
     t = re.sub(r"\s*\((reissue|repress|remastered[^)]*)\)\s*$", "", t, flags=re.I)
     return t.strip()
 
+def best_cover(arr, offline, seed):
+    """real artwork first (coverlife.artwork_score), then the biggest file; hi-res variants of every shop"""
+    if offline:
+        return digs.get_cover(arr, True, seed)
+    import io, coverlife, single_reel
+    best, bk = None, None
+    for x in arr:
+        if not x.get("cover"):
+            continue
+        for u in dict.fromkeys([single_reel.hires(x["cover"])] + digs.cover_urls([x]) + [x["cover"]]):
+            try:
+                im = Image.open(io.BytesIO(digs.fetch(u))).convert("RGB")
+            except Exception as e:
+                digs.log("cover fail", u, e); continue
+            im = coverlife.autocrop(im)
+            s = min(im.size)
+            l, t = (im.width - s) // 2, (im.height - s) // 2
+            im = im.crop((l, t, l + s, t + s))
+            art, why = coverlife.artwork_score(im)
+            k = (art, min(im.width, 1200))
+            digs.log("cover", u, im.width, art, why)
+            if bk is None or k > bk:
+                best, bk = im, k
+                best.info.update(art=art, src=u)
+    if best is None:
+        raise RuntimeError("no cover")
+    return best
+
 def find(G, want):
     wa, wt = digs.norm(want["artist"]), digs.norm(want["title"])
     for k, arr in G.items():
@@ -100,7 +128,7 @@ def main():
                 digs.log("audio fail", t.get("u"), e)
         if aud is None:
             raise SystemExit("no audio: %s – %s" % (p["artist"], p["title"]))
-        cov = digs.get_cover(arr, a.offline, 50 + i)
+        cov = best_cover(arr, a.offline, 50 + i)
         start, _ = digs.pick_start(aud)
         L = seg_s + (XF if i < len(want["picks"]) - 1 else 0)
         mixes.append(digs.fade(digs.seg(aud, max(0.0, start), L), 0.15, XF if i < len(want["picks"]) - 1 else 0.8))
