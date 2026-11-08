@@ -139,6 +139,10 @@ Ein Reel, **eine Platte pro Wochentag** (Montag–Sonntag der laufenden Woche), 
 Design (vom Nutzer am 8.11.26 abgenommen): **gelber Hintergrund, schwarze Typo**, reduziert – Wochentag gross
 (MONDAY …), Cover unverändert, Artist fett, Titel, klein monthlyvinyl.net. Soll sich klar von Digs und Karussell
 abheben (nicht das Digs-Layout verwenden).
+**Titelbild** (abgenommen 8.11.26, `"intro": 2.0` in weekly_recap.json, Stil `row`): klein «WEEKLY» / «WEEK NN»,
+riesiges «RECAP», alle 7 Covers nebeneinander von Rand zu Rand (keine Wochentag-Labels), klein Datum und
+«7 RECORDS». Es läuft 2 s am Anfang des Reels und ist das Startbild (`cover_url` = `weekly-recap-week-NN-title.jpg`).
+Erster Rückblick: KW 45, gepostet 8.11.26 um 16:55.
 
 **Ablauf (Sonntag, Vorschau ca. 14:30):**
 1. Insights der Woche holen (`INSTAGRAM_GET_IG_USER_MEDIA` ab Montag 00:00, dann `INSTAGRAM_GET_IG_MEDIA_INSIGHTS`
