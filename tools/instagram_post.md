@@ -133,6 +133,41 @@ Items aus einem gescheiterten Karussell-Container nicht wiederverwenden (der nä
 10 Video-Items mit Markierungen (16 Tags) führten zum ERROR, 5 markierte Items und 10 Items ohne Markierungen gingen:
 bei 10 Slides die Items ohne `user_tags` anlegen und die Konten in der Caption erwähnen.
 
+## 5b. Wochenrückblick (jeden Sonntag 16:00, seit 8.11.26)
+
+Ein Reel, **eine Platte pro Wochentag** (Montag–Sonntag der laufenden Woche), je 6 s Hörprobe, 42 s.
+Design (vom Nutzer am 8.11.26 abgenommen): **gelber Hintergrund, schwarze Typo**, reduziert – Wochentag gross
+(MONDAY …), Cover unverändert, Artist fett, Titel, klein monthlyvinyl.net. Soll sich klar von Digs und Karussell
+abheben (nicht das Digs-Layout verwenden).
+
+**Ablauf (Sonntag, Vorschau ca. 14:30):**
+1. Insights der Woche holen (`INSTAGRAM_GET_IG_USER_MEDIA` ab Montag 00:00, dann `INSTAGRAM_GET_IG_MEDIA_INSIGHTS`
+   mit views, reach, likes, comments, saved, shares, total_interactions, ig_reels_avg_watch_time) und kurz auswerten
+   (Tabelle pro Tag: Digs-Reel und Karussell).
+2. Pro Wochentag eine Platte aus dem Digs des Tages wählen (`92h6fy/history.json`): stärkste/bekannteste, **echtes
+   Cover in guter Auflösung** (kein Mockup, keine schwarze Hülle, kein kleines Label-Foto), noch in `releases.json`.
+3. `tools/weekly_recap.json` schreiben (`week`, `range`, `seg`, `picks` mit day/artist/title/show_artist/show_title),
+   committen und pushen → Action «Weekly recap» rendert (`tools/weekly_recap.py`, nur dort sind die Shops erreichbar)
+   und lädt `weekly-recap-week-NN.mp4/.jpg` + `recap.json` ins Release `recap`. `recap.json` zeigt Cover-Quelle und
+   -Grösse; unter ~500 px lieber eine andere Platte des Tages nehmen.
+4. Vorschau (Video, Übersicht, Caption, Markierungen, Auswertung), «Soll ich posten?». Posten erst nach OK des
+   Nutzers **in seiner eigenen Nachricht** (eine geplante Erinnerung zählt nicht als OK), wie Today's Digs als
+   REELS mit `user_tags` (max. 20). GitHub-Release-Downloads können scheitern (8.11.26: 504): dann Video kurz unter
+   `ig/<yymmdd>/` auf GitHub Pages legen, `https://monthlyvinyl.net/ig/...` verwenden und danach wieder löschen.
+
+**Caption:**
+```
+Week <NN> in 7 records – one dig for every day (<range>) 🎧
+
+Monday – Artist – Title (@label) · @shop
+…
+Artists: @a · @b
+
+Previews and prices for all new releases: monthlyvinyl.net
+
+#newvinyl #vinylrecords #weeklydigs #<genres> #monthlyvinyl
+```
+
 ## 6. Stories (nur auf Wunsch des Nutzers, seit 4.11.26)
 
 **Nicht automatisch und nicht geplant** – nur wenn der Nutzer Stories verlangt (4.11.26: «nicht planen, zu aggressiv»).
