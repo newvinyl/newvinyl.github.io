@@ -1,0 +1,47 @@
+name: Weekly recap
+
+# Renders the Sunday recap reel from tools/weekly_recap.json (one record per weekday).
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/weekly_recap.json, tools/weekly_recap.py, .github/workflows/weekly_recap.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-recap
+  cancel-in-progress: true
+
+jobs:
+  recap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          timeout 180 sudo apt-get update -qq || echo "apt update timed out"
+          timeout 300 sudo apt-get install -y -qq ffmpeg fonts-texgyre fonts-dejavu-core >/dev/null || echo "apt install failed"
+          if ! command -v ffmpeg >/dev/null; then
+            pip install -q imageio-ffmpeg
+            sudo ln -sf "$(python3 -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" /usr/local/bin/ffmpeg
+          fi
+          ffmpeg -version | head -1
+          pip install -q numpy pillow opencv-python-headless
+      - name: Render
+        env:
+          RECAP_WORK: ${{ runner.temp }}/r
+        run: |
+          mkdir -p "$RECAP_WORK"
+          python3 tools/weekly_recap.py > "$RECAP_WORK/result.json" 2> "$RECAP_WORK/log.txt" || { cat "$RECAP_WORK/log.txt"; exit 1; }
+          cat "$RECAP_WORK/result.json"; tail -20 "$RECAP_WORK/log.txt"
+      - name: Upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RECAP_WORK: ${{ runner.temp }}/r
+        run: |
+          gh release view recap >/dev/null 2>&1 || gh release create recap --prerelease --title "Weekly recap" --notes "Sunday recap reels for Instagram."
+          cp "$RECAP_WORK/result.json" "$RECAP_WORK/recap.json"
+          python3 -c "import json;r=json.load(open('$RECAP_WORK/result.json'));print(r['video']);print(r['poster'])" | xargs -d '\n' gh release upload recap --clobber "$RECAP_WORK/recap.json"
