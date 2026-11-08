@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-08",
+  "keys": [
+   "matteo floris|upsurge",
+   "polygonia / simon popp|apiformes",
+   "daniel bortz / massimiliano pagliara / sam goku / bostro pesopeo / tom bioly / new jackson|permanent vacation xx ep3"
+  ],
+  "titles": [
+   "Matteo FLORIS – Upsurge",
+   "POLYGONIA / SIMON POPP – Apiformes",
+   "Daniel BORTZ / MASSIMILIANO PAGLIARA / SAM GOKU / BOSTRO PESOPEO / TOM BIOLY / NEW JACKSON – Permanent Vacation XX EP3"
+  ],
+  "shops": [
+   "Juno",
+   "Juno",
+   "Juno"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261108.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "various artists|re:versal 003",
+    "title": "Various Artists – Re:versal 003",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261108-1.mp4",
+    "look": "poster916 98 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261108-1.jpg"
+   },
+   {
+    "key": "giorgio maulini|my kind of blues",
+    "title": "Giorgio MAULINI – My Kind Of Blues",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261108-2.mp4",
+    "look": "poster916 110 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261108-2.jpg"
+   },
+   {
+    "key": "dagerloff|solarpunk",
+    "title": "DAGERLOFF – Solarpunk",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261108-3.mp4",
+    "look": "poster916 139 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261108-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "various artists|re:versal 003",
+   "title": "Various Artists – Re:versal 003",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261108-1.mp4",
+   "look": "poster916 98 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261108-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-07",
   "keys": [
    "pigeon steve|dialect",
