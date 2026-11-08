@@ -101,6 +101,26 @@ def base_frame(day, artist, title):
 
 COV_Y = 470
 
+def title_frame(recs, want):
+    """title card: RECAP + week, then all covers fanned top to bottom – upright, each one showing a strip,
+    the last one complete; weekday next to every strip"""
+    img = Image.new("RGB", (W, H), YEL)
+    d = ImageDraw.Draw(img)
+    d.text((X0, 330), want.get("kicker", "WEEKLY"), font=F(46), fill=INK, anchor="ls")
+    d.text((X0, 470), want.get("headline", "RECAP"), font=fit("WEDNESDAY", CW, 170), fill=INK, anchor="ls")
+    d.text((X0, 540), "%s  ·  %s" % (want.get("week", ""), want.get("range", "")), font=F(40, False), fill=INK, anchor="ls")
+    n = len(recs)
+    cs, top, bottom = 600, 610, 1640
+    step = (bottom - top - cs) / max(1, n - 1)
+    for i, r in enumerate(recs):
+        y = int(top + i * step)
+        cov = r["cover"].convert("RGB").resize((cs, cs), Image.LANCZOS)
+        sh = Image.new("RGB", (cs, 6), tuple(int(c * 0.82) for c in YEL))
+        img.paste(sh, (X0, y - 6))                     # hairline shadow: the strips read as separate sleeves
+        img.paste(cov, (X0, y))
+        d.text((X0 + cs + 28, y + min(step, 120) / 2 + 14), r["day"][:3], font=F(42), fill=INK, anchor="ls")
+    return img
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
@@ -155,6 +175,9 @@ def main():
                             "-r", str(FPS), "-i", "-", "-i", wav, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-crf", "18",
                             "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest",
                             "-movflags", "+faststart", out], stdin=subprocess.PIPE)
+    title = title_frame(recs, want)
+    title_p = out.replace(".mp4", "-title.jpg")
+    title.save(title_p, quality=93)
     poster_i = int(want.get("poster_index", 0))
     for i, r in enumerate(recs):
         base = base_frame(r["day"], r["artist"], r["title"])
@@ -176,7 +199,7 @@ def main():
     cap = os.path.join(work, "weekly-recap-%s.txt" % slug)
     if want.get("caption"):
         open(cap, "w", encoding="utf-8").write(want["caption"].rstrip() + "\n")
-    print(json.dumps({"video": out, "poster": poster, "caption": cap if want.get("caption") else None, "dur": total,
+    print(json.dumps({"video": out, "poster": poster, "title": title_p, "caption": cap if want.get("caption") else None, "dur": total,
                       "records": [{k: v for k, v in r.items() if k != "cover"} for r in recs]}, ensure_ascii=False))
 
 if __name__ == "__main__":

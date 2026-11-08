@@ -44,4 +44,4 @@ jobs:
         run: |
           gh release view recap >/dev/null 2>&1 || gh release create recap --prerelease --title "Weekly recap" --notes "Sunday recap reels for Instagram."
           cp "$RECAP_WORK/result.json" "$RECAP_WORK/recap.json"
-          python3 -c "import json;r=json.load(open('$RECAP_WORK/result.json'));print(r['video']);print(r['poster'])" | xargs -d '\n' gh release upload recap --clobber "$RECAP_WORK/recap.json"
+          python3 -c "import json;r=json.load(open('$RECAP_WORK/result.json'));print(r['video']);print(r['poster']);print(r['title'])" | xargs -d '\n' gh release upload recap --clobber "$RECAP_WORK/recap.json"
