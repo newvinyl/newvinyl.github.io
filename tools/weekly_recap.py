@@ -102,15 +102,31 @@ def base_frame(day, artist, title):
 COV_Y = 470
 
 def title_frame(recs, want):
-    """title card: RECAP + week, then all covers fanned top to bottom – upright, each one showing a strip,
-    the last one complete; weekday next to every strip"""
+    """title card. 'row' (default since 8.11.26): strong contrast big/small – tiny kicker, huge RECAP,
+    all covers side by side edge to edge, no weekday labels. 'grid' and 'fan' kept as alternatives."""
     img = Image.new("RGB", (W, H), YEL)
     d = ImageDraw.Draw(img)
+    n = len(recs)
+    if want.get("title_style", "row") == "row":
+        small = F(30)
+        d.text((X0, 330), "WEEKLY", font=small, fill=INK, anchor="ls")
+        d.text((X0 + CW, 330), want.get("week", ""), font=small, fill=INK, anchor="rs")
+        big = fit(want.get("headline", "RECAP"), CW, 400, True, 100)
+        bb = d.textbbox((0, 0), want.get("headline", "RECAP"), font=big, anchor="ls")
+        d.text((X0 - bb[0], 470 + (-bb[1])), want.get("headline", "RECAP"), font=big, fill=INK, anchor="ls")
+        cs = W // n
+        x0 = (W - cs * n) // 2
+        y = 940
+        for i, r in enumerate(recs):
+            img.paste(r["cover"].convert("RGB").resize((cs, cs), Image.LANCZOS), (x0 + i * cs, y))
+        d.text((X0, y + cs + 60), want.get("range", ""), font=small, fill=INK, anchor="ls")
+        d.text((X0 + CW, y + cs + 60), "%d RECORDS" % n, font=small, fill=INK, anchor="rs")
+        d.text((X0 + CW, 1650), "monthlyvinyl.net", font=small, fill=INK, anchor="rs")
+        return img
     d.text((X0, 330), want.get("kicker", "WEEKLY"), font=F(46), fill=INK, anchor="ls")
     d.text((X0, 470), want.get("headline", "RECAP"), font=fit("WEDNESDAY", CW, 170), fill=INK, anchor="ls")
     d.text((X0, 540), "%s  ·  %s" % (want.get("week", ""), want.get("range", "")), font=F(40, False), fill=INK, anchor="ls")
-    n = len(recs)
-    if want.get("title_style", "grid") == "grid":    # every cover complete, all the same size (user, 8.11.26)
+    if want.get("title_style") == "grid":    # every cover complete, all the same size (user, 8.11.26)
         cs, gap, top = 250, 22, 610
         colw = (CW + 24) // 2
         for i, r in enumerate(recs):
