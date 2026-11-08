@@ -110,6 +110,15 @@ def title_frame(recs, want):
     d.text((X0, 470), want.get("headline", "RECAP"), font=fit("WEDNESDAY", CW, 170), fill=INK, anchor="ls")
     d.text((X0, 540), "%s  ·  %s" % (want.get("week", ""), want.get("range", "")), font=F(40, False), fill=INK, anchor="ls")
     n = len(recs)
+    if want.get("title_style", "grid") == "grid":    # every cover complete, all the same size (user, 8.11.26)
+        cs, gap, top = 250, 22, 610
+        colw = (CW + 24) // 2
+        for i, r in enumerate(recs):
+            col, row = i // 4, i % 4
+            x, y = X0 + col * colw, top + row * (cs + gap)
+            img.paste(r["cover"].convert("RGB").resize((cs, cs), Image.LANCZOS), (x, y))
+            d.text((x + cs + 26, y + 44), r["day"][:3], font=F(46), fill=INK, anchor="ls")
+        return img
     cs, top, bottom = 600, 610, 1640
     step = (bottom - top - cs) / max(1, n - 1)
     for i, r in enumerate(recs):
