@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "fx": {
   "CHF": 1,
-  "EUR": 0.9194,
-  "GBP": 1.1027,
-  "USD": 0.823,
-  "date": "2026-11-01",
-  "PLN": 0.2088
+  "EUR": 0.9143,
+  "GBP": 1.0961,
+  "USD": 0.8189,
+  "PLN": 0.2082,
+  "date": "2026-11-06"
  },
  "shops": [
   {
@@ -14241,6 +14241,42 @@
      "g": "House",
      "m": "2026-11",
      "first_seen": "2026-11-06"
+    },
+    {
+     "a": "YUKA MIZUHARA",
+     "t": "MOON DUST",
+     "l": "RUSH HOUR",
+     "cat": "RHM 050",
+     "f": "12\"",
+     "p": null,
+     "g": "House",
+     "url": "https://www.rushhour.nl/record/vinyl/moon-dust",
+     "cover": "https://objectstore.true.nl/rushhourrecords:files/styles/cover_medium/storage-api-public/rhm_050_front.jpg?itok=M3i6LwzD",
+     "tr": [
+      {
+       "s": "",
+       "n": "Moon Dust (Main Mix)",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/r/rhm_050_moon_dust/rhm050_-_yuka_benedek_-_moon_dust_-_1._moon_dust_main_mix_-_carvery_mastered_m2_16bit.mp3"
+      },
+      {
+       "s": "",
+       "n": "Moon Dust (Seashell Mix)",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/r/rhm_050_moon_dust/rhm050_-_yuka_benedek_-_moon_dust_-_2._moon_dust_seashell_mix_-_carvery_mastered_m316bit.mp3"
+      },
+      {
+       "s": "",
+       "n": "Moon Dust (Garage Vox)",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/r/rhm_050_moon_dust/rhm050_-_yuka_benedek_-_moon_dust_-_3._moon_dust_garage_vox_-_carvery_mastered_m2_16bit.mp3"
+      },
+      {
+       "s": "",
+       "n": "Moon Garage (Instr)",
+       "u": "https://objectstore.true.nl/rushhourrecords:files/tracks/r/rhm_050_moon_dust/rhm050_-_yuka_benedek_-_moon_dust_-_4._moon_garage_instr_-_carvery_mastered_m2_16bit.mp3"
+      }
+     ],
+     "d": "W 46 - 2026",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
     }
    ],
    "country": "NL"
@@ -34302,6 +34338,248 @@
      "st": "in",
      "m": "2026-11",
      "first_seen": "2026-11-08"
+    },
+    {
+     "a": "Italo Brutalo",
+     "t": "All that matters",
+     "l": "Mechatronica Music",
+     "cat": "MTRONW013",
+     "f": "Mini-LP",
+     "p": 14.99,
+     "g": "Electro / Disco / Acid House",
+     "url": "https://clone.nl/item84828.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage83909.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "All That Matters",
+       "u": "https://clone.nl/platen/mp3/84828/1%20All%20That%20Matters.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Please Hurt Me",
+       "u": "https://clone.nl/platen/mp3/84828/2%20Please%20Hurt%20Me.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Borderline Pressure",
+       "u": "https://clone.nl/platen/mp3/84828/3%20Borderline%20Pressure.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Darkmode Dominion",
+       "u": "https://clone.nl/platen/mp3/84828/4%20Darkmode%20Dominion.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Senh & 256Colors",
+     "t": "Pegasus EP",
+     "l": "Planet Rhythm",
+     "cat": "PRRUKDUB014",
+     "f": "Mini-LP",
+     "p": 15.49,
+     "g": "Techno / Dub Techno",
+     "url": "https://clone.nl/item84813.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage83894.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Pacifica",
+       "u": "https://clone.nl/platen/mp3/84813/1%20Pacifica.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Morphe",
+       "u": "https://clone.nl/platen/mp3/84813/2%20Morphe.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Jigoro",
+       "u": "https://clone.nl/platen/mp3/84813/3%20Jigoro.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Phasma",
+       "u": "https://clone.nl/platen/mp3/84813/4%20Phasma.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Vick Lavender",
+     "t": "The Endless Possibilities EP",
+     "l": "180 GR Records",
+     "cat": "180GR005",
+     "f": "12\"",
+     "p": 14.99,
+     "g": "House",
+     "url": "https://clone.nl/item84820.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage83901.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Endless Possibilities (Time Traveler Mix)",
+       "u": "https://clone.nl/platen/mp3/84820/1%20Endless%20Possibilities%20%28Time%20Traveler%20Mix%29.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Out Of The Fire (Time Traveler Mix)",
+       "u": "https://clone.nl/platen/mp3/84820/2%20Out%20Of%20The%20Fire%20%28Time%20Traveler%20Mix%29.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Yoofee",
+     "t": "Green Eyes",
+     "l": "Casa Voyager",
+     "cat": "CVR02",
+     "f": "12\"",
+     "p": 14.99,
+     "g": "House",
+     "url": "https://clone.nl/item84796.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage83876.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Green Eyes",
+       "u": "https://clone.nl/platen/mp3/84796/1%20Green%20Eyes.mp3"
+      },
+      {
+       "s": "2",
+       "n": "I Can See It From Here",
+       "u": "https://clone.nl/platen/mp3/84796/2%20I%20Can%20See%20It%20From%20Here.mp3"
+      },
+      {
+       "s": "3",
+       "n": "So Much",
+       "u": "https://clone.nl/platen/mp3/84796/3%20So%20Much.mp3"
+      },
+      {
+       "s": "4",
+       "n": "After All This",
+       "u": "https://clone.nl/platen/mp3/84796/4%20After%20All%20This.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "JSPRV35",
+     "t": "Twisted EP (Deniro remix)",
+     "l": "Frenzy",
+     "cat": "FRNZYREC013",
+     "f": "Mini-LP",
+     "p": 14.49,
+     "g": "Techno",
+     "url": "https://clone.nl/item85013.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage84093.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "Take A Hike",
+       "u": "https://clone.nl/platen/mp3/85013/1%20Take%20A%20Hike.mp3"
+      },
+      {
+       "s": "2",
+       "n": "Twisted",
+       "u": "https://clone.nl/platen/mp3/85013/2%20Twisted.mp3"
+      },
+      {
+       "s": "3",
+       "n": "Twisted (Deniro Remix)",
+       "u": "https://clone.nl/platen/mp3/85013/3%20Twisted%20%28Deniro%20Remix%29.mp3"
+      },
+      {
+       "s": "4",
+       "n": "Weight",
+       "u": "https://clone.nl/platen/mp3/85013/4%20Weight.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DJ Hendy",
+     "t": "The Fonk",
+     "l": "Kaos",
+     "cat": "KAOS-DS06",
+     "f": "Mini-LP",
+     "p": 14.99,
+     "g": "Techno",
+     "url": "https://clone.nl/item84954.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage84037.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "TOOL 1",
+       "u": "https://clone.nl/platen/mp3/84954/1%20TOOL%201.mp3"
+      },
+      {
+       "s": "2",
+       "n": "THE FONK (ft. Forma)",
+       "u": "https://clone.nl/platen/mp3/84954/2%20THE%20FONK%20%28ft.%20Forma%29.mp3"
+      },
+      {
+       "s": "3",
+       "n": "SPANK YOU",
+       "u": "https://clone.nl/platen/mp3/84954/3%20SPANK%20YOU.mp3"
+      },
+      {
+       "s": "4",
+       "n": "THE PAIR",
+       "u": "https://clone.nl/platen/mp3/84954/4%20THE%20PAIR.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Louis The 4th",
+     "t": "For Those Who Still Believe EP",
+     "l": "KAZERNE",
+     "cat": "KAZERNE030",
+     "f": "Mini-LP",
+     "p": 14.49,
+     "g": "Techno",
+     "url": "https://clone.nl/item84906.html",
+     "cover": "https://clone.nl/platen/artwork/large/plaatimage83990.jpg",
+     "tr": [
+      {
+       "s": "1",
+       "n": "The Physics",
+       "u": "https://clone.nl/platen/mp3/84906/1%20The%20Physics.mp3"
+      },
+      {
+       "s": "2",
+       "n": "The Pressure",
+       "u": "https://clone.nl/platen/mp3/84906/2%20The%20Pressure.mp3"
+      },
+      {
+       "s": "3",
+       "n": "True North",
+       "u": "https://clone.nl/platen/mp3/84906/3%20True%20North.mp3"
+      },
+      {
+       "s": "4",
+       "n": "The Exit Door",
+       "u": "https://clone.nl/platen/mp3/84906/4%20The%20Exit%20Door.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
     }
    ],
    "country": "NL"
@@ -72576,9 +72854,14 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193170-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193170.mp3"
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/YUM75A/YUM75A-A1.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/YUM75A/YUM75A-B1.mp3"
       }
      ],
      "d": "Exp. 22 Nov",
@@ -73837,8 +74120,58 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/157014.mp3"
+       "n": "Silent Chord",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/01_silent_chord_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Double Spire",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/02_double_spire_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Bamboo Fighter",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/03_bamboo_fighter_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Diving Into Minds",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/04_diving_into_minds_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Marimbau",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/05_marimbau_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Takusambient",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/06_takusambient_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Soaking Dry",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/07_soaking_dry_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "From Dusk",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/08_from_dusk_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Runners",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/09_runners_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Blinker",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/13_blinker_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Epoxy Lamp",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/14._epoxy_lamp_master.mp3"
       }
      ],
      "d": "Exp. 30 Oct",
@@ -73999,9 +74332,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193194-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193194.mp3"
+       "s": "A1",
+       "n": "Cocaine Superstar V2",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Fast Life",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "My Name",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Memories V1",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-02-02.mp3"
       }
      ],
      "d": "Exp. 20 Nov",
@@ -78878,9 +79226,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193300-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193300.mp3"
+       "s": "A1",
+       "n": "Slow Motion Visuals",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Continuum",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "In The Matrix",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Upside Down",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -79659,9 +80022,14 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193312-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193312.mp3"
+       "s": "A1",
+       "n": "Ends Of Time",
+       "u": "https://www.juno.co.uk/MP3/SF1189953-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Fantatime",
+       "u": "https://www.juno.co.uk/MP3/SF1189953-01-02-01.mp3"
       }
      ],
      "st": "pre",
@@ -79734,9 +80102,19 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193311-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193311.mp3"
+       "s": "A1",
+       "n": "I'm Ready (For Motion)",
+       "u": "https://www.juno.co.uk/MP3/SF1189951-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "This Is Your Captain Speaking",
+       "u": "https://www.juno.co.uk/MP3/SF1189951-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Remain Calm",
+       "u": "https://www.juno.co.uk/MP3/SF1189951-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -80008,9 +80386,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193326-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193326.mp3"
+       "s": "A1",
+       "n": "Alito",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Crush",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Stabiliser",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Sectem",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -80029,9 +80422,29 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193329-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193329.mp3"
+       "s": "A1",
+       "n": "Ras Al Tool",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Quiet Fee",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Dirty Little Secret",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Icy Happen",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Rare Appearance",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-02-03.mp3"
       }
      ],
      "st": "pre",
@@ -80107,9 +80520,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193308-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193308.mp3"
+       "s": "A1",
+       "n": "The Way Forward",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Burns Hot",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Stay The Course",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "I Know You're Out There",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -80448,9 +80876,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193313-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193313.mp3"
+       "s": "A1",
+       "n": "Eko Eko Azarak",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Fu Manchu",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Monroe Seesaw (Tjizza's Trip dub)",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Monroe Seesaw",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -81395,9 +81838,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193350-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193350.mp3"
+       "s": "A1",
+       "n": "Maybe I'll Find A Friend",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Let Me Love You Boy",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Here's The Plan",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Over",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -81689,9 +82147,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193351-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193351.mp3"
+       "s": "A1",
+       "n": "High Jazz",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Bullsh*ttin (feat Shak Da Ville)",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Leave It In Ennit",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Ode To The King (Jeff)",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -82860,9 +83333,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193386-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193386.mp3"
+       "s": "A1",
+       "n": "Nosleep",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Olright",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "You",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Amg",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -82919,9 +83407,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193379-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193379.mp3"
+       "s": "A1",
+       "n": "Grossmatter",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Beholder",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Katxupino",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Startingtotrytobegin",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -83701,9 +84204,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193406-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193406.mp3"
+       "s": "A1",
+       "n": "Jude & Frank, Fdvm - \"Touch Me\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Essel - \"Legacy\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "James Hurr, Jewel Kid - \"Back Of The Jeep\" (feat Frankco Harris)",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Andrea Lane - \"Gorongosa\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -85512,9 +86030,19 @@
      "g": "House",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193446.mp3"
+       "s": "A1",
+       "n": "Blank",
+       "u": "https://www.juno.co.uk/MP3/SF1190655-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "May I Say",
+       "u": "https://www.juno.co.uk/MP3/SF1190655-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "May I Say (dub)",
+       "u": "https://www.juno.co.uk/MP3/SF1190655-01-02-01.mp3"
       }
      ],
      "st": "pre",
@@ -85534,9 +86062,29 @@
      "g": "House",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193444.mp3"
+       "s": "A1",
+       "n": "Abdc Alphabet Chant",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "The Music Is Made To Dance To",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Cyphermix Of Taxi",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Swing Dat Cymble Remix",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Deep Passion",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-02-03.mp3"
       }
      ],
      "st": "pre",
@@ -85774,9 +86322,24 @@
      "g": "Techno",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193452.mp3"
+       "s": "A1",
+       "n": "Cobert - \"Signs\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Cobert - \"Digging In Memories\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Reshio - \"Serious Fun\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Reshio - \"Plastic People\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -86183,9 +86746,19 @@
      "g": "House",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193461.mp3"
+       "s": "A1",
+       "n": "Set Up The Rows",
+       "u": "https://www.juno.co.uk/MP3/SF1190930-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Things Do",
+       "u": "https://www.juno.co.uk/MP3/SF1190930-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Manowski Or Radeki",
+       "u": "https://www.juno.co.uk/MP3/SF1190930-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -86293,9 +86866,24 @@
      "g": "House / Techno",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193481.mp3"
+       "s": "A1",
+       "n": "Vastness Of Space",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Sometime To Return",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Caldwell 38",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Celtic Bay",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -86425,9 +87013,19 @@
      "g": "House",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193475.mp3"
+       "s": "A1",
+       "n": "Marasca",
+       "u": "https://www.juno.co.uk/MP3/SF1190994-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Velvet Surface",
+       "u": "https://www.juno.co.uk/MP3/SF1190994-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Marasca (Mick Jerome remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190994-01-02-01.mp3"
       }
      ],
      "st": "pre",
@@ -86447,9 +87045,24 @@
      "g": "House",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193474.mp3"
+       "s": "A1",
+       "n": "The Force",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Ride Me Baby",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Sometimes I Feel",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Last Lap",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-02-02.mp3"
       }
      ],
      "st": "pre",
@@ -86736,9 +87349,14 @@
      "g": "House / Disco",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193472.mp3"
+       "s": "A1",
+       "n": "Heat You Up (Melt You Down)",
+       "u": "https://www.juno.co.uk/MP3/SF1190987-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Heat You Up (Melt You Down) (Melt Down mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190987-01-02-01.mp3"
       }
      ],
      "st": "pre",
@@ -87383,9 +88001,14 @@
      "g": "Techno",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193476.mp3"
+       "s": "A1",
+       "n": "Reversed Piracy",
+       "u": "https://www.juno.co.uk/MP3/SF1190955-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Broom Master",
+       "u": "https://www.juno.co.uk/MP3/SF1190955-01-02-01.mp3"
       }
      ],
      "st": "pre",
@@ -87676,9 +88299,24 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193513-2.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193513.mp3"
+       "s": "A1",
+       "n": "Happy Groove (edit mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Bumper",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Luv U (Deep Mood mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Jammin (Brass mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-02-02.mp3"
       }
      ],
      "d": "Exp. 3 Dec",
@@ -102157,9 +102795,50 @@
      "g": "Minimal Techno / Techno",
      "url": "https://yoyaku.io/release/deetron-presents-soulmate-sequence-it078/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/05/IT078-1-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Madness",
+       "yt": "JMBYtaF7idE"
+      }
+     ],
      "m": "2026-11",
      "first_seen": "2026-11-08"
+    },
+    {
+     "a": "O.M.Theorem",
+     "t": "Lemma3",
+     "l": "O.M.Theorem",
+     "cat": "OMTHM003",
+     "f": "12\"",
+     "p": 12.92,
+     "g": "Dub Techno",
+     "url": "https://yoyaku.io/release/o-m-theorem-lemma3-omthm003/",
+     "cover": "https://yoyaku.io/wp-content/uploads/2026/11/OMTHM003-400x400.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Aradena Offset Feat. Cinna Peyghamy",
+       "u": "https://media.hardwax.com/audio/89690_A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Heraklion 6.0 Feat. Jaf Ge Nos & Cinna Peyghamy",
+       "u": "https://media.hardwax.com/audio/89690_A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Looking For The Bridge Feat. Cinna Peyghamy",
+       "u": "https://media.hardwax.com/audio/89690_B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Found The Grid Feat. K’boko",
+       "u": "https://media.hardwax.com/audio/89690_B2.mp3"
+      }
+     ],
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
     }
    ],
    "country": "FR"
@@ -107045,6 +107724,55 @@
       }
      ],
      "st": "out"
+    },
+    {
+     "a": "Harry Wills",
+     "t": "RM12045",
+     "l": "R.A.N.D. Muzik Recordings",
+     "cat": "RM12045",
+     "f": "12\"",
+     "p": 15.9,
+     "g": "Techno",
+     "url": "https://kompakt.fm/releases/rm12045",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a9ec77753476-6a9ec8e103476-fitted.png?v=2",
+     "tr": [],
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Gili",
+     "t": "RM12046",
+     "l": "R.A.N.D. Muzik Recordings",
+     "cat": "RM12046",
+     "f": "12\"",
+     "p": 15.9,
+     "g": "Techno",
+     "url": "https://kompakt.fm/releases/rm12046",
+     "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a9ec7776be72-6a9ec97159883-fitted.png?v=2",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "This 4 U (Robots Have Feelings mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1183179-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Futuro Anteriore",
+       "u": "https://www.juno.co.uk/MP3/SF1183179-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Machine",
+       "u": "https://www.juno.co.uk/MP3/SF1183179-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Get Buck!",
+       "u": "https://www.juno.co.uk/MP3/SF1183179-01-02-02.mp3"
+      }
+     ],
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
     }
    ]
   },
@@ -165204,6 +165932,3566 @@
      "st": "in",
      "m": "2026-11",
      "first_seen": "2026-11-08"
+    },
+    {
+     "a": "David GLENN",
+     "t": "Solstice",
+     "l": "Oslated",
+     "cat": "OSP 005",
+     "f": "12\"",
+     "p": 23.34,
+     "g": "Ambient",
+     "url": "https://www.juno.co.uk/products/david-glenn-solstice-vinyl/1190802-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190802-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Solstice",
+       "u": "https://www.juno.co.uk/MP3/SF1190802-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Moonrise",
+       "u": "https://www.juno.co.uk/MP3/SF1190802-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Moonrise (Dave Aju remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190802-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Moonrise (Donato Dozzy remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190802-01-02-02.mp3"
+      }
+     ],
+     "d": "16 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "BEUTHEN OS",
+     "t": "Kraftwerk Oberschlesien",
+     "l": "Furanum Germany",
+     "cat": "FU 026",
+     "f": "LP",
+     "p": 33.35,
+     "g": "Ambient",
+     "url": "https://www.juno.co.uk/products/beuthen-os-kraftwerk-oberschlesien-vinyl/1190426-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190426-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Beuthen OS - \"Kraftwerk Oberschlesien\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190426-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Beuthen OS - \"Der Nebel\" (feat Laura Schen & DJ Saint Pierre)",
+       "u": "https://www.juno.co.uk/MP3/SF1190426-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Dominik Muller - \"Mariupol\" (Beuthen OS album mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190426-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Beuthen OS - \"Religion Kills\" (feat Darja Kazimira)",
+       "u": "https://www.juno.co.uk/MP3/SF1190426-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Beuthen OS - \"War Is In The Air\" (feat Darja Kazimira - album mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190426-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Beuthen OS - \"On The Peak\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190426-01-02-03.mp3"
+      }
+     ],
+     "d": "11 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "PROSPECTOR SOUND",
+     "t": "Floodlight Exchange",
+     "l": "Just Music",
+     "cat": "TAO 070LP",
+     "f": "LP",
+     "p": 27.25,
+     "g": "Ambient",
+     "url": "https://www.juno.co.uk/products/prospector-sound-floodlight-exchange-vinyl/1190898-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190898-01A-MED.jpg",
+     "tr": [],
+     "d": "11 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "SOO:K",
+     "t": "VM",
+     "l": "Swims",
+     "cat": "SWIM 19",
+     "f": "LP",
+     "p": 22.79,
+     "g": "Ambient",
+     "url": "https://www.juno.co.uk/products/soo-k-vm-vinyl/1190671-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190671-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Opaquia",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "The Aviary",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Fennec (feat Yechan Kim)",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-01-03.mp3"
+      },
+      {
+       "s": "A4",
+       "n": "Suna Under Glass",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-01-04.mp3"
+      },
+      {
+       "s": "A5",
+       "n": "Yu Fu (feat Yamanohiroyuki)",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-01-05.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Starflower (feat Sofia Sturm)",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Moonmill",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "The Porcelain Garden",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-02-03.mp3"
+      },
+      {
+       "s": "B4",
+       "n": "The Grove",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-02-04.mp3"
+      },
+      {
+       "s": "B5",
+       "n": "Elsewhere",
+       "u": "https://www.juno.co.uk/MP3/SF1190671-01-02-05.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Various",
+     "t": "Pop Ambient 2027",
+     "l": "Kompakt Germany",
+     "cat": "KOMPAKT 512",
+     "f": "LP",
+     "p": 27.25,
+     "g": "Ambient",
+     "url": "https://www.juno.co.uk/products/pop-ambient-2027-vinyl/1190346-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190346-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Kenneth James Gibson - \"Shattered Promise\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Ipi - \"Morgentau\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Pass Into Silence, Lukas Schafer - \"Seagazer\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-01-03.mp3"
+      },
+      {
+       "s": "A4",
+       "n": "Umit Han - \"Seda\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-01-04.mp3"
+      },
+      {
+       "s": "A5",
+       "n": "Silver Machine - \"Gstaad Loop 2\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-01-05.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Reich & Wurden - \"Radiocentric\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Collini Center - \"Libbets Casey\" (feat Gregor Schwellenbach)",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Ahn Trio - \"Time Lapse\" (Mikkel Metal Mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-02-03.mp3"
+      },
+      {
+       "s": "B4",
+       "n": "Osko - \"Bergfolk 1\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-02-04.mp3"
+      },
+      {
+       "s": "B5",
+       "n": "Segensklang - \"Phasen Des Seins\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190346-01-02-05.mp3"
+      }
+     ],
+     "d": "04 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "variousartists|popambient2027"
+    },
+    {
+     "a": "OPINEL",
+     "t": "Listen Love",
+     "l": "Bug Wan Germany",
+     "cat": "BW 113BLACK",
+     "f": "7\"",
+     "p": 21.4,
+     "g": "Deep House / Balearic",
+     "url": "https://www.juno.co.uk/products/opinel-listen-love-vinyl/1186352-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1186352-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Listen Love",
+       "u": "https://www.juno.co.uk/MP3/SF1186352-01-01-01.mp3"
+      }
+     ],
+     "d": "05 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "The TWILITE TONE",
+     "t": "Joy",
+     "l": "Star Creature US",
+     "cat": "SC 7095",
+     "f": "7\"",
+     "p": 21.4,
+     "g": "Deep House / Minimal / Chicago House",
+     "url": "https://www.juno.co.uk/products/the-twilite-tone-joy-vinyl/1188729-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1188729-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Joy",
+       "u": "https://www.juno.co.uk/MP3/SF1188729-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Work",
+       "u": "https://www.juno.co.uk/MP3/SF1188729-01-02-01.mp3"
+      }
+     ],
+     "d": "05 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "RAMJAC CORPORATION",
+     "t": "88-92 It Is What It Was",
+     "l": "Musique Pour La Danse Holland",
+     "cat": "MPD 055",
+     "f": "2×LP",
+     "p": 38.08,
+     "g": "Deep House / Downtempo",
+     "url": "https://www.juno.co.uk/products/ramjac-corporation-88-92-it-is-what-it-vinyl/1172539-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1172539-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Love Me (7:43)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Back In Time (8:18)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "100 Hz (8:19)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Reefer (7:34)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-02-02.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "That Delicious Taste (6:22)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-03-01.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "That Delicious Dub (5:55)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-03-02.mp3"
+      },
+      {
+       "s": "C3",
+       "n": "Pure & Simple (5:48)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-03-03.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "Food Of Love (6:54)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-04-01.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "Destination Unknown (10:39)",
+       "u": "https://www.juno.co.uk/MP3/SF1172539-01-04-02.mp3"
+      }
+     ],
+     "d": "04 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Various",
+     "t": "APT 9 Recordings Vol III",
+     "l": "APT 9",
+     "cat": "APT9 LTD 002",
+     "f": "3×LP",
+     "p": 58.66,
+     "g": "Deep House / Techno / Disco",
+     "url": "https://www.juno.co.uk/products/apt-9-recordings-vol-iii-vinyl/1173932-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1173932-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Arsene - \"Thank You\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Sweater On Polo - \"Towards The Light\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Johnny Panga - \"Day After Disco\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Ron Morelli - \"Stars Over Uptown\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-02-02.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "Gari Romalis - \"Future Is\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-03-01.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "Osagie - \"Hold Me Back\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-03-02.mp3"
+      },
+      {
+       "s": "C3",
+       "n": "Manny Steelo - \"Acid Conspiracy\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-03-03.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "Alenaudio - \"Essence\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-04-01.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "Julienne - \"Scan9\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-04-02.mp3"
+      },
+      {
+       "s": "E1",
+       "n": "Illustrious - \"Triangular\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-05-01.mp3"
+      },
+      {
+       "s": "E2",
+       "n": "Aleqs Notal - \"Overnight Process\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-05-02.mp3"
+      },
+      {
+       "s": "F1",
+       "n": "Ghostdog - \"Hour Of The Star\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-06-01.mp3"
+      },
+      {
+       "s": "F2",
+       "n": "Mari Ella - \"Ride It Out\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-06-02.mp3"
+      },
+      {
+       "s": "F3",
+       "n": "Jarren - \"Sleeptalk\"",
+       "u": "https://www.juno.co.uk/MP3/SF1173932-01-06-03.mp3"
+      }
+     ],
+     "d": "05 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Volkan AKIN",
+     "t": "Petrol EP",
+     "l": "Love On The Rocks",
+     "cat": "LOTR 033",
+     "f": "12\"",
+     "p": 28.36,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/volkan-akin-petrol-ep-vinyl/1190333-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190333-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Nosleep",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Olright",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "You",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Amg",
+       "u": "https://www.juno.co.uk/MP3/SF1190333-01-02-02.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Bertie BASSETT",
+     "t": "Let's Party EP",
+     "l": "Bertie Bassett",
+     "cat": "BBS 002V",
+     "f": "12\"",
+     "p": 17.52,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/bertie-bassett-lets-party-ep-vinyl/1190947-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190947-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Happy Groove (edit mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Bumper",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Luv U (Deep Mood mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Jammin (Brass mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190947-01-02-02.mp3"
+      }
+     ],
+     "d": "07 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "COAST2COAST",
+     "t": "Coast2coast 007",
+     "l": "Coast2coast Germany",
+     "cat": "C2C 007",
+     "f": "12\"",
+     "p": 15.85,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/coast2coast-007-vinyl/1190380-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190380-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "BZ",
+       "u": "https://www.juno.co.uk/MP3/SF1190380-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "BB",
+       "u": "https://www.juno.co.uk/MP3/SF1190380-01-02-01.mp3"
+      }
+     ],
+     "d": "17 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "COZI",
+     "t": "Bright Auras",
+     "l": "Oddysee Netherlands",
+     "cat": "ODDY 004",
+     "f": "12\"",
+     "p": 16.67,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/cozi-bright-auras-vinyl/1190816-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190816-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/193448.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DJ FACE",
+     "t": "Face EP",
+     "l": "SAFT Spain",
+     "cat": "SAFTX 008",
+     "f": "12\"",
+     "p": 15.85,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/dj-face-face-ep-vinyl/1190310-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190310-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Maybe I'll Find A Friend",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Let Me Love You Boy",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Here's The Plan",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Over",
+       "u": "https://www.juno.co.uk/MP3/SF1190310-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DJ SLUGO / BEET WORLDWIDE / SCHWEPPES",
+     "t": "The Block Party EP",
+     "l": "Miami Beats US",
+     "cat": "MB 003",
+     "f": "12\"",
+     "p": 20.3,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/dj-slugo-beet-worldwide-the-block-party-ep-vinyl/1189927-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189927-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "DJ Slugo - \"Production Mode\"",
+       "u": "https://www.juno.co.uk/MP3/SF1189927-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "DJ Slugo - \"Another Drank\"",
+       "u": "https://www.juno.co.uk/MP3/SF1189927-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "DJ Slugo - \"Eskimo\"",
+       "u": "https://www.juno.co.uk/MP3/SF1189927-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Beet WorldWide & Schweppes - \"All Gospel\"",
+       "u": "https://www.juno.co.uk/MP3/SF1189927-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Beet WorldWide & Schweppes - \"Real\"",
+       "u": "https://www.juno.co.uk/MP3/SF1189927-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "djslugobwwschw|theblockparty"
+    },
+    {
+     "a": "EB FLOW",
+     "t": "Healing Faze EP",
+     "l": "Fuse London",
+     "cat": "FUSE 070",
+     "f": "12\"",
+     "p": 16.67,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/eb-flow-healing-faze-ep-vinyl/1190338-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190338-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Healing Faze",
+       "u": "https://www.juno.co.uk/MP3/SF1190338-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Come With Me",
+       "u": "https://www.juno.co.uk/MP3/SF1190338-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Freshold",
+       "u": "https://www.juno.co.uk/MP3/SF1190338-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Drifting",
+       "u": "https://www.juno.co.uk/MP3/SF1190338-01-02-02.mp3"
+      }
+     ],
+     "d": "04 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "eb_flow|healingfaze"
+    },
+    {
+     "a": "EL PAYO / STEFANO DE SANTIS / JOSE RICO",
+     "t": "Best Of Various 10",
+     "l": "Ten Lovers Music",
+     "cat": "TLM 043",
+     "f": "12\"",
+     "p": 15.01,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/el-payo-stefano-de-best-of-various-10-vinyl/1190290-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190290-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "El Payo - \"The Plan\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190290-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Stefano De Santis - \"Mood Swing 5\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190290-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Jose Rico - \"Haiti Beat\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190290-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Jose Rico - \"Wait & Despair\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190290-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "FLORENCE",
+     "t": "FLO 016",
+     "l": "Florence Germany",
+     "cat": "FLO 016C",
+     "f": "12\"",
+     "p": 17.52,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/florence-flo-016-vinyl/1190942-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190942-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Bassqueen",
+       "u": "https://www.juno.co.uk/MP3/SF1190942-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Alive",
+       "u": "https://www.juno.co.uk/MP3/SF1190942-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Andar",
+       "u": "https://www.juno.co.uk/MP3/SF1190942-01-02-02.mp3"
+      }
+     ],
+     "d": "03 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Doug GOMEZ",
+     "t": "Signals 5",
+     "l": "Merecumbe Recordings",
+     "cat": "MERC 005",
+     "f": "12\"",
+     "p": 15.56,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/doug-gomez-signals-5-vinyl/1190428-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190428-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Jackson Heights (Deep Cumbia mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190428-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Clinton Hill (Gates Ave mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190428-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Ahi (Nuevo Sabor mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190428-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Suave",
+       "u": "https://www.juno.co.uk/MP3/SF1190428-01-02-02.mp3"
+      }
+     ],
+     "d": "25 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "GZARDIN",
+     "t": "May I Say",
+     "l": "SBNR",
+     "cat": "SBNR 002",
+     "f": "12\"",
+     "p": 15.85,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/gzardin-may-i-say-vinyl/1190655-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190655-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Blank",
+       "u": "https://www.juno.co.uk/MP3/SF1190655-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "May I Say",
+       "u": "https://www.juno.co.uk/MP3/SF1190655-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "May I Say (dub)",
+       "u": "https://www.juno.co.uk/MP3/SF1190655-01-02-01.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "HAL",
+     "t": "Sounds From The Shed Vol 1",
+     "l": "La Remise",
+     "cat": "REMISE 001",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/hal-sounds-from-the-shed-vol-1-vinyl/1189951-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189951-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "I'm Ready (For Motion)",
+       "u": "https://www.juno.co.uk/MP3/SF1189951-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "This Is Your Captain Speaking",
+       "u": "https://www.juno.co.uk/MP3/SF1189951-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Remain Calm",
+       "u": "https://www.juno.co.uk/MP3/SF1189951-01-02-02.mp3"
+      }
+     ],
+     "d": "13 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Malik HENDRICKS",
+     "t": "Ten Toes Down EP",
+     "l": "Vibes & Pepper",
+     "cat": "VP 015",
+     "f": "12\"",
+     "p": 14.73,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/malik-hendricks-ten-toes-down-ep-vinyl/1190307-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190307-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Hyper Thesis",
+       "u": "https://www.juno.co.uk/MP3/SF1190307-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Ten Toes Down",
+       "u": "https://www.juno.co.uk/MP3/SF1190307-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Steel Man",
+       "u": "https://www.juno.co.uk/MP3/SF1190307-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Mint Suede Monks",
+       "u": "https://www.juno.co.uk/MP3/SF1190307-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Mint Suede Monks (Kai Alce remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190307-01-02-03.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Markus HOMM / DILBY / PORNBUGS / LOLU MENAYED / CRISTINA LAZIC",
+     "t": "Bondage Games Part 11: Muris",
+     "l": "Bondage Germany",
+     "cat": "BOND 120843",
+     "f": "12\"",
+     "p": 16.4,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/markus-homm-dilby-bondage-games-part-11-muris-vinyl/1190322-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190322-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Markus Homm - \"Missing Pieces\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190322-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Dilby & Pornbugs - \"Decades\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190322-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Lolu Menayed - \"Flux\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190322-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Cristina Lazic - \"Worlds Unknown\" (feat Lika)",
+       "u": "https://www.juno.co.uk/MP3/SF1190322-01-02-02.mp3"
+      }
+     ],
+     "d": "11 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "JAVONNTTE",
+     "t": "Vladimirmars J Project",
+     "l": "Sakskobing",
+     "cat": "SKKB 032",
+     "f": "12\"",
+     "p": 15.85,
+     "g": "Deep House / Detroit House",
+     "url": "https://www.juno.co.uk/products/javonntte-vladimirmars-j-project-vinyl/1190813-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190813-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Abdc Alphabet Chant",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "The Music Is Made To Dance To",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Cyphermix Of Taxi",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Swing Dat Cymble Remix",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Deep Passion",
+       "u": "https://www.juno.co.uk/MP3/SF1190813-01-02-03.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Anna Marie JOHNSON / MARK FRANCIS / WIPE THE NEEDLE / LAVILLE / DON E / LAROYE / SHEZAR",
+     "t": "Homegrown EP",
+     "l": "Makin Moves",
+     "cat": "MAKINEP 023",
+     "f": "12\"",
+     "p": 15.01,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/anna-marie-johnson-mark-francis-wipe-homegrown-ep-vinyl/1190305-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190305-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Anna-Marie Johnson & Mark Francis - \"Shivers\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190305-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Wipe The Needle & Laville - \"10,000 Miles\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190305-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Don-E - \"Lovin' You\" (Marvin Jupiter remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190305-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Laroye & Shezar - \"Natural High\" (Jimpster main mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190305-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "JON E",
+     "t": "Messages From Easy Street Part II",
+     "l": "Natural Element",
+     "cat": "NE 006",
+     "f": "12\"",
+     "p": 16.96,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/jon-e-messages-from-easy-street-part-ii-vinyl/1190300-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190300-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "High Jazz",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Bullsh*ttin (feat Shak Da Ville)",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Leave It In Ennit",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Ode To The King (Jeff)",
+       "u": "https://www.juno.co.uk/MP3/SF1190300-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "JUDE & FRANK / FDVM / ESSEL / JAMES HURR / JEWEL KID / ANDREA LANE",
+     "t": "Toolroom Trax Sampler Vol 9",
+     "l": "Toolroom Trax",
+     "cat": "TRXVS 009",
+     "f": "12\"",
+     "p": 17.24,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/jude-frank-fdvm-toolroom-trax-sampler-vol-9-vinyl/1190340-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190340-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Jude & Frank, Fdvm - \"Touch Me\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Essel - \"Legacy\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "James Hurr, Jewel Kid - \"Back Of The Jeep\" (feat Frankco Harris)",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Andrea Lane - \"Gorongosa\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190340-01-02-02.mp3"
+      }
+     ],
+     "d": "04 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Steve KELLEY / PORNBUGS / DUST YARD / POLITICS OF DANCING / NTFO",
+     "t": "Bondage Games Part 11: Leo",
+     "l": "Bondage Germany",
+     "cat": "BOND 120844",
+     "f": "12\"",
+     "p": 16.4,
+     "g": "Deep House",
+     "url": "https://www.juno.co.uk/products/steve-kelley-pornbugs-bondage-games-part-11-leo-vinyl/1190321-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190321-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Steve Kelley & Pornbugs - \"Canning Town\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190321-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Dust Yard - \"Shadows\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190321-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Politics Of Dancing - \"Party\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190321-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "NTFO - \"Boruga\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190321-01-02-02.mp3"
+      }
+     ],
+     "d": "11 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "BEAT FLICKERS",
+     "t": "Over & Over",
+     "l": "Octave Japan",
+     "cat": "OTS 415",
+     "f": "7\"",
+     "p": 23.34,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/beat-flickers-over-over-vinyl/1168522-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1168522-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Over & Over (5:27)",
+       "u": "https://www.juno.co.uk/MP3/SF1168522-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Tokyo Paradise City (4:48)",
+       "u": "https://www.juno.co.uk/MP3/SF1168522-01-02-01.mp3"
+      }
+     ],
+     "d": "05 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DJ KOBAYASHI",
+     "t": "Give Me Disco Vol 2",
+     "l": "Batov",
+     "cat": "BTR 142EP",
+     "f": "12\"",
+     "p": 18.63,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/dj-kobayashi-give-me-disco-vol-2-vinyl/1178369-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1178369-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "The Bam Jam Band - \"Theme\" (4:26)",
+       "u": "https://www.juno.co.uk/MP3/SF1178369-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "D Apal - \"60 Meter'n (Rytme)\" (7:07)",
+       "u": "https://www.juno.co.uk/MP3/SF1178369-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Yin Yin - \"Tokyo Disko\"",
+       "u": "https://www.juno.co.uk/MP3/SF1178369-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Jiri Jiri - \"Spaghetti Western\"",
+       "u": "https://www.juno.co.uk/MP3/SF1178369-01-02-02.mp3"
+      }
+     ],
+     "d": "05 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Roland GRESHAM",
+     "t": "The Touch Of The Masters Hand",
+     "l": "Izipho Soul",
+     "cat": "ZP 126",
+     "f": "7\"",
+     "p": 14.73,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/roland-gresham-the-touch-of-the-masters-hand-vinyl/1188363-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1188363-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "The Touch Of The Master's Hand (Phillip Ward remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1188363-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Gossip Christ",
+       "u": "https://www.juno.co.uk/MP3/SF1188363-01-02-01.mp3"
+      }
+     ],
+     "d": "06 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "The JACKSON SISTERS",
+     "t": "I Believe In Miracles",
+     "l": "Expansion",
+     "cat": "EXUMG 19",
+     "f": "7\"",
+     "p": 15.56,
+     "g": "Disco · Repress",
+     "url": "https://www.juno.co.uk/products/the-jackson-sisters-i-believe-in-miracles-vinyl/1100999-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1100999-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "I Believe In Miracles (2:58)",
+       "u": "https://www.juno.co.uk/MP3/SF1100999-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "I Believe In Miracles (extended version) (4:51)",
+       "u": "https://www.juno.co.uk/MP3/SF1100999-01-02-01.mp3"
+      }
+     ],
+     "d": "06 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "MOTON RECORDS INC",
+     "t": "Skyrager Edits",
+     "l": "Moton",
+     "cat": "MTN 53",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Disco / Balearic",
+     "url": "https://www.juno.co.uk/products/moton-records-inc-skyrager-edits-vinyl/1182921-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1182921-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "2000 Years (16:19)",
+       "u": "https://www.juno.co.uk/MP3/SF1182921-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Obsession (6:33)",
+       "u": "https://www.juno.co.uk/MP3/SF1182921-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Rejoice (9:06)",
+       "u": "https://www.juno.co.uk/MP3/SF1182921-01-02-02.mp3"
+      }
+     ],
+     "d": "04 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "skyrager|skyrageredits"
+    },
+    {
+     "a": "DAVE LOVE LEE",
+     "t": "Mukatsuku Vs Z Records: Must Be The Music",
+     "l": "Mukatsuku",
+     "cat": "MUKAT 109",
+     "f": "7\"",
+     "p": 15.85,
+     "g": "House / Disco",
+     "url": "https://www.juno.co.uk/products/mukatsuku-presents-jn-mukatsuku-vs-z-records-must-vinyl/1185919-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1185919-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Must Be The Music (The original Disco edit: A Dave Love Lee Production) (3:59)",
+       "u": "https://www.juno.co.uk/MP3/SF1185919-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Must Be The Music (Boogie Extravaganza Exclusive edit : A Dave Love Lee Production) (3:56)",
+       "u": "https://www.juno.co.uk/MP3/SF1185919-01-02-01.mp3"
+      }
+     ],
+     "d": "02 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "The SHAKE & BAKE BAND",
+     "t": "Starflight Disco",
+     "l": "Tramp Germany",
+     "cat": "TR 354",
+     "f": "7\"",
+     "p": 13.33,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/the-shake-bake-band-starflight-disco-vinyl/1182105-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1182105-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Starflight Disco (part 1) (4:42)",
+       "u": "https://www.juno.co.uk/MP3/SF1182105-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Starflight Disco (part 2) (3:28)",
+       "u": "https://www.juno.co.uk/MP3/SF1182105-01-02-01.mp3"
+      }
+     ],
+     "d": "05 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "TOUCH",
+     "t": "Energizer (Omakase edits)",
+     "l": "Solid Japan",
+     "cat": "OTS 420",
+     "f": "7\"",
+     "p": 18.63,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/touch-energizer-omakase-edits-vinyl/1175467-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1175467-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Energizer (Omakase 3 Min Cooking edit) (3:48)",
+       "u": "https://www.juno.co.uk/MP3/SF1175467-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Love Hangover (Omakase 3 Min Cooking edit) (3:24)",
+       "u": "https://www.juno.co.uk/MP3/SF1175467-01-02-01.mp3"
+      }
+     ],
+     "d": "04 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "XCLUSIV",
+     "t": "Fools Are Friendly",
+     "l": "Phantasy Sound",
+     "cat": "PH 151A",
+     "f": "12\"",
+     "p": 17.24,
+     "g": "Disco · Repress",
+     "url": "https://www.juno.co.uk/products/xclusiv-fools-are-friendly-repress-vinyl/1188648-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1188648-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Fools Are Friendly (extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1188648-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Fools Are Friendly (instrumental mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1188648-01-02-01.mp3"
+      }
+     ],
+     "d": "02 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "MYSTIC JUNGLE",
+     "t": "Sunset Breaker",
+     "l": "Periodica Italy",
+     "cat": "PRD 1026",
+     "f": "LP",
+     "p": 25.86,
+     "g": "Disco / Balearic · Repress",
+     "url": "https://www.juno.co.uk/products/mystic-jungle-sunset-breaker-vinyl/1083193-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1083193-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Secrets (5:02)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Some Lovin' (5:26)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Innervision (4:56)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-01-03.mp3"
+      },
+      {
+       "s": "A4",
+       "n": "Shine For Your Desire (3:16)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-01-04.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Twilight (4:11)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "In Time (4:08)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "The Road (3:20)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-02-03.mp3"
+      },
+      {
+       "s": "B4",
+       "n": "Get Me Higher (3:04)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-02-04.mp3"
+      },
+      {
+       "s": "B5",
+       "n": "Sunset Breaker (3:34)",
+       "u": "https://www.juno.co.uk/MP3/SF1083193-01-02-05.mp3"
+      }
+     ],
+     "d": "03 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "The VAGABOND PRES",
+     "t": "Dirty Edits",
+     "l": "Use Vinyl Italy",
+     "cat": "801999 1895979",
+     "f": "2×LP",
+     "p": 34.47,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/the-vagabond-pres-dirty-edits-vinyl/1187054-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1187054-01A-MED.jpg",
+     "tr": [],
+     "d": "06 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Various",
+     "t": "Borga Revolution! Ghanaian Music In The Digital Age 1979-1988 Volume 4",
+     "l": "Kalita",
+     "cat": "KALITALP 13",
+     "f": "2×LP",
+     "p": 30.3,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/borga-revolution-ghanaian-music-in-the-digital-vinyl/1181075-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1181075-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Rex Omar - \"Yesu Do\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Nat Fredua - \"Winner-Rapp\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "CST Amankwah - \"Ye Wo Ayiemu\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Rex Omar - \"Bue Me\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Baffour Kyei & Great Africans Band - \"Su Nkwa\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Rex Omar - \"Alleluiah\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-02-03.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "CST Amankwah - \"Onyame Asem\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-03-01.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "Chief Kofi Sammy & Okukuseku No 2 - \"Gyae Ma No Nka\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-03-02.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "Nat Fredua - \"Understand It\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-04-01.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "Abibifo Dance Band Of Ghana - \"Saworoma/Asase Afanoo\"",
+       "u": "https://www.juno.co.uk/MP3/SF1181075-01-04-02.mp3"
+      }
+     ],
+     "d": "05 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "BASICALLY UGLY COVERS",
+     "t": "Basically Ugly Edits 002",
+     "l": "Basically Ugly Edits",
+     "cat": "BUE 002",
+     "f": "12\"",
+     "p": 17.52,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/basically-ugly-covers-basically-ugly-edits-002-vinyl/1190335-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190335-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Two Of Hearts (Vudi Roller rework)",
+       "u": "https://www.juno.co.uk/MP3/SF1190335-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Xango",
+       "u": "https://www.juno.co.uk/MP3/SF1190335-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Thiba Kamoo",
+       "u": "https://www.juno.co.uk/MP3/SF1190335-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Touloulou",
+       "u": "https://www.juno.co.uk/MP3/SF1190335-01-02-02.mp3"
+      }
+     ],
+     "d": "07 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Tommy COUNTACH",
+     "t": "Pappagallo EP",
+     "l": "Filter Phaser France",
+     "cat": "",
+     "f": "12\"",
+     "p": 18.9,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/tommy-countach-pappagallo-ep-vinyl/1189783-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189783-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Black Leather (feat Vikki Totten)",
+       "u": "https://www.juno.co.uk/MP3/SF1189783-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "One Last Time Again",
+       "u": "https://www.juno.co.uk/MP3/SF1189783-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Pappagallo",
+       "u": "https://www.juno.co.uk/MP3/SF1189783-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "One Last Time Again (Fernanda Arrau remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1189783-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Pappagallo (Boudi & Boy Boogie remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1189783-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Black Leather (feat Vikki Totten, extended)",
+       "u": "https://www.juno.co.uk/MP3/SF1189783-01-02-03.mp3"
+      }
+     ],
+     "d": "",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DANDOLO",
+     "t": "Vischio",
+     "l": "Mirella Italy",
+     "cat": "MIR 008",
+     "f": "7\"",
+     "p": 17.79,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/dandolo-vischio-vinyl/1190159-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190159-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Vischio",
+       "u": "https://www.juno.co.uk/MP3/SF1190159-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Dubbio",
+       "u": "https://www.juno.co.uk/MP3/SF1190159-01-02-01.mp3"
+      }
+     ],
+     "d": "02 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "KELA FUTI / JB / PABLO RUIZ / HANSI",
+     "t": "Dancefloor Funk 3",
+     "l": "Legofunk Italy",
+     "cat": "LGFS 04",
+     "f": "12\"",
+     "p": 19.46,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/kela-futi-jb-pablo-ruiz-dancefloor-funk-3-vinyl/1190952-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190952-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Kela Futi - \"Yeah Rhythm\" (Lego Jazz 4 AM 7 version)",
+       "u": "https://www.juno.co.uk/MP3/SF1190952-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "JB - \"Sex Machine\" (Robby Bergmann remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190952-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Pablo Ruiz - \"Que Se Sepa\" (Pablo Re-touch)",
+       "u": "https://www.juno.co.uk/MP3/SF1190952-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "JB - \"Jungle Groove\" (Lego re-edit)",
+       "u": "https://www.juno.co.uk/MP3/SF1190952-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Hansi - \"Party Is A Groovy Thing\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190952-01-02-03.mp3"
+      }
+     ],
+     "d": "07 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "KENIX / BOBBY YOUNGBLOOD",
+     "t": "There's Never Been (No One Like You)",
+     "l": "Be With",
+     "cat": "BEWITH 027TWELVE",
+     "f": "12\"",
+     "p": 27.25,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/kenix-bobby-youngblood-theres-never-been-no-one-vinyl/1190984-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190984-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "There's Never Been (No One Like You) (long version)",
+       "u": "https://www.juno.co.uk/MP3/SF1190984-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "There's Never Been (No One Like You) (short version)",
+       "u": "https://www.juno.co.uk/MP3/SF1190984-01-02-01.mp3"
+      }
+     ],
+     "d": "15 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "KOM",
+     "t": "Fly With Me",
+     "l": "Balearic Social",
+     "cat": "BSR 012",
+     "f": "12\"",
+     "p": 15.56,
+     "g": "Disco / Balearic",
+     "url": "https://www.juno.co.uk/products/kom-fly-with-me-vinyl/1190394-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190394-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Fly With Me (extended)",
+       "u": "https://www.juno.co.uk/MP3/SF1190394-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Fly With Me (Aberdream remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190394-01-01-02.mp3"
+      }
+     ],
+     "d": "29 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "LAION / SETH BOOTH / SAM IN SPACE / ANDREA MARTELLO",
+     "t": "Diamonds In The Night Vol 10 EP",
+     "l": "Bordello A Parigi Holland",
+     "cat": "BAP 256",
+     "f": "12\"",
+     "p": 15.01,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/laion-seth-booth-diamonds-in-the-night-vol-vinyl/1190681-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190681-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Laion - \"Grandma Disco\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190681-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Seth Booth - \"Vetus In Novo\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190681-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Sam In Space - \"Longing\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190681-01-01-03.mp3"
+      },
+      {
+       "s": "A4",
+       "n": "Andrea Martello - \"Spaziorave\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190681-01-01-04.mp3"
+      }
+     ],
+     "d": "21 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Shirley LITES",
+     "t": "Heat You Up (Melt You Down)",
+     "l": "Be With",
+     "cat": "BEWITH 028TWELVE",
+     "f": "12\"",
+     "p": 27.25,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/shirley-lites-heat-you-up-melt-you-down-vinyl/1190987-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190987-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Heat You Up (Melt You Down)",
+       "u": "https://www.juno.co.uk/MP3/SF1190987-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Heat You Up (Melt You Down) (Melt Down mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190987-01-02-01.mp3"
+      }
+     ],
+     "d": "15 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "LOVE CLUB",
+     "t": "Hot Summer Nights",
+     "l": "Be With",
+     "cat": "BEWITH 025TWELVE",
+     "f": "12\"",
+     "p": 27.25,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/love-club-hot-summer-nights-vinyl/1190986-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190986-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Hot Summer Nights",
+       "u": "https://www.juno.co.uk/MP3/SF1190986-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Hot Summer Nights (instrumental)",
+       "u": "https://www.juno.co.uk/MP3/SF1190986-01-02-01.mp3"
+      }
+     ],
+     "d": "15 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "LTG LONG TRAVEL GROOVE / THE BROKER / DJ MOY / FUNK REVERSE",
+     "t": "Funk Night",
+     "l": "Sound Exhibitions Italy",
+     "cat": "SE 69VL",
+     "f": "12\"",
+     "p": 14.18,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/ltg-long-travel-groove-the-broker-funk-night-vinyl/1190145-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190145-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Ltg Long Travel Groove, The Broker - \"Funk Night\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190145-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "DJ Moy, Funk Reverse - \"Just This Funk\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190145-01-01-02.mp3"
+      }
+     ],
+     "d": "20 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "MIDNIGHT LOOP",
+     "t": "AZUR 005",
+     "l": "Midnight Loop US",
+     "cat": "MLA 005",
+     "f": "12\"",
+     "p": 21.96,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/midnight-loop-azur-005-vinyl/1190821-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190821-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "That's Where I Am (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190821-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "I've Got The Boogie (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190821-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Someone Found A Letter (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190821-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Get On Up On The Floor (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190821-01-02-02.mp3"
+      }
+     ],
+     "d": "18 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "MIDNIGHT LOOP",
+     "t": "AZUR 006",
+     "l": "Midnight Loop US",
+     "cat": "MLA 006",
+     "f": "12\"",
+     "p": 21.96,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/midnight-loop-azur-006-vinyl/1190823-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190823-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Lovely Is The Feelin' Now (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190823-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Pleased To Meet You (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190823-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "In Your Arms I Found My Paradise (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190823-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Tomorrow I Know (Azur extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190823-01-02-02.mp3"
+      }
+     ],
+     "d": "18 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "THE MR K EDITS",
+     "t": "I Must Be Ready",
+     "l": "Most Excellent Unltd",
+     "cat": "",
+     "f": "7\"",
+     "p": 14.18,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/the-mr-k-edits-i-must-be-ready-vinyl/1190614-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190614-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "I Must Be Ready",
+       "u": "https://www.juno.co.uk/MP3/SF1190614-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Open Up Your Heart",
+       "u": "https://www.juno.co.uk/MP3/SF1190614-01-02-01.mp3"
+      }
+     ],
+     "d": "",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "PIRMAUT / NU MA",
+     "t": "No Heat Just Lies EP",
+     "l": "Special Groove",
+     "cat": "SGR 021",
+     "f": "12\"",
+     "p": 23.63,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/pirmaut-nu-ma-no-heat-just-lies-ep-vinyl/1190094-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190094-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Breeze Of Ice (extended mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190094-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Breeze Of Ice (radio edit)",
+       "u": "https://www.juno.co.uk/MP3/SF1190094-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "No Heat (Blind & Gold) (extended Dark mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190094-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Wire Heart",
+       "u": "https://www.juno.co.uk/MP3/SF1190094-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Confusion",
+       "u": "https://www.juno.co.uk/MP3/SF1190094-01-02-03.mp3"
+      }
+     ],
+     "d": "23 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "RADIORAMA",
+     "t": "Desire",
+     "l": "ZYX Germany",
+     "cat": "1217 12",
+     "f": "12\"",
+     "p": 25.57,
+     "g": "Disco / Italo Disco",
+     "url": "https://www.juno.co.uk/products/radiorama-desire-vinyl/1190381-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190381-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Desire (vocal)",
+       "u": "https://www.juno.co.uk/MP3/SF1190381-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Desire",
+       "u": "https://www.juno.co.uk/MP3/SF1190381-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Desire (Flemming Dalum remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190381-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Desire (Hysteric edit)",
+       "u": "https://www.juno.co.uk/MP3/SF1190381-01-02-02.mp3"
+      }
+     ],
+     "d": "22 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "The REFLEX",
+     "t": "Som A Sanjie",
+     "l": "Flex7",
+     "cat": "FLX7 008",
+     "f": "7\"",
+     "p": 13.9,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/the-reflex-som-a-sanjie-vinyl/1190538-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190538-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Som A Sanjie",
+       "u": "https://www.juno.co.uk/MP3/SF1190538-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Does It Mean",
+       "u": "https://www.juno.co.uk/MP3/SF1190538-01-02-01.mp3"
+      }
+     ],
+     "d": "15 Feb 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "The REFLEX",
+     "t": "Reposessed '26",
+     "l": "Flex7",
+     "cat": "FLX7 009",
+     "f": "7\"",
+     "p": 13.9,
+     "g": "Disco",
+     "url": "https://www.juno.co.uk/products/the-reflex-reposessed-26-vinyl/1190695-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190695-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Reposessed '26",
+       "u": "https://www.juno.co.uk/MP3/SF1190695-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Should I've Said Hi",
+       "u": "https://www.juno.co.uk/MP3/SF1190695-01-02-01.mp3"
+      }
+     ],
+     "d": "15 Feb 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "SEEFEEL",
+     "t": "Loz S",
+     "l": "Warp",
+     "cat": "WAP 508",
+     "f": "12\"",
+     "p": 19.19,
+     "g": "Downtempo",
+     "url": "https://www.juno.co.uk/products/seefeel-loz-s-vinyl/1190474-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190474-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/193441.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "ALEX JANN / NOAMM / UNKLEVON / SONGPANCAKE / FLEISHER / ROBODRUM",
+     "t": "Space Terminal",
+     "l": "Ovelha Trax Portugal",
+     "cat": "OVEL 001",
+     "f": "12\"",
+     "p": 25.86,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/alex-jann-noamm-unklevon-songpancake-fleisher-space-terminal-vinyl/1190809-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190809-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Alex Jann - \"Biochip Currency\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190809-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Noamm - \"Morgue\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190809-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Unklevon - \"Planetary Data System\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190809-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Songpancake - \"Bee In Your Bonnet\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190809-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Fleisher - \"Ride Or Die\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190809-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Robodrum - \"Motherfucking Breakbeat\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190809-01-02-03.mp3"
+      }
+     ],
+     "d": "13 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "CASSIUS SELECT",
+     "t": "Dirty Little Secret",
+     "l": "Sneaker Social Club",
+     "cat": "SNKR 070V",
+     "f": "12\"",
+     "p": 17.52,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/cassius-select-dirty-little-secret-vinyl/1189949-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189949-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Ras Al Tool",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Quiet Fee",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Dirty Little Secret",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Icy Happen",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Rare Appearance",
+       "u": "https://www.juno.co.uk/MP3/SF1189949-01-02-03.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "COASTAL PHASE",
+     "t": "Coastal Phase",
+     "l": "Coastal Phase France",
+     "cat": "CP 16101",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/coastal-phase-vinyl/1190573-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190573-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Six Extract",
+       "u": "https://www.juno.co.uk/MP3/SF1190573-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Four Extract",
+       "u": "https://www.juno.co.uk/MP3/SF1190573-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Three Extract",
+       "u": "https://www.juno.co.uk/MP3/SF1190573-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "One Extract",
+       "u": "https://www.juno.co.uk/MP3/SF1190573-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Five Extract",
+       "u": "https://www.juno.co.uk/MP3/SF1190573-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Two Extract",
+       "u": "https://www.juno.co.uk/MP3/SF1190573-01-02-03.mp3"
+      }
+     ],
+     "d": "25 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "GOGO GADGETO",
+     "t": "Fast Life",
+     "l": "Attention Spin!",
+     "cat": "ATTSPIN 006",
+     "f": "12\"",
+     "p": 18.9,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/gogo-gadgeto-fast-life-vinyl/1190140-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190140-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Cocaine Superstar V2",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Fast Life",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "My Name",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Memories V1",
+       "u": "https://www.juno.co.uk/MP3/SF1190140-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "SANSIBAR / ZAP",
+     "t": "Presion Atlantica",
+     "l": "Mitic Uruguay",
+     "cat": "MIT 001",
+     "f": "12\"",
+     "p": 18.35,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/sansibar-zap-presion-atlantica-vinyl/1190949-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190949-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Nag Nag",
+       "u": "https://www.juno.co.uk/MP3/SF1190949-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Selka Seinaa Vasten",
+       "u": "https://www.juno.co.uk/MP3/SF1190949-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Jungle Keepers",
+       "u": "https://www.juno.co.uk/MP3/SF1190949-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Alt 5",
+       "u": "https://www.juno.co.uk/MP3/SF1190949-01-02-02.mp3"
+      }
+     ],
+     "d": "15 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "SINIAL",
+     "t": "SEA 002",
+     "l": "Sinial",
+     "cat": "SEA 002",
+     "f": "12\"",
+     "p": 16.96,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/sinial-sea-002-vinyl/1190414-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190414-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Hd",
+       "u": "https://www.juno.co.uk/MP3/SF1190414-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "E",
+       "u": "https://www.juno.co.uk/MP3/SF1190414-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Hashp",
+       "u": "https://www.juno.co.uk/MP3/SF1190414-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Li",
+       "u": "https://www.juno.co.uk/MP3/SF1190414-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "In",
+       "u": "https://www.juno.co.uk/MP3/SF1190414-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "unknownartist|sea002"
+    },
+    {
+     "a": "SLIT OBSERVERS",
+     "t": "The Next Condition EP",
+     "l": "Fanzine Spain",
+     "cat": "FAN 028",
+     "f": "12\"",
+     "p": 16.67,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/slit-observers-the-next-condition-ep-vinyl/1190422-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190422-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Ancient Wave",
+       "u": "https://www.juno.co.uk/MP3/SF1190422-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "The Approach",
+       "u": "https://www.juno.co.uk/MP3/SF1190422-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Sent Ahead",
+       "u": "https://www.juno.co.uk/MP3/SF1190422-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Second Genesis",
+       "u": "https://www.juno.co.uk/MP3/SF1190422-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Damage State",
+       "u": "https://www.juno.co.uk/MP3/SF1190422-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "After Removal",
+       "u": "https://www.juno.co.uk/MP3/SF1190422-01-02-03.mp3"
+      }
+     ],
+     "d": "18 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Z ID",
+     "t": "Dddreams EP",
+     "l": "Home Kitchen",
+     "cat": "HKR 002",
+     "f": "12\"",
+     "p": 17.24,
+     "g": "Electro",
+     "url": "https://www.juno.co.uk/products/z-id-dddreams-ep-vinyl/1190329-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190329-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Dddreams",
+       "u": "https://www.juno.co.uk/MP3/SF1190329-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Cutz",
+       "u": "https://www.juno.co.uk/MP3/SF1190329-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Dedroid",
+       "u": "https://www.juno.co.uk/MP3/SF1190329-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Rapcore",
+       "u": "https://www.juno.co.uk/MP3/SF1190329-01-02-02.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "AHU",
+     "t": "Codename Jina",
+     "l": "Kolony Gorky",
+     "cat": "GORKY 2",
+     "f": "12\"",
+     "p": 20.0,
+     "g": "Minimal / House / Techno",
+     "url": "https://www.juno.co.uk/products/ahu-codename-jina-vinyl/959624-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS959624-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Jina (6:33)",
+       "u": "https://www.juno.co.uk/MP3/SF959624-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Mahsa (5:32)",
+       "u": "https://www.juno.co.uk/MP3/SF959624-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "The Code (7:47)",
+       "u": "https://www.juno.co.uk/MP3/SF959624-01-02-01.mp3"
+      }
+     ],
+     "d": "06 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "100 HZ",
+     "t": "EP 3",
+     "l": "Tape & Disc Control",
+     "cat": "TDC 003",
+     "f": "12\"",
+     "p": 16.12,
+     "g": "Techno / Minimal Techno · Reissue",
+     "url": "https://www.juno.co.uk/products/100-hz-ep-3-vinyl/1190519-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190519-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Shoot The Bar",
+       "u": "https://www.juno.co.uk/MP3/SF1190519-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Flashing",
+       "u": "https://www.juno.co.uk/MP3/SF1190519-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Tub Rub",
+       "u": "https://www.juno.co.uk/MP3/SF1190519-01-02-02.mp3"
+      }
+     ],
+     "d": "01 Feb 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Gianni CERRI",
+     "t": "Velvet Surface",
+     "l": "Seance Audio US",
+     "cat": "SA 003",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Minimal",
+     "url": "https://www.juno.co.uk/products/gianni-cerri-velvet-surface-vinyl/1190994-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190994-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Marasca",
+       "u": "https://www.juno.co.uk/MP3/SF1190994-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Velvet Surface",
+       "u": "https://www.juno.co.uk/MP3/SF1190994-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Marasca (Mick Jerome remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190994-01-02-01.mp3"
+      }
+     ],
+     "d": "25 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "COBERT / RESHIO",
+     "t": "Decades Of Wisdom EP",
+     "l": "Oman Germany",
+     "cat": "OMAN 003",
+     "f": "12\"",
+     "p": 15.56,
+     "g": "Minimal Techno",
+     "url": "https://www.juno.co.uk/products/cobert-reshio-decades-of-wisdom-ep-vinyl/1190634-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190634-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Cobert - \"Signs\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Cobert - \"Digging In Memories\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Reshio - \"Serious Fun\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Reshio - \"Plastic People\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190634-01-02-02.mp3"
+      }
+     ],
+     "d": "11 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Adam COLLINS",
+     "t": "Remembering Swag EP",
+     "l": "Swag",
+     "cat": "SWAG 020",
+     "f": "12\"",
+     "p": 22.79,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/adam-collins-remembering-swag-ep-vinyl/1190574-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190574-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Remembering Swag",
+       "u": "https://www.juno.co.uk/MP3/SF1190574-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "1-800 Call Adam",
+       "u": "https://www.juno.co.uk/MP3/SF1190574-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Electric Acid Test",
+       "u": "https://www.juno.co.uk/MP3/SF1190574-01-02-02.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DECODER",
+     "t": "Ivory EP",
+     "l": "TB",
+     "cat": "TB 001",
+     "f": "12\"",
+     "p": 18.35,
+     "g": "Minimal",
+     "url": "https://www.juno.co.uk/products/decoder-ivory-ep-vinyl/1189923-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189923-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "The Way Forward",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Burns Hot",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Stay The Course",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "I Know You're Out There",
+       "u": "https://www.juno.co.uk/MP3/SF1189923-01-02-02.mp3"
+      }
+     ],
+     "d": "03 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DJ TJIZZA",
+     "t": "All Clocks Down EP",
+     "l": "Shock O Clock",
+     "cat": "TBA",
+     "f": "12\"",
+     "p": 22.23,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/dj-tjizza-all-clocks-down-ep-vinyl/1189953-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189953-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Ends Of Time",
+       "u": "https://www.juno.co.uk/MP3/SF1189953-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Fantatime",
+       "u": "https://www.juno.co.uk/MP3/SF1189953-01-02-01.mp3"
+      }
+     ],
+     "d": "13 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DOT",
+     "t": "Vastness Of Space EP",
+     "l": "Depthful Israel",
+     "cat": "DEPTHFUL 003",
+     "f": "12\"",
+     "p": 16.67,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/dot-vastness-of-space-ep-vinyl/1190859-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190859-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Vastness Of Space",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Sometime To Return",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Caldwell 38",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Celtic Bay",
+       "u": "https://www.juno.co.uk/MP3/SF1190859-01-02-02.mp3"
+      }
+     ],
+     "d": "18 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DOT13 / FEDO / ZLENE / MATHIAS HINDS / AJAKS",
+     "t": "Seaweed Rhythms Vol III",
+     "l": "Seaweed Rhythm",
+     "cat": "SEAWEDD 009",
+     "f": "12\"",
+     "p": 16.96,
+     "g": "Minimal",
+     "url": "https://www.juno.co.uk/products/dot13-fedo-zlene-mathias-seaweed-rhythms-vol-iii-vinyl/1190096-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190096-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Dot13 - \"Yeezy\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190096-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Fedo - \"Silent Control\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190096-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Zlene & Mathias Hinds - \"Tonfalk\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190096-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Ajaks - \"Virero\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190096-01-02-02.mp3"
+      }
+     ],
+     "d": "29 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "ENIVREZ VOUS / DENIS ANDREEV / ARZIANI",
+     "t": "Classic Coma EP",
+     "l": "7LOI Russia",
+     "cat": "7LO 05",
+     "f": "12\"",
+     "p": 16.12,
+     "g": "Minimal Techno",
+     "url": "https://www.juno.co.uk/products/enivrez-vous-denis-andreev-arziani-classic-coma-ep-vinyl/1190142-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190142-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Enivrez Vous & Ix3m - \"Coma\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190142-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Denis Andreev & Arziani - \"Classic\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190142-01-02-01.mp3"
+      }
+     ],
+     "d": "27 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "HORROR INC",
+     "t": "A Soundtrack For Strange Times: Part 3",
+     "l": "Anoma",
+     "cat": "AOA 006EF",
+     "f": "12\"",
+     "p": 17.79,
+     "g": "Minimal",
+     "url": "https://www.juno.co.uk/products/horror-inc-a-soundtrack-for-strange-times-part-vinyl/1190246-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190246-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "The Soul (The Essence Of Breath)",
+       "u": "https://www.juno.co.uk/MP3/SF1190246-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Surrendering To Nothingness",
+       "u": "https://www.juno.co.uk/MP3/SF1190246-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "In Limbo",
+       "u": "https://www.juno.co.uk/MP3/SF1190246-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Turning The Tables",
+       "u": "https://www.juno.co.uk/MP3/SF1190246-01-02-02.mp3"
+      }
+     ],
+     "d": "29 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Rio KAWAMOTO",
+     "t": "Tamiya Boy EP",
+     "l": "More Rice",
+     "cat": "MR 010",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/rio-kawamoto-tamiya-boy-ep-vinyl/1189944-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189944-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Eko Eko Azarak",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Fu Manchu",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Monroe Seesaw (Tjizza's Trip dub)",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Monroe Seesaw",
+       "u": "https://www.juno.co.uk/MP3/SF1189944-01-02-02.mp3"
+      }
+     ],
+     "d": "13 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "KOOKY",
+     "t": "METHEXIS 01",
+     "l": "methexis",
+     "cat": "MR 01",
+     "f": "12\"",
+     "p": 16.67,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/kooky-methexis-01-vinyl/1190384-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190384-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Mitsokamisma Wav",
+       "u": "https://www.juno.co.uk/MP3/SF1190384-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Through The Night",
+       "u": "https://www.juno.co.uk/MP3/SF1190384-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "BYM (Feel The Funk)",
+       "u": "https://www.juno.co.uk/MP3/SF1190384-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "BYM",
+       "u": "https://www.juno.co.uk/MP3/SF1190384-01-02-02.mp3"
+      }
+     ],
+     "d": "04 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Nico LAMPARIELLO",
+     "t": "Life Meets Trouble",
+     "l": "Forma Y Contenido",
+     "cat": "FYC 009",
+     "f": "12\"",
+     "p": 16.96,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/nico-lampariello-life-meets-trouble-vinyl/1189835-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189835-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Guerra De Egos",
+       "u": "https://www.juno.co.uk/MP3/SF1189835-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Guerra De Egos (Santiago Uribe remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1189835-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Solucion Alternativa",
+       "u": "https://www.juno.co.uk/MP3/SF1189835-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Sobrestimulad@",
+       "u": "https://www.juno.co.uk/MP3/SF1189835-01-02-02.mp3"
+      }
+     ],
+     "d": "29 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "LEROSA",
+     "t": "Facing Your Enemy",
+     "l": "Floodplain",
+     "cat": "FLOOD 003",
+     "f": "12\"",
+     "p": 17.52,
+     "g": "Minimal",
+     "url": "https://www.juno.co.uk/products/lerosa-facing-your-enemy-vinyl/1190568-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190568-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Facing Your Enemy",
+       "u": "https://www.juno.co.uk/MP3/SF1190568-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Shimmer",
+       "u": "https://www.juno.co.uk/MP3/SF1190568-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Corners",
+       "u": "https://www.juno.co.uk/MP3/SF1190568-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Outrun",
+       "u": "https://www.juno.co.uk/MP3/SF1190568-01-02-02.mp3"
+      }
+     ],
+     "d": "30 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Ilario LIBURNI",
+     "t": "The Force EP",
+     "l": "Cardinal Belgium",
+     "cat": "CAR 016",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/ilario-liburni-the-force-ep-vinyl/1190995-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190995-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "The Force",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Ride Me Baby",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Sometimes I Feel",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Last Lap",
+       "u": "https://www.juno.co.uk/MP3/SF1190995-01-02-02.mp3"
+      }
+     ],
+     "d": "25 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Manuel De LORENZI / EMANUELE MARIANI / FEDERICO GALLO / ODETTE / ANDREA GIULIANI",
+     "t": "Moments EP",
+     "l": "Monday Morning Germany",
+     "cat": "MMV 007",
+     "f": "12\"",
+     "p": 14.73,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/manuel-de-lorenzi-emanuele-mariani-federico-moments-ep-vinyl/1190238-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190238-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Manuel De Lorenzi, Emanuele Mariani - \"Flow\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190238-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Federico Gallo - \"Ellie\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190238-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Odette - \"Baby\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190238-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Andrea Giuliani - \"Drama #1\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190238-01-02-02.mp3"
+      }
+     ],
+     "d": "13 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "MARCELINE",
+     "t": "Spiritual Mirrors EP",
+     "l": "Soundrive Chile",
+     "cat": "SNDRV 11",
+     "f": "12\"",
+     "p": 14.45,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/marceline-spiritual-mirrors-ep-vinyl/1190533-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190533-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Wrong Turn",
+       "u": "https://www.juno.co.uk/MP3/SF1190533-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Spiritual Mirrors",
+       "u": "https://www.juno.co.uk/MP3/SF1190533-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Spiritual Mirrors (Czevski remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190533-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Wrong Turn (Jay Tripwire remix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190533-01-02-02.mp3"
+      }
+     ],
+     "d": "01 Feb 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "CARI LEKEBUSCH",
+     "t": "Back On Demand",
+     "l": "Hybrid",
+     "cat": "HYBMRB 1R",
+     "f": "12\"",
+     "p": 16.4,
+     "g": "Minimal Techno · Reissue",
+     "url": "https://www.juno.co.uk/products/mr-barth-cari-lekebusch-back-on-demand-vinyl/1190192-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190192-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Fett Me' Flas Tonight",
+       "u": "https://www.juno.co.uk/MP3/SF1190192-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Music Is the Key",
+       "u": "https://www.juno.co.uk/MP3/SF1190192-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Holliday",
+       "u": "https://www.juno.co.uk/MP3/SF1190192-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Bodyfluids",
+       "u": "https://www.juno.co.uk/MP3/SF1190192-01-02-02.mp3"
+      }
+     ],
+     "d": "25 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Marco NASTIC / MOOSHOO CLAN",
+     "t": "A Journey To Hyperspace Pt 2",
+     "l": "Easy Tiger",
+     "cat": "ET 0062",
+     "f": "12\"",
+     "p": 21.4,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/marco-nastic-bosko-a-journey-to-hyperspace-pt-vinyl/1190929-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190929-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Summer Breeze",
+       "u": "https://www.juno.co.uk/MP3/SF1190929-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Elastic Bounce",
+       "u": "https://www.juno.co.uk/MP3/SF1190929-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Go Get Her",
+       "u": "https://www.juno.co.uk/MP3/SF1190929-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Psycho Girl",
+       "u": "https://www.juno.co.uk/MP3/SF1190929-01-02-02.mp3"
+      }
+     ],
+     "d": "22 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "markonasticboskobalospresentmooshooclan|ajourneytohyperspacept2"
+    },
+    {
+     "a": "Daniel NEIGHBOUR",
+     "t": "Phace Space",
+     "l": "Pleasure Zone Germany",
+     "cat": "PLZ 014S",
+     "f": "12\"",
+     "p": 16.67,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/daniel-neighbour-phace-space-vinyl/1189721-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189721-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Orcas Chord",
+       "u": "https://www.juno.co.uk/MP3/SF1189721-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Gradient Flow",
+       "u": "https://www.juno.co.uk/MP3/SF1189721-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Phase Lock",
+       "u": "https://www.juno.co.uk/MP3/SF1189721-01-02-01.mp3"
+      }
+     ],
+     "d": "11 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "NIKI IL B / ANDREA LANDI / NOBODI",
+     "t": "PHSLN 001",
+     "l": "Phase Line Luxembourg",
+     "cat": "PHSLN 001",
+     "f": "12\"",
+     "p": 15.01,
+     "g": "Minimal Techno",
+     "url": "https://www.juno.co.uk/products/niki-il-b-andrea-landi-nobodi-phsln-001-vinyl/1190146-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190146-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Andrea Landi - \"More Souce Please\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190146-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Niki Il B - \"Es Ter\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190146-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Niki Il B - \"The House\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190146-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Nobodi - \"A Mellow Chord\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190146-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Nobodi - \"Walk-in\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190146-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "NO BRAINERS / ROSSITER / 10AM / RUPERT ELLIS",
+     "t": "Various Circa Groove Vol 1",
+     "l": "Circa Groove",
+     "cat": "CGW 002",
+     "f": "12\"",
+     "p": 16.4,
+     "g": "Tech House / Minimal",
+     "url": "https://www.juno.co.uk/products/no-brainers-rossiter-various-circa-groove-vol-1-vinyl/1190926-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190926-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "No Brainers - \"Low Tide\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190926-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Rossiter - \"8bit\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190926-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "10am - \"Children Of God\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190926-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Rupert Ellis - \"Like It's The Last Time\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190926-01-02-02.mp3"
+      }
+     ],
+     "d": "08 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "PAUL K / SUCIU",
+     "t": "Reversed Piracy EP",
+     "l": "Kooky",
+     "cat": "KKYV 12",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Minimal Techno",
+     "url": "https://www.juno.co.uk/products/paul-k-suciu-reversed-piracy-ep-vinyl/1190955-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190955-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Reversed Piracy",
+       "u": "https://www.juno.co.uk/MP3/SF1190955-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Broom Master",
+       "u": "https://www.juno.co.uk/MP3/SF1190955-01-02-01.mp3"
+      }
+     ],
+     "d": "25 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Bruno PRONSATO",
+     "t": "Set Up The Rows EP",
+     "l": "Kooky",
+     "cat": "KKYV 11",
+     "f": "12\"",
+     "p": 16.4,
+     "g": "Minimal",
+     "url": "https://www.juno.co.uk/products/bruno-pronsato-set-up-the-rows-ep-vinyl/1190930-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190930-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Set Up The Rows",
+       "u": "https://www.juno.co.uk/MP3/SF1190930-01-01-01.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Things Do",
+       "u": "https://www.juno.co.uk/MP3/SF1190930-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Manowski Or Radeki",
+       "u": "https://www.juno.co.uk/MP3/SF1190930-01-02-02.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Luc RINGEISEN",
+     "t": "La Derniere Aurore",
+     "l": "Otomoji RU",
+     "cat": "OTO 010",
+     "f": "12\"",
+     "p": 15.56,
+     "g": "Minimal",
+     "url": "https://www.juno.co.uk/products/luc-ringeisen-la-derniere-aurore-vinyl/1189722-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189722-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Multi",
+       "u": "https://www.juno.co.uk/MP3/SF1189722-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Reversed",
+       "u": "https://www.juno.co.uk/MP3/SF1189722-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "La Derniere Aurore",
+       "u": "https://www.juno.co.uk/MP3/SF1189722-01-02-01.mp3"
+      }
+     ],
+     "d": "20 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "SCOTT GROOVES",
+     "t": "OTRC 3",
+     "l": "OTRC US",
+     "cat": "OTRC 3",
+     "f": "7\"",
+     "p": 23.34,
+     "g": "Techno",
+     "url": "https://www.juno.co.uk/products/scott-grooves-otrc-3-vinyl/1188634-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1188634-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Track 1 (4:13)",
+       "u": "https://www.juno.co.uk/MP3/SF1188634-01-01-01.mp3"
+      }
+     ],
+     "d": "06 Nov 26",
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "ADIEL",
+     "t": "Sonic Identities EP",
+     "l": "PIAS Electronique",
+     "cat": "PIASE 0240EP",
+     "f": "12\"",
+     "p": 18.9,
+     "g": "Techno",
+     "url": "https://www.juno.co.uk/products/adiel-sonic-identities-ep-vinyl/1190256-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190256-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Bolingo Malenbe (feat Falle Nioke)",
+       "u": "https://www.juno.co.uk/MP3/SF1190256-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Nightride",
+       "u": "https://www.juno.co.uk/MP3/SF1190256-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Set Me Free",
+       "u": "https://www.juno.co.uk/MP3/SF1190256-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Jaded (feat Shiv)",
+       "u": "https://www.juno.co.uk/MP3/SF1190256-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Irrational (feat Elle Shimada)",
+       "u": "https://www.juno.co.uk/MP3/SF1190256-01-02-03.mp3"
+      }
+     ],
+     "d": "01 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "AGAINSTME",
+     "t": "After The Self",
+     "l": "HAYES Portugal",
+     "cat": "HYSEP 71",
+     "f": "12\"",
+     "p": 20.58,
+     "g": "Techno",
+     "url": "https://www.juno.co.uk/products/againstme-after-the-self-vinyl/1190003-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190003-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Alito",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Crush",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Stabiliser",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Sectem",
+       "u": "https://www.juno.co.uk/MP3/SF1190003-01-02-02.mp3"
+      }
+     ],
+     "d": "11 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "BIRDSMAKINGMACHINE",
+     "t": "BMM 012",
+     "l": "Birdsmakingmachine",
+     "cat": "BMM 012",
+     "f": "12\"",
+     "p": 17.79,
+     "g": "Techno",
+     "url": "https://www.juno.co.uk/products/birdsmakingmachine-bmm-012-vinyl/1190692-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190692-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Grossmatter",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Beholder",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Katxupino",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Startingtotrytobegin",
+       "u": "https://www.juno.co.uk/MP3/SF1190692-01-02-02.mp3"
+      }
+     ],
+     "d": "29 Jan 27",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "BIRRELL",
+     "t": "Upside Down",
+     "l": "199",
+     "cat": "199-002",
+     "f": "12\"",
+     "p": 17.79,
+     "g": "Techno",
+     "url": "https://www.juno.co.uk/products/birrell-upside-down-vinyl/1189824-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1189824-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Slow Motion Visuals",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Continuum",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-01-02.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "In The Matrix",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Upside Down",
+       "u": "https://www.juno.co.uk/MP3/SF1189824-01-02-02.mp3"
+      }
+     ],
+     "d": "29 Nov 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "CLERIC / AIDAN RUDD",
+     "t": "Clergy Splits 6",
+     "l": "Clergy",
+     "cat": "CRG 044LTD",
+     "f": "12\"",
+     "p": 18.07,
+     "g": "Techno",
+     "url": "https://www.juno.co.uk/products/cleric-aidan-rudd-clergy-splits-6-vinyl/1190064-01/",
+     "cover": "https://imagescdn.juno.co.uk/300/CS1190064-01A-MED.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Cleric - \"The City Never Sleeps\" (Ripper mix)",
+       "u": "https://www.juno.co.uk/MP3/SF1190064-01-01-01.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "Cleric - \"Ghost Signal\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190064-01-01-02.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "Cleric - \"Ruimzicht\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190064-01-01-03.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "Aidan Rudd - \"Strelok\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190064-01-02-01.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "Aidan Rudd - \"Guerilla Etiquette\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190064-01-02-02.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "Aidan Rudd - \"Ankle Tap\"",
+       "u": "https://www.juno.co.uk/MP3/SF1190064-01-02-03.mp3"
+      }
+     ],
+     "d": "11 Dec 26",
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
     }
    ],
    "country": "UK"
@@ -191238,7 +195526,8 @@
      ],
      "st": "in",
      "m": "2026-11",
-     "first_seen": "2026-11-07"
+     "first_seen": "2026-11-07",
+     "gk": "djkobayashi|givemediscovol2"
     },
     {
      "a": "Will Hofbauer / Igaxx",
@@ -191445,6 +195734,589 @@
      "st": "pre",
      "m": "2026-11",
      "first_seen": "2026-11-08"
+    },
+    {
+     "a": "Ziggy Zeitgeist x Malik Alston",
+     "t": "The Detroit Sessions",
+     "l": "Energy Exchange Records",
+     "cat": "EXREC011",
+     "f": "12\"",
+     "p": 26.0,
+     "g": "Deep House / Detroit House",
+     "url": "https://www.vinylunderground.co.uk/products/ziggy-zeitgeist-x-malik-alston-the-detroit-sessions",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/170867-EXREC011-FRONTCOVER.jpg?v=1794207805&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Sunday Morning (Maliks Percussion Mix)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_1_Ziggy_Zeitgeist_x_Malik_Alston_-_Sunday_Morning_Malik_s_Percussion_Mix.mp3"
+      },
+      {
+       "s": "",
+       "n": "Party PPL",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_2_Ziggy_Zeitgeist_x_Malik_Alston_-_Party_PPL.mp3"
+      },
+      {
+       "s": "",
+       "n": "Where Would We Be Without You (feat. Badriyyah)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_3_Ziggy_Zeitgeist_x_Malik_Alston_-_Where_Would_We_Be_Without_You_feat._Badriyyah.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sunday Morning (Ziggy?s Bunker Edit)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_4_Ziggy_Zeitgeist_x_Malik_Alston_-_Sunday_Morning_Ziggy_s_Bunker_Edit.mp3"
+      },
+      {
+       "s": "",
+       "n": "The Dancer (Malik?s Detroit Techno Mix)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_5_Ziggy_Zeitgeist_x_Malik_Alston_-_The_Dancer_Malik_s_Detroit_Techno_Mix.mp3"
+      },
+      {
+       "s": "",
+       "n": "UFO Encounters",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1_6_Ziggy_Zeitgeist_x_Malik_Alston_-_UFO_Encounters.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Sepehr",
+     "t": "Fool’s Ovation",
+     "l": "Kapsel",
+     "cat": "KAPS006",
+     "f": "12\"",
+     "p": 23.0,
+     "g": "Techno",
+     "url": "https://www.vinylunderground.co.uk/products/sepehr-fool-s-ovation",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/unnamed-2_b65c1db6-5cb6-471c-b179-507391e5fbbe.jpg?v=1794206959&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Fool’s Ovation",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/Sepehr_-_A1_-_Fool_s_Ovation_-_PREVIEW.mp3"
+      },
+      {
+       "s": "",
+       "n": "Bow Before the Sun",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/Sepehr_-_A2_-_Bow_Before_the_Sun_-_PREVIEW.mp3"
+      },
+      {
+       "s": "",
+       "n": "Impresario is Pleased",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/Sepehr_-_B1_-_Impresario_is_Pleased_-_PREVIEW.mp3"
+      },
+      {
+       "s": "",
+       "n": "Dancing Delusion",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/Sepehr_-_B2_-_Dancing_Delusion_-_PREVIEW.mp3"
+      },
+      {
+       "s": "",
+       "n": "Stage Discipline",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/Sepehr_-_B3_-_Stage_Discipline_-_PREVIEW.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Various Artists",
+     "t": "The Boundaries of Imagination 2",
+     "l": "Xistence Records",
+     "cat": "XIST008-12",
+     "f": "12\"",
+     "p": 21.0,
+     "g": "Detroit House",
+     "url": "https://www.vinylunderground.co.uk/products/various-artists-the-boundaries-of-imagination-2",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/unnamed-2_71aa7338-0d18-4394-b02f-2e10048ce443.jpg?v=1794206720&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Sean Deason - Time Warp",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/XIST008-12_A1_Sean_Deason_-_Time_Warp.mp3"
+      },
+      {
+       "s": "",
+       "n": "Arbilla - Electric Storm",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/XIST008-12_A2_Arbilla_-_Electric_Storm.mp3"
+      },
+      {
+       "s": "",
+       "n": "DX-9 - WiCi",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/XIST008-12_B1_DX-9_-_WiCi.mp3"
+      },
+      {
+       "s": "",
+       "n": "Basic Bastard - Alone Together",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/XIST008-12_B2_Basic_Bastard_-_Alone_Together.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Trinidadian Deep",
+     "t": "The Deep Selectors EP",
+     "l": "Beyond Tomorrow",
+     "cat": "BTM015",
+     "f": "12\"",
+     "p": 22.0,
+     "g": "Deep House",
+     "url": "https://www.vinylunderground.co.uk/products/trinidadian-deep-the-deep-selectors-ep",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/BTM012-Mock-UpA.jpg?v=1794205762&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Afro Spher",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/BTM015_-_A1_-_Trinidadian_Deep_-_Afro_Spher.mp3"
+      },
+      {
+       "s": "",
+       "n": "Afro Spher (Coflo Remix)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/BTM015_-_A2_-_Trinidadian_Deep_-_Afro_Spher_coflo_remix.mp3"
+      },
+      {
+       "s": "",
+       "n": "Dub Tekkas",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/BTM015_-_B1_-_Trinidadian_Deep_-_Dub_Tekkas.mp3"
+      },
+      {
+       "s": "",
+       "n": "Dub Tekkas (Craig Smith & Drummore Remix)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/BTM015_-_B2_-_Trinidadian_Deep_-_Dub_Tekkas_Craig_Smith_Drummore_Remix.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Various",
+     "t": "DJ Split presents: Various Shadows",
+     "l": "Shadow Pressings",
+     "cat": "SHDW010",
+     "f": "12\"",
+     "p": 22.0,
+     "g": "House",
+     "url": "https://www.vinylunderground.co.uk/products/various-dj-split-presents-various-shadows",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SHDW010ART.jpg?v=1794205517&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "GIli - Don't Sleep",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SHDW10_-_01_-_Gili_-_Don_t_Sleep.mp3"
+      },
+      {
+       "s": "",
+       "n": "Mystery Friend - El Ritmo Del House",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SHDW10_-_02_-_Mystery_Friend_-_El_Ritmo_Del_House.mp3"
+      },
+      {
+       "s": "",
+       "n": "DJ Split - Nouse Hation",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SHDW10_-_03_-_DJ_Split_-_Nouse_Hation.mp3"
+      },
+      {
+       "s": "",
+       "n": "Gzardin - The Day Cap",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SHDW10_-_04_-_Gzardin_-_The_Day_Cap.mp3"
+      },
+      {
+       "s": "",
+       "n": "Steve Frisco - Bside",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SHDW10_-_05_-_Steve_Frisco_-_Bside.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Fouk",
+     "t": "Mighty Lover EP",
+     "l": "Freerange",
+     "cat": "FR321",
+     "f": "12\"",
+     "p": 22.0,
+     "g": "Deep House",
+     "url": "https://www.vinylunderground.co.uk/products/fouk-mighty-lover-ep",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/A-side_2212e4db-6c2f-4557-b8aa-8fda8f3389f2.jpg?v=1794205257&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Mighty Lover Ft. LYMA",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/FR321_-_1_-_Fouk_-_Mighty_Lover_ft._LYMA.mp3"
+      },
+      {
+       "s": "",
+       "n": "The Message",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/FR321_-_2_-_Fouk_-_The_Message.mp3"
+      },
+      {
+       "s": "",
+       "n": "Higher State",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/FR321_-_3_-_Fouk_-_Higher_State.mp3"
+      },
+      {
+       "s": "",
+       "n": "Long Way Home",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/FR321_-_4_-_Fouk_-_Long_Way_Home.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Soichi Terada",
+     "t": "Asakusa Light",
+     "l": "Rush Hour",
+     "cat": "RHM041",
+     "f": "2×LP",
+     "p": 34.0,
+     "g": "Deep House",
+     "url": "https://www.vinylunderground.co.uk/products/soichi-terada-asakusa-light",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/products/rhm041_front.jpg?v=1639990091&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Silent Chord",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/01_silent_chord_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Double Spire",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/02_double_spire_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Bamboo Fighter",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/03_bamboo_fighter_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Diving Into Minds",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/04_diving_into_minds_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Marimbau",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/05_marimbau_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Takusambient",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/06_takusambient_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Soaking Dry",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/07_soaking_dry_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "From Dusk",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/08_from_dusk_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Runners",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/09_runners_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Blinker",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/13_blinker_master.mp3"
+      },
+      {
+       "s": "",
+       "n": "Epoxy Lamp",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/14._epoxy_lamp_master.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "VAKULA",
+     "t": "Soft Resonance EP",
+     "l": "Pure Delay",
+     "cat": "PURE002",
+     "f": "12\"",
+     "p": 21.0,
+     "g": "Techno",
+     "url": "https://www.vinylunderground.co.uk/products/vakula-soft-resonance-ep",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/CS1160868-01A-BIG-2.jpg?v=1794140899&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "The Nameless One",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1160868-01-01-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Everything Is Going To Change",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1160868-01-01-02.mp3"
+      },
+      {
+       "s": "",
+       "n": "Soft Resonance",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1160868-01-02-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Soft Resonance (Alu Kav remix)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1160868-01-02-02.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "F.E.X",
+     "t": "Barbichuk EP",
+     "l": "One Love",
+     "cat": "1LOV02",
+     "f": "12\"",
+     "p": 21.0,
+     "g": "Tech House",
+     "url": "https://www.vinylunderground.co.uk/products/f-e-x-barbichuk-ep",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1lov02_artwork.jpg?v=1794140717&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Barbichuk",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1lov02_a1_barbichuk.mp3"
+      },
+      {
+       "s": "",
+       "n": "Barbara Spirit",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1lov02_a2_barbara_spirit.mp3"
+      },
+      {
+       "s": "",
+       "n": "Deep life",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1lov02_b1_deep_life.mp3"
+      },
+      {
+       "s": "",
+       "n": "Real not to Real",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/1lov02_b2_real_not_to_real.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Issac CARTER feat BIYI",
+     "t": "Turn Me Up EP",
+     "l": "Ochi",
+     "cat": "OCHI010",
+     "f": "12\"",
+     "p": 22.0,
+     "g": "House",
+     "url": "https://www.vinylunderground.co.uk/products/issac-carter-feat-biyi-turn-me-up-ep",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/Ochi010-MockUp-A.jpg?v=1794140266&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Turn Me Up",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/OCHI010_-_A1_-_Isaac_Carter_-_Turn_Me_Up_Feat._Biyi.mp3"
+      },
+      {
+       "s": "",
+       "n": "Take U There",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/OCHI010_-_A2_-_Isaac_Carter_-_Take_U_There.mp3"
+      },
+      {
+       "s": "",
+       "n": "Before",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/OCHI010_-_B1_-_Isaac_Carter_-_Before.mp3"
+      },
+      {
+       "s": "",
+       "n": "Coded",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/OCHI010_-_B2_-_Isaac_Carter_-_Coded.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Meitei",
+     "t": "Komachi",
+     "l": "Métron",
+     "cat": "",
+     "f": "LP",
+     "p": 40.0,
+     "g": "Ambient",
+     "url": "https://www.vinylunderground.co.uk/products/meitei-komachi",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/unnamed-2_7e106bad-167a-4088-976d-df0865f79707.jpg?v=1794139247&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Seto",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/01_Seto.mp3"
+      },
+      {
+       "s": "",
+       "n": "Ike",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/02_Ike.mp3"
+      },
+      {
+       "s": "",
+       "n": "Nami",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/03_Nami.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sento [Pt.II]",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/04_Sento_Pt._II.mp3"
+      },
+      {
+       "s": "",
+       "n": "Kawanabe Kyosai [Pt.II]",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/05_Kawanabe_Kyosai_Pt.II.mp3"
+      },
+      {
+       "s": "",
+       "n": "Chouchin",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/06_Chouchin.mp3"
+      },
+      {
+       "s": "",
+       "n": "Maboroshi",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/07_Maboroshi.mp3"
+      },
+      {
+       "s": "",
+       "n": "Sento [Pt.I]",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/08_Sento_Pt.I.mp3"
+      },
+      {
+       "s": "",
+       "n": "Myo",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/09_Myo.mp3"
+      },
+      {
+       "s": "",
+       "n": "Kawanabe Kyosai [Pt.I]",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/10_Kawanabe_Kyosai_Pt.I.mp3"
+      },
+      {
+       "s": "",
+       "n": "Shinkai",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/11_Shinkai.mp3"
+      },
+      {
+       "s": "",
+       "n": "Utano",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/12_Utano.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Steve O'SULLIVAN /  SEAN DIXON /  FLETCHER",
+     "t": "Distance",
+     "l": "Mosaic",
+     "cat": "MOSAICVS03",
+     "f": "12\"",
+     "p": 23.0,
+     "g": "Dub Techno",
+     "url": "https://www.vinylunderground.co.uk/products/steve-osullivan-sean-dixon-fletcher-distance",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/CS1184388-01A-BIG.jpg?v=1794139044&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Steve O'Sullivan vs Sean Dixon - Distance",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1184388-01-01-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Steve O'Sullivan vs Sean Dixon - End To End",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1184388-01-02-01.mp3"
+      },
+      {
+       "s": "",
+       "n": "Steve O'Sullivan vs Fletcher - Breakout",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1184388-01-02-02.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "DEXTER",
+     "t": "Future Dexterity",
+     "l": "Sushitech",
+     "cat": "SUSH89",
+     "f": "3×LP",
+     "p": 51.0,
+     "g": "Acid House / Tech House",
+     "url": "https://www.vinylunderground.co.uk/products/dexter-future-dexterity-1",
+     "cover": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/CS1183421-01A-BIG_13dc96ee-d2af-4ef3-9a70-bdd6b390974d.jpg?v=1794138612&width=800",
+     "tr": [
+      {
+       "s": "",
+       "n": "Future",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-01-01_95aad5c0-7d7a-44ee-b6f5-9b9c2c34e41e.mp3"
+      },
+      {
+       "s": "",
+       "n": "Twist & Shout",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-02-01_8d004216-e417-4ead-8f66-8b5035d8f499.mp3"
+      },
+      {
+       "s": "",
+       "n": "Time For A Break",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-02-02_8550a6db-c288-458a-aca6-1c506f930de7.mp3"
+      },
+      {
+       "s": "",
+       "n": "Total Recoil (Dexterity remastered)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-03-01_7e6b648c-45e5-4704-8fdb-d20dbf731ab6.mp3"
+      },
+      {
+       "s": "",
+       "n": "Izo",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-04-01_4d30a552-2b08-4718-bf88-e74eda5d1b92.mp3"
+      },
+      {
+       "s": "",
+       "n": "Dimbeloid",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-04-02_3f20e1dd-1987-4ad5-8d7c-c92d9daa693c.mp3"
+      },
+      {
+       "s": "",
+       "n": "Cheeky, Cheeky Monkey",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-05-01_1b269866-0ae1-4b11-abe1-5d9d19854d2f.mp3"
+      },
+      {
+       "s": "",
+       "n": "Orientation (Dexterity version)",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-06-01_6d922fa3-1b66-4276-a99b-14f643b3069c.mp3"
+      },
+      {
+       "s": "",
+       "n": "All I Need",
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/SF1183421-01-06-02_d59988b7-88c2-43f7-ae4a-e70adc7a2525.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
     }
    ]
   },
@@ -199062,7 +203934,8 @@
      ],
      "st": "pre",
      "m": "2026-10",
-     "first_seen": "2026-10-29"
+     "first_seen": "2026-10-29",
+     "gk": "pirmautnuma|noheatjustlies"
     },
     {
      "a": "Robert Archer",
@@ -200339,7 +205212,7 @@
        "u": "https://bordelloaparigi.com/wp-content/uploads/2026/11/4-New-Watch.mp3"
       }
      ],
-     "st": "in",
+     "st": "out",
      "m": "2026-11",
      "first_seen": "2026-11-08"
     },
@@ -206874,6 +211747,375 @@
      "st": "out",
      "m": "2026-11",
      "first_seen": "2026-11-07"
+    },
+    {
+     "a": "Singular Anomalies",
+     "t": "Allure Ep",
+     "l": "",
+     "cat": "TOKEN142",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/singular-anomalies-allure-ep/",
+     "cover": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/TOKEN142/TOKEN142-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/TOKEN142/TOKEN142-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/TOKEN142/TOKEN142-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/TOKEN142/TOKEN142-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/TOKEN142/TOKEN142-B2.mp3"
+      }
+     ],
+     "st": "out",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Oscar Mulero",
+     "t": "Between Two Worlds",
+     "l": "",
+     "cat": "SEMANTICA199",
+     "f": "2×LP",
+     "p": 30.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/oscar-mulero-between-two-worlds/",
+     "cover": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-A3.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-B3.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-C2.mp3"
+      },
+      {
+       "s": "C3",
+       "n": "C3",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-C3.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-D1.mp3"
+      },
+      {
+       "s": "D2",
+       "n": "D2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA199/SEMANTICA199-D2.mp3"
+      }
+     ],
+     "st": "out",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Svreca",
+     "t": "Re-Defined",
+     "l": "",
+     "cat": "SEMANTICA182",
+     "f": "12\"",
+     "p": 16.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/svreca-re-defined/",
+     "cover": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA182/SEMANTICA182-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA182/SEMANTICA182-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA182/SEMANTICA182-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA182/SEMANTICA182-A3.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA182/SEMANTICA182-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA182/SEMANTICA182-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Oneshot/2026/4626N3/SEMANTICA182/SEMANTICA182-B3.mp3"
+      }
+     ],
+     "st": "out",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Shadow Child",
+     "t": "Beginnings Vol. 1",
+     "l": "",
+     "cat": "YUM75A",
+     "f": "12\"",
+     "p": 22.49,
+     "g": "House",
+     "url": "https://diggers.fr/shadow-child-beginnings-vol-1/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/YUM75A/YUM75A-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/YUM75A/YUM75A-A1.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/YUM75A/YUM75A-B1.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Mia Mendi",
+     "t": "Robosynapse Ep",
+     "l": "",
+     "cat": "WGVINYL92",
+     "f": "12\"",
+     "p": 13.49,
+     "g": "Techno",
+     "url": "https://diggers.fr/mia-mendi-robosynapse-ep/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/WGVINYL92/WGVINYL92-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "",
+       "n": "Preview",
+       "u": "https://sounds.redeyerecords.co.uk/162568.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Donato Dozzy",
+     "t": "Astro",
+     "l": "",
+     "cat": "TRESOR383",
+     "f": "2×LP",
+     "p": 27.99,
+     "g": "Techno",
+     "url": "https://diggers.fr/donato-dozzy-astro/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-B2.mp3"
+      },
+      {
+       "s": "C1",
+       "n": "C1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-C1.mp3"
+      },
+      {
+       "s": "C2",
+       "n": "C2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-C2.mp3"
+      },
+      {
+       "s": "D1",
+       "n": "D1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/TRESOR383/TRESOR383-D1.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Dave Clarke",
+     "t": "Wisdom To The Wise",
+     "l": "",
+     "cat": "SPCTRM100",
+     "f": "12\"",
+     "p": 19.99,
+     "g": "Techno",
+     "url": "https://diggers.fr/dave-clarke-wisdom-to-the-wise/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/SPCTRM100/SPCTRM100-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/SPCTRM100/SPCTRM100-A1.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/SPCTRM100/SPCTRM100-B1.mp3"
+      }
+     ],
+     "st": "in",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Tiger Stripes",
+     "t": "A Tiger Never Loses Its Stripes",
+     "l": "",
+     "cat": "REKIDS302",
+     "f": "12\"",
+     "p": 17.99,
+     "g": "House",
+     "url": "https://diggers.fr/tiger-stripes-a-tiger-never-loses-its-stripes/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/REKIDS302/REKIDS302-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/REKIDS302/REKIDS302-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/REKIDS302/REKIDS302-A2.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/REKIDS302/REKIDS302-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/REKIDS302/REKIDS302-B2.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Feater",
+     "t": "Obsolescence",
+     "l": "",
+     "cat": "RBINC011",
+     "f": "LP",
+     "p": 14.99,
+     "g": "Electro",
+     "url": "https://diggers.fr/feater-obsolescence/",
+     "cover": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-FRONTCOVER.webp",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "A1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-A1.mp3"
+      },
+      {
+       "s": "A2",
+       "n": "A2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-A2.mp3"
+      },
+      {
+       "s": "A3",
+       "n": "A3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-A3.mp3"
+      },
+      {
+       "s": "B1",
+       "n": "B1",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-B1.mp3"
+      },
+      {
+       "s": "B2",
+       "n": "B2",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-B2.mp3"
+      },
+      {
+       "s": "B3",
+       "n": "B3",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-B3.mp3"
+      },
+      {
+       "s": "B4",
+       "n": "B4",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-B4.mp3"
+      },
+      {
+       "s": "B5",
+       "n": "B5",
+       "u": "https://diggers.fr/wp-content/uploads/Soon/2026/4626N4/RBINC011/RBINC011-B5.mp3"
+      }
+     ],
+     "st": "pre",
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
     }
    ]
   },
@@ -211855,6 +217097,273 @@
      "st": "in",
      "m": "2026-11",
      "first_seen": "2026-11-08"
+    },
+    {
+     "a": "Smerz, Various Artists",
+     "t": "Big City Life Edits",
+     "l": "Escho",
+     "cat": "ESC209",
+     "f": "LP",
+     "p": 139.9,
+     "g": "Electro",
+     "url": "https://www.sideone.pl/product-pol-48127-Big-City-Life-Edits.html",
+     "cover": "https://www.sideone.pl/hpeciai/b4c54f87a9029d01142e413f1ab58d9b/pol_pl_Big-City-Life-Edits-48127.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "Big Dreams (Yrdloop edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236816_48127_ebb2ed8096f5d9ef21be685c4777f594"
+      },
+      {
+       "s": "02",
+       "n": "Easy (Astrid Sonne edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236817_48127_700110b796752eb0cdd8c1cd04e89c7f"
+      },
+      {
+       "s": "03",
+       "n": "Imagine This (New York edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236818_48127_9083d0d89b8bab9cb1d0b4eb3ee0bbd4"
+      },
+      {
+       "s": "04",
+       "n": "What (Haloplus+ edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236819_48127_a7ecc4386a4205c7dde5399a0fa854f1"
+      },
+      {
+       "s": "05",
+       "n": "Roll The Dice (Molina edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236820_48127_f3ee71c646100a4469f590cd30f7eaaa"
+      },
+      {
+       "s": "06",
+       "n": "Feisty (Erika De Casier edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236821_48127_3b5e4fc2c16e302038b0a42528a73d14"
+      },
+      {
+       "s": "07",
+       "n": "A Thousand Lies (Fine edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236822_48127_9e98dd311ec0b904d1d1e2f445a6e607"
+      },
+      {
+       "s": "08",
+       "n": "Big City Life (They Are Gutting A Body Of Water edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236823_48127_d9f3177be7edf6a2b209069bb09f0b92"
+      },
+      {
+       "s": "09",
+       "n": "You Got Time & I Got Money (Zack Sekoff & Mike edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236824_48127_e4deaa776fe356c2e3b9ef72527d7d97"
+      },
+      {
+       "s": "10",
+       "n": "But I Do (ML Buch edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236825_48127_d7e926c389313538f377843bc38035ff"
+      },
+      {
+       "s": "11",
+       "n": "Close (Clarissa Connelly edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236826_48127_69012f21ce08228c99470e5c56c126bb"
+      },
+      {
+       "s": "12",
+       "n": "Dreams (Cezinando edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236827_48127_e9e5a28f3de24ba0371aee6a0495cb2e"
+      },
+      {
+       "s": "13",
+       "n": "Street Style (Toxe edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236828_48127_3bf68714c9297581e2b73139a7db739f"
+      },
+      {
+       "s": "14",
+       "n": "You Got Time & I Got Money (VVTZJ edit)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236829_48127_b620610238298c4467535c7b5908e4ed"
+      }
+     ],
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "smerz|bigcitylifeedits"
+    },
+    {
+     "a": "Jori Hulkkonen",
+     "t": "Keys Of Life Remixes (2026 Repress)",
+     "l": "Keys Of Life",
+     "cat": "LIFE12IN-11",
+     "f": "12\"",
+     "p": 71.9,
+     "g": "Disco / Acid House · Reissue",
+     "url": "https://www.sideone.pl/product-pol-48126-Keys-Of-Life-Remixes-2026-Repress.html",
+     "cover": "https://www.sideone.pl/hpeciai/91b56205e36f04a9aa5b4a2c0ba96cb0/pol_pl_Keys-Of-Life-Remixes-2026-Repress-48126.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Acid Kings - 1-2-3 Acid (Jori Hulkkonen Keys Of Life remix)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236814_48126_fa0bb21769cdb006395f524a4f2a8e48"
+      },
+      {
+       "s": "B1",
+       "n": "Matsa - Liberation Sugar (Jori Hulkkonen Keys Of Life remix)",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236815_48126_af70a784ec638b4b24c0f124ae7ec7f0"
+      }
+     ],
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Asa Tone",
+     "t": "Mutualkind",
+     "l": "Music From Memory",
+     "cat": "MFM086",
+     "f": "LP",
+     "p": 124.9,
+     "g": "Electro / Ambient",
+     "url": "https://www.sideone.pl/product-pol-48125-Mutualkind.html",
+     "cover": "https://www.sideone.pl/hpeciai/cb19ae050261059a8373ed16ef71a4c1/pol_pl_Mutualkind-48125.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "Second Language",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236803_48125_0677925431d38d814b6ca1ccfb5752ab"
+      },
+      {
+       "s": "02",
+       "n": "Through Pathways",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236804_48125_18b6fdb3b96590b0c980135e56a98869"
+      },
+      {
+       "s": "03",
+       "n": "Soft Fascination",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236805_48125_84b3bfb0f837c1729e12e3518a63818f"
+      },
+      {
+       "s": "04",
+       "n": "In Vanishing Landscapes",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236806_48125_67c6f7b5bfdb887dc513e0e77dc1fb7e"
+      },
+      {
+       "s": "05",
+       "n": "Ember",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236807_48125_63e001a09a1fce8960ad39578e37cace"
+      },
+      {
+       "s": "06",
+       "n": "( )",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236808_48125_5d79ab93a3cabcefffa6c0723ef5a558"
+      },
+      {
+       "s": "07",
+       "n": "Voicemap 1",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236809_48125_8e4df0b6db124b443d95c352a5ba8a0d"
+      },
+      {
+       "s": "08",
+       "n": "A Tiny Now",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236810_48125_2db091194af25f470d27185bd1e08b5e"
+      },
+      {
+       "s": "09",
+       "n": "Watertalk",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236811_48125_9aedfc188af93d42cb173cba086fad8a"
+      },
+      {
+       "s": "10",
+       "n": "Hidden Channel",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236812_48125_a7cdf7313636c09568952e68bdf5497e"
+      },
+      {
+       "s": "11",
+       "n": "Unlayering",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236813_48125_635684b4979aa5d114a6e0f4fa1e69f7"
+      }
+     ],
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Discoteca Tropicana",
+     "t": "Discoteca Tropicana",
+     "l": "Selva Discos",
+     "cat": "SLVDSCS11",
+     "f": "12\"",
+     "p": 84.9,
+     "g": "Edits",
+     "url": "https://www.sideone.pl/product-pol-48124-Discoteca-Tropicana.html",
+     "cover": "https://www.sideone.pl/hpeciai/475cfd3bb7a0b0f0e373e9b4a3c0d770/pol_pl_Discoteca-Tropicana-48124.jpg",
+     "tr": [
+      {
+       "s": "A1",
+       "n": "Corpos Celestes",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236799_48124_bffbd28e817deb719a520776efe26e2d"
+      },
+      {
+       "s": "A2",
+       "n": "Corpo Treme",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236800_48124_1cd283254eb5cbf763ca4f845606b556"
+      },
+      {
+       "s": "B1",
+       "n": "Tobina",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236801_48124_8175c2afdf7618dd4b595f2ca461b148"
+      },
+      {
+       "s": "B2",
+       "n": "Nao Pode Acabar",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236802_48124_a1e07d156a7d829a8b2888780524c93e"
+      }
+     ],
+     "m": "2026-11",
+     "first_seen": "2026-11-09"
+    },
+    {
+     "a": "Prins Emanuel, Golden Ivy, Inre Kresten Grupp",
+     "t": "Ime I",
+     "l": "Fasaan",
+     "cat": "FA025",
+     "f": "LP",
+     "p": 119.9,
+     "g": "Electro",
+     "url": "https://www.sideone.pl/product-pol-48071-Ime-I.html",
+     "cover": "https://www.sideone.pl/hpeciai/7e3ec6c0093afce9c5152aee22a7cfa1/pol_pl_Ime-I-48071.jpg",
+     "tr": [
+      {
+       "s": "01",
+       "n": "Ime",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236489_48071_d20831bb97ce42141352cc07c67b89c6"
+      },
+      {
+       "s": "02",
+       "n": "Droika",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236490_48071_cc3a4c1da770b5449a2c1570fa256fb4"
+      },
+      {
+       "s": "03",
+       "n": "24 Egnate Ninoshvili Street",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236491_48071_14ae634134cba77cdb191fc0f630d533"
+      },
+      {
+       "s": "04",
+       "n": "Tirzas Tradgard",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236492_48071_8402f4e376dda798cfeead73350e7614"
+      },
+      {
+       "s": "05",
+       "n": "Swed Moon",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236493_48071_5ab13ed0bec1ccb3531df7edaac39c9b"
+      },
+      {
+       "s": "06",
+       "n": "J.L. Oblique",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236494_48071_9ddb63f84dfe57a21c682f81f2fc1239"
+      },
+      {
+       "s": "07",
+       "n": "Triptikon",
+       "u": "https://www.sideone.pl/settings.php?getAttachmentp=236495_48071_375c1c0c631fcba5a2e96804ead27823"
+      }
+     ],
+     "m": "2026-11",
+     "first_seen": "2026-11-09",
+     "gk": "prinsemanuelgoldenivyinrekretsengrupp|imei"
     }
    ]
   },
