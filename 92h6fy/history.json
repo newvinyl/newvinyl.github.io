@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-09",
+  "keys": [
+   "david glenn|solstice",
+   "malik hendricks|ten toes down ep",
+   "touch|energizer (omakase edits)"
+  ],
+  "titles": [
+   "David GLENN – Solstice",
+   "Malik HENDRICKS – Ten Toes Down EP",
+   "TOUCH – Energizer (Omakase edits)"
+  ],
+  "shops": [
+   "Juno",
+   "Juno",
+   "Juno"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261109.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "fouk|mighty lover ep",
+    "title": "Fouk – Mighty Lover EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261109-1.mp4",
+    "look": "poster916 123 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261109-1.jpg"
+   },
+   {
+    "key": "sepehr|fool’s ovation",
+    "title": "Sepehr – Fool’s Ovation",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261109-2.mp4",
+    "look": "poster916 130 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261109-2.jpg"
+   },
+   {
+    "key": "kenix / bobby youngblood|there's never been (no one like you)",
+    "title": "KENIX / BOBBY YOUNGBLOOD – There's Never Been (No One Like You)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261109-3.mp4",
+    "look": "poster916 126 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261109-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "fouk|mighty lover ep",
+   "title": "Fouk – Mighty Lover EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261109-1.mp4",
+   "look": "poster916 123 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261109-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-08",
   "keys": [
    "matteo floris|upsurge",
