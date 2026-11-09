@@ -773,5 +773,42 @@
   "checked": "2026-11-09",
   "note": "label owner Bryan Hervieu (Creative Issues); no separate label account"
  },
- "oslated": null
+ "oslated": null,
+ "swims": {
+  "handle": "swimsrecords",
+  "kind": "label",
+  "followers": 626,
+  "checked": "2026-11-09"
+ },
+ "trinidadian deep": {
+  "handle": "trinidadiandeep",
+  "kind": "artist",
+  "followers": 6777,
+  "checked": "2026-11-09",
+  "note": "private account: mention only, tags fail"
+ },
+ "dj split": {
+  "handle": "djsplit___",
+  "kind": "artist",
+  "followers": 7241,
+  "checked": "2026-11-09"
+ },
+ "fouk": {
+  "handle": "justsayfouk",
+  "kind": "artist",
+  "followers": 10483,
+  "checked": "2026-11-09"
+ },
+ "freerange": {
+  "handle": "freerangerecords",
+  "kind": "label",
+  "followers": 12110,
+  "checked": "2026-11-09"
+ },
+ "lyma": {
+  "handle": "lyma.wav",
+  "kind": "artist",
+  "followers": 2162,
+  "checked": "2026-11-09"
+ }
 }
