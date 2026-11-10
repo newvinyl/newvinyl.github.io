@@ -829,5 +829,23 @@
   "followers": 4513,
   "checked": "2026-11-10"
  },
- "johnny guitar watson": null
+ "johnny guitar watson": null,
+ "fragma": {
+  "handle": "fragmaofficial",
+  "kind": "artist",
+  "followers": 10306,
+  "checked": "2026-11-10"
+ },
+ "geoffrey o'connor": {
+  "handle": "geoffreyoconnor",
+  "kind": "artist",
+  "followers": 2034,
+  "checked": "2026-11-10"
+ },
+ "adeen": {
+  "handle": "adeenrecords",
+  "kind": "label",
+  "followers": 1241,
+  "checked": "2026-11-10"
+ }
 }
