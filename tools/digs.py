@@ -134,6 +134,27 @@ def playable(arr):
     out.sort(key=lambda t: (not t["named"],))
     return out
 
+_RB = None
+def rights_blocked(x):
+    """True if Sony Music holds the rights (tools/rights_block.json): Instagram blocks such Reels in 9 regions."""
+    global _RB
+    if _RB is None:
+        try:
+            d = json.load(open(os.path.join(ROOT, "tools", "rights_block.json"), encoding="utf-8"))
+        except Exception as e:
+            log("rights_block.json unreadable", e); d = {}
+        pat = lambda xs: re.compile(r"(?<![\w])(" + "|".join(re.escape(v) for v in xs) + r")(?![\w])", re.I) if xs else None
+        _RB = (pat(d.get("labels")), {v.lower() for v in d.get("artists", [])}, [t.lower() for t in d.get("titles", [])])
+    lab, arts, titles = _RB
+    a, l, t = (x.get("a") or "").strip(), x.get("l") or "", (x.get("t") or "")
+    if lab and lab.search(l):
+        return True
+    names = {n.strip().lower() for n in re.split(r"\s*(?:/|,|&| feat\.? | ft\.? | vs\.? | and | x )\s*", a, flags=re.I) if n.strip()}
+    if a.lower() in arts or names & arts:
+        return True
+    k = (a + "|" + t).lower()
+    return any(k.startswith(v) for v in titles)
+
 def candidates(data, day, seen):
     yday = (dt.date.fromisoformat(day) - dt.timedelta(days=1)).isoformat()
     G = {}
@@ -148,6 +169,9 @@ def candidates(data, day, seen):
             continue
         if any(re.search(r"\b(used|second[ -]hand|2nd hand)\b", (x.get("t") or "") + " " + (x.get("g") or ""), re.I) for x in arr):
             continue                                                          # second-hand copies are no new release
+        if any(rights_blocked(x) for x in arr):
+            log("rights block (Sony)", k)
+            continue                                                          # Sony rights: Reel blocked in 9 regions
         # Gleiche Regel wie «Fresh today» auf der Website: zählt nur, wenn die Platte
         # heute zum ersten Mal in IRGENDEINEM Shop auftaucht (frühestes first_seen)
         first = min((x.get("first_seen") or (x.get("m", "0000-00") + "-01")) for x in arr)

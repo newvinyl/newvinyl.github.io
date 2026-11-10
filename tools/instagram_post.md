@@ -19,6 +19,15 @@ zustimmt. Änderungswünsche zuerst umsetzen und neu vorlegen.
 - Bittet jemand (Artist, Label, Designer) darum, ein Video zu löschen: sofort entfernen, ohne Diskussion, freundlich
   bestätigen und dem Nutzer melden.
 
+**Vierte Grundregel: Keine Releases, bei denen Sony Music die Rechte hält (seit 10.11.26).** Instagram sperrt
+solche Reels in 9 Regionen, u. a. USA. `tools/digs.py` (auch Karussell, Wochenrückblick) filtert über
+`tools/rights_block.json` (Sony-Labels wie Columbia, Epic, RCA, Arista, Legacy, Ministry Of Sound, Deconstruction,
+Ultra, The Orchard, AWAL …, dazu Artists und Titel). Zusätzlich in der Vorschau jede Platte prüfen: Reissues,
+Edits, Remixe und Bootlegs bekannter Hits → Rechteinhaber des Originals suchen (Discogs «Phonographic Copyright ℗»,
+«Licensed From», «Copyright ©»). Gehört er zu Sony: nicht vorlegen, sondern ersetzen (bei Digs `92h6fy/reel_request.json`,
+beim Karussell neu rendern) und den Fall in `rights_block.json` ergänzen. Meldet der Nutzer eine Sperre, den Release
+dort sofort eintragen.
+
 ## 1. Ist das Video von heute fertig?
 
 - Repo `newvinyl/newvinyl.github.io` (Branch `main`) holen bzw. `git pull`.
@@ -119,7 +128,11 @@ Previews and prices for all new releases: monthlyvinyl.net
 Label nur in Klammern, wenn bekannt; Pre-order beim Shop vermerken; Hashtags aus den Genres (ohne Dubletten,
 Genre weglassen bei Widerspruch). `Cover art: …` je Platte, wenn bekannt (Grundregel 3).
 **Markierungen:** wie Schritt 2 (Shops, Artists, Labels, max. 20), neue Handles in `artist_instagram.json`.
-Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu der das Konto gehört).
+Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu der das Konto gehört): pro Slide
+Shop + Label + Artist(s), soweit geprüft. **Pflicht seit 10.11.26** – die Karussells vom 4.–10.11. gingen ganz ohne
+Markierungen raus, und nachträglich lassen sich Markierungen und Caption über die API NICHT ändern (nur von Hand in
+der App). Private Konten (z. B. trinidadiandeep) lassen sich nicht markieren: nur als @Erwähnung in die Caption,
+immer mit «@». In der Vorschau pro Slide die Markierungen auflisten.
 
 **Vorschau:** die Slides als Dateien, Caption im Codeblock, Markierungen pro Slide, Auffälligkeiten, «Soll ich posten?».
 
@@ -135,8 +148,11 @@ Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu de
 
 **Erfahrung 4.11.26 (10 Video-Slides):** Den Karussell-Container erst anlegen, wenn alle Items `FINISHED` sind.
 Items aus einem gescheiterten Karussell-Container nicht wiederverwenden (der nächste scheitert auch), immer neu anlegen.
-10 Video-Items mit Markierungen (16 Tags) führten zum ERROR, 5 markierte Items und 10 Items ohne Markierungen gingen:
-bei 10 Slides die Items ohne `user_tags` anlegen und die Konten in der Caption erwähnen.
+**Test 10.11.26:** 10 Video-Items mit 15 `user_tags` (1–2 pro Slide) → alle Items und der Karussell-Container
+`FINISHED`. Also: Items MIT Markierungen anlegen, ca. 60–90 s warten, Status aller Items prüfen
+(`INSTAGRAM_GET_MULTIPLE_NODES`, fields `status_code`), dann Container anlegen und dessen Status prüfen, erst dann
+publizieren. Nur wenn ein Item oder der Container `ERROR` meldet: neue Items anlegen, zuerst mit weniger Tags
+(max. 2 pro Slide), erst als letzte Möglichkeit ohne Tags – und das dem Nutzer melden.
 
 ## 5b. Wochenrückblick (jeden Sonntag 16:00, seit 8.11.26)
 
