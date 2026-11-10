@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-10",
+  "keys": [
+   "johnny guitar watson|real mother for ‘ya / going up in smoke / superman lover (ben liebrand ‘le disco’ remixes)",
+   "oraculu|watch the change",
+   "anf|costly blooms on the eve of collapse"
+  ],
+  "titles": [
+   "Johnny Guitar Watson – Real Mother For ‘Ya / Going Up In Smoke / Superman Lover (Ben Liebrand ‘Le Disco’ Remixes)",
+   "Oraculu – Watch The Change",
+   "ANF – Costly Blooms On The Eve Of Collapse"
+  ],
+  "shops": [
+   "Bordello A Parigi",
+   "Side One",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261110.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "various artists|year vii ep",
+    "title": "Various Artists – Year VII EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261110-1.mp4",
+    "look": "poster916 127 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261110-1.jpg"
+   },
+   {
+    "key": "dust-e-1|return 2 dust ep",
+    "title": "Dust-e-1 – Return 2 Dust EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261110-2.mp4",
+    "look": "poster916 130 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261110-2.jpg"
+   },
+   {
+    "key": "di_indicator|nothing like you – 25th anniversary ep",
+    "title": "Di_Indicator – Nothing Like You – 25th Anniversary EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261110-3.mp4",
+    "look": "poster916 99 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261110-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "various artists|year vii ep",
+   "title": "Various Artists – Year VII EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261110-1.mp4",
+   "look": "poster916 127 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261110-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-09",
   "keys": [
    "david glenn|solstice",
