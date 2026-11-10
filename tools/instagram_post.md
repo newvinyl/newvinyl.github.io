@@ -23,9 +23,14 @@ zustimmt. Änderungswünsche zuerst umsetzen und neu vorlegen.
 
 - Repo `newvinyl/newvinyl.github.io` (Branch `main`) holen bzw. `git pull`.
 - `92h6fy/history.json`, erster Eintrag: `date` muss heute sein (Europe/Zurich) und `dv` muss dem
-  `DIGS_V` in `tools/digs.py` entsprechen. Sonst bis zu 45 Minuten warten und erneut prüfen
-  (GitHub Action «Today's Digs» rendert nach dem täglichen Update). Ist es dann immer noch nicht da,
-  dem Nutzer kurz melden und aufhören.
+  `DIGS_V` in `tools/digs.py` entsprechen. Sonst prüfen, ob die Action «Today's Digs» (`digs.yml`) heute
+  schon läuft oder in der Warteschlange ist (GitHub MCP `actions_list`, `list_workflow_runs`, `digs.yml`).
+  **Läuft keine, sie sofort selbst starten** (`actions_run_trigger`, `run_workflow`, `digs.yml`, ref `main`;
+  geht das nicht: Zeile in `tools/digs_request.txt` anhängen, committen, pushen). Nicht nur warten: der
+  grosse Push des Daily Updates startet die Action nicht von selbst (10.11.26 deshalb ohne Video bis Mittag).
+  Voraussetzung: `releases.json` hat `updated` = heute; sonst läuft das Daily Update noch, dann warten.
+  Das Rendern dauert ca. 30–45 Minuten; bis zu 60 Minuten warten und erneut prüfen. Ist es dann immer noch
+  nicht da, dem Nutzer kurz melden (PushNotification) und aufhören.
 - Video: `https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-<yymmdd>.mp4`
 - Startbild: gleiche URL mit `.jpg` statt `.mp4`
 - Caption: `92h6fy/caption.txt` (genau so übernehmen)

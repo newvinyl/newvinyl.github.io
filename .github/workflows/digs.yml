@@ -6,9 +6,14 @@ name: Today's Digs
 on:
   push:
     branches: [main]
-    paths: [releases.json, tools/digs.py, tools/digs_oneview.py, tools/hook.py, tools/reelfx.py, tools/coverlife.py, tools/detail_fx.py, tools/shapeloop.py, tools/poster916.py, 92h6fy/reel_request.json]
+    paths: [releases.json, tools/digs.py, tools/digs_oneview.py, tools/hook.py, tools/reelfx.py, tools/coverlife.py, tools/detail_fx.py, tools/shapeloop.py, tools/poster916.py, 92h6fy/reel_request.json, tools/digs_request.txt]
   schedule:
     - cron: "40 5 * * *"   # 07:40 Zurich (summer time) – fallback
+    # Extra fallbacks after the daily update (~08:10–08:30 UTC). The big daily-update push does not
+    # start this workflow by itself (10.11.26). Runs before the update skip (date already done).
+    - cron: "45 8 * * *"
+    - cron: "15 9 * * *"
+    - cron: "45 9 * * *"
   workflow_dispatch:
     inputs:
       date:

@@ -211,6 +211,15 @@ Pages publishes only from main). If the push fails, retry once. Then verify: `gi
 check that origin/main contains your commit. If it does not, say so clearly in the final message —
 never report success without this check.
 
+**Start "Today's Digs" right after the verified push (required, since 10.11.26).** The large daily-update
+push does NOT start the Action by itself, and its scheduled fallback often runs hours late. So:
+1. GitHub MCP tool actions_run_trigger (method "run_workflow", owner "newvinyl", repo "newvinyl.github.io",
+   workflow_id "digs.yml", ref "main").
+2. If that tool is not available or fails: append one line "requested <UTC time>" to tools/digs_request.txt,
+   commit it alone (author "Claude" / noreply@anthropic.com, message "Request Today's Digs <date>"),
+   pull --rebase and push to main; this small push starts the Action.
+Do not wait for the render. Mention in the final message whether the Action was started.
+
 ## 9. Republish the preview artifact
 
 Artifact publish with url https://claude.ai/artifact/MYi1YSiJFww9TC4v8payVT, file_path = the saved
