@@ -148,10 +148,19 @@ def main_fresh(want):
     digs.log(len(cands), "fresh candidates for", day)
     slides, used_a, used_shop, used_fam = [], set(), {}, {}
     used_a |= {digs.norm(t.split(" – ")[0]) for e in hist if e.get("date") == day for t in e.get("titles", [])}   # never an artist from the digs
-    for rnd in range(2):                                   # 1st round: spread shops and genres, 2nd: fill up
+    # Rule (user, 11.11.26): of 10 records at least 8 with a taggable artist and 8 with a taggable label
+    # (tools/artist_instagram.json). So records with known handles come first: tier 0 = artist and label,
+    # 1 = one of them, 2 = still unchecked, 3 = nothing to tag. Within a tier: spread shops/genres, then fill up.
+    import ig_handles
+    for c in cands:
+        c["tier"] = ig_handles.tier(c["feat"]["a"], c["feat"].get("l"))
+    digs.log("ig tiers", {t: sum(c["tier"] == t for c in cands) for t in range(4)})
+    for top, rnd in [(0, 0), (0, 1), (1, 0), (1, 1), (2, 1), (3, 1)]:
         for c in cands:
             if len(slides) == N:
                 break
+            if c["tier"] > top:
+                continue
             x = c["feat"]
             if digs.norm(x["a"]) in used_a or c["key"] in {s["key"] for s in slides}:
                 continue
@@ -177,8 +186,10 @@ def main_fresh(want):
                 out = os.path.join(WORK, "slide-%02d.mp4" % (len(slides) + 1))
                 fresh_slide(R, cov, aud, start, seg_s, date_s, out)
                 lab = R["l"] if R["l"] and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
+                ig = ig_handles.status(x["a"], x.get("l"))
                 slides.append({"key": c["key"], "video": out, "a": R["a"], "t": R["t"], "l": lab, "shop": R["shop_full"],
-                               "track": R["tname"], "pre": R["pre"], "genre": R["genre"]})
+                               "track": R["tname"], "pre": R["pre"], "genre": R["genre"],
+                               "ig_a": ig["a"], "ig_l": ig["l"], "ig_todo": ig["a_unknown"] + ([x.get("l")] if ig["l_unknown"] and x.get("l") else [])})
                 used_a.add(digs.norm(x["a"])); used_shop[c["shop"]] = used_shop.get(c["shop"], 0) + 1
                 used_fam[c["fam"]] = used_fam.get(c["fam"], 0) + 1
                 digs.log("slide", len(slides), R["a"], "–", R["t"], "|", R["shop_full"], "| cover", cov.width)
@@ -194,7 +205,10 @@ def main_fresh(want):
         lines.append("%d. %s – %s%s · %s" % (i, s["a"], s["t"], lab, s["shop"]))
     cap = os.path.join(WORK, "caption.txt")
     open(cap, "w", encoding="utf-8").write("\n".join(lines) + "\n")
-    res = {"date": day, "digs_keys": sorted(digs_keys), "title": os.path.join(WORK, "slide-00.jpg"), "slides": slides, "caption": cap, "genre": "fresh-" + day}
+    ig_cnt = {"artist_ok": sum(bool(s["ig_a"]) for s in slides), "label_ok": sum(bool(s["ig_l"]) for s in slides), "n": len(slides),
+              "need": -(-8 * len(slides) // 10)}                  # 8 of 10 (rounded up for fewer slides)
+    digs.log("ig coverage", ig_cnt)
+    res = {"date": day, "digs_keys": sorted(digs_keys), "ig": ig_cnt, "title": os.path.join(WORK, "slide-00.jpg"), "slides": slides, "caption": cap, "genre": "fresh-" + day}
     json.dump(dict(res, slides=[dict(s, video=os.path.basename(s["video"])) for s in slides]),
               open(os.path.join(WORK, "carousel.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps(res))

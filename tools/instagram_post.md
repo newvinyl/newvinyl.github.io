@@ -106,6 +106,23 @@ nur, wenn es nicht genug frische Platten gibt), die nicht im Digs-Video sind, je
 Nutzers, nur Fresh today, Respekt vor dem Cover). Digs-Vorschau und Karussell-Vorschau dürfen in derselben
 Nachricht kommen; das OK muss klar sagen, was gepostet werden soll (z. B. «beide», «nur Digs»).
 
+**Auswahl nach Markierbarkeit (Nutzer, 11.11.26, Pflicht):** Von 10 Platten müssen **mind. 8 einen markierbaren
+Artist** (geprüftes öffentliches Konto) haben **und mind. 8 ein markierbares Label**. Bei weniger Slides anteilig
+(aufgerundet, `ig.need` in carousel.json). `genre_carousel.py` wählt darum zuerst Platten, deren Artist und Label in
+`tools/artist_instagram.json` ein Konto haben (Stufe 0), dann eines von beiden (1), dann ungeprüfte (2), zuletzt ohne
+Konto (3); `carousel.json` enthält pro Slide `ig_a`, `ig_l`, `ig_todo` und gesamt `ig` (`artist_ok`, `label_ok`, `need`).
+Ablauf jeden Morgen, bevor die Vorschau rausgeht:
+1. `ig` in carousel.json prüfen. Reicht `artist_ok` oder `label_ok` nicht: `python3 tools/ig_handles.py` listet alle
+   frischen Platten von heute (ohne Digs) mit Status; Zeilen mit `TODO` = Artist/Label noch nicht recherchiert.
+2. Die TODO-Namen der bestplatzierten Platten (Stufe 1, dann 2) wie in Schritt 2 recherchieren und prüfen, Ergebnis
+   in `artist_instagram.json` (Handle oder `null`), committen, pushen – so lange, bis mind. 10 Platten Stufe 0 sind
+   bzw. die 8/8-Regel erfüllbar ist.
+3. Action «Genre carousel» von Hand starten (workflow_dispatch `genre_carousel.yml`, ref `main`), ca. 30–45 Min.
+   warten, carousel.json erneut prüfen. Erst dann die Vorschau schicken.
+4. Ist die Regel auch so nicht erfüllbar (zu wenige frische Platten mit Konten): mit weniger Slides posten, sodass
+   die Regel stimmt (`n_by_date` in `genre_carousel.json`), und das in der Vorschau sagen.
+In der Vorschau die Zählung angeben: «Artists markierbar: x/10, Labels markierbar: y/10».
+
 **Ist es fertig?** Die Action «Genre carousel» (`tools/genre_carousel.py`, Modus `fresh` in
 `tools/genre_carousel.json`) läuft automatisch nach jedem Today's-Digs-Lauf. Release `carousel`:
 `https://github.com/newvinyl/newvinyl.github.io/releases/download/carousel/carousel.json` muss
