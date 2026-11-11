@@ -132,7 +132,7 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
 
 def snack_slide(R, cov, aud, start, seg_s, out):
     """«Snacks»: spontaneous extra post on quiet days. Same frame as the fresh slides (cover 880 px, push-in, progress bar),
-    mint type, artist big / title / label, bottom line «SNACK!» with level bars and monthlyvinyl.net."""
+    mint type, artist big / title / label, bottom line «MV SNACK!» and monthlyvinyl.net in yellow (no level bars)."""
     import math
     import digs_oneview as ov
     ink = MINT
@@ -154,10 +154,9 @@ def snack_slide(R, cov, aud, start, seg_s, out):
     if lab:
         digs.txt(d, (102, 1166), lab, 30, ink, bold=False, maxw=880)
     d.rectangle([100, 1195, 980, 1197], fill=faint)
-    fs = digs.fit(d, "SNACK!", 44, True, 400)
-    d.text((100, 1302), "SNACK!", font=fs, fill=ink, anchor="ls")
-    bx = 100 + int(d.textlength("SNACK!", font=fs)) + 22
-    digs.txt(d, (980, 1302), "monthlyvinyl.net", 34, ink, anchor="rs", maxw=400)
+    fs = digs.fit(d, "MV SNACK!", 44, True, 500)
+    d.text((100, 1302), "MV SNACK!", font=fs, fill=INK, anchor="ls")       # badge in the digs/fresh yellow
+    digs.txt(d, (980, 1302), "monthlyvinyl.net", 34, INK, anchor="rs", maxw=400)
     cmd = ["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
            "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
            "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p", "-b:v", "6M", "-maxrate", "8M", "-bufsize", "12M",
@@ -168,12 +167,7 @@ def snack_slide(R, cov, aud, start, seg_s, out):
         s_ = int(880 * z); o = (s_ - 880) // 2
         im = base.copy()
         im.paste(sq.resize((s_, s_), Image.BICUBIC).crop((o, o, o + 880, o + 880)), (100, 60))
-        dd = ImageDraw.Draw(im)
-        dd.rectangle([100, 1193, 100 + 880 * (f + 1) / n, 1199], fill=ink)
-        for k in range(5):
-            ph = math.sin(f * 0.45 + k * 1.7) * 0.5 + 0.5
-            h = 8 + 26 * levs[f] * (0.4 + 0.6 * ph)
-            dd.rectangle([bx + k * 15, 1300 - h, bx + 9 + k * 15, 1300], fill=ink)
+        ImageDraw.Draw(im).rectangle([100, 1193, 100 + 880 * (f + 1) / n, 1199], fill=ink)
         if f == 15:
             im.save(out.replace(".mp4", ".jpg"), quality=90)
         g = (n - f) / FPS

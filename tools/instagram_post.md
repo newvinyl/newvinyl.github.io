@@ -182,7 +182,7 @@ Extra-Post für ruhige Tage, damit wir spontan nachlegen können. **Nicht automa
 - **Auswahl:** 3 Platten von heute («Fresh today», `first_seen` = heute), die heute noch nicht auf Instagram waren
   (nicht im Digs, nicht im Karussell). Artist **und** Label müssen markierbar sein (geprüfte Handles in
   `artist_instagram.json`, sonst wie Schritt 2 recherchieren). Grundregeln wie immer (Sony-Check, Respekt vor dem Cover).
-- **Look:** wie die Karussell-Slides (4:5, 30 s Hörprobe, Cover unverändert), aber **Typo mint** statt gelb und nur
+- **Look:** wie die Karussell-Slides (4:5, 30 s Hörprobe, Cover unverändert), aber **Typo mint** (Artist, Titel, Label, Balken) statt gelb, unten **«MV SNACK!» und monthlyvinyl.net in gelb**, keine Pegel-Animation, und nur
   **Artist, Titel, Label** – kein Datum, Format, Genre, Track, Shop, keine Website. `"style": "snacks"` in
   `tools/carousel_pick.json`.
 - **Rendern:** `tools/carousel_pick.json` schreiben (`name: snacks-<datum>`, `style: snacks`, `items` mit `a`/`t`/`shop`),
