@@ -7,8 +7,8 @@ on:
   # them, so there are two slots, and the daily task starts a run itself if the pages are not
   # from today (workflow_dispatch, or a push of tools/shop_pages_request.txt).
   schedule:
-    - cron: "10 4 * * *"   # 05:10 Zurich (winter) / 06:10 (summer)
-    - cron: "40 6 * * *"   # 07:40 Zurich (winter) / 08:40 (summer)
+    - cron: "20 3 * * *"   # 04:20 Zurich (winter) / 05:20 (summer)
+    - cron: "10 4 * * *"   # 05:10 Zurich (winter) / 06:10 (summer); the daily task starts at 06:38 Zurich
   workflow_dispatch:
   push:
     branches: [main]
