@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-11",
+  "keys": [
+   "skatebard|time machine",
+   "dc salas / mr. ho|obi threadz 001",
+   "various artists|va alliance ep – vol. 1"
+  ],
+  "titles": [
+   "SKATEBARD – TIME MACHINE",
+   "DC Salas / Mr. Ho – OBI Threadz 001",
+   "Various Artists – Va Alliance Ep – Vol. 1"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Clone",
+   "Diggers.fr"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261111.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "eerie enterprise|places remember events",
+    "title": "EERIE ENTERPRISE – PLACES REMEMBER EVENTS",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261111-1.mp4",
+    "look": "poster916 113 bpm · motion 0.5",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261111-1.jpg"
+   },
+   {
+    "key": "various|his master's vinyl ep",
+    "title": "Various – His Master's Vinyl EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261111-2.mp4",
+    "look": "poster916 126 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261111-2.jpg"
+   },
+   {
+    "key": "amadeezy|eastside g-ride [stickered sleeve]",
+    "title": "Amadeezy – Eastside G-Ride [stickered Sleeve]",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261111-3.mp4",
+    "look": "poster916 137 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261111-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "eerie enterprise|places remember events",
+   "title": "EERIE ENTERPRISE – PLACES REMEMBER EVENTS",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261111-1.mp4",
+   "look": "poster916 113 bpm · motion 0.5",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261111-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-10",
   "keys": [
    "johnny guitar watson|real mother for ‘ya / going up in smoke / superman lover (ben liebrand ‘le disco’ remixes)",
