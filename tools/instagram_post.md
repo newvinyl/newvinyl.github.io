@@ -75,6 +75,10 @@ Für jede der drei Platten: Shop, Artist(s), Label.
   pro Post möglichst ausschöpfen. Nur das Kriterium «eindeutig» bleibt: lieber eine Markierung weniger als
   ein falsches Konto.
 - Maximal 20 Markierungen pro Post.
+- **Reihenfolge der Priorität (Nutzer, 11.11.26), für alle Beiträge und Reels:** 1. Artists (inkl. Remixer,
+  Aliase), 2. Labels, 3. Shops. Reicht das Limit von 20 nicht, zuerst Shop-Markierungen streichen (Shop dann nur
+  als @Erwähnung in der Caption), danach Labels; Artists zuletzt. In der Vorschau und in `user_tags` die Konten in
+  dieser Reihenfolge auflisten (Artists zuerst).
 
 ## 3. Vorschau schicken (SendUserMessage + SendUserFile)
 
@@ -129,7 +133,8 @@ Label nur in Klammern, wenn bekannt; Pre-order beim Shop vermerken; Hashtags aus
 Genre weglassen bei Widerspruch). `Cover art: …` je Platte, wenn bekannt (Grundregel 3).
 **Markierungen:** wie Schritt 2 (Shops, Artists, Labels, max. 20), neue Handles in `artist_instagram.json`.
 Bei Karussells kommen die `user_tags` an die einzelnen Slides (die Platte, zu der das Konto gehört): pro Slide
-Shop + Label + Artist(s), soweit geprüft. **Pflicht seit 10.11.26** – die Karussells vom 4.–10.11. gingen ganz ohne
+Artist(s) + Label + Shop, soweit geprüft – Priorität Artists > Labels > Shops (siehe Schritt 2): wird es über 20,
+zuerst wiederholte bzw. alle Shop-Tags streichen, dann Labels. **Pflicht seit 10.11.26** – die Karussells vom 4.–10.11. gingen ganz ohne
 Markierungen raus, und nachträglich lassen sich Markierungen und Caption über die API NICHT ändern (nur von Hand in
 der App). Private Konten (z. B. trinidadiandeep) lassen sich nicht markieren: nur als @Erwähnung in die Caption,
 immer mit «@». In der Vorschau pro Slide die Markierungen auflisten.
