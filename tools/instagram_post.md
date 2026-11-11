@@ -176,7 +176,7 @@ Items aus einem gescheiterten Karussell-Container nicht wiederverwenden (der nä
 publizieren. Nur wenn ein Item oder der Container `ERROR` meldet: neue Items anlegen, zuerst mit weniger Tags
 (max. 2 pro Slide), erst als letzte Möglichkeit ohne Tags – und das dem Nutzer melden.
 
-## 5c. «Snacks» (spontan, nur auf Wunsch des Nutzers, seit 11.11.26)
+## 5c. «MV Snack!» (spontan, nur auf Wunsch des Nutzers, seit 11.11.26; erster Post 11.11.26 20:20, 2 Slides)
 
 Extra-Post für ruhige Tage, damit wir spontan nachlegen können. **Nicht automatisch**, nur wenn der Nutzer es verlangt.
 - **Auswahl:** 3 Platten von heute («Fresh today», `first_seen` = heute), die heute noch nicht auf Instagram waren
@@ -190,7 +190,7 @@ Extra-Post für ruhige Tage, damit wir spontan nachlegen können. **Nicht automa
   `carousel-pick` (`slide-01.mp4` …, `carousel.json`). Ca. 10–15 Min.
 - **Caption:**
 ```
-Snacks: 3 more fresh ones for today →
+MV Snack! <n> more fresh ones for today →
 
 1. Artist – Title (@label)
 2. …
@@ -200,7 +200,7 @@ Available at @shop (1, 3) and @shop2 (2)
 
 Previews and prices for all new releases: monthlyvinyl.net
 
-#newvinyl #<genres> #monthlyvinyl
+#newvinyl #<genres> #mvsnack #monthlyvinyl
 ```
 - **Markierungen** pro Slide: Artist, Label, Shop (Priorität wie Schritt 2). Vorschau, OK, posten wie Karussell (Schritt 5).
 
