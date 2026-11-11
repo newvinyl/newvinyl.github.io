@@ -176,6 +176,34 @@ Items aus einem gescheiterten Karussell-Container nicht wiederverwenden (der nä
 publizieren. Nur wenn ein Item oder der Container `ERROR` meldet: neue Items anlegen, zuerst mit weniger Tags
 (max. 2 pro Slide), erst als letzte Möglichkeit ohne Tags – und das dem Nutzer melden.
 
+## 5c. «Snacks» (spontan, nur auf Wunsch des Nutzers, seit 11.11.26)
+
+Extra-Post für ruhige Tage, damit wir spontan nachlegen können. **Nicht automatisch**, nur wenn der Nutzer es verlangt.
+- **Auswahl:** 3 Platten von heute («Fresh today», `first_seen` = heute), die heute noch nicht auf Instagram waren
+  (nicht im Digs, nicht im Karussell). Artist **und** Label müssen markierbar sein (geprüfte Handles in
+  `artist_instagram.json`, sonst wie Schritt 2 recherchieren). Grundregeln wie immer (Sony-Check, Respekt vor dem Cover).
+- **Look:** wie die Karussell-Slides (4:5, 30 s Hörprobe, Cover unverändert), aber **Typo mint** statt gelb und nur
+  **Artist, Titel, Label** – kein Datum, Format, Genre, Track, Shop, keine Website. `"style": "snacks"` in
+  `tools/carousel_pick.json`.
+- **Rendern:** `tools/carousel_pick.json` schreiben (`name: snacks-<datum>`, `style: snacks`, `items` mit `a`/`t`/`shop`),
+  committen, pushen, dann Action «Genre carousel» per workflow_dispatch mit `pick: true` starten → Release
+  `carousel-pick` (`slide-01.mp4` …, `carousel.json`). Ca. 10–15 Min.
+- **Caption:**
+```
+Snacks: 3 more fresh ones for today →
+
+1. Artist – Title (@label)
+2. …
+
+Artists: @a · @b · @c
+Available at @shop (1, 3) and @shop2 (2)
+
+Previews and prices for all new releases: monthlyvinyl.net
+
+#newvinyl #<genres> #monthlyvinyl
+```
+- **Markierungen** pro Slide: Artist, Label, Shop (Priorität wie Schritt 2). Vorschau, OK, posten wie Karussell (Schritt 5).
+
 ## 5b. Wochenrückblick (jeden Sonntag 16:00, seit 8.11.26)
 
 Ein Reel, **eine Platte pro Wochentag** (Montag–Sonntag der laufenden Woche), je 6 s Hörprobe, 42 s.

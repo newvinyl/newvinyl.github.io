@@ -71,8 +71,12 @@ INK = (251, 237, 79)
 FAINT = tuple(int(b + (c - b) * .25) for b, c in zip(BG, INK))
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-def fresh_slide(R, cov, aud, start, seg_s, date_s, out):
+MINT = (158, 240, 204)                                       # «Snacks» (since 11.11.26): mint type, only artist, title, label
+
+def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
     import math
+    if style == "snacks":
+        return snack_slide(R, cov, aud, start, seg_s, out)
     import digs_oneview as ov
     seg = digs.fade(digs.seg(aud, start, seg_s), 0.3, 1.2)
     m = seg.mean(1); hop = SR // FPS; n = int(seg_s * FPS)
@@ -115,6 +119,48 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out):
             ph = math.sin(f * 0.45 + k * 1.7) * 0.5 + 0.5
             h = 6 + 22 * levs[f] * (0.4 + 0.6 * ph)
             dd.rectangle([bx + k * 13, 1238 - h, bx + 8 + k * 13, 1238], fill=INK)
+        if f == 15:
+            im.save(out.replace(".mp4", ".jpg"), quality=90)
+        g = (n - f) / FPS
+        if g < 0.6:
+            im = Image.blend(Image.new("RGB", (W, H), BG), im, max(0.0, g / 0.6))
+        pr.stdin.write(im.tobytes())
+    pr.stdin.close()
+    if pr.wait() != 0:
+        raise RuntimeError("ffmpeg failed")
+    os.remove(wav)
+
+def snack_slide(R, cov, aud, start, seg_s, out):
+    """«Snacks»: spontaneous extra post on quiet days. Cover unchanged, mint type, artist / title / label – nothing else."""
+    import digs_oneview as ov
+    ink = MINT
+    faint = tuple(int(b + (c - b) * .25) for b, c in zip(BG, ink))
+    seg = digs.fade(digs.seg(aud, start, seg_s), 0.3, 1.2)
+    n = int(seg_s * FPS)
+    wav = out + ".f32"
+    seg.astype("<f4").tofile(wav)
+    side = min(cov.size)
+    sq = cov.convert("RGB").crop(((cov.width - side) // 2, (cov.height - side) // 2, (cov.width + side) // 2, (cov.height + side) // 2))
+    sq = sq.resize((960, 960), Image.LANCZOS)
+    lab = R.get("l") if R.get("l") and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
+    base = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(base)
+    digs.txt(d, (100, 1070), R["a"], 66, ink, maxw=880)
+    digs.txt(d, (102, 1135), ov.clean_title(R["t"]), 48, ink, bold=False, maxw=880)
+    if lab:
+        digs.txt(d, (102, 1200), lab, 34, ink, bold=False, maxw=880)
+    d.rectangle([100, 1262, 980, 1264], fill=faint)
+    cmd = ["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
+           "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
+           "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p", "-b:v", "6M", "-maxrate", "8M", "-bufsize", "12M",
+           "-g", "60", "-preset", "medium", "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-ac", "2", "-movflags", "+faststart", "-shortest", out]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    for f in range(n):
+        z = 1 + 0.04 * f / n
+        s_ = int(880 * z); o = (s_ - 880) // 2
+        im = base.copy()
+        im.paste(sq.resize((s_, s_), Image.BICUBIC).crop((o, o, o + 880, o + 880)), (100, 60))
+        ImageDraw.Draw(im).rectangle([100, 1260, 100 + 880 * (f + 1) / n, 1266], fill=ink)
         if f == 15:
             im.save(out.replace(".mp4", ".jpg"), quality=90)
         g = (n - f) / FPS
@@ -218,6 +264,7 @@ def main_fresh(want):
 # {"name": "...", "seg": 30, "items": [{"a": "artist part", "t": "title part", "shop": "preferred shop", "artist"/"title": shown names,
 #   "track_has": "part of mp3 url", "track_name": "shown track name", "note": "extra meta"}]}
 # Run with CAROUSEL_PICK=1 (workflow input pick=true); output goes to release «carousel-pick».
+# "style": "snacks" → «Snacks» look (mint, only artist / title / label), see tools/instagram_post.md section 5c.
 def main_pick():
     want = json.load(open(os.path.join(ROOT, "tools", "carousel_pick.json"), encoding="utf-8"))
     data = json.load(open(os.path.join(ROOT, "releases.json"), encoding="utf-8"))
@@ -260,7 +307,7 @@ def main_pick():
         start, _ = digs.pick_start(aud)
         start = max(0.0, min(start, len(aud) / SR - seg_s - 0.5))
         out = os.path.join(WORK, "slide-%02d.mp4" % (len(slides) + 1))
-        fresh_slide(R, cov, aud, start, seg_s, it.get("note", ""), out)
+        fresh_slide(R, cov, aud, start, seg_s, it.get("note", ""), out, style=want.get("style"))
         lab = R["l"] if R["l"] and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
         slides.append({"key": c["key"], "video": os.path.basename(out), "a": R["a"], "t": R["t"], "l": lab, "shop": R["shop_full"],
                        "track": R["tname"], "pre": R["pre"], "genre": R["genre"], "cover_w": cov.width})

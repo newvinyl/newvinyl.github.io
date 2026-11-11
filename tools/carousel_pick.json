@@ -1,10 +1,10 @@
 {
- "name": "photo-test-2026-11-03",
+ "name": "snacks-2026-11-11",
+ "style": "snacks",
  "seg": 30,
  "items": [
-  {"a": "trentemoller", "t": "last resort", "shop": "SoundGround", "artist": "Trentemøller", "title": "The Last Resort"},
-  {"a": "bruno spoerri", "t": "controlled risk", "shop": "SoundGround", "title": "Controlled Risk"},
-  {"a": "a.s.h.a", "t": "j.j. tribute", "shop": "Bordello A Parigi"},
-  {"a": "love from the archipelago", "t": "reworks", "shop": "Vinyl Underground"}
+  {"a": "chloé", "t": "shape of the unknown", "shop": "Redeye Records"},
+  {"a": "palmbomen ii", "t": "dancing & crying", "shop": "Clone"},
+  {"a": "1morning", "t": "rather be here now", "shop": "Redeye Records"}
  ]
 }
