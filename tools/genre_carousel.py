@@ -131,12 +131,16 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
     os.remove(wav)
 
 def snack_slide(R, cov, aud, start, seg_s, out):
-    """«Snacks»: spontaneous extra post on quiet days. Cover unchanged, mint type, artist / title / label – nothing else."""
+    """«Snacks»: spontaneous extra post on quiet days. Same frame as the fresh slides (cover 880 px, push-in, progress bar),
+    mint type, artist big / title / label, bottom line «SNACK!» with level bars and monthlyvinyl.net."""
+    import math
     import digs_oneview as ov
     ink = MINT
     faint = tuple(int(b + (c - b) * .25) for b, c in zip(BG, ink))
     seg = digs.fade(digs.seg(aud, start, seg_s), 0.3, 1.2)
-    n = int(seg_s * FPS)
+    m = seg.mean(1); hop = SR // FPS; n = int(seg_s * FPS)
+    levs = np.array([np.sqrt(np.mean(m[f * hop:(f + 1) * hop] ** 2)) if f * hop < len(m) else 0 for f in range(n)])
+    levs = np.minimum(1, levs / (levs.max() + 1e-9) * 1.15)
     wav = out + ".f32"
     seg.astype("<f4").tofile(wav)
     side = min(cov.size)
@@ -145,11 +149,15 @@ def snack_slide(R, cov, aud, start, seg_s, out):
     lab = R.get("l") if R.get("l") and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
     base = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(base)
-    digs.txt(d, (100, 1070), R["a"], 66, ink, maxw=880)
-    digs.txt(d, (102, 1135), ov.clean_title(R["t"]), 48, ink, bold=False, maxw=880)
+    digs.txt(d, (100, 1062), R["a"], 80, ink, maxw=880)
+    digs.txt(d, (102, 1122), ov.clean_title(R["t"]), 50, ink, bold=False, maxw=880)
     if lab:
-        digs.txt(d, (102, 1200), lab, 34, ink, bold=False, maxw=880)
-    d.rectangle([100, 1262, 980, 1264], fill=faint)
+        digs.txt(d, (102, 1166), lab, 30, ink, bold=False, maxw=880)
+    d.rectangle([100, 1195, 980, 1197], fill=faint)
+    fs = digs.fit(d, "SNACK!", 44, True, 400)
+    d.text((100, 1302), "SNACK!", font=fs, fill=ink, anchor="ls")
+    bx = 100 + int(d.textlength("SNACK!", font=fs)) + 22
+    digs.txt(d, (980, 1302), "monthlyvinyl.net", 34, ink, anchor="rs", maxw=400)
     cmd = ["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
            "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", wav,
            "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p", "-b:v", "6M", "-maxrate", "8M", "-bufsize", "12M",
@@ -160,7 +168,12 @@ def snack_slide(R, cov, aud, start, seg_s, out):
         s_ = int(880 * z); o = (s_ - 880) // 2
         im = base.copy()
         im.paste(sq.resize((s_, s_), Image.BICUBIC).crop((o, o, o + 880, o + 880)), (100, 60))
-        ImageDraw.Draw(im).rectangle([100, 1260, 100 + 880 * (f + 1) / n, 1266], fill=ink)
+        dd = ImageDraw.Draw(im)
+        dd.rectangle([100, 1193, 100 + 880 * (f + 1) / n, 1199], fill=ink)
+        for k in range(5):
+            ph = math.sin(f * 0.45 + k * 1.7) * 0.5 + 0.5
+            h = 8 + 26 * levs[f] * (0.4 + 0.6 * ph)
+            dd.rectangle([bx + k * 15, 1300 - h, bx + 9 + k * 15, 1300], fill=ink)
         if f == 15:
             im.save(out.replace(".mp4", ".jpg"), quality=90)
         g = (n - f) / FPS
