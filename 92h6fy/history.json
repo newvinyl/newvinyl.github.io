@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-12",
+  "keys": [
+   "tyree cooper|work it bang it",
+   "gia margaret|mia gargaret (reissue)",
+   "base off|base off 001"
+  ],
+  "titles": [
+   "Tyree Cooper – Work It Bang It",
+   "Gia MARGARET – Mia Gargaret (reissue)",
+   "BASE OFF – BASE OFF 001"
+  ],
+  "shops": [
+   "Hardwax",
+   "Juno",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261112.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "transki|shimmer ep",
+    "title": "Transki – Shimmer EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261112-1.mp4",
+    "look": "poster916 97 bpm · motion 0.5",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261112-1.jpg"
+   },
+   {
+    "key": "brio aji, marie laplante, mathieu deschênes, rig thrall, x agency 5am|dead hype",
+    "title": "Brio Aji, Marie Laplante, Mathieu Deschênes, Rig Thrall, X Agency 5AM – Dead Hype",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261112-2.mp4",
+    "look": "poster916 135 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261112-2.jpg"
+   },
+   {
+    "key": "stephen brown|variations ep",
+    "title": "Stephen Brown – Variations EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261112-3.mp4",
+    "look": "poster916 136 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261112-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "transki|shimmer ep",
+   "title": "Transki – Shimmer EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261112-1.mp4",
+   "look": "poster916 97 bpm · motion 0.5",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261112-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-11",
   "keys": [
    "skatebard|time machine",
