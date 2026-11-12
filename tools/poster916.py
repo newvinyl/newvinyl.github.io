@@ -101,8 +101,8 @@ class Poster:
         self.zc = (float(np.clip(f[0], hw, W - hw)), float(np.clip(f[1], CY + hh, CY + 1080 - hh)))
 
     def cam(self, t):
-        """zoom factor: close at the start, pulled back by ~3 s, moving in again during the last 3 s"""
-        k = min(float(sstep(t / 3.2)), float(sstep((self.dur - t) / 3.0)))
+        """zoom factor: no zoom at the start (user, 12.11.26: it disturbs), moving in during the last 3 s"""
+        k = float(sstep((self.dur - t) / 3.0))
         return self.z0 + (1 - self.z0) * k
 
     def frame(self, t, beatf):

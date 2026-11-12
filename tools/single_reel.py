@@ -99,7 +99,14 @@ def main():
         print(json.dumps({"video": out, "poster": poster, "caption": capp, "look": look, "release": "%s – %s" % (R["a"], R["t"]),
                           "track": tr.get("n"), "cover_px": cov.width, "dur": dur}))
         return
-    if want.get("style") == "crowd":
+    if want.get("style") == "mist":             # foggy forest cover comes alive (Jake Muir – Pareidolia, 12.11.26), see tools/mistwood.py
+        import mistwood
+        info = dict(want.get("info") or {})
+        info.setdefault("artist", R["a"]); info.setdefault("title", R["t"])
+        info.setdefault("meta", " · ".join(v for v in [R["l"], R["cat"], R["fmt"]] if v))
+        info.setdefault("avail", ("Pre-order at %s" if R.get("pre") else "Available at %s") % R["shop_full"])
+        look = mistwood.reel_mist(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur, info=info)
+    elif want.get("style") == "crowd":
         import crowd
         look = crowd.reel_crowd(digs.reel_rel(R, cov), mix, digs.look_seed(slug, "single"), out, poster, dur=dur,
                                 dancers=want.get("dancers"), grid=want.get("grid"))
