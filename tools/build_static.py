@@ -249,8 +249,16 @@ def main():
     idx = open(idx_path, encoding="utf-8").read()
     parts = [f'<section class="static"><h2>New vinyl releases: {e(mlabel(now))} and {e(mlabel(prev))}</h2>'
              f'<p>{len(recs)} new house, techno, disco, balearic and ambient records from {len({o[0]["shop"] for x in recs for o in x["offers"]})} record shops, newest first. Updated {today.isoformat()}.</p><ul>']
-    parts += [item_html(x) for x in recs]
-    parts.append("</ul></section>")
+    # Startseite nur mit den neusten Platten (sonst >1 MB HTML, schlecht für Ladezeit und Crawler);
+    # alle übrigen sind über die Genre-Seiten, die Release-Seiten und sitemap.xml erreichbar.
+    HOME_MAX = 300
+    parts += [item_html(x) for x in recs[:HOME_MAX]]
+    parts.append("</ul>")
+    if len(recs) > HOME_MAX:
+        parts.append(f'<p>Showing the {HOME_MAX} newest of {len(recs)} records. More new vinyl by genre: '
+                     + " · ".join(f'<a href="/{slug(g)}/">new {e(g.lower())} vinyl</a>' for g in CORE if any(g in x["genres"] for x in recs))
+                     + '.</p>')
+    parts.append("</section>")
     static = "".join(parts)
     idx = re.sub(r"<!--STATIC-->.*?<!--/STATIC-->", lambda m: f"<!--STATIC-->{static}<!--/STATIC-->", idx, flags=re.S)
     glinks = " · ".join(f'<a href="/{slug(g)}/">{e(g)}</a>' for g in genre_list)
