@@ -261,6 +261,24 @@ def main():
     parts.append("</section>")
     static = "".join(parts)
     idx = re.sub(r"<!--STATIC-->.*?<!--/STATIC-->", lambda m: f"<!--STATIC-->{static}<!--/STATIC-->", idx, flags=re.S)
+    # Kurzer eigener Text im Footer der Startseite (für Suchmaschinen, sichtbar, Variante A vom 13.11.26)
+    nshop = len({o[0]["shop"] for x in recs for o in x["offers"]})
+    seotxt = (f'<p class="seotxt">Monthly Vinyl collects new electronic vinyl releases from {nshop} independent record shops '
+              'in Europe every morning: house, techno, electro, disco, ambient and everything in between. Listen to the '
+              'previews here, compare prices, then buy the records directly from the shop. No ads, no affiliate links, no cookies.</p>')
+    # Alle Shops mit Startseite verlinken (Shopnamen als Suchbegriffe, 13.11.26)
+    shopl = {}
+    for x in recs:
+        for Sx, o in x["offers"]:
+            if Sx["shop"] not in shopl and o.get("url"):
+                pu = urllib.parse.urlsplit(o["url"])
+                shopl[Sx["shop"]] = (f"{pu.scheme}://{pu.netloc}/", Sx.get("where", ""))
+    seotxt += ('<p class="seotxt">Record shops: ' + " · ".join(
+        f'<a href="{e(u)}" rel="noopener">{e(n)}</a>{(" (" + e(w) + ")") if w else ""}'
+        for n, (u, w) in sorted(shopl.items(), key=lambda t: t[0].lower())) + '</p>')
+    if "<!--SEOTXT-->" not in idx:
+        idx = idx.replace('<nav class="flinks">', '<!--SEOTXT--><!--/SEOTXT-->\n  <nav class="flinks">', 1)
+    idx = re.sub(r"<!--SEOTXT-->.*?<!--/SEOTXT-->", lambda m: f"<!--SEOTXT-->{seotxt}<!--/SEOTXT-->", idx, flags=re.S)
     glinks = " · ".join(f'<a href="/{slug(g)}/">{e(g)}</a>' for g in genre_list)
     idx = re.sub(r"<!--GENRES-->.*?<!--/GENRES-->",
                  lambda m: f'<!--GENRES--><p class="fgenres"><b>Browse by genre:</b> {glinks}</p><!--/GENRES-->', idx, flags=re.S)
@@ -321,7 +339,7 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
 <ul>
 {"".join(item_html(x, True) for x in items)}
 </ul>
-<footer>Updated {today.isoformat()} · <a href="/">monthlyvinyl.net</a> · Monthly Vinyl Releases is independent and not affiliated with the shops listed.</footer>
+<footer><p style="max-width:70ch;margin:0 0 10px;line-height:1.55">Every morning Monthly Vinyl collects new {e(g.lower())} vinyl releases from {nshop} independent record shops in Europe. Listen to the previews, compare prices, then buy the records directly from the shop.</p>Updated {today.isoformat()} · <a href="/">monthlyvinyl.net</a> · Monthly Vinyl Releases is independent and not affiliated with the shops listed.</footer>
 </div>
 </body>
 </html>
