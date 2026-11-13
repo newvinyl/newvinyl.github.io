@@ -189,13 +189,34 @@ def add_redeye_tracklists(data):
 def main():
     path = os.path.join(ROOT, "releases.json")
     data = json.load(open(path, encoding="utf-8"))
+    # Platten, die der Besitzer entfernt hat (tools/not_ours.json): aus releases.json und aus /r/ entfernen
+    try:
+        no = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "not_ours.json"), encoding="utf-8"))["items"]
+    except Exception:
+        no = []
+    no_urls = {x.get("url") for x in no}
+    no_keys = {x.get("key") for x in no}
+    removed = 0
+    for S in data.get("shops", []):
+        keep = [i for i in S.get("items", []) if i.get("url") not in no_urls
+                and ("%s|%s" % (i.get("a", ""), i.get("t", ""))).lower() not in no_keys]
+        removed += len(S.get("items", [])) - len(keep)
+        if "items" in S: S["items"] = keep
+    if removed:
+        print(f"not_ours: {removed} Einträge entfernt")
+    import shutil
+    for k in no_keys:
+        if k and "|" in k:
+            d = os.path.join(ROOT, "r", rslug(*k.split("|", 1)))
+            if os.path.isdir(d):
+                shutil.rmtree(d); print(f"not_ours: Seite {d} entfernt")
     fixed = fix_redeye_previews(data)
     tls = add_redeye_tracklists(data)
     if tls:
         print(f"Redeye: Tracklisten für {tls} Einträge ergänzt")
     gk_changed, gk_groups = assign_group_keys(data)
     print(f"Gruppen: {gk_groups} Platten aus verschieden geschriebenen Shop-Einträgen zusammengefasst")
-    if fixed or tls or gk_changed:
+    if fixed or tls or gk_changed or removed:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=1)
         print(f"Redeye: {fixed} Einträge mit vollständiger Trackliste aus anderem Shop")
