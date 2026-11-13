@@ -272,7 +272,7 @@ def main():
         items = [x for x in recs if g in x["genres"]]
         n = len(items)
         others = " · ".join(f'<a href="/{slug(o)}/">{e(o)}</a>' for o in genre_list if o != g)
-        title = f"New {g} Vinyl Releases – {mlabel(now)} | Monthly Vinyl Releases"
+        title = f"New {g} Vinyl Releases | Monthly Vinyl"  # Bing: Titel unter 60 Zeichen
         desc = f"{n} new {g.lower()} vinyl records from independent shops like Hardwax, Clone and Phonica. Listen, compare prices, order per shop. Updated daily."
         page = f'''<!doctype html>
 <html lang="en">
@@ -384,10 +384,14 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
         best = priced[0] if priced else None
         nsh = len({Sx["shop"] for Sx, _ in offers})
         lowtxt = f" from {price(best[0], best[1].get('p'))}" if best else ""
-        title = f'{name} · {" ".join(meta_bits[:2]) or "vinyl"} – vinyl previews & prices | Monthly Vinyl'
+        # Bing: Titel höchstens ~60, Description höchstens ~160 Zeichen
+        title = next((t for t in ([f'{name} – {r.get("l")} Vinyl | Monthly Vinyl'] if r.get("l") else [])
+                      + [f'{name} Vinyl | Monthly Vinyl', f'{name} | Monthly Vinyl'] if len(t) <= 60),
+                     name if len(name) <= 60 else name[:59].rsplit(" ", 1)[0] + "…")
         desc = (f'{name} on {r.get("f") or "vinyl"}' + (f' ({r.get("l")}' + (f', {r.get("cat")}' if r.get("cat") else "") + ')' if r.get("l") else "")
                 + (f'{", " + ", ".join(gl[:3]) if gl else ""}{" reissue" if reiss else ""}.')
                 + f' Listen to the previews and compare prices at {nsh} record shop{"" if nsh == 1 else "s"}{lowtxt}.')
+        if len(desc) > 160: desc = desc[:159].rsplit(" ", 1)[0] + "…"
         mixed = len({Sx.get("cur") for Sx, o in priced}) > 1
         rows = []
         for Sx, o in ofs:
