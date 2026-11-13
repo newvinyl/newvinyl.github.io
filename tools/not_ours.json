@@ -2,6 +2,8 @@
  "_note": "Releases that do not belong on the site (wrong genre in the shop data). Never add them again: fetch_pages.py drops them from pages/items, the daily update skips them. Match by url or by lower-case 'artist|title'.",
  "items": [
   {"url": "https://diggers.fr/raymond-van-het-groenewoud-live-in-paradiso/", "key": "raymond van het groenewoud|live in paradiso",
-   "reason": "Belgian rock/pop live album, Diggers.fr category said Electro", "date": "2026-11-02"}
+   "reason": "Belgian rock/pop live album, Diggers.fr category said Electro", "date": "2026-11-02"},
+  {"url": "https://www.vinylunderground.co.uk/products/karizma-call-t-a-rem-x", "key": "karizma|call !t a rem!x",
+   "reason": "Hip hop (user, 13.11.26), Vinyl Underground category said House; was in Today's Digs, reel deleted", "date": "2026-11-13"}
  ]
 }
