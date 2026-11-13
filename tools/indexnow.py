@@ -26,6 +26,8 @@ req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
 try:
     with urllib.request.urlopen(req, timeout=60) as r:
         print(f"IndexNow: {len(urls)} URLs gemeldet, HTTP {r.status}")
-except urllib.error.HTTPError as ex:
-    print(f"IndexNow: HTTP {ex.code} {ex.read()[:300]!r}")
-    sys.exit(0 if ex.code in (200, 202) else 1)
+except Exception as ex:
+    # Nie als Fehler enden (keine Fehler-Mails): z.B. 403 SiteVerificationNotCompleted, solange Bing den
+    # Schlüssel noch prüft, oder 429. Der nächste Lauf meldet die URLs erneut.
+    detail = ex.read()[:300] if hasattr(ex, "read") else ""
+    print(f"::warning::IndexNow nicht angenommen: {ex} {detail!r}")
