@@ -18,6 +18,13 @@ def gmatch(it, genre):
     g = digs.norm(it.get("g") or "")
     return digs.norm(genre) in g
 
+def zoom_crop(sq, size, z):
+    """Centered crop of sq scaled by z to size x size, sub-pixel exact. Integer resize + crop moved the cover in
+    1-px steps about every 0.9 s, which looked like a hop on the beat (fixed 13.11.26)."""
+    a = sq.width / (size * z)
+    c = sq.width / 2 - a * size / 2
+    return sq.transform((size, size), Image.AFFINE, (a, 0, c, 0, a, c), resample=Image.BICUBIC)
+
 def text_block(d, R):
     """minimal: artist, title, label · shop"""
     x, maxw = 64, W - 128
@@ -42,11 +49,8 @@ def render_slide(R, cov, aud, start, out):
     n = SEG * FPS
     for f in range(n):
         z = 1 + 0.03 * f / n                                   # slow push-in, nothing else moves
-        s = int(1080 * z)
-        c = sq.resize((s, s), Image.BICUBIC)
-        o = (s - 1080) // 2
         im = base.copy()
-        im.paste(c.crop((o, o, o + 1080, o + 1080)), (0, 0))
+        im.paste(zoom_crop(sq, 1080, z), (0, 0))
         if f == 15:
             im.save(out.replace(".mp4", ".jpg"), quality=90)
         pr.stdin.write(im.tobytes())
@@ -110,9 +114,8 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
     pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for f in range(n):
         z = 1 + 0.04 * f / n                                   # slow push-in inside the frame
-        s_ = int(880 * z); o = (s_ - 880) // 2
         im = base.copy()
-        im.paste(sq.resize((s_, s_), Image.BICUBIC).crop((o, o, o + 880, o + 880)), (100, 60))
+        im.paste(zoom_crop(sq, 880, z), (100, 60))
         dd = ImageDraw.Draw(im)
         dd.rectangle([100, 1169, 100 + 880 * (f + 1) / n, 1175], fill=INK)
         for k in range(5):
@@ -164,9 +167,8 @@ def snack_slide(R, cov, aud, start, seg_s, out):
     pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for f in range(n):
         z = 1 + 0.04 * f / n
-        s_ = int(880 * z); o = (s_ - 880) // 2
         im = base.copy()
-        im.paste(sq.resize((s_, s_), Image.BICUBIC).crop((o, o, o + 880, o + 880)), (100, 60))
+        im.paste(zoom_crop(sq, 880, z), (100, 60))
         ImageDraw.Draw(im).rectangle([100, 1193, 100 + 880 * (f + 1) / n, 1199], fill=ink)
         if f == 15:
             im.save(out.replace(".mp4", ".jpg"), quality=90)
