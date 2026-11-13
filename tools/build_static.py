@@ -333,7 +333,9 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
     #     Für Google indexierbar. Geteilte Links tragen ?s=1 und springen direkt zur Platte auf der Hauptseite.
     import shutil
     rdir = os.path.join(ROOT, "r")
-    if os.path.isdir(rdir): shutil.rmtree(rdir)
+    # Alte Seiten werden NICHT gelöscht (13.11.26): Platten, die aus releases.json fallen, bleiben als
+    # "older release" online und in der Sitemap, damit Google sie nicht als 404 verliert (siehe unten, 2c).
+    old_dirs = set(os.listdir(rdir)) if os.path.isdir(rdir) else set()
     fx = data.get("fx") or {}
     CURK = {"€": "EUR", "£": "GBP", "$": "USD", "CHF": "CHF", "zł": "PLN"}
     def chf(Sx, o):
@@ -507,6 +509,28 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
             os.makedirs(os.path.join(rdir, al), exist_ok=True)
             open(os.path.join(rdir, al, "index.html"), "w", encoding="utf-8").write(page.replace(f'location.replace("/?r={sl}")', f'location.replace("/?r={al}")'))
     print(f"release pages: {len(sitemap_rel)} (+{sum(len(v) for v in alias.values())} aliases)")
+
+    # 2c. Ältere Release-Seiten (nicht mehr in releases.json): mit Hinweis online lassen, Hauptseiten in die Sitemap.
+    written = {u.rstrip("/").rsplit("/", 1)[-1] for u, _ in sitemap_rel} | {al for v in alias.values() for al in v}
+    OLD_NOTE = ('<p class="oldrel" style="border:1.5px solid var(--muted);color:var(--muted);padding:10px 14px;margin:0 0 22px;font-size:14px">'
+                'Older release: no longer in our daily list. Prices and stock may have changed, check the shop. '
+                '<a href="/">See today&#39;s new vinyl</a></p>')
+    n_old = 0
+    for d in sorted(old_dirs - written):
+        fp = os.path.join(rdir, d, "index.html")
+        if not os.path.isfile(fp): continue
+        pg = open(fp, encoding="utf-8").read()
+        if 'class="oldrel"' not in pg:
+            pg = re.sub(r'<script>if\(/\[\?&\]s=1/.*?</script>\n?', "", pg)
+            pg = re.sub(r'<a class="cta"[^>]*>.*?</a>\n?', "", pg)
+            pg = pg.replace('<article class="rel">', OLD_NOTE + '\n<article class="rel">', 1)
+            open(fp, "w", encoding="utf-8").write(pg)
+        canon = re.search(r'<link rel="canonical" href="([^"]+)"', pg)
+        if canon and canon.group(1) == f"{SITE}/r/{d}/":
+            seen = re.search(r"First seen (\d{4}-\d{2}-\d{2})", pg)
+            sitemap_rel.append((canon.group(1), seen.group(1) if seen else "2026-09-01"))
+        n_old += 1
+    print(f"older release pages kept: {n_old}")
 
     # 3. Sitemap
     urls = [f"{SITE}/"] + [f"{SITE}/{slug(g)}/" for g in genre_list]
