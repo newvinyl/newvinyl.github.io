@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-14",
+  "keys": [
+   "dj girl|why side with the underdogs?",
+   "andrzej dudek-durer|astral meditations",
+   "&me, rampa, adam port|send return (3 x 12\")"
+  ],
+  "titles": [
+   "DJ Girl – Why Side With The Underdogs?",
+   "Andrzej Dudek-Durer – Astral Meditations",
+   "&ME, Rampa, Adam Port – Send Return (3 X 12\")"
+  ],
+  "shops": [
+   "Clone",
+   "Clone",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261114.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "hysterical love project|february’s album",
+    "title": "Hysterical Love Project – February’s Album",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261114-1.mp4",
+    "look": "poster916 112 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261114-1.jpg"
+   },
+   {
+    "key": "in doubt|the lucky hours ep",
+    "title": "In Doubt – The Lucky Hours EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261114-2.mp4",
+    "look": "poster916 128 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261114-2.jpg"
+   },
+   {
+    "key": "rob manga|don't stop that rocking",
+    "title": "Rob Manga – Don't Stop That Rocking",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261114-3.mp4",
+    "look": "poster916 128 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261114-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "hysterical love project|february’s album",
+   "title": "Hysterical Love Project – February’s Album",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261114-1.mp4",
+   "look": "poster916 112 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261114-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-13",
   "keys": [
    "blawan|gi mi keys back",
