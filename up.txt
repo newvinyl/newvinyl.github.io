@@ -1,0 +1,43 @@
++ ls -la
+total 181344
+drwxr-xr-x 2 runner runner     4096 Nov 14 09:44 .
+drwxr-xr-x 5 runner runner     4096 Nov 14 09:44 ..
+-rw-r--r-- 1 runner runner  1441166 Nov 14 09:38 a_900.mp3
+-rw-r--r-- 1 runner runner  1639679 Nov 14 09:38 a_910.mp3
+-rw-r--r-- 1 runner runner  1491758 Nov 14 09:39 a_920.mp3
+-rw-r--r-- 1 runner runner        0 Nov 14 09:39 a_921.mp3
+-rw-r--r-- 1 runner runner  1808137 Nov 14 09:40 a_930.mp3
+-rw-r--r-- 1 runner runner   962634 Nov 14 09:41 a_940.mp3
+-rw-r--r-- 1 runner runner        0 Nov 14 09:41 a_941.mp3
+-rw-r--r-- 1 runner runner  1920983 Nov 14 09:42 a_950.mp3
+-rw-r--r-- 1 runner runner  1444927 Nov 14 09:42 a_960.mp3
+-rw-r--r-- 1 runner runner  1443283 Nov 14 09:43 a_970.mp3
+-rw-r--r-- 1 runner runner      570 Nov 14 09:44 caption.txt
+-rw-r--r-- 1 runner runner     3206 Nov 14 09:44 carousel.json
+-rw-r--r-- 1 runner runner     9324 Nov 14 09:44 log.txt
+-rw-r--r-- 1 runner runner     2974 Nov 14 09:44 result.json
+-rw-r--r-- 1 runner runner   177837 Nov 14 09:44 slide-00.jpg
+-rw-r--r-- 1 runner runner   177837 Nov 14 09:38 slide-01.jpg
+-rw-r--r-- 1 runner runner 22702798 Nov 14 09:38 slide-01.mp4
+-rw-r--r-- 1 runner runner   157303 Nov 14 09:38 slide-02.jpg
+-rw-r--r-- 1 runner runner 22155009 Nov 14 09:39 slide-02.mp4
+-rw-r--r-- 1 runner runner   126045 Nov 14 09:39 slide-03.jpg
+-rw-r--r-- 1 runner runner 22226731 Nov 14 09:40 slide-03.mp4
+-rw-r--r-- 1 runner runner   141410 Nov 14 09:40 slide-04.jpg
+-rw-r--r-- 1 runner runner 14622916 Nov 14 09:41 slide-04.mp4
+-rw-r--r-- 1 runner runner   139995 Nov 14 09:41 slide-05.jpg
+-rw-r--r-- 1 runner runner 20579360 Nov 14 09:42 slide-05.mp4
+-rw-r--r-- 1 runner runner   221529 Nov 14 09:42 slide-06.jpg
+-rw-r--r-- 1 runner runner 23156040 Nov 14 09:42 slide-06.mp4
+-rw-r--r-- 1 runner runner   172828 Nov 14 09:42 slide-07.jpg
+-rw-r--r-- 1 runner runner 23283477 Nov 14 09:43 slide-07.mp4
+-rw-r--r-- 1 runner runner   227437 Nov 14 09:43 slide-08.jpg
+-rw-r--r-- 1 runner runner 23179532 Nov 14 09:44 slide-08.mp4
+-rw-r--r-- 1 runner runner        9 Nov 14 09:44 up.txt
+++ python3 -c 'import json;print(json.load(open('\''result.json'\''))['\''genre'\''].lower().replace('\'' '\'','\''-'\''))'
++ G=fresh-2026-11-14
++ zip -q -j carousel-fresh-2026-11-14.zip slide-01.mp4 slide-02.mp4 slide-03.mp4 slide-04.mp4 slide-05.mp4 slide-06.mp4 slide-07.mp4 slide-08.mp4 slide-00.jpg slide-01.jpg slide-02.jpg slide-03.jpg slide-04.jpg slide-05.jpg slide-06.jpg slide-07.jpg slide-08.jpg caption.txt carousel.json
++ REL=carousel
++ '[' false = true ']'
++ gh release view carousel
++ gh release upload carousel --clobber carousel-fresh-2026-11-14.zip slide-01.mp4 slide-02.mp4 slide-03.mp4 slide-04.mp4 slide-05.mp4 slide-06.mp4 slide-07.mp4 slide-08.mp4 slide-00.jpg slide-01.jpg slide-02.jpg slide-03.jpg slide-04.jpg slide-05.jpg slide-06.jpg slide-07.jpg slide-08.jpg caption.txt carousel.json
