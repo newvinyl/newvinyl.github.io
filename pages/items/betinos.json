@@ -1,0 +1,625 @@
+{
+ "fetched": "2026-11-14T11:28Z",
+ "shop": "Betino's",
+ "items": [
+  {
+   "a": "Whodamanny",
+   "t": "Obsesion/Corazon Caliente",
+   "l": "Biloba",
+   "cat": "BLB 1156",
+   "f": "12\"",
+   "p": 20.0,
+   "g": "Italo Disco",
+   "url": "https://www.betinos.com/disque/20296",
+   "cover": "https://www.betinos.com/sites/default/files/BLB1156-Front.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Obsesion",
+     "u": "https://www.betinos.com/sites/default/files/BLB1156-A1.mp3"
+    },
+    {
+     "s": "",
+     "n": "Corazon Caliente",
+     "u": "https://www.betinos.com/sites/default/files/BLB1156-A2.mp3"
+    },
+    {
+     "s": "",
+     "n": "Dub Pasion",
+     "u": "https://www.betinos.com/sites/default/files/BLB1156-B1.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Yuka Mizuhara",
+   "t": "Moon Dust",
+   "l": "Rush Hour",
+   "cat": "RHM 050",
+   "f": "12\"",
+   "p": 22.0,
+   "g": "Disco",
+   "url": "https://www.betinos.com/disque/20249",
+   "cover": "https://www.betinos.com/sites/default/files/CS1188258-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Moon Dust (main mix)",
+     "u": "https://www.betinos.com/sites/default/files/Moon Dustain mix.mp3"
+    },
+    {
+     "s": "",
+     "n": "Moon Dust (Seashell mix)",
+     "u": "https://www.betinos.com/sites/default/files/Moon DustSeashell mix.mp3"
+    },
+    {
+     "s": "",
+     "n": "Moon Dust (Garage vocal)",
+     "u": "https://www.betinos.com/sites/default/files/Moon DustGarage vocal.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Suze Ijo/Zopelar",
+   "t": "Ritual Of Dance",
+   "l": "Ritual Of Dance",
+   "cat": "ROD 001",
+   "f": "12\"",
+   "p": 17.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20245",
+   "cover": "https://www.betinos.com/sites/default/files/CS1150350-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Ritual Of Dance",
+     "u": "https://www.betinos.com/sites/default/files/Ritual Of DancehytrreRitual Of Dance.mp3"
+    },
+    {
+     "s": "",
+     "n": "Groove Extract",
+     "u": "https://www.betinos.com/sites/default/files/Groove ExtractffdezGroove Extract.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Davina",
+   "t": "Don't You Want I",
+   "l": "Underground Resistance",
+   "cat": "UR 016R",
+   "f": "12\"",
+   "p": 26.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20292",
+   "cover": "https://www.betinos.com/sites/default/files/CS108912-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Don't You Want It (club)",
+     "u": "https://www.betinos.com/sites/default/files/Donou Want Itclub.mp3"
+    },
+    {
+     "s": "",
+     "n": "Don't You Want It (radio)",
+     "u": "https://www.betinos.com/sites/default/files/Dont You Want radio.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Various Artists",
+   "t": "Maestropolis vol 8",
+   "l": "Maestropolis",
+   "cat": "MSTPL 008",
+   "f": "12\"",
+   "p": 14.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20277",
+   "cover": "https://www.betinos.com/sites/default/files/CS1180798-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "I Miss Your Touch",
+     "u": "https://www.betinos.com/sites/default/files/I Miss Your Touchghtry.mp3"
+    },
+    {
+     "s": "",
+     "n": "The Dog Store",
+     "u": "https://www.betinos.com/sites/default/files/The Dog StoreThe Dog StoreThe Dog Store.mp3"
+    },
+    {
+     "s": "",
+     "n": "In The Mix",
+     "u": "https://www.betinos.com/sites/default/files/In The MixIn The Mixbgrt.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Grand Paris",
+   "t": "Piste Une",
+   "l": "Grand Paris",
+   "cat": "GRANDPARIS 1",
+   "f": "12\"",
+   "p": 16.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/19683",
+   "cover": "https://www.betinos.com/sites/default/files/CS1115242-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Piste Une",
+     "u": "https://www.betinos.com/sites/default/files/Piste UnePiste Une.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Various Artists",
+   "t": "Many Shades Of House Vol 2",
+   "l": "Favorite Recordings",
+   "cat": "FVR 206",
+   "f": "2×LP",
+   "p": 35.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20083",
+   "cover": "https://www.betinos.com/sites/default/files/CS1167150-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Sun Of A Gun",
+     "u": "https://www.betinos.com/sites/default/files/Sun Of A Guniuobbgfre.mp3"
+    },
+    {
+     "s": "",
+     "n": "Flatlet",
+     "u": "https://www.betinos.com/sites/default/files/Flatleiigfghj.mp3"
+    },
+    {
+     "s": "",
+     "n": "Backside 50",
+     "u": "https://www.betinos.com/sites/default/files/Backside 50iuuuycxcv.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Killabeatmaker",
+   "t": "Melaza",
+   "l": "Galletas Calientes",
+   "cat": "GCEP 4231",
+   "f": "12\"",
+   "p": 20.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20288",
+   "cover": "https://www.betinos.com/sites/default/files/CS1185246-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Kunde Mandibulo",
+     "u": "https://www.betinos.com/sites/default/files/Kunde Mandibulovbvbge.mp3"
+    },
+    {
+     "s": "",
+     "n": "Vive Con Locura",
+     "u": "https://www.betinos.com/sites/default/files/Vive Con LocuracvbvVive Con Locura.mp3"
+    },
+    {
+     "s": "",
+     "n": "I Like Your Style",
+     "u": "https://www.betinos.com/sites/default/files/I Like Your StylevbfrI Like Your Style.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Rick Wade",
+   "t": "Late Night Basix",
+   "l": "Phonogramme",
+   "cat": "PHONOGRAMME 82",
+   "f": "12\"",
+   "p": 17.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20284",
+   "cover": "https://www.betinos.com/sites/default/files/CS1162224-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Nothing To Fear",
+     "u": "https://www.betinos.com/sites/default/files/Nothing To FearNothing To Fearbtr.mp3"
+    },
+    {
+     "s": "",
+     "n": "I Do Believe",
+     "u": "https://www.betinos.com/sites/default/files/I Do BelievevfreI Do Believe.mp3"
+    },
+    {
+     "s": "",
+     "n": "I Can Feel It",
+     "u": "https://www.betinos.com/sites/default/files/I Can Feel ItvfeeeI Can Feel It.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Kosmic Light Force",
+   "t": "Mysterious Waves",
+   "l": "Nightbeat Records",
+   "cat": "NB 001",
+   "f": "12\"",
+   "p": 17.0,
+   "g": "Electro",
+   "url": "https://www.betinos.com/disque/20280",
+   "cover": "https://www.betinos.com/sites/default/files/CS1179914-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Mysterious Waves",
+     "u": "https://www.betinos.com/sites/default/files/Mysterious Wavesvbvrtyrt.mp3"
+    },
+    {
+     "s": "",
+     "n": "Mysterious Waves (Celestial mix)",
+     "u": "https://www.betinos.com/sites/default/files/Mysterious WCelestial mix.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Lordfunk",
+   "t": "More Orgasms",
+   "l": "Boogie Butt Records",
+   "cat": "BOOLAT 005",
+   "f": "LP",
+   "p": 28.0,
+   "g": "Disco",
+   "url": "https://www.betinos.com/disque/20041",
+   "cover": "https://www.betinos.com/sites/default/files/CS1135094-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Honey",
+     "u": "https://www.betinos.com/sites/default/files/HoneyHoneyvvbvbv.mp3"
+    },
+    {
+     "s": "",
+     "n": "More Orgasms",
+     "u": "https://www.betinos.com/sites/default/files/More OrgasmsMore Orgasmsdddd.mp3"
+    },
+    {
+     "s": "",
+     "n": "First Crush",
+     "u": "https://www.betinos.com/sites/default/files/First CrushddfdfFirst Crush.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Lucas Moinet",
+   "t": "Vert Emeraude EP",
+   "l": "Kick N' Dance",
+   "cat": "KICKNDANCE 003",
+   "f": "12\"",
+   "p": 17.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20273",
+   "cover": "https://www.betinos.com/sites/default/files/CS1162230-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Vert Emeraude",
+     "u": "https://www.betinos.com/sites/default/files/Vert Emeraudemain mix.mp3"
+    },
+    {
+     "s": "",
+     "n": "Franklin Avenue",
+     "u": "https://www.betinos.com/sites/default/files/Franklin Avenuefdddg.mp3"
+    },
+    {
+     "s": "",
+     "n": "The Deep (937 dub mix)",
+     "u": "https://www.betinos.com/sites/default/files/The Deep7 dub mix.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Re Imagin/Chez Damier & Ben Vedren",
+   "t": "Tonight In Tunisia",
+   "l": "Syncrophone",
+   "cat": "R 100",
+   "f": "12\"",
+   "p": 17.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20269",
+   "cover": "https://www.betinos.com/sites/default/files/CS1160944-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "H2H main mix",
+     "u": "https://www.betinos.com/sites/default/files/H2H main mixbnt.mp3"
+    },
+    {
+     "s": "",
+     "n": "H2H Festival mix",
+     "u": "https://www.betinos.com/sites/default/files/H2H Festival mixcde.mp3"
+    },
+    {
+     "s": "",
+     "n": "H2H dub mix",
+     "u": "https://www.betinos.com/sites/default/files/H2H dub mixxcvbg.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Chez Damier",
+   "t": "Can You Feel It",
+   "l": "Balance",
+   "cat": "B 0001",
+   "f": "12\"",
+   "p": 17.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20265",
+   "cover": "https://www.betinos.com/sites/default/files/CS1180702-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Can You Feel It",
+     "u": "https://www.betinos.com/sites/default/files/Can You Feeluiompttdf.mp3"
+    },
+    {
+     "s": "",
+     "n": "New York dub",
+     "u": "https://www.betinos.com/sites/default/files/xcvNew York dub.mp3"
+    },
+    {
+     "s": "",
+     "n": "Underground Resistance club mix",
+     "u": "https://www.betinos.com/sites/default/files/Underground Resistance club mixdfreettefdfs.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Various Artists",
+   "t": "Jazzy Sport Past Forward: Silver",
+   "l": "Jazzy Sport London",
+   "cat": "JSL 001",
+   "f": "LP",
+   "p": 33.0,
+   "g": "Electro",
+   "url": "https://www.betinos.com/disque/20213",
+   "cover": "https://www.betinos.com/sites/default/files/R-38882655-1793367520-5366.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Eclipse (DJ Mitsu The beats remix)",
+     "u": "https://www.betinos.com/sites/default/files/EclipseMitsu The beats remix.mp3"
+    },
+    {
+     "s": "",
+     "n": "Riding The Storm (version Idjut)",
+     "u": "https://www.betinos.com/sites/default/files/Riding The Storsion Idjut.mp3"
+    },
+    {
+     "s": "",
+     "n": "Rhyme Or Reason",
+     "u": "https://www.betinos.com/sites/default/files/Rhyme Or ReasonRhyme Or Reason.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Milan93/9ICK & Mauricesax",
+   "t": "A Garden Between Us",
+   "l": "Last Year At Marienbad",
+   "cat": "LYAM 013",
+   "f": "12\"",
+   "p": 22.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20209",
+   "cover": "https://www.betinos.com/sites/default/files/169079_BFCDA728.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Rhodora",
+     "u": "https://www.betinos.com/sites/default/files/1_1_milan93 & 9ICK & Mauricesax - Rhodora.mp3"
+    },
+    {
+     "s": "",
+     "n": "Tulip",
+     "u": "https://www.betinos.com/sites/default/files/1_2_milan93 & 9ICK & Mauricesax - Tulip.mp3"
+    },
+    {
+     "s": "",
+     "n": "Honeysuckle",
+     "u": "https://www.betinos.com/sites/default/files/1_3_milan93 & 9ICK & Mauricesax - Honeysuckle.mp3"
+    }
+   ]
+  },
+  {
+   "a": "C.A.R. (Javonntte/Ben Green/Dez Andres)",
+   "t": "Sunshine",
+   "l": "Connecting Dots Records",
+   "cat": "CDR 001",
+   "f": "12\"",
+   "p": 25.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20217",
+   "cover": "https://www.betinos.com/sites/default/files/170237-CDR001%20-%20FRONTCOVER.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Sunshine",
+     "u": "https://www.betinos.com/sites/default/files/1_1_C.A.R. - Sunshine.mp3"
+    },
+    {
+     "s": "",
+     "n": "Step Outside",
+     "u": "https://www.betinos.com/sites/default/files/1_2_C.A.R. - Step Outside.mp3"
+    },
+    {
+     "s": "",
+     "n": "All My Love",
+     "u": "https://www.betinos.com/sites/default/files/1_3_C.A.R. - All My Love.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Unknown artist",
+   "t": "Treasure 009",
+   "l": "Treasure Records",
+   "cat": "TREASURE 009",
+   "f": "12\"",
+   "p": 13.0,
+   "g": "Disco",
+   "url": "https://www.betinos.com/disque/20193",
+   "cover": "https://www.betinos.com/sites/default/files/CS1079993-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Kuldn't Luv U More",
+     "u": "https://www.betinos.com/sites/default/files/KuldLuv U More.mp3"
+    },
+    {
+     "s": "",
+     "n": "Consciousness",
+     "u": "https://www.betinos.com/sites/default/files/Consciousnessdddd.mp3"
+    },
+    {
+     "s": "",
+     "n": "Insatiable",
+     "u": "https://www.betinos.com/sites/default/files/Insatiabledddbng.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Unknown artist",
+   "t": "Treasure 008",
+   "l": "Treasure Records",
+   "cat": "TREASURE 008",
+   "f": "12\"",
+   "p": 13.0,
+   "g": "Disco",
+   "url": "https://www.betinos.com/disque/20189",
+   "cover": "https://www.betinos.com/sites/default/files/CS1076213-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "ET Is Coming Home (vocal)",
+     "u": "https://www.betinos.com/sites/default/files/ET Is Coming Homeocal.mp3"
+    },
+    {
+     "s": "",
+     "n": "ET Is Coming Home (instru)",
+     "u": "https://www.betinos.com/sites/default/files/ET Is Coming Homeumental.mp3"
+    },
+    {
+     "s": "",
+     "n": "Flying Machine",
+     "u": "https://www.betinos.com/sites/default/files/Flying Machinedfreez.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Franck Roger",
+   "t": "Real Tone Classics 006",
+   "l": "Real Tone Records",
+   "cat": "RTR 006",
+   "f": "12\"",
+   "p": 13.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20185",
+   "cover": "https://www.betinos.com/sites/default/files/CS1164435-01A-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Why Don't You Stay",
+     "u": "https://www.betinos.com/sites/default/files/Why DoYou Stay.mp3"
+    },
+    {
+     "s": "",
+     "n": "Volt",
+     "u": "https://www.betinos.com/sites/default/files/VoltVoltVoltbffrrr.mp3"
+    },
+    {
+     "s": "",
+     "n": "Mister Henderson",
+     "u": "https://www.betinos.com/sites/default/files/Mister Hendersondddddfesd.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Franck Roger",
+   "t": "Real Tone Classics 005",
+   "l": "Real Tone Records",
+   "cat": "RTR 005",
+   "f": "12\"",
+   "p": 13.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20181",
+   "cover": "https://www.betinos.com/sites/default/files/CS1160389-01B-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "No Matter What They Say",
+     "u": "https://www.betinos.com/sites/default/files/No Matter What They Saydddvbnju.mp3"
+    },
+    {
+     "s": "",
+     "n": "Strings For Life",
+     "u": "https://www.betinos.com/sites/default/files/Strings For Lifevdddd.mp3"
+    },
+    {
+     "s": "",
+     "n": "Feel",
+     "u": "https://www.betinos.com/sites/default/files/FeelFeelFeelFeelFeel.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Franck Roger",
+   "t": "Real Tone Classics 004",
+   "l": "Real Tone Records",
+   "cat": "RTR 004",
+   "f": "12\"",
+   "p": 13.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20177",
+   "cover": "https://www.betinos.com/sites/default/files/CS1100933-01B-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "The Feeling",
+     "u": "https://www.betinos.com/sites/default/files/The FeelingThe FeelingThe Feelingff.mp3"
+    },
+    {
+     "s": "",
+     "n": "You're For Me",
+     "u": "https://www.betinos.com/sites/default/files/Youghuioopmlo For Me.mp3"
+    },
+    {
+     "s": "",
+     "n": "Hypnotizing",
+     "u": "https://www.betinos.com/sites/default/files/Hypnotizingddddfbbv.mp3"
+    }
+   ]
+  },
+  {
+   "a": "Franck Roger/Don Swing",
+   "t": "Real Tone Classics 003",
+   "l": "Real Tone Records",
+   "cat": "RTR 003",
+   "f": "12\"",
+   "p": 13.0,
+   "g": "House",
+   "url": "https://www.betinos.com/disque/20173",
+   "cover": "https://www.betinos.com/sites/default/files/CS1056333-01B-BIG.jpg",
+   "tr": [
+    {
+     "s": "",
+     "n": "Remember",
+     "u": "https://www.betinos.com/sites/default/files/RememberfgtrRemember.mp3"
+    },
+    {
+     "s": "",
+     "n": "Fabulous",
+     "u": "https://www.betinos.com/sites/default/files/FabulousFabulousddddeeezFabulous.mp3"
+    },
+    {
+     "s": "",
+     "n": "Things We Had",
+     "u": "https://www.betinos.com/sites/default/files/Things We Hadddddddf.mp3"
+    }
+   ]
+  }
+ ]
+}
