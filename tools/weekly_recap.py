@@ -167,7 +167,7 @@ def main():
         tracks = digs.playable(arr) or ([{"u": "", "n": ""}] if a.offline else [])
         pref = [t for t in tracks if p.get("track") and digs.norm(p["track"]) in digs.norm(t["n"])] + tracks
         aud = None
-        for j, t in enumerate(pref[:4]):
+        for j, t in enumerate(pref[:12]):   # more tries: Juno MP3s gave 403 on 15.11.26, other shops still work
             try:
                 aud = digs.get_audio(t, a.offline, work, 900 + i * 10 + j); break
             except Exception as e:
