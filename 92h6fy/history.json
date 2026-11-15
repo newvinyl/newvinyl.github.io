@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-15",
+  "keys": [
+   "boca / coco bryce|all alone / tell me",
+   "olekhar|fin groove ep",
+   "ignez|smv015"
+  ],
+  "titles": [
+   "Boca / Coco Bryce – All Alone / Tell Me",
+   "Olekhar – Fin Groove EP",
+   "Ignez – SMV015"
+  ],
+  "shops": [
+   "Clone",
+   "Redeye",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261115.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "shep’|common decency ep",
+    "title": "SHEP’ – Common Decency EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261115-1.mp4",
+    "look": "poster916 127 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261115-1.jpg"
+   },
+   {
+    "key": "coke stoned & baileys aka justin bailey /  dave coker / timmy s|your mum",
+    "title": "COKE STONED & BAILEYS aka JUSTIN BAILEY /  DAVE COKER / TIMMY S – Your Mum",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261115-2.mp4",
+    "look": "poster916 128 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261115-2.jpg"
+   },
+   {
+    "key": "various artists|mw 019",
+    "title": "Various Artists – MW 019",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261115-3.mp4",
+    "look": "poster916 99 bpm · motion 0.5",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261115-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "shep’|common decency ep",
+   "title": "SHEP’ – Common Decency EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261115-1.mp4",
+   "look": "poster916 127 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261115-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-14",
   "keys": [
    "dj girl|why side with the underdogs?",
