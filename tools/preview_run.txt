@@ -1,25 +1,26 @@
-4218 Platten: 79% Einzeltracks, 17% Gesamtclip, 4% ohne Hörprobe | 0 neu von Produktseiten, 0 von anderem Shop, 13 defekte Clips entfernt
-  Betino's: {'records': 25, 'tracks': 25, 'clip': 0, 'none': 0}
-  Bordello A Parigi: {'records': 86, 'tracks': 86, 'clip': 0, 'none': 0}
+6006 Platten: 82% Einzeltracks, 15% Gesamtclip, 3% ohne Hörprobe | 25 neu von Produktseiten, 22 von anderem Shop, 49 defekte Clips entfernt
+  Betino's: {'records': 42, 'tracks': 42, 'clip': 0, 'none': 0}
+  Bordello A Parigi: {'records': 123, 'tracks': 122, 'clip': 0, 'none': 1}
   Carpet & Snares: {'records': 23, 'tracks': 17, 'clip': 0, 'none': 6}
-  Clone: {'records': 234, 'tracks': 232, 'clip': 0, 'none': 2}
-  Decks.de: {'records': 19, 'tracks': 12, 'clip': 3, 'none': 4}
-  Deejay.de: {'records': 320, 'tracks': 245, 'clip': 23, 'none': 52}
-  Diggers.fr: {'records': 123, 'tracks': 118, 'clip': 0, 'none': 5}
-  Discos Paradiso: {'records': 35, 'tracks': 27, 'clip': 2, 'none': 6}
-  Divert Records: {'records': 3, 'tracks': 3, 'clip': 0, 'none': 0}
-  Hardwax: {'records': 165, 'tracks': 165, 'clip': 0, 'none': 0}
-  Juno Records: {'records': 792, 'tracks': 784, 'clip': 0, 'none': 8}
-  KMA60: {'records': 36, 'tracks': 36, 'clip': 0, 'none': 0}
-  Kompakt: {'records': 116, 'tracks': 108, 'clip': 0, 'none': 8}
-  Phonica: {'records': 173, 'tracks': 133, 'clip': 10, 'none': 30}
-  Redeye Records: {'records': 1138, 'tracks': 413, 'clip': 688, 'none': 37}
-  Rubadub: {'records': 14, 'tracks': 13, 'clip': 0, 'none': 1}
-  Rush Hour: {'records': 60, 'tracks': 58, 'clip': 0, 'none': 2}
-  Side One: {'records': 49, 'tracks': 46, 'clip': 0, 'none': 3}
+  Clone: {'records': 400, 'tracks': 398, 'clip': 0, 'none': 2}
+  Decks.de: {'records': 26, 'tracks': 16, 'clip': 3, 'none': 7}
+  Deejay.de: {'records': 416, 'tracks': 335, 'clip': 28, 'none': 53}
+  Diggers.fr: {'records': 176, 'tracks': 170, 'clip': 1, 'none': 5}
+  Discos Paradiso: {'records': 35, 'tracks': 27, 'clip': 3, 'none': 5}
+  Divert Records: {'records': 3, 'tracks': 2, 'clip': 0, 'none': 1}
+  Hardwax: {'records': 252, 'tracks': 252, 'clip': 0, 'none': 0}
+  Juno Records: {'records': 1248, 'tracks': 1230, 'clip': 1, 'none': 17}
+  KMA60: {'records': 37, 'tracks': 37, 'clip': 0, 'none': 0}
+  Kompakt: {'records': 150, 'tracks': 139, 'clip': 0, 'none': 11}
+  Phonica: {'records': 173, 'tracks': 134, 'clip': 9, 'none': 30}
+  Redeye Records: {'records': 1566, 'tracks': 669, 'clip': 853, 'none': 44}
+  Rubadub: {'records': 84, 'tracks': 81, 'clip': 0, 'none': 3}
+  Rush Hour: {'records': 68, 'tracks': 66, 'clip': 0, 'none': 2}
+  Side One: {'records': 107, 'tracks': 100, 'clip': 0, 'none': 7}
   Sound Metaphors: {'records': 18, 'tracks': 16, 'clip': 1, 'none': 1}
-  SoundGround: {'records': 124, 'tracks': 118, 'clip': 0, 'none': 6}
-  Syncrophone: {'records': 56, 'tracks': 56, 'clip': 0, 'none': 0}
+  SoundGround: {'records': 135, 'tracks': 129, 'clip': 0, 'none': 6}
+  Syncrophone: {'records': 84, 'tracks': 84, 'clip': 0, 'none': 0}
   Ultrasuoni: {'records': 43, 'tracks': 43, 'clip': 0, 'none': 0}
-  Vinyl Underground: {'records': 244, 'tracks': 239, 'clip': 0, 'none': 5}
-  Yoyaku: {'records': 322, 'tracks': 321, 'clip': 0, 'none': 1}
+  Vinyl Underground: {'records': 416, 'tracks': 409, 'clip': 0, 'none': 7}
+  Yoyaku: {'records': 381, 'tracks': 380, 'clip': 0, 'none': 1}
+  nicht erreichbar: {'Redeye Records: failed:UnicodeEncodeError': 60}
