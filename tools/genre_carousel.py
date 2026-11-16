@@ -210,7 +210,9 @@ def main_fresh(want):
     for c in cands:
         c["tier"] = ig_handles.tier(c["feat"]["a"], c["feat"].get("l"))
     digs.log("ig tiers", {t: sum(c["tier"] == t for c in cands) for t in range(4)})
-    for top, rnd in [(0, 0), (0, 1), (1, 0), (1, 1), (2, 1), (3, 1)]:
+    # Rule (user, 16.11.26): ONLY records whose artist AND label are taggable (tier 0). The number of slides follows
+    # from that: 3 such records -> a carousel of 3. Never fill up with tier 1-3.
+    for top, rnd in [(0, 0), (0, 1)]:
         for c in cands:
             if len(slides) == N:
                 break

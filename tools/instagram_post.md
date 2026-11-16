@@ -103,30 +103,32 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 3. Mit `INSTAGRAM_GET_IG_USER_MEDIA` (limit 1) prüfen, dass der Post live ist; Link (permalink) melden.
 Nie Erfolg melden, ohne den Post gesehen zu haben.
 
-## 5. Karussell «Fresh today» (täglich, seit 2.11.26)
+## 5. Karussell «Fresh today» (seit 2.11.26; ab 16.11.26 nur jeden 2. Tag)
 
-Zweiter Post jeden Tag, **nach** Today's Digs: **10 weitere Platten** von heute («Fresh today», Standard seit
-4.11.26 = Instagram-Maximum; mehr Releases = mehr Reichweite; `n: 10` in `tools/genre_carousel.json`, weniger
-nur, wenn es nicht genug frische Platten gibt), die nicht im Digs-Video sind, je eine Video-Slide (4:5, 30 s, eigene Hörprobe). Gleiche Grundregeln wie oben (OK des
+Zweiter Post an Karussell-Tagen (jeden 2. Tag, siehe unten), **nach** Today's Digs: **bis zu 10 weitere Platten** von heute («Fresh today», Standard seit
+4.11.26 = Instagram-Maximum; mehr Releases = mehr Reichweite; `n: 10` in `tools/genre_carousel.json`, weniger,
+wenn nicht genug frische Platten die Markierungsregel erfüllen), die nicht im Digs-Video sind, je eine Video-Slide (4:5, 30 s, eigene Hörprobe). Gleiche Grundregeln wie oben (OK des
 Nutzers, nur Fresh today, Respekt vor dem Cover). Digs-Vorschau und Karussell-Vorschau dürfen in derselben
 Nachricht kommen; das OK muss klar sagen, was gepostet werden soll (z. B. «beide», «nur Digs»).
 
-**Auswahl nach Markierbarkeit (Nutzer, 11.11.26, Pflicht):** Von 10 Platten müssen **mind. 8 einen markierbaren
-Artist** (geprüftes öffentliches Konto) haben **und mind. 8 ein markierbares Label**. Bei weniger Slides anteilig
-(aufgerundet, `ig.need` in carousel.json). `genre_carousel.py` wählt darum zuerst Platten, deren Artist und Label in
-`tools/artist_instagram.json` ein Konto haben (Stufe 0), dann eines von beiden (1), dann ungeprüfte (2), zuletzt ohne
-Konto (3); `carousel.json` enthält pro Slide `ig_a`, `ig_l`, `ig_todo` und gesamt `ig` (`artist_ok`, `label_ok`, `need`).
-Ablauf jeden Morgen, bevor die Vorschau rausgeht:
-1. `ig` in carousel.json prüfen. Reicht `artist_ok` oder `label_ok` nicht: `python3 tools/ig_handles.py` listet alle
-   frischen Platten von heute (ohne Digs) mit Status; Zeilen mit `TODO` = Artist/Label noch nicht recherchiert.
-2. Die TODO-Namen der bestplatzierten Platten (Stufe 1, dann 2) wie in Schritt 2 recherchieren und prüfen, Ergebnis
-   in `artist_instagram.json` (Handle oder `null`), committen, pushen – so lange, bis mind. 10 Platten Stufe 0 sind
-   bzw. die 8/8-Regel erfüllbar ist.
+**Nur jeden 2. Tag (Nutzer, 16.11.26):** Ein Karussell wird nur gepostet, wenn das letzte Karussell auf
+@monthlyvinyl mindestens 2 Tage zurückliegt (`INSTAGRAM_GET_IG_USER_MEDIA`, letzter `CAROUSEL_ALBUM`; z. B. 13.11. →
+nächstes frühestens 15.11.). An den Tagen dazwischen keine Karussell-Vorschau schicken und das Karussell auch nicht
+vorbereiten.
+
+**Nur voll markierbare Platten (Nutzer, 16.11.26, Pflicht, ersetzt die 8/10-Regel):** Ins Karussell kommen nur Platten,
+bei denen **Artist und Label** ein geprüftes öffentliches Konto haben (Stufe 0 in `tools/ig_handles.py`). Die Anzahl
+der Slides ergibt sich daraus: erfüllen nur 3 Platten die Regel, hat das Karussell 3 Slides (max. 10). Nie mit
+Platten ohne Konto auffüllen. `genre_carousel.py` nimmt nur Stufe 0; `carousel.json` enthält pro Slide `ig_a`, `ig_l`,
+`ig_todo`. Ablauf an Karussell-Tagen, bevor die Vorschau rausgeht:
+1. `python3 tools/ig_handles.py` listet alle frischen Platten von heute (ohne Digs) mit Status; Zeilen mit `TODO` =
+   Artist/Label noch nicht recherchiert.
+2. Die TODO-Namen wie in Schritt 2 recherchieren und prüfen, Ergebnis in `artist_instagram.json` (Handle oder `null`),
+   committen, pushen – damit möglichst viele Platten (bis 10) Stufe 0 erreichen.
 3. Action «Genre carousel» von Hand starten (workflow_dispatch `genre_carousel.yml`, ref `main`), ca. 30–45 Min.
    warten, carousel.json erneut prüfen. Erst dann die Vorschau schicken.
-4. Ist die Regel auch so nicht erfüllbar (zu wenige frische Platten mit Konten): mit weniger Slides posten, sodass
-   die Regel stimmt (`n_by_date` in `genre_carousel.json`), und das in der Vorschau sagen.
-In der Vorschau die Zählung angeben: «Artists markierbar: x/10, Labels markierbar: y/10».
+4. Weniger als 2 Platten Stufe 0 (Instagram verlangt mind. 2 Slides): kein Karussell, dem Nutzer kurz sagen.
+In der Vorschau angeben: «x Platten erfüllen die Markierungsregel → x Slides».
 
 **Ist es fertig?** Die Action «Genre carousel» (`tools/genre_carousel.py`, Modus `fresh` in
 `tools/genre_carousel.json`) läuft automatisch nach jedem Today's-Digs-Lauf. Release `carousel`:
