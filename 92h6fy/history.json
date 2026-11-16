@@ -1,5 +1,46 @@
 [
  {
+  "date": "2026-11-16",
+  "keys": [
+   "the exaltics feat. paris the black fu|dis turb ance int he tim eline",
+   "qb-1|pulse works",
+   "lanzieri|cosmic encounter ep"
+  ],
+  "titles": [
+   "The Exaltics feat. Paris The Black Fu – Dis turb ance int he tim eline",
+   "QB-1 – Pulse Works",
+   "Lanzieri – Cosmic Encounter EP"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Clone",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261116.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "martinou|we orbit ep",
+    "title": "Martinou – We Orbit EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261116-1.mp4",
+    "look": "poster916 126 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261116-1.jpg"
+   }
+  ],
+  "reel": {
+   "key": "martinou|we orbit ep",
+   "title": "Martinou – We Orbit EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261116-1.mp4",
+   "look": "poster916 126 bpm · colours only",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261116-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-15",
   "keys": [
    "boca / coco bryce|all alone / tell me",
