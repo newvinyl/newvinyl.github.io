@@ -48,6 +48,11 @@ Video herunterladen, die Bilder bei 0 s, 3 s, 18 s und 33 s ansehen und prüfen:
 Startbild, Titel lesbar, Cover sauber (kein Aufkleber/Mockup, richtige Platte), Shop-Zeile vorhanden.
 Fehler dem Nutzer melden statt zu posten.
 
+**Erste Platte nie Ambient (Nutzer, 16.11.26).** Ambient ist meist zu ruhig, die Betrachter klicken gleich weg;
+House und Techno halten sie eher. `choose()` in `tools/digs.py` stellt darum eine House-/Techno-Platte (sonst eine
+andere Nicht-Ambient-Platte) an den Anfang. In der Vorschau trotzdem prüfen; bei Bedarf Reihenfolge per
+`92h6fy/reel_request.json` (`keys` in gewünschter Reihenfolge) ändern und `digs.yml` mit `force: true` starten.
+
 **Keine Show-Case-Reels (Einzel-Reels) mehr (seit 30.10.26).** Sie brachten kaum Views und Reaktionen;
 der Nutzer hat sie gestoppt. Die Action rendert sie eventuell weiter (`reels` in `history.json`,
 `caption_reel_*.txt`): ignorieren, nicht vorlegen, nicht posten. Genre weglassen, wenn sich die Shops beim

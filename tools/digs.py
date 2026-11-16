@@ -248,7 +248,22 @@ def rate_covers(cands, offline, limit=50):
         c.setdefault("vis", 0)
         c.setdefault("art", -9.0)
 
+def no_ambient_first(combo):
+    """Rule (user, 16.11.26): the first digs record is never Ambient – too quiet, viewers swipe away.
+    House/Techno (then any other non-ambient family) goes first."""
+    if not combo or combo[0]["fam"] != "Ambient":
+        return combo
+    rank = {"House": 0, "Techno": 0}
+    alt = sorted([c for c in combo if c["fam"] != "Ambient"], key=lambda c: rank.get(c["fam"], 1))
+    if not alt:
+        return combo
+    first = alt[0]
+    return [first] + [c for c in combo if c is not first]
+
 def choose(cands, banned, n=3):
+    return no_ambient_first(_choose(cands, banned, n))
+
+def _choose(cands, banned, n=3):
     pool = [c for c in cands if c["key"] not in banned][:45]
     if n > 3:                                   # bigger digs (user wish): greedy, combinations would explode
         out = []
