@@ -1856,5 +1856,41 @@
  },
  "hard corps": null,
  "anna logue records": null,
- "octal industries": null
+ "octal industries": null,
+ "the exaltics": {
+  "handle": "exaltics",
+  "kind": "artist",
+  "followers": 9549,
+  "checked": "2026-11-16"
+ },
+ "lanzieri": {
+  "handle": "lanzieri06",
+  "kind": "artist",
+  "followers": 2307,
+  "checked": "2026-11-16"
+ },
+ "subterrain records": {
+  "handle": "subterrainrecords",
+  "kind": "label",
+  "followers": 1884,
+  "checked": "2026-11-16"
+ },
+ "fila brazillia": {
+  "handle": "fila_brazillia",
+  "kind": "artist",
+  "followers": 2602,
+  "checked": "2026-11-16"
+ },
+ "running back": {
+  "handle": "runningbackrecords",
+  "kind": "label",
+  "followers": 18941,
+  "checked": "2026-11-16"
+ },
+ "running back double copy": {
+  "handle": "runningbackrecords",
+  "kind": "label",
+  "followers": 18941,
+  "checked": "2026-11-16"
+ }
 }
