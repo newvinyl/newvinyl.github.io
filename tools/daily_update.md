@@ -105,8 +105,10 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
   (house) and the same with now_Sub=zz (techno); the page sometimes breaks after one entry — take what
   is there.
 - Deejay.de (Wiesbaden, DE): https://www.deejay.de/m_House/sm_News and
-  https://www.deejay.de/m_Techno/sm_News (page 1; /page_2 only if still needed). Take only releases
-  whose shown date is yesterday or today (Europe/Zurich); skip later pre-order dates. Price €. Style
+  https://www.deejay.de/m_Techno/sm_News (page 1 and /page_2). Take releases whose shown date lies within the
+  last 7 days (Europe/Zurich, but not before 2026-11-16) and that are not in releases.json yet, so a
+  missed day is caught up the next morning (9.–12.11. were lost with the old "yesterday or today"
+  rule); skip later pre-order dates. Price €. Style
   tags: House+Deep → Deep House, House+Minimal → Minimal House, House+Tech → Tech House, House alone
   → House, Techno → Techno (Techno+Minimal without House → Minimal Techno), Electro → Electro, Disco
   → Disco, Breaks → Breakbeat; join several with " / "; add " · Reissue" if tagged Classics. Format
