@@ -250,8 +250,10 @@ def main_fresh(want):
                 digs.log("slide", len(slides), R["a"], "–", R["t"], "|", R["shop_full"], "| cover", cov.width)
             except Exception as e:
                 digs.log("fail", c["key"], e)
-    if not slides:
-        raise SystemExit("no slides")
+    if not slides:   # quiet day (e.g. Monday after the weekend): no usable fresh records beyond the digs, no carousel today
+        digs.log("no usable fresh records for", day, "beyond Today's Digs: skip")
+        print(json.dumps({"skip": True, "genre": "fresh-" + day, "reason": "no usable fresh records"}))
+        return
     from shutil import copyfile
     copyfile(slides[0]["video"].replace(".mp4", ".jpg"), os.path.join(WORK, "slide-00.jpg"))
     lines = []
