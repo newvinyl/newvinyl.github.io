@@ -90,23 +90,52 @@ def _contrast(a, b):
     la, lb = sorted((_lum(a), _lum(b)), reverse=True)
     return (la + 0.05) / (lb + 0.05)
 
-def cover_palette(cov):
-    """(bg, ink, faint) for a cover: bg = most frequent colour cluster of the cover."""
-    small = cov.convert("RGB").resize((96, 96), Image.BILINEAR)
-    q = small.quantize(colors=6, method=Image.Quantize.MEDIANCUT)
+def _lab(a):
+    """sRGB (..., 3) 0-255 -> CIELAB"""
+    import numpy as np
+    a = np.asarray(a, dtype=float) / 255
+    a = np.where(a <= 0.04045, a / 12.92, ((a + 0.055) / 1.055) ** 2.4)
+    xyz = a @ np.array([[0.4124, 0.2126, 0.0193], [0.3576, 0.7152, 0.1192], [0.1805, 0.0722, 0.9505]])
+    xyz = xyz / np.array([0.9505, 1.0, 1.089])
+    f = np.where(xyz > 0.008856, np.cbrt(xyz), 7.787 * xyz + 16 / 116)
+    return np.stack([116 * f[..., 1] - 16, 500 * (f[..., 0] - f[..., 1]), 200 * (f[..., 1] - f[..., 2])], -1)
+
+def cover_palette(cov, debug=False):
+    """(bg, ink, faint) for a cover. Rule (user, 17.11.26): background = one of the two main colours of the cover,
+    the one against which the cover stands out more.
+    1. Candidates: the two largest colour areas of the cover (>= 10 % each; similar shades merged; black/white/grey allowed).
+    2. For each: mean colour distance (CIELAB ΔE) between the candidate and all pixels of the cover.
+       Higher = the cover separates better from the background instead of melting into it.
+    3. Colourful candidates get a 30 % bonus (they pop in the feed more than black/white/grey).
+    4. The candidate with the clearly higher score wins (> 15 % more); if both are about equal: the dominant one."""
+    import numpy as np
+    im = cov.convert("RGB").resize((120, 120), Image.BILINEAR)
+    q = im.quantize(colors=10, method=Image.Quantize.MEDIANCUT)
     pal = q.getpalette()
-    cols = sorted(q.getcolors(), reverse=True)
-    total = sum(c for c, _ in cols)
-    rgb = lambda i: tuple(pal[i * 3: i * 3 + 3])
-    def sat(c):
+    groups = []                                                # merge shades closer than ΔE 18
+    for c, i in sorted(q.getcolors(), reverse=True):
+        col = tuple(pal[i * 3: i * 3 + 3]); lab = _lab(col)
+        for g in groups:
+            if np.linalg.norm(g["lab"] - lab) < 18:
+                g["n"] += c; break
+        else:
+            groups.append({"rgb": col, "lab": lab, "n": c})
+    total = sum(g["n"] for g in groups)
+    groups.sort(key=lambda g: -g["n"])
+    main = [g for g in groups if g["n"] / total >= 0.10][:2] or groups[:1]
+    px = _lab(np.asarray(im).reshape(-1, 3))
+    def colourful(c):
         mx, mn = max(c), min(c)
-        return 0 if mx == 0 else (mx - mn) / mx
-    # the most frequent colour; black/white/grey only if the cover has no real colour (>= 15 % of the area)
-    colourful = [rgb(i) for c, i in cols if c / total >= 0.15 and sat(rgb(i)) >= 0.2 and 30 <= max(rgb(i)) <= 245]
-    bg = colourful[0] if colourful else rgb(cols[0][1])
+        return mx >= 30 and (mx - mn) / mx >= 0.2 and mx <= 250
+    # colourful candidates get a 30 % bonus: they make the post stand out in the feed (green beats black)
+    dist = [float(np.linalg.norm(px - g["lab"], axis=1).mean()) * (1.3 if colourful(g["rgb"]) else 1.0) for g in main]
+    pick = 1 if len(main) == 2 and dist[1] > dist[0] * 1.15 else 0
+    bg = main[pick]["rgb"]
     dark = (17, 17, 17)                                        # type only yellow or black (user, 17.11.26): the better contrast wins
     ink = INK if _contrast(bg, INK) >= _contrast(bg, dark) else dark
-    faint = tuple(int(b + (c - b) * .25) for b, c in zip(bg, ink))
+    faint = tuple(int(b_ + (c - b_) * .25) for b_, c in zip(bg, ink))
+    if debug:
+        return bg, ink, faint, [(g["rgb"], round(g["n"] / total, 2), round(d, 1)) for g, d in zip(main, dist)], pick
     return bg, ink, faint
 
 def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):

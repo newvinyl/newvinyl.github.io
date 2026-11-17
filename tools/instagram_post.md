@@ -139,6 +139,12 @@ Slides: `…/download/carousel/slide-01.mp4` … `slide-04.mp4` (Anzahl = `slide
 Standbilder `slide-01.jpg` … ansehen: Cover sauber, richtige Platte, Typo lesbar.
 Jede Platte gegen `releases.json` prüfen (`first_seen` = heute, nicht in `tools/not_ours.json`).
 
+**Design der Slides (Nutzer, 17.11.26):** Hintergrund = eine der zwei Hauptfarben des Covers, und zwar die, vor der sich
+das Cover besser abhebt (mittlerer Farbabstand ΔE, farbige Kandidaten +30 %, Sekundärfarbe nur bei klar höherem Wert;
+`cover_palette()` in `tools/genre_carousel.py`). Schrift gelb oder schwarz, je nach besserem Kontrast. Dezenter Schatten
+im Winkel unter dem Cover (nur rechts und unten sichtbar). Zu kleine Shop-Covers (< 450 px): hochaufgelöste Quelle
+(Bandcamp `_10.jpg`, Label-/Shopseite) in `tools/cover_override.json` eintragen.
+
 **Caption** (aus carousel.json bauen, Format wie bisher):
 ```
 Fresh today: <n> new records, swipe to listen →
