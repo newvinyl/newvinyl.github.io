@@ -77,6 +77,41 @@ MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", 
 
 MINT = (158, 240, 204)                                       # «Snacks» (since 11.11.26): mint type, only artist, title, label
 
+# Background = dominant colour of the cover (user, 17.11.26), so the carousel stands out in the feed.
+# Type stays yellow where it reads well (contrast >= 4.5), otherwise near-black or white, whichever reads better.
+def _lum(c):
+    def ch(v):
+        v /= 255
+        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+    r, g, b = (ch(v) for v in c)
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+def _contrast(a, b):
+    la, lb = sorted((_lum(a), _lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+def cover_palette(cov):
+    """(bg, ink, faint) for a cover: bg = most frequent colour cluster of the cover."""
+    small = cov.convert("RGB").resize((96, 96), Image.BILINEAR)
+    q = small.quantize(colors=6, method=Image.Quantize.MEDIANCUT)
+    pal = q.getpalette()
+    cols = sorted(q.getcolors(), reverse=True)
+    total = sum(c for c, _ in cols)
+    rgb = lambda i: tuple(pal[i * 3: i * 3 + 3])
+    def sat(c):
+        mx, mn = max(c), min(c)
+        return 0 if mx == 0 else (mx - mn) / mx
+    # the most frequent colour; black/white/grey only if the cover has no real colour (>= 15 % of the area)
+    colourful = [rgb(i) for c, i in cols if c / total >= 0.15 and sat(rgb(i)) >= 0.2 and 30 <= max(rgb(i)) <= 245]
+    bg = colourful[0] if colourful else rgb(cols[0][1])
+    if _contrast(bg, INK) >= 4.5:
+        ink = INK
+    else:
+        dark, light = (17, 17, 17), (250, 250, 247)
+        ink = dark if _contrast(bg, dark) >= _contrast(bg, light) else light
+    faint = tuple(int(b + (c - b) * .25) for b, c in zip(bg, ink))
+    return bg, ink, faint
+
 def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
     import math
     if style == "snacks":
@@ -95,6 +130,7 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
     lab = R.get("l") if R.get("l") and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
     gen = (R.get("gfull") or "").split(" · ")[0].split(" / ")[0].strip()
     meta = " · ".join(v for v in [lab, date_s, R.get("fmt"), gen] if v)
+    BG, INK, FAINT = cover_palette(cov)
     base = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(base)
     digs.txt(d, (100, 1048), R["a"], 64, INK, maxw=880)
