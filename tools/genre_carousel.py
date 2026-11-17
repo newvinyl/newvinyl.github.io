@@ -78,7 +78,7 @@ MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", 
 MINT = (158, 240, 204)                                       # «Snacks» (since 11.11.26): mint type, only artist, title, label
 
 # Background = dominant colour of the cover (user, 17.11.26), so the carousel stands out in the feed.
-# Type stays yellow where it reads well (contrast >= 4.5), otherwise near-black or white, whichever reads better.
+# Type yellow or black, whichever has the better contrast on that background.
 def _lum(c):
     def ch(v):
         v /= 255
@@ -104,11 +104,8 @@ def cover_palette(cov):
     # the most frequent colour; black/white/grey only if the cover has no real colour (>= 15 % of the area)
     colourful = [rgb(i) for c, i in cols if c / total >= 0.15 and sat(rgb(i)) >= 0.2 and 30 <= max(rgb(i)) <= 245]
     bg = colourful[0] if colourful else rgb(cols[0][1])
-    if _contrast(bg, INK) >= 4.5:
-        ink = INK
-    else:
-        dark, light = (17, 17, 17), (250, 250, 247)
-        ink = dark if _contrast(bg, dark) >= _contrast(bg, light) else light
+    dark = (17, 17, 17)                                        # type only yellow or black (user, 17.11.26): the better contrast wins
+    ink = INK if _contrast(bg, INK) >= _contrast(bg, dark) else dark
     faint = tuple(int(b + (c - b) * .25) for b, c in zip(bg, ink))
     return bg, ink, faint
 
