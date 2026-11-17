@@ -73,7 +73,13 @@ HTTP status or error and the fetch time; each pages/<file>.txt starts with "SOUR
 the page text with [link: …], [img: …] and [audio: …] markers (absolute URLs). Read these files
 instead of calling WebFetch. pages/rushhour-product-mp3.json maps Rush Hour product pages to their
 mp3 URLs. Use the files only if their FETCHED date is today; if a page has an error or is missing,
-skip that page for today and name it in the final message.
+skip that page for today and name it in the final message. When an entry has an "error", it may also
+carry "diag" (HTTP code, redirect target "location", server/CDN, cookie names, page title, "challenge"
+if a bot check answered). Quote the short form in the final message (e.g. "Phonica: 307 → <location>"
+or "Deejay.de: 403, Cloudflare-Abfrage") so the user can tell a fixable script problem (redirect to
+another address, cookie or consent page) from an intended block. Never work around a block (no
+proxies, other IPs, fake browsers or captcha solving); a plain redirect or cookie problem may be fixed
+in tools/fetch_pages.py, but only after telling the user what the diag showed.
 
 If pages/index.json is not from today (GitHub often starts the scheduled Action hours late or
 skips it), start the Action yourself and wait for it. Do not finish with "0 new releases" before
@@ -141,13 +147,12 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
   product URLs, covers, artist, title, label, cat no., format and € price from the list; assign genres
   only if the page or the product page names them, otherwise use the label's known style
   conservatively (e.g. Kompakt → Techno / Minimal) or skip the item. Skip CDs and merchandise.
-- Juno Records (London, UK): https://www.juno.co.uk/house/this-week/, /techno/this-week/,
-  /disco/this-week/, /downtempo/this-week/, /ambient-drone/this-week/, and the subgenre pages
-  https://www.juno.co.uk/deep-house/this-week/, https://www.juno.co.uk/tech-house/this-week/,
-  https://www.juno.co.uk/minimal-tech-house/this-week/, https://www.juno.co.uk/electro/this-week/,
-  https://www.juno.co.uk/balearic-downtempo/this-week/ (direct mp3s at juno.co.uk/MP3/…). Pages are
-  very long and may be cut off; take only releases you can actually see with full data. If a URL does
-  not exist or shows no listings, skip it.
+- Juno Records (London, UK): PAUSED since 2026-11-17. All Juno pages answered 403, so
+  tools/fetch_pages.py no longer fetches them (listed under "paused" in pages/index.json). We wait for
+  an official product feed (Juno affiliate programme / Awin); when it exists it goes into
+  tools/shop_feeds.py like the other structured shops. Until then: do not look for Juno pages, do not
+  report Juno as an error or as "skipped"; keep all existing Juno items unchanged (they still count
+  for price comparison and step 6). In the final message write only "Juno: wartet auf Feed".
 
 - Shops with structured data (no page reading): the Action already turns their product data into finished items
   in pages/items/<id>.json, listed in pages/items/index.json with shop name, city ("where"), country, currency and

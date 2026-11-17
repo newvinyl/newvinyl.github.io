@@ -39,22 +39,44 @@ https://www.redeyerecords.co.uk/experimental/new-releases
 https://yoyaku.io/releases/
 https://kompakt.fm/releases
 https://kompakt.fm/releases?page=2
-https://www.juno.co.uk/house/this-week/
-https://www.juno.co.uk/techno/this-week/
-https://www.juno.co.uk/disco/this-week/
-https://www.juno.co.uk/downtempo/this-week/
-https://www.juno.co.uk/ambient-drone/this-week/
-https://www.juno.co.uk/deep-house/this-week/
-https://www.juno.co.uk/tech-house/this-week/
-https://www.juno.co.uk/minimal-tech-house/this-week/
-https://www.juno.co.uk/electro/this-week/
-https://www.juno.co.uk/balearic-downtempo/this-week/
 """.split()
+# Juno: pausiert seit 17.11.26 (alle Seiten 403). Wir warten auf einen offiziellen Produkt-Feed
+# (Juno-Partnerprogramm / Awin) und rufen die gesperrten Seiten bis dahin nicht mehr ab.
+# Kommt der Feed, gehört Juno nach tools/shop_feeds.py (FEEDS) und der Eintrag hier wird gelöscht.
+PAUSED = {"Juno Records": "waiting for official product feed (pages answered 403 since 2026-11-17)"}
 
 def fetch(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html,*/*", "Accept-Language": "en,de;q=0.8"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.status, r.read().decode(r.headers.get_content_charset() or "utf-8", "replace")
+
+def diagnose(ex):
+    """Bei Sperre oder Weiterleitung festhalten, was der Server antwortet: Ziel der Weiterleitung,
+    Server/CDN, Namen gesetzter Cookies (ohne Werte), Seitentitel und ob eine Bot-Abfrage kommt.
+    Nur zur Diagnose (ist es ein Fehler in unserem Skript oder eine gewollte Sperre?), kein Umgehen."""
+    h = getattr(ex, "headers", None)
+    if h is None:
+        return None
+    d = {"code": getattr(ex, "code", None)}
+    for k in ("Location", "Server", "Via", "Retry-After", "cf-mitigated", "cf-ray", "x-datadome", "x-cache"):
+        v = h.get(k)
+        if v:
+            d[k.lower()] = v[:200]
+    ck = [c.split("=", 1)[0].strip() for c in (h.get_all("Set-Cookie") or [])]
+    if ck:
+        d["set_cookie_names"] = ck[:10]
+    try:
+        body = ex.read(4000).decode("utf-8", "replace")
+        m = re.search(r"<title[^>]*>(.*?)</title>", body, re.S | re.I)
+        if m:
+            d["title"] = re.sub(r"\s+", " ", m.group(1)).strip()[:150]
+        if re.search(r"cloudflare|cf-chl|challenge-platform", body, re.I):
+            d["challenge"] = "cloudflare"
+        elif re.search(r"datadome|captcha|are you a robot|access denied", body, re.I):
+            d["challenge"] = "bot check"
+    except Exception:
+        pass
+    return d
 
 class Compact(html.parser.HTMLParser):
     """Text mit [link: url] / [img: url] / [audio: url], ohne Skripte, Styles und Navigation-Ballast."""
@@ -130,7 +152,7 @@ def shop_feeds(pdir):
 def main():
     pdir = os.path.join(OUT, "pages")
     os.makedirs(pdir, exist_ok=True)
-    idx = {"fetched": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "pages": []}
+    idx = {"fetched": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "pages": [], "paused": PAUSED}
     rush = []
     for u in URLS:
         e = {"url": u, "file": slug(u) + ".txt"}
@@ -145,6 +167,9 @@ def main():
                 rush = sorted(set(re.findall(r"https://www\.rushhour\.nl/record/[^\s\"'<>#?]+", body)))[:40]
         except Exception as ex:
             e.update(error=str(ex)[:300])
+            d = diagnose(ex)
+            if d:
+                e["diag"] = d
         print(e, file=sys.stderr)
         idx["pages"].append(e)
         time.sleep(1.5)
