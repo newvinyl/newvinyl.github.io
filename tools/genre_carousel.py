@@ -132,8 +132,8 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
     # very light, soft shadow under the cover (user, 17.11.26), cast at an angle: only visible right and bottom
     from PIL import ImageFilter
     sh = Image.new("L", (W, H), 0)
-    ImageDraw.Draw(sh).rectangle([100 + 16, 60 + 16, 980 + 16, 940 + 16], fill=255)
-    sh = sh.filter(ImageFilter.GaussianBlur(9)).point(lambda v: int(v * 0.30))
+    ImageDraw.Draw(sh).rectangle([100 + 12, 60 + 12, 980 + 12, 940 + 12], fill=255)
+    sh = sh.filter(ImageFilter.GaussianBlur(8)).point(lambda v: int(v * 0.18))
     base = Image.composite(Image.new("RGB", (W, H), (0, 0, 0)), base, sh)
     d = ImageDraw.Draw(base)
     digs.txt(d, (100, 1048), R["a"], 64, INK, maxw=880)
