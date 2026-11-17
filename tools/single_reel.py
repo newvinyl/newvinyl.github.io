@@ -25,6 +25,12 @@ def best_cover(arr):
     from PIL import Image
     import io
     urls = []
+    try:   # hand-found hi-res covers (Bandcamp etc.) when the shops only have small ones: {"artist|title": [url, ...]}
+        ov = json.load(open(os.path.join(ROOT, "tools", "cover_override.json"), encoding="utf-8"))
+        for x in arr:
+            urls += ov.get(digs.gkey(x), [])
+    except FileNotFoundError:
+        pass
     for x in arr:
         if x.get("cover"):
             urls += [hires(x["cover"]), x["cover"]]
