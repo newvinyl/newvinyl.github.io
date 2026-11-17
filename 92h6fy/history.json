@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-17",
+  "keys": [
+   "the reflex|d-y-d / down breaks",
+   "tasti box|san francisco (luca lozano remix)",
+   "chris carrier|sunday mirage"
+  ],
+  "titles": [
+   "The REFLEX – D-Y-D / Down Breaks",
+   "Tasti Box – San Francisco (Luca Lozano remix)",
+   "Chris Carrier – Sunday Mirage"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Clone",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261117.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "jon e.|messages from easy street - part i",
+    "title": "Jon E. – Messages From Easy Street - Part I",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261117-1.mp4",
+    "look": "poster916 120 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261117-1.jpg"
+   },
+   {
+    "key": "greville|punkisms",
+    "title": "Greville – Punkisms",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261117-2.mp4",
+    "look": "poster916 127 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261117-2.jpg"
+   },
+   {
+    "key": "fabio santanna|negro sentimento / funk na veia",
+    "title": "Fabio SANTANNA – Negro Sentimento / Funk Na Veia",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261117-3.mp4",
+    "look": "poster916 104 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261117-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "jon e.|messages from easy street - part i",
+   "title": "Jon E. – Messages From Easy Street - Part I",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261117-1.mp4",
+   "look": "poster916 120 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261117-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-16",
   "keys": [
    "qb-1|pulse works",
