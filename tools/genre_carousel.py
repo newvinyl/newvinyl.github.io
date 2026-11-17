@@ -72,6 +72,7 @@ def title_image(genre, n, d0, d1, out):
 # {"mode": "fresh", "date": "YYYY-MM-DD", "n": 4, "seg": 30}: n slides of records that are «Fresh today»
 # (not the three in Today's Digs), each one record, 4:5, yellow type like the digs video.
 INK = (251, 237, 79)
+INK_Y = INK
 FAINT = tuple(int(b + (c - b) * .25) for b, c in zip(BG, INK))
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -157,6 +158,14 @@ def fresh_slide(R, cov, aud, start, seg_s, date_s, out, style=None):
     gen = (R.get("gfull") or "").split(" · ")[0].split(" / ")[0].strip()
     meta = " · ".join(v for v in [lab, date_s, R.get("fmt"), gen] if v)
     BG, INK, FAINT = cover_palette(cov)
+    try:   # hand-picked background per record (user's choice, e.g. the colour of the cover's type): {"artist|title": [r, g, b]}
+        fix = json.load(open(os.path.join(ROOT, "tools", "carousel_bg.json"), encoding="utf-8")).get(R.get("key", ""))
+        if fix:
+            BG = tuple(fix)
+            INK = INK_Y if _contrast(BG, INK_Y) >= _contrast(BG, (17, 17, 17)) else (17, 17, 17)
+            FAINT = tuple(int(b_ + (c - b_) * .25) for b_, c in zip(BG, INK))
+    except FileNotFoundError:
+        pass
     base = Image.new("RGB", (W, H), BG)
     # very light, soft shadow under the cover (user, 17.11.26), cast at an angle: only visible right and bottom
     from PIL import ImageFilter
@@ -306,6 +315,7 @@ def main_fresh(want):
                     continue
                 c = dict(c, track=tr, cover=cov, audio=aud)
                 R = digs.prepare(c, fx)
+                R["key"] = c["key"]
                 start, _ = digs.pick_start(aud)
                 start = max(0.0, min(start, len(aud) / SR - seg_s - 0.5))
                 out = os.path.join(WORK, "slide-%02d.mp4" % (len(slides) + 1))
