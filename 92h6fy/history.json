@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-18",
+  "keys": [
+   "cristian varela & marco bailey|cvmb - fifth memory/astrologic",
+   "profit prison|why art thou wroth? and why is thy countenance fallen? lp",
+   "various artists|cherub drums vol.1"
+  ],
+  "titles": [
+   "Cristian Varela & Marco Bailey – CVMB - Fifth Memory/Astrologic",
+   "Profit Prison – Why Art Thou Wroth? And Why Is Thy Countenance Fallen? LP",
+   "Various Artists – Cherub Drums Vol.1"
+  ],
+  "shops": [
+   "Redeye",
+   "Bordello A Parigi",
+   "Diggers.fr"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261118.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "felipe gordon|constant output ep",
+    "title": "Felipe Gordon – Constant Output EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261118-1.mp4",
+    "look": "poster916 123 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261118-1.jpg"
+   },
+   {
+    "key": "ghostdog|lenox ave. blues",
+    "title": "Ghostdog – Lenox Ave. Blues",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261118-2.mp4",
+    "look": "poster916 124 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261118-2.jpg"
+   },
+   {
+    "key": "blu:sh|cuddle club",
+    "title": "Blu:sh – Cuddle Club",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261118-3.mp4",
+    "look": "poster916 135 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261118-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "felipe gordon|constant output ep",
+   "title": "Felipe Gordon – Constant Output EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261118-1.mp4",
+   "look": "poster916 123 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261118-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-17",
   "keys": [
    "the reflex|d-y-d / down breaks",
