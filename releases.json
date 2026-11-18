@@ -64858,26 +64858,6 @@
        "s": "A4",
        "n": "Mirror",
        "u": "https://www.juno.co.uk/MP3/SF1185366-01-01-04.mp3"
-      },
-      {
-       "s": "B1",
-       "n": "Look",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-01.mp3"
-      },
-      {
-       "s": "B2",
-       "n": "Lid",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-02.mp3"
-      },
-      {
-       "s": "B3",
-       "n": "Hextasy",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-03.mp3"
-      },
-      {
-       "s": "B4",
-       "n": "Joe’s Dream",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-04.mp3"
       }
      ],
      "d": "Exp. 6 Nov",
@@ -69083,7 +69063,33 @@
      "st": "in",
      "d": "Exp. 14 Nov",
      "m": "2026-10",
-     "first_seen": "2026-10-15"
+     "first_seen": "2026-10-15",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Bella - Glued To The Hip (Want It)"
+      },
+      {
+       "s": "A2",
+       "n": "DJ Frank - Biting My Lips"
+      },
+      {
+       "s": "A3",
+       "n": "Retromigration - Tag"
+      },
+      {
+       "s": "B1",
+       "n": "Big Miz - Cargo Cult"
+      },
+      {
+       "s": "B2",
+       "n": "Sisserou & Fernelly - The Noise"
+      },
+      {
+       "s": "B3",
+       "n": "Sy - Beautiful"
+      }
+     ]
     },
     {
      "a": "COKE STONED & BAILEYS",
@@ -83108,21 +83114,6 @@
        "s": "A2",
        "n": "Six Foot Seven",
        "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-02.mp3"
-      },
-      {
-       "s": "A3",
-       "n": "Lost Trip - Destino",
-       "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-03.mp3"
-      },
-      {
-       "s": "A4",
-       "n": "Trapped In The Circuit",
-       "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-04.mp3"
-      },
-      {
-       "s": "A5",
-       "n": "Compressed Air",
-       "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-05.mp3"
       }
      ],
      "d": "Exp. 6 Nov",
@@ -86330,8 +86321,13 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192398.mp3"
+       "n": "Hypno Freak",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCH008R_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "All Night Long",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCH008R_2.mp3"
       }
      ],
      "st": "in",
@@ -109157,13 +109153,7 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/192523-2.jpg",
      "st": "in",
      "g": "Techno",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192523.mp3"
-      }
-     ],
+     "tr": [],
      "tl": [
       {
        "s": "",
@@ -109204,13 +109194,7 @@
      "cover": "https://www.redeyerecords.co.uk/imagery/193705-2.jpg",
      "st": "pre",
      "g": "Techno",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193705.mp3"
-      }
-     ],
+     "tr": [],
      "tl": [
       {
        "s": "",
@@ -124064,7 +124048,23 @@
      "g": "Acid House / Minimal House",
      "url": "https://yoyaku.io/release/tin-man-devotion-salon007/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/11/SALON007-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Tin Man - Love Sickness (tobias. Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON007_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Tin Man - Lost in LA (Antislash remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON007_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Tin Man - Devotion",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON007_3.mp3"
+      }
+     ],
      "m": "2026-11",
      "first_seen": "2026-11-18"
     },
@@ -124078,7 +124078,18 @@
      "g": "Minimal House / Deep Techno",
      "url": "https://yoyaku.io/release/markus-schatz-boo-bop-salon005/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/11/SALON005-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Markus Schatz - Boo Bop",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON005_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Markus Schatz - On Drums",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON005_2.mp3"
+      }
+     ],
      "m": "2026-11",
      "first_seen": "2026-11-18"
     },
@@ -124092,7 +124103,28 @@
      "g": "Deep House / Minimal House",
      "url": "https://yoyaku.io/release/antislash-many-hackes-ep-salon004/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/11/SALON004-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1. Antislash - Baignade",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON004_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2. Antislash - Life is bitch",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON004_2.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1. Antislash - Hibou Profane",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON004_3.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2. Antislash - Molotail Cocktov Hour",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/SALON004_4.mp3"
+      }
+     ],
      "m": "2026-11",
      "first_seen": "2026-11-18"
     },
@@ -124144,8 +124176,13 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192398.mp3"
+       "n": "Hypno Freak",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCH008R_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "All Night Long",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCH008R_2.mp3"
       }
      ],
      "m": "2026-11",
@@ -124382,7 +124419,28 @@
      "g": "Deep House",
      "url": "https://yoyaku.io/release/btm015-trinidadian-deep-deep-selectors-btm015/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/09/BTM015_btm012_-_mock-up_a_-_full-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "A1 - Trinidadian Deep - Afro Spher",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BTM015_btm015_-_a1_-_trinidadian_deep_-_afro_spher.mp3"
+      },
+      {
+       "s": "",
+       "n": "A2 - Trinidadian Deep - Afro Spher (coflo remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BTM015_btm015_-_a2_-_trinidadian_deep_-_afro_spher_coflo_remix.mp3"
+      },
+      {
+       "s": "",
+       "n": "B1 - Trinidadian Deep - Dub Tekkas",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BTM015_btm015_-_b1_-_trinidadian_deep_-_dub_tekkas.mp3"
+      },
+      {
+       "s": "",
+       "n": "B2 - Trinidadian Deep - Dub Tekkas (Craig Smith & Drummore Remix)",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/BTM015_btm015_-_b2_-_trinidadian_deep_-_dub_tekkas_craig_smith_drummore_remix.mp3"
+      }
+     ],
      "m": "2026-11",
      "first_seen": "2026-11-18"
     }
@@ -124549,16 +124607,6 @@
        "n": "Black Swords",
        "s": "",
        "u": ""
-      },
-      {
-       "s": "1",
-       "n": "Black Swords",
-       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Timeless Time",
-       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
       }
      ],
      "st": "in"
@@ -125769,11 +125817,6 @@
        "s": "A1",
        "n": "Soundtrek - \"Stella Maris\" (11:27)",
        "u": "https://www.juno.co.uk/MP3/SF1185533-01-01-01.mp3"
-      },
-      {
-       "s": "B1",
-       "n": "Sog - \"Glaub Mir Da Ist Nichts\" (8:01)",
-       "u": "https://www.juno.co.uk/MP3/SF1185533-01-02-01.mp3"
       },
       {
        "s": "B2",
@@ -127590,13 +127633,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "g": "Techno",
      "m": "2026-10",
@@ -127630,13 +127667,7 @@
      "first_seen": "2026-10-23",
      "url": "https://kompakt.fm/releases/the_hill_ep_12",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt511-the_hill_ep.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193522.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "st": "pre"
     },
@@ -128876,13 +128907,7 @@
      "g": "Ambient",
      "url": "https://kompakt.fm/releases/pop_ambient_2027",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt512-pop_ambient_2027.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703536.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "December 4",
      "m": "2026-11",
@@ -129349,13 +129374,7 @@
      "p": 14.5,
      "url": "https://kompakt.fm/releases/cheia_de_charme_spiller_remixes",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/nano021-cheia_de_charme_spiller_remixes.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193523.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "g": "Disco",
      "m": "2026-11",
@@ -129721,13 +129740,7 @@
      "p": 32.9,
      "url": "https://kompakt.fm/releases/organ_romance",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/so007-organ_romance.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193667.mp3"
-      }
-     ],
+     "tr": [],
      "g": "Techno",
      "st": "pre",
      "d": "December 4",
@@ -152565,21 +152578,6 @@
        "s": "A2",
        "n": "Six Foot Seven",
        "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-02.mp3"
-      },
-      {
-       "s": "A3",
-       "n": "Lost Trip - Destino",
-       "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-03.mp3"
-      },
-      {
-       "s": "A4",
-       "n": "Trapped In The Circuit",
-       "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-04.mp3"
-      },
-      {
-       "s": "A5",
-       "n": "Compressed Air",
-       "u": "https://www.juno.co.uk/MP3/SF1183961-01-01-05.mp3"
       }
      ],
      "st": "in",
@@ -170782,11 +170780,6 @@
        "s": "A2",
        "n": "So It Goes Edit",
        "u": "https://www.juno.co.uk/MP3/SF1159991-01-01-02.mp3"
-      },
-      {
-       "s": "A3",
-       "n": "Phalaenopsis Dub II",
-       "u": "https://www.juno.co.uk/MP3/SF1159991-01-01-03.mp3"
       }
      ],
      "d": "22 Oct 26",
@@ -172100,11 +172093,6 @@
        "s": "B2",
        "n": "Ire Gbo Gbo (feat Dele Sosimi & Lizzy Dosunmu - JKriv remix)",
        "u": "https://www.juno.co.uk/MP3/SF1188159-01-02-02.mp3"
-      },
-      {
-       "s": "B3",
-       "n": "Ire Gbo Gbo (feat Dele Sosimi & Lizzy Dosunmu - vocal dub)",
-       "u": "https://www.juno.co.uk/MP3/SF1188159-01-02-03.mp3"
       },
       {
        "s": "A1",
@@ -174285,11 +174273,6 @@
        "s": "B1",
        "n": "Radix",
        "u": "https://www.juno.co.uk/MP3/SF1183641-01-02-01.mp3"
-      },
-      {
-       "s": "B2",
-       "n": "Matter To Me",
-       "u": "https://www.juno.co.uk/MP3/SF1183641-01-02-02.mp3"
       }
      ],
      "st": "low",
@@ -181295,21 +181278,6 @@
        "s": "A4",
        "n": "Denial",
        "u": "https://www.juno.co.uk/MP3/SF1189280-01-01-04.mp3"
-      },
-      {
-       "s": "A5",
-       "n": "Vector Of Acceleration",
-       "u": "https://www.juno.co.uk/MP3/SF1189280-01-01-05.mp3"
-      },
-      {
-       "s": "A6",
-       "n": "Sonoluminescence",
-       "u": "https://www.juno.co.uk/MP3/SF1189280-01-01-06.mp3"
-      },
-      {
-       "s": "A7",
-       "n": "Opposing Forces",
-       "u": "https://www.juno.co.uk/MP3/SF1189280-01-01-07.mp3"
       }
      ],
      "st": "pre",
@@ -184684,11 +184652,6 @@
        "s": "A1",
        "n": "Soundtrek - \"Stella Maris\" (11:27)",
        "u": "https://www.juno.co.uk/MP3/SF1185533-01-01-01.mp3"
-      },
-      {
-       "s": "B1",
-       "n": "Sog - \"Glaub Mir Da Ist Nichts\" (8:01)",
-       "u": "https://www.juno.co.uk/MP3/SF1185533-01-02-01.mp3"
       },
       {
        "s": "B2",
@@ -192662,26 +192625,6 @@
        "s": "A4",
        "n": "Mirror",
        "u": "https://www.juno.co.uk/MP3/SF1185366-01-01-04.mp3"
-      },
-      {
-       "s": "B1",
-       "n": "Look",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-01.mp3"
-      },
-      {
-       "s": "B2",
-       "n": "Lid",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-02.mp3"
-      },
-      {
-       "s": "B3",
-       "n": "Hextasy",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-03.mp3"
-      },
-      {
-       "s": "B4",
-       "n": "Joe’s Dream",
-       "u": "https://www.juno.co.uk/MP3/SF1185366-01-02-04.mp3"
       }
      ],
      "g": "Downtempo",
@@ -206136,8 +206079,13 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192398.mp3"
+       "n": "Hypno Freak",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCH008R_1.mp3"
+      },
+      {
+       "s": "",
+       "n": "All Night Long",
+       "u": "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/PCH008R_2.mp3"
       }
      ],
      "d": "05.11.2026",
