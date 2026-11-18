@@ -103,24 +103,22 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 3. Mit `INSTAGRAM_GET_IG_USER_MEDIA` (limit 1) prüfen, dass der Post live ist; Link (permalink) melden.
 Nie Erfolg melden, ohne den Post gesehen zu haben.
 
-## 5. Karussell «Fresh today» (seit 2.11.26; ab 16.11.26 nur jeden 2. Tag)
+## 5. Karussell «Fresh today» (seit 2.11.26; 16.–17.11.26 nur jeden 2. Tag, ab 18.11.26 wieder täglich)
 
-Zweiter Post an Karussell-Tagen (jeden 2. Tag, siehe unten), **nach** Today's Digs: **bis zu 10 weitere Platten** von heute («Fresh today», Standard seit
+Zweiter Post, **täglich** (siehe unten), **nach** Today's Digs: **bis zu 10 weitere Platten** von heute («Fresh today», Standard seit
 4.11.26 = Instagram-Maximum; mehr Releases = mehr Reichweite; `n: 10` in `tools/genre_carousel.json`, weniger,
 wenn nicht genug frische Platten die Markierungsregel erfüllen), die nicht im Digs-Video sind, je eine Video-Slide (4:5, 30 s, eigene Hörprobe). Gleiche Grundregeln wie oben (OK des
 Nutzers, nur Fresh today, Respekt vor dem Cover). Digs-Vorschau und Karussell-Vorschau dürfen in derselben
 Nachricht kommen; das OK muss klar sagen, was gepostet werden soll (z. B. «beide», «nur Digs»).
 
-**Nur jeden 2. Tag (Nutzer, 16.11.26):** Ein Karussell wird nur gepostet, wenn das letzte Karussell auf
-@monthlyvinyl mindestens 2 Tage zurückliegt (`INSTAGRAM_GET_IG_USER_MEDIA`, letzter `CAROUSEL_ALBUM`; z. B. 13.11. →
-nächstes frühestens 15.11.). An den Tagen dazwischen keine Karussell-Vorschau schicken und das Karussell auch nicht
-vorbereiten.
+**Wieder täglich (Nutzer, 18.11.26, ersetzt «nur jeden 2. Tag» vom 16.11.26):** Jeden Tag ein Karussell vorbereiten und
+vorlegen, sofern mindestens 2 Platten die Markierungsregel unten erfüllen. Sonst an diesem Tag kein Karussell (Schritt 4 unten).
 
 **Nur voll markierbare Platten (Nutzer, 16.11.26, Pflicht, ersetzt die 8/10-Regel):** Ins Karussell kommen nur Platten,
 bei denen **Artist und Label** ein geprüftes öffentliches Konto haben (Stufe 0 in `tools/ig_handles.py`). Die Anzahl
 der Slides ergibt sich daraus: erfüllen nur 3 Platten die Regel, hat das Karussell 3 Slides (max. 10). Nie mit
 Platten ohne Konto auffüllen. `genre_carousel.py` nimmt nur Stufe 0; `carousel.json` enthält pro Slide `ig_a`, `ig_l`,
-`ig_todo`. Ablauf an Karussell-Tagen, bevor die Vorschau rausgeht:
+`ig_todo`. Ablauf (täglich), bevor die Vorschau rausgeht:
 1. `python3 tools/ig_handles.py` listet alle frischen Platten von heute (ohne Digs) mit Status; Zeilen mit `TODO` =
    Artist/Label noch nicht recherchiert.
 2. Die TODO-Namen wie in Schritt 2 recherchieren und prüfen, Ergebnis in `artist_instagram.json` (Handle oder `null`),
