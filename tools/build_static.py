@@ -417,6 +417,9 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
         # link previews (WhatsApp, iMessage, Facebook): small square JPEG via image proxy – shop CDNs are often too big or block bots
         ogimg = ("https://wsrv.nl/?url=" + urllib.parse.quote(img, safe="") + "&w=600&h=600&fit=cover&output=jpg&q=80") \
             if r.get("cover") else f"{SITE}/og-image-v2.png"
+        # X shows large cards in 1.91:1 and would crop a square cover: whole cover on a dark 1200×630 ground
+        ximg = ("https://wsrv.nl/?url=" + urllib.parse.quote(img, safe="") + "&w=1200&h=630&fit=contain&cbg=0d0d0d&output=jpg&q=82") \
+            if r.get("cover") else f"{SITE}/og-image-v2.png"
         # Angebote nach Preis in CHF sortieren
         ofs = sorted(offers, key=lambda o: (chf(*o) is None, chf(*o) or 0))
         priced = [o for o in ofs if chf(*o) is not None]
@@ -513,7 +516,8 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
 <meta property="og:image:height" content="600">
 <meta property="og:image:alt" content="{e(name)} vinyl cover">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{e(ogimg)}">
+<meta name="twitter:image" content="{e(ximg)}">
+<meta name="twitter:image:alt" content="{e(name)} vinyl cover">
 <meta name="theme-color" content="#0d0d0d">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">

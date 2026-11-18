@@ -592,8 +592,8 @@ async function shareRec(r){
     // mit fertigem Bild (Cover, Artist, Titel, Link), damit Instagram Story/Beitrag anbietet; Link zusätzlich in der Zwischenablage
     if(r._storyBlob){const file=new File([r._storyBlob],rslug(m.a,m.t).slice(0,50)+".jpg",{type:"image/jpeg"});
       if(navigator.canShare&&navigator.canShare({files:[file],url})){try{navigator.clipboard.writeText(url).catch(()=>{})}catch(e){}
-        try{await navigator.share({files:[file],title,text:`${title} (${m.l}) on vinyl – ${url}`,url});return}catch(e){if(e&&e.name==="AbortError")return}}}
-    try{await navigator.share({title,text:`${title} (${m.l}) on vinyl`,url});return}catch(e){if(e&&e.name==="AbortError")return}}
+        try{await navigator.share({files:[file],title,text:`${title}${m.l?` (${m.l})`:""} on vinyl – ${url}`,url});return}catch(e){if(e&&e.name==="AbortError")return}}}
+    try{await navigator.share({title,text:`${title}${m.l?` (${m.l})`:""} on vinyl`,url});return}catch(e){if(e&&e.name==="AbortError")return}}
   let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(e){}
   toast(ok?"Link copied.":url);
 }
@@ -647,14 +647,15 @@ const SHI={
   th:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M16.8 11.3c-.4-3-2.3-4.4-4.8-4.4-2 0-3.5 1-4.2 2.6"/><path d="M17 11.6c-1.6-.9-4.5-1.1-6.2-.3-1.7.8-1.7 3.2.2 3.8 2.6.8 5.1-.8 5.1-4.2v-.3"/><path d="M18.4 6.8C17 4.2 14.7 3 12 3 6.8 3 4 6.6 4 12s2.8 9 8 9c3.8 0 6.4-1.8 7.3-4.6"/></svg>',
   fb:'<svg viewBox="0 0 24 24"><path d="M13.5 21.5v-8h2.8l.4-3.2h-3.2V8.3c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4v3.2h2.8v8" fill="currentColor"/></svg>',
   em:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.5" y="5" width="19" height="14"/><path d="m2.5 5 9.5 8 9.5-8"/></svg>',
+  x:'<svg viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.8 8 10.6h-6.3l-4.9-6.4-5.6 6.4H2.2l7.3-8.3L1.8 3h6.4l4.4 5.9L17.8 3Zm-1.1 16.5h1.7L7.4 4.8H5.5l11.2 14.7Z" fill="currentColor"/></svg>',
   cp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="8" y="8" width="12" height="12"/><path d="M16 8V4H4v12h4"/></svg>'
 };
 function closePop(){const p=document.getElementById("spop");if(p)p.remove();document.removeEventListener("click",closePop,true)}
 function sharePop(r,btn){
   closePop();prepStory(r);
-  const m=r.main,url=`https://monthlyvinyl.net/r/${rslug(m.a,m.t)}/?s=1`,title=`${m.a} – ${m.t}`,line=`${title} (${m.l}) on vinyl`,U=encodeURIComponent(url),T=encodeURIComponent(line+" "+url);
+  const m=r.main,url=`https://monthlyvinyl.net/r/${rslug(m.a,m.t)}/?s=1`,title=`${m.a} – ${m.t}`,line=`${title}${m.l?` (${m.l})`:""} on vinyl`,U=encodeURIComponent(url),T=encodeURIComponent(line+" "+url);
   const opts=[["wa","WhatsApp",`https://web.whatsapp.com/send?text=${T}`,`whatsapp://send?text=${T}`],["tg","Telegram",`https://t.me/share/url?url=${U}&text=${encodeURIComponent(line)}`,`tg://msg_url?url=${U}&text=${encodeURIComponent(line)}`],
-    ["ig","Instagram",null],["th","Threads",`https://www.threads.com/intent/post?text=${T}`],["fb","Facebook",`https://www.facebook.com/sharer/sharer.php?u=${U}`],
+    ["ig","Instagram",null],["x","X",`https://x.com/intent/post?text=${encodeURIComponent(line)}&url=${U}`],["th","Threads",`https://www.threads.com/intent/post?text=${T}`],["fb","Facebook",`https://www.facebook.com/sharer/sharer.php?u=${U}`],
     ["em","Email",`mailto:?subject=${encodeURIComponent(title+" · Monthly Vinyl")}&body=${encodeURIComponent(line+"\n\nListen and compare prices:\n"+url+"\n")}`],["cp","Copy link",null]];
   const p=document.createElement("div");p.id="spop";p.setAttribute("role","menu");
   p.innerHTML=`<p class="sph">Share ${esc(title)}</p>`+opts.map(([k,l,h])=>h?`<a role="menuitem" class="spo" data-k="${k}" href="${esc(h)}" ${k==="em"?"":'target="_blank" rel="noopener"'}>${SHI[k]}<span>${l}</span></a>`:`<button role="menuitem" type="button" class="spo" data-k="${k}">${SHI[k]}<span>${l}</span></button>`).join("");
