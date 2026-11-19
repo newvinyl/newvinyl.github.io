@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-19",
+  "keys": [
+   "natebytheway|sorry sucka ep",
+   "lilac road productions|skipton bassett 2001",
+   "bluetrain & scientist & scientist meets j gabriel & steve o'sullivan|steve o’sullivan & bluetrain special edition dubs"
+  ],
+  "titles": [
+   "Natebytheway – Sorry Sucka EP",
+   "Lilac Road Productions – Skipton Bassett 2001",
+   "Bluetrain & Scientist & Scientist Meets J Gabriel & Steve O'Sullivan – Steve O’Sullivan & Bluetrain Special Edition Dubs"
+  ],
+  "shops": [
+   "Clone",
+   "Clone",
+   "Rubadub"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261119.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "yu su|workshop 35",
+    "title": "Yu Su – Workshop 35",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261119-1.mp4",
+    "look": "poster916 125 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261119-1.jpg"
+   },
+   {
+    "key": "doug gomez / trinidadian deep|signals 4",
+    "title": "Doug GOMEZ / TRINIDADIAN DEEP – Signals 4",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261119-2.mp4",
+    "look": "poster916 122 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261119-2.jpg"
+   },
+   {
+    "key": "skudge|higher ground ep",
+    "title": "Skudge – Higher Ground EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261119-3.mp4",
+    "look": "poster916 139 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261119-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "yu su|workshop 35",
+   "title": "Yu Su – Workshop 35",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261119-1.mp4",
+   "look": "poster916 125 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261119-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-18",
   "keys": [
    "cristian varela & marco bailey|cvmb - fifth memory/astrologic",
