@@ -1,33 +1,33 @@
 {
- "date": "2026-11-18",
+ "date": "2026-11-20",
  "total": {
-  "records": 6213,
-  "tracks": 5089,
-  "clip": 914,
+  "records": 6405,
+  "tracks": 5247,
+  "clip": 948,
   "none": 210
  },
  "shops": {
   "Hardwax": {
-   "records": 268,
-   "tracks": 268,
+   "records": 283,
+   "tracks": 283,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 69,
-   "tracks": 67,
+   "records": 70,
+   "tracks": 68,
    "clip": 0,
    "none": 2
   },
   "Decks.de": {
-   "records": 26,
-   "tracks": 16,
+   "records": 28,
+   "tracks": 17,
    "clip": 3,
-   "none": 7
+   "none": 8
   },
   "Clone": {
-   "records": 421,
-   "tracks": 419,
+   "records": 459,
+   "tracks": 457,
    "clip": 0,
    "none": 2
   },
@@ -38,20 +38,20 @@
    "none": 30
   },
   "Redeye Records": {
-   "records": 1611,
-   "tracks": 699,
-   "clip": 869,
-   "none": 43
+   "records": 1672,
+   "tracks": 727,
+   "clip": 904,
+   "none": 41
   },
   "Yoyaku": {
-   "records": 398,
-   "tracks": 397,
+   "records": 399,
+   "tracks": 398,
    "clip": 0,
    "none": 1
   },
   "Kompakt": {
-   "records": 154,
-   "tracks": 143,
+   "records": 159,
+   "tracks": 148,
    "clip": 0,
    "none": 11
   },
@@ -63,15 +63,15 @@
   },
   "Deejay.de": {
    "records": 416,
-   "tracks": 336,
-   "clip": 27,
-   "none": 53
+   "tracks": 341,
+   "clip": 26,
+   "none": 49
   },
   "Vinyl Underground": {
-   "records": 444,
-   "tracks": 437,
+   "records": 468,
+   "tracks": 458,
    "clip": 0,
-   "none": 7
+   "none": 10
   },
   "Sound Metaphors": {
    "records": 18,
@@ -86,14 +86,14 @@
    "none": 5
   },
   "Syncrophone": {
-   "records": 85,
-   "tracks": 85,
+   "records": 89,
+   "tracks": 89,
    "clip": 0,
    "none": 0
   },
   "Betino's": {
-   "records": 42,
-   "tracks": 42,
+   "records": 43,
+   "tracks": 43,
    "clip": 0,
    "none": 0
   },
@@ -104,8 +104,8 @@
    "none": 1
   },
   "Diggers.fr": {
-   "records": 205,
-   "tracks": 199,
+   "records": 210,
+   "tracks": 204,
    "clip": 1,
    "none": 5
   },
@@ -122,8 +122,8 @@
    "none": 0
   },
   "Side One": {
-   "records": 139,
-   "tracks": 130,
+   "records": 146,
+   "tracks": 137,
    "clip": 0,
    "none": 9
   },
@@ -140,23 +140,23 @@
    "none": 1
   },
   "Ultrasuoni": {
-   "records": 44,
-   "tracks": 44,
+   "records": 56,
+   "tracks": 56,
    "clip": 0,
    "none": 0
   },
   "Rubadub": {
-   "records": 95,
-   "tracks": 92,
+   "records": 111,
+   "tracks": 106,
    "clip": 0,
-   "none": 3
+   "none": 5
   }
  },
- "pages_checked": 1112,
- "new_from_shop_pages": 6,
- "copied_from_other_shop": 2,
- "broken_clips_removed": 41,
- "clips_verified": 19139,
+ "pages_checked": 1119,
+ "new_from_shop_pages": 4,
+ "copied_from_other_shop": 4,
+ "broken_clips_removed": 26,
+ "clips_verified": 19681,
  "not_reachable": {
   "Redeye Records: failed:UnicodeEncodeError": 60
  },
@@ -172,12 +172,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 1904,
+   "clips": 2004,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1763,
+   "clips": 1910,
    "failed": 0,
    "sample": []
   },
@@ -187,12 +187,12 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 1016,
+   "clips": 1036,
    "failed": 0,
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 429,
+   "clips": 476,
    "failed": 0,
    "sample": []
   },
@@ -202,12 +202,12 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 1358,
+   "clips": 1415,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 410,
+   "clips": 416,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -216,12 +216,12 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 354,
+   "clips": 370,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 62,
+   "clips": 64,
    "failed": 9,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3",
@@ -230,7 +230,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 878,
+   "clips": 914,
    "failed": 0,
    "sample": []
   },
@@ -240,8 +240,8 @@
    "sample": []
   },
   "www.betinos.com": {
-   "clips": 116,
-   "failed": 82,
+   "clips": 119,
+   "failed": 84,
    "sample": [
     "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
     "https://www.betinos.com/sites/default/files/1_1_C.A.R. - Sunshine.mp3",
@@ -254,22 +254,22 @@
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 7357,
+   "clips": 7354,
    "failed": 0,
    "sample": []
   },
   "www.sideone.pl": {
-   "clips": 786,
+   "clips": 840,
    "failed": 0,
    "sample": []
   },
   "www.ultrasuonirecords.com": {
-   "clips": 175,
+   "clips": 228,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 946,
+   "clips": 950,
    "failed": 0,
    "sample": []
   },
