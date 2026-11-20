@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-20",
+  "keys": [
+   "gene farris|northern lights",
+   "al wootton & irene bianco|rope",
+   "fabio monesi|house anthem"
+  ],
+  "titles": [
+   "Gene Farris – Northern Lights",
+   "Al Wootton & Irene Bianco – Rope",
+   "Fabio Monesi – House Anthem"
+  ],
+  "shops": [
+   "Hardwax",
+   "Clone",
+   "Ultrasuoni"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261120.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "f7|omni +",
+    "title": "F7 – Omni +",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261120-1.mp4",
+    "look": "poster916 127 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261120-1.jpg"
+   },
+   {
+    "key": "muslimgauze|single #four",
+    "title": "Muslimgauze – Single #Four",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261120-2.mp4",
+    "look": "poster916 135 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261120-2.jpg"
+   },
+   {
+    "key": "ageless|changes (w/ paramida remix)",
+    "title": "Ageless – Changes (w/ PARAMIDA Remix)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261120-3.mp4",
+    "look": "poster916 135 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261120-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "f7|omni +",
+   "title": "F7 – Omni +",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261120-1.mp4",
+   "look": "poster916 127 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261120-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-19",
   "keys": [
    "natebytheway|sorry sucka ep",
