@@ -1,10 +1,10 @@
 {
- "date": "2026-11-20",
+ "date": "2026-11-21",
  "total": {
-  "records": 6405,
-  "tracks": 5247,
-  "clip": 948,
-  "none": 210
+  "records": 6500,
+  "tracks": 5321,
+  "clip": 963,
+  "none": 216
  },
  "shops": {
   "Hardwax": {
@@ -20,14 +20,14 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 28,
+   "records": 29,
    "tracks": 17,
    "clip": 3,
-   "none": 8
+   "none": 9
   },
   "Clone": {
-   "records": 459,
-   "tracks": 457,
+   "records": 467,
+   "tracks": 465,
    "clip": 0,
    "none": 2
   },
@@ -38,10 +38,10 @@
    "none": 30
   },
   "Redeye Records": {
-   "records": 1672,
-   "tracks": 727,
-   "clip": 904,
-   "none": 41
+   "records": 1707,
+   "tracks": 741,
+   "clip": 919,
+   "none": 47
   },
   "Yoyaku": {
    "records": 399,
@@ -50,10 +50,10 @@
    "none": 1
   },
   "Kompakt": {
-   "records": 159,
-   "tracks": 148,
+   "records": 165,
+   "tracks": 155,
    "clip": 0,
-   "none": 11
+   "none": 10
   },
   "Juno Records": {
    "records": 1248,
@@ -63,13 +63,13 @@
   },
   "Deejay.de": {
    "records": 416,
-   "tracks": 341,
+   "tracks": 342,
    "clip": 26,
-   "none": 49
+   "none": 48
   },
   "Vinyl Underground": {
-   "records": 468,
-   "tracks": 458,
+   "records": 481,
+   "tracks": 471,
    "clip": 0,
    "none": 10
   },
@@ -86,20 +86,20 @@
    "none": 5
   },
   "Syncrophone": {
-   "records": 89,
-   "tracks": 89,
+   "records": 100,
+   "tracks": 100,
    "clip": 0,
    "none": 0
   },
   "Betino's": {
-   "records": 43,
-   "tracks": 43,
+   "records": 44,
+   "tracks": 44,
    "clip": 0,
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 124,
-   "tracks": 123,
+   "records": 141,
+   "tracks": 140,
    "clip": 0,
    "none": 1
   },
@@ -122,16 +122,16 @@
    "none": 0
   },
   "Side One": {
-   "records": 146,
-   "tracks": 137,
+   "records": 147,
+   "tracks": 138,
    "clip": 0,
    "none": 9
   },
   "SoundGround": {
    "records": 135,
-   "tracks": 129,
+   "tracks": 128,
    "clip": 0,
-   "none": 6
+   "none": 7
   },
   "Divert Records": {
    "records": 3,
@@ -146,17 +146,17 @@
    "none": 0
   },
   "Rubadub": {
-   "records": 111,
-   "tracks": 106,
+   "records": 113,
+   "tracks": 108,
    "clip": 0,
    "none": 5
   }
  },
- "pages_checked": 1119,
- "new_from_shop_pages": 4,
- "copied_from_other_shop": 4,
- "broken_clips_removed": 26,
- "clips_verified": 19681,
+ "pages_checked": 1117,
+ "new_from_shop_pages": 2,
+ "copied_from_other_shop": 3,
+ "broken_clips_removed": 67,
+ "clips_verified": 19940,
  "not_reachable": {
   "Redeye Records: failed:UnicodeEncodeError": 60
  },
@@ -167,17 +167,17 @@
    "sample": []
   },
   "bordelloaparigi.com": {
-   "clips": 577,
+   "clips": 678,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2004,
+   "clips": 2058,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1910,
+   "clips": 1942,
    "failed": 0,
    "sample": []
   },
@@ -192,12 +192,12 @@
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 476,
+   "clips": 489,
    "failed": 0,
    "sample": []
   },
   "imvbzrbcpbpwuwjizeyo.supabase.co": {
-   "clips": 596,
+   "clips": 562,
    "failed": 0,
    "sample": []
   },
@@ -216,13 +216,13 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 370,
+   "clips": 439,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
    "clips": 64,
-   "failed": 9,
+   "failed": 8,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eg03-stardiving_mit_joerg_burger-01-10_minutes_of_stardiving_91.mp3",
@@ -230,7 +230,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 914,
+   "clips": 926,
    "failed": 0,
    "sample": []
   },
@@ -240,8 +240,8 @@
    "sample": []
   },
   "www.betinos.com": {
-   "clips": 119,
-   "failed": 84,
+   "clips": 122,
+   "failed": 87,
    "sample": [
     "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
     "https://www.betinos.com/sites/default/files/1_1_C.A.R. - Sunshine.mp3",
@@ -259,7 +259,7 @@
    "sample": []
   },
   "www.sideone.pl": {
-   "clips": 840,
+   "clips": 849,
    "failed": 0,
    "sample": []
   },

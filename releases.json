@@ -57768,8 +57768,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Mystic Meltdown w Kingdom Molongi",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/acid-pauli-mystic-meltdown/1_3_Acid_Pauli_-_Mystic_Meltdown_w_Kingdom_Molongi.mp3"
+       "n": "Mystic Meltdown /w Kingdom Molongi",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aca23d22ba8c-6acde92ea05bd-mp3-temp.mp3"
       }
      ],
      "m": "2026-10",
@@ -57796,11 +57796,6 @@
        "s": "",
        "n": "Mole Patrol",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/ari-bald-cj-scott-colombiance/1_3_Ari_Bald_CJ_Scott_-_Mole_Patrol.mp3"
-      },
-      {
-       "s": "",
-       "n": "Baobab Bonanza",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/ari-bald-cj-scott-colombiance/1_4_Ari_Bald_CJ_Scott_-_Baobab_Bonanza.mp3"
       }
      ],
      "m": "2026-10",
@@ -59843,18 +59838,8 @@
      "tr": [
       {
        "s": "",
-       "n": "B5. Partys Over",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_10_Boogie_Rookie_-_B5._Partys_Over.mp3"
-      },
-      {
-       "s": "",
        "n": "A1. Intro",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_1_Boogie_Rookie_-_A1._Intro.mp3"
-      },
-      {
-       "s": "",
-       "n": "A2. Night Jet",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_2_Boogie_Rookie_-_A2._Night_Jet.mp3"
       },
       {
        "s": "",
@@ -59868,23 +59853,8 @@
       },
       {
        "s": "",
-       "n": "A5. Last Hurray ft. Corine",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_5_Boogie_Rookie_-_A5._Last_Hurray_ft._Corine.mp3"
-      },
-      {
-       "s": "",
        "n": "B1. Love In Space ft. Klara Kristin",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_6_Boogie_Rookie_-_B1._Love_In_Space_ft._Klara_Kristin.mp3"
-      },
-      {
-       "s": "",
-       "n": "B2. Interlude",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_7_Boogie_Rookie_-_B2._Interlude.mp3"
-      },
-      {
-       "s": "",
-       "n": "B3. Tutti Frutti",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_8_Boogie_Rookie_-_B3._Tutti_Frutti.mp3"
       },
       {
        "s": "",
@@ -76608,11 +76578,6 @@
        "s": "",
        "n": "S weat",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/black-meteoric-star-wet/1_6_Black_Meteoric_Star_-_S_weat.mp3"
-      },
-      {
-       "s": "",
-       "n": "Squuezed Into These Jeans",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/black-meteoric-star-wet/1_7_Black_Meteoric_Star_-_Squuezed_Into_These_Jeans.mp3"
       },
       {
        "s": "",
@@ -115150,7 +115115,17 @@
      "d": "Exp. 27 Nov",
      "st": "pre",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "A",
+       "n": "Not About The Volume"
+      },
+      {
+       "s": "B",
+       "n": "Not About The Volume (Tiger Stripes Remix)"
+      }
+     ]
     },
     {
      "a": "E.B.E.",
@@ -115172,7 +115147,25 @@
      "d": "Exp. 4 Dec",
      "st": "pre",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "",
+       "n": "Side A1: Serenity"
+      },
+      {
+       "s": "",
+       "n": "side A2: Sedated"
+      },
+      {
+       "s": "",
+       "n": "side B1: Descent"
+      },
+      {
+       "s": "",
+       "n": "side B2: Hubble"
+      }
+     ]
     },
     {
      "a": "F-Man",
@@ -115241,7 +115234,17 @@
      "d": "Exp. 18 Dec",
      "st": "pre",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "walking"
+      },
+      {
+       "s": "B1",
+       "n": "massive"
+      }
+     ]
     },
     {
      "a": "Juaan",
@@ -115448,7 +115451,33 @@
      "d": "Exp. 29 Jan",
      "st": "pre",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Shake 3"
+      },
+      {
+       "s": "A2",
+       "n": "Cult Rodeo"
+      },
+      {
+       "s": "B1",
+       "n": "No Jacks Given"
+      },
+      {
+       "s": "C1",
+       "n": "Some Pals Were Sleepers"
+      },
+      {
+       "s": "C2",
+       "n": "The Peek A Boo Scratch"
+      },
+      {
+       "s": "D1",
+       "n": "Trap Back"
+      }
+     ]
     },
     {
      "a": "MOOD II SWING",
@@ -115469,7 +115498,25 @@
      ],
      "st": "in",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Move Me"
+      },
+      {
+       "s": "A2",
+       "n": "Move Me (Alternative Mix)"
+      },
+      {
+       "s": "B1",
+       "n": "Call Me"
+      },
+      {
+       "s": "B2",
+       "n": "Function"
+      }
+     ]
     },
     {
      "a": "People On Process & Jean Marie K",
@@ -115527,7 +115574,17 @@
      "d": "Exp. 27 Nov",
      "st": "pre",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "A",
+       "n": "All Night Long"
+      },
+      {
+       "s": "B",
+       "n": "Goddess"
+      }
+     ]
     },
     {
      "a": "Various Artists",
@@ -115539,13 +115596,7 @@
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/203316-whpr58lp-various-artists-20-years-of-warehouse-project-3xlp/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193774-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193774.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 11 Dec",
      "st": "pre",
      "tl": [
@@ -115745,13 +115796,7 @@
      "g": "Techno · Repress",
      "url": "https://www.redeyerecords.co.uk/vinyl/56842-love098-andy-stott-faith-in-strangers-black-2lp/",
      "cover": "https://www.redeyerecords.co.uk/imagery/99548-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/99548.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 27 Nov",
      "st": "pre",
      "tl": [
@@ -115805,17 +115850,49 @@
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/116767-love114-andy-stott-it-should-be-us/",
      "cover": "https://www.redeyerecords.co.uk/imagery/142138-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/142138.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 27 Nov",
      "st": "pre",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "1",
+       "n": "Dismantle"
+      },
+      {
+       "s": "2",
+       "n": "Promises (Download Only)"
+      },
+      {
+       "s": "3",
+       "n": "Collapse"
+      },
+      {
+       "s": "4",
+       "n": "It Should Be Us"
+      },
+      {
+       "s": "5",
+       "n": "Take"
+      },
+      {
+       "s": "6",
+       "n": "Not This Time"
+      },
+      {
+       "s": "7",
+       "n": "0l9"
+      },
+      {
+       "s": "8",
+       "n": "Ballroom"
+      },
+      {
+       "s": "9",
+       "n": "Versi"
+      }
+     ]
     },
     {
      "a": "Andy Stott",
@@ -115827,13 +115904,7 @@
      "g": "Techno · Repress",
      "url": "https://www.redeyerecords.co.uk/vinyl/35909-love079-andy-stott-luxury-problems-2-x-lp-gatefold-violet-vinyl/",
      "cover": "https://www.redeyerecords.co.uk/imagery/89699-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/89699.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 27 Nov",
      "st": "pre",
      "tl": [
@@ -115879,13 +115950,7 @@
      "g": "Techno · Repress",
      "url": "https://www.redeyerecords.co.uk/vinyl/73194-love101-andy-stott-too-many-voices-gatefold-2lp-clear-vinyl-re-press/",
      "cover": "https://www.redeyerecords.co.uk/imagery/109978-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/109978.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 27 Nov",
      "st": "pre",
      "tl": [
@@ -116112,7 +116177,25 @@
      "d": "Exp. 18 Dec",
      "st": "pre",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "A1",
+       "n": "Arcade"
+      },
+      {
+       "s": "A2",
+       "n": "Spawn"
+      },
+      {
+       "s": "B1",
+       "n": "Design One"
+      },
+      {
+       "s": "B2",
+       "n": "Design Two"
+      }
+     ]
     },
     {
      "a": "Octave One",
@@ -116133,7 +116216,121 @@
      ],
      "st": "in",
      "m": "2026-11",
-     "first_seen": "2026-11-21"
+     "first_seen": "2026-11-21",
+     "tl": [
+      {
+       "s": "",
+       "n": "Side 1"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - Dema"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - The Edge Of Nowhere"
+      },
+      {
+       "s": "",
+       "n": "side 2"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - Daystar Rising"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - Cosmic Surf"
+      },
+      {
+       "s": "",
+       "n": "disc 2"
+      },
+      {
+       "s": "",
+       "n": "side 3"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - Empower"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - Eniac"
+      },
+      {
+       "s": "",
+       "n": "side 4"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - The Symbiont"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - I Believe Feat. Lisa Newberry"
+      },
+      {
+       "s": "",
+       "n": "disc 3"
+      },
+      {
+       "s": "",
+       "n": "side 5"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - Point Blank"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - Nicolette"
+      },
+      {
+       "s": "",
+       "n": "side 6"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - Meridian"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - Envision"
+      },
+      {
+       "s": "",
+       "n": "disc 4"
+      },
+      {
+       "s": "",
+       "n": "side 7"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - Siege"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - Through Darkness"
+      },
+      {
+       "s": "",
+       "n": "side 8"
+      },
+      {
+       "s": "",
+       "n": "1. Octave One - Terraforming"
+      },
+      {
+       "s": "",
+       "n": "2. Octave One - Trak 3"
+      },
+      {
+       "s": "",
+       "n": "3. Octave One - And All That Remains"
+      }
+     ]
     },
     {
      "a": "Robert Hood",
@@ -116304,13 +116501,7 @@
      "g": "Balearic / Downtempo",
      "url": "https://www.redeyerecords.co.uk/vinyl/203298-sp12-doris-dana-hypnagogia/",
      "cover": "https://www.redeyerecords.co.uk/imagery/703624-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703624.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 20 Dec",
      "st": "pre",
      "tl": [
@@ -116396,13 +116587,7 @@
      "g": "Ambient",
      "url": "https://www.redeyerecords.co.uk/vinyl/203306-rptd084lp2-fadi-tabbal-music-for-the-lonely-1-and-2/",
      "cover": "https://www.redeyerecords.co.uk/imagery/703631-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703631.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 20 Dec",
      "st": "pre",
      "tl": [
@@ -131494,14 +131679,9 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "1",
        "n": "Black Swords",
-       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Timeless Time",
-       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
+       "s": "",
+       "u": ""
       }
      ],
      "st": "in"
@@ -134528,13 +134708,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "g": "Techno",
      "m": "2026-10",
@@ -134568,13 +134742,7 @@
      "first_seen": "2026-10-23",
      "url": "https://kompakt.fm/releases/the_hill_ep_12",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt511-the_hill_ep.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193522.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "st": "pre"
     },
@@ -135498,11 +135666,6 @@
        "s": "",
        "n": "Mole Patrol",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/ari-bald-cj-scott-colombiance/1_3_Ari_Bald_CJ_Scott_-_Mole_Patrol.mp3"
-      },
-      {
-       "s": "",
-       "n": "Baobab Bonanza",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/ari-bald-cj-scott-colombiance/1_4_Ari_Bald_CJ_Scott_-_Baobab_Bonanza.mp3"
       }
      ],
      "g": "House",
@@ -135814,13 +135977,7 @@
      "g": "Ambient",
      "url": "https://kompakt.fm/releases/pop_ambient_2027",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt512-pop_ambient_2027.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703536.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "December 4",
      "m": "2026-11",
@@ -136287,13 +136444,7 @@
      "p": 14.5,
      "url": "https://kompakt.fm/releases/cheia_de_charme_spiller_remixes",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/nano021-cheia_de_charme_spiller_remixes.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193523.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "g": "Disco",
      "m": "2026-11",
@@ -137466,8 +137617,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Mystic Meltdown w Kingdom Molongi",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/acid-pauli-mystic-meltdown/1_3_Acid_Pauli_-_Mystic_Meltdown_w_Kingdom_Molongi.mp3"
+       "n": "Mystic Meltdown /w Kingdom Molongi",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aca23d22ba8c-6acde92ea05bd-mp3-temp.mp3"
       }
      ],
      "m": "2026-11",
@@ -263978,11 +264129,6 @@
        "s": "",
        "n": "Mole Patrol",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/ari-bald-cj-scott-colombiance/1_3_Ari_Bald_CJ_Scott_-_Mole_Patrol.mp3"
-      },
-      {
-       "s": "",
-       "n": "Baobab Bonanza",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/ari-bald-cj-scott-colombiance/1_4_Ari_Bald_CJ_Scott_-_Baobab_Bonanza.mp3"
       }
      ],
      "st": "in",
@@ -264191,18 +264337,8 @@
      "tr": [
       {
        "s": "",
-       "n": "B5. Partys Over",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_10_Boogie_Rookie_-_B5._Partys_Over.mp3"
-      },
-      {
-       "s": "",
        "n": "A1. Intro",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_1_Boogie_Rookie_-_A1._Intro.mp3"
-      },
-      {
-       "s": "",
-       "n": "A2. Night Jet",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_2_Boogie_Rookie_-_A2._Night_Jet.mp3"
       },
       {
        "s": "",
@@ -264216,23 +264352,8 @@
       },
       {
        "s": "",
-       "n": "A5. Last Hurray ft. Corine",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_5_Boogie_Rookie_-_A5._Last_Hurray_ft._Corine.mp3"
-      },
-      {
-       "s": "",
        "n": "B1. Love In Space ft. Klara Kristin",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_6_Boogie_Rookie_-_B1._Love_In_Space_ft._Klara_Kristin.mp3"
-      },
-      {
-       "s": "",
-       "n": "B2. Interlude",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_7_Boogie_Rookie_-_B2._Interlude.mp3"
-      },
-      {
-       "s": "",
-       "n": "B3. Tutti Frutti",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boogie-rookie-eurostar-lp-limited/1_8_Boogie_Rookie_-_B3._Tutti_Frutti.mp3"
       },
       {
        "s": "",
@@ -264901,11 +265022,6 @@
      "tr": [
       {
        "s": "",
-       "n": "Rainy Season",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/billus-tumbling-cycles/1_1_Billus_-_Rainy_Season.mp3"
-      },
-      {
-       "s": "",
        "n": "Merging Cycles Momentum Mix",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/billus-tumbling-cycles/1_2_Billus_-_Merging_Cycles_Momentum_Mix.mp3"
       },
@@ -264916,18 +265032,8 @@
       },
       {
        "s": "",
-       "n": "Its Floating",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/billus-tumbling-cycles/1_4_Billus_-_Its_Floating.mp3"
-      },
-      {
-       "s": "",
        "n": "The Ring Road",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/billus-tumbling-cycles/1_5_Billus_-_The_Ring_Road.mp3"
-      },
-      {
-       "s": "",
-       "n": "Retrograde Cycles",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/billus-tumbling-cycles/1_6_Billus_-_Retrograde_Cycles.mp3"
       }
      ],
      "st": "pre",
@@ -265770,16 +265876,6 @@
      "url": "https://www.soundground.bg/music/product/boran-ece-moonzour-w-hannes-bieger-mickael-espinosa-remixes",
      "cover": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/covers/boran-ece-moonzour-w-hannes-bieger-mickael-espinosa-remixes/169798-SDE003_-_FRONTCOVER.jpg",
      "tr": [
-      {
-       "s": "",
-       "n": "Moonzour Original Mix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boran-ece-moonzour-w-hannes-bieger-mickael-espinosa-remixes/1_1_Boran_Ece_-_Moonzour_Original_Mix.mp3"
-      },
-      {
-       "s": "",
-       "n": "Moonzour Hannes Bieger Remix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/boran-ece-moonzour-w-hannes-bieger-mickael-espinosa-remixes/1_2_Boran_Ece_-_Moonzour_Hannes_Bieger_Remix.mp3"
-      },
       {
        "s": "",
        "n": "Moonzour Mickael Espinosa Remix",
@@ -266761,16 +266857,6 @@
        "s": "",
        "n": "Subtractive Color",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/bill-converse-patricia-380-750-ep-2026-re-release/1_2_Bill_Converse_Patricia_-_Subtractive_Color.mp3"
-      },
-      {
-       "s": "",
-       "n": "Stop Bath",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/bill-converse-patricia-380-750-ep-2026-re-release/1_3_Bill_Converse_Patricia_-_Stop_Bath.mp3"
-      },
-      {
-       "s": "",
-       "n": "Fixer",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/bill-converse-patricia-380-750-ep-2026-re-release/1_4_Bill_Converse_Patricia_-_Fixer.mp3"
       }
      ],
      "st": "in",
@@ -266847,28 +266933,8 @@
      "tr": [
       {
        "s": "",
-       "n": "I Need To Say It Original Mix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/akero-ogninotte-incl-roman-rai-t-ino-remix/1_1_Akero_-_I_Need_To_Say_It_Original_Mix.mp3"
-      },
-      {
-       "s": "",
-       "n": "Ogninotte Original Mix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/akero-ogninotte-incl-roman-rai-t-ino-remix/1_2_Akero_-_Ogninotte_Original_Mix.mp3"
-      },
-      {
-       "s": "",
-       "n": "Unagiornata Original Mix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/akero-ogninotte-incl-roman-rai-t-ino-remix/1_3_Akero_-_Unagiornata_Original_Mix.mp3"
-      },
-      {
-       "s": "",
        "n": "I Need To Say It Roman Rais Complete Cosmic Rework",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/akero-ogninotte-incl-roman-rai-t-ino-remix/1_4_Akero_-_I_Need_To_Say_It_Roman_Rais_Complete_Cosmic_Rework.mp3"
-      },
-      {
-       "s": "",
-       "n": "I Need To Say It Taino Remix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/akero-ogninotte-incl-roman-rai-t-ino-remix/1_5_Akero_-_I_Need_To_Say_It_Taino_Remix.mp3"
       }
      ],
      "st": "in",
@@ -266954,19 +267020,14 @@
      "cover": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/covers/acid-pauli-gwar-is-not-the-answer-w-jonathan-kaspar-remix/169590-AIA003_-_FRONTCOVER.jpg",
      "tr": [
       {
-       "s": "",
-       "n": "Gwar Is Not The Answer",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/acid-pauli-gwar-is-not-the-answer-w-jonathan-kaspar-remix/1_1_Acid_Pauli_-_Gwar_Is_Not_The_Answer.mp3"
+       "s": "2",
+       "n": "Gwar Is Not The Answer (Jonathan Kaspar Remix)",
+       "u": "https://clone.nl/platen/mp3/84394/2%20Gwar%20Is%20Not%20The%20Answer%20%28Jonathan%20Kaspar%20Remix%29.mp3"
       },
       {
-       "s": "",
-       "n": "Gwar Is Not The Answer Jonathan Kaspar Remix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/acid-pauli-gwar-is-not-the-answer-w-jonathan-kaspar-remix/1_2_Acid_Pauli_-_Gwar_Is_Not_The_Answer_Jonathan_Kaspar_Remix.mp3"
-      },
-      {
-       "s": "",
-       "n": "G.I.N.T.A. Acid Pauli Remix",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/acid-pauli-gwar-is-not-the-answer-w-jonathan-kaspar-remix/1_3_Acid_Pauli_-_G.I.N.T.A._Acid_Pauli_Remix.mp3"
+       "s": "3",
+       "n": "G.I.N.T.A. (Acid Pauli Remix)",
+       "u": "https://clone.nl/platen/mp3/84394/3%20G.I.N.T.A.%20%28Acid%20Pauli%20Remix%29.mp3"
       }
      ],
      "st": "in",
@@ -267301,11 +267362,6 @@
        "s": "",
        "n": "S weat",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/black-meteoric-star-wet/1_6_Black_Meteoric_Star_-_S_weat.mp3"
-      },
-      {
-       "s": "",
-       "n": "Squuezed Into These Jeans",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/black-meteoric-star-wet/1_7_Black_Meteoric_Star_-_Squuezed_Into_These_Jeans.mp3"
       },
       {
        "s": "",
@@ -268547,18 +268603,7 @@
      "g": "Electro",
      "url": "https://www.soundground.bg/music/product/alva-noto-schattenstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-2",
      "cover": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/covers/alva-noto-schattenstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-2/171244-N-071-2_-_FRONTCOVER.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Accelerating",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-schattenstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-2/1_2_Alva_Noto_-_Accelerating.mp3"
-      },
-      {
-       "s": "",
-       "n": "Here we are",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-schattenstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-2/1_8_Alva_Noto_-_Here_we_are.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "m": "2026-11",
      "first_seen": "2026-11-03"
@@ -268602,58 +268647,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Interrogation",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_10_Alva_Noto_-_Interrogation.mp3"
-      },
-      {
-       "s": "",
-       "n": "Phantom",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_11_Alva_Noto_-_Phantom_.mp3"
-      },
-      {
-       "s": "",
-       "n": "Twisted",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_12_Alva_Noto_-_Twisted_.mp3"
-      },
-      {
-       "s": "",
-       "n": "Start the end",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_13_Alva_Noto_-_Start_the_end_.mp3"
-      },
-      {
-       "s": "",
        "n": "Prepare",
        "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_2_Alva_Noto_-_Prepare.mp3"
-      },
-      {
-       "s": "",
-       "n": "We are here",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_3_Alva_Noto_-_We_are_here.mp3"
-      },
-      {
-       "s": "",
-       "n": "Observe",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_4_Alva_Noto_-_Observe_.mp3"
-      },
-      {
-       "s": "",
-       "n": "Encounter",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_5_Alva_Noto_-_Encounter.mp3"
-      },
-      {
-       "s": "",
-       "n": "Introduce",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_6_Alva_Noto_-_Introduce_.mp3"
-      },
-      {
-       "s": "",
-       "n": "Conversation",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_7_Alva_Noto_-_Conversation.mp3"
-      },
-      {
-       "s": "",
-       "n": "Here we are",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/alva-noto-lichtstimme-lp-deluxe-foil-stamped-debossed-two-soundtracks-for-a-missing-movie-part-1/1_8_Alva_Noto_-_Here_we_are.mp3"
       },
       {
        "s": "",
@@ -268678,8 +268673,8 @@
      "tr": [
       {
        "s": "",
-       "n": "Mystic Meltdown w Kingdom Molongi",
-       "u": "https://imvbzrbcpbpwuwjizeyo.supabase.co/storage/v1/object/public/audio-previews/previews/acid-pauli-mystic-meltdown/1_3_Acid_Pauli_-_Mystic_Meltdown_w_Kingdom_Molongi.mp3"
+       "n": "Mystic Meltdown /w Kingdom Molongi",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6aca23d22ba8c-6acde92ea05bd-mp3-temp.mp3"
       }
      ],
      "st": "pre",
