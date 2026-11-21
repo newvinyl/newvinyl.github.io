@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-21",
+  "keys": [
+   "merle|likes 2 dance ep",
+   "stella & the longos|amour propre",
+   "robert hood|archives"
+  ],
+  "titles": [
+   "Merle – Likes 2 Dance EP",
+   "Stella & The Longos – Amour Propre",
+   "Robert Hood – Archives"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Syncrophone",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261121.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "lauer|xxx018 (w/remix by shubostar) ep",
+    "title": "Lauer – XXX018 (w/Remix by Shubostar) EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261121-1.mp4",
+    "look": "poster916 130 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261121-1.jpg"
+   },
+   {
+    "key": "nu genea|bar mediterraneo",
+    "title": "Nu Genea – Bar Mediterraneo",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261121-2.mp4",
+    "look": "poster916 109 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261121-2.jpg"
+   },
+   {
+    "key": "ae hutch|boulder ep",
+    "title": "AE Hutch – Boulder EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261121-3.mp4",
+    "look": "poster916 139 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261121-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "lauer|xxx018 (w/remix by shubostar) ep",
+   "title": "Lauer – XXX018 (w/Remix by Shubostar) EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261121-1.mp4",
+   "look": "poster916 130 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261121-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-20",
   "keys": [
    "gene farris|northern lights",
