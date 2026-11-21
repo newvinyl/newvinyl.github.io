@@ -1,0 +1,23 @@
++ ls -la
+total 48768
+drwxr-xr-x 2 runner runner     4096 Nov 21 09:40 .
+drwxr-xr-x 5 runner runner     4096 Nov 21 09:40 ..
+-rw-r--r-- 1 runner runner  1809380 Nov 21 09:38 a_900.mp3
+-rw-r--r-- 1 runner runner  1203120 Nov 21 09:39 a_910.mp3
+-rw-r--r-- 1 runner runner      127 Nov 21 09:40 caption.txt
+-rw-r--r-- 1 runner runner     1007 Nov 21 09:40 carousel.json
+-rw-r--r-- 1 runner runner     2551 Nov 21 09:40 log.txt
+-rw-r--r-- 1 runner runner      926 Nov 21 09:40 result.json
+-rw-r--r-- 1 runner runner   190630 Nov 21 09:40 slide-00.jpg
+-rw-r--r-- 1 runner runner   190630 Nov 21 09:38 slide-01.jpg
+-rw-r--r-- 1 runner runner 23132401 Nov 21 09:39 slide-01.mp4
+-rw-r--r-- 1 runner runner   191288 Nov 21 09:39 slide-02.jpg
+-rw-r--r-- 1 runner runner 23183112 Nov 21 09:40 slide-02.mp4
+-rw-r--r-- 1 runner runner        9 Nov 21 09:40 up.txt
+++ python3 -c 'import json;print(json.load(open('\''result.json'\''))['\''genre'\''].lower().replace('\'' '\'','\''-'\''))'
++ G=fresh-2026-11-21
++ zip -q -j carousel-fresh-2026-11-21.zip slide-01.mp4 slide-02.mp4 slide-00.jpg slide-01.jpg slide-02.jpg caption.txt carousel.json
++ REL=carousel
++ '[' false = true ']'
++ gh release view carousel
++ gh release upload carousel --clobber carousel-fresh-2026-11-21.zip slide-01.mp4 slide-02.mp4 slide-00.jpg slide-01.jpg slide-02.jpg caption.txt carousel.json
