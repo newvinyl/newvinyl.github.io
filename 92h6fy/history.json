@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-22",
+  "keys": [
+   "fischerspooner|#1 (rsd black friday 2026)",
+   "steve o'sullivan, bluetrain, j gabriel, scientist|scientist meets j gabriel in the big city (steve o'sullivan & bluetrain special edition dubs)",
+   "tour-maubourg|déclaration préalable à l'embauche (2027 re)"
+  ],
+  "titles": [
+   "Fischerspooner – #1 (RSD Black Friday 2026)",
+   "Steve O'Sullivan, Bluetrain, J Gabriel, Scientist – SCIENTIST MEETS J GABRIEL IN THE BIG CITY (Steve O'Sullivan & Bluetrain Special Edition Dubs)",
+   "Tour-Maubourg – Déclaration Préalable À L'Embauche (2027 RE)"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Redeye",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261122.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "matthias|shadowflora",
+    "title": "Matthias – Shadowflora",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261122-1.mp4",
+    "look": "poster916 130 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261122-1.jpg"
+   },
+   {
+    "key": "markus homm|it's safe to say again (180g) (3 vinyl only tracks//printed kraftpack sleeve)",
+    "title": "Markus Homm – It's Safe To Say Again (180G) (3 VINYL ONLY TRACKS//PRINTED KRAFTPACK SLEEVE)",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261122-2.mp4",
+    "look": "poster916 125 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261122-2.jpg"
+   },
+   {
+    "key": "ubiquitii|crushing pressure",
+    "title": "Ubiquitii – Crushing Pressure",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261122-3.mp4",
+    "look": "poster916 124 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261122-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "matthias|shadowflora",
+   "title": "Matthias – Shadowflora",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261122-1.mp4",
+   "look": "poster916 130 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261122-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-21",
   "keys": [
    "merle|likes 2 dance ep",
