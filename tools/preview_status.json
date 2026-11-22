@@ -1,10 +1,10 @@
 {
- "date": "2026-11-21",
+ "date": "2026-11-22",
  "total": {
-  "records": 6500,
-  "tracks": 5321,
-  "clip": 963,
-  "none": 216
+  "records": 6566,
+  "tracks": 5355,
+  "clip": 997,
+  "none": 214
  },
  "shops": {
   "Hardwax": {
@@ -38,20 +38,20 @@
    "none": 30
   },
   "Redeye Records": {
-   "records": 1707,
-   "tracks": 741,
-   "clip": 919,
-   "none": 47
+   "records": 1751,
+   "tracks": 753,
+   "clip": 953,
+   "none": 45
   },
   "Yoyaku": {
-   "records": 399,
-   "tracks": 398,
+   "records": 417,
+   "tracks": 415,
    "clip": 0,
-   "none": 1
+   "none": 2
   },
   "Kompakt": {
-   "records": 165,
-   "tracks": 155,
+   "records": 166,
+   "tracks": 156,
    "clip": 0,
    "none": 10
   },
@@ -63,13 +63,13 @@
   },
   "Deejay.de": {
    "records": 416,
-   "tracks": 342,
-   "clip": 26,
+   "tracks": 343,
+   "clip": 25,
    "none": 48
   },
   "Vinyl Underground": {
-   "records": 481,
-   "tracks": 471,
+   "records": 483,
+   "tracks": 473,
    "clip": 0,
    "none": 10
   },
@@ -86,8 +86,8 @@
    "none": 5
   },
   "Syncrophone": {
-   "records": 100,
-   "tracks": 100,
+   "records": 101,
+   "tracks": 101,
    "clip": 0,
    "none": 0
   },
@@ -148,15 +148,15 @@
   "Rubadub": {
    "records": 113,
    "tracks": 108,
-   "clip": 0,
-   "none": 5
+   "clip": 1,
+   "none": 4
   }
  },
- "pages_checked": 1117,
- "new_from_shop_pages": 2,
- "copied_from_other_shop": 3,
- "broken_clips_removed": 67,
- "clips_verified": 19940,
+ "pages_checked": 1123,
+ "new_from_shop_pages": 9,
+ "copied_from_other_shop": 4,
+ "broken_clips_removed": 16,
+ "clips_verified": 20026,
  "not_reachable": {
   "Redeye Records: failed:UnicodeEncodeError": 60
  },
@@ -172,12 +172,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2058,
+   "clips": 2068,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1942,
+   "clips": 1946,
    "failed": 0,
    "sample": []
   },
@@ -216,7 +216,7 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 439,
+   "clips": 441,
    "failed": 0,
    "sample": []
   },
@@ -230,7 +230,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 926,
+   "clips": 963,
    "failed": 0,
    "sample": []
   },
@@ -269,12 +269,12 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 950,
+   "clips": 980,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.digitaloceanspaces.com": {
-   "clips": 19,
+   "clips": 22,
    "failed": 0,
    "sample": []
   }
