@@ -2601,5 +2601,35 @@
  "synaptic cliffs": null,
  "first word records": null,
  "truant": null,
- "xprs": null
+ "xprs": null,
+ "antonio ocasio": {
+  "handle": "tribalwinds",
+  "kind": "artist",
+  "followers": 3023,
+  "checked": "2026-11-23"
+ },
+ "tribal winds": {
+  "handle": "tribalwinds",
+  "kind": "label",
+  "followers": 3023,
+  "checked": "2026-11-23"
+ },
+ "cosmjn": {
+  "handle": "cosmjn",
+  "kind": "artist",
+  "followers": 18658,
+  "checked": "2026-11-23"
+ },
+ "dynamis records": {
+  "handle": "dynamis.records",
+  "kind": "label",
+  "followers": 355,
+  "checked": "2026-11-23"
+ },
+ "samuel jabba": {
+  "handle": "samueljabba",
+  "kind": "artist",
+  "followers": 7649,
+  "checked": "2026-11-23"
+ }
 }
