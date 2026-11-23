@@ -1,10 +1,10 @@
 {
- "date": "2026-11-22",
+ "date": "2026-11-23",
  "total": {
-  "records": 6566,
-  "tracks": 5355,
-  "clip": 997,
-  "none": 214
+  "records": 6590,
+  "tracks": 5386,
+  "clip": 991,
+  "none": 213
  },
  "shops": {
   "Hardwax": {
@@ -26,8 +26,8 @@
    "none": 9
   },
   "Clone": {
-   "records": 467,
-   "tracks": 465,
+   "records": 469,
+   "tracks": 467,
    "clip": 0,
    "none": 2
   },
@@ -39,8 +39,8 @@
   },
   "Redeye Records": {
    "records": 1751,
-   "tracks": 753,
-   "clip": 953,
+   "tracks": 759,
+   "clip": 947,
    "none": 45
   },
   "Yoyaku": {
@@ -50,8 +50,8 @@
    "none": 2
   },
   "Kompakt": {
-   "records": 166,
-   "tracks": 156,
+   "records": 169,
+   "tracks": 159,
    "clip": 0,
    "none": 10
   },
@@ -63,13 +63,13 @@
   },
   "Deejay.de": {
    "records": 416,
-   "tracks": 343,
+   "tracks": 344,
    "clip": 25,
-   "none": 48
+   "none": 47
   },
   "Vinyl Underground": {
-   "records": 483,
-   "tracks": 473,
+   "records": 492,
+   "tracks": 482,
    "clip": 0,
    "none": 10
   },
@@ -104,8 +104,8 @@
    "none": 1
   },
   "Diggers.fr": {
-   "records": 210,
-   "tracks": 204,
+   "records": 220,
+   "tracks": 214,
    "clip": 1,
    "none": 5
   },
@@ -152,11 +152,11 @@
    "none": 4
   }
  },
- "pages_checked": 1123,
- "new_from_shop_pages": 9,
- "copied_from_other_shop": 4,
- "broken_clips_removed": 16,
- "clips_verified": 20026,
+ "pages_checked": 1111,
+ "new_from_shop_pages": 3,
+ "copied_from_other_shop": 1,
+ "broken_clips_removed": 14,
+ "clips_verified": 20128,
  "not_reachable": {
   "Redeye Records: failed:UnicodeEncodeError": 60
  },
@@ -172,12 +172,12 @@
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2068,
+   "clips": 2109,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1946,
+   "clips": 1954,
    "failed": 0,
    "sample": []
   },
@@ -187,7 +187,7 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 1036,
+   "clips": 1096,
    "failed": 0,
    "sample": []
   },
@@ -221,7 +221,7 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 64,
+   "clips": 66,
    "failed": 8,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3",
@@ -230,7 +230,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 963,
+   "clips": 954,
    "failed": 0,
    "sample": []
   },

@@ -137466,13 +137466,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
@@ -137506,13 +137500,7 @@
      "first_seen": "2026-10-23",
      "url": "https://kompakt.fm/releases/the_hill_ep_12",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt511-the_hill_ep.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193522.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "st": "in"
     },
@@ -138747,13 +138735,7 @@
      "g": "Ambient",
      "url": "https://kompakt.fm/releases/pop_ambient_2027",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt512-pop_ambient_2027.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703536.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "December 4",
      "m": "2026-11",
@@ -139220,13 +139202,7 @@
      "p": 14.5,
      "url": "https://kompakt.fm/releases/cheia_de_charme_spiller_remixes",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/nano021-cheia_de_charme_spiller_remixes.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193523.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "g": "Disco",
      "m": "2026-11",
@@ -140658,7 +140634,13 @@
      "g": "Techno",
      "url": "https://kompakt.fm/releases/hear_with_me_ep",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6ac7868c117ee-6ac78e3be71a8-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Mode",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6ac786b92cda0-6ac78e476937a-mp3-temp.mp3"
+      }
+     ],
      "st": "out",
      "m": "2026-11",
      "first_seen": "2026-11-23"
@@ -140673,7 +140655,13 @@
      "g": "Minimal House",
      "url": "https://kompakt.fm/releases/thomas_james_ellis",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6afc5a35afd8d-6afc5f7cec4da-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "Daily Red Cocktail",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6afc5a603b3dc-6afc5f8a83dbf-mp3-temp.mp3"
+      }
+     ],
      "m": "2026-11",
      "first_seen": "2026-11-23"
     }
@@ -215467,39 +215455,39 @@
      "cover": "https://www.deejay.de/images/l/7/4/999174.jpg",
      "tr": [
       {
-       "s": "A1",
+       "s": "",
        "n": "Satompy",
-       "page": "https://www.deejay.de/Jay_Tripwire_My_Life_With_The_Machines_Vol_2_2x12_REPEAT06_Vinyl__999174"
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/999174a.mp3"
       },
       {
-       "s": "B1",
+       "s": "",
        "n": "Rollin In The Gutter",
-       "page": "https://www.deejay.de/Jay_Tripwire_My_Life_With_The_Machines_Vol_2_2x12_REPEAT06_Vinyl__999174"
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/999174b.mp3"
       },
       {
-       "s": "B2",
+       "s": "",
        "n": "Bam! It's A Banana",
-       "page": "https://www.deejay.de/Jay_Tripwire_My_Life_With_The_Machines_Vol_2_2x12_REPEAT06_Vinyl__999174"
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/999174c.mp3"
       },
       {
-       "s": "C1",
+       "s": "",
        "n": "Deep Rumbler",
-       "page": "https://www.deejay.de/Jay_Tripwire_My_Life_With_The_Machines_Vol_2_2x12_REPEAT06_Vinyl__999174"
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/999174d.mp3"
       },
       {
-       "s": "C2",
+       "s": "",
        "n": "Just Wanna",
-       "page": "https://www.deejay.de/Jay_Tripwire_My_Life_With_The_Machines_Vol_2_2x12_REPEAT06_Vinyl__999174"
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/999174e.mp3"
       },
       {
-       "s": "D1",
+       "s": "",
        "n": "Peeping Tom",
-       "page": "https://www.deejay.de/Jay_Tripwire_My_Life_With_The_Machines_Vol_2_2x12_REPEAT06_Vinyl__999174"
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/999174f.mp3"
       },
       {
-       "s": "D2",
+       "s": "",
        "n": "Reality",
-       "page": "https://www.deejay.de/Jay_Tripwire_My_Life_With_The_Machines_Vol_2_2x12_REPEAT06_Vinyl__999174"
+       "u": "https://cdn.shopify.com/s/files/1/0525/7435/5631/files/999174g.mp3"
       }
      ],
      "d": "03.11.2026",
