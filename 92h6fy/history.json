@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-23",
+  "keys": [
+   "antonio ocasio|birthright vol. 3",
+   "cosmjn|dynamika ep",
+   "sylve|sens sens"
+  ],
+  "titles": [
+   "Antonio Ocasio – BiRTHRiGHT Vol. 3",
+   "COSMJN – DYNAMIKA EP",
+   "Sylve – Sens Sens"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Vinyl Underground",
+   "Clone"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261123.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "who did this?|002",
+    "title": "WHO DID THIS? – 002",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261123-1.mp4",
+    "look": "poster916 117 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261123-1.jpg"
+   },
+   {
+    "key": "jay tripwire|my life with the machines vol.4",
+    "title": "Jay Tripwire – My Life With The Machines Vol.4",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261123-2.mp4",
+    "look": "poster916 128 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261123-2.jpg"
+   },
+   {
+    "key": "samuel jabba|trance mutation",
+    "title": "Samuel Jabba – Trance Mutation",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261123-3.mp4",
+    "look": "poster916 129 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261123-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "who did this?|002",
+   "title": "WHO DID THIS? – 002",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261123-1.mp4",
+   "look": "poster916 117 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261123-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-22",
   "keys": [
    "dj koze|buschtaxi ep",
