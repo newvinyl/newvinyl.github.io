@@ -20066,23 +20066,23 @@
      "tr": [
       {
        "s": "A1",
-       "n": "Luke Slater Remix",
-       "page": "https://www.decks.de/track/slam-soma_354_-_slam_activate_remixes/[cr9-1l]"
+       "n": "Activate (Luke Slater Remix)",
+       "u": "https://media.hardwax.com/audio/89826_A1.mp3"
       },
       {
        "s": "A2",
-       "n": "Oscar Mulero Remix",
-       "page": "https://www.decks.de/track/slam-soma_354_-_slam_activate_remixes/[cr9-1l]"
+       "n": "Activate (Oscar Mulero Remix)",
+       "u": "https://media.hardwax.com/audio/89826_A2.mp3"
       },
       {
        "s": "B1",
-       "n": "Phil Berg Remix",
-       "page": "https://www.decks.de/track/slam-soma_354_-_slam_activate_remixes/[cr9-1l]"
+       "n": "Activate (Phil Berg Remix)",
+       "u": "https://media.hardwax.com/audio/89826_B1.mp3"
       },
       {
        "s": "B2",
-       "n": "Nastia Reigel Remix",
-       "page": "https://www.decks.de/track/slam-soma_354_-_slam_activate_remixes/[cr9-1l]"
+       "n": "Activate (Nastia Reigel Remix)",
+       "u": "https://media.hardwax.com/audio/89826_B2.mp3"
       }
      ],
      "m": "2026-11",
@@ -120414,13 +120414,7 @@
      "g": "Disco",
      "url": "https://www.redeyerecords.co.uk/vinyl/63577-ak61-black-devil-disco-club/",
      "cover": "https://www.redeyerecords.co.uk/imagery/103042-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/103042.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 4 Dec",
      "st": "pre",
      "tl": [
@@ -120541,13 +120535,7 @@
      "g": "House",
      "url": "https://www.redeyerecords.co.uk/vinyl/203366-bec5617639-cassius-dj-tool-vol-2/",
      "cover": "https://www.redeyerecords.co.uk/imagery/193808-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193808.mp3"
-      }
-     ],
+     "tr": [],
      "d": "Exp. 23 Dec",
      "st": "pre",
      "tl": [
@@ -141521,13 +141509,7 @@
      "g": "Ambient",
      "url": "https://kompakt.fm/releases/pop_ambient_2027",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt512-pop_ambient_2027.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703536.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "December 4",
      "m": "2026-11",
@@ -141994,13 +141976,7 @@
      "p": 14.5,
      "url": "https://kompakt.fm/releases/cheia_de_charme_spiller_remixes",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/nano021-cheia_de_charme_spiller_remixes.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193523.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "g": "Disco",
      "m": "2026-11",
@@ -212313,8 +212289,43 @@
      "tr": [
       {
        "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/184126.mp3"
+       "n": "A Night To Remember [Remastered]",
+       "u": "https://dl.dropbox.com/scl/fi/v9h5vlrqysjafmu8t2nlj/A1-Intrusion-A-Night-To-Remember-SAMPLE.mp3?rlkey=vgg4s40w664bqx1txcchj8tzm&st=ahxkba1n&"
+      },
+      {
+       "s": "",
+       "n": "Under The Ocean [Remastered]",
+       "u": "https://dl.dropbox.com/scl/fi/nwjujipbbui36srs6hoax/A2-Intrusion-Under-The-Ocean-SAMPLE.mp3?rlkey=shlkqkxqdt8i2tb7o1bu7an1k&st=gnqdag69&"
+      },
+      {
+       "s": "",
+       "n": "Kingston’s Burning Dub [Live in NYC]",
+       "u": "https://dl.dropbox.com/scl/fi/g1o6scibyshi70fcelzsk/B1-Intrusion-Kingston-s-Burning-Dub-Live-In-NYC-SAMPLE.mp3?rlkey=1xr5v91l2zykwfjxlt8eyl360&st=nnoednao&"
+      },
+      {
+       "s": "",
+       "n": "De Lion’s Den [Remastered]",
+       "u": "https://dl.dropbox.com/scl/fi/yr4o95a8cpvuoz1j3ulyu/B2-intrusion-De-Lion-s-Den-SAMPLE.mp3?rlkey=d50wrv74hmua0h9n6u0cvp0kj&st=xbfaer9w&"
+      },
+      {
+       "s": "",
+       "n": "Never Forget [Remastered]",
+       "u": "https://dl.dropbox.com/scl/fi/agb9eko9u401m1aiggtwj/C1-intrusion-Never-Forget-SAMPLE.mp3?rlkey=a455chg697cqhw167qm62que4&st=3meita8g&"
+      },
+      {
+       "s": "",
+       "n": "Tswana Dub (Phase90 Restructure) [Remastered]",
+       "u": "https://dl.dropbox.com/scl/fi/z6s7sgiprsfeuh3utd11m/C2-Intrusion-Tswana-Dub-Phase90-Restructure-SAMPLE.mp3?rlkey=j35xgqt17bcgysac5gczi0skg&st=khpxxvi3&"
+      },
+      {
+       "s": "",
+       "n": "Love In Lofi [Remastered]",
+       "u": "https://dl.dropbox.com/scl/fi/l84wiqcjsbgstdglmyo8a/D1-Intrusion-Love-In-LoFi-SAMPLE.mp3?rlkey=a227ggwt21kbs77kaxuu147go&st=4d2udwcv&"
+      },
+      {
+       "s": "",
+       "n": "Ocean View [Remastered]",
+       "u": "https://dl.dropbox.com/scl/fi/7tb2awj6ojdcdqqfuozua/D2-Intrusion-Ocean-View-_scapemastering-2.mp3?rlkey=9oxcqs8c0ffi7b47whtfrdlwu&st=o5ejgq45&"
       }
      ],
      "d": "19.10.2026",

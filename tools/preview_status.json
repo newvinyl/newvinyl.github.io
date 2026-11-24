@@ -1,15 +1,15 @@
 {
- "date": "2026-11-23",
+ "date": "2026-11-24",
  "total": {
-  "records": 6590,
-  "tracks": 5386,
-  "clip": 991,
-  "none": 213
+  "records": 6735,
+  "tracks": 5508,
+  "clip": 999,
+  "none": 228
  },
  "shops": {
   "Hardwax": {
-   "records": 283,
-   "tracks": 283,
+   "records": 307,
+   "tracks": 307,
    "clip": 0,
    "none": 0
   },
@@ -21,13 +21,13 @@
   },
   "Decks.de": {
    "records": 29,
-   "tracks": 17,
+   "tracks": 19,
    "clip": 3,
-   "none": 9
+   "none": 7
   },
   "Clone": {
-   "records": 469,
-   "tracks": 467,
+   "records": 472,
+   "tracks": 470,
    "clip": 0,
    "none": 2
   },
@@ -38,10 +38,10 @@
    "none": 30
   },
   "Redeye Records": {
-   "records": 1751,
-   "tracks": 759,
-   "clip": 947,
-   "none": 45
+   "records": 1779,
+   "tracks": 783,
+   "clip": 949,
+   "none": 47
   },
   "Yoyaku": {
    "records": 417,
@@ -62,14 +62,14 @@
    "none": 17
   },
   "Deejay.de": {
-   "records": 416,
-   "tracks": 344,
-   "clip": 25,
-   "none": 47
+   "records": 461,
+   "tracks": 368,
+   "clip": 31,
+   "none": 62
   },
   "Vinyl Underground": {
-   "records": 492,
-   "tracks": 482,
+   "records": 522,
+   "tracks": 512,
    "clip": 0,
    "none": 10
   },
@@ -86,8 +86,8 @@
    "none": 5
   },
   "Syncrophone": {
-   "records": 101,
-   "tracks": 101,
+   "records": 102,
+   "tracks": 102,
    "clip": 0,
    "none": 0
   },
@@ -98,14 +98,14 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 141,
-   "tracks": 140,
+   "records": 142,
+   "tracks": 141,
    "clip": 0,
    "none": 1
   },
   "Diggers.fr": {
-   "records": 220,
-   "tracks": 214,
+   "records": 224,
+   "tracks": 218,
    "clip": 1,
    "none": 5
   },
@@ -122,8 +122,8 @@
    "none": 0
   },
   "Side One": {
-   "records": 147,
-   "tracks": 138,
+   "records": 149,
+   "tracks": 140,
    "clip": 0,
    "none": 9
   },
@@ -134,8 +134,8 @@
    "none": 7
   },
   "Divert Records": {
-   "records": 3,
-   "tracks": 2,
+   "records": 4,
+   "tracks": 3,
    "clip": 0,
    "none": 1
   },
@@ -146,17 +146,17 @@
    "none": 0
   },
   "Rubadub": {
-   "records": 113,
-   "tracks": 108,
+   "records": 119,
+   "tracks": 114,
    "clip": 1,
    "none": 4
   }
  },
- "pages_checked": 1111,
- "new_from_shop_pages": 3,
- "copied_from_other_shop": 1,
- "broken_clips_removed": 14,
- "clips_verified": 20128,
+ "pages_checked": 1109,
+ "new_from_shop_pages": 1,
+ "copied_from_other_shop": 2,
+ "broken_clips_removed": 16,
+ "clips_verified": 20503,
  "not_reachable": {
   "Redeye Records: failed:UnicodeEncodeError": 60
  },
@@ -167,17 +167,17 @@
    "sample": []
   },
   "bordelloaparigi.com": {
-   "clips": 678,
+   "clips": 684,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2109,
+   "clips": 2231,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1954,
+   "clips": 1977,
    "failed": 0,
    "sample": []
   },
@@ -187,12 +187,12 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 1096,
+   "clips": 1113,
    "failed": 0,
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 489,
+   "clips": 513,
    "failed": 0,
    "sample": []
   },
@@ -202,7 +202,7 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 1415,
+   "clips": 1566,
    "failed": 0,
    "sample": []
   },
@@ -230,7 +230,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 954,
+   "clips": 956,
    "failed": 0,
    "sample": []
   },
@@ -249,17 +249,21 @@
    ]
   },
   "www.divertrecords.sk": {
-   "clips": 5,
+   "clips": 7,
    "failed": 0,
    "sample": []
   },
   "www.juno.co.uk": {
    "clips": 7354,
-   "failed": 0,
-   "sample": []
+   "failed": 7354,
+   "sample": [
+    "https://www.juno.co.uk/MP3/SF1009968-01-01-01.mp3",
+    "https://www.juno.co.uk/MP3/SF1009968-01-01-02.mp3",
+    "https://www.juno.co.uk/MP3/SF1009968-01-02-01.mp3"
+   ]
   },
   "www.sideone.pl": {
-   "clips": 849,
+   "clips": 877,
    "failed": 0,
    "sample": []
   },
@@ -280,6 +284,7 @@
   }
  },
  "unverifiable_hosts": [
-  "www.betinos.com"
+  "www.betinos.com",
+  "www.juno.co.uk"
  ]
 }
