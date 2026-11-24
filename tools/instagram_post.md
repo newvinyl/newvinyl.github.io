@@ -53,6 +53,12 @@ House und Techno halten sie eher. `choose()` in `tools/digs.py` stellt darum ein
 andere Nicht-Ambient-Platte) an den Anfang. In der Vorschau trotzdem prüfen; bei Bedarf Reihenfolge per
 `92h6fy/reel_request.json` (`keys` in gewünschter Reihenfolge) ändern und `digs.yml` mit `force: true` starten.
 
+**Neue Releases vor Nachpressungen (Nutzer, 24.11.26, gilt immer – Digs, Karussell, Snack, Wochenrückblick):**
+Reissues, Repress, Nachpressungen und Klassiker-Neuauflagen (z. B. AIR – Love 2, Egyptian Lover – Egypt, Egypt)
+nur nehmen, wenn es nicht genug neue Platten gibt. In der Vorschau jede Platte darauf prüfen; ist eine Nachpressung
+dabei, vor dem Vorlegen per `92h6fy/reel_request.json` durch eine neue Platte von heute ersetzen und `digs.yml` mit
+`force: true` neu starten.
+
 **Keine Show-Case-Reels (Einzel-Reels) mehr (seit 30.10.26).** Sie brachten kaum Views und Reaktionen;
 der Nutzer hat sie gestoppt. Die Action rendert sie eventuell weiter (`reels` in `history.json`,
 `caption_reel_*.txt`): ignorieren, nicht vorlegen, nicht posten. Genre weglassen, wenn sich die Shops beim
