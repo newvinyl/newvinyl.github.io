@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-24",
+  "keys": [
+   "the martinez brothers|h2daizzo",
+   "air|love 2 (gatefold) clear vinyl",
+   "the egyptian lover|egypt,egypt / girls"
+  ],
+  "titles": [
+   "The Martinez Brothers – H2DAIZZO",
+   "AIR – Love 2 (Gatefold) Clear Vinyl",
+   "The Egyptian Lover – Egypt,Egypt / Girls"
+  ],
+  "shops": [
+   "Hardwax",
+   "Side One",
+   "Rubadub"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261124.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "santiago salazar|bespoke electronics ep",
+    "title": "Santiago Salazar – Bespoke Electronics EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261124-1.mp4",
+    "look": "poster916 130 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261124-1.jpg"
+   },
+   {
+    "key": "mishell ivon, andrew napoleon|a million reasons, air2nite",
+    "title": "Mishell Ivon, Andrew Napoleon – A Million Reasons, Air2Nite",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261124-2.mp4",
+    "look": "poster916 115 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261124-2.jpg"
+   },
+   {
+    "key": "the egyptian lover|everything she wants / so good",
+    "title": "The Egyptian Lover – Everything She Wants / So Good",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261124-3.mp4",
+    "look": "poster916 128 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261124-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "santiago salazar|bespoke electronics ep",
+   "title": "Santiago Salazar – Bespoke Electronics EP",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261124-1.mp4",
+   "look": "poster916 130 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261124-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-23",
   "keys": [
    "antonio ocasio|birthright vol. 3",
