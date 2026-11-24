@@ -105,7 +105,13 @@ def main():
         print(json.dumps({"video": out, "poster": poster, "caption": capp, "look": look, "release": "%s – %s" % (R["a"], R["t"]),
                           "track": tr.get("n"), "cover_px": cov.width, "dur": dur}))
         return
-    if want.get("style") == "lines":            # screenshot of the site's release card, only its lines move (user, 24.11.26), see tools/linecard.py
+    if want.get("style") == "coverlines":       # the drawn lines of the cover swing through the screen (user, 24.11.26), see tools/coverlines.py
+        import coverlines
+        info = dict(want.get("info") or {})
+        info.setdefault("artist", R["a"]); info.setdefault("title", R["t"])
+        info.setdefault("meta", " · ".join(v for v in [R["l"], R["shop_full"]] if v))
+        look = coverlines.reel_coverlines(cov, mix, digs.look_seed(slug, "single"), out, poster, want["lines"], info, dur=dur)
+    elif want.get("style") == "lines":            # screenshot of the site's release card, only its lines move (user, 24.11.26), see tools/linecard.py
         import linecard
         look = linecard.reel_lines(os.path.join(ROOT, want["card"]), mix, digs.look_seed(slug, "single"), out, poster, dur=dur)
     elif want.get("style") == "mist":             # foggy forest cover comes alive (Jake Muir – Pareidolia, 12.11.26), see tools/mistwood.py
