@@ -125,6 +125,8 @@ mit **einer Platte, pro Slide ein Track** und gemeinsame Beiträge mit dem Artis
 3. `python3 tools/record_of_day.py --write <nr>` schreibt `tools/carousel_pick.json` (`"tracks": 4` = pro Track eine Slide,
    max. 4), committen, pushen, Action «Genre carousel» mit `pick: true` starten → Release `carousel-pick`
    (`carousel.json`, `slide-01.mp4` …; `name` muss `record-<datum>` sein). Ca. 10–20 Min.
+   `cover_w` in carousel.json unter 450 px: hochaufgelöstes Cover in `tools/cover_override.json` eintragen und neu rendern
+   oder den nächsten Kandidaten nehmen. Technik am 25.11.26 mit Slam (4 Slides) getestet.
 4. Kein Kandidat: kein Karussell an diesem Tag, dem Nutzer kurz sagen (nicht auf die 10er-Liste ausweichen).
 
 **Caption:**
