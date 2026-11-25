@@ -1,21 +1,21 @@
 {
- "date": "2026-11-24",
+ "date": "2026-11-25",
  "total": {
-  "records": 6735,
-  "tracks": 5508,
-  "clip": 999,
-  "none": 228
+  "records": 6844,
+  "tracks": 5605,
+  "clip": 1013,
+  "none": 226
  },
  "shops": {
   "Hardwax": {
-   "records": 307,
-   "tracks": 307,
+   "records": 308,
+   "tracks": 308,
    "clip": 0,
    "none": 0
   },
   "Rush Hour": {
-   "records": 70,
-   "tracks": 68,
+   "records": 72,
+   "tracks": 70,
    "clip": 0,
    "none": 2
   },
@@ -26,8 +26,8 @@
    "none": 7
   },
   "Clone": {
-   "records": 472,
-   "tracks": 470,
+   "records": 503,
+   "tracks": 501,
    "clip": 0,
    "none": 2
   },
@@ -38,20 +38,20 @@
    "none": 30
   },
   "Redeye Records": {
-   "records": 1779,
-   "tracks": 783,
-   "clip": 949,
-   "none": 47
+   "records": 1810,
+   "tracks": 800,
+   "clip": 962,
+   "none": 48
   },
   "Yoyaku": {
-   "records": 417,
-   "tracks": 415,
+   "records": 418,
+   "tracks": 417,
    "clip": 0,
-   "none": 2
+   "none": 1
   },
   "Kompakt": {
-   "records": 169,
-   "tracks": 159,
+   "records": 173,
+   "tracks": 163,
    "clip": 0,
    "none": 10
   },
@@ -63,13 +63,13 @@
   },
   "Deejay.de": {
    "records": 461,
-   "tracks": 368,
-   "clip": 31,
-   "none": 62
+   "tracks": 369,
+   "clip": 32,
+   "none": 60
   },
   "Vinyl Underground": {
-   "records": 522,
-   "tracks": 512,
+   "records": 533,
+   "tracks": 523,
    "clip": 0,
    "none": 10
   },
@@ -86,8 +86,8 @@
    "none": 5
   },
   "Syncrophone": {
-   "records": 102,
-   "tracks": 102,
+   "records": 112,
+   "tracks": 112,
    "clip": 0,
    "none": 0
   },
@@ -98,8 +98,8 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 142,
-   "tracks": 141,
+   "records": 144,
+   "tracks": 143,
    "clip": 0,
    "none": 1
   },
@@ -122,8 +122,8 @@
    "none": 0
   },
   "Side One": {
-   "records": 149,
-   "tracks": 140,
+   "records": 150,
+   "tracks": 141,
    "clip": 0,
    "none": 9
   },
@@ -134,29 +134,29 @@
    "none": 7
   },
   "Divert Records": {
-   "records": 4,
-   "tracks": 3,
+   "records": 5,
+   "tracks": 4,
    "clip": 0,
    "none": 1
   },
   "Ultrasuoni": {
-   "records": 56,
-   "tracks": 56,
+   "records": 62,
+   "tracks": 62,
    "clip": 0,
    "none": 0
   },
   "Rubadub": {
-   "records": 119,
-   "tracks": 114,
+   "records": 127,
+   "tracks": 122,
    "clip": 1,
    "none": 4
   }
  },
- "pages_checked": 1109,
- "new_from_shop_pages": 1,
- "copied_from_other_shop": 2,
- "broken_clips_removed": 16,
- "clips_verified": 20503,
+ "pages_checked": 1110,
+ "new_from_shop_pages": 2,
+ "copied_from_other_shop": 3,
+ "broken_clips_removed": 18,
+ "clips_verified": 20827,
  "not_reachable": {
   "Redeye Records: failed:UnicodeEncodeError": 60
  },
@@ -167,17 +167,17 @@
    "sample": []
   },
   "bordelloaparigi.com": {
-   "clips": 684,
+   "clips": 692,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2231,
+   "clips": 2275,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 1977,
+   "clips": 2091,
    "failed": 0,
    "sample": []
   },
@@ -192,7 +192,7 @@
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 513,
+   "clips": 546,
    "failed": 0,
    "sample": []
   },
@@ -202,12 +202,12 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 1566,
+   "clips": 1568,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 416,
+   "clips": 421,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -216,12 +216,12 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 441,
+   "clips": 504,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 66,
+   "clips": 67,
    "failed": 8,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3",
@@ -230,7 +230,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 956,
+   "clips": 969,
    "failed": 0,
    "sample": []
   },
@@ -249,7 +249,7 @@
    ]
   },
   "www.divertrecords.sk": {
-   "clips": 7,
+   "clips": 11,
    "failed": 0,
    "sample": []
   },
@@ -263,12 +263,12 @@
    ]
   },
   "www.sideone.pl": {
-   "clips": 877,
+   "clips": 885,
    "failed": 0,
    "sample": []
   },
   "www.ultrasuonirecords.com": {
-   "clips": 228,
+   "clips": 257,
    "failed": 0,
    "sample": []
   },

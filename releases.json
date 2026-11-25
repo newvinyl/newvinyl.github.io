@@ -97158,7 +97158,61 @@
      "st": "pre",
      "d": "Exp. 2 Dec",
      "m": "2026-11",
-     "first_seen": "2026-11-03"
+     "first_seen": "2026-11-03",
+     "tl": [
+      {
+       "s": "01",
+       "n": "Lost Souls"
+      },
+      {
+       "s": "02",
+       "n": "Earth Message"
+      },
+      {
+       "s": "03",
+       "n": "Life Span"
+      },
+      {
+       "s": "04",
+       "n": "Isometric Dance"
+      },
+      {
+       "s": "05",
+       "n": "Routine"
+      },
+      {
+       "s": "06",
+       "n": "Mode 3"
+      },
+      {
+       "s": "07",
+       "n": "Hippocampus"
+      },
+      {
+       "s": "08",
+       "n": "Hidden Emotion"
+      },
+      {
+       "s": "09",
+       "n": "Television X"
+      },
+      {
+       "s": "10",
+       "n": "Routine Tom Churchill Remix"
+      },
+      {
+       "s": "11",
+       "n": "Valium Steps"
+      },
+      {
+       "s": "12",
+       "n": "K2000"
+      },
+      {
+       "s": "13",
+       "n": "Aqualungs"
+      }
+     ]
     },
     {
      "a": "Giri",
@@ -119447,7 +119501,13 @@
      "g": "Balearic / Downtempo",
      "url": "https://www.redeyerecords.co.uk/vinyl/203298-sp12-doris-dana-hypnagogia/",
      "cover": "https://www.redeyerecords.co.uk/imagery/703624-2.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "snow angels in the parking lot",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6b045b99552b0-6b056c73e47e3-mp3-temp.mp3"
+      }
+     ],
      "d": "Exp. 20 Dec",
      "st": "pre",
      "tl": [
@@ -123451,13 +123511,7 @@
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/203380-wsdmlp012-jorg-kuning-clun-pearls/",
      "cover": "https://www.redeyerecords.co.uk/imagery/3201535-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/3201535.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "tl": [
       {
@@ -123713,13 +123767,7 @@
      "g": "Techno",
      "url": "https://www.redeyerecords.co.uk/vinyl/200933-pnct012-pureblast-sa-ga-prime-time/",
      "cover": "https://www.redeyerecords.co.uk/imagery/192243-2.jpg",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/192243.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "tl": [
       {
@@ -124909,7 +124957,18 @@
      "g": "House",
      "url": "https://yoyaku.io/release/or-music-for-empty-stadiums-lp-2x12-whyt100lp/",
      "cover": "https://yoyaku.io/wp-content/uploads/2026/10/WHYT100LP-400x400.jpg",
-     "tr": [],
+     "tr": [
+      {
+       "s": "06",
+       "n": "Ombra de Ninja - Balearika Mix",
+       "u": "https://clone.nl/platen/mp3/84902/06%20Ombra%20de%20Ninja%20-%20Balearika%20Mix.mp3"
+      },
+      {
+       "s": "10",
+       "n": "nokik messiah",
+       "u": "https://clone.nl/platen/mp3/84902/10%20nokik%20messiah.mp3"
+      }
+     ],
      "m": "2026-10",
      "first_seen": "2026-10-03"
     },
@@ -144268,13 +144327,7 @@
      "g": "Ambient",
      "url": "https://kompakt.fm/releases/pop_ambient_2027",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt512-pop_ambient_2027.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703536.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "December 4",
      "m": "2026-11",
@@ -144741,13 +144794,7 @@
      "p": 14.5,
      "url": "https://kompakt.fm/releases/cheia_de_charme_spiller_remixes",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/nano021-cheia_de_charme_spiller_remixes.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193523.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "g": "Disco",
      "m": "2026-11",
@@ -146240,7 +146287,13 @@
      "p": 39.9,
      "url": "https://kompakt.fm/releases/hypnagogia_lp",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6b045b6844023-6b056bdc12fae-fitted.jpg?v=2",
-     "tr": [],
+     "tr": [
+      {
+       "s": "",
+       "n": "snow angels in the parking lot",
+       "u": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3temp/6b045b99552b0-6b056c73e47e3-mp3-temp.mp3"
+      }
+     ],
      "st": "in",
      "g": "Balearic / Downtempo",
      "f": "LP",
@@ -225896,24 +225949,24 @@
      "st": "in",
      "tr": [
       {
-       "s": "A1",
+       "s": "1",
        "n": "Takaaki Itoh - Fusioner",
-       "page": "https://www.deejay.de/Deepbass_%26_Takaaki_Itoh_Split_Series_03_LP_TKST003LTD_Vinyl__1260478"
+       "u": "https://clone.nl/platen/mp3/84747/1%20Takaaki%20Itoh%20-%20Fusioner.mp3"
       },
       {
-       "s": "A2",
+       "s": "2",
        "n": "Takaaki Itoh - Fusioner (Deepbass Rework)",
-       "page": "https://www.deejay.de/Deepbass_%26_Takaaki_Itoh_Split_Series_03_LP_TKST003LTD_Vinyl__1260478"
+       "u": "https://clone.nl/platen/mp3/84747/2%20Takaaki%20Itoh%20-%20Fusioner%20%28Deepbass%20Rework%29.mp3"
       },
       {
-       "s": "B1",
+       "s": "3",
        "n": "Deepbass - Monolite",
-       "page": "https://www.deejay.de/Deepbass_%26_Takaaki_Itoh_Split_Series_03_LP_TKST003LTD_Vinyl__1260478"
+       "u": "https://clone.nl/platen/mp3/84747/3%20Deepbass%20-%20Monolite.mp3"
       },
       {
-       "s": "B2",
+       "s": "4",
        "n": "Deepbass - Monolite (Takaaki Itoh Rework)",
-       "page": "https://www.deejay.de/Deepbass_%26_Takaaki_Itoh_Split_Series_03_LP_TKST003LTD_Vinyl__1260478"
+       "u": "https://clone.nl/platen/mp3/84747/4%20Deepbass%20-%20Monolite%20%28Takaaki%20Itoh%20Rework%29.mp3"
       }
      ],
      "m": "2026-11",
@@ -259380,16 +259433,6 @@
      "url": "https://bordelloaparigi.com/shop/vinyl/caslean-%e6%8a%b1%e9%83%bd%e4%b8%8d%e6%98%af%e7%9c%9f%e7%9a%84-baby-girl-baby-disco-12/",
      "cover": "https://bordelloaparigi.com/wp-content/uploads/2026/11/front.png",
      "tr": [
-      {
-       "s": "",
-       "n": "拥抱都不是真的",
-       "u": "https://bordelloaparigi.com/wp-content/uploads/2026/11/A1-拥抱都不是真的.mp3"
-      },
-      {
-       "s": "",
-       "n": "拥抱都不是真的 (Instrumental)",
-       "u": "https://bordelloaparigi.com/wp-content/uploads/2026/11/A2-拥抱都不是真的-inst.mp3"
-      },
       {
        "s": "",
        "n": "Baby Girl, Baby Disco",
