@@ -109,6 +109,56 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 3. Mit `INSTAGRAM_GET_IG_USER_MEDIA` (limit 1) prüfen, dass der Post live ist; Link (permalink) melden.
 Nie Erfolg melden, ohne den Post gesehen zu haben.
 
+## 5a. TEST 25.11.–8.12.26: «Platte des Tages» ersetzt das 10er-Karussell (Nutzer, 25.11.26)
+
+Auswertung vom 25.11.26: unsere 23 Karussells erreichten im Mittel 16 Konten (84 Follower), Today's Digs ca. 105, die
+Markierungen brachten keine messbare Reichweite, 10 Slides nicht mehr als 2–4. Bei Shops und Labels laufen Karussells
+mit **einer Platte, pro Slide ein Track** und gemeinsame Beiträge mit dem Artist am besten. Darum zwei Wochen lang
+**statt Abschnitt 5** täglich nach Today's Digs:
+
+1. Handles recherchieren wie in Abschnitt 5 (`python3 tools/ig_handles.py`, TODO-Namen prüfen, `artist_instagram.json`
+   committen/pushen) – gründlich, alle frischen Platten.
+2. `python3 tools/record_of_day.py` listet die Kandidaten (frisch heute, nicht im Digs, Artist UND Label mit geprüftem
+   Konto, mind. 2 benannte Hörproben), bekanntester Artist zuerst. Von Hand prüfen und sonst den nächsten nehmen:
+   neues Release (keine Nachpressung, auch wenn «RE?» fehlt), kein Sony, echtes Cover, nicht schon gestern/vorgestern
+   gepostet (gleiche Platte in anderem Shop!), `first_seen` = heute über alle Shops.
+3. `python3 tools/record_of_day.py --write <nr>` schreibt `tools/carousel_pick.json` (`"tracks": 4` = pro Track eine Slide,
+   max. 4), committen, pushen, Action «Genre carousel» mit `pick: true` starten → Release `carousel-pick`
+   (`carousel.json`, `slide-01.mp4` …; `name` muss `record-<datum>` sein). Ca. 10–20 Min.
+4. Kein Kandidat: kein Karussell an diesem Tag, dem Nutzer kurz sagen (nicht auf die 10er-Liste ausweichen).
+
+**Caption:**
+```
+Fresh today: Artist – Title (@label), swipe to listen →
+
+1. Track
+2. Track
+
+Artist: @artist · Remixes: @remixer
+Available at @shop        (bzw. Pre-order at @shop)
+
+Previews and prices for all new releases: monthlyvinyl.net
+
+#newvinyl #<genre> #monthlyvinyl
+```
+**Markierungen** auf jeder Slide: Artist(s), Remixer des Tracks, Label, Shop (max. 20 insgesamt, Priorität wie Schritt 2).
+
+**Mitautoren (Collab):** Artist und Label (max. 3 Konten, Artist zuerst) als Mitautoren einladen – nehmen sie an, erscheint
+der Beitrag auch auf ihrem Profil. In der Vorschau angeben: «Mitautor-Einladung an: @…»; das OK des Nutzers gilt auch dafür.
+Der Konnektor kennt das Feld nicht, darum den Karussell-Container direkt anlegen (Workbench):
+`proxy_execute("POST", "/17841462137037853/media", "instagram", body={"media_type": "CAROUSEL", "children": "<id1>,<id2>,…",
+"caption": …, "collaborators": ["artist", "label"]})` (Test 25.11.26: Container mit `collaborators` wird angenommen),
+dann wie gewohnt Status prüfen und publizieren. Nach dem Posten prüfen und dem Nutzer melden, ob die Einladung
+sichtbar ist; scheitert der Container mit `collaborators`, ohne anlegen und dem Nutzer sagen, dass er die Mitautoren
+in der App von Hand einlädt.
+
+**Today's Digs im Test:** die Platte mit dem bekanntesten markierbaren Artist steht vorne (`known_first()` in
+`tools/digs.py`, nie Ambient). Nur prüfen, nichts von Hand umstellen.
+
+**Auswertung:** beim Lauf vom 9.12.26 Insights der Testbeiträge holen (Reichweite, Shares, Profilbesuche, Follows) und
+mit den 10er-Karussells (Mittel 16 Reichweite) vergleichen; dem Nutzer vorlegen und fragen, wie es weitergeht.
+Ohne neue Anweisung gilt danach wieder Abschnitt 5.
+
 ## 5. Karussell «Fresh today» (seit 2.11.26; 16.–17.11.26 nur jeden 2. Tag, ab 18.11.26 wieder täglich)
 
 Zweiter Post, **täglich** (siehe unten), **nach** Today's Digs: **bis zu 10 weitere Platten** von heute («Fresh today», Standard seit

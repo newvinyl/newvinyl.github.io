@@ -260,8 +260,34 @@ def no_ambient_first(combo):
     first = alt[0]
     return [first] + [c for c in combo if c is not first]
 
+def known_first(combo):
+    """Test (user, 25.11.26): the record with the best-known artist opens the video – Instagram followers of the artist
+    from tools/artist_instagram.json. Never an Ambient record (rule above); unknown artists count as 0."""
+    if not combo:
+        return combo
+    try:
+        import ig_handles as ih
+        def fol(c):
+            best = 0
+            for nme in ih.artists(c["feat"]["a"]):
+                d, k = ih.db(), ih._n(nme)
+                v = d.get(k) or d.get(ih.SUFFIX.sub("", k))
+                if isinstance(v, dict) and v.get("handle"):
+                    best = max(best, int(v.get("followers") or 0))
+            return best
+        ok = [c for c in combo if c["fam"] != "Ambient"]
+        if not ok:
+            return combo
+        top = max(ok, key=fol)
+        if fol(top) > (fol(combo[0]) if combo[0]["fam"] != "Ambient" else -1) and top is not combo[0]:
+            log("known first:", top["feat"]["a"], fol(top))
+            return [top] + [c for c in combo if c is not top]
+    except Exception as e:
+        log("known_first failed", e)
+    return combo
+
 def choose(cands, banned, n=3):
-    return no_ambient_first(_choose(cands, banned, n))
+    return known_first(no_ambient_first(_choose(cands, banned, n)))
 
 def _choose(cands, banned, n=3):
     pool = [c for c in cands if c["key"] not in banned][:45]
