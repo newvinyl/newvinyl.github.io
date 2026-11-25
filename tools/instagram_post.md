@@ -109,6 +109,10 @@ Für jede der drei Platten: Shop, Artist(s), Label.
 3. Mit `INSTAGRAM_GET_IG_USER_MEDIA` (limit 1) prüfen, dass der Post live ist; Link (permalink) melden.
 Nie Erfolg melden, ohne den Post gesehen zu haben.
 
+**NUR AM 25.11.26:** Die «Platte des Tages» von heute wird bereits in einer anderen Unterhaltung mit dem Nutzer vorbereitet
+(Recherche, `carousel_pick.json`, Rendern, Vorschau). Im geplanten Lauf vom 25.11.26 darum **nur Today's Digs** vorlegen,
+`tools/carousel_pick.json` nicht anfassen und die Action «Genre carousel» nicht starten. Ab 26.11.26 gilt Abschnitt 5a normal.
+
 ## 5a. TEST 25.11.–8.12.26: «Platte des Tages» ersetzt das 10er-Karussell (Nutzer, 25.11.26)
 
 Auswertung vom 25.11.26: unsere 23 Karussells erreichten im Mittel 16 Konten (84 Follower), Today's Digs ca. 105, die
@@ -145,11 +149,11 @@ Previews and prices for all new releases: monthlyvinyl.net
 ```
 **Markierungen** auf jeder Slide: Artist(s), Remixer des Tracks, Label, Shop (max. 20 insgesamt, Priorität wie Schritt 2).
 
-**Mitautoren (Collab):** Artist und Label (max. 3 Konten, Artist zuerst) als Mitautoren einladen – nehmen sie an, erscheint
+**Mitautoren (Collab):** Artist, Label und Shop (Nutzer, 25.11.26: «wenn nur einer der drei annimmt, haben wir gewonnen»; max. 3 Konten: 1 Artist, Label, Shop; fehlt eines, weiterer Artist/Remixer) als Mitautoren einladen – nehmen sie an, erscheint
 der Beitrag auch auf ihrem Profil. In der Vorschau angeben: «Mitautor-Einladung an: @…»; das OK des Nutzers gilt auch dafür.
 Der Konnektor kennt das Feld nicht, darum den Karussell-Container direkt anlegen (Workbench):
 `proxy_execute("POST", "/17841462137037853/media", "instagram", body={"media_type": "CAROUSEL", "children": "<id1>,<id2>,…",
-"caption": …, "collaborators": ["artist", "label"]})` (Test 25.11.26: Container mit `collaborators` wird angenommen),
+"caption": …, "collaborators": ["artist", "label", "shop"]})` (Test 25.11.26: Container mit `collaborators` wird angenommen),
 dann wie gewohnt Status prüfen und publizieren. Nach dem Posten prüfen und dem Nutzer melden, ob die Einladung
 sichtbar ist; scheitert der Container mit `collaborators`, ohne anlegen und dem Nutzer sagen, dass er die Mitautoren
 in der App von Hand einlädt.
