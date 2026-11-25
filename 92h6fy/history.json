@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-25",
+  "keys": [
+   "cignol|16 of 9",
+   "doc ‘n’ p1ll|rx prescriptions vol. 2",
+   "caribe stars|karina / el baile del robot"
+  ],
+  "titles": [
+   "Cignol – 16 Of 9",
+   "Doc ‘N’ P1ll – RX Prescriptions Vol. 2",
+   "CARIBE STARS – KARINA / EL BAILE DEL ROBOT"
+  ],
+  "shops": [
+   "Rubadub",
+   "Divert Records",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261125.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "matthias vogt|mind traveller",
+    "title": "Matthias Vogt – MIND TRAVELLER",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261125-1.mp4",
+    "look": "poster916 122 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261125-1.jpg"
+   },
+   {
+    "key": "infra-red|metamorphasis",
+    "title": "Infra-Red – Metamorphasis",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261125-2.mp4",
+    "look": "poster916 125 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261125-2.jpg"
+   },
+   {
+    "key": "caslean|抱都不是真的 / baby girl, baby disco",
+    "title": "Caslean – 抱都不是真的 / Baby Girl, Baby Disco",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261125-3.mp4",
+    "look": "poster916 120 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261125-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "matthias vogt|mind traveller",
+   "title": "Matthias Vogt – MIND TRAVELLER",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261125-1.mp4",
+   "look": "poster916 122 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261125-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-24",
   "keys": [
    "the martinez brothers|h2daizzo",
