@@ -87,6 +87,8 @@ jobs:
           G=$(python3 -c "import json;print(json.load(open('result.json'))['genre'].lower().replace(' ','-'))")
           zip -q -j "carousel-$G.zip" slide-*.mp4 slide-*.jpg caption.txt carousel.json
           REL=carousel; [ "${{ github.event.inputs.pick }}" = "true" ] && REL=carousel-pick
+          # shop carousels (pick name "shop-…") get their own release, so they do not overwrite the record of the day
+          [ "$REL" = "carousel-pick" ] && python3 -c "import json,sys;sys.exit(0 if json.load(open('carousel.json')).get('name','').startswith('shop-') else 1)" && REL=carousel-shop
           gh release view $REL >/dev/null 2>&1 || gh release create $REL --prerelease --title "Instagram carousel ($REL)" --notes "Instagram carousels: video slides." --target main
           gh release upload $REL --clobber "carousel-$G.zip" slide-*.mp4 slide-*.jpg caption.txt carousel.json
           } > up.txt 2>&1; rc=$?

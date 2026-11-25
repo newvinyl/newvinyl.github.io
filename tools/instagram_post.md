@@ -158,6 +158,28 @@ dann wie gewohnt Status prüfen und publizieren. Nach dem Posten prüfen und dem
 sichtbar ist; scheitert der Container mit `collaborators`, ohne anlegen und dem Nutzer sagen, dass er die Mitautoren
 in der App von Hand einlädt.
 
+**Erster Beitrag 25.11.26:** Skee Mask – Peacemanagement, https://www.instagram.com/p/DgKROgRjmwT/, Einladungen an
+@skeemask, @ilian_tape, @rubadubgla. Der Container mit `collaborators` wurde angenommen und publiziert; ob die Einladungen
+ankamen, lässt sich über die Schnittstelle NICHT lesen (Feld `collaborators` existiert dort nicht) – der Nutzer sieht es in der App.
+
+### Shop-Karussell (Nutzer, 25.11.26: «wir machen beides») – täglich zusätzlich, nach der Platte des Tages
+
+Bis zu 10 frische Platten, die alle im **selben Shop** erhältlich sind; der Shop wird als Mitautor eingeladen.
+1. `python3 tools/shop_carousel.py --skip "<key der Platte des Tages>"` listet die Shops von heute (nur Shops mit Konto in
+   `shop_instagram.json`), zuerst die, die in den letzten 3 Shop-Karussells nicht dran waren, dann nach Anzahl neuer Platten.
+   Den obersten Shop mit mindestens 3 Platten nehmen; gibt es keinen, kein Shop-Karussell.
+2. Die Regel «Artist und Label markierbar» gilt hier NICHT (der Partner ist der Shop); markiert wird, was geprüft ist.
+   TODO-Namen dieses Shops trotzdem recherchieren. Von Hand prüfen: keine Nachpressungen («RE?» und Klassiker raus),
+   kein Sony, Cover ok, `first_seen` = heute.
+3. `python3 tools/shop_carousel.py --write "<Shop>" --skip …` schreibt `carousel_pick.json` (Name `shop-<datum>-<shop>`) und
+   `tools/shop_carousel_log.json`; unerwünschte Platten vorher aus der JSON-Datei streichen. Committen, pushen, Action
+   «Genre carousel» mit `pick: true` → eigenes Release **`carousel-shop`** (`…/download/carousel-shop/slide-01.mp4`,
+   `carousel.json`), überschreibt die Platte des Tages (`carousel-pick`) also nicht. Erst starten, wenn der Lauf der
+   Platte des Tages fertig ist (die Action bricht laufende Läufe ab).
+4. Caption wie in Abschnitt 5 («Fresh today at @shop: <n> new records, swipe to listen →», Liste, Artists,
+   «Available at @shop», monthlyvinyl.net, Hashtags). Markierungen pro Slide: Artist, Label; der Shop auf Slide 1.
+   Mitautor: nur der Shop (`"collaborators": ["<shop-handle>"]`). Vorschau mit «Mitautor-Einladung an: @shop», OK abwarten.
+
 **Today's Digs im Test:** die Platte mit dem bekanntesten markierbaren Artist steht vorne (`known_first()` in
 `tools/digs.py`, nie Ambient). Nur prüfen, nichts von Hand umstellen.
 
