@@ -381,28 +381,41 @@ def main_pick():
             digs.log("cover fail", it, e); cov = None
         if cov is None or not tracks:
             digs.log("no cover/audio", it); continue
-        aud = tr = None
-        for j, t in enumerate(tracks[:3]):
-            try:
-                aud, tr = digs.get_audio(t, False, WORK, 700 + len(slides) * 10 + j), t
-                break
-            except Exception as e:
-                digs.log("audio fail", t.get("u"), e)
-        if aud is None:
-            continue
-        if "track_name" in it:
-            tr = dict(tr, n=it["track_name"] or feat["t"], named=True)
-        c = {"key": digs.gkey(feat), "arr": arr, "feat": feat, "shop": feat["shop"], "fam": digs.family(feat.get("g")),
-             "strict": True, "tracks": tracks, "score": 0, "track": tr, "cover": cov, "audio": aud}
-        R = digs.prepare(c, fx)
-        start, _ = digs.pick_start(aud)
-        start = max(0.0, min(start, len(aud) / SR - seg_s - 0.5))
-        out = os.path.join(WORK, "slide-%02d.mp4" % (len(slides) + 1))
-        fresh_slide(R, cov, aud, start, seg_s, it.get("note", ""), out, style=want.get("style"))
-        lab = R["l"] if R["l"] and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
-        slides.append({"key": c["key"], "video": os.path.basename(out), "a": R["a"], "t": R["t"], "l": lab, "shop": R["shop_full"],
-                       "track": R["tname"], "pre": R["pre"], "genre": R["genre"], "cover_w": cov.width})
-        digs.log("slide", len(slides), R["a"], "–", R["t"], "|", R["shop_full"], "| cover", cov.width)
+        # one slide per track of the same record («Platte des Tages», user 25.11.26): {"tracks": 4}
+        if it.get("tracks"):
+            seen_n, per = set(), []
+            own = [t for t in tracks if t.get("shop") == feat["shop"]] or tracks      # one shop's track list, in its order
+            for t in own:
+                k = digs.norm(t.get("n") or "")
+                if not t.get("named") or k in seen_n:
+                    continue
+                seen_n.add(k); per.append([t])
+            per = per[:int(it["tracks"])] or [tracks[:3]]
+        else:
+            per = [tracks[:3]]
+        for tlist in per:
+            aud = tr = None
+            for j, t in enumerate(tlist):
+                try:
+                    aud, tr = digs.get_audio(t, False, WORK, 700 + len(slides) * 10 + j), t
+                    break
+                except Exception as e:
+                    digs.log("audio fail", t.get("u"), e)
+            if aud is None:
+                continue
+            if "track_name" in it and not it.get("tracks"):
+                tr = dict(tr, n=it["track_name"] or feat["t"], named=True)
+            c = {"key": digs.gkey(feat), "arr": arr, "feat": feat, "shop": feat["shop"], "fam": digs.family(feat.get("g")),
+                 "strict": True, "tracks": tracks, "score": 0, "track": tr, "cover": cov, "audio": aud}
+            R = digs.prepare(c, fx)
+            start, _ = digs.pick_start(aud)
+            start = max(0.0, min(start, len(aud) / SR - seg_s - 0.5))
+            out = os.path.join(WORK, "slide-%02d.mp4" % (len(slides) + 1))
+            fresh_slide(R, cov, aud, start, seg_s, it.get("note", ""), out, style=want.get("style"))
+            lab = R["l"] if R["l"] and not re.search(r"\.(com|co\.uk|net|fr|de|nl)$", R["l"], re.I) else ""
+            slides.append({"key": c["key"], "video": os.path.basename(out), "a": R["a"], "t": R["t"], "l": lab, "shop": R["shop_full"],
+                           "track": R["tname"], "pre": R["pre"], "genre": R["genre"], "cover_w": cov.width})
+            digs.log("slide", len(slides), R["a"], "–", R["t"], "|", R["tname"], "|", R["shop_full"], "| cover", cov.width)
     if not slides:
         raise SystemExit("no slides")
     open(os.path.join(WORK, "caption.txt"), "w", encoding="utf-8").write(
