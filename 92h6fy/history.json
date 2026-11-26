@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-26",
+  "keys": [
+   "posthuman|down and out in mutant city",
+   "pornotronix|electro is aural sex ep",
+   "lauer|trollkraft"
+  ],
+  "titles": [
+   "Posthuman – Down And Out In Mutant City",
+   "Pornotronix – Electro Is Aural Sex EP",
+   "Lauer – Trollkraft"
+  ],
+  "shops": [
+   "Redeye",
+   "Clone",
+   "Ultrasuoni"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261126.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "caslean|拥抱都不是真的 / baby girl, baby disco",
+    "title": "Caslean – 拥抱都不是真的 / Baby Girl, Baby Disco",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261126-1.mp4",
+    "look": "poster916 120 bpm · colours only",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261126-1.jpg"
+   },
+   {
+    "key": "kaspar van de water|safe journey ep kaspar van de water | safe journey ep",
+    "title": "Kaspar van de Water – Safe Journey EP Kaspar van de Water | Safe Journey EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261126-2.mp4",
+    "look": "poster916 123 bpm · motion 0.5",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261126-2.jpg"
+   },
+   {
+    "key": "maara|revenge from the penthouse",
+    "title": "Maara – Revenge From The Penthouse",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261126-3.mp4",
+    "look": "poster916 139 bpm · motion 0.5",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261126-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "caslean|拥抱都不是真的 / baby girl, baby disco",
+   "title": "Caslean – 拥抱都不是真的 / Baby Girl, Baby Disco",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261126-1.mp4",
+   "look": "poster916 120 bpm · colours only",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261126-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-25",
   "keys": [
    "cignol|16 of 9",
