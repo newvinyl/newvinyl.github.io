@@ -152,15 +152,12 @@
    "none": 4
   }
  },
- "pages_checked": 1108,
- "new_from_shop_pages": 1,
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
  "copied_from_other_shop": 0,
- "broken_clips_removed": 24,
+ "broken_clips_removed": 14,
  "clips_verified": 21182,
- "not_reachable": {
-  "Redeye Records: failed:UnicodeEncodeError": 60,
-  "Redeye Records: http403": 4
- },
+ "not_reachable": {},
  "clip_hosts": {
   "DL.dropbox.com": {
    "clips": 37,
