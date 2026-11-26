@@ -189,6 +189,9 @@ For existing items you see again today, update "p" and "st" if the page shows ne
 whose release date has passed and is shown as available → "in"), and refine "g" if the shop now names
 a more specific subgenre (keep " · Reissue" / " · Repress").
 
+Track names corrected by hand (label/artist request) win over the shop text, also for new items of the same
+release in other shops: Skee Mask – Peacemanagement (Ilian Tape ISS013) B1 = "Messedub" (not "Messdub"; label, 27.11.26).
+
 ## 6. Make releases listenable
 
 For every item (new or existing, current month first) that has no track with "u", "yt" or "ytl":
