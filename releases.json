@@ -46522,11 +46522,6 @@
        "u": "https://clone.nl/platen/mp3/85252/1%20Dav%20-%20Casa%20At%20Last.mp3"
       },
       {
-       "s": "02",
-       "n": "Ohara - Lady L",
-       "u": "https://clone.nl/platen/mp3/85252/2%20Ohara%20-%20Lady%20L.mp3"
-      },
-      {
        "s": "03",
        "n": "Nizar Sarakbi - Holic T",
        "u": "https://clone.nl/platen/mp3/85252/3%20Nizar%20Sarakbi%20-%20Holic%20T.mp3"
@@ -142682,14 +142677,9 @@
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/6a708b4720a62-6a708ec985d9f-fitted.jpg?v=2",
      "tr": [
       {
-       "s": "1",
        "n": "Black Swords",
-       "u": "https://clone.nl/platen/mp3/84260/1%20Black%20Swords.mp3"
-      },
-      {
-       "s": "2",
-       "n": "Timeless Time",
-       "u": "https://clone.nl/platen/mp3/84260/2%20Timeless%20Time.mp3"
+       "s": "",
+       "u": ""
       }
      ],
      "st": "in"
@@ -145716,13 +145706,7 @@
      "f": "LP",
      "url": "https://kompakt.fm/releases/in_the_north",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/dustv143-in_the_north.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193203.mp3"
-      }
-     ],
+     "tr": [],
      "st": "in",
      "g": "Techno",
      "m": "2026-10",
@@ -145756,13 +145740,7 @@
      "first_seen": "2026-10-23",
      "url": "https://kompakt.fm/releases/the_hill_ep_12",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt511-the_hill_ep.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193522.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "st": "in"
     },
@@ -146997,13 +146975,7 @@
      "g": "Ambient",
      "url": "https://kompakt.fm/releases/pop_ambient_2027",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/kompakt512-pop_ambient_2027.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/703536.mp3"
-      }
-     ],
+     "tr": [],
      "st": "pre",
      "d": "December 4",
      "m": "2026-11",
@@ -147470,13 +147442,7 @@
      "p": 14.5,
      "url": "https://kompakt.fm/releases/cheia_de_charme_spiller_remixes",
      "cover": "https://s3.amazonaws.com/media.kompakt.fm/01/assets/releases/fitted/nano021-cheia_de_charme_spiller_remixes.jpg?v=2",
-     "tr": [
-      {
-       "s": "",
-       "n": "Preview",
-       "u": "https://sounds.redeyerecords.co.uk/193523.mp3"
-      }
-     ],
+     "tr": [],
      "d": "November 20",
      "g": "Disco",
      "m": "2026-11",
@@ -228149,11 +228115,6 @@
        "u": "https://clone.nl/platen/mp3/85252/1%20Dav%20-%20Casa%20At%20Last.mp3"
       },
       {
-       "s": "02",
-       "n": "Ohara - Lady L",
-       "u": "https://clone.nl/platen/mp3/85252/2%20Ohara%20-%20Lady%20L.mp3"
-      },
-      {
        "s": "03",
        "n": "Nizar Sarakbi - Holic T",
        "u": "https://clone.nl/platen/mp3/85252/3%20Nizar%20Sarakbi%20-%20Holic%20T.mp3"
@@ -255888,26 +255849,6 @@
        "s": "B2",
        "n": "Roofto",
        "u": "https://play.syncrophone.fr/syncro/km058b2.mp3"
-      },
-      {
-       "s": "C1",
-       "n": "Vactro",
-       "u": "https://play.syncrophone.fr/syncro/km058c1.mp3"
-      },
-      {
-       "s": "C2",
-       "n": "Linslus",
-       "u": "https://play.syncrophone.fr/syncro/km058c2.mp3"
-      },
-      {
-       "s": "D1",
-       "n": "Rymdeko",
-       "u": "https://play.syncrophone.fr/syncro/km058d1.mp3"
-      },
-      {
-       "s": "D2",
-       "n": "Ulf Eriksson",
-       "u": "https://play.syncrophone.fr/syncro/km058d2.mp3"
       }
      ],
      "st": "in",
@@ -263311,16 +263252,6 @@
      "url": "https://bordelloaparigi.com/shop/vinyl/caslean-%e6%8b%a5%e6%8a%b1%e9%83%bd%e4%b8%8d%e6%98%af%e7%9c%9f%e7%9a%84-baby-girl-baby-disco-12/",
      "cover": "https://bordelloaparigi.com/wp-content/uploads/2026/11/front.png",
      "tr": [
-      {
-       "s": "",
-       "n": "拥抱都不是真的",
-       "u": "https://bordelloaparigi.com/wp-content/uploads/2026/11/A1-拥抱都不是真的.mp3"
-      },
-      {
-       "s": "",
-       "n": "拥抱都不是真的 (Instrumental)",
-       "u": "https://bordelloaparigi.com/wp-content/uploads/2026/11/A2-拥抱都不是真的-inst.mp3"
-      },
       {
        "s": "",
        "n": "Baby Girl, Baby Disco",

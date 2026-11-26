@@ -1,15 +1,15 @@
 {
- "date": "2026-11-25",
+ "date": "2026-11-26",
  "total": {
-  "records": 6844,
-  "tracks": 5605,
-  "clip": 1013,
-  "none": 226
+  "records": 6977,
+  "tracks": 5709,
+  "clip": 1045,
+  "none": 223
  },
  "shops": {
   "Hardwax": {
-   "records": 308,
-   "tracks": 308,
+   "records": 309,
+   "tracks": 309,
    "clip": 0,
    "none": 0
   },
@@ -20,14 +20,14 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 29,
-   "tracks": 19,
+   "records": 30,
+   "tracks": 20,
    "clip": 3,
    "none": 7
   },
   "Clone": {
-   "records": 503,
-   "tracks": 501,
+   "records": 525,
+   "tracks": 523,
    "clip": 0,
    "none": 2
   },
@@ -38,10 +38,10 @@
    "none": 30
   },
   "Redeye Records": {
-   "records": 1810,
-   "tracks": 800,
-   "clip": 962,
-   "none": 48
+   "records": 1862,
+   "tracks": 820,
+   "clip": 993,
+   "none": 49
   },
   "Yoyaku": {
    "records": 418,
@@ -63,13 +63,13 @@
   },
   "Deejay.de": {
    "records": 461,
-   "tracks": 369,
-   "clip": 32,
-   "none": 60
+   "tracks": 372,
+   "clip": 33,
+   "none": 56
   },
   "Vinyl Underground": {
-   "records": 533,
-   "tracks": 523,
+   "records": 549,
+   "tracks": 539,
    "clip": 0,
    "none": 10
   },
@@ -86,8 +86,8 @@
    "none": 5
   },
   "Syncrophone": {
-   "records": 112,
-   "tracks": 112,
+   "records": 125,
+   "tracks": 125,
    "clip": 0,
    "none": 0
   },
@@ -98,14 +98,14 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 144,
-   "tracks": 143,
+   "records": 146,
+   "tracks": 145,
    "clip": 0,
    "none": 1
   },
   "Diggers.fr": {
-   "records": 224,
-   "tracks": 218,
+   "records": 238,
+   "tracks": 232,
    "clip": 1,
    "none": 5
   },
@@ -140,44 +140,45 @@
    "none": 1
   },
   "Ultrasuoni": {
-   "records": 62,
-   "tracks": 62,
+   "records": 71,
+   "tracks": 71,
    "clip": 0,
    "none": 0
   },
   "Rubadub": {
-   "records": 127,
-   "tracks": 122,
+   "records": 130,
+   "tracks": 125,
    "clip": 1,
    "none": 4
   }
  },
- "pages_checked": 1110,
- "new_from_shop_pages": 2,
- "copied_from_other_shop": 3,
- "broken_clips_removed": 18,
- "clips_verified": 20827,
+ "pages_checked": 1108,
+ "new_from_shop_pages": 1,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 24,
+ "clips_verified": 21182,
  "not_reachable": {
-  "Redeye Records: failed:UnicodeEncodeError": 60
+  "Redeye Records: failed:UnicodeEncodeError": 60,
+  "Redeye Records: http403": 4
  },
  "clip_hosts": {
   "DL.dropbox.com": {
-   "clips": 31,
+   "clips": 37,
    "failed": 0,
    "sample": []
   },
   "bordelloaparigi.com": {
-   "clips": 692,
+   "clips": 697,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2275,
+   "clips": 2354,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 2091,
+   "clips": 2170,
    "failed": 0,
    "sample": []
   },
@@ -187,12 +188,12 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 1113,
+   "clips": 1171,
    "failed": 0,
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 546,
+   "clips": 552,
    "failed": 0,
    "sample": []
   },
@@ -202,7 +203,7 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 1568,
+   "clips": 1576,
    "failed": 0,
    "sample": []
   },
@@ -216,7 +217,7 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 504,
+   "clips": 554,
    "failed": 0,
    "sample": []
   },
@@ -230,7 +231,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 969,
+   "clips": 999,
    "failed": 0,
    "sample": []
   },
@@ -241,7 +242,7 @@
   },
   "www.betinos.com": {
    "clips": 122,
-   "failed": 87,
+   "failed": 122,
    "sample": [
     "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
     "https://www.betinos.com/sites/default/files/1_1_C.A.R. - Sunshine.mp3",
@@ -268,7 +269,7 @@
    "sample": []
   },
   "www.ultrasuonirecords.com": {
-   "clips": 257,
+   "clips": 291,
    "failed": 0,
    "sample": []
   },
