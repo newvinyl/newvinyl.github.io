@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-27",
+  "keys": [
+   "louis the 4th|maybe fake's what i like lp",
+   "len lewis & magnus asberg|disconnected / as if",
+   "bohdan|originem"
+  ],
+  "titles": [
+   "Louis The 4th – Maybe Fake's What I Like LP",
+   "Len Lewis & Magnus Asberg – Disconnected / As If",
+   "Bohdan – Originem"
+  ],
+  "shops": [
+   "Hardwax",
+   "Redeye",
+   "Redeye"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261127.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "npoint_o|control rhythm",
+    "title": "Npoint_O – Control Rhythm",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261127-1.mp4",
+    "look": "poster916 138 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261127-1.jpg"
+   },
+   {
+    "key": "moodrich, urbnmowgli, lai raw, rieke 1312|emotional voyage vax",
+    "title": "Moodrich, UrbnMowgli, Lai Raw, Rieke 1312 – Emotional Voyage VAX",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261127-2.mp4",
+    "look": "poster916 97 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261127-2.jpg"
+   },
+   {
+    "key": "conflict bureau|a new age",
+    "title": "Conflict Bureau – A New Age",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261127-3.mp4",
+    "look": "poster916 120 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261127-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "npoint_o|control rhythm",
+   "title": "Npoint_O – Control Rhythm",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261127-1.mp4",
+   "look": "poster916 138 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261127-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-26",
   "keys": [
    "posthuman|down and out in mutant city",
