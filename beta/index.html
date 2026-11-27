@@ -52,10 +52,10 @@ a{color:inherit}button{font:inherit;color:inherit}
 .crt small{opacity:.6;margin-left:5px}
 
 
-main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,420px);align-items:center;gap:32px;padding:0 32px;min-height:0}
-.stage{position:relative;height:calc(var(--cv) * 1.5);min-height:340px;outline:none;user-select:none;-webkit-user-select:none;touch-action:none}
+main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,420px);align-items:center;gap:32px;padding:0 32px 0;min-height:0}
+.stage{position:relative;align-self:end;height:calc(var(--cv) * 1.62);min-height:340px;outline:none;user-select:none;-webkit-user-select:none;touch-action:none}
 .glow{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 2.2);height:calc(var(--cv) * 1.2);transform:translateX(-50%);background:radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.07),transparent 62%);pointer-events:none}
-.rec{position:absolute;left:50%;bottom:calc(var(--cv) * .1);width:var(--cv);margin-left:calc(var(--cv) / -2);aspect-ratio:1;transform-origin:50% 100%;
+.rec{position:absolute;left:50%;bottom:calc(var(--cv) * .17);width:var(--cv);margin-left:calc(var(--cv) / -2);aspect-ratio:1;transform-origin:50% 100%;
   transition:transform .42s cubic-bezier(.25,.8,.25,1),filter .42s,opacity .3s;cursor:pointer;will-change:transform}
 .rec .sl{position:absolute;inset:0;background:#1d1d1d;overflow:hidden;border-radius:2px;box-shadow:0 -4px 14px rgba(0,0,0,.7)}
 .rec img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.035)}
@@ -64,21 +64,16 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .rec.gone{pointer-events:none}
 .rec.pack{transition:transform .5s cubic-bezier(.5,0,.75,0),opacity .4s .15s!important;z-index:400!important}
 .stage.playing .rec.k0 .sl{outline:4px solid var(--yellow);outline-offset:-4px}
-/* Kiste: einfache Holzkiste, matt schwarz gestrichen; zwei Bretter, Holzmaserung, Schrauben, abgestossene Kanten */
-.bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .25);transform:translateX(-50%);z-index:200;pointer-events:none;
-  background:
-    radial-gradient(circle at 4.5% 26%,#3a3a3a 0 2px,#050505 2.6px,transparent 3.4px),radial-gradient(circle at 95.5% 26%,#3a3a3a 0 2px,#050505 2.6px,transparent 3.4px),
-    radial-gradient(circle at 4.5% 76%,#3a3a3a 0 2px,#050505 2.6px,transparent 3.4px),radial-gradient(circle at 95.5% 76%,#3a3a3a 0 2px,#050505 2.6px,transparent 3.4px),
-    linear-gradient(180deg,transparent calc(50% - 1px),#030303 calc(50% - 1px),#030303 calc(50% + 1px),rgba(255,255,255,.05) calc(50% + 1px),transparent calc(50% + 3px)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.003 .13' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .22 -.09'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/140% 50%,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .32 -.14'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    radial-gradient(ellipse 30% 40% at 20% 70%,rgba(255,255,255,.035),transparent 70%),
-    linear-gradient(180deg,#1b1b1b 0%,#151515 49%,#191919 51%,#111 100%);
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.6),inset 10px 0 14px -10px rgba(0,0,0,.9),inset -10px 0 14px -10px rgba(0,0,0,.9),0 -14px 30px rgba(0,0,0,.8),0 18px 30px rgba(0,0,0,.7)}
-/* Oberkante des Bretts: Stirnseite mit abgestossener Farbe, darunter rohes Holz */
-.bin::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='14'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06 .5' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .2 0 0 0 -18 9.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E") 0 0/100% 100%,linear-gradient(180deg,#262626,#151515)}
-.bin::after{content:"";position:absolute;left:0;top:0;bottom:0;width:100%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='14'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06 .5' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .2 0 0 0 -18 9.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E") 0 0/100% 7px no-repeat;transform:rotate(180deg);opacity:.35}
-.bin span{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-3.2deg);white-space:nowrap;
+/* Kiste: schlicht, schwarz, glatt, nur leichte Maserung; reicht bis zum unteren Bildschirmrand.
+   Von schräg oben gesehen: hinter den Platten das Innere der Kiste als Trapez (Seitenwände laufen nach hinten zusammen) */
+.inside{position:absolute;left:50%;bottom:calc(var(--cv) * .3);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:1;pointer-events:none;
+  clip-path:polygon(0 100%,100% 100%,90.5% 0,9.5% 0);
+  background:linear-gradient(90deg,#262626 0%,#1a1a1a 9.6%,#070707 9.7%,#050505 50%,#070707 90.3%,#1a1a1a 90.4%,#262626 100%)}
+.inside::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.9),rgba(13,13,13,0) 60%)}
+.bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .32);transform:translateX(-50%);z-index:200;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.002 .09' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 -.028'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/160% 100%,linear-gradient(180deg,#1c1c1c 0%,#161616 50%,#131313 100%);
+  box-shadow:0 -14px 28px rgba(0,0,0,.7)}
+.bin span{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) rotate(-3.2deg);white-space:nowrap;
   font:700 calc(var(--cv) * .056)/1 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;letter-spacing:.005em;text-transform:uppercase;color:#141414;
   padding:.42em .62em .36em;border-radius:1.5px;
   background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.6),transparent 60%),linear-gradient(170deg,#f6f4ee,#e7e3d9);
@@ -105,7 +100,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .price small{font-size:.6em;vertical-align:.45em;margin-right:2px}
 .buy{font:400 11.5px/1 var(--mono);letter-spacing:.04em;color:var(--muted);text-decoration:none;white-space:nowrap}
 .buy:hover,.buy:focus-visible{color:var(--fg)}
-.cnt{position:absolute;left:50%;bottom:calc(var(--cv) * 1.4);transform:translateX(-50%);z-index:250;font:500 15px/1 var(--mono);letter-spacing:.08em;color:var(--yellow);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cnt{position:absolute;left:50%;bottom:calc(var(--cv) * 1.5);transform:translateX(-50%);z-index:250;font:500 15px/1 var(--mono);letter-spacing:.08em;color:var(--yellow);font-variant-numeric:tabular-nums;white-space:nowrap}
 .inb{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--pink);padding:3px 5px;margin-left:8px;vertical-align:2px}
 
 .ctl{flex:1;display:flex;align-items:center;justify-content:center}
@@ -155,6 +150,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 <main id="main">
   <div class="stage idle" id="stage" tabindex="0" aria-label="Record crate. Arrow up for the next record, arrow left puts it in the bag.">
     <div class="glow"></div>
+    <div class="inside"></div>
     <div class="cnt" id="cnt"></div>
     <div class="bin"><span id="binlbl">Fresh today</span></div>
     <button class="start" id="start" type="button">Start digging ▶</button>
