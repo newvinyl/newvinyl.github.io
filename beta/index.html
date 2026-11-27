@@ -179,6 +179,40 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @media (min-width:861px) and (max-height:800px){.tl{height:calc(4 * 27px)}.side{padding:6px 0;gap:12px}.pad{grid-template-columns:auto 54px 54px 54px auto;grid-template-rows:auto 54px 54px auto auto;gap:6px}.key{width:54px;height:54px}.key.sp{width:100%;height:38px;margin-top:8px}.me{display:none}}
 @media (prefers-reduced-motion:reduce){.rec{transition:none}}
 .hback{color:var(--fg);margin-right:10px}.hback:hover,.hback:focus-visible{color:var(--yellow)}
+/* Handy (User 27.11.): keine Pfeiltasten, dafür dieselbe Anleitung als Wischgesten. Gleiche Anordnung wie die Tasten,
+   in jedem Feld zieht ein Finger-Punkt in Wischrichtung; die Felder lassen sich auch antippen. Alles auf einen Bildschirm. */
+.g{display:none}.km{display:none}.kd,.km{font-style:normal}
+@keyframes sw-up{0%{transform:translateY(13px);opacity:0}15%{opacity:1}70%{transform:translateY(-13px);opacity:1}85%,100%{transform:translateY(-13px);opacity:0}}
+@keyframes sw-dn{0%{transform:translateY(-13px);opacity:0}15%{opacity:1}70%{transform:translateY(13px);opacity:1}85%,100%{transform:translateY(13px);opacity:0}}
+@keyframes sw-lt{0%{transform:translateX(13px);opacity:0}15%{opacity:1}70%{transform:translateX(-13px);opacity:1}85%,100%{transform:translateX(-13px);opacity:0}}
+@keyframes sw-rt{0%{transform:translateX(-13px);opacity:0}15%{opacity:1}70%{transform:translateX(13px);opacity:1}85%,100%{transform:translateX(13px);opacity:0}}
+@keyframes sw-tap{0%,100%{transform:scale(1);opacity:.9}40%{transform:scale(.7);opacity:1}55%{transform:scale(1.25);opacity:.5}}
+@media (max-width:860px){
+  .top{gap:8px}.logo{font-size:16px;white-space:nowrap}.hicons .habout:not(.hback):not(.beta){display:none}.habout{white-space:nowrap}
+  .bar{padding:6px 0 6px 16px}
+  :root{--cv:min(20vh,58vw,240px)}
+  main{gap:4px;padding:0 16px 6px}
+  .stage{min-height:0;height:calc(var(--cv) * 1.6)}
+  .side{padding:6px 0 0;gap:10px}
+  .rinfo .now{display:none}.rinfo .me{display:none}
+  .tl{height:calc(2 * 27px)}.tlh{display:none}
+  .buyrow{margin-top:6px}
+  .rfoot{display:none}
+  .pad{grid-template-columns:auto 50px 50px 50px auto;grid-template-rows:auto 50px 50px auto auto;gap:4px 5px}
+  .key{width:50px;height:50px;position:relative;overflow:hidden;border-width:1px;border-bottom-width:1px;border-radius:12px;border-color:#3a3a3a;background:#121212}
+  .key svg{opacity:.22;width:30px;height:30px}
+  .key .g{display:block;position:absolute;left:calc(50% - 7px);top:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:var(--fg);box-shadow:0 0 0 5px rgba(240,240,235,.14)}
+  .g-up{animation:sw-up 1.9s cubic-bezier(.5,0,.3,1) infinite}.g-dn{animation:sw-dn 1.9s cubic-bezier(.5,0,.3,1) infinite}
+  .g-lt{animation:sw-lt 1.9s cubic-bezier(.5,0,.3,1) infinite}.g-rt{animation:sw-rt 1.9s cubic-bezier(.5,0,.3,1) infinite}
+  .key.sp{grid-area:5/1/6/6;width:auto;min-width:250px;height:38px;margin-top:6px;border-radius:12px;padding:0 16px 0 38px;white-space:nowrap;font-size:10.5px}
+  .key.sp .g-tap{left:20px;animation:sw-tap 1.9s ease-in-out infinite}
+  .kd{display:none}.km{display:inline}
+  .key.nudge:not(.sp){animation:none;border-color:var(--yellow);box-shadow:0 0 0 2px rgba(255,234,0,.25)}
+  .key.nudge:not(.sp) .g{background:var(--yellow);box-shadow:0 0 0 5px rgba(255,234,0,.2)}
+  .sp.nudge{animation:none;border-color:var(--yellow)}.sp.nudge .g{background:var(--yellow)}
+  .lb{font-size:9.5px;max-width:72px}
+}
+@media (max-width:860px) and (prefers-reduced-motion:reduce){.key .g{animation:none!important}}
 </style>
 </head>
 <body>
@@ -205,14 +239,14 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <div class="ctl">
       <div class="pad" role="group" aria-label="Controls">
         <span class="lb l-up"><b>Next record</b></span>
-        <button class="key k-up" type="button" data-k="ArrowUp" aria-label="Next record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+        <button class="key k-up" type="button" data-k="ArrowUp" aria-label="Next record"><i class="g g-up" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
         <span class="lb l-lt"><b>Into the bag</b></span>
-        <button class="key k-lt" type="button" data-k="ArrowLeft" aria-label="Into the bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-        <button class="key k-dn" type="button" data-k="ArrowDown" aria-label="Previous record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
-        <button class="key k-rt" type="button" data-k="ArrowRight" aria-label="Next track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="key k-lt" type="button" data-k="ArrowLeft" aria-label="Into the bag"><i class="g g-lt" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="key k-dn" type="button" data-k="ArrowDown" aria-label="Previous record"><i class="g g-dn" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
+        <button class="key k-rt" type="button" data-k="ArrowRight" aria-label="Next track"><i class="g g-rt" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <span class="lb l-rt"><b>Next track</b></span>
         <span class="lb l-dn"><b>Previous record</b></span>
-        <button class="key sp nudge" type="button" data-k=" " aria-label="Play or pause">Space<span>Play / pause</span></button>
+        <button class="key sp nudge" type="button" data-k=" " aria-label="Play or pause"><i class="g g-tap" aria-hidden="true"></i><em class="kd">Space</em><em class="km">Tap the record</em><span>Play / pause</span></button>
       </div>
     </div>
     <div class="rfoot"><span class="dk"><kbd>Enter</kbd>open at the shop · click the record for the next one</span><span class="mb">Swipe ↑ next · ↓ back · ← bag · → track</span><br><a href="/">Back to the classic feed</a> <kbd>Esc</kbd></div>
@@ -265,6 +299,7 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
 // Tasten-Hinweise: nach dem ersten Ton blinkt ↑, bis man sie einmal nutzt; bei Platten mit mehreren Tracks blinkt →, bis man sie einmal nutzt
 // Haben beide gleichzeitig geblinkt und man drückt eine der beiden, hören beide auf
 const used={up:false,rt:false,both:false};
+const TOUCH=matchMedia("(max-width:860px)").matches;
 function hintKeys(){const r=L[cur],up=listening&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
   if(up&&rt)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
@@ -311,7 +346,7 @@ function el(i){
   e=document.createElement("div");e.className="rec"+(r.out?" sold":"");e.dataset.i=i;
   e.innerHTML=`<div class="sl"><div class="ph">${esc(r.main.a)}<br>${esc(r.main.t)}</div>${r.cover?`<img decoding="async" alt="" src="${esc(thumb(hiRes(r.cover)))}" data-o="${esc(hiRes(r.cover))}" data-lo="${esc(r.cover)}" onerror="coverFail(this)">`:""}</div>`;
   // Klick auf die vordere Platte: nächste Platte; auf eine hintere: direkt zu ihr
-  e.onclick=()=>{const k=+e.dataset.i-cur;if(k>=0)act("next",k?+e.dataset.i:null)};
+  e.onclick=()=>{const k=+e.dataset.i-cur;if(TOUCH&&k===0){act("play");return}if(k>=0)act("next",k?+e.dataset.i:null)};
   stage.insertBefore(e,stage.querySelector(".bin"));EL.set(i,e);return e;
 }
 function place(e,k,i){
