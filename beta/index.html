@@ -321,9 +321,11 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .rec img{pointer-events:none}
 /* Desktop (User 28.11.): ← vorheriger Track, In den Bag mit Enter als gelbe Taste */
 .pad{grid-template-rows:auto 64px 64px auto auto auto}
-.key.en{grid-area:6/2/7/5;width:100%;height:44px;margin-top:4px;display:flex;gap:10px;background:var(--yellow);color:var(--ink);border-color:#b8a800;font:700 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.key.en{grid-area:6/2/7/5;width:100%;height:44px;margin-top:4px;display:flex;gap:10px;background:var(--pink);color:var(--ink);border-color:#b5554b;font:700 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .key.en .kd{font:500 10px/1 var(--mono);opacity:.7}
-.key.en:hover{background:#fff35a}
+.key.en:hover{background:#f59488}
+.key.en.nudge{animation:ennudge 2s cubic-bezier(.45,0,.55,1) infinite!important}
+@keyframes ennudge{0%,62%,100%{background:var(--pink);transform:none}74%,84%{background:var(--yellow);transform:translateY(3px)}}
 @media (min-width:861px) and (max-height:800px){.pad{grid-template-rows:auto 54px 54px auto auto auto}.key.en{height:38px}}
 @media (max-width:860px){.key.en{display:none}}
 /* Desktop (User 28.11.): Zähler klein oben links in der Ecke, Kiste und Cover füllen die Bühne */
@@ -443,7 +445,9 @@ function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&
     for(const id of["ghtap","ghup","ghrt","ghlt","ghhold"])sh(id,id===want)}
   if(up&&rt&&!TOUCH)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
-  document.querySelector(".k-rt").classList.toggle("nudge",rt)}
+  document.querySelector(".k-rt").classList.toggle("nudge",rt);
+  // Desktop: GRAB IT! (Enter) blinkt erst, wenn ↑ und → gelernt sind und noch nichts eingepackt wurde
+  {const en=document.querySelector(".key.en");if(en)en.classList.toggle("nudge",!TOUCH&&listening&&!up&&!rt&&used.up&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key)))}}
 function bagCount(){document.getElementById("bagn").textContent=cart.length||""}
 function build(data){
   FX=data.fx||{};const G={};
