@@ -479,7 +479,7 @@ function warm(){
 function playTrack(j){
   clearTimeout(pt);const r=L[cur];if(!r||!r.tracks[j])return;
   ti=j;listening=true;stage.classList.remove("idle");document.querySelector(".sp").classList.remove("nudge");hintKeys();
-  au.src=r.tracks[j].u;au.play().catch(()=>{});paintInfo();warm();
+  au.muted=false;au.src=r.tracks[j].u;au.play().catch(e=>{if(e&&e.name==="NotAllowedError"){listening=false;hintKeys()}});paintInfo();warm();
 }
 function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}playTrack((ti+1)%r.tracks.length);hop()}
 // Trackwechsel sichtbar machen: die Platte hüpft kurz in der Kiste
@@ -537,6 +537,10 @@ let ty=null,tx=null;
 // Platte folgt dem Finger (User 27.11.: mehr Flow). Hoch = nächste Platte, runter = zurück,
 // Finger nach links = nächster Track, nach rechts = Bag. Unter der Schwelle federt sie zurück.
 let drag=null;
+// iOS gibt den Ton nur bei einer Berührung frei, nicht nach einem Wisch. Darum beim ersten Berühren den Player stumm
+// kurz anspielen (das schaltet ihn frei); wird er trotzdem blockiert, bleibt TAP stehen.
+let primed=false;
+stage.addEventListener("touchstart",()=>{if(primed||listening||!L[cur])return;primed=true;au.muted=true;au.src=L[cur].tracks[0].u;au.play().then(()=>{if(!listening)au.pause()}).catch(()=>{}).finally(()=>{au.muted=false})},{passive:true});
 stage.addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].clientX;drag={ax:null,e:EL.get(cur)}},{passive:true});
 stage.addEventListener("touchmove",e=>{if(ty==null||!drag||!drag.e||busy)return;const dx=e.touches[0].clientX-tx,dy=e.touches[0].clientY-ty;
   if(!drag.ax){if(Math.hypot(dx,dy)<8)return;drag.ax=Math.abs(dy)>Math.abs(dx)?"y":"x";drag.e.style.transition="none"}
