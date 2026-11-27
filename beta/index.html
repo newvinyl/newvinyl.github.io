@@ -241,14 +241,14 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 }
 /* Hinweise als drei kräftige Chevrons (User 27.11., 22:31): blenden ein, leuchten nacheinander in Wischrichtung auf */
 @media (max-width:860px){
-  .gh{font:800 28px/1 var(--display);letter-spacing:.01em;gap:12px}
+  .gh{font:800 24px/1 var(--display);letter-spacing:.01em;gap:12px}
   .gh svg.cv{animation:none!important;fill:#ffea00;overflow:visible;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
   .gh svg.cv path{opacity:0;animation:cv-1 1.25s infinite}
   .gh svg.cv path:nth-child(2){animation-name:cv-2}.gh svg.cv path:nth-child(3){animation-name:cv-3}
   .gh-up{bottom:calc(var(--cv) * .42);transform:translateX(-50%)}
-  .gh-up svg.cv{width:calc(var(--cv) * .26);height:auto;aspect-ratio:44/84}
+  .gh-up svg.cv{width:calc(var(--cv) * .22);height:auto;aspect-ratio:44/84}
   .gh-up span{bottom:auto;top:50%;transform:translateY(-50%);right:calc(100% + 14px)}
-  .gh-rt svg.cv,.gh-lt svg.cv{width:calc(var(--cv) * .38);height:auto;aspect-ratio:84/44}
+  .gh-rt svg.cv,.gh-lt svg.cv{width:calc(var(--cv) * .32);height:auto;aspect-ratio:84/44}
   .gh.on{animation:cv-in .5s cubic-bezier(.2,.8,.2,1) both}
 }
 @keyframes cv-1{0%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}14%,72%{opacity:1}88%,100%{opacity:0}}
@@ -268,7 +268,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @keyframes hop{0%{translate:0 0}30%{translate:0 -18px}55%{translate:0 0}72%{translate:0 -5px}86%,100%{translate:0 0}}
 @media (max-width:860px){
   .gh-tap{left:50%;bottom:calc(var(--cv) * .55);transform:translateX(-50%)}
-  .gh-tap span{font-size:44px!important;letter-spacing:.04em}
+  .gh-tap span{font-size:37px!important;letter-spacing:.04em}
 }
 /* Hinweise schweben über der Platte (User 27.11., 23:07): weicher Schlagschatten mit Abstand, leichtes Auf und Ab */
 @media (max-width:860px){
@@ -369,10 +369,16 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
 const TOUCH=matchMedia("(max-width:860px)").matches;
 const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?store.get("mvr-betahints2",{}):{});
 // Grab it!: drei Durchgänge (3 x 1.25s), dann erst wieder nach einer Minute, solange noch nichts im Bag gelandet ist
-let bgEnd=0,bgNext=0;
+let bgEnd=0,bgNext=0,hintCur="",hintGap=0;const HINT_GAP=4500;
 function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
   if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)};
-    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));const tap=!listening;sh("ghtap",tap);sh("ghup",up&&!tap);let bgOn=false;if(bg){const t=Date.now();if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}bgOn=t<bgEnd}sh("ghlt",bgOn);sh("ghrt",rt&&!up)}
+    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key)),tap=!listening,t=Date.now();
+    // Nächster Hinweis erst nach einer Pause, damit man den vorherigen verarbeiten kann (User 27.11., 23:18)
+    let want=tap?"ghtap":up?"ghup":rt?"ghrt":bg?"ghlt":"";
+    if(want!==hintCur){if(hintCur&&want){hintGap=t+HINT_GAP;setTimeout(hintKeys,HINT_GAP+50)}hintCur=want}
+    if(t<hintGap)want="";
+    if(want==="ghlt"){if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}if(t>=bgEnd)want=""}
+    for(const id of["ghtap","ghup","ghrt","ghlt"])sh(id,id===want)}
   if(up&&rt&&!TOUCH)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
   document.querySelector(".k-rt").classList.toggle("nudge",rt)}
