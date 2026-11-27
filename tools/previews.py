@@ -322,7 +322,7 @@ def main():
         c = cache.get(r.get("url"), {})
         if c.get("tl") and not r.get("tl"):
             r["tl"] = c["tl"]
-        if c.get("tr") and (not per_track(r) or (S["shop"] == "Redeye Records" and n_audio(c["tr"]) > n_audio(r.get("tr", [])))):
+        if c.get("tr") and (not per_track(r) or n_audio(c["tr"]) > n_audio(r.get("tr", []))):
             r["tr"] = [dict(t) for t in c["tr"]]
 
     # 2) Für Platten ohne (funktionierende) Einzeltracks die Produktseite des Shops lesen
@@ -340,7 +340,13 @@ def main():
                 continue
             todo.append((S, r))
             continue
-        if shop not in EXTRACT or per_track(r):
+        if shop not in EXTRACT:
+            continue
+        if per_track(r):
+            # Nur YouTube oder ein einzelner Clip: Produktseite einmal nach der vollen Trackliste fragen
+            if n_audio(r.get("tr", [])) >= 2 or c.get("full"):
+                continue
+            todo.append((S, r))
             continue
         first = c.get("first_try", str(TODAY))
         if (TODAY - datetime.date.fromisoformat(first)).days > RETRY_DAYS:
@@ -381,7 +387,8 @@ def main():
                         stats["found"] += 1
                 continue
             tr = EXTRACT[S["shop"]](page)
-            if tr:
+            c["full"] = 1
+            if tr and (not per_track(r) or n_audio(tr) > n_audio(r.get("tr", []))):
                 c["tr"] = tr
                 r["tr"] = [dict(t) for t in tr]
                 stats["found"] += 1
@@ -394,13 +401,15 @@ def main():
     for S, r in items:
         if per_track(r):
             k = rkey(r)
-            n = sum(1 for t in r["tr"] if t.get("u") or t.get("yt"))
-            if n > len(best.get(k, [])):
+            sc = lambda tr: (n_audio(tr), sum(1 for t in tr if t.get("u") or t.get("yt")))
+            if sc(r["tr"]) > sc(best.get(k, [])):
                 best[k] = [dict(t) for t in r["tr"]]
     copied = 0
     for S, r in items:
-        if not per_track(r) and rkey(r) in best:
-            r["tr"] = [dict(t) for t in best[rkey(r)]]
+        b = best.get(rkey(r))
+        # Fehlt die Hörprobe oder hat derselbe Release anderswo mehr Clips: vollständige Liste übernehmen
+        if b and (not per_track(r) or n_audio(b) > max(1, n_audio(r.get("tr", [])))):
+            r["tr"] = [dict(t) for t in b]
             copied += 1
 
     # Alte Prüfergebnisse aufräumen
