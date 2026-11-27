@@ -208,7 +208,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <div class="rfoot"><span class="dk"><kbd>Enter</kbd>open at the shop · click the record for the next one</span><span class="mb">Swipe ↑ next · ↓ back · ← bag · → track</span><br><a href="/">Back to the classic feed</a> <kbd>Esc</kbd></div>
   </aside>
 </main>
-<audio id="au" preload="none"></audio>
+<audio id="au" preload="auto"></audio>
 <script>
 const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF","zł":"PLN"};
 const LOC=(()=>{let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
@@ -344,12 +344,22 @@ let pt=null;
 function go(i){
   i=Math.max(0,Math.min(L.length,i));if(i===cur)return;cur=i;ti=0;render();flips++;
   if(flips===5)track("Beta flip",{crate:crate.name,n:5});
-  clearTimeout(pt);if(listening){au.pause();pt=setTimeout(()=>playTrack(0),220)} // kurz warten: schnelles Blättern lädt nicht jede Hörprobe
+  clearTimeout(pt);if(listening)playTrack(0);else warm();   // sofort spielen (User 27.11.: keine Wartezeit beim Blättern)
+}
+// Vorladen: erste Hörprobe der nächsten zwei Platten, der vorherigen und den nächsten Track der aktuellen.
+// Der Browser legt sie in den Cache, beim Weiterblättern startet der Ton dann ohne Ladezeit.
+const WARM=new Map();
+function warm(){
+  const want=[];const add=u=>{if(u&&!want.includes(u))want.push(u)};
+  const r=L[cur];if(r&&r.tracks.length>1)add(r.tracks[(ti+1)%r.tracks.length].u);
+  [cur+1,cur+2,cur-1].forEach(k=>{const x=L[k];if(x&&x.tracks[0])add(x.tracks[0].u)});
+  for(const [u,a] of WARM)if(!want.includes(u)){a.removeAttribute("src");a.load();WARM.delete(u)}
+  want.forEach(u=>{if(WARM.has(u)||u===au.src)return;const a=new Audio();a.preload="auto";a.muted=true;a.src=u;try{a.load()}catch(e){}WARM.set(u,a)});
 }
 function playTrack(j){
   clearTimeout(pt);const r=L[cur];if(!r||!r.tracks[j])return;
   ti=j;listening=true;stage.classList.remove("idle");document.querySelector(".sp").classList.remove("nudge");hintKeys();
-  au.src=r.tracks[j].u;au.play().catch(()=>{});paintInfo();
+  au.src=r.tracks[j].u;au.play().catch(()=>{});paintInfo();warm();
 }
 function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}playTrack((ti+1)%r.tracks.length)}
 function toggle(){if(!listening||!au.src){playTrack(ti);track("Beta play",{crate:crate.name});return}if(au.paused)au.play().catch(()=>{});else au.pause()}
@@ -374,7 +384,7 @@ function act(a,arg){
   else if(a==="bag"){pack()}
   else if(a==="track"){nextTrack()}
   else if(a==="play"){toggle()}
-  if(first&&!listening&&a!=="play"&&a!=="bag"){listening=true;clearTimeout(pt);pt=setTimeout(()=>playTrack(0),220);track("Beta play",{crate:crate.name,via:a})}
+  if(first&&!listening&&a!=="play"&&a!=="bag"){listening=true;clearTimeout(pt);playTrack(0);track("Beta play",{crate:crate.name,via:a})}
   hintKeys();
 }
 // Esc: zurück zum klassischen Feed
