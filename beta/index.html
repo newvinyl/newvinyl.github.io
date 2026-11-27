@@ -310,6 +310,12 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 }
 @keyframes ffs{0%,100%{translate:0 0}50%{translate:0 -2px}}
 @media (max-width:860px){.gh.on{opacity:.8!important}}
+/* Desktop-Infoblock (User 27.11., 23:56): Artist und Titel grösser und gelb, laufender Track grösser und gelb */
+@media (min-width:861px){
+  .rinfo .ar{font-size:32px;color:var(--yellow)}
+  .rinfo .ti{font-size:20px;color:var(--yellow);opacity:.8}
+  .tl li.on button{font-size:15px;font-weight:500}
+}
 </style>
 </head>
 <body>
@@ -512,7 +518,12 @@ function paintInfo(){
   if(TOUCH){const on=tl.children[ti]||tl.children[0],prev=tl.children[+info.dataset.ti];
     if(info.dataset.k2===r.key&&prev&&prev!==on){tl.scrollTop=prev.offsetTop;requestAnimationFrame(()=>tl.scrollTo({top:on.offsetTop,behavior:"smooth"}))}else tl.scrollTop=on.offsetTop;
     info.dataset.k2=r.key;info.dataset.ti=ti}
-  else if(r.tracks.length>5){const on=tl.children[ti];if(on)tl.scrollTop=Math.max(0,on.offsetTop-2*on.offsetHeight);tlEdges();tl.onscroll=tlEdges}
+  else{const on=tl.children[ti],same=info.dataset.k3===r.key,pt=+info.dataset.ti3,pst=+info.dataset.st3||0;
+    if(r.tracks.length>5&&on){const to=Math.max(0,on.offsetTop-2*on.offsetHeight);if(same){tl.scrollTop=pst;requestAnimationFrame(()=>tl.scrollTo({top:to,behavior:"smooth"}))}else tl.scrollTop=to;tlEdges();tl.onscroll=tlEdges}
+    // Desktop: Trackwechsel animiert (User 27.11., 23:56): neuer Track wächst gelb hinein, der alte schrumpft zurück
+    if(same&&listening&&pt!==ti&&on){const E={duration:420,easing:"cubic-bezier(.2,.8,.2,1)"};const ob=tl.children[pt]&&tl.children[pt].querySelector("button");
+      try{on.querySelector("button").animate([{fontSize:"12px",color:"#cfcfcb",transform:"translateX(-6px)"},{fontSize:"15px",color:"#ffea00",transform:"none"}],E);if(ob)ob.animate([{fontSize:"15px",color:"#ffea00"},{fontSize:"12px",color:"#cfcfcb"}],E)}catch(e){}}
+    info.dataset.k3=r.key;info.dataset.ti3=listening?ti:-1;tl.addEventListener("scroll",()=>{info.dataset.st3=tl.scrollTop},{passive:true});info.dataset.st3=tl.scrollTop}
 }
 // Fenster-Hinweis: welche Ränder ausblenden, wie viele Tracks noch darunter liegen
 function tlEdges(){const tl=document.getElementById("tl");if(!tl)return;const atTop=tl.scrollTop<2,atBot=tl.scrollTop+tl.clientHeight>=tl.scrollHeight-2;
