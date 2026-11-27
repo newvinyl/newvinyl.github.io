@@ -368,6 +368,30 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
         os.makedirs(os.path.join(ROOT, gs), exist_ok=True)
         open(os.path.join(ROOT, gs, "index.html"), "w", encoding="utf-8").write(page)
 
+    # 2a. Genre-Seiten, deren Genre nicht mehr in genre_list ist (z.B. /electronic/, /acid/), blieben früher
+    #     eingefroren online und bei Google. Sie werden jetzt zu einer Weiterleitung auf die Startseite
+    #     (noindex, canonical Startseite), damit Google sie ersetzt (27.11.26).
+    live = {slug(g) for g in genre_list}
+    for d in sorted(os.listdir(ROOT)):
+        f = os.path.join(ROOT, d, "index.html")
+        if d in live or not os.path.isfile(f): continue
+        old = open(f, encoding="utf-8").read()
+        if '"@type": "CollectionPage"' not in old: continue
+        open(f, "w", encoding="utf-8").write(f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monthly Vinyl</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="{SITE}/">
+<meta http-equiv="refresh" content="0; url=/">
+<script>location.replace("/")</script>
+</head>
+<body><a href="/">monthlyvinyl.net</a></body>
+</html>
+''')
+        print(f"Genre-Seite /{d}/ ist verwaist: Weiterleitung auf Startseite")
+
     # 2b. Release-Seiten: eine Seite pro Platte (/r/<slug>/) mit Cover, Tracklist, Previews und Preisvergleich.
     #     Für Google indexierbar. Geteilte Links tragen ?s=1 und springen direkt zur Platte auf der Hauptseite.
     import shutil
@@ -457,7 +481,7 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
             tl.append(f'<li><b>{e(t.get("s") or "")}</b><span>{e(n)}</span>{play}</li>')
         ytl = next((t["ytl"] for o in offers for t in o[1].get("tr", []) if t.get("ytl")), None)
         if ytl: tl.append(f'<li><b></b><span>Whole release</span><a href="https://www.youtube.com/playlist?list={e(ytl)}" rel="nofollow noopener" target="_blank">YouTube ↗</a></li>')
-        tags = "".join(f'<a href="/{slug(g)}/">{e(g)}</a>' for g in gl if os.path.isdir(os.path.join(ROOT, slug(g)))) 
+        tags = "".join(f'<a href="/{slug(g)}/">{e(g)}</a>' for g in gl if slug(g) in live) 
         # Ähnliche Platten: gleiches Genre, neueste zuerst
         rel = []
         for k2 in newest:
@@ -468,7 +492,7 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
         grid = "".join(
             f'<li><a href="/r/{prim[k2]}/"><img src="{e(info[k2]["r"].get("cover"))}" alt="{e(info[k2]["r"]["a"])} – {e(info[k2]["r"]["t"])} vinyl cover" loading="lazy" width="150" height="150">'
             f'<b>{e(info[k2]["r"]["a"])}</b><i>{e(info[k2]["r"]["t"])}</i></a></li>' for k2 in rel)
-        g0 = next((g for g in gl if os.path.isdir(os.path.join(ROOT, slug(g)))), None)
+        g0 = next((g for g in gl if slug(g) in live), None)
         crumb = f' › <a href="/{slug(g0)}/">{e(g0)}</a>' if g0 else ""
         ld_offers = []
         for Sx, o in ofs:
