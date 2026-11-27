@@ -313,6 +313,8 @@ def main():
         others = " · ".join(f'<a href="/{slug(o)}/">{e(o)}</a>' for o in genre_list if o != g)
         title = f"New {g} Vinyl Releases | Monthly Vinyl"  # Bing: Titel unter 60 Zeichen
         desc = f"{n} new {g.lower()} vinyl records from independent shops like Hardwax, Clone and Phonica. Listen, compare prices, order per shop. Updated daily."
+        # Eigenes Vorschaubild pro Genre (tools/og_genre.py), sonst das allgemeine
+        gog = f"{SITE}/og/genre-{gs}.jpg" if os.path.isfile(os.path.join(ROOT, "og", f"genre-{gs}.jpg")) else f"{SITE}/og-image-v2.png"
         page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -325,7 +327,7 @@ def main():
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{SITE}/{gs}/">
-<meta property="og:image" content="{SITE}/og-image-v2.png">
+<meta property="og:image" content="{gog}">
 <link rel="icon" type="image/png" href="/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <meta name="theme-color" content="#0d0d0d">
@@ -360,6 +362,7 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
 <ul>
 {"".join(item_html(x, True) for x in items)}
 </ul>
+<!--ARCHIVE--><!--/ARCHIVE-->
 <footer><p style="max-width:70ch;margin:0 0 10px;line-height:1.55">Every morning Monthly Vinyl collects new {e(g.lower())} vinyl releases from {nshop} independent record shops in Europe. Listen to the previews, compare prices, then buy the records directly from the shop.</p>Updated {today.isoformat()} · <a href="/">monthlyvinyl.net</a> · Monthly Vinyl Releases is independent and not affiliated with the shops listed.</footer>
 </div>
 </body>
@@ -603,11 +606,139 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
         n_old += 1
     print(f"older release pages kept: {n_old}")
 
+
+    # 2d. Monatsarchive pro Genre (/<genre>/<yyyy-mm>/), damit Google auch ältere Release-Seiten
+    #     über interne Links findet und nicht nur über die Sitemap (27.11.26). Seiten ohne Inhalt mehr
+    #     werden zur Weiterleitung auf die Genre-Seite.
+    def stub(f, target):
+        open(f, "w", encoding="utf-8").write(f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monthly Vinyl</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="{SITE}{target}">
+<meta http-equiv="refresh" content="0; url={target}">
+<script>location.replace("{target}")</script>
+</head>
+<body><a href="{target}">monthlyvinyl.net</a></body>
+</html>
+''')
+    MRE = re.compile(r"^\d{4}-\d{2}$")
+    arch_urls = []
+    for d in sorted(os.listdir(ROOT)):  # Archive verwaister Genres weiterleiten
+        if d in live or not os.path.isdir(os.path.join(ROOT, d)): continue
+        for mdir in os.listdir(os.path.join(ROOT, d)):
+            f = os.path.join(ROOT, d, mdir, "index.html")
+            if MRE.match(mdir) and os.path.isfile(f) and "noindex" not in open(f, encoding="utf-8").read()[:600]:
+                stub(f, "/")
+    for g in genre_list:
+        gs = slug(g)
+        bym = {}
+        for k in newest:
+            if g in info[k]["genres"]:
+                bym.setdefault(info[k]["seen"][:7], []).append(k)
+        months_g = sorted((m for m in bym if MRE.match(m)), reverse=True)
+        mnav = " · ".join(f'<a href="/{gs}/{m}/">{e(mlabel(m))}</a>' for m in months_g)
+        for m in months_g:
+            ks = bym[m]
+            lis = "".join(
+                f'<li><a href="/r/{prim[k]}/">'
+                + (f'<img src="{e(info[k]["r"].get("cover"))}" alt="{e(info[k]["r"]["a"])} – {e(info[k]["r"]["t"])} vinyl cover" loading="lazy" width="150" height="150">' if info[k]["r"].get("cover") else "")
+                + f'<b>{e(info[k]["r"]["a"])}</b><i>{e(info[k]["r"]["t"])}</i></a>'
+                + f'<span>{e(" · ".join(x for x in [info[k]["r"].get("l"), info[k]["r"].get("cat")] if x))}</span></li>'
+                for k in ks)
+            title = f"{g} Vinyl Releases {mlabel(m)} | Monthly Vinyl"
+            desc = f"{len(ks)} new {g.lower()} vinyl records first listed in {mlabel(m)} at independent European record shops. Previews, prices and shops for each record."
+            url = f"{SITE}/{gs}/{m}/"
+            ld = {"@context": "https://schema.org", "@graph": [
+                {"@type": "CollectionPage", "name": f"{g} vinyl releases, {mlabel(m)}", "url": url,
+                 "isPartOf": {"@type": "WebSite", "name": "Monthly Vinyl Releases", "url": SITE + "/"}},
+                {"@type": "BreadcrumbList", "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Monthly Vinyl", "item": SITE + "/"},
+                    {"@type": "ListItem", "position": 2, "name": g, "item": f"{SITE}/{gs}/"},
+                    {"@type": "ListItem", "position": 3, "name": mlabel(m), "item": url}]}]}
+            gog = f"{SITE}/og/genre-{gs}.jpg" if os.path.isfile(os.path.join(ROOT, "og", f"genre-{gs}.jpg")) else f"{SITE}/og-image-v2.png"
+            page = f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{e(title)}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{gog}">
+<link rel="icon" type="image/png" href="/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<meta name="theme-color" content="#0d0d0d">
+<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
+<style>
+:root{{--bg:#0d0d0d;--fg:#ecebe7;--muted:#a0a4a9;--line:#3c4046}}
+*{{box-sizing:border-box}}
+body{{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif}}
+.wrap{{max-width:1180px;margin:0 auto;padding:20px 16px 60px}}
+a{{color:var(--fg)}}
+.band{{display:block;background:#000;border-top:4px solid #fff;border-bottom:4px solid #fff;padding:14px 16px;text-decoration:none;font-weight:700;font-size:clamp(24px,5vw,44px);color:#fff}}
+.crumb{{font-size:14px;color:var(--muted);margin:18px 0 0}}
+h1{{font-size:clamp(26px,4vw,40px);line-height:1.1;margin:10px 0 8px}}
+.lede{{font-size:17px;max-width:760px;margin:0 0 16px}}
+.genres{{font-size:14px;color:var(--muted);margin:0 0 24px;line-height:1.9}}
+ul{{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:22px 18px}}
+li{{min-width:0;font-size:13px}}
+li a{{text-decoration:none;display:block}}
+li img{{width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:#1a1a1a;display:block;margin-bottom:8px}}
+li b,li i{{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+li i{{font-style:normal;color:var(--fg)}}
+li span{{display:block;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13px;color:var(--muted)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="band" href="/">Monthly Vinyl Releases</a>
+<p class="crumb"><a href="/">Home</a> › <a href="/{gs}/">{e(g)}</a> › {e(mlabel(m))}</p>
+<h1>{e(g)} vinyl releases, {e(mlabel(m))}</h1>
+<p class="lede">{len(ks)} {e(g.lower())} records that first appeared at independent record shops in {e(mlabel(m))}, newest first. Open a record for previews, prices and shops.</p>
+<p class="genres">Other months: {mnav}</p>
+<ul>
+{lis}
+</ul>
+<footer><a href="/{gs}/">New {e(g.lower())} vinyl</a> · <a href="/">monthlyvinyl.net</a> · Monthly Vinyl Releases is independent and not affiliated with the shops listed.</footer>
+</div>
+</body>
+</html>
+'''
+            os.makedirs(os.path.join(ROOT, gs, m), exist_ok=True)
+            open(os.path.join(ROOT, gs, m, "index.html"), "w", encoding="utf-8").write(page)
+            arch_urls.append((url, max(info[k]["seen"] for k in ks)))
+        for mdir in os.listdir(os.path.join(ROOT, gs)):  # Monate ohne Platten mehr
+            f = os.path.join(ROOT, gs, mdir, "index.html")
+            if MRE.match(mdir) and mdir not in bym and os.path.isfile(f):
+                stub(f, f"/{gs}/")
+        gp = os.path.join(ROOT, gs, "index.html")
+        gpage = open(gp, encoding="utf-8").read()
+        gpage = re.sub(r"<!--ARCHIVE-->.*?<!--/ARCHIVE-->",
+                       lambda _: f'<!--ARCHIVE--><p class="genres" style="margin:40px 0 0">{e(g)} vinyl by month: {mnav}</p><!--/ARCHIVE-->',
+                       gpage, flags=re.S)
+        open(gp, "w", encoding="utf-8").write(gpage)
+    print(f"genre archives: {len(arch_urls)} pages")
+    try:  # Vorschaubild für neue Genres (wirkt ab dem nächsten Lauf); ohne Pillow einfach überspringen
+        import og_genre; og_genre.main()
+    except Exception as ex:
+        print(f"og_genre übersprungen: {ex}")
+
     # 3. Sitemap
     urls = [f"{SITE}/"] + [f"{SITE}/{slug(g)}/" for g in genre_list]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for i, u in enumerate(urls):
         sm.append(f"  <url><loc>{u}</loc><lastmod>{today.isoformat()}</lastmod><changefreq>daily</changefreq><priority>{'1.0' if i == 0 else '0.8'}</priority></url>")
+    sm.append(f"  <url><loc>{SITE}/about/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>")
+    for u, last in arch_urls:
+        sm.append(f"  <url><loc>{u}</loc><lastmod>{last[:10]}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>")
     for u, seen in sorted(sitemap_rel, key=lambda x: x[1], reverse=True):
         sm.append(f"  <url><loc>{u}</loc><lastmod>{seen[:10]}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>")
     sm.append("</urlset>")
