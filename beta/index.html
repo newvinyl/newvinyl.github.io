@@ -381,7 +381,7 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
 // Tasten-Hinweise: nach dem ersten Ton blinkt ↑, bis man sie einmal nutzt; bei Platten mit mehreren Tracks blinkt →, bis man sie einmal nutzt
 // Haben beide gleichzeitig geblinkt und man drückt eine der beiden, hören beide auf
 const TOUCH=matchMedia("(max-width:860px)").matches;
-const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?store.get("mvr-betahints2",{}):{});
+const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?(h=>h.bag?h:{})(store.get("mvr-betahints2",{})):{});
 // Grab it!: drei Durchgänge (3 x 1.25s), dann erst wieder nach einer Minute, solange noch nichts im Bag gelandet ist
 let bgEnd=0,bgNext=0,hintCur="",hintGap=0;const HINT_GAP=4500;
 function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
