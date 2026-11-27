@@ -820,7 +820,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)close
 const sb=document.getElementById("srchbtn"),srow=document.getElementById("srow"),q=document.getElementById("q");
 sb.onclick=()=>{const open=srow.hidden;srow.hidden=!open;sb.setAttribute("aria-expanded",open);if(open)q.focus();else{q.value="";const had=F.q;F.q="";if(had)renderFeed();else applyFilter()}};
 q.oninput=()=>{const was=F.q;F.q=fold(q.value.trim());if(!!was!==!!F.q||F.q)renderFeed();else applyFilter()};
-document.getElementById("sx").onclick=()=>{q.value="";F.q="";renderFeed();q.focus()};
+document.getElementById("sx").onclick=()=>{if(!q.value&&!F.q){srow.hidden=true;sb.setAttribute("aria-expanded",false);q.blur();applyFilter();return}q.value="";F.q="";renderFeed();q.focus()};
 function play(i,t){
   const r=RECS[i];if(!r)return;
   if(cur!==i)track("Play",{shop:r.src.S.shop,where:"feed"});
