@@ -1,0 +1,30 @@
+name: Stock check
+
+# Revisits the product pages of recent records and marks sold-out ones in releases.json (tools/stock_check.py).
+on:
+  push:
+    branches: [main]
+    paths: [tools/stock_probe_request.txt]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stock-check
+  cancel-in-progress: false
+
+jobs:
+  stock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Probe
+        run: |
+          python3 tools/stock_check.py --probe
+          git add tools/stock_probe.txt && git commit -q -m "Stock probe" && for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
