@@ -232,6 +232,13 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .buyrow{margin-top:16px}
   .buyrow .price{font-size:30px}
 }
+/* Kleine Handys (User 27.11., 22:14): Trackliste zusammengeklappt, nur der laufende Track, dafür grössere Kiste. */
+@media (max-width:860px) and (max-height:620px){
+  .tl{height:24px;max-height:24px;overflow:hidden}
+  .tl li:not(.on){display:none}
+  .tl:not(:has(li.on)) li:first-child{display:block}
+  .side{margin-top:22px}.rinfo .ti{margin-bottom:10px}.buyrow{margin-top:12px}
+}
 </style>
 </head>
 <body>
