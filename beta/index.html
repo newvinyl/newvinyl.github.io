@@ -78,7 +78,6 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   padding:.42em .62em .36em;border-radius:1.5px;
   background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.6),transparent 60%),linear-gradient(170deg,#f6f4ee,#e7e3d9);
   box-shadow:0 1px 1px rgba(0,0,0,.55),0 4px 8px rgba(0,0,0,.35),inset 0 0 0 .5px rgba(0,0,0,.08);}}
-.start{all:unset;cursor:pointer;position:absolute;left:50%;top:calc(var(--cv) * 1);transform:translate(-50%,-50%);z-index:300;background:var(--yellow);color:var(--ink);font:800 17px/1 var(--display);padding:16px 22px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
 .end{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:150;text-align:center;font:500 13px/1.6 var(--mono);color:var(--muted)}
 .end button{all:unset;cursor:pointer;margin-top:10px;display:inline-block;border:2px solid var(--white);color:var(--fg);padding:9px 14px;font:700 14px var(--display)}
 .bagtop.pop{animation:pop .4s ease}@keyframes pop{40%{transform:scale(1.22)}}
@@ -117,6 +116,13 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .l-rt{grid-area:3/5;justify-self:start}
 .l-dn{grid-area:4/2/5/5;text-align:center;max-width:none;padding-top:2px}
 .sp{grid-area:5/2/6/5;width:100%;height:44px;margin-top:14px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.sp.nudge{animation:nudge 3s cubic-bezier(.45,0,.55,1) infinite}
+.sp.nudge span{animation:nudgetx 3s cubic-bezier(.45,0,.55,1) infinite}
+/* Leertaste lädt zum Start ein: alle 3 Sekunden ein weicher gelber Tastendruck, bis zum ersten Ton */
+@keyframes nudge{0%,62%,100%{background:#151515;color:var(--fg);border-color:#6a6e74;transform:none;border-bottom-width:6px}
+  74%,84%{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(3px);border-bottom-width:3px}}
+@keyframes nudgetx{0%,62%,100%{color:var(--muted)}74%,84%{color:var(--ink)}}
+@media (prefers-reduced-motion:reduce){.sp.nudge,.sp.nudge span{animation:none}}
 .sp span{color:var(--muted);margin-left:8px}.sp.hit span,.sp:active span{color:var(--ink)}
 .rfoot{font:400 11px/1.7 var(--mono);color:var(--muted);text-align:center}
 .rfoot kbd{font:inherit;color:var(--fg);border:1px solid #555;border-bottom-width:2px;padding:1px 5px;margin-right:4px}
@@ -152,7 +158,6 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <div class="inside"></div>
     <div class="cnt" id="cnt"></div>
     <div class="bin"><span id="binlbl">Fresh today</span></div>
-    <button class="start" id="start" type="button">Start digging ▶</button>
   </div>
   <aside class="side">
     <section class="rinfo" id="info" aria-live="polite"><p class="load">Loading the crate…</p></section>
@@ -166,7 +171,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
         <button class="key k-rt" type="button" data-k="ArrowRight" aria-label="Next track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <span class="lb l-rt"><b>Next track</b></span>
         <span class="lb l-dn"><b>Previous record</b></span>
-        <button class="key sp" type="button" data-k=" " aria-label="Play or pause">Space<span>Play / pause</span></button>
+        <button class="key sp nudge" type="button" data-k=" " aria-label="Play or pause">Space<span>Play / pause</span></button>
       </div>
     </div>
     <div class="rfoot"><span class="dk"><kbd>Enter</kbd>open at the shop · click the record for the next one</span><span class="mb">Swipe ↑ next · ↓ back · ← bag · → track</span><br><a href="/">Back to the feed</a></div>
@@ -282,7 +287,7 @@ function go(i){
 }
 function playTrack(j){
   clearTimeout(pt);const r=L[cur];if(!r||!r.tracks[j])return;
-  ti=j;listening=true;stage.classList.remove("idle");document.getElementById("start").hidden=true;
+  ti=j;listening=true;stage.classList.remove("idle");document.querySelector(".sp").classList.remove("nudge");
   au.src=r.tracks[j].u;au.play().catch(()=>{});paintInfo();
 }
 function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}playTrack((ti+1)%r.tracks.length)}
@@ -313,7 +318,6 @@ au.addEventListener("pause",()=>{stage.classList.remove("playing");const n=docum
 au.addEventListener("timeupdate",()=>{const i=document.getElementById("progi");if(i&&au.duration)i.style.width=(au.currentTime/au.duration*100)+"%"});
 // Ende der Hörprobe: nächster Track, nach dem letzten die nächste Platte (Kiste läuft von selbst weiter)
 au.addEventListener("ended",()=>{const r=L[cur];if(r&&ti+1<r.tracks.length)playTrack(ti+1);else go(cur+1)});
-document.getElementById("start").onclick=()=>{playTrack(0);track("Beta play",{crate:crate.name,start:1});stage.focus({preventScroll:true})};
 
 document.addEventListener("keydown",e=>{
   if(e.metaKey||e.ctrlKey||e.altKey||/input|textarea/i.test(e.target.tagName))return;
