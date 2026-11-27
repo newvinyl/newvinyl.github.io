@@ -191,7 +191,8 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   main{display:flex;flex-direction:column;justify-content:flex-start;gap:8px;padding:6px 16px 10px}
   .stage{min-height:0;height:calc(var(--cv) * 1.5);align-self:stretch;flex:none}
   .side{padding:0;gap:0;align-self:stretch;justify-content:flex-start;min-height:0;flex:none}
-  .ctl,.rfoot,.rinfo .now,.rinfo .ar,.rinfo .ti,.rinfo .me,.tlh{display:none!important}
+  .ctl,.rfoot,.rinfo .now,.rinfo .me,.tlh,.bin span{display:none!important}
+  .rinfo .ti{margin-bottom:6px}
   .tl{height:auto;max-height:82px;margin:0;border-top:1px solid #222;-webkit-mask-image:none!important;mask-image:none!important}
   .tl li{border-bottom:1px solid #1a1a1a}
   .tl button{padding:4px 0!important;font-size:11px!important;line-height:14px!important;gap:8px!important}
@@ -207,11 +208,11 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .gh svg{overflow:visible;filter:drop-shadow(0 1px 3px rgba(0,0,0,.7))}
   .gh-up{left:50%;bottom:calc(var(--cv) * .62);transform:translateX(-6px)}
   .gh-up span{position:absolute;right:calc(100% + 2px);bottom:18px;white-space:nowrap}
-  .gh-up svg{width:14px;height:calc(var(--cv) * .5);animation:gh-up 2.2s cubic-bezier(.4,0,.2,1) infinite}
+  .gh-up svg{width:24px;height:calc(var(--cv) * .3);animation:gh-up 2.2s cubic-bezier(.4,0,.2,1) infinite}
   .gh-rt{right:calc(50% - var(--cv) * .5 + 8px);bottom:calc(var(--cv) * .9);flex-direction:column;align-items:flex-end}
-  .gh-rt svg{width:calc(var(--cv) * .42);height:14px;animation:gh-rt 2.2s cubic-bezier(.4,0,.2,1) infinite}
+  .gh-rt svg{width:calc(var(--cv) * .26);height:24px;animation:gh-rt 2.2s cubic-bezier(.4,0,.2,1) infinite}
   .gh-lt{left:calc(50% - var(--cv) * .5 + 8px);bottom:calc(var(--cv) * .9);flex-direction:column;align-items:flex-start}
-  .gh-lt svg{width:calc(var(--cv) * .42);height:14px;animation:gh-lt 2.2s cubic-bezier(.4,0,.2,1) infinite}
+  .gh-lt svg{width:calc(var(--cv) * .26);height:24px;animation:gh-lt 2.2s cubic-bezier(.4,0,.2,1) infinite}
 }
 @keyframes gh-up{0%{clip-path:inset(100% 0 0 0);opacity:1}55%{clip-path:inset(0 0 0 0);opacity:1}80%,100%{clip-path:inset(0 0 0 0);opacity:0}}
 @keyframes gh-rt{0%{clip-path:inset(0 100% 0 0);opacity:1}55%{clip-path:inset(0 0 0 0);opacity:1}80%,100%{clip-path:inset(0 0 0 0);opacity:0}}
@@ -236,9 +237,9 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <div class="inside"></div>
     <svg class="rims" viewBox="0 0 124 62" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151515"/><stop offset=".55" stop-color="#262626"/><stop offset="1" stop-color="#363636"/></linearGradient></defs><polygon points="0,62 5.2,62 15.6,0 11.8,0" fill="url(#rg)"/><polygon points="124,62 118.8,62 108.4,0 112.2,0" fill="url(#rg)"/><line x1="5.2" y1="62" x2="15.6" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/><line x1="118.8" y1="62" x2="108.4" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/></svg>
     <div class="cnt" id="cnt"></div>
-    <div class="gh gh-up" id="ghup"><span>Next record</span><svg viewBox="0 0 14 100" preserveAspectRatio="none"><defs><linearGradient id="gu" gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M7 100V4" stroke="url(#gu)" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/><path d="M1 9 7 2l6 7" stroke="#ffea00" stroke-width="3" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
-    <div class="gh gh-rt" id="ghrt"><span>Next track</span><svg viewBox="0 0 100 14" preserveAspectRatio="none"><defs><linearGradient id="gr" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M0 7h96" stroke="url(#gr)" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/><path d="M91 1l7 6-7 6" stroke="#ffea00" stroke-width="3" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
-    <div class="gh gh-lt" id="ghlt"><span>Into the bag</span><svg viewBox="0 0 100 14" preserveAspectRatio="none"><defs><linearGradient id="gl" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M100 7H4" stroke="url(#gl)" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/><path d="M9 1 2 7l7 6" stroke="#ffea00" stroke-width="3" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
+    <div class="gh gh-up" id="ghup"><span>Next record</span><svg viewBox="-5 -6 24 112" preserveAspectRatio="none"><defs><linearGradient id="gu" gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M7 100V4" stroke="url(#gu)" stroke-width="5.5" fill="none" vector-effect="non-scaling-stroke"/><path d="M1 9 7 2l6 7" stroke="#ffea00" stroke-width="5.5" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
+    <div class="gh gh-rt" id="ghrt"><span>Next track</span><svg viewBox="-6 -5 112 24" preserveAspectRatio="none"><defs><linearGradient id="gr" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M0 7h96" stroke="url(#gr)" stroke-width="5.5" fill="none" vector-effect="non-scaling-stroke"/><path d="M91 1l7 6-7 6" stroke="#ffea00" stroke-width="5.5" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
+    <div class="gh gh-lt" id="ghlt"><span>Into the bag</span><svg viewBox="-6 -5 112 24" preserveAspectRatio="none"><defs><linearGradient id="gl" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M100 7H4" stroke="url(#gl)" stroke-width="5.5" fill="none" vector-effect="non-scaling-stroke"/><path d="M9 1 2 7l7 6" stroke="#ffea00" stroke-width="5.5" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
     <div class="bin"><span id="binlbl">Fresh today</span></div>
   </div>
   <aside class="side">
@@ -377,7 +378,6 @@ function render(fresh){
 function paintInfo(){
   const r=L[cur];if(!r){info.innerHTML=`<div class="now"><span>${esc(crate.name)}</span><span>${L.length} records</span></div><div class="ti">You flipped through the whole crate.</div>`;return}
   const m=r.main,t=r.tracks[ti]||r.tracks[0],inb=cart.includes(r.key);
-  if(TOUCH)document.getElementById("binlbl").innerHTML=`<b>${esc(m.a)}</b><small>${esc(m.t)}</small>`;
   {const k=document.querySelector('.key[data-k="ArrowLeft"]');if(k)k.classList.toggle("off",r.out&&!inb)}
   info.innerHTML=`<div class="now"><span id="nowl">${!au.paused&&listening?"Now playing":"In front"}</span></div>
   <h1 class="ar">${esc(m.a)}${inb?'<span class="inb">In bag</span>':r.out?'<span class="sob" id="sob">Sold out</span>':""}</h1><div class="ti">${esc(m.t)}</div>
