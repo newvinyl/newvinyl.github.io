@@ -77,10 +77,16 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .inside{position:absolute;left:50%;bottom:calc(var(--cv) * .3);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:1;pointer-events:none;
   clip-path:polygon(0 100%,100% 100%,90.5% 0,9.5% 0);
   background:linear-gradient(90deg,#262626 0%,#1a1a1a 9.6%,#070707 9.7%,#050505 50%,#070707 90.3%,#1a1a1a 90.4%,#262626 100%)}
+/* Brettdicke (User 27.11., Variante A, Seiten etwas dicker): Oberkanten der Wände als Flächen in Perspektive.
+   Seiten: SVG .rims hinter den Platten; Front: Fläche auf der Frontwand, nach hinten schmaler (Gehrung zu den Seiten) */
+.rims{position:absolute;left:50%;bottom:calc(var(--cv) * .30);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:2;pointer-events:none;overflow:visible}
+.bin::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:calc(var(--cv) * 0.03);
+  clip-path:polygon(0 100%,100% 100%,calc(100% - var(--cv) * .052) 0,calc(var(--cv) * .052) 0);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='30'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.003 .6' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 -.035'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/100% 100%,linear-gradient(0deg,#3b3b3b,#2a2a2a)}
 .inside::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.9),rgba(13,13,13,0) 60%)}
 .bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .32);transform:translateX(-50%);z-index:200;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.002 .09' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 -.028'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/160% 100%,linear-gradient(180deg,#1c1c1c 0%,#161616 50%,#131313 100%);
-  box-shadow:0 -14px 28px rgba(0,0,0,.7)}
+  box-shadow:inset 0 1px 0 #4a4a4a,0 -14px 28px rgba(0,0,0,.7)}
 .bin span{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);white-space:nowrap;
   font:700 calc(var(--cv) * .056)/1 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;letter-spacing:.005em;text-transform:uppercase;color:#141414;
   padding:.42em .62em .36em;border-radius:1.5px;
@@ -187,6 +193,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   <div class="stage idle" id="stage" tabindex="0" aria-label="Record crate. Arrow up for the next record, arrow left puts it in the bag.">
     <div class="glow"></div>
     <div class="inside"></div>
+    <svg class="rims" viewBox="0 0 124 62" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151515"/><stop offset=".55" stop-color="#262626"/><stop offset="1" stop-color="#363636"/></linearGradient></defs><polygon points="0,62 5.2,62 15.6,0 11.8,0" fill="url(#rg)"/><polygon points="124,62 118.8,62 108.4,0 112.2,0" fill="url(#rg)"/><line x1="5.2" y1="62" x2="15.6" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/><line x1="118.8" y1="62" x2="108.4" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/></svg>
     <div class="cnt" id="cnt"></div>
     <div class="bin"><span id="binlbl">Fresh today</span></div>
   </div>
