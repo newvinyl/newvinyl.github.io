@@ -353,6 +353,22 @@ body.playing .igbadge{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
 @keyframes igSpin{to{transform:rotate(360deg)}}
 @media (min-width:900px){.igbadge{left:32px;width:118px;height:118px}}
 @media (prefers-reduced-motion:reduce){.igin,.igring,.igbadge.press .igin{animation:none}}
+/* Beta-Einladung (User 27.11.26): Pop-up beim Seitenaufruf, nur Desktop (Beta ist auf dem Handy aus) */
+.bpop{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px;background:rgba(0,0,0,.72);animation:bpIn .25s ease-out}
+.bpop[hidden]{display:none}
+.bpbox{background:#000;border:6px solid var(--yellow);padding:46px 50px 40px;max-width:640px;width:100%;text-align:center;animation:bpUp .38s cubic-bezier(.2,1.3,.4,1)}
+.bpbox h2{margin:0 0 34px;font:800 clamp(38px,5vw,62px)/.98 var(--display);letter-spacing:-.02em;color:var(--yellow);-webkit-text-stroke:.03em var(--yellow);paint-order:stroke fill;text-transform:none}
+.bpbtns{display:flex;flex-direction:column;align-items:center;gap:16px}
+.bpb{all:unset;cursor:pointer;box-sizing:border-box;background:var(--white);color:var(--ink);text-align:center;box-shadow:0 7px 0 #6d6d6d;transition:transform .09s ease-out,box-shadow .09s ease-out,background .12s}
+.bpb:hover,.bpb:focus-visible{background:var(--yellow);box-shadow:0 7px 0 #8a7d14}
+.bpb:active,.bpb.down{transform:translateY(7px);box-shadow:0 0 0 #6d6d6d}
+.bpb.yes{font:800 26px/1 var(--display);padding:22px 40px;min-width:320px}
+.bpb.no{font:500 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;box-shadow:0 4px 0 #6d6d6d}
+.bpb.no:hover,.bpb.no:focus-visible{box-shadow:0 4px 0 #8a7d14}
+.bpb.no:active,.bpb.no.down{transform:translateY(4px);box-shadow:0 0 0 #6d6d6d}
+@keyframes bpIn{from{opacity:0}}
+@keyframes bpUp{from{transform:translateY(24px) scale(.94);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bpop,.bpbox{animation:none}}
 </style>
 </head>
 <body>
@@ -931,6 +947,28 @@ document.getElementById("mt").onclick=()=>{buildTo(cur);document.querySelector(`
   }}
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintBag()}});
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{document.getElementById("feed").innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
+</script>
+<div class="bpop" id="bpop" hidden role="dialog" aria-modal="true" aria-labelledby="bph"><div class="bpbox">
+  <h2 id="bph">Get your fingers dirty!</h2>
+  <div class="bpbtns"><button class="bpb yes" id="bpyes" type="button">Try Beta!</button><button class="bpb no" id="bpno" type="button">Nah, maybe later</button></div>
+</div></div>
+<script>
+/* Beta-Einladung: nur Desktop, nur Startseite, nicht bei geteilten Links (?r=). «Nah» blendet sie 3 Tage aus, «Try Beta» für immer */
+(function(){
+  const b=document.getElementById("bpop");if(!b)return;
+  const desk=matchMedia("(hover:hover) and (pointer:fine)").matches&&!matchMedia("(max-width:899px)").matches&&!/iPhone|iPad|Android/i.test(navigator.userAgent);
+  let st={};try{st=JSON.parse(localStorage.getItem("mvr-betapop")||"{}")}catch(e){}
+  const tr=(n,d)=>{try{window.umami&&umami.track(n,d)}catch(e){}};
+  if(!desk||location.pathname!=="/"||/[?&]r=/.test(location.search)||location.hash||st.yes||(st.no&&Date.now()-st.no<3*864e5))return;
+  b.hidden=false;setTimeout(()=>tr("Beta popup",{a:"shown"}),1500);
+  const save=v=>{try{localStorage.setItem("mvr-betapop",JSON.stringify(v))}catch(e){}};
+  const press=(el,fn)=>{el.classList.add("down");setTimeout(fn,170)};
+  document.getElementById("bpyes").onclick=e=>press(e.currentTarget,()=>{save({yes:Date.now()});tr("Beta popup",{a:"yes"});location.href="/beta/"});
+  const no=()=>{save({no:Date.now()});tr("Beta popup",{a:"no"});b.hidden=true};
+  document.getElementById("bpno").onclick=e=>press(e.currentTarget,no);
+  b.addEventListener("click",e=>{if(e.target===b)no()});
+  addEventListener("keydown",e=>{if(!b.hidden&&e.key==="Escape")no()});
+})();
 </script>
 </body>
 </html>
