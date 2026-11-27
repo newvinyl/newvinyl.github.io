@@ -386,6 +386,11 @@ def main():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 2 and sys.argv[1] == "--probe" and sys.argv[2].split()[0].endswith(".mp3"):
+        # Mehrere Clip-Adressen (durch Leerzeichen getrennt) auf Erreichbarkeit prüfen
+        for u in sys.argv[2].split():
+            print(u, "ok" if check_audio(u) else "fehlt")
+        sys.exit(0)
     if len(sys.argv) > 2 and sys.argv[1] == "--probe":
         page, st = get_page(sys.argv[2])
         print("status:", st, "len:", len(page or ""))
