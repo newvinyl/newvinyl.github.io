@@ -83,16 +83,28 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .bagtop.pop{animation:pop .4s ease}@keyframes pop{40%{transform:scale(1.22)}}
 
 /* Rechte Seite: oben kompakt die Platte, in der Mitte die Bedienung */
-.side{min-width:0;height:calc(var(--cv) * 1.5);min-height:340px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.side{min-width:0;min-height:calc(var(--cv) * 1.5);padding:16px 0;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
 .rinfo{min-width:0}
 .now{display:flex;justify-content:space-between;gap:10px;font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .ar{font:800 18px/1.15 var(--display);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ti{font:400 14px/1.3 var(--body);color:#cfcfcb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .me{font:400 11px/1.5 var(--mono);color:var(--muted);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.trk{display:flex;align-items:center;gap:8px;margin-top:10px;font:400 12px/1.2 var(--mono);color:var(--fg);min-width:0}
-.trk span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.trk em{font-style:normal;color:var(--muted);flex:none}
-.prog{position:relative;height:3px;background:var(--line);margin-top:7px;cursor:pointer}
-.prog i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--yellow)}
+/* Tracklist: alle Tracks; ab 6 Tracks ein Fenster von 5 Zeilen, das dem laufenden Track folgt, Ränder ausgeblendet */
+.tl{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid #222;max-height:calc(5 * 27px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;position:relative}
+.tl::-webkit-scrollbar{display:none}
+.tl.many{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14px,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(180deg,transparent 0,#000 14px,#000 calc(100% - 22px),transparent)}
+.tl.many.top{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 22px),transparent)}
+.tl.many.bot{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14px);mask-image:linear-gradient(180deg,transparent 0,#000 14px)}
+.tl li{position:relative;border-bottom:1px solid #1c1c1c}
+.tl button{all:unset;cursor:pointer;box-sizing:border-box;display:flex;align-items:center;gap:8px;width:100%;height:26px;font:400 12px/1 var(--mono);color:#cfcfcb}
+.tl button:hover,.tl button:focus-visible{color:var(--fg)}
+.tl em{font-style:normal;color:var(--muted);width:24px;flex:none}
+.tl span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl li.on button,.tl li.on em{color:var(--yellow)}
+.tl .pg{position:absolute;left:0;right:0;bottom:-1px;height:3px;cursor:pointer;display:none}
+.tl li.on .pg{display:block}
+.tl .pg i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--yellow)}
+.tlh{display:flex;justify-content:space-between;font:400 10.5px/1 var(--mono);color:var(--muted);margin-top:7px;letter-spacing:.04em}
 .buyrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
 .price{font:800 17px/1 var(--display);font-variant-numeric:tabular-nums}
 .price small{font-size:.6em;vertical-align:.45em;margin-right:2px}
@@ -101,7 +113,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .cnt{position:absolute;left:50%;bottom:calc(var(--cv) * 1.5);transform:translateX(-50%);z-index:250;font:500 15px/1 var(--mono);letter-spacing:.08em;color:var(--yellow);font-variant-numeric:tabular-nums;white-space:nowrap}
 .inb{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--pink);padding:3px 5px;margin-left:8px;vertical-align:2px}
 
-.ctl{flex:1;display:flex;align-items:center;justify-content:center}
+.ctl{flex:1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px}
 .pad{display:grid;grid-template-columns:auto 64px 64px 64px auto;grid-template-rows:auto 64px 64px auto auto;gap:8px;align-items:center;justify-items:center}
 .key{all:unset;cursor:pointer;width:64px;height:64px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:2px solid #6a6e74;border-bottom-width:6px;border-radius:8px;background:#151515;color:var(--fg);transition:transform .08s,background .12s,color .12s,border-color .12s}
 .key svg{width:26px;height:26px}
@@ -139,6 +151,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .rfoot .dk{display:none}
 }
 @media (min-width:861px){.rfoot .mb{display:none}}
+@media (min-width:861px) and (max-height:800px){.tl{max-height:calc(4 * 27px)}.side{padding:6px 0;gap:12px}.pad{grid-template-columns:auto 54px 54px 54px auto;grid-template-rows:auto 54px 54px auto auto;gap:6px}.key{width:54px;height:54px}.key.sp{width:100%;height:38px;margin-top:8px}.me{display:none}}
 @media (prefers-reduced-motion:reduce){.rec{transition:none}}
 </style>
 </head>
@@ -273,12 +286,19 @@ function paintInfo(){
   info.innerHTML=`<div class="now"><span id="nowl">${!au.paused&&listening?"Now playing":"In front"}</span></div>
   <h1 class="ar">${esc(m.a)}${inb?'<span class="inb">In bag</span>':""}</h1><div class="ti">${esc(m.t)}</div>
   <div class="me">${[m.l,m.cat,m.f,r.g].filter(Boolean).map(esc).join(" · ")}</div>
-  <div class="trk"><em>${esc(t?(t.s||ti+1):"")}</em><span>${esc(t?(t.n||"Track "+(ti+1)):"")}</span><em>${r.tracks.length>1?`${ti+1}/${r.tracks.length}`:""}</em></div>
-  <div class="prog" id="prog"><i id="progi"></i></div>
+  <ol class="tl${r.tracks.length>5?" many":""}" id="tl">${r.tracks.map((x,j)=>`<li class="${j===ti&&listening?"on":""}"><button type="button" data-j="${j}"><em>${esc(x.s||j+1)}</em><span>${esc(x.n||"Track "+(j+1))}</span></button><div class="pg"><i></i></div></li>`).join("")}</ol>
+  ${r.tracks.length>5?`<div class="tlh"><span>${r.tracks.length} tracks</span><span id="tlm"></span></div>`:""}
   <div class="buyrow"><span class="price">${money(m.S.cur,m.p)}</span><a class="buy" id="buy" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.S.shop)}</a></div>`;
   document.getElementById("buy").onclick=()=>track("Shop click",{shop:m.S.shop,where:"beta"});
-  document.getElementById("prog").onclick=e=>{if(!au.duration)return;const b=e.currentTarget.getBoundingClientRect();au.currentTime=au.duration*Math.min(1,Math.max(0,(e.clientX-b.left)/b.width))};
+  const tl=document.getElementById("tl");
+  tl.querySelectorAll("button").forEach(b=>b.onclick=()=>playTrack(+b.dataset.j));
+  tl.querySelectorAll(".pg").forEach(g=>g.onclick=e=>{if(!au.duration)return;const b=g.getBoundingClientRect();au.currentTime=au.duration*Math.min(1,Math.max(0,(e.clientX-b.left)/b.width))});
+  if(r.tracks.length>5){const on=tl.children[ti];if(on)tl.scrollTop=Math.max(0,on.offsetTop-2*on.offsetHeight);tlEdges();tl.onscroll=tlEdges}
 }
+// Fenster-Hinweis: welche Ränder ausblenden, wie viele Tracks noch darunter liegen
+function tlEdges(){const tl=document.getElementById("tl");if(!tl)return;const atTop=tl.scrollTop<2,atBot=tl.scrollTop+tl.clientHeight>=tl.scrollHeight-2;
+  tl.classList.toggle("top",atTop&&!atBot);tl.classList.toggle("bot",atBot&&!atTop);
+  const m=document.getElementById("tlm");if(m){const below=[...tl.children].filter(li=>li.offsetTop>=tl.scrollTop+tl.clientHeight-4).length;m.textContent=below?`↓ ${below} more`:""}}
 let pt=null;
 function go(i){
   i=Math.max(0,Math.min(L.length,i));if(i===cur)return;cur=i;ti=0;render();flips++;
@@ -315,7 +335,7 @@ function flash(k){const b=document.querySelector(`.key[data-k="${k===" "?" ":k}"
 document.querySelectorAll(".key").forEach(b=>b.onclick=()=>{act(KEYMAP[b.dataset.k]);stage.focus({preventScroll:true})});
 au.addEventListener("play",()=>{stage.classList.add("playing");const n=document.getElementById("nowl");if(n)n.textContent="Now playing"});
 au.addEventListener("pause",()=>{stage.classList.remove("playing");const n=document.getElementById("nowl");if(n)n.textContent="In front"});
-au.addEventListener("timeupdate",()=>{const i=document.getElementById("progi");if(i&&au.duration)i.style.width=(au.currentTime/au.duration*100)+"%"});
+au.addEventListener("timeupdate",()=>{const i=document.querySelector(".tl li.on .pg i");if(i&&au.duration)i.style.width=(au.currentTime/au.duration*100)+"%"});
 // Ende der Hörprobe: nächster Track, nach dem letzten die nächste Platte (Kiste läuft von selbst weiter)
 au.addEventListener("ended",()=>{const r=L[cur];if(r&&ti+1<r.tracks.length)playTrack(ti+1);else go(cur+1)});
 
