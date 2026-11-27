@@ -266,6 +266,10 @@ function build(data){
   const week=ALL.filter(r=>days.slice(0,7).includes(r.first));
   CRATES.push({id:"today",name:"Fresh today",recs:ALL.filter(r=>r.first===today)});
   CRATES.push({id:"week",name:"This week",recs:week});
+  // Kalendermonate, ausgehend vom neusten Datum in den Daten
+  const ym=today.slice(0,7),pm=(([y,m])=>m===1?`${y-1}-12`:`${y}-${String(m-1).padStart(2,"0")}`)(ym.split("-").map(Number));
+  CRATES.push({id:"month",name:"This month",recs:ALL.filter(r=>r.first.slice(0,7)===ym)});
+  CRATES.push({id:"lastmonth",name:"Last month",recs:ALL.filter(r=>r.first.slice(0,7)===pm)});
   const gs=r=>String(r.g).split(/\s*[\/,]\s*/).map(g=>g.replace(/\s*·.*$/,"").trim()),cnt={};week.forEach(r=>gs(r).forEach(g=>{if(g)cnt[g]=(cnt[g]||0)+1}));
   Object.entries(cnt).filter(([,n])=>n>=3).sort((a,b)=>b[1]-a[1]).forEach(([g])=>CRATES.push({id:"g:"+g,name:g,recs:week.filter(r=>gs(r).includes(g))}));
   const bar=document.getElementById("bar");
