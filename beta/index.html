@@ -355,7 +355,7 @@ const TOUCH=matchMedia("(max-width:860px)").matches;
 const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?store.get("mvr-betahints",{}):{});
 function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
   if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)};
-    const bg=!up&&flips>=3&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));sh("ghup",up&&!rt);sh("ghlt",bg);sh("ghrt",rt&&!bg)}
+    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));sh("ghup",up&&!rt);sh("ghlt",bg);sh("ghrt",rt)}
   if(up&&rt)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
   document.querySelector(".k-rt").classList.toggle("nudge",rt)}
