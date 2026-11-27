@@ -264,6 +264,8 @@ body.playing .ffab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .habout{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 6px}
 .habout:hover,.habout:focus-visible{color:var(--yellow)}
 .hbeta{color:var(--yellow)}.hbeta:hover,.hbeta:focus-visible{color:var(--white)}
+/* Beta vorerst nur Desktop (User 27.11.26) */
+@media (max-width:899px),(pointer:coarse){.hbeta{display:none}}
 .intro{margin:12px 0 0;font-weight:400;font-size:13px;line-height:1.45;color:var(--muted);max-width:62ch}
 .intro b{color:var(--fg);font-weight:600}
 .intro a{color:var(--muted);text-underline-offset:3px}
