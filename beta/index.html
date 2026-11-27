@@ -406,7 +406,7 @@ function build(data){
     const avail=all.filter(x=>x.st!=="out"),out=!avail.length;   // ausverkauft nur, wenn kein Shop sie mehr hat
     const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf),main=priced[0]||src;
     const cover=(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
-    ALL.push({gk,first,main,key:main.key,tracks:(src.tr||[]).filter(t=>t.u),cover,out,g:(main.g||src.g||"")});
+    ALL.push({gk,first,main,key:main.key,tracks:(src.tr||[]).filter((t,i,a)=>t.u&&a.findIndex(x=>x.u===t.u)===i),cover,out,g:(main.g||src.g||"")});
   }
   ALL.sort((a,b)=>b.first.localeCompare(a.first));
   const days=[...new Set(ALL.map(r=>r.first))].sort().reverse(),today=days[0];
@@ -427,7 +427,9 @@ function build(data){
   openCrate(CRATES.find(c=>c.id===want)||CRATES[0]);
 }
 function openCrate(c){
-  crate=c;L=c.recs;cur=0;ti=0;EL.forEach(e=>e.remove());EL.clear();
+  crate=c;L=c.recs;cur=0;
+  // Solange die Wisch-Anleitung läuft: die ersten 4 Platten haben mehrere Hörproben, damit SKIP auch etwas tut
+  if(TOUCH&&!used.bag){L=L.slice();const ok=r=>r.tracks.length>1&&!r.out;for(let i=0;i<4&&i<L.length;i++)if(!ok(L[i])){const j=L.findIndex((r,k)=>k>i&&ok(r));if(j>0)L.splice(i,0,L.splice(j,1)[0])}}ti=0;EL.forEach(e=>e.remove());EL.clear();
   CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));c.btn.scrollIntoView({block:"nearest",inline:"nearest"});
   if(!TOUCH)document.getElementById("binlbl").textContent=c.name;
   try{history.replaceState(null,"","#crate="+encodeURIComponent(c.id))}catch(e){}
