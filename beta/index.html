@@ -241,7 +241,7 @@ function coverFail(im){const n=+(im.dataset.t||0)+1;im.dataset.t=n;const nx=n===
 
 const stage=document.getElementById("stage"),info=document.getElementById("info"),au=document.getElementById("au");
 let ALL=[],CRATES=[],crate=null,L=[],cur=0,ti=0,listening=false,cart=store.get("mvr-cart",[]),EL=new Map(),flips=0,busy=false;
-const VIS=12; // sichtbare Platten in der Kiste
+const VIS=18; // sichtbare Platten in der Kiste
 const jit=i=>(((i*9301+49297)%233280)/233280-.5)*3.2; // feste kleine Schräglage pro Platte
 
 // Zähler mit Rollziffern
@@ -308,8 +308,8 @@ function place(e,k,i){
   e.classList.toggle("k0",k===0);e.classList.toggle("gone",k<0);
   if(k<0){ // umgeblättert: kippt nach vorne und verschwindet hinter der Kistenwand
     e.style.transform=`translateY(calc(var(--cv) * .75)) perspective(900px) rotateX(-28deg) rotate(${jit(i)}deg)`;e.style.zIndex=150;e.style.filter="brightness(.5)";e.style.opacity=0;return}
-  e.style.transform=`translateY(calc(var(--cv) * ${-k*.034})) scale(${1-k*.012}) rotate(${k?jit(i):0}deg)`;
-  e.style.zIndex=100-k;e.style.filter=`brightness(${1-k*.055})`;e.style.opacity=k>=VIS?0:1;
+  e.style.transform=`translateY(calc(var(--cv) * ${-k*.021})) scale(${1-k*.009}) rotate(${k?jit(i):0}deg)`;
+  e.style.zIndex=100-k;e.style.filter=`brightness(${1-k*.036})`;e.style.opacity=k>=VIS?0:1;
 }
 function render(fresh){
   const keep=new Set();for(let i=cur-2;i<=cur+VIS;i++){if(i<0||i>=L.length)continue;keep.add(i);const e=el(i);if(fresh)e.style.transition="none";place(e,i-cur,i);if(fresh){void e.offsetWidth;e.style.transition=""}}
