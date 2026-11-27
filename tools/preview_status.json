@@ -1,15 +1,15 @@
 {
- "date": "2026-11-26",
+ "date": "2026-11-27",
  "total": {
-  "records": 6977,
-  "tracks": 5709,
-  "clip": 1045,
-  "none": 223
+  "records": 7098,
+  "tracks": 5815,
+  "clip": 1052,
+  "none": 231
  },
  "shops": {
   "Hardwax": {
-   "records": 309,
-   "tracks": 309,
+   "records": 319,
+   "tracks": 319,
    "clip": 0,
    "none": 0
   },
@@ -20,8 +20,8 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 30,
-   "tracks": 20,
+   "records": 31,
+   "tracks": 21,
    "clip": 3,
    "none": 7
   },
@@ -33,27 +33,27 @@
   },
   "Phonica": {
    "records": 173,
-   "tracks": 134,
-   "clip": 9,
+   "tracks": 135,
+   "clip": 8,
    "none": 30
   },
   "Redeye Records": {
-   "records": 1862,
-   "tracks": 820,
-   "clip": 993,
-   "none": 49
+   "records": 1873,
+   "tracks": 835,
+   "clip": 992,
+   "none": 46
   },
   "Yoyaku": {
-   "records": 418,
-   "tracks": 417,
+   "records": 459,
+   "tracks": 457,
    "clip": 0,
-   "none": 1
+   "none": 2
   },
   "Kompakt": {
    "records": 173,
-   "tracks": 163,
+   "tracks": 164,
    "clip": 0,
-   "none": 10
+   "none": 9
   },
   "Juno Records": {
    "records": 1248,
@@ -62,16 +62,16 @@
    "none": 17
   },
   "Deejay.de": {
-   "records": 461,
-   "tracks": 372,
-   "clip": 33,
-   "none": 56
+   "records": 502,
+   "tracks": 394,
+   "clip": 42,
+   "none": 66
   },
   "Vinyl Underground": {
-   "records": 549,
-   "tracks": 539,
+   "records": 555,
+   "tracks": 544,
    "clip": 0,
-   "none": 10
+   "none": 11
   },
   "Sound Metaphors": {
    "records": 18,
@@ -86,8 +86,8 @@
    "none": 5
   },
   "Syncrophone": {
-   "records": 125,
-   "tracks": 125,
+   "records": 126,
+   "tracks": 126,
    "clip": 0,
    "none": 0
   },
@@ -98,8 +98,8 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 146,
-   "tracks": 145,
+   "records": 148,
+   "tracks": 147,
    "clip": 0,
    "none": 1
   },
@@ -146,36 +146,39 @@
    "none": 0
   },
   "Rubadub": {
-   "records": 130,
-   "tracks": 125,
+   "records": 138,
+   "tracks": 133,
    "clip": 1,
    "none": 4
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 14,
- "clips_verified": 21182,
- "not_reachable": {},
+ "pages_checked": 1123,
+ "new_from_shop_pages": 15,
+ "copied_from_other_shop": 8,
+ "broken_clips_removed": 16,
+ "clips_verified": 21402,
+ "not_reachable": {
+  "Redeye Records: failed:UnicodeEncodeError": 60,
+  "Redeye Records: http403": 4
+ },
  "clip_hosts": {
   "DL.dropbox.com": {
-   "clips": 37,
+   "clips": 44,
    "failed": 0,
    "sample": []
   },
   "bordelloaparigi.com": {
-   "clips": 697,
+   "clips": 705,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2354,
+   "clips": 2396,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 2170,
+   "clips": 2173,
    "failed": 0,
    "sample": []
   },
@@ -190,7 +193,7 @@
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 552,
+   "clips": 565,
    "failed": 0,
    "sample": []
   },
@@ -200,7 +203,7 @@
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 1576,
+   "clips": 1641,
    "failed": 0,
    "sample": []
   },
@@ -214,13 +217,13 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 554,
+   "clips": 558,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 67,
-   "failed": 8,
+   "clips": 66,
+   "failed": 7,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eg03-stardiving_mit_joerg_burger-01-10_minutes_of_stardiving_91.mp3",
@@ -228,7 +231,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 999,
+   "clips": 1004,
    "failed": 0,
    "sample": []
   },
@@ -239,7 +242,7 @@
   },
   "www.betinos.com": {
    "clips": 122,
-   "failed": 122,
+   "failed": 87,
    "sample": [
     "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
     "https://www.betinos.com/sites/default/files/1_1_C.A.R. - Sunshine.mp3",
@@ -271,7 +274,7 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 980,
+   "clips": 1054,
    "failed": 0,
    "sample": []
   },
