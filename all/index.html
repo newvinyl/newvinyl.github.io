@@ -96,6 +96,8 @@ html.busy #feed{opacity:.4;transition:opacity .1s}html.busy{cursor:progress}
   background:var(--ink);color:var(--white);border:2px solid var(--white);font:700 14px/1 var(--display)}
 .add svg{width:15px;height:15px}
 .add.in{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.add.so{cursor:default;background:var(--ink);border-color:#555;color:#999;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.card.sold .front img{filter:grayscale(.85) brightness(.45)}
 .more{all:unset;cursor:pointer;position:absolute;right:12px;bottom:12px;height:40px;padding:0 13px;display:inline-flex;align-items:center;
   background:var(--ink);color:var(--white);border:2px solid var(--white);font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--yellow)}
@@ -438,10 +440,12 @@ function bagCount(){const b=document.getElementById("bagn");b.textContent=cart.l
 function inBag(rec){return cart.includes(rec.key)}
 function toggleBag(rec){
   cart=store.get("mvr-cart",[]);
+  if(rec.out&&!cart.includes(rec.key))return;
   if(cart.includes(rec.key))cart=cart.filter(k=>k!==rec.key);else{track("Add to bag",{shop:rec.main.S.shop,where:"feed"});cart.push(rec.key);const t=document.getElementById("bagtop");t.classList.remove("pop");void t.offsetWidth;t.classList.add("pop")}
   store.set("mvr-cart",cart);bagCount();paintBag();
 }
-function paintCard(c){const r=RECS[c.dataset.i],on=inBag(r);c.querySelectorAll(".add").forEach(b=>{b.classList.toggle("in",on);b.innerHTML=on?`${CHECK}In bag`:`${PLUS}Bag`})}
+function addLabel(b,r){const on=inBag(r),so=r.out&&!on;b.classList.toggle("in",on);b.classList.toggle("so",so);b.disabled=so;b.innerHTML=on?`${CHECK}In bag`:so?"Sold out":`${PLUS}Bag`}
+function paintCard(c){const r=RECS[c.dataset.i];c.querySelectorAll(".add").forEach(b=>addLabel(b,r))}
 function paintBag(){
   document.querySelectorAll(".card").forEach(paintCard);
   const mb=document.getElementById("mbag");document.getElementById("mbn").textContent=cart.length||"";mb.classList.toggle("has",cart.length>0);
@@ -455,10 +459,12 @@ function build(data){
   for(const [gk,all] of Object.entries(G)){
     const first=all.map(x=>x.first_seen||((x.m||"0000-00")+"-01")).sort()[0];
     const src=all.find(x=>(x.tr||[]).some(t=>t.u));if(!src)continue;
-    const priced=all.filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf);
+    // Ausverkauft (tools/stock_check.py): günstigster Shop, der sie noch hat; nur wenn alle "out" melden, gilt die Platte als ausverkauft
+    const avail=all.filter(x=>x.st!=="out"),out=!avail.length;
+    const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf);
     const main=priced[0]||src;
     const cover=(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
-    recs.push({gk,first,all,main,key:main.key,src,tracks:(src.tr||[]).filter(t=>t.u),cover,shops:new Set(all.map(x=>x.S.shop)).size});
+    recs.push({gk,first,all,main,key:main.key,src,tracks:(src.tr||[]).filter(t=>t.u),cover,out,shops:new Set(all.map(x=>x.S.shop)).size});
   }
   ALL=recs;renderFeed();checkShareLink();
 }
@@ -491,7 +497,7 @@ function renderFeed(){
   if(!days.length){feed.innerHTML='<p class="empty">No records in this period yet.</p>'}
   days.forEach((d,di)=>{
     const list=d==="search"?recs.map(r=>[qScore(r),r]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||(b[1].first>a[1].first?1:-1)).map(x=>x[1])
-      :recs.filter(r=>r.first===d&&chipMatch(r)).sort((a,b)=>b.shops-a.shops||b.tracks.length-a.tracks.length);
+      :recs.filter(r=>r.first===d&&chipMatch(r)).sort((a,b)=>a.out-b.out||b.shops-a.shops||b.tracks.length-a.tracks.length);
     if(!list.length)return;
     const lab=d==="search"?"Search":!rg&&!F.q&&di===0?"Fresh today":d===todayIso?"Today":d===yIso?"Yesterday":fmtDay(d);
     PLAN.push({lab,idx:list.map(r=>RECS.push(r)-1),g:null,h:null});
@@ -547,7 +553,7 @@ function checkShareLink(){
   c.hidden=false;c.classList.add("hit");setTimeout(()=>c.scrollIntoView({block:"center"}),60);
 }
 function card(r,i){
-  const m=r.main,el=document.createElement("article");el.className="card";el.dataset.i=i;
+  const m=r.main,el=document.createElement("article");el.className="card"+(r.out?" sold":"");el.dataset.i=i;
   const hue=HUES[(m.a||"").length%HUES.length];
   const others=r.all.filter(x=>x!==m&&x.p!=null);
   el.innerHTML=`<div class="flip">
@@ -571,7 +577,7 @@ function card(r,i){
     ctl.innerHTML=`<div class="price">${money(m.S.cur,m.p)}${others.length?`<small class="low">lowest of ${others.length+1} shops</small>`:""}</div><button class="add" type="button"></button>`;
     back.appendChild(ctl);
     ctl.querySelector(".add").onclick=()=>toggleBag(r);
-    const on=inBag(r),ab=ctl.querySelector(".add");ab.classList.toggle("in",on);ab.innerHTML=on?`${CHECK}In bag`:`${PLUS}Bag`;
+    addLabel(ctl.querySelector(".add"),r);
     back.querySelectorAll(".fl").forEach(b=>{if(F.k&&F.k.t===b.dataset.ft&&(b.dataset.ft==="re"||fold(F.k.v)===fold(b.dataset.fv)))b.classList.add("on")});
     back.querySelectorAll(".fl").forEach(b=>b.onclick=e=>{e.stopPropagation();setChip(b.dataset.ft,b.dataset.fv)});
   };

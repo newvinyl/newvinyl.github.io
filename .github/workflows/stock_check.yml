@@ -1,11 +1,19 @@
 name: Stock check
 
-# Revisits the product pages of recent records and marks sold-out ones in releases.json (tools/stock_check.py).
+# Revisits the product pages of recent records at the shops and marks sold-out ones in releases.json
+# (tools/stock_check.py, user 27.11.26). Feed and Beta crate dim them and lock the bag.
 on:
+  schedule:
+    - cron: "40 12 * * *"   # 13:40 Zurich (winter), after the daily update and the preview check
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: "Only write sample page snippets to tools/stock_probe.txt"
+        type: boolean
+        default: false
   push:
     branches: [main]
-    paths: [tools/stock_probe_request.txt]
-  workflow_dispatch:
+    paths: [tools/stock_check.py, .github/workflows/stock_check.yml]
 
 permissions:
   contents: write
@@ -20,11 +28,36 @@ jobs:
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Git identity
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Probe
+        if: ${{ inputs.probe }}
         run: |
           python3 tools/stock_check.py --probe
           git add tools/stock_probe.txt && git commit -q -m "Stock probe" && for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+      - name: Check and rebuild
+        if: ${{ !inputs.probe }}
+        run: |
+          python3 tools/stock_check.py
+          python3 tools/build_static.py > /dev/null
+      - name: Commit
+        if: ${{ !inputs.probe }}
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -q -m "$(head -1 tools/stock_run.txt)"
+          for i in 1 2 3; do
+            if git pull --rebase -q origin main; then git push -q origin HEAD:main && exit 0; fi
+            # conflict (daily update came in between): keep their data, re-apply only today's stock changes
+            git rebase --abort || true
+            git reset -q --hard origin/main
+            python3 tools/stock_check.py --reapply && python3 tools/build_static.py > /dev/null
+            git add -A && git commit -q -m "Stock check (retry)" || exit 0
+            sleep 5
+          done
+          exit 1

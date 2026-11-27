@@ -60,6 +60,12 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   transition:transform .42s cubic-bezier(.25,.8,.25,1),filter .42s,opacity .3s;cursor:pointer;will-change:transform}
 .rec .sl{position:absolute;inset:0;background:#1d1d1d;overflow:hidden;border-radius:2px;box-shadow:0 -4px 14px rgba(0,0,0,.7)}
 .rec img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.035)}
+.key.off{opacity:.3}
+.rec.sold img{filter:grayscale(.85) brightness(.45)}
+.rec.nope{animation:nope .38s}
+@keyframes nope{0%,100%{translate:0}20%{translate:-9px}40%{translate:8px}60%{translate:-5px}80%{translate:3px}}
+.sob{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--fg);border:1px solid #666;padding:3px 5px;margin-left:8px;vertical-align:2px}
+.sob.hit{border-color:var(--yellow);color:var(--yellow)}
 .rec .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20%;font:500 13px/1.35 var(--mono);color:var(--muted)}
 .rec.k0 .sl{box-shadow:0 28px 60px rgba(0,0,0,.85)}
 .rec.gone{pointer-events:none}
@@ -257,9 +263,10 @@ function build(data){
   for(const [gk,all] of Object.entries(G)){
     const src=all.find(x=>(x.tr||[]).some(t=>t.u));if(!src)continue;
     const first=all.map(x=>x.first_seen||((x.m||"0000-00")+"-01")).sort()[0];
-    const priced=all.filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf),main=priced[0]||src;
+    const avail=all.filter(x=>x.st!=="out"),out=!avail.length;   // ausverkauft nur, wenn kein Shop sie mehr hat
+    const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf),main=priced[0]||src;
     const cover=(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
-    ALL.push({gk,first,main,key:main.key,tracks:(src.tr||[]).filter(t=>t.u),cover,g:(main.g||src.g||"")});
+    ALL.push({gk,first,main,key:main.key,tracks:(src.tr||[]).filter(t=>t.u),cover,out,g:(main.g||src.g||"")});
   }
   ALL.sort((a,b)=>b.first.localeCompare(a.first));
   const days=[...new Set(ALL.map(r=>r.first))].sort().reverse(),today=days[0];
@@ -288,7 +295,7 @@ function openCrate(c){
 }
 function el(i){
   let e=EL.get(i);if(e)return e;const r=L[i];if(!r)return null;
-  e=document.createElement("div");e.className="rec";e.dataset.i=i;
+  e=document.createElement("div");e.className="rec"+(r.out?" sold":"");e.dataset.i=i;
   e.innerHTML=`<div class="sl"><div class="ph">${esc(r.main.a)}<br>${esc(r.main.t)}</div>${r.cover?`<img decoding="async" alt="" src="${esc(thumb(hiRes(r.cover)))}" data-o="${esc(hiRes(r.cover))}" data-lo="${esc(r.cover)}" onerror="coverFail(this)">`:""}</div>`;
   // Klick auf die vordere Platte: nächste Platte; auf eine hintere: direkt zu ihr
   e.onclick=()=>{const k=+e.dataset.i-cur;if(k>=0)act("next",k?+e.dataset.i:null)};
@@ -313,8 +320,9 @@ function render(fresh){
 function paintInfo(){
   const r=L[cur];if(!r){info.innerHTML=`<div class="now"><span>${esc(crate.name)}</span><span>${L.length} records</span></div><div class="ti">You flipped through the whole crate.</div>`;return}
   const m=r.main,t=r.tracks[ti]||r.tracks[0],inb=cart.includes(r.key);
+  {const k=document.querySelector('.key[data-k="ArrowLeft"]');if(k)k.classList.toggle("off",r.out&&!inb)}
   info.innerHTML=`<div class="now"><span id="nowl">${!au.paused&&listening?"Now playing":"In front"}</span></div>
-  <h1 class="ar">${esc(m.a)}${inb?'<span class="inb">In bag</span>':""}</h1><div class="ti">${esc(m.t)}</div>
+  <h1 class="ar">${esc(m.a)}${inb?'<span class="inb">In bag</span>':r.out?'<span class="sob" id="sob">Sold out</span>':""}</h1><div class="ti">${esc(m.t)}</div>
   <div class="me">${[m.l,m.cat,m.f,r.g].filter(Boolean).map(esc).join(" · ")}</div>
   <ol class="tl${r.tracks.length>5?" many":""}" id="tl">${r.tracks.map((x,j)=>`<li class="${j===ti&&listening?"on":""}"><button type="button" data-j="${j}"><em>${esc(x.s||j+1)}</em><span>${esc(x.n||"Track "+(j+1))}</span></button><div class="pg"><i></i></div></li>`).join("")}</ol>
   ${r.tracks.length>5?`<div class="tlh"><span>${r.tracks.length} tracks</span><span id="tlm"></span></div>`:""}
@@ -344,7 +352,10 @@ function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);ret
 function toggle(){if(!listening||!au.src){playTrack(ti);track("Beta play",{crate:crate.name});return}if(au.paused)au.play().catch(()=>{});else au.pause()}
 // In den Bag: die Platte fliegt zum Bag-Symbol oben rechts, dann kommt die nächste nach vorne
 function pack(){
-  const r=L[cur],e=EL.get(cur);if(!r||!e||busy)return;busy=true;
+  const r=L[cur],e=EL.get(cur);if(!r||!e||busy)return;
+  // Ausverkauft: nicht in den Bag, Platte schüttelt kurz den Kopf
+  if(r.out&&!cart.includes(r.key)){e.classList.remove("nope");void e.offsetWidth;e.classList.add("nope");const so=document.getElementById("sob");if(so){so.classList.add("hit");setTimeout(()=>so.classList.remove("hit"),700)}return}
+  busy=true;
   cart=store.get("mvr-cart",[]);if(!cart.includes(r.key)){cart.push(r.key);store.set("mvr-cart",cart);track("Add to bag",{shop:r.main.S.shop,where:"beta"})}
   const t=document.getElementById("bagtop"),a=t.getBoundingClientRect(),b=e.getBoundingClientRect();
   e.classList.add("pack");e.style.transform=`translate(${a.left+a.width/2-(b.left+b.width/2)}px,${a.top+a.height/2-(b.top+b.height/2)}px) rotate(-20deg) scale(.06)`;e.style.opacity=0;
