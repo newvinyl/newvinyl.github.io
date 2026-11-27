@@ -71,7 +71,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .rec.k0 .sl{box-shadow:0 28px 60px rgba(0,0,0,.85)}
 .rec.gone{pointer-events:none}
 .rec.snap{transition:transform .55s cubic-bezier(.2,1.25,.35,1),filter .42s,opacity .35s}
-.rec.pack{transition:transform .5s cubic-bezier(.5,0,.75,0),opacity .4s .15s!important;z-index:400!important}
+.rec.pack{transition:transform .6s cubic-bezier(.5,-.15,.3,1),opacity .18s .44s!important;z-index:400!important}
 /* Kiste: schlicht, schwarz, glatt, nur leichte Maserung; reicht bis zum unteren Bildschirmrand.
    Von schräg oben gesehen: hinter den Platten das Innere der Kiste als Trapez (Seitenwände laufen nach hinten zusammen) */
 .inside{position:absolute;left:50%;bottom:calc(var(--cv) * .3);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:1;pointer-events:none;
@@ -220,6 +220,18 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @keyframes gh-lt{0%{opacity:0;transform:translate3d(22px,0,0)}28%{opacity:1}62%{opacity:1;transform:translate3d(-6px,0,0)}100%{opacity:0;transform:translate3d(-16px,0,0)}}
 @keyframes ghin{from{opacity:0;transform:translate3d(0,6px,0)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.gh svg{animation:none!important}}
+/* Handy (User 27.11., 3. Runde): Kiste so gross wie möglich, mehr Luft. Die Bühne füllt den freien Platz,
+   --cv richtet sich per Container-Einheiten nach ihr (Breite und Höhe), die Infos haben feste Abstände. */
+@media (max-width:860px){
+  body{min-height:0;height:100vh;height:100dvh}
+  main{flex:1 1 auto;min-height:0;gap:0;padding:10px 20px 22px}
+  .stage{flex:1 1 0;height:auto;min-height:0;container-type:size;--cv:min(80cqw,calc(100cqh / 1.42),420px)}
+  .side{margin-top:30px}
+  .rinfo .ar{font-size:22px}.rinfo .ti{font-size:16px;margin-bottom:14px}
+  .tl{height:72px;max-height:72px}
+  .buyrow{margin-top:16px}
+  .buyrow .price{font-size:30px}
+}
 </style>
 </head>
 <body>
@@ -431,8 +443,8 @@ function pack(){
   busy=true;
   cart=store.get("mvr-cart",[]);if(!cart.includes(r.key)){cart.push(r.key);store.set("mvr-cart",cart);track("Add to bag",{shop:r.main.S.shop,where:"beta"})}
   const t=document.getElementById("bagtop"),a=t.getBoundingClientRect(),b=e.getBoundingClientRect();
-  e.classList.add("pack");e.style.transform=`translate(${a.left+a.width/2-(b.left+b.width/2)}px,${a.top+a.height/2-(b.top+b.height/2)}px) rotate(-20deg) scale(.06)`;e.style.opacity=0;
-  setTimeout(()=>{bagCount();t.classList.remove("pop");void t.offsetWidth;t.classList.add("pop");e.remove();EL.delete(cur);busy=false;go(cur+1)},480)}
+  const cur0=getComputedStyle(e).transform;e.classList.remove("snap");e.classList.add("pack");e.style.transform=`translate(${a.left+a.width/2-(b.left+b.width/2)}px,${a.top+a.height/2-(b.top+b.height/2)}px) ${cur0==='none'?'':cur0} rotate(-14deg) scale(.07)`;e.style.opacity=0;
+  setTimeout(()=>{bagCount();t.classList.remove("pop");void t.offsetWidth;t.classList.add("pop");e.remove();EL.delete(cur);busy=false;go(cur+1)},600)}
 // Eine Stelle für alle Eingaben (Tastatur, Klick auf Tasten, Swipe); die erste Eingabe startet auch den Ton
 function act(a,arg){
   if(busy)return;
