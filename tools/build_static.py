@@ -614,6 +614,8 @@ footer{{margin-top:48px;border-top:4px solid #fff;padding-top:16px;font-size:13p
         "- Record shops that want to be listed: see the footer on the home page.",
     ]
     open(os.path.join(ROOT, "llms.txt"), "w", encoding="utf-8").write("\n".join(llms) + "\n")
+    # /all/ = Startseite mit allen Tagen, immer im gleichen Design (27.11.26)
+    import make_all; make_all.main()
     print(f"built: {len(recs)} releases, {len(genre_list)} genre pages: {', '.join(slug(g) for g in genre_list)}")
 
 if __name__ == "__main__":
