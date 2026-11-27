@@ -68,7 +68,9 @@ def by_schema(url, old):
     _, body = fetch(url)
     m = re.search(r'"availability"\s*:\s*"https?://schema\.org/(\w+)"', body)
     st = SCHEMA.get(m.group(1)) if m else None
-    return keep_pre(st, old)
+    if st == "out" and old == "pre" and "soundground" in url:
+        return "pre"                      # SoundGround marks some upcoming records as out of stock
+    return keep_pre(st, old) if st == "in" else st   # schema.org tells pre-order and sold out apart
 
 def shopify(url, old):
     _, body = fetch(url.split("?")[0].rstrip("/") + ".js")
@@ -94,6 +96,8 @@ def hardwax(url, old):
 def keep_pre(st, old):
     if st == "in" and old in ("pre", "low"):
         return old                        # these systems cannot tell pre-order or low stock apart from "in"
+    if st == "out" and old == "pre":
+        return old                        # Shopify/Woo shops list upcoming records as "out of stock" (Bordello: outofstock.upcoming)
     return st
 
 READ = {"www.redeyerecords.co.uk": by_schema, "www.decks.de": by_schema, "yoyaku.io": by_schema,

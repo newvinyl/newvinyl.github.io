@@ -169,12 +169,14 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @media (min-width:861px){.rfoot .mb{display:none}}
 @media (min-width:861px) and (max-height:800px){.tl{max-height:calc(4 * 27px)}.side{padding:6px 0;gap:12px}.pad{grid-template-columns:auto 54px 54px 54px auto;grid-template-rows:auto 54px 54px auto auto;gap:6px}.key{width:54px;height:54px}.key.sp{width:100%;height:38px;margin-top:8px}.me{display:none}}
 @media (prefers-reduced-motion:reduce){.rec{transition:none}}
+.hback{color:var(--fg);margin-right:10px}.hback:hover,.hback:focus-visible{color:var(--yellow)}
 </style>
 </head>
 <body>
 <header class="top">
   <a class="logo" href="/">Monthly Vinyl</a>
   <div class="hicons">
+    <a class="habout hback" href="/" title="Back to the classic feed (Esc)">← Classic</a>
     <a class="habout" href="/about/">About</a>
     <a class="habout beta" href="/beta/" aria-current="page">Beta</a>
     <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a>
@@ -203,7 +205,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
         <button class="key sp nudge" type="button" data-k=" " aria-label="Play or pause">Space<span>Play / pause</span></button>
       </div>
     </div>
-    <div class="rfoot"><span class="dk"><kbd>Enter</kbd>open at the shop · click the record for the next one</span><span class="mb">Swipe ↑ next · ↓ back · ← bag · → track</span><br><a href="/">Back to the feed</a></div>
+    <div class="rfoot"><span class="dk"><kbd>Enter</kbd>open at the shop · click the record for the next one</span><span class="mb">Swipe ↑ next · ↓ back · ← bag · → track</span><br><a href="/">Back to the classic feed</a> <kbd>Esc</kbd></div>
   </aside>
 </main>
 <audio id="au" preload="none"></audio>
@@ -375,6 +377,8 @@ function act(a,arg){
   if(first&&!listening&&a!=="play"&&a!=="bag"){listening=true;clearTimeout(pt);pt=setTimeout(()=>playTrack(0),220);track("Beta play",{crate:crate.name,via:a})}
   hintKeys();
 }
+// Esc: zurück zum klassischen Feed
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!e.metaKey&&!e.ctrlKey){location.href="/"}});
 const KEYMAP={ArrowUp:"next",ArrowDown:"prev",ArrowLeft:"bag",ArrowRight:"track"," ":"play"};
 function flash(k){const b=document.querySelector(`.key[data-k="${k===" "?" ":k}"]`);if(!b)return;b.classList.add("hit");setTimeout(()=>b.classList.remove("hit"),140)}
 document.querySelectorAll(".key").forEach(b=>b.onclick=()=>{act(KEYMAP[b.dataset.k]);stage.focus({preventScroll:true})});
