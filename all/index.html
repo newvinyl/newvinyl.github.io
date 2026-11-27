@@ -482,7 +482,7 @@ function build(data){
   const recs=[];
   for(const [gk,all] of Object.entries(G)){
     const first=all.map(x=>x.first_seen||((x.m||"0000-00")+"-01")).sort()[0];
-    const src=all.find(x=>(x.tr||[]).some(t=>t.u));if(!src)continue;
+    const nu=x=>new Set((x.tr||[]).filter(t=>t.u).map(t=>t.u)).size;const src=all.reduce((b,x)=>nu(x)>(b?nu(b):0)?x:b,null);if(!src)continue; // Shop mit den meisten Hörproben
     // Ausverkauft (tools/stock_check.py): günstigster Shop, der sie noch hat; nur wenn alle "out" melden, gilt die Platte als ausverkauft
     const avail=all.filter(x=>x.st!=="out"),out=!avail.length;
     const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf);

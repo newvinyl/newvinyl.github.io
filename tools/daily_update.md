@@ -137,9 +137,10 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
   https://www.redeyerecords.co.uk/techno-electro/new-releases,
   https://www.redeyerecords.co.uk/balearic-and-downtempo/new-releases (→ "Balearic" / "Downtempo")
   and https://www.redeyerecords.co.uk/experimental/new-releases (only its ambient releases →
-  "Ambient") (price incl. VAT £; only in-stock → "st":"in"). One direct preview per release:
-  https://sounds.redeyerecords.co.uk/IMAGEID.mp3 where IMAGEID is the number in the cover URL
-  /imagery/IMAGEID-2.jpg → track {"s":"","n":"Preview","u":…}.
+  "Ambient") (price incl. VAT £; only in-stock → "st":"in"). Store the first clip
+  https://sounds.redeyerecords.co.uk/IMAGEID.mp3 (IMAGEID = number in the cover URL
+  /imagery/IMAGEID-2.jpg) as track {"s":"","n":"Preview","u":…}. The Preview check Action then reads
+  each product page and replaces it with one clip per track (IDb.mp3, IDc.mp3 …) and the full tracklist.
 - Yoyaku (Paris, FR): https://yoyaku.io/releases/ (genres listed per release; skip items whose image
   upload path is older than the current year unless clearly a current-year reissue). No direct mp3s.
   Use the product page links containing "/release/", never add-to-cart links.

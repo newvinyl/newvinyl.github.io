@@ -108,8 +108,7 @@ def playable(r):
     return any(t.get("u") or t.get("yt") or t.get("ytl") for t in r.get("tr", []))
 
 def fix_redeye_previews(data):
-    """Redeye liefert pro Platte nur einen Clip (sounds.redeyerecords.co.uk/ID.mp3),
-    der oft noch nicht existiert (404). Führt ein anderer Shop dieselbe Platte mit
+    """Redeye-Clips (sounds.redeyerecords.co.uk/ID.mp3, IDb.mp3 …) existieren oft noch nicht (404). Führt ein anderer Shop dieselbe Platte mit
     abspielbaren Tracks, übernimmt der Redeye-Eintrag diese Trackliste."""
     def base(t):  # Redeye-Zusatz wie " - Standard Weight, Blue Ripple Coloured Vinyl" weg
         return norm(re.split(r"\s+-\s+", t or "", maxsplit=1)[0])
@@ -133,7 +132,8 @@ def fix_redeye_previews(data):
             if tr and not all("sounds.redeyerecords" in (t.get("u") or "") for t in tr):
                 continue
             src = good.get((norm(r.get("a")), base(r.get("t"))))
-            if src:
+            # Redeye hat seit 28.11. Einzelclips A, B, C …: nur ersetzen, wenn der andere Shop mehr Tracks hat
+            if src and len(src) > len({t.get("u") for t in tr if t.get("u")}):
                 r["tr"] = [dict(t) for t in src]
                 n += 1
     return n

@@ -207,12 +207,42 @@ def tracks_clone(page):
 
 
 def tracklist_redeye(page):
-    m = re.search(r'<[^>]+class="tracks"[^>]*>(.*?)</(?:p|div|span|li)>', page, re.S)
+    """Volle Titelliste der Hauptplatte (h2.tracks oben auf der Produktseite; die Listen weiter unten sind gekürzt)."""
+    m = re.search(r'<h[12][^>]*class="tracks"[^>]*>(.*?)</h[12]>', page, re.S) or \
+        re.search(r'<[^>]+class="tracks"[^>]*>(.*?)</(?:p|div|span|li)>', page, re.S)
     if not m:
         return []
-    txt = html.unescape(re.sub(r"<br\s*/?>", " | ", m.group(1)))
+    txt = html.unescape(re.sub(r"<br\s*/?>|\n", " | ", m.group(1)))
     txt = re.sub("<[^>]+>", "", txt)
-    return parse_tracklist(" | ".join(s.strip() for s in txt.split("|") if s.strip()))
+    return parse_tracklist(" | ".join(s.strip() for s in txt.split("|") if s.strip() and s.strip() != "..."))
+
+
+def tracks_redeye(page, artist=""):
+    """Redeye: ein Clip pro Track. Knöpfe A, B, C … (data-sample) im Kasten der Hauptplatte;
+    Clip a = sounds.redeyerecords.co.uk/ID.mp3, b = IDb.mp3, c = IDc.mp3 … (ID = Redeye No.)."""
+    i = page.find("linksPanel")
+    if i < 0:
+        return [], []
+    box = page[i:i + 6000]
+    rid = re.search(r"Redeye No\.\s*<span>(\d+)</span>", box) or re.search(r"data-product='(\d+)'", box)
+    play = re.search(r'<div class="play">(.*?)</div>', box, re.S)
+    if not rid or not play:
+        return [], []
+    letters = re.findall(r"data-sample='([a-z])'", play.group(1))
+    tl = tracklist_redeye(page)
+    a = norm(artist)
+    for t in tl:  # "Bohdan - Seven Winds" -> "Seven Winds", wenn es der Artist der Platte ist
+        parts = t["n"].split(" - ", 1)
+        if len(parts) == 2 and a and norm(parts[0]) == a:
+            t["n"] = parts[1].strip()
+    out = []
+    for k, L in enumerate(letters):
+        u = f"https://{REDEYE_CLIP}/{rid.group(1)}{'' if L == 'a' else L}.mp3"
+        if len(letters) == len(tl):
+            out.append({"s": tl[k]["s"], "n": tl[k]["n"], "u": u})
+        else:  # Anzahl Clips passt nicht zur Titelliste: Zuordnung unsicher, nur Buchstabe
+            out.append({"s": L.upper(), "n": f"Clip {L.upper()}", "u": u})
+    return out, tl
 
 
 EXTRACT = {
@@ -226,8 +256,15 @@ EXTRACT = {
 
 # ---------------------------------------------------------------- Hilfen
 def per_track(r):
-    """Hat die Platte mindestens eine Einzeltrack-Hörprobe (nicht nur Redeyes Gesamtclip)?"""
-    return any((t.get("u") and REDEYE_CLIP not in t["u"]) or t.get("yt") or t.get("ytl") for t in r.get("tr", []))
+    """Hat die Platte mindestens eine Einzeltrack-Hörprobe (nicht nur einen einzelnen Redeye-Clip)?"""
+    tr = r.get("tr", [])
+    if sum(1 for t in tr if REDEYE_CLIP in (t.get("u") or "")) >= 2:
+        return True
+    return any((t.get("u") and REDEYE_CLIP not in t["u"]) or t.get("yt") or t.get("ytl") for t in tr)
+
+
+def n_audio(tr):
+    return len({t["u"] for t in tr if t.get("u")})
 
 
 def playable(r):
@@ -285,7 +322,7 @@ def main():
         c = cache.get(r.get("url"), {})
         if c.get("tl") and not r.get("tl"):
             r["tl"] = c["tl"]
-        if c.get("tr") and not per_track(r):
+        if c.get("tr") and (not per_track(r) or (S["shop"] == "Redeye Records" and n_audio(c["tr"]) > n_audio(r.get("tr", [])))):
             r["tr"] = [dict(t) for t in c["tr"]]
 
     # 2) Für Platten ohne (funktionierende) Einzeltracks die Produktseite des Shops lesen
@@ -298,8 +335,10 @@ def main():
         if c.get("checked") == str(TODAY):
             continue
         if shop == "Redeye Records":
-            if not r.get("tl"):
-                todo.append((S, r))
+            # Einzelclips A, B, C … holen (Version 2 des Extraktors: "rx"); ohne Clips 14 Tage lang neu versuchen
+            if c.get("rx") == 2 and (c.get("tr") or (TODAY - datetime.date.fromisoformat(c.get("rx_first", str(TODAY)))).days > RETRY_DAYS):
+                continue
+            todo.append((S, r))
             continue
         if shop not in EXTRACT or per_track(r):
             continue
@@ -307,6 +346,11 @@ def main():
         if (TODAY - datetime.date.fromisoformat(first)).days > RETRY_DAYS:
             continue
         todo.append((S, r))
+
+    # Redeye: höchstens REDEYE_MAX Produktseiten pro Lauf (1 s Abstand), neueste zuerst; der Rest folgt am nächsten Tag
+    red = [x for x in todo if x[0]["shop"] == "Redeye Records"]
+    red.sort(key=lambda x: (x[1].get("first_seen") or ""), reverse=True)
+    todo = [x for x in todo if x[0]["shop"] != "Redeye Records"] + red[:int(os.environ.get("REDEYE_MAX", "1400"))]
 
     stats = {"pages": 0, "found": 0, "blocked": {}}
 
@@ -325,9 +369,16 @@ def main():
                 stats["blocked"][k] = stats["blocked"].get(k, 0) + 1
                 continue
             if S["shop"] == "Redeye Records":
-                tl = tracklist_redeye(page)
+                tr, tl = tracks_redeye(page, r.get("a", ""))
+                c["rx"] = 2
+                c.setdefault("rx_first", str(TODAY))
                 if len(tl) > 1:
                     c["tl"] = r["tl"] = tl
+                if tr:
+                    c["tr"] = tr
+                    if n_audio(tr) > n_audio(r.get("tr", [])) or not per_track(r):
+                        r["tr"] = [dict(t) for t in tr]
+                        stats["found"] += 1
                 continue
             tr = EXTRACT[S["shop"]](page)
             if tr:

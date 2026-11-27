@@ -453,7 +453,7 @@ function build(data){
   FX=data.fx||{};const G={};
   data.shops.forEach(S=>{if(S.blocked)return;(S.items||[]).forEach(r=>{const gk=r.gk||norm(r.a)+"|"+norm(r.t);(G[gk]=G[gk]||[]).push({...r,S,key:S.shop+"|"+r.url,chf:r.p==null?null:r.p*(FX[CODE[S.cur]]||NaN)})})});
   for(const [gk,all] of Object.entries(G)){
-    const src=all.find(x=>(x.tr||[]).some(t=>t.u));if(!src)continue;
+    const nu=x=>new Set((x.tr||[]).filter(t=>t.u).map(t=>t.u)).size;const src=all.reduce((b,x)=>nu(x)>(b?nu(b):0)?x:b,null);if(!src)continue; // Shop mit den meisten Hörproben
     const first=all.map(x=>x.first_seen||((x.m||"0000-00")+"-01")).sort()[0];
     const avail=all.filter(x=>x.st!=="out"),out=!avail.length;   // ausverkauft nur, wenn kein Shop sie mehr hat
     const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf),main=priced[0]||src;
