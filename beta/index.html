@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0d0d">
+<title>Beta – Crate · Monthly Vinyl</title>
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://wsrv.nl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="56d072fe-6ab0-4180-9a6f-e9926985275c" data-domains="monthlyvinyl.net"></script>
+<style>
+/* Beta: Experimente, die (noch) nicht auf der Startseite sind. Erstes Experiment: Plattenkiste (27.11.26). */
+:root{
+  --bg:#0d0d0d; --deep:#1a1a1a; --fg:#ecebe7; --muted:#a0a4a9; --line:#3c4046;
+  --neon:#8fd3b0; --pink:#ef7a6d; --yellow:#fbed4f; --white:#ffffff; --ink:#0d0d0d;
+  --display:"Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+  --body:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --cv:min(44vh,430px,78vw);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+a{color:inherit}button{font:inherit;color:inherit}
+
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(6px + env(safe-area-inset-top,0px)) 16px 6px;background:var(--bg);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-weight:700;font-size:19px;line-height:1;letter-spacing:-.008em;color:var(--yellow);-webkit-text-stroke:.085em var(--yellow);paint-order:stroke fill;text-decoration:none;text-transform:uppercase}
+.hicons{display:flex;align-items:center;gap:4px}
+.habout{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 6px}
+.habout:hover,.habout:focus-visible{color:var(--yellow)}
+.habout.beta{color:var(--yellow)}
+.bagtop{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:2px solid var(--white);background:var(--ink);text-decoration:none}
+.bagtop svg{width:20px;height:20px}
+.bagtop b{position:absolute;top:-8px;right:-8px;min-width:20px;height:20px;padding:0 5px;background:var(--pink);color:var(--ink);font:700 11px/20px var(--mono);text-align:center}
+.bagtop b:empty{display:none}
+
+.bar{display:flex;align-items:center;gap:6px;padding:12px 16px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.bar::-webkit-scrollbar{display:none}
+.tag{font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--yellow);padding:5px 7px;margin-right:8px;flex:none}
+.crt{all:unset;cursor:pointer;flex:none;font:500 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border:1px solid var(--line)}
+.crt:hover,.crt:focus-visible{color:var(--fg);border-color:var(--fg)}
+.crt[aria-pressed="true"]{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+.crt small{opacity:.6;margin-left:5px}
+
+main{flex:1;display:grid;grid-template-columns:1fr minmax(300px,400px);align-items:center;gap:24px;padding:0 32px;min-height:0}
+.stage{position:relative;height:calc(var(--cv) * 1.62);min-height:360px;outline:none;user-select:none;-webkit-user-select:none;touch-action:none}
+.glow{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 2.2);height:calc(var(--cv) * 1.2);transform:translateX(-50%);background:radial-gradient(ellipse at 50% 100%,rgba(120,84,40,.45),transparent 65%);pointer-events:none}
+.rec{position:absolute;left:50%;bottom:calc(var(--cv) * .3);width:var(--cv);margin-left:calc(var(--cv) / -2);aspect-ratio:1;transform-origin:50% 100%;
+  transition:transform .42s cubic-bezier(.25,.8,.25,1),filter .42s,opacity .3s;cursor:pointer;will-change:transform}
+.rec .sl{position:absolute;inset:0;background:#1d1d1d;overflow:hidden;border-radius:2px;box-shadow:0 -4px 14px rgba(0,0,0,.7)}
+.rec img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.035)}
+.rec .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20%;font:500 13px/1.35 var(--mono);color:var(--muted)}
+.rec.k0 .sl{box-shadow:0 28px 60px rgba(0,0,0,.85)}
+.rec.k0{cursor:pointer}
+.rec.gone{pointer-events:none}
+.rec .pp{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;background:var(--white);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.45);opacity:0;transition:opacity .2s}
+.rec .pp svg{width:28px;height:28px}
+.rec.k0:hover .pp,.stage.idle .rec.k0 .pp{opacity:1}
+.stage.playing .rec.k0 .pp{background:var(--yellow)}
+.rec .pp .ps{display:none}.stage.playing .rec.k0 .pp .pl{display:none}.stage.playing .rec.k0 .pp .ps{display:block}
+.stage.playing .rec.k0 .sl{outline:4px solid var(--yellow);outline-offset:-4px}
+.bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.3);height:calc(var(--cv) * .46);transform:translateX(-50%);z-index:200;
+  background:linear-gradient(180deg,#6d4923 0%,#4a3117 55%,#2a1b0b 100%);border-top:7px solid #8c6332;box-shadow:0 -18px 40px rgba(0,0,0,.75);pointer-events:none}
+.bin::before,.bin::after{content:"";position:absolute;top:0;bottom:0;width:7px;background:rgba(0,0,0,.25)}.bin::before{left:16%}.bin::after{right:16%}
+.bin span{position:absolute;left:50%;top:22%;transform:translateX(-50%);white-space:nowrap;font:500 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#e2bf87;border:2px solid #e2bf87;padding:7px 11px;background:rgba(0,0,0,.15)}
+.pos{position:absolute;left:0;bottom:8px;font:500 11px var(--mono);color:var(--muted);letter-spacing:.06em}
+
+.info{min-width:0}
+.now{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.ar{font:800 30px/1.05 var(--display);margin:0;text-wrap:balance}
+.ti{font:400 19px/1.25 var(--body);margin:6px 0 10px;color:#cfcfcb}
+.me{font:400 12px/1.6 var(--mono);color:var(--muted)}
+.prog{position:relative;height:4px;background:var(--line);margin:16px 0 6px;cursor:pointer}
+.prog i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--yellow)}
+ol.tr{list-style:none;margin:10px 0 0;padding:0;max-height:30vh;overflow:auto}
+ol.tr li button{all:unset;cursor:pointer;display:flex;gap:10px;align-items:center;width:100%;padding:6px 0;border-bottom:1px solid #222;font-size:14px}
+ol.tr li button:hover,ol.tr li button:focus-visible{color:var(--yellow)}
+ol.tr li .s{font:400 11px var(--mono);color:var(--muted);width:24px;flex:none}
+ol.tr li.on button{color:var(--yellow)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap}
+.price{font:800 28px/1 var(--display);font-variant-numeric:tabular-nums}
+.price small{font-size:.5em;vertical-align:.6em;margin-right:2px}
+.btns{display:flex;gap:8px}
+.add,.buy{all:unset;cursor:pointer;height:42px;padding:0 14px;display:inline-flex;align-items:center;gap:7px;font:700 14px/1 var(--display);white-space:nowrap}
+.add{border:2px solid var(--white)}.add.in{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.buy{background:var(--yellow);color:var(--ink)}
+.add:focus-visible,.buy:focus-visible,.crt:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.next{margin-top:22px;font:400 12px/1.9 var(--mono);color:var(--muted)}
+.next b{display:block;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:10.5px}
+.next button{all:unset;cursor:pointer;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.next button:hover{color:var(--fg)}
+
+.keys{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));font:500 11px/1 var(--mono);color:var(--muted);border-top:1px solid var(--line)}
+.keys kbd{display:inline-block;min-width:20px;padding:3px 5px;margin-right:5px;border:1px solid #555;border-bottom-width:2px;color:var(--fg);font:inherit;text-align:center}
+.keys a{color:var(--muted)}
+.start{all:unset;cursor:pointer;position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);z-index:300;background:var(--yellow);color:var(--ink);font:800 17px/1 var(--display);padding:16px 22px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+.end{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:150;text-align:center;font:500 13px/1.6 var(--mono);color:var(--muted)}
+.end button{all:unset;cursor:pointer;margin-top:10px;display:inline-block;border:2px solid var(--white);color:var(--fg);padding:9px 14px;font:700 14px var(--display)}
+.load{padding:60px 0;font-family:var(--mono);color:var(--muted);text-align:center}
+
+@media (max-width:860px){
+  :root{--cv:min(36vh,330px,74vw)}
+  main{grid-template-columns:1fr;padding:8px 16px 16px;gap:6px}
+  .ar{font-size:24px}.ti{font-size:16px}
+  .next,.keys .k{display:none}
+}
+@media (prefers-reduced-motion:reduce){.rec{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/">Monthly Vinyl</a>
+  <div class="hicons">
+    <a class="habout" href="/about/">About</a>
+    <a class="habout beta" href="/beta/" aria-current="page">Beta</a>
+    <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a>
+  </div>
+</header>
+<nav class="bar" id="bar" aria-label="Crates"><span class="tag">Beta · Crate</span></nav>
+<main id="main">
+  <div class="stage idle" id="stage" tabindex="0" aria-label="Record crate. Arrow keys flip, space plays.">
+    <div class="glow"></div>
+    <div class="bin"><span id="binlbl">Fresh today</span></div>
+    <div class="pos" id="pos"></div>
+    <button class="start" id="start" type="button">Start digging ▶</button>
+  </div>
+  <section class="info" id="info" aria-live="polite"><p class="load">Loading the crate…</p></section>
+</main>
+<div class="keys"><span class="k"><kbd>←</kbd><kbd>→</kbd>flip</span><span class="k"><kbd>Space</kbd>play</span><span class="k"><kbd>B</kbd>bag</span><span class="k"><kbd>Enter</kbd>shop</span><span>Scroll or swipe to flip</span><a href="/">Back to the feed</a></div>
+<audio id="au" preload="none"></audio>
+<script>
+const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF","zł":"PLN"};
+const LOC=(()=>{let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+  if(/Zurich|Vaduz|Busingen/.test(tz))return"CHF";if(/London|Belfast|Guernsey|Jersey|Isle_of_Man|Gibraltar/.test(tz))return"GBP";
+  if(/^Europe\/|^Atlantic\/(Canary|Madeira|Azores|Faroe)/.test(tz))return"EUR";if(/^America\//.test(tz))return"USD";
+  const r=((navigator.language||"").split("-")[1]||"").toUpperCase();return r==="CH"?"CHF":r==="GB"?"GBP":r==="US"?"USD":"EUR"})();
+const SYM={EUR:"€",GBP:"£",USD:"$",CHF:"CHF ",PLN:"zł "};
+let FX={};
+function toLoc(cur,p){const c=CODE[cur]||cur;if(p==null)return null;if(c===LOC||!FX[c]||!FX[LOC])return{v:+p,c:c===LOC?LOC:c,ex:true};return{v:p*FX[c]/FX[LOC],c:LOC,ex:false}}
+const symOf=c=>SYM[c]||(Object.keys(CODE).find(k=>CODE[k]===c)||c);
+const money=(cur,p)=>{const L=toLoc(cur,p);if(!L)return"";return`<small>${L.ex?"":"≈"}${esc(symOf(L.c).trim())}</small>${L.v.toFixed(2).replace(/\.00$/,"")}`};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fold=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"");
+const norm=s=>fold(s).replace(/\(.*?\)|\[.*?\]/g,"").replace(/\b(ep|lp|12"?|2x12"?)\b/g,"").replace(/[^\p{L}\p{N}]/gu,"");
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function track(n,d){try{if(window.umami&&typeof umami.track==="function")umami.track(n,d)}catch(e){}}
+function hiRes(u){
+  if(!u)return u;
+  if(/media\.hardwax\.com\/images\//.test(u)&&!/big\.jpg$/.test(u))return u.replace(/\.jpg$/,"big.jpg");
+  if(/redeyerecords\.co\.uk\/imagery\//.test(u))return u.replace(/-2\.jpg$/,"-1.jpg");
+  if(/rushhourrecords/.test(u))return u.replace("/styles/cover_medium/","/styles/cover_large/");
+  if(/clone\.nl\/platen\/artwork\/small\//.test(u))return u.replace("/artwork/small/","/artwork/large/");
+  if(/yoyaku\.io\/wp-content\/uploads\//.test(u))return u.replace(/-\d+x\d+(\.\w+)$/,"$1");
+  if(/imagescdn\.juno\.co\.uk\/300\//.test(u))return u.replace("/300/","/full/").replace(/-MED\.jpg$/,"-BIG.jpg");
+  if(/decks\.de\/decks\/gfx\/co_mid\//.test(u))return u.replace("/co_mid/","/co_big/");
+  return u;
+}
+const thumb=u=>u?"https://wsrv.nl/?w=720&output=webp&q=80&url="+encodeURIComponent(u):u;
+function coverFail(im){const n=+(im.dataset.t||0)+1;im.dataset.t=n;const nx=n===1?im.dataset.o:n===2&&im.dataset.lo!==im.dataset.o?im.dataset.lo:null;if(nx)im.src=nx;else im.remove()}
+
+const PLAY='<svg class="pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="ps" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>';
+const stage=document.getElementById("stage"),info=document.getElementById("info"),au=document.getElementById("au");
+let ALL=[],CRATES=[],crate=null,L=[],cur=0,ti=0,listening=false,cart=store.get("mvr-cart",[]),EL=new Map(),flips=0;
+const VIS=7; // sichtbare Platten in der Kiste
+const jit=i=>(((i*9301+49297)%233280)/233280-.5)*3.2; // feste kleine Schräglage pro Platte
+
+function bagCount(){document.getElementById("bagn").textContent=cart.length||""}
+function build(data){
+  FX=data.fx||{};const G={};
+  data.shops.forEach(S=>{if(S.blocked)return;(S.items||[]).forEach(r=>{const gk=r.gk||norm(r.a)+"|"+norm(r.t);(G[gk]=G[gk]||[]).push({...r,S,key:S.shop+"|"+r.url,chf:r.p==null?null:r.p*(FX[CODE[S.cur]]||NaN)})})});
+  for(const [gk,all] of Object.entries(G)){
+    const src=all.find(x=>(x.tr||[]).some(t=>t.u));if(!src)continue;
+    const first=all.map(x=>x.first_seen||((x.m||"0000-00")+"-01")).sort()[0];
+    const priced=all.filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf),main=priced[0]||src;
+    const cover=(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
+    ALL.push({gk,first,main,key:main.key,tracks:(src.tr||[]).filter(t=>t.u),cover,g:(main.g||src.g||"")});
+  }
+  ALL.sort((a,b)=>b.first.localeCompare(a.first));
+  const days=[...new Set(ALL.map(r=>r.first))].sort().reverse(),today=days[0];
+  const week=ALL.filter(r=>days.slice(0,7).includes(r.first));
+  CRATES.push({id:"today",name:"Fresh today",recs:ALL.filter(r=>r.first===today)});
+  CRATES.push({id:"week",name:"This week",recs:week});
+  const cnt={};week.forEach(r=>String(r.g).split(/\s*[\/,]\s*/).forEach(g=>{if(g)cnt[g]=(cnt[g]||0)+1}));
+  Object.entries(cnt).filter(([,n])=>n>=6).sort((a,b)=>b[1]-a[1]).slice(0,10).forEach(([g])=>CRATES.push({id:"g:"+g,name:g,recs:week.filter(r=>String(r.g).split(/\s*[\/,]\s*/).includes(g))}));
+  const bar=document.getElementById("bar");
+  CRATES.forEach(c=>{const b=document.createElement("button");b.className="crt";b.type="button";b.innerHTML=`${esc(c.name)}<small>${c.recs.length}</small>`;b.onclick=()=>{openCrate(c);track("Beta crate",{crate:c.name})};c.btn=b;bar.appendChild(b)});
+  const want=decodeURIComponent((location.hash.match(/crate=([^&]+)/)||[])[1]||"");
+  openCrate(CRATES.find(c=>c.id===want)||CRATES[0]);
+}
+function openCrate(c){
+  crate=c;L=c.recs;cur=0;ti=0;EL.forEach(e=>e.remove());EL.clear();
+  CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));
+  document.getElementById("binlbl").textContent=c.name;
+  try{history.replaceState(null,"","#crate="+encodeURIComponent(c.id))}catch(e){}
+  render(true);if(listening)playTrack(0);
+}
+function el(i){
+  let e=EL.get(i);if(e)return e;const r=L[i];if(!r)return null;
+  e=document.createElement("div");e.className="rec";e.dataset.i=i;
+  e.innerHTML=`<div class="sl"><div class="ph">${esc(r.main.a)}<br>${esc(r.main.t)}</div>${r.cover?`<img decoding="async" alt="" src="${esc(thumb(hiRes(r.cover)))}" data-o="${esc(hiRes(r.cover))}" data-lo="${esc(r.cover)}" onerror="coverFail(this)">`:""}</div><span class="pp">${PLAY}</span>`;
+  e.onclick=()=>{const k=+e.dataset.i-cur;if(k===0)toggle();else if(k>0)go(+e.dataset.i)};
+  stage.insertBefore(e,stage.querySelector(".bin"));EL.set(i,e);return e;
+}
+function place(e,k,i){
+  e.classList.toggle("k0",k===0);e.classList.toggle("gone",k<0);
+  if(k<0){ // umgeblättert: kippt nach vorne aus der Kiste
+    e.style.transform=`translateY(calc(var(--cv) * .34)) perspective(900px) rotateX(-78deg) rotate(${jit(i)}deg)`;e.style.zIndex=210;e.style.filter="brightness(.55)";e.style.opacity=k<-1?0:1;return}
+  e.style.transform=`translateY(calc(var(--cv) * ${-k*.085})) scale(${1-k*.03}) rotate(${k?jit(i):0}deg)`;
+  e.style.zIndex=100-k;e.style.filter=`brightness(${1-k*.11})`;e.style.opacity=k>=VIS?0:1;
+}
+function render(fresh){
+  const keep=new Set();for(let i=cur-2;i<=cur+VIS;i++){if(i<0||i>=L.length)continue;keep.add(i);const e=el(i);if(fresh)e.style.transition="none";place(e,i-cur,i);if(fresh){void e.offsetWidth;e.style.transition=""}}
+  EL.forEach((e,i)=>{if(!keep.has(i)){e.remove();EL.delete(i)}});
+  if(L[cur+VIS+1]&&L[cur+VIS+1].cover){const p=new Image();p.src=thumb(hiRes(L[cur+VIS+1].cover))}
+  document.getElementById("pos").textContent=L.length?`${cur+1} / ${L.length}`:"";
+  let end=stage.querySelector(".end");
+  if(cur>=L.length){if(!end){end=document.createElement("div");end.className="end";stage.appendChild(end)}end.innerHTML=`End of this crate.<br><button type="button">Back to the front</button>`;end.querySelector("button").onclick=()=>go(0)}else if(end)end.remove();
+  paintInfo();
+}
+function paintInfo(){
+  const r=L[cur];if(!r){info.innerHTML=`<p class="now">${esc(crate.name)} · ${L.length} records</p><p class="me">You flipped through the whole crate. Pick another one above.</p>`;return}
+  const m=r.main,inb=cart.includes(r.key);
+  info.innerHTML=`<div class="now">${listening&&!au.paused?"Now playing":"In front"} · ${esc(crate.name)}</div>
+  <h1 class="ar">${esc(m.a)}</h1><div class="ti">${esc(m.t)}</div>
+  <div class="me">${[m.l,m.cat,m.f,r.g,m.S.shop].filter(Boolean).map(esc).join(" · ")}</div>
+  <div class="prog" id="prog"><i id="progi"></i></div>
+  <ol class="tr">${r.tracks.map((t,j)=>`<li class="${listening&&j===ti?"on":""}"><button type="button" data-j="${j}"><span class="s">${esc(t.s||j+1)}</span>${esc(t.n||"Track "+(j+1))}</button></li>`).join("")}</ol>
+  <div class="row"><span class="price">${money(m.S.cur,m.p)}</span><span class="btns"><button class="add${inb?" in":""}" id="add" type="button">${inb?"✓ In bag":"+ Bag"}</button><a class="buy" id="buy" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.S.shop)} ↗</a></span></div>
+  <div class="next"><b>Behind it</b>${L.slice(cur+1,cur+5).map((x,j)=>`<button type="button" data-g="${cur+1+j}">${esc(x.main.a)} – ${esc(x.main.t)}</button>`).join("")||"Nothing. Last one."}</div>`;
+  info.querySelectorAll("ol.tr button").forEach(b=>b.onclick=()=>playTrack(+b.dataset.j));
+  info.querySelectorAll(".next button").forEach(b=>b.onclick=()=>go(+b.dataset.g));
+  document.getElementById("add").onclick=toggleBag;
+  document.getElementById("buy").onclick=()=>track("Shop click",{shop:m.S.shop,where:"beta"});
+  document.getElementById("prog").onclick=e=>{if(!au.duration)return;const b=e.currentTarget.getBoundingClientRect();au.currentTime=au.duration*Math.min(1,Math.max(0,(e.clientX-b.left)/b.width))};
+}
+function toggleBag(){const r=L[cur];if(!r)return;cart=store.get("mvr-cart",[]);
+  if(cart.includes(r.key))cart=cart.filter(k=>k!==r.key);else{cart.push(r.key);track("Add to bag",{shop:r.main.S.shop,where:"beta"})}
+  store.set("mvr-cart",cart);bagCount();paintInfo()}
+let pt=null;
+function go(i){
+  i=Math.max(0,Math.min(L.length,i));if(i===cur)return;cur=i;ti=0;render();flips++;
+  if(flips===5)track("Beta flip",{crate:crate.name,n:5});
+  clearTimeout(pt);if(listening){au.pause();pt=setTimeout(()=>playTrack(0),220)} // kurz warten: schnelles Blättern lädt nicht jede Hörprobe
+}
+function playTrack(j){
+  const r=L[cur];if(!r||!r.tracks[j]){return}
+  ti=j;listening=true;stage.classList.remove("idle");document.getElementById("start").hidden=true;
+  au.src=r.tracks[j].u;au.play().catch(()=>{});paintInfo();
+}
+function toggle(){if(!listening||!au.src){playTrack(ti);track("Beta play",{crate:crate.name});return}if(au.paused)au.play().catch(()=>{});else au.pause()}
+const nowTxt=()=>{const n=info.querySelector(".now");if(n&&crate)n.textContent=(au.paused?"In front":"Now playing")+" · "+crate.name};
+au.addEventListener("play",()=>{stage.classList.add("playing");nowTxt()});
+au.addEventListener("pause",()=>{stage.classList.remove("playing");nowTxt()});
+au.addEventListener("timeupdate",()=>{const i=document.getElementById("progi");if(i&&au.duration)i.style.width=(au.currentTime/au.duration*100)+"%"});
+// Ende der Hörprobe: nächster Track, nach dem letzten die nächste Platte (Kiste läuft von selbst weiter)
+au.addEventListener("ended",()=>{const r=L[cur];if(r&&ti+1<r.tracks.length)playTrack(ti+1);else go(cur+1)});
+document.getElementById("start").onclick=()=>{playTrack(0);track("Beta play",{crate:crate.name,start:1});stage.focus({preventScroll:true})};
+
+document.addEventListener("keydown",e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey||/input|textarea/i.test(e.target.tagName))return;
+  const k=e.key;
+  if(k==="ArrowRight"||k==="ArrowDown"||k==="j"){go(cur+1)}
+  else if(k==="ArrowLeft"||k==="ArrowUp"||k==="k"){go(cur-1)}
+  else if(k===" "){if(e.target.tagName==="BUTTON"||e.target.tagName==="A")return;toggle()}
+  else if(k==="b"||k==="B"){toggleBag()}
+  else if(k==="Enter"&&e.target===stage||k==="o"){const r=L[cur];if(r){track("Shop click",{shop:r.main.S.shop,where:"beta"});window.open(r.main.url,"_blank","noopener")}}
+  else if(/^[1-9]$/.test(k)){playTrack(+k-1)}
+  else return;
+  e.preventDefault();
+});
+let acc=0,lock=0;
+stage.addEventListener("wheel",e=>{e.preventDefault();const now=Date.now();acc+=e.deltaY||e.deltaX;if(now<lock)return;if(Math.abs(acc)>40){go(cur+(acc>0?1:-1));acc=0;lock=now+170}},{passive:false});
+let ty=null,tx=null;
+stage.addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].clientX},{passive:true});
+stage.addEventListener("touchend",e=>{if(ty==null)return;const dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;ty=null;
+  if(Math.abs(dy)>40&&Math.abs(dy)>Math.abs(dx))go(cur+(dy<0?1:-1));else if(Math.abs(dx)>50)go(cur+(dx<0?1:-1))},{passive:true});
+window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintInfo()}});
+bagCount();
+fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{info.innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
+</script>
+</body>
+</html>
