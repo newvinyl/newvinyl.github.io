@@ -239,6 +239,23 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .tl:not(:has(li.on)) li:first-child{display:block}
   .side{margin-top:22px}.rinfo .ti{margin-bottom:10px}.buyrow{margin-top:12px}
 }
+/* Hinweise als drei kräftige Chevrons (User 27.11., 22:31): blenden ein, leuchten nacheinander in Wischrichtung auf */
+@media (max-width:860px){
+  .gh{font:800 28px/1 var(--display);letter-spacing:.01em;gap:12px}
+  .gh svg.cv{animation:none!important;fill:#ffea00;overflow:visible;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+  .gh svg.cv path{opacity:0;animation:cv-1 1.9s infinite}
+  .gh svg.cv path:nth-child(2){animation-name:cv-2}.gh svg.cv path:nth-child(3){animation-name:cv-3}
+  .gh-up{bottom:calc(var(--cv) * .42);transform:translateX(-50%)}
+  .gh-up svg.cv{width:calc(var(--cv) * .26);height:auto;aspect-ratio:44/84}
+  .gh-up span{bottom:auto;top:50%;transform:translateY(-50%);right:calc(100% + 14px)}
+  .gh-rt svg.cv,.gh-lt svg.cv{width:calc(var(--cv) * .38);height:auto;aspect-ratio:84/44}
+  .gh.on{animation:cv-in .5s cubic-bezier(.2,.8,.2,1) both}
+}
+@keyframes cv-1{0%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}14%,72%{opacity:1}88%,100%{opacity:0}}
+@keyframes cv-2{0%,14%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}28%,72%{opacity:1}88%,100%{opacity:0}}
+@keyframes cv-3{0%,28%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}42%,72%{opacity:1}88%,100%{opacity:0}}
+@keyframes cv-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.gh svg.cv path{animation:none!important;opacity:1}}
 </style>
 </head>
 <body>
@@ -258,9 +275,9 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <div class="inside"></div>
     <svg class="rims" viewBox="0 0 124 62" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151515"/><stop offset=".55" stop-color="#262626"/><stop offset="1" stop-color="#363636"/></linearGradient></defs><polygon points="0,62 5.2,62 15.6,0 11.8,0" fill="url(#rg)"/><polygon points="124,62 118.8,62 108.4,0 112.2,0" fill="url(#rg)"/><line x1="5.2" y1="62" x2="15.6" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/><line x1="118.8" y1="62" x2="108.4" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/></svg>
     <div class="cnt" id="cnt"></div>
-    <div class="gh gh-up" id="ghup"><span>Next</span><svg viewBox="-5 -6 24 112" preserveAspectRatio="none"><defs><linearGradient id="gu" gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M7 100V4" stroke="url(#gu)" stroke-width="9" fill="none" vector-effect="non-scaling-stroke"/><path d="M1 9 7 2l6 7" stroke="#ffea00" stroke-width="9" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
-    <div class="gh gh-rt" id="ghlt"><span>Bag!</span><svg viewBox="-6 -5 112 24" preserveAspectRatio="none"><defs><linearGradient id="gr" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M0 7h96" stroke="url(#gr)" stroke-width="9" fill="none" vector-effect="non-scaling-stroke"/><path d="M91 1l7 6-7 6" stroke="#ffea00" stroke-width="9" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
-    <div class="gh gh-lt" id="ghrt"><span>Skip</span><svg viewBox="-6 -5 112 24" preserveAspectRatio="none"><defs><linearGradient id="gl" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M100 7H4" stroke="url(#gl)" stroke-width="9" fill="none" vector-effect="non-scaling-stroke"/><path d="M9 1 2 7l7 6" stroke="#ffea00" stroke-width="9" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
+    <div class="gh gh-up" id="ghup"><span>Next</span><svg class="cv" viewBox="0 -19 44 84" aria-hidden="true"><path class="c" d="M0 46v15l22-19 22 19V46L22 27z"/><path class="c" d="M0 23v15l22-19 22 19V23L22 4z"/><path class="c" d="M0 0v15l22-19 22 19V0L22 -19z"/></svg></div>
+    <div class="gh gh-rt" id="ghlt"><span>Bag!</span><svg class="cv" viewBox="0 0 84 44" aria-hidden="true"><path d="M0 0h15l19 22-19 22H0l19-22z"/><path d="M24 0h15l19 22-19 22H24l19-22z"/><path d="M48 0h15l19 22-19 22H48l19-22z"/></svg></div>
+    <div class="gh gh-lt" id="ghrt"><span>Skip</span><svg class="cv" viewBox="0 0 84 44" aria-hidden="true" style="transform:scaleX(-1)"><path d="M0 0h15l19 22-19 22H0l19-22z"/><path d="M24 0h15l19 22-19 22H24l19-22z"/><path d="M48 0h15l19 22-19 22H48l19-22z"/></svg></div>
     <div class="bin"><span id="binlbl">Fresh today</span></div>
   </div>
   <aside class="side">
