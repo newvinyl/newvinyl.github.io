@@ -179,40 +179,44 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @media (min-width:861px) and (max-height:800px){.tl{height:calc(4 * 27px)}.side{padding:6px 0;gap:12px}.pad{grid-template-columns:auto 54px 54px 54px auto;grid-template-rows:auto 54px 54px auto auto;gap:6px}.key{width:54px;height:54px}.key.sp{width:100%;height:38px;margin-top:8px}.me{display:none}}
 @media (prefers-reduced-motion:reduce){.rec{transition:none}}
 .hback{color:var(--fg);margin-right:10px}.hback:hover,.hback:focus-visible{color:var(--yellow)}
-/* Handy (User 27.11.): keine Pfeiltasten, dafür dieselbe Anleitung als Wischgesten. Gleiche Anordnung wie die Tasten,
-   in jedem Feld zieht ein Finger-Punkt in Wischrichtung; die Felder lassen sich auch antippen. Alles auf einen Bildschirm. */
-.g{display:none}.km{display:none}.kd,.km{font-style:normal}
-@keyframes sw-up{0%{transform:translateY(13px);opacity:0}15%{opacity:1}70%{transform:translateY(-13px);opacity:1}85%,100%{transform:translateY(-13px);opacity:0}}
-@keyframes sw-dn{0%{transform:translateY(-13px);opacity:0}15%{opacity:1}70%{transform:translateY(13px);opacity:1}85%,100%{transform:translateY(13px);opacity:0}}
-@keyframes sw-lt{0%{transform:translateX(13px);opacity:0}15%{opacity:1}70%{transform:translateX(-13px);opacity:1}85%,100%{transform:translateX(-13px);opacity:0}}
-@keyframes sw-rt{0%{transform:translateX(-13px);opacity:0}15%{opacity:1}70%{transform:translateX(13px);opacity:1}85%,100%{transform:translateX(13px);opacity:0}}
-@keyframes sw-tap{0%,100%{transform:scale(1);opacity:.9}40%{transform:scale(.7);opacity:1}55%{transform:scale(1.25);opacity:.5}}
+/* Handy (User 27.11., 2. Runde): ganz schlicht. Keine Tasten-Abbildung; Wisch-Hinweise als Pfeile im Verlauf direkt
+   über der Platte (von transparent zu gelb, blenden in Wischrichtung ein) mit gelbem Text daneben.
+   Artist und Titel stehen auf dem Sticker der Kiste, die Tracks klein rechts neben der Platte. Antippen = Play/Pause. */
+.g,.km{display:none}.kd,.km{font-style:normal}
+.gh{display:none}
 @media (max-width:860px){
   .top{gap:8px}.logo{font-size:16px;white-space:nowrap}.hicons .habout:not(.hback):not(.beta){display:none}.habout{white-space:nowrap}
   .bar{padding:6px 0 6px 16px}
-  :root{--cv:min(20vh,58vw,240px)}
-  main{gap:4px;padding:0 16px 6px}
-  .stage{min-height:0;height:calc(var(--cv) * 1.6)}
-  .side{padding:6px 0 0;gap:10px}
-  .rinfo .now{display:none}.rinfo .me{display:none}
-  .tl{height:calc(2 * 27px)}.tlh{display:none}
-  .buyrow{margin-top:6px}
-  .rfoot{display:none}
-  .pad{grid-template-columns:auto 50px 50px 50px auto;grid-template-rows:auto 50px 50px auto auto;gap:4px 5px}
-  .key{width:50px;height:50px;position:relative;overflow:hidden;border-width:1px;border-bottom-width:1px;border-radius:12px;border-color:#3a3a3a;background:#121212}
-  .key svg{opacity:.22;width:30px;height:30px}
-  .key .g{display:block;position:absolute;left:calc(50% - 7px);top:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:var(--fg);box-shadow:0 0 0 5px rgba(240,240,235,.14)}
-  .g-up{animation:sw-up 1.9s cubic-bezier(.5,0,.3,1) infinite}.g-dn{animation:sw-dn 1.9s cubic-bezier(.5,0,.3,1) infinite}
-  .g-lt{animation:sw-lt 1.9s cubic-bezier(.5,0,.3,1) infinite}.g-rt{animation:sw-rt 1.9s cubic-bezier(.5,0,.3,1) infinite}
-  .key.sp{grid-area:5/1/6/6;width:auto;min-width:250px;height:38px;margin-top:6px;border-radius:12px;padding:0 16px 0 38px;white-space:nowrap;font-size:10.5px}
-  .key.sp .g-tap{left:20px;animation:sw-tap 1.9s ease-in-out infinite}
-  .kd{display:none}.km{display:inline}
-  .key.nudge:not(.sp){animation:none;border-color:var(--yellow);box-shadow:0 0 0 2px rgba(255,234,0,.25)}
-  .key.nudge:not(.sp) .g{background:var(--yellow);box-shadow:0 0 0 5px rgba(255,234,0,.2)}
-  .sp.nudge{animation:none;border-color:var(--yellow)}.sp.nudge .g{background:var(--yellow)}
-  .lb{font-size:9.5px;max-width:72px}
+  :root{--cv:min(calc((100vw - 150px) / 1.24),34vh)}
+  main{grid-template-columns:1fr 108px;gap:8px;padding:0 14px 0;align-items:end}
+  .stage{min-height:0;height:calc(var(--cv) * 1.72);align-self:end}
+  .side{padding:0 0 calc(var(--cv) * .3);gap:0;align-self:end;justify-content:flex-end;min-height:0}
+  .ctl,.rfoot,.rinfo .now,.rinfo .ar,.rinfo .ti,.rinfo .me,.tlh{display:none!important}
+  .tl{height:auto;max-height:calc(var(--cv) * 1.2);margin:0;border-top:0;-webkit-mask-image:none!important;mask-image:none!important}
+  .tl li{border-bottom:0}
+  .tl button{padding:3px 0!important;font-size:10px!important;line-height:1.25!important;gap:5px!important}
+  .tl em{min-width:16px!important;font-size:9.5px!important}
+  .tl .pg{height:2px}
+  .buyrow{flex-direction:column;align-items:flex-start;gap:3px;margin-top:10px}
+  .buyrow .price{font-size:15px}.buy{font-size:10px}
+  .bin span{display:flex;flex-direction:column;align-items:center;gap:.25em;max-width:calc(var(--cv) * 1.02);white-space:normal;text-align:center;font-size:calc(var(--cv) * .068)}
+  .bin span b,.bin span small{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bin span small{font:500 .62em/1.1 var(--mono);text-transform:none;letter-spacing:0;color:#444}
+  .gh{position:absolute;z-index:300;pointer-events:none;align-items:center;gap:8px;font:600 11px/1.1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 10px rgba(0,0,0,.6);opacity:0;transition:opacity .4s}
+  .gh.on{display:flex;opacity:1}
+  .gh svg{overflow:visible;filter:drop-shadow(0 1px 3px rgba(0,0,0,.7))}
+  .gh-up{left:50%;bottom:calc(var(--cv) * .62);transform:translateX(-6px)}
+  .gh-up span{position:absolute;right:calc(100% + 2px);bottom:18px;white-space:nowrap}
+  .gh-up svg{width:14px;height:calc(var(--cv) * .5);animation:gh-up 2.2s cubic-bezier(.4,0,.2,1) infinite}
+  .gh-rt{right:calc(50% - var(--cv) * .5 + 8px);bottom:calc(var(--cv) * .9);flex-direction:column;align-items:flex-end}
+  .gh-rt svg{width:calc(var(--cv) * .42);height:14px;animation:gh-rt 2.2s cubic-bezier(.4,0,.2,1) infinite}
+  .gh-lt{left:calc(50% - var(--cv) * .5 + 8px);bottom:calc(var(--cv) * .9);flex-direction:column;align-items:flex-start}
+  .gh-lt svg{width:calc(var(--cv) * .42);height:14px;animation:gh-lt 2.2s cubic-bezier(.4,0,.2,1) infinite}
 }
-@media (max-width:860px) and (prefers-reduced-motion:reduce){.key .g{animation:none!important}}
+@keyframes gh-up{0%{clip-path:inset(100% 0 0 0);opacity:1}55%{clip-path:inset(0 0 0 0);opacity:1}80%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@keyframes gh-rt{0%{clip-path:inset(0 100% 0 0);opacity:1}55%{clip-path:inset(0 0 0 0);opacity:1}80%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@keyframes gh-lt{0%{clip-path:inset(0 0 0 100%);opacity:1}55%{clip-path:inset(0 0 0 0);opacity:1}80%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@media (prefers-reduced-motion:reduce){.gh svg{animation:none!important}}
 </style>
 </head>
 <body>
@@ -232,6 +236,9 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <div class="inside"></div>
     <svg class="rims" viewBox="0 0 124 62" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151515"/><stop offset=".55" stop-color="#262626"/><stop offset="1" stop-color="#363636"/></linearGradient></defs><polygon points="0,62 5.2,62 15.6,0 11.8,0" fill="url(#rg)"/><polygon points="124,62 118.8,62 108.4,0 112.2,0" fill="url(#rg)"/><line x1="5.2" y1="62" x2="15.6" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/><line x1="118.8" y1="62" x2="108.4" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/></svg>
     <div class="cnt" id="cnt"></div>
+    <div class="gh gh-up" id="ghup"><span>Next record</span><svg viewBox="0 0 14 100" preserveAspectRatio="none"><defs><linearGradient id="gu" gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M7 100V4" stroke="url(#gu)" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/><path d="M1 9 7 2l6 7" stroke="#ffea00" stroke-width="3" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
+    <div class="gh gh-rt" id="ghrt"><span>Next track</span><svg viewBox="0 0 100 14" preserveAspectRatio="none"><defs><linearGradient id="gr" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M0 7h96" stroke="url(#gr)" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/><path d="M91 1l7 6-7 6" stroke="#ffea00" stroke-width="3" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
+    <div class="gh gh-lt" id="ghlt"><span>Into the bag</span><svg viewBox="0 0 100 14" preserveAspectRatio="none"><defs><linearGradient id="gl" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#ffea00" stop-opacity="0"/><stop offset=".55" stop-color="#ffea00" stop-opacity=".75"/><stop offset="1" stop-color="#ffea00"/></linearGradient></defs><path d="M100 7H4" stroke="url(#gl)" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/><path d="M9 1 2 7l7 6" stroke="#ffea00" stroke-width="3" fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke"/></svg></div>
     <div class="bin"><span id="binlbl">Fresh today</span></div>
   </div>
   <aside class="side">
@@ -298,9 +305,11 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
   odo(document.getElementById("oda"),a);odo(document.getElementById("odb"),b)}
 // Tasten-Hinweise: nach dem ersten Ton blinkt ↑, bis man sie einmal nutzt; bei Platten mit mehreren Tracks blinkt →, bis man sie einmal nutzt
 // Haben beide gleichzeitig geblinkt und man drückt eine der beiden, hören beide auf
-const used={up:false,rt:false,both:false};
+const used={up:false,rt:false,both:false,bag:false};
 const TOUCH=matchMedia("(max-width:860px)").matches;
-function hintKeys(){const r=L[cur],up=listening&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
+function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
+  if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)};
+    sh("ghup",up&&!rt);sh("ghrt",rt);sh("ghlt",!up&&!rt&&flips>=4&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key)))}
   if(up&&rt)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
   document.querySelector(".k-rt").classList.toggle("nudge",rt)}
@@ -337,7 +346,7 @@ function build(data){
 function openCrate(c){
   crate=c;L=c.recs;cur=0;ti=0;EL.forEach(e=>e.remove());EL.clear();
   CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));c.btn.scrollIntoView({block:"nearest",inline:"nearest"});
-  document.getElementById("binlbl").textContent=c.name;
+  if(!TOUCH)document.getElementById("binlbl").textContent=c.name;
   try{history.replaceState(null,"","#crate="+encodeURIComponent(c.id))}catch(e){}
   render(true);if(listening)playTrack(0);
 }
@@ -368,6 +377,7 @@ function render(fresh){
 function paintInfo(){
   const r=L[cur];if(!r){info.innerHTML=`<div class="now"><span>${esc(crate.name)}</span><span>${L.length} records</span></div><div class="ti">You flipped through the whole crate.</div>`;return}
   const m=r.main,t=r.tracks[ti]||r.tracks[0],inb=cart.includes(r.key);
+  if(TOUCH)document.getElementById("binlbl").innerHTML=`<b>${esc(m.a)}</b><small>${esc(m.t)}</small>`;
   {const k=document.querySelector('.key[data-k="ArrowLeft"]');if(k)k.classList.toggle("off",r.out&&!inb)}
   info.innerHTML=`<div class="now"><span id="nowl">${!au.paused&&listening?"Now playing":"In front"}</span></div>
   <h1 class="ar">${esc(m.a)}${inb?'<span class="inb">In bag</span>':r.out?'<span class="sob" id="sob">Sold out</span>':""}</h1><div class="ti">${esc(m.t)}</div>
@@ -422,7 +432,7 @@ function pack(){
 function act(a,arg){
   if(busy)return;
   const first=!listening&&L[cur];
-  if(a==="next"||a==="prev")used.up=true;if(a==="track")used.rt=true;
+  if(a==="next"||a==="prev")used.up=true;if(a==="track")used.rt=true;if(a==="bag")used.bag=true;
   if(used.both&&(a==="next"||a==="prev"||a==="track"))used.up=used.rt=true;
   if(a==="next"){go(arg!=null?arg:cur+1)}
   else if(a==="prev"){go(cur-1)}
