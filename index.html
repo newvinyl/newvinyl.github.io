@@ -447,7 +447,7 @@ function rangeOf(k){
 const RANGES=[["today","Today"],["yesterday","Yesterday"],["week","This week"],["lastweek","Last week"],["month","This month"],["lastmonth","Last month"]];
 // Feed häppchenweise: alle Platten stehen sofort in RECS (Zähler, Player, Filter rechnen mit den Daten),
 // gebaut werden aber nur die Karten bis knapp unter den Bildschirm; der Rest folgt beim Scrollen
-let PLAN=[],PP={d:0,k:0},BUILT=0,moreIO=null;
+let PLAN=[],PP={d:0,k:0},BUILT=0,moreIO=null;let PIN=null;
 function renderFeed(){
   const recs=ALL,curGk=cur>=0&&RECS[cur]?RECS[cur].gk:null;
   const rg=rangeOf(F.r);
@@ -456,6 +456,7 @@ function renderFeed(){
   const todayIso=isoZ(new Date()),yIso=isoZ(new Date(Date.now()-864e5));
   if(imgIO)imgIO.disconnect();
   RECS=[];PLAN=[];PP={d:0,k:0};BUILT=0;const feed=document.getElementById("feed");feed.innerHTML="";
+  {const pr=PIN&&recs.find(r=>r.gk===PIN);PIN=null;if(pr)PLAN.push({lab:fmtDay(pr.first),idx:[RECS.push(pr)-1],g:null,h:null})}
   if(!days.length){feed.innerHTML='<p class="empty">No records in this period yet.</p>'}
   days.forEach((d,di)=>{
     const list=d==="search"?recs.map(r=>[qScore(r),r]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||(b[1].first>a[1].first?1:-1)).map(x=>x[1])
@@ -506,7 +507,9 @@ function checkShareLink(){
   let sl=null;try{sl=new URLSearchParams(location.search).get("r")}catch(e){}
   if(!sl)return;
   const i=RECS.findIndex(r=>r.all.some(x=>rslug(x.a,x.t)===sl));
-  if(i<0){location.replace("/all/?r="+encodeURIComponent(sl));return}
+  // ältere Platte, nicht im Feed: oben im Feed einblenden statt auf /all/ (altes Design) umleiten
+  if(i<0){const r=ALL.find(r=>r.all.some(x=>rslug(x.a,x.t)===sl));if(!r){try{history.replaceState(null,"",location.pathname)}catch(e){}return}
+    PIN=r.gk;renderFeed();checkShareLink();return}
   try{history.replaceState(null,"",location.pathname)}catch(e){}
   track("Shared link opened");
   buildTo(i);const c=document.querySelector(`.card[data-i="${i}"]`);if(!c)return;
