@@ -27,6 +27,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}[hidden]{display:none!important}
+html{overscroll-behavior-x:none}
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
 body{min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
 a{color:inherit}button{font:inherit;color:inherit}
@@ -51,9 +52,9 @@ a{color:inherit}button{font:inherit;color:inherit}
 .crt small{opacity:.6;margin-left:5px}
 
 main{flex:1;display:grid;grid-template-columns:1fr minmax(300px,400px);align-items:center;gap:24px;padding:0 32px;min-height:0}
-.stage{position:relative;height:calc(var(--cv) * 1.62);min-height:360px;outline:none;user-select:none;-webkit-user-select:none;touch-action:none}
+.stage{position:relative;height:calc(var(--cv) * 1.86);min-height:360px;outline:none;user-select:none;-webkit-user-select:none;touch-action:none}
 .glow{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 2.2);height:calc(var(--cv) * 1.2);transform:translateX(-50%);background:radial-gradient(ellipse at 50% 100%,rgba(120,84,40,.45),transparent 65%);pointer-events:none}
-.rec{position:absolute;left:50%;bottom:calc(var(--cv) * .3);width:var(--cv);margin-left:calc(var(--cv) / -2);aspect-ratio:1;transform-origin:50% 100%;
+.rec{position:absolute;left:50%;bottom:calc(var(--cv) * .1);width:var(--cv);margin-left:calc(var(--cv) / -2);aspect-ratio:1;transform-origin:50% 100%;
   transition:transform .42s cubic-bezier(.25,.8,.25,1),filter .42s,opacity .3s;cursor:pointer;will-change:transform}
 .rec .sl{position:absolute;inset:0;background:#1d1d1d;overflow:hidden;border-radius:2px;box-shadow:0 -4px 14px rgba(0,0,0,.7)}
 .rec img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.035)}
@@ -67,10 +68,10 @@ main{flex:1;display:grid;grid-template-columns:1fr minmax(300px,400px);align-ite
 .stage.playing .rec.k0 .pp{background:var(--yellow)}
 .rec .pp .ps{display:none}.stage.playing .rec.k0 .pp .pl{display:none}.stage.playing .rec.k0 .pp .ps{display:block}
 .stage.playing .rec.k0 .sl{outline:4px solid var(--yellow);outline-offset:-4px}
-.bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.3);height:calc(var(--cv) * .46);transform:translateX(-50%);z-index:200;
+.bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.3);height:calc(var(--cv) * .23);transform:translateX(-50%);z-index:200;
   background:linear-gradient(180deg,#6d4923 0%,#4a3117 55%,#2a1b0b 100%);border-top:7px solid #8c6332;box-shadow:0 -18px 40px rgba(0,0,0,.75);pointer-events:none}
 .bin::before,.bin::after{content:"";position:absolute;top:0;bottom:0;width:7px;background:rgba(0,0,0,.25)}.bin::before{left:16%}.bin::after{right:16%}
-.bin span{position:absolute;left:50%;top:22%;transform:translateX(-50%);white-space:nowrap;font:500 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#e2bf87;border:2px solid #e2bf87;padding:7px 11px;background:rgba(0,0,0,.15)}
+.bin span{position:absolute;left:50%;top:50%;margin-top:-14px;transform:translateX(-50%);white-space:nowrap;font:500 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#e2bf87;border:2px solid #e2bf87;padding:7px 11px;background:rgba(0,0,0,.15)}
 .pos{position:absolute;left:0;bottom:8px;font:500 11px var(--mono);color:var(--muted);letter-spacing:.06em}
 
 .info{min-width:0}
@@ -101,7 +102,8 @@ ol.tr li.on button{color:var(--yellow)}
 .keys{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));font:500 11px/1 var(--mono);color:var(--muted);border-top:1px solid var(--line)}
 .keys kbd{display:inline-block;min-width:20px;padding:3px 5px;margin-right:5px;border:1px solid #555;border-bottom-width:2px;color:var(--fg);font:inherit;text-align:center}
 .keys a{color:var(--muted)}
-.start{all:unset;cursor:pointer;position:absolute;left:50%;top:calc(var(--cv) * .82);transform:translate(-50%,-50%);z-index:300;background:var(--yellow);color:var(--ink);font:800 17px/1 var(--display);padding:16px 22px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+@media (min-width:861px){.keys .mb{display:none}}
+.start{all:unset;cursor:pointer;position:absolute;left:50%;top:calc(var(--cv) * 1.26);transform:translate(-50%,-50%);z-index:300;background:var(--yellow);color:var(--ink);font:800 17px/1 var(--display);padding:16px 22px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
 .end{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:150;text-align:center;font:500 13px/1.6 var(--mono);color:var(--muted)}
 .end button{all:unset;cursor:pointer;margin-top:10px;display:inline-block;border:2px solid var(--white);color:var(--fg);padding:9px 14px;font:700 14px var(--display)}
 .load{padding:60px 0;font-family:var(--mono);color:var(--muted);text-align:center}
@@ -110,8 +112,25 @@ ol.tr li.on button{color:var(--yellow)}
   :root{--cv:min(36vh,330px,74vw)}
   main{grid-template-columns:1fr;padding:8px 16px 16px;gap:6px}
   .ar{font-size:24px}.ti{font-size:16px}
-  .next,.keys .k{display:none}
+  .next,.keys .k,.hints,.keys .dk{display:none}
+  .koffer{width:calc(var(--cv) * .3);height:calc(var(--cv) * .22);bottom:auto;top:34px}.koffer span{font-size:9px}.koffer::before{top:-18px;height:12px;border-width:4px}
 }
+.rec .pp{display:none}
+.rec.up{cursor:default}.rec.up .sl{box-shadow:0 40px 80px rgba(0,0,0,.9)}
+.rec.pack{transition:transform .45s cubic-bezier(.5,0,.75,0),opacity .45s .1s!important}
+.koffer{position:absolute;left:0;bottom:0;width:calc(var(--cv) * .5);height:calc(var(--cv) * .34);z-index:220;text-decoration:none;display:block;
+  background:linear-gradient(180deg,#e9557a,#b93a5c);border:3px solid #111;border-top-width:10px;box-shadow:0 14px 30px rgba(0,0,0,.6)}
+.koffer::before{content:"";position:absolute;left:12%;right:12%;top:-26px;height:18px;border:6px solid #8a2440;border-bottom:0;border-radius:10px 10px 0 0}
+.koffer::after{content:"";position:absolute;left:0;right:0;top:34%;height:3px;background:repeating-linear-gradient(90deg,#111 0 4px,transparent 4px 7px)}
+.koffer span{position:absolute;left:0;right:0;bottom:12%;text-align:center;font:700 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#111}
+.koffer b{position:absolute;top:-14px;right:-12px;min-width:26px;height:26px;padding:0 6px;background:var(--yellow);color:var(--ink);font:700 13px/26px var(--mono);text-align:center;border-radius:13px}
+.koffer b:empty{display:none}
+.koffer.pop{animation:kpop .4s ease}@keyframes kpop{40%{transform:scale(1.12) rotate(-3deg)}}
+.hints{position:absolute;right:0;bottom:0;z-index:220;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.hints button{all:unset;cursor:pointer;font:500 11.5px/1 var(--mono);color:var(--muted);padding:6px 8px;border:1px solid var(--line);background:var(--bg)}
+.hints button:hover,.hints button:focus-visible{color:var(--ink);background:var(--yellow);border-color:var(--yellow)}
+.hints kbd{font:inherit;margin-right:6px;color:var(--fg)}.hints button:hover kbd{color:inherit}
+.pos{left:auto;right:0;bottom:auto;top:0}
 @media (prefers-reduced-motion:reduce){.rec{transition:none}}
 </style>
 </head>
@@ -130,11 +149,13 @@ ol.tr li.on button{color:var(--yellow)}
     <div class="glow"></div>
     <div class="bin"><span id="binlbl">Fresh today</span></div>
     <div class="pos" id="pos"></div>
+    <a class="koffer" id="koffer" href="/bag/" aria-label="Your bag"><span>Your bag</span><b id="kn"></b></a>
+    <div class="hints" id="hints"></div>
     <button class="start" id="start" type="button">Start digging ▶</button>
   </div>
   <section class="info" id="info" aria-live="polite"><p class="load">Loading the crate…</p></section>
 </main>
-<div class="keys"><span class="k"><kbd>←</kbd><kbd>→</kbd>flip</span><span class="k"><kbd>Space</kbd>play</span><span class="k"><kbd>B</kbd>bag</span><span class="k"><kbd>Enter</kbd>shop</span><span>Scroll or swipe to flip</span><a href="/">Back to the feed</a></div>
+<div class="keys"><span class="k"><kbd>→</kbd>next</span><span class="k"><kbd>↑</kbd>pull out</span><span class="k"><kbd>←</kbd>into the bag</span><span class="k"><kbd>↓</kbd>put back</span><span class="k"><kbd>Space</kbd>play</span><span class="k"><kbd>Enter</kbd>shop</span><span class="dk">Click or swipe right to flip</span><span class="mb">Swipe ← next · ↑ pull out · → into the bag</span><a href="/">Back to the feed</a></div>
 <audio id="au" preload="none"></audio>
 <script>
 const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF","zł":"PLN"};
@@ -168,11 +189,24 @@ function coverFail(im){const n=+(im.dataset.t||0)+1;im.dataset.t=n;const nx=n===
 
 const PLAY='<svg class="pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="ps" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>';
 const stage=document.getElementById("stage"),info=document.getElementById("info"),au=document.getElementById("au");
-let ALL=[],CRATES=[],crate=null,L=[],cur=0,ti=0,listening=false,cart=store.get("mvr-cart",[]),EL=new Map(),flips=0;
+let pulled=false,ALL=[],CRATES=[],crate=null,L=[],cur=0,ti=0,listening=false,cart=store.get("mvr-cart",[]),EL=new Map(),flips=0;
 const VIS=7; // sichtbare Platten in der Kiste
 const jit=i=>(((i*9301+49297)%233280)/233280-.5)*3.2; // feste kleine Schräglage pro Platte
 
-function bagCount(){document.getElementById("bagn").textContent=cart.length||""}
+function bagCount(){document.getElementById("bagn").textContent=cart.length||"";document.getElementById("kn").textContent=cart.length||""}
+function paintHints(){
+  const h=document.getElementById("hints");if(!L[cur]){h.innerHTML="";return}
+  const H=pulled?[["←","Into the bag",pack],["↓","Put back",putBack],["→","Next record",()=>go(cur+1)]]:[["→","Next record",()=>go(cur+1)],["↑","Pull out",pull],["←","Back",()=>go(cur-1)]];
+  h.innerHTML="";H.forEach(([k,t,f])=>{const b=document.createElement("button");b.type="button";b.innerHTML=`<kbd>${k}</kbd>${t}`;b.onclick=f;h.appendChild(b)})}
+function pull(){if(!L[cur]||pulled)return;pulled=true;render();track("Beta pull",{crate:crate.name});if(!listening)playTrack(0)}
+function putBack(){if(!pulled)return;pulled=false;render()}
+// Einpacken: die hochgezogene Platte fliegt in den Koffer, dann kommt die nächste nach vorne
+function pack(){
+  const r=L[cur],e=EL.get(cur);if(!r)return;if(!pulled){pull();return}
+  cart=store.get("mvr-cart",[]);if(!cart.includes(r.key)){cart.push(r.key);store.set("mvr-cart",cart);track("Add to bag",{shop:r.main.S.shop,where:"beta"})}
+  bagCount();const k=document.getElementById("koffer"),a=k.getBoundingClientRect(),b=e.getBoundingClientRect();
+  e.classList.add("pack");e.style.transform=`translate(${a.left+a.width/2-(b.left+b.width/2)}px,${a.top+a.height/2-(b.top+b.height/2)}px) rotate(-25deg) scale(.12)`;e.style.opacity=0;
+  setTimeout(()=>{k.classList.remove("pop");void k.offsetWidth;k.classList.add("pop");e.remove();EL.delete(cur);pulled=false;go(cur+1)},430)}
 function build(data){
   FX=data.fx||{};const G={};
   data.shops.forEach(S=>{if(S.blocked)return;(S.items||[]).forEach(r=>{const gk=r.gk||norm(r.a)+"|"+norm(r.t);(G[gk]=G[gk]||[]).push({...r,S,key:S.shop+"|"+r.url,chf:r.p==null?null:r.p*(FX[CODE[S.cur]]||NaN)})})});
@@ -196,7 +230,7 @@ function build(data){
   openCrate(CRATES.find(c=>c.id===want)||CRATES[0]);
 }
 function openCrate(c){
-  crate=c;L=c.recs;cur=0;ti=0;EL.forEach(e=>e.remove());EL.clear();
+  crate=c;L=c.recs;cur=0;ti=0;pulled=false;EL.forEach(e=>e.remove());EL.clear();
   CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));
   document.getElementById("binlbl").textContent=c.name;
   try{history.replaceState(null,"","#crate="+encodeURIComponent(c.id))}catch(e){}
@@ -206,13 +240,16 @@ function el(i){
   let e=EL.get(i);if(e)return e;const r=L[i];if(!r)return null;
   e=document.createElement("div");e.className="rec";e.dataset.i=i;
   e.innerHTML=`<div class="sl"><div class="ph">${esc(r.main.a)}<br>${esc(r.main.t)}</div>${r.cover?`<img decoding="async" alt="" src="${esc(thumb(hiRes(r.cover)))}" data-o="${esc(hiRes(r.cover))}" data-lo="${esc(r.cover)}" onerror="coverFail(this)">`:""}</div><span class="pp">${PLAY}</span>`;
-  e.onclick=()=>{const k=+e.dataset.i-cur;if(k===0)toggle();else if(k>0)go(+e.dataset.i)};
+  // Klick auf die vordere Platte blättert weiter, auf eine hintere springt zu ihr; die hochgezogene geht zurück in die Kiste
+  e.onclick=()=>{const k=+e.dataset.i-cur;if(k===0){if(pulled)putBack();else go(cur+1)}else if(k>0)go(+e.dataset.i)};
   stage.insertBefore(e,stage.querySelector(".bin"));EL.set(i,e);return e;
 }
 function place(e,k,i){
   e.classList.toggle("k0",k===0);e.classList.toggle("gone",k<0);
   if(k<0){ // umgeblättert: kippt nach vorne und verschwindet hinter der Kistenwand
     e.style.transform=`translateY(calc(var(--cv) * .75)) perspective(900px) rotateX(-28deg) rotate(${jit(i)}deg)`;e.style.zIndex=150;e.style.filter="brightness(.5)";e.style.opacity=0;return}
+  if(k===0&&pulled){e.classList.add("up");e.style.transform=`translateY(calc(var(--cv) * -.74)) rotate(-3deg) scale(1.03)`;e.style.zIndex=260;e.style.filter="none";e.style.opacity=1;return}
+  e.classList.remove("up");
   e.style.transform=`translateY(calc(var(--cv) * ${-k*.085})) scale(${1-k*.03}) rotate(${k?jit(i):0}deg)`;
   e.style.zIndex=100-k;e.style.filter=`brightness(${1-k*.11})`;e.style.opacity=k>=VIS?0:1;
 }
@@ -221,6 +258,7 @@ function render(fresh){
   EL.forEach((e,i)=>{if(!keep.has(i)){e.remove();EL.delete(i)}});
   if(L[cur+VIS+1]&&L[cur+VIS+1].cover){const p=new Image();p.src=thumb(hiRes(L[cur+VIS+1].cover))}
   document.getElementById("pos").textContent=L.length?`${cur+1} / ${L.length}`:"";
+  paintHints();
   let end=stage.querySelector(".end");
   if(cur>=L.length){if(!end){end=document.createElement("div");end.className="end";stage.appendChild(end)}end.innerHTML=`End of this crate.<br><button type="button">Back to the front</button>`;end.querySelector("button").onclick=()=>go(0)}else if(end)end.remove();
   paintInfo();
@@ -228,7 +266,7 @@ function render(fresh){
 function paintInfo(){
   const r=L[cur];if(!r){info.innerHTML=`<p class="now">${esc(crate.name)} · ${L.length} records</p><p class="me">You flipped through the whole crate. Pick another one above.</p>`;return}
   const m=r.main,inb=cart.includes(r.key);
-  info.innerHTML=`<div class="now">${listening&&!au.paused?"Now playing":"In front"} · ${esc(crate.name)}</div>
+  info.innerHTML=`<div class="now">${listening&&!au.paused?"Now playing":pulled?"Pulled out":"In front"} · ${esc(crate.name)}</div>
   <h1 class="ar">${esc(m.a)}</h1><div class="ti">${esc(m.t)}</div>
   <div class="me">${[m.l,m.cat,m.f,r.g,m.S.shop].filter(Boolean).map(esc).join(" · ")}</div>
   <div class="prog" id="prog"><i id="progi"></i></div>
@@ -246,7 +284,7 @@ function toggleBag(){const r=L[cur];if(!r)return;cart=store.get("mvr-cart",[]);
   store.set("mvr-cart",cart);bagCount();paintInfo()}
 let pt=null;
 function go(i){
-  i=Math.max(0,Math.min(L.length,i));if(i===cur)return;cur=i;ti=0;render();flips++;
+  i=Math.max(0,Math.min(L.length,i));if(i===cur)return;pulled=false;cur=i;ti=0;render();flips++;
   if(flips===5)track("Beta flip",{crate:crate.name,n:5});
   clearTimeout(pt);if(listening){au.pause();pt=setTimeout(()=>playTrack(0),220)} // kurz warten: schnelles Blättern lädt nicht jede Hörprobe
 }
@@ -256,7 +294,7 @@ function playTrack(j){
   au.src=r.tracks[j].u;au.play().catch(()=>{});paintInfo();
 }
 function toggle(){if(!listening||!au.src){playTrack(ti);track("Beta play",{crate:crate.name});return}if(au.paused)au.play().catch(()=>{});else au.pause()}
-const nowTxt=()=>{const n=info.querySelector(".now");if(n&&crate)n.textContent=(au.paused?"In front":"Now playing")+" · "+crate.name};
+const nowTxt=()=>{const n=info.querySelector(".now");if(n&&crate)n.textContent=(au.paused?(pulled?"Pulled out":"In front"):"Now playing")+" · "+crate.name};
 au.addEventListener("play",()=>{stage.classList.add("playing");nowTxt()});
 au.addEventListener("pause",()=>{stage.classList.remove("playing");nowTxt()});
 au.addEventListener("timeupdate",()=>{const i=document.getElementById("progi");if(i&&au.duration)i.style.width=(au.currentTime/au.duration*100)+"%"});
@@ -267,21 +305,24 @@ document.getElementById("start").onclick=()=>{playTrack(0);track("Beta play",{cr
 document.addEventListener("keydown",e=>{
   if(e.metaKey||e.ctrlKey||e.altKey||/input|textarea/i.test(e.target.tagName))return;
   const k=e.key;
-  if(k==="ArrowRight"||k==="ArrowDown"||k==="j"){go(cur+1)}
-  else if(k==="ArrowLeft"||k==="ArrowUp"||k==="k"){go(cur-1)}
+  if(k==="ArrowRight"||k==="j"){go(cur+1)}
+  else if(k==="ArrowLeft"||k==="k"){if(pulled)pack();else go(cur-1)}
+  else if(k==="ArrowUp"){pull()}
+  else if(k==="ArrowDown"||k==="Escape"){putBack()}
   else if(k===" "){if(e.target.tagName==="BUTTON"||e.target.tagName==="A")return;toggle()}
-  else if(k==="b"||k==="B"){toggleBag()}
+  else if(k==="b"||k==="B"){if(pulled)pack();else toggleBag()}
   else if(k==="Enter"&&e.target===stage||k==="o"){const r=L[cur];if(r){track("Shop click",{shop:r.main.S.shop,where:"beta"});window.open(r.main.url,"_blank","noopener")}}
   else if(/^[1-9]$/.test(k)){playTrack(+k-1)}
   else return;
   e.preventDefault();
 });
 let acc=0,lock=0;
-stage.addEventListener("wheel",e=>{e.preventDefault();const now=Date.now();acc+=e.deltaY||e.deltaX;if(now<lock)return;if(Math.abs(acc)>40){go(cur+(acc>0?1:-1));acc=0;lock=now+170}},{passive:false});
+// Trackpad: Wischen nach rechts (macOS natürlich: deltaX negativ) = nächste Platte; Mausrad nach unten = nächste
+stage.addEventListener("wheel",e=>{e.preventDefault();const now=Date.now(),hz=Math.abs(e.deltaX)>Math.abs(e.deltaY);acc+=hz?-e.deltaX:e.deltaY;if(now<lock)return;if(Math.abs(acc)>40){go(cur+(acc>0?1:-1));acc=0;lock=now+(hz?260:170)}},{passive:false});
 let ty=null,tx=null;
 stage.addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].clientX},{passive:true});
 stage.addEventListener("touchend",e=>{if(ty==null)return;const dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;ty=null;
-  if(Math.abs(dy)>40&&Math.abs(dy)>Math.abs(dx))go(cur+(dy<0?1:-1));else if(Math.abs(dx)>50)go(cur+(dx<0?1:-1))},{passive:true});
+  if(Math.abs(dy)>40&&Math.abs(dy)>Math.abs(dx)){if(dy<0)pull();else putBack()}else if(Math.abs(dx)>50){if(dx<0)go(cur+1);else if(pulled)pack();else go(cur-1)}},{passive:true});
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintInfo()}});
 bagCount();
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{info.innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
