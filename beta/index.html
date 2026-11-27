@@ -263,6 +263,13 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 }
 @keyframes cv-tx{0%{opacity:0}16%,72%{opacity:1}90%,100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.gh.on span{animation:none!important}.gh svg.cv path{animation:none!important;opacity:1}}
+/* Trackwechsel: Platte hüpft; Start: TAP im Stil der Hinweise, ohne Pfeil, bis der erste Track läuft */
+.rec.hop{animation:hop .55s cubic-bezier(.3,0,.3,1)}
+@keyframes hop{0%{translate:0 0}30%{translate:0 -18px}55%{translate:0 0}72%{translate:0 -5px}86%,100%{translate:0 0}}
+@media (max-width:860px){
+  .gh-tap{left:50%;bottom:calc(var(--cv) * .55);transform:translateX(-50%)}
+  .gh-tap span{font-size:44px!important;letter-spacing:.04em}
+}
 </style>
 </head>
 <body>
@@ -282,6 +289,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <div class="inside"></div>
     <svg class="rims" viewBox="0 0 124 62" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151515"/><stop offset=".55" stop-color="#262626"/><stop offset="1" stop-color="#363636"/></linearGradient></defs><polygon points="0,62 5.2,62 15.6,0 11.8,0" fill="url(#rg)"/><polygon points="124,62 118.8,62 108.4,0 112.2,0" fill="url(#rg)"/><line x1="5.2" y1="62" x2="15.6" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/><line x1="118.8" y1="62" x2="108.4" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/></svg>
     <div class="cnt" id="cnt"></div>
+    <div class="gh gh-tap" id="ghtap"><span>Tap</span></div>
     <div class="gh gh-up" id="ghup"><span>Next</span><svg class="cv" viewBox="0 -19 44 84" aria-hidden="true"><path class="c" d="M0 46v15l22-19 22 19V46L22 27z"/><path class="c" d="M0 23v15l22-19 22 19V23L22 4z"/><path class="c" d="M0 0v15l22-19 22 19V0L22 -19z"/></svg></div>
     <div class="gh gh-rt" id="ghlt"><span>Grab it!</span><svg class="cv" viewBox="0 0 84 44" aria-hidden="true"><path d="M0 0h15l19 22-19 22H0l19-22z"/><path d="M24 0h15l19 22-19 22H24l19-22z"/><path d="M48 0h15l19 22-19 22H48l19-22z"/></svg></div>
     <div class="gh gh-lt" id="ghrt"><span>Skip</span><svg class="cv" viewBox="0 0 84 44" aria-hidden="true" style="transform:scaleX(-1)"><path d="M0 0h15l19 22-19 22H0l19-22z"/><path d="M24 0h15l19 22-19 22H24l19-22z"/><path d="M48 0h15l19 22-19 22H48l19-22z"/></svg></div>
@@ -357,8 +365,8 @@ const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?store.ge
 let bgEnd=0,bgNext=0;
 function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
   if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)};
-    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));sh("ghup",up&&!rt);let bgOn=false;if(bg){const t=Date.now();if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}bgOn=t<bgEnd}sh("ghlt",bgOn);sh("ghrt",rt)}
-  if(up&&rt)used.both=true;
+    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));const tap=!listening;sh("ghtap",tap);sh("ghup",up&&!tap);let bgOn=false;if(bg){const t=Date.now();if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}bgOn=t<bgEnd}sh("ghlt",bgOn);sh("ghrt",rt&&!up)}
+  if(up&&rt&&!TOUCH)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
   document.querySelector(".k-rt").classList.toggle("nudge",rt)}
 function bagCount(){document.getElementById("bagn").textContent=cart.length||""}
@@ -466,7 +474,9 @@ function playTrack(j){
   ti=j;listening=true;stage.classList.remove("idle");document.querySelector(".sp").classList.remove("nudge");hintKeys();
   au.src=r.tracks[j].u;au.play().catch(()=>{});paintInfo();warm();
 }
-function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}playTrack((ti+1)%r.tracks.length)}
+function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}playTrack((ti+1)%r.tracks.length);hop()}
+// Trackwechsel sichtbar machen: die Platte hüpft kurz in der Kiste
+function hop(){const e=EL.get(cur);if(!e)return;e.classList.remove("hop");void e.offsetWidth;e.classList.add("hop");setTimeout(()=>e.classList.remove("hop"),600)}
 function toggle(){if(!listening||!au.src){playTrack(ti);track("Beta play",{crate:crate.name});return}if(au.paused)au.play().catch(()=>{});else au.pause()}
 // In den Bag: die Platte fliegt zum Bag-Symbol oben rechts, dann kommt die nächste nach vorne
 function pack(){
