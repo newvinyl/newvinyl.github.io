@@ -6,7 +6,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0d0d0d">
-<title>Beta – Crate · Monthly Vinyl</title>
+<title>Beta – Digging · Monthly Vinyl</title>
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
@@ -134,7 +134,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a>
   </div>
 </header>
-<nav class="bar" id="bar" aria-label="Crates"><span class="tag">Beta · Crate</span></nav>
+<nav class="bar" id="bar" aria-label="Crates"><span class="tag">Beta · Digging</span></nav>
 <main id="main">
   <div class="stage idle" id="stage" tabindex="0" aria-label="Record crate. Arrow up for the next record, arrow left puts it in the bag.">
     <div class="glow"></div>
@@ -245,7 +245,7 @@ function render(fresh){
   EL.forEach((e,i)=>{if(!keep.has(i)){e.remove();EL.delete(i)}});
   if(L[cur+VIS+1]&&L[cur+VIS+1].cover){const p=new Image();p.src=thumb(hiRes(L[cur+VIS+1].cover))}
   let end=stage.querySelector(".end");
-  if(cur>=L.length){if(!end){end=document.createElement("div");end.className="end";stage.appendChild(end)}end.innerHTML=`End of this crate.<br><button type="button">Back to the front</button>`;end.querySelector("button").onclick=()=>go(0)}else if(end)end.remove();
+  if(cur>=L.length){if(!end){end=document.createElement("div");end.className="end";stage.appendChild(end)}end.innerHTML=`That was the last one in here.<br><button type="button">Back to the front</button>`;end.querySelector("button").onclick=()=>go(0)}else if(end)end.remove();
   paintInfo();
 }
 function paintInfo(){
