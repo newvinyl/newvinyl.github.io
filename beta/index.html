@@ -316,6 +316,9 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .rinfo .ti{font-size:20px;color:var(--yellow);opacity:.8}
   .tl li.on button{font-size:15px;font-weight:500}
 }
+/* Gedrückt halten darf kein Bild-Menü des Browsers öffnen (iOS, Android) */
+.stage,.stage *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.rec img{pointer-events:none}
 </style>
 </head>
 <body>
@@ -626,6 +629,7 @@ stage.addEventListener("touchmove",e=>{if(ty==null||!drag||!drag.e||busy)return;
   if(drag.ax==="y"){y=dy<0?dy:0;r=0}
   else{x=dx<0?-26*(1-Math.exp(dx/70)):dx;y=dx>0?-Math.min(dx,160)*.12:0;r=dx*.045}
   drag.e.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`},{passive:true});
+stage.addEventListener("contextmenu",e=>e.preventDefault());
 stage.addEventListener("touchcancel",()=>{clearTimeout(holdT);holdT=null;ffStop()});
 stage.addEventListener("touchend",e=>{clearTimeout(holdT);holdT=null;if(ff){ffStop();ty=null;drag=null;return}if(ty==null)return;const dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;ty=null;
   const d=drag;drag=null;if(d&&d.e&&d.ax){d.e.style.transition="";d.e.classList.add("snap");setTimeout(()=>d.e.classList.remove("snap"),650)}
