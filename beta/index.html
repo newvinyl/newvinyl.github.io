@@ -48,7 +48,7 @@ a{color:inherit}button{font:inherit;color:inherit}
 .tag{font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--yellow);padding:5px 7px;margin-right:8px;flex:none}
 .crt{all:unset;cursor:pointer;flex:none;font:500 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border:1px solid var(--line)}
 .crt:hover,.crt:focus-visible{color:var(--fg);border-color:var(--fg)}
-.crt[aria-pressed="true"]{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+.crt[aria-pressed="true"]{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
 .crt small{opacity:.6;margin-left:5px}
 
 
@@ -73,7 +73,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .32);transform:translateX(-50%);z-index:200;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.002 .09' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 -.028'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/160% 100%,linear-gradient(180deg,#1c1c1c 0%,#161616 50%,#131313 100%);
   box-shadow:0 -14px 28px rgba(0,0,0,.7)}
-.bin span{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) rotate(-3.2deg);white-space:nowrap;
+.bin span{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);white-space:nowrap;
   font:700 calc(var(--cv) * .056)/1 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;letter-spacing:.005em;text-transform:uppercase;color:#141414;
   padding:.42em .62em .36em;border-radius:1.5px;
   background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.6),transparent 60%),linear-gradient(170deg,#f6f4ee,#e7e3d9);
@@ -172,7 +172,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
     <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a>
   </div>
 </header>
-<nav class="bar" id="bar" aria-label="Crates"><span class="tag">Beta · Digging</span></nav>
+<nav class="bar" id="bar" aria-label="Crates"></nav>
 <main id="main">
   <div class="stage idle" id="stage" tabindex="0" aria-label="Record crate. Arrow up for the next record, arrow left puts it in the bag.">
     <div class="glow"></div>
