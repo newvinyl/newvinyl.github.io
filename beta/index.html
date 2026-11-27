@@ -87,8 +87,8 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .32);transform:translateX(-50%);z-index:200;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.002 .09' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 -.028'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/160% 100%,linear-gradient(180deg,#1c1c1c 0%,#161616 50%,#131313 100%);
   box-shadow:inset 0 1px 0 #4a4a4a,0 -14px 28px rgba(0,0,0,.7)}
-.bin span{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);white-space:nowrap;
-  font:700 calc(var(--cv) * .056)/1 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;letter-spacing:.005em;text-transform:uppercase;color:#141414;
+.bin span{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) rotate(-2.5deg);white-space:nowrap;
+  font:700 max(10px,calc(var(--cv) * .024))/1 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;letter-spacing:.005em;text-transform:uppercase;color:#141414;
   padding:.42em .62em .36em;border-radius:1.5px;
   background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.6),transparent 60%),linear-gradient(170deg,#f6f4ee,#e7e3d9);
   box-shadow:0 1px 1px rgba(0,0,0,.55),0 4px 8px rgba(0,0,0,.35),inset 0 0 0 .5px rgba(0,0,0,.08);}}
