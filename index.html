@@ -326,6 +326,24 @@ html.g2 #gridbtn .g2i{display:inline-flex}
 body.playing .ffab{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
 body{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 body.playing{padding-bottom:calc(200px + env(safe-area-inset-bottom,0px))}
+/* Instagram-Störer (wieder aktiv seit 27.11.26, gelb im aktuellen Design): rund, schwebt links unten, bis man ihn antippt oder wegwischt */
+.igbadge{position:fixed;left:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:26;width:96px;height:96px;display:block;border-radius:50%;box-shadow:0 8px 26px rgba(0,0,0,.55);-webkit-tap-highlight-color:transparent;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+body.playing .igbadge{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+.igin{display:block;width:100%;height:100%;border-radius:50%;animation:igIn .5s cubic-bezier(.2,.9,.3,1.3) both,igFloat 3.6s ease-in-out .5s infinite}
+.igbadge.press .igin{animation:igBub .32s ease-in-out infinite alternate}
+.igbadge.drag{cursor:grabbing}
+@keyframes igBub{from{transform:scale(1.07,.95) rotate(-2deg)}to{transform:scale(.96,1.06) rotate(2deg)}}
+.igbadge[hidden]{display:none}
+.igbadge svg{pointer-events:none;width:100%;height:100%;display:block}
+.igbadge text{font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.06em;fill:var(--ink)}
+.igring{transform-origin:60px 60px;animation:igSpin 14s linear infinite}
+.igbadge:hover .igring{animation-duration:5s}
+.igbadge:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+@keyframes igIn{from{opacity:0;transform:scale(.3) rotate(-30deg)}to{opacity:1;transform:none}}
+@keyframes igFloat{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+@keyframes igSpin{to{transform:rotate(360deg)}}
+@media (min-width:900px){.igbadge{left:32px;width:118px;height:118px}}
+@media (prefers-reduced-motion:reduce){.igin,.igring,.igbadge.press .igin{animation:none}}
 </style>
 </head>
 <body>
@@ -353,6 +371,16 @@ body.playing{padding-bottom:calc(200px + env(safe-area-inset-bottom,0px))}
   <p class="slab">When</p><div class="chips" id="cw"></div>
   <p class="slab">Genre</p><div class="chips" id="cg"></div>
   <p class="slab">Shop</p><div class="chips" id="cs"></div></div></div>
+<a class="igbadge" id="igbadge" href="https://www.instagram.com/monthlyvinyl/" target="_blank" rel="noopener" aria-label="Daily digs on Instagram. Don’t miss out" hidden>
+<span class="igin"><svg viewBox="0 0 120 120" aria-hidden="true">
+    <circle cx="60" cy="60" r="58" fill="var(--yellow)"/>
+    <g class="igring"><path id="igpath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" fill="none"/>
+    <text><textPath href="#igpath" textLength="272" lengthAdjust="spacing">DAILY DIGS · DON’T MISS OUT ·</textPath></text></g>
+    <rect x="43" y="43" width="34" height="34" rx="10" fill="none" stroke="var(--ink)" stroke-width="5"/>
+    <circle cx="60" cy="60" r="8" fill="none" stroke="var(--ink)" stroke-width="5"/>
+    <circle cx="70.5" cy="49.5" r="2.6" fill="var(--ink)"/>
+  </svg></span>
+</a>
 <div class="mini" id="mini" role="region" aria-label="Now playing">
   <div class="mseek" id="mseek" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><i></i><b></b><em></em></div>
   <button class="mpp" id="mpp" type="button" aria-label="Pause"><svg class="i-pa" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg><svg class="i-pl" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
@@ -846,6 +874,47 @@ document.getElementById("mnx").onclick=()=>{track("Next via player");next()};
 document.getElementById("mpp").onclick=()=>{if(au.paused)au.play().catch(()=>{});else au.pause()};
 document.getElementById("mt").onclick=()=>{buildTo(cur);document.querySelector(`.card[data-i="${cur}"]`)?.scrollIntoView({behavior:"smooth",block:"center"})};
 
+// Instagram-Störer: sichtbar, bis man ihn antippt oder wegwischt (ohne Ablaufdatum seit 27.11.26; neuer KEY, damit er auch bei früheren Klickern wieder erscheint)
+{const ig=document.getElementById("igbadge"),KEY="mvr-ig3";
+  if(ig&&!store.get(KEY,false)){setTimeout(()=>{ig.hidden=false;track("IG badge shown")},1800)}
+  if(ig){
+    // Störer: Antippen öffnet Instagram, Ziehen/Wischen zieht ihn magnetisch an den Rand und weg
+    let st=null,moved=false,gone=false;
+    const set=(x,y,sc=1)=>{ig.style.transform=`translate(${x}px,${y}px) scale(${sc})`};
+    const away=(dir,how)=>{if(gone)return;gone=true;store.set(KEY,true);track("IG badge dismissed",{how});
+      const r=ig.getBoundingClientRect(),W=innerWidth,H=innerHeight;
+      const tx=st.x+(dir==="l"?-r.right-40:dir==="r"?W-r.left+40:0),ty=st.y+(dir==="t"?-r.bottom-40:dir==="b"?H-r.top+40:0);
+      ig.classList.remove("press","drag");ig.style.transition="transform .34s cubic-bezier(.5,0,.9,.5),opacity .34s";set(tx,ty,.45);ig.style.opacity="0";
+      setTimeout(()=>{ig.hidden=true},360)};
+    ig.addEventListener("pointerdown",e=>{if(gone||(e.button&&e.button!==0))return;
+      const r=ig.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+      st={px:e.clientX,py:e.clientY,x:0,y:0,cx,cy,hw:r.width/2,pts:[[e.clientX,e.clientY,e.timeStamp]],
+        zone:{l:Math.min(80,cx-12),r:Math.min(80,innerWidth-cx-12),t:80,b:Math.min(80,innerHeight-cy-12)}};
+      moved=false;ig.style.transition="none";ig.classList.add("press");try{ig.setPointerCapture(e.pointerId)}catch(_){}});
+    ig.addEventListener("pointermove",e=>{if(!st||gone)return;
+      let dx=e.clientX-st.px,dy=e.clientY-st.py;
+      if(!moved&&Math.hypot(dx,dy)<8)return;
+      if(!moved){moved=true;ig.classList.add("drag")}
+      st.pts.push([e.clientX,e.clientY,e.timeStamp]);if(st.pts.length>6)st.pts.shift();
+      // Magnet: je näher am Rand, desto stärker zieht er hin
+      const cx=st.cx+dx,cy=st.cy+dy,W=innerWidth,H=innerHeight;
+      const d={l:cx,r:W-cx,t:cy,b:H-cy};let edge=null,best=1e9;
+      for(const k in d){const f=d[k]/st.zone[k];if(f<1&&f<best){best=f;edge=k}}
+      if(edge){const pull=Math.pow(1-best,1.6)*st.zone[edge]*1.4;
+        if(edge==="l")dx-=pull;else if(edge==="r")dx+=pull;else if(edge==="t")dy-=pull;else dy+=pull;
+        if(best<.42){st.x=dx;st.y=dy;set(dx,dy);away(edge,"edge");return}}
+      st.x=dx;st.y=dy;set(dx,dy,1+Math.min(.08,(edge?1-best:0)*.12))});
+    const end=e=>{if(!st||gone){st=null;return}
+      ig.classList.remove("press","drag");
+      if(moved){const p=st.pts,a=p[0],b=p[p.length-1],dt=Math.max(16,b[2]-a[2]),vx=(b[0]-a[0])/dt,vy=(b[1]-a[1])/dt;
+        if(Math.hypot(vx,vy)>.55){away(Math.abs(vx)>Math.abs(vy)?(vx<0?"l":"r"):(vy<0?"t":"b"),"swipe");st=null;return}
+        ig.style.transition="transform .55s cubic-bezier(.3,1.7,.5,1)";set(0,0)}
+      st=null};
+    ig.addEventListener("pointerup",end);ig.addEventListener("pointercancel",end);
+    ig.addEventListener("click",e=>{if(moved||gone){e.preventDefault();moved=false;return}
+      store.set(KEY,true);track("IG badge click");setTimeout(()=>ig.hidden=true,300)});
+    ig.addEventListener("dragstart",e=>e.preventDefault());
+  }}
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintBag()}});
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{document.getElementById("feed").innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
 </script>
