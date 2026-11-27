@@ -349,6 +349,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .key{color:#ecebe7;text-shadow:none}
   .key.en{text-shadow:none}
 }
+.key.held{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(3px);border-bottom-width:3px}
 </style>
 </head>
 <body>
@@ -629,12 +630,19 @@ au.addEventListener("timeupdate",()=>{const i=document.querySelector(".tl li.on 
 // Ende der Hörprobe: nächster Track, nach dem letzten die nächste Platte (Kiste läuft von selbst weiter)
 au.addEventListener("ended",()=>{const r=L[cur];if(r&&ti+1<r.tracks.length)playTrack(ti+1);else go(cur+1)});
 
+let kh=null;
+document.addEventListener("keyup",e=>{if(!kh||e.key!==kh.k)return;const h=kh;kh=null;clearTimeout(h.t);clearInterval(h.iv);
+  if(h.seek){au.playbackRate=1;const b=document.querySelector(`.key[data-k="${h.k}"]`);if(b)b.classList.remove("held")}else act(KEYMAP[h.k])});
 document.addEventListener("keydown",e=>{
   if(e.metaKey||e.ctrlKey||e.altKey||/input|textarea/i.test(e.target.tagName))return;
   const k=e.key;
+  // ← / → lange halten = zurück- bzw. vorspulen, kurz drücken = Trackwechsel (User 28.11.)
+  if(k==="ArrowLeft"||k==="ArrowRight"){e.preventDefault();if(e.repeat||kh)return;flash(k);
+    kh={k,t:setTimeout(()=>{kh.seek=true;if(!listening)act("play");if(k==="ArrowRight"){au.preservesPitch=false;au.webkitPreservesPitch=false;au.playbackRate=3}else kh.iv=setInterval(()=>{au.currentTime=Math.max(0,au.currentTime-.5)},100);
+      document.querySelector(`.key[data-k="${k}"]`).classList.add("held")},380)};return}
   if(KEYMAP[k]){if((k===" "||k==="Enter")&&(e.target.tagName==="A"||(e.target.tagName==="BUTTON"&&!e.target.classList.contains("key"))))return;flash(k);act(KEYMAP[k])}
   else if(k==="o"){const r=L[cur];if(r){track("Shop click",{shop:r.main.S.shop,where:"beta"});window.open(r.main.url,"_blank","noopener")}}
-  else if(k==="b"||k==="B"){flash("ArrowLeft");act("bag")}
+  else if(k==="b"||k==="B"){flash("Enter");act("bag")}
   else return;
   e.preventDefault();
 });
