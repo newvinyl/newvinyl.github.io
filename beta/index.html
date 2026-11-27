@@ -335,6 +335,20 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 }
 /* Desktop-Hintergrund (User 28.11.): Waschbären-Rennen */
 @media (min-width:861px){html,body{background:#0d0d0d url("/beta/bg-waschbaeren.png") center/cover fixed no-repeat}}
+/* Desktop mit Waschbären-Bild (User 28.11.): alle Schriften dunkel, damit sie auf dem hellen Bild lesbar sind */
+@media (min-width:861px){
+  .bar,.side,.cnt,.end{--fg:#0d0d0d;--muted:#1f1f1f;--line:#0d0d0d;color:#0d0d0d}
+  .bar,.side,.cnt{text-shadow:0 0 6px rgba(255,255,255,.75),0 0 2px rgba(255,255,255,.9)}
+  .crt{font-weight:700}
+  .rinfo .ar,.rinfo .ti,.tl li.on button,.tl li.on em,.cnt,.cnt *{color:#0d0d0d!important}
+  .rinfo .ti{opacity:1}
+  .tl,.tl li{border-color:rgba(0,0,0,.35)!important}
+  .tl button,.tl em,.lb,.lb b,.rfoot,.rfoot a,.price,.buy{color:#0d0d0d!important}
+  .tl .pg{background:rgba(0,0,0,.15)}.tl .pg i{background:#0d0d0d}
+  .rfoot kbd{border-color:#0d0d0d;color:#0d0d0d}
+  .key{color:#ecebe7;text-shadow:none}
+  .key.en{text-shadow:none}
+}
 </style>
 </head>
 <body>
