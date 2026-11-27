@@ -252,7 +252,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @keyframes cv-1{0%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}14%,72%{opacity:1}88%,100%{opacity:0}}
 @keyframes cv-2{0%,14%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}28%,72%{opacity:1}88%,100%{opacity:0}}
 @keyframes cv-3{0%,28%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}42%,72%{opacity:1}88%,100%{opacity:0}}
-@keyframes cv-in{from{opacity:0}to{opacity:1}}
+@keyframes cv-in{from{opacity:0}to{opacity:.8}}
 @media (max-width:860px){
   .gh-rt,.gh-lt{align-items:center!important}.gh-rt span,.gh-lt span{align-self:center!important;margin:0!important}
   .gh-up{flex-direction:column-reverse;align-items:center}
@@ -309,6 +309,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .stage.ff .rec.k0{animation:ffs .18s linear infinite}
 }
 @keyframes ffs{0%,100%{translate:0 0}50%{translate:0 -2px}}
+@media (max-width:860px){.gh.on{opacity:.8!important}}
 </style>
 </head>
 <body>
@@ -403,16 +404,20 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
 const TOUCH=matchMedia("(max-width:860px)").matches;
 const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?(h=>h.bag?h:{})(store.get("mvr-betahints2",{})):{});
 // Grab it!: drei Durchgänge (3 x 1.25s), dann erst wieder nach einer Minute, solange noch nichts im Bag gelandet ist
-let bgEnd=0,bgNext=0,hintCur="",hintGap=0,holdEnd=0;const T0=Date.now();if(TOUCH)setTimeout(()=>hintKeys(),60100);const HINT_GAP=4500;
+const HINT_GAP=4500;let bgEnd=0,bgNext=0,hintGap=0,holdEnd=0,tut=TOUCH&&!/[?&]hints/.test(location.search)&&store.get("mvr-tut",0)>=4?4:0;
+function tutGo(n){if(n<=tut)return;tut=n;if(n>=4)store.set("mvr-tut",4);hintGap=Date.now()+HINT_GAP;setTimeout(hintKeys,HINT_GAP+50)}const T0=Date.now();if(TOUCH)setTimeout(()=>hintKeys(),60100);
 function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
-  if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)};
-    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key)),tap=!listening,t=Date.now();
-    // Nächster Hinweis erst nach einer Pause, damit man den vorherigen verarbeiten kann (User 27.11., 23:18)
-    let want=tap?"ghtap":up?"ghup":rt?"ghrt":bg?"ghlt":"";
-    if(!want&&listening&&!used.hold&&t>=T0+60000&&!ff){if(!holdEnd){holdEnd=t+3750;setTimeout(hintKeys,3800)}if(t<holdEnd)want="ghhold"}
-    if(want!==hintCur){if(hintCur&&want){hintGap=t+HINT_GAP;setTimeout(hintKeys,HINT_GAP+50)}hintCur=want}
-    if(t<hintGap)want="";
-    if(want==="ghlt"){if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}if(t>=bgEnd)want=""}
+  if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)},t=Date.now();
+    // Feste Abfolge (User 27.11.): 0 TAP, 1 NEXT, 2 SKIP, 3 GRAB IT!, 4 fertig. Ein Schritt gilt nur, wenn genau seine Geste
+    // gemacht wurde; zwischen zwei Hinweisen 4,5 s Pause. Gespeichert wird nur «fertig».
+    if(tut===0&&listening)tutGo(1);
+    let want="";const gap=t<hintGap;
+    if(!listening)want="ghtap";
+    else if(gap)want="";
+    else if(tut===1)want="ghup";
+    else if(tut===2)want=r&&r.tracks.length>1?"ghrt":"";
+    else if(tut===3){if(r&&!(r.out&&!cart.includes(r.key))){if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}if(t<bgEnd)want="ghlt"}}
+    else if(tut===4&&!used.hold&&t>=T0+60000&&!ff){if(!holdEnd){holdEnd=t+3750;setTimeout(hintKeys,3800)}if(t<holdEnd)want="ghhold"}
     for(const id of["ghtap","ghup","ghrt","ghlt","ghhold"])sh(id,id===want)}
   if(up&&rt&&!TOUCH)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
@@ -450,7 +455,7 @@ function build(data){
 function openCrate(c){
   crate=c;L=c.recs;cur=0;
   // Solange die Wisch-Anleitung läuft: die ersten 4 Platten haben mehrere Hörproben, damit SKIP auch etwas tut
-  if(TOUCH&&!used.bag){L=L.slice();const ok=r=>r.tracks.length>1&&!r.out;for(let i=0;i<4&&i<L.length;i++)if(!ok(L[i])){const j=L.findIndex((r,k)=>k>i&&ok(r));if(j>0)L.splice(i,0,L.splice(j,1)[0])}}ti=0;EL.forEach(e=>e.remove());EL.clear();
+  if(TOUCH&&tut<4){L=L.slice();const ok=r=>r.tracks.length>1&&!r.out;for(let i=0;i<4&&i<L.length;i++)if(!ok(L[i])){const j=L.findIndex((r,k)=>k>i&&ok(r));if(j>0)L.splice(i,0,L.splice(j,1)[0])}}ti=0;EL.forEach(e=>e.remove());EL.clear();
   CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));c.btn.scrollIntoView({block:"nearest",inline:"nearest"});
   if(!TOUCH)document.getElementById("binlbl").textContent=c.name;
   try{history.replaceState(null,"","#crate="+encodeURIComponent(c.id))}catch(e){}
@@ -552,6 +557,7 @@ function pack(){
 function act(a,arg){
   if(busy)return;
   const first=!listening&&L[cur];
+  if(TOUCH){if(tut===1&&(a==="next"||a==="prev"))tutGo(2);else if(tut===2&&a==="track")tutGo(3);else if(tut===3&&a==="bag"&&L[cur]&&!(L[cur].out&&!cart.includes(L[cur].key)))tutGo(4)}
   if(a==="next"||a==="prev")used.up=true;if(a==="track")used.rt=true;if(a==="bag")used.bag=true;if(TOUCH)store.set("mvr-betahints2",{up:used.up,rt:used.rt,bag:used.bag});
   if(used.both&&(a==="next"||a==="prev"||a==="track"))used.up=used.rt=true;
   if(a==="next"){go(arg!=null?arg:cur+1)}
