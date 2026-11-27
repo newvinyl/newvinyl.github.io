@@ -187,17 +187,17 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @media (max-width:860px){
   .top{gap:8px}.logo{font-size:16px;white-space:nowrap}.hicons .habout:not(.hback):not(.beta){display:none}.habout{white-space:nowrap}
   .bar{padding:6px 0 6px 16px}
-  :root{--cv:min(calc((100vw - 150px) / 1.24),34vh)}
-  main{grid-template-columns:1fr 108px;gap:8px;padding:0 14px 0;align-items:end}
-  .stage{min-height:0;height:calc(var(--cv) * 1.72);align-self:end}
-  .side{padding:0 0 calc(var(--cv) * .3);gap:0;align-self:end;justify-content:flex-end;min-height:0}
+  :root{--cv:min(70vw,36vh,320px)}
+  main{display:flex;flex-direction:column;justify-content:flex-start;gap:8px;padding:6px 16px 10px}
+  .stage{min-height:0;height:calc(var(--cv) * 1.5);align-self:stretch;flex:none}
+  .side{padding:0;gap:0;align-self:stretch;justify-content:flex-start;min-height:0;flex:none}
   .ctl,.rfoot,.rinfo .now,.rinfo .ar,.rinfo .ti,.rinfo .me,.tlh{display:none!important}
-  .tl{height:auto;max-height:calc(var(--cv) * 1.2);margin:0;border-top:0;-webkit-mask-image:none!important;mask-image:none!important}
-  .tl li{border-bottom:0}
-  .tl button{padding:3px 0!important;font-size:10px!important;line-height:1.25!important;gap:5px!important}
+  .tl{height:auto;max-height:82px;margin:0;border-top:1px solid #222;-webkit-mask-image:none!important;mask-image:none!important}
+  .tl li{border-bottom:1px solid #1a1a1a}
+  .tl button{padding:4px 0!important;font-size:11px!important;line-height:14px!important;gap:8px!important}
   .tl em{min-width:16px!important;font-size:9.5px!important}
   .tl .pg{height:2px}
-  .buyrow{flex-direction:column;align-items:flex-start;gap:3px;margin-top:10px}
+  .buyrow{margin-top:8px}
   .buyrow .price{font-size:15px}.buy{font-size:10px}
   .bin span{display:flex;flex-direction:column;align-items:center;gap:.25em;max-width:calc(var(--cv) * 1.02);white-space:normal;text-align:center;font-size:calc(var(--cv) * .068)}
   .bin span b,.bin span small{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
