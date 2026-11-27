@@ -353,9 +353,11 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
 // Haben beide gleichzeitig geblinkt und man drückt eine der beiden, hören beide auf
 const TOUCH=matchMedia("(max-width:860px)").matches;
 const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?store.get("mvr-betahints",{}):{});
+// Grab it!: drei Durchgänge (3 x 1.25s), dann erst wieder nach einer Minute, solange noch nichts im Bag gelandet ist
+let bgEnd=0,bgNext=0;
 function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
   if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)};
-    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));sh("ghup",up&&!rt);sh("ghlt",bg);sh("ghrt",rt)}
+    const bg=!up&&used.rt&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));sh("ghup",up&&!rt);let bgOn=false;if(bg){const t=Date.now();if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}bgOn=t<bgEnd}sh("ghlt",bgOn);sh("ghrt",rt)}
   if(up&&rt)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
   document.querySelector(".k-rt").classList.toggle("nudge",rt)}
