@@ -76,11 +76,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
    Von schräg oben gesehen: hinter den Platten das Innere der Kiste als Trapez (Seitenwände laufen nach hinten zusammen) */
 .inside{position:absolute;left:50%;bottom:calc(var(--cv) * .3);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:1;pointer-events:none;
   clip-path:polygon(0 100%,100% 100%,90.5% 0,9.5% 0);
-  background:linear-gradient(90deg,#343434 0%,#2c2c2c 3.4%,#121212 3.5%,#1a1a1a 9.6%,#070707 9.7%,#050505 50%,#070707 90.3%,#1a1a1a 90.4%,#121212 96.5%,#2c2c2c 96.6%,#343434 100%)}
-/* Brettdicke (User 27.11.): Stirnkanten oben an Front- und Seitenwänden, wie bei einer echten Plattenkiste */
-.bin::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(var(--cv) * .05);
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='30'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .5' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .1 -.04'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/100% 100%,linear-gradient(180deg,#3a3a3a,#2e2e2e 70%,#262626);
-  box-shadow:0 1px 0 #0a0a0a,0 2px 3px rgba(0,0,0,.6)}
+  background:linear-gradient(90deg,#262626 0%,#1a1a1a 9.6%,#070707 9.7%,#050505 50%,#070707 90.3%,#1a1a1a 90.4%,#262626 100%)}
 .inside::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.9),rgba(13,13,13,0) 60%)}
 .bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .32);transform:translateX(-50%);z-index:200;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.002 .09' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 -.028'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/160% 100%,linear-gradient(180deg,#1c1c1c 0%,#161616 50%,#131313 100%);
