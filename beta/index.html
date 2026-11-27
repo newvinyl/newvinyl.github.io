@@ -599,21 +599,25 @@ let holdT=null,ff=false,ffJust=false;
 function ffStart(){holdT=null;if(!L[cur]||busy)return;if(!listening)act("play");ff=true;used.hold=true;
   au.preservesPitch=false;au.webkitPreservesPitch=false;au.playbackRate=3;stage.classList.add("ff");document.getElementById("ghff").classList.add("on");hintKeys()}
 function ffStop(){if(!ff)return;ff=false;ffJust=true;setTimeout(()=>{ffJust=false},450);au.playbackRate=1;stage.classList.remove("ff");document.getElementById("ghff").classList.remove("on")}
-stage.addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].clientX;drag={ax:null,e:EL.get(cur)};
+stage.addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].clientX;drag={ax:null,e:EL.get(cur),t0:performance.now(),lx:tx,ly:ty,lt:performance.now(),vx:0,vy:0};
   clearTimeout(holdT);if(e.target.closest&&e.target.closest(".rec.k0"))holdT=setTimeout(ffStart,380)},{passive:true});
 stage.addEventListener("touchmove",e=>{if(ty==null||!drag||!drag.e||busy)return;const dx=e.touches[0].clientX-tx,dy=e.touches[0].clientY-ty;
   if(ff)return;
+  {const n=performance.now(),cx=e.touches[0].clientX,cy=e.touches[0].clientY,dt=Math.max(1,n-drag.lt);drag.vx=.6*drag.vx+.4*(cx-drag.lx)/dt;drag.vy=.6*drag.vy+.4*(cy-drag.ly)/dt;drag.lx=cx;drag.ly=cy;drag.lt=n}
   if(!drag.ax){if(Math.hypot(dx,dy)<8)return;clearTimeout(holdT);holdT=null;drag.ax=Math.abs(dy)>Math.abs(dx)?"y":"x";drag.e.style.transition="none"}
   let x=0,y=0,r=0;
   if(drag.ax==="y"){y=dy<0?dy:0;r=0}
-  else{x=dx<0?dx*.35:dx;y=dx>0?-Math.min(dx,160)*.12:0;r=dx*.045}
+  else{x=dx<0?-26*(1-Math.exp(dx/70)):dx;y=dx>0?-Math.min(dx,160)*.12:0;r=dx*.045}
   drag.e.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`},{passive:true});
 stage.addEventListener("touchcancel",()=>{clearTimeout(holdT);holdT=null;ffStop()});
 stage.addEventListener("touchend",e=>{clearTimeout(holdT);holdT=null;if(ff){ffStop();ty=null;drag=null;return}if(ty==null)return;const dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;ty=null;
   const d=drag;drag=null;if(d&&d.e&&d.ax){d.e.style.transition="";d.e.classList.add("snap");setTimeout(()=>d.e.classList.remove("snap"),650)}
   let done=false;
-  if(Math.abs(dy)>40&&Math.abs(dy)>Math.abs(dx)){act(dy<0?"next":"prev");done=true}
-  else if(Math.abs(dx)>50){act(dx<0?"track":"bag");done=dx>0&&busy}
+  // Wie bei TikTok/Instagram: ein kurzer, schneller Wisch genügt (Tempo zählt, nicht nur die Strecke)
+  const vx=d?d.vx:0,vy=d?d.vy:0,fl=(dist,v,lim,vmin)=>Math.abs(dist)>lim||(Math.abs(dist)>12&&Math.abs(v)>vmin&&Math.sign(v)===Math.sign(dist));
+  if(Math.abs(dy)>Math.abs(dx)){if(fl(dy,vy,40,.35)){act(dy<0?"next":"prev");done=true}}
+  else if(dx<0){if(fl(dx,vx,24,.3))act("track")}
+  else if(fl(dx,vx,50,.4)){act("bag");done=busy}
   if(!done&&d&&d.e&&d.e.isConnected&&EL.get(cur)===d.e)place(d.e,0,cur)},{passive:true});
 window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintInfo()}});
 bagCount();
