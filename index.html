@@ -441,7 +441,9 @@ const fold=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"
 const norm=s=>fold(s).replace(/\(.*?\)|\[.*?\]/g,"").replace(/\b(ep|lp|12"?|2x12"?)\b/g,"").replace(/[^\p{L}\p{N}]/gu,"");
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 // Raster-Cover als kleines WebP über den Bild-Proxy (Originale sind oft 1–3 MB); scheitert das, Original, dann kleine Version
-const thumb=u=>u?"https://wsrv.nl/?w=720&output=webp&q=80&url="+encodeURIComponent(u):u;
+// Eigene Cover für Platten, deren Shop-Bild fehlt (User 28.11.); Schlüssel = Shop-Link
+const COVER_FIX={"https://hardwax.com/89875/various-artists/agora-wax-02/":"/covers/agora-wax-02.jpg","https://hardwax.com/39672/uvb/kavanah-ep/":"/covers/uvb-kavanah-ep.jpg"};
+const thumb=u=>u&&u[0]==="/"?u:u?"https://wsrv.nl/?w=720&output=webp&q=80&url="+encodeURIComponent(u):u;
 function coverFail(im){const n=+(im.dataset.t||0)+1;im.dataset.t=n;const nx=n===1?im.dataset.o:n===2&&im.dataset.lo!==im.dataset.o?im.dataset.lo:null;if(nx){im.dataset.src=nx;im.src=nx}else im.remove()}
 function hiRes(u){
   if(!u)return u;
@@ -486,7 +488,7 @@ function build(data){
     const avail=all.filter(x=>x.st!=="out"),out=!avail.length;
     const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf);
     const main=priced[0]||src;
-    const cover=(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
+    const cover=(all.map(x=>COVER_FIX[x.url]).find(Boolean))||(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
     recs.push({gk,first,all,main,key:main.key,src,tracks:(src.tr||[]).filter(t=>t.u),cover,out,shops:new Set(all.map(x=>x.S.shop)).size});
   }
   ALL=recs;renderFeed();checkShareLink();

@@ -424,7 +424,9 @@ function hiRes(u){
   if(/decks\.de\/decks\/gfx\/co_mid\//.test(u))return u.replace("/co_mid/","/co_big/");
   return u;
 }
-const thumb=u=>u?"https://wsrv.nl/?w=720&output=webp&q=80&url="+encodeURIComponent(u):u;
+// Eigene Cover für Platten, deren Shop-Bild fehlt (User 28.11.); Schlüssel = Shop-Link
+const COVER_FIX={"https://hardwax.com/89875/various-artists/agora-wax-02/":"/covers/agora-wax-02.jpg","https://hardwax.com/39672/uvb/kavanah-ep/":"/covers/uvb-kavanah-ep.jpg"};
+const thumb=u=>u&&u[0]==="/"?u:u?"https://wsrv.nl/?w=720&output=webp&q=80&url="+encodeURIComponent(u):u;
 function coverFail(im){const n=+(im.dataset.t||0)+1;im.dataset.t=n;const nx=n===1?im.dataset.o:n===2&&im.dataset.lo!==im.dataset.o?im.dataset.lo:null;if(nx)im.src=nx;else im.remove()}
 
 const stage=document.getElementById("stage"),info=document.getElementById("info"),au=document.getElementById("au");
@@ -474,7 +476,7 @@ function build(data){
     const first=all.map(x=>x.first_seen||((x.m||"0000-00")+"-01")).sort()[0];
     const avail=all.filter(x=>x.st!=="out"),out=!avail.length;   // ausverkauft nur, wenn kein Shop sie mehr hat
     const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf),main=priced[0]||src;
-    const cover=(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
+    const cover=(all.map(x=>COVER_FIX[x.url]).find(Boolean))||(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
     ALL.push({gk,first,main,key:main.key,tracks:(src.tr||[]).filter((t,i,a)=>t.u&&a.findIndex(x=>x.u===t.u)===i),cover,out,g:(main.g||src.g||"")});
   }
   ALL.sort((a,b)=>b.first.localeCompare(a.first));
