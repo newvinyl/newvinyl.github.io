@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>/* Beta seit 27.11. auch auf dem Handy live; ?test bleibt harmlos */try{if(/[?&]test=off/.test(location.search))localStorage.removeItem("mvr-betatest")}catch(e){}</script>
+<script>/* Beta seit 27.11. auch auf dem Handy live; ?test bleibt harmlos */try{if(/[?&]test=off/.test(location.search))localStorage.removeItem("mvr-betatest");if(/[?&]hints/.test(location.search))localStorage.removeItem("mvr-betahints")}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
@@ -348,7 +348,7 @@ const TOUCH=matchMedia("(max-width:860px)").matches;
 const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?store.get("mvr-betahints",{}):{});
 function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
   if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)};
-    sh("ghup",up&&!rt);sh("ghrt",rt);sh("ghlt",!up&&!rt&&flips>=4&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key)))}
+    const bg=!up&&flips>=3&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key));sh("ghup",up&&!rt);sh("ghlt",bg);sh("ghrt",rt&&!bg)}
   if(up&&rt)used.both=true;
   document.querySelector(".k-up").classList.toggle("nudge",up);
   document.querySelector(".k-rt").classList.toggle("nudge",rt)}
