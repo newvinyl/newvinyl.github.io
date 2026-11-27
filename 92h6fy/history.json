@@ -2,17 +2,17 @@
  {
   "date": "2026-11-27",
   "keys": [
-   "louis the 4th|maybe fake's what i like lp",
+   "dngdngdng|vestigio",
    "len lewis & magnus asberg|disconnected / as if",
    "bohdan|originem"
   ],
   "titles": [
-   "Louis The 4th – Maybe Fake's What I Like LP",
+   "DNGDNGDNG – Vestigio",
    "Len Lewis & Magnus Asberg – Disconnected / As If",
    "Bohdan – Originem"
   ],
   "shops": [
-   "Hardwax",
+   "Rubadub",
    "Redeye",
    "Redeye"
   ],
@@ -54,7 +54,8 @@
    "look": "poster916 138 bpm",
    "v": 23,
    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261127-1.jpg"
-  }
+  },
+  "note": "history/caption corrected 27.11. to match the uploaded video (run 252 rendered DNGDNGDNG first; its commit failed on a rebase conflict)"
  },
  {
   "date": "2026-11-26",
