@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>/* Beta vorerst nur Desktop (User 27.11.26) */try{/* Testzugang: /beta/?test einmal aufrufen, danach bleibt Beta auf diesem Gerät offen (?test=off schliesst wieder) */
-var q=location.search;if(/[?&]test=off/.test(q))localStorage.removeItem("mvr-betatest");else if(/[?&]test/.test(q))localStorage.setItem("mvr-betatest","1");
-if(!localStorage.getItem("mvr-betatest")&&matchMedia("(max-width:899px),(pointer:coarse)").matches)location.replace("/")}catch(e){}</script>
+<script>/* Beta seit 27.11. auch auf dem Handy live; ?test bleibt harmlos */try{if(/[?&]test=off/.test(location.search))localStorage.removeItem("mvr-betatest")}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
