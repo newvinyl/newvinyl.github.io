@@ -515,7 +515,7 @@ stage.addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].
 stage.addEventListener("touchmove",e=>{if(ty==null||!drag||!drag.e||busy)return;const dx=e.touches[0].clientX-tx,dy=e.touches[0].clientY-ty;
   if(!drag.ax){if(Math.hypot(dx,dy)<8)return;drag.ax=Math.abs(dy)>Math.abs(dx)?"y":"x";drag.e.style.transition="none"}
   let x=0,y=0,r=0;
-  if(drag.ax==="y"){y=dy<0?dy:dy*.25;r=0}
+  if(drag.ax==="y"){y=dy<0?dy:0;r=0}
   else{x=dx<0?dx*.35:dx;y=dx>0?-Math.min(dx,160)*.12:0;r=dx*.045}
   drag.e.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`},{passive:true});
 stage.addEventListener("touchend",e=>{if(ty==null)return;const dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;ty=null;
