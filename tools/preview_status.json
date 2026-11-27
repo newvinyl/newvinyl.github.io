@@ -152,15 +152,12 @@
    "none": 4
   }
  },
- "pages_checked": 1123,
- "new_from_shop_pages": 15,
- "copied_from_other_shop": 8,
- "broken_clips_removed": 16,
- "clips_verified": 21402,
- "not_reachable": {
-  "Redeye Records: failed:UnicodeEncodeError": 60,
-  "Redeye Records: http403": 4
- },
+ "pages_checked": 0,
+ "new_from_shop_pages": 0,
+ "copied_from_other_shop": 0,
+ "broken_clips_removed": 13,
+ "clips_verified": 21396,
+ "not_reachable": {},
  "clip_hosts": {
   "DL.dropbox.com": {
    "clips": 44,
@@ -231,7 +228,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 1004,
+   "clips": 998,
    "failed": 0,
    "sample": []
   },
