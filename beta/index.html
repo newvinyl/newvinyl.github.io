@@ -43,7 +43,8 @@ a{color:inherit}button{font:inherit;color:inherit}
 .bagtop b{position:absolute;top:-8px;right:-8px;min-width:20px;height:20px;padding:0 5px;background:var(--pink);color:var(--ink);font:700 11px/20px var(--mono);text-align:center}
 .bagtop b:empty{display:none}
 
-.bar{display:flex;align-items:center;gap:6px;padding:12px 16px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+/* Kisten-Leiste: alle Genres der Woche, seitlich scrollbar; rechts kein Abstand, damit der letzte sichtbare Knopf angeschnitten ist */
+.bar{display:flex;align-items:center;gap:6px;padding:12px 0 12px 16px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);scroll-behavior:smooth;overscroll-behavior-x:contain}
 .bar::-webkit-scrollbar{display:none}
 .tag{font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--yellow);padding:5px 7px;margin-right:8px;flex:none}
 .crt{all:unset;cursor:pointer;flex:none;font:500 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border:1px solid var(--line)}
@@ -265,16 +266,18 @@ function build(data){
   const week=ALL.filter(r=>days.slice(0,7).includes(r.first));
   CRATES.push({id:"today",name:"Fresh today",recs:ALL.filter(r=>r.first===today)});
   CRATES.push({id:"week",name:"This week",recs:week});
-  const gs=r=>String(r.g).split(/\s*[\/,]\s*/),cnt={};week.forEach(r=>gs(r).forEach(g=>{if(g)cnt[g]=(cnt[g]||0)+1}));
-  Object.entries(cnt).filter(([,n])=>n>=6).sort((a,b)=>b[1]-a[1]).slice(0,10).forEach(([g])=>CRATES.push({id:"g:"+g,name:g,recs:week.filter(r=>gs(r).includes(g))}));
+  const gs=r=>String(r.g).split(/\s*[\/,]\s*/).map(g=>g.replace(/\s*·.*$/,"").trim()),cnt={};week.forEach(r=>gs(r).forEach(g=>{if(g)cnt[g]=(cnt[g]||0)+1}));
+  Object.entries(cnt).filter(([,n])=>n>=3).sort((a,b)=>b[1]-a[1]).forEach(([g])=>CRATES.push({id:"g:"+g,name:g,recs:week.filter(r=>gs(r).includes(g))}));
   const bar=document.getElementById("bar");
   CRATES.forEach(c=>{const b=document.createElement("button");b.className="crt";b.type="button";b.innerHTML=`${esc(c.name)}<small>${c.recs.length}</small>`;b.onclick=()=>{openCrate(c);track("Beta crate",{crate:c.name})};c.btn=b;bar.appendChild(b)});
+  // Mausrad senkrecht scrollt die Leiste seitlich
+  bar.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&bar.scrollWidth>bar.clientWidth){e.preventDefault();bar.scrollLeft+=e.deltaY}},{passive:false});
   const want=decodeURIComponent((location.hash.match(/crate=([^&]+)/)||[])[1]||"");
   openCrate(CRATES.find(c=>c.id===want)||CRATES[0]);
 }
 function openCrate(c){
   crate=c;L=c.recs;cur=0;ti=0;EL.forEach(e=>e.remove());EL.clear();
-  CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));
+  CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));c.btn.scrollIntoView({block:"nearest",inline:"nearest"});
   document.getElementById("binlbl").textContent=c.name;
   try{history.replaceState(null,"","#crate="+encodeURIComponent(c.id))}catch(e){}
   render(true);if(listening)playTrack(0);
