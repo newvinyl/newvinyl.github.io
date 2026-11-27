@@ -1,10 +1,10 @@
 {
- "date": "2026-11-27",
+ "date": "2026-11-28",
  "total": {
   "records": 7098,
-  "tracks": 5815,
-  "clip": 1052,
-  "none": 231
+  "tracks": 6598,
+  "clip": 277,
+  "none": 223
  },
  "shops": {
   "Hardwax": {
@@ -21,8 +21,8 @@
   },
   "Decks.de": {
    "records": 31,
-   "tracks": 21,
-   "clip": 3,
+   "tracks": 22,
+   "clip": 2,
    "none": 7
   },
   "Clone": {
@@ -33,15 +33,15 @@
   },
   "Phonica": {
    "records": 173,
-   "tracks": 135,
-   "clip": 8,
+   "tracks": 137,
+   "clip": 6,
    "none": 30
   },
   "Redeye Records": {
    "records": 1873,
-   "tracks": 835,
-   "clip": 992,
-   "none": 46
+   "tracks": 1580,
+   "clip": 251,
+   "none": 42
   },
   "Yoyaku": {
    "records": 459,
@@ -51,21 +51,21 @@
   },
   "Kompakt": {
    "records": 173,
-   "tracks": 164,
+   "tracks": 167,
    "clip": 0,
-   "none": 9
+   "none": 6
   },
   "Juno Records": {
    "records": 1248,
-   "tracks": 1230,
-   "clip": 1,
+   "tracks": 1231,
+   "clip": 0,
    "none": 17
   },
   "Deejay.de": {
    "records": 502,
-   "tracks": 394,
-   "clip": 42,
-   "none": 66
+   "tracks": 422,
+   "clip": 15,
+   "none": 65
   },
   "Vinyl Underground": {
    "records": 555,
@@ -81,8 +81,8 @@
   },
   "Discos Paradiso": {
    "records": 35,
-   "tracks": 27,
-   "clip": 3,
+   "tracks": 28,
+   "clip": 2,
    "none": 5
   },
   "Syncrophone": {
@@ -105,8 +105,8 @@
   },
   "Diggers.fr": {
    "records": 238,
-   "tracks": 232,
-   "clip": 1,
+   "tracks": 233,
+   "clip": 0,
    "none": 5
   },
   "Carpet & Snares": {
@@ -147,17 +147,19 @@
   },
   "Rubadub": {
    "records": 138,
-   "tracks": 133,
-   "clip": 1,
+   "tracks": 134,
+   "clip": 0,
    "none": 4
   }
  },
- "pages_checked": 0,
- "new_from_shop_pages": 0,
- "copied_from_other_shop": 0,
- "broken_clips_removed": 13,
- "clips_verified": 21396,
- "not_reachable": {},
+ "pages_checked": 1403,
+ "new_from_shop_pages": 808,
+ "copied_from_other_shop": 38,
+ "broken_clips_removed": 15,
+ "clips_verified": 24291,
+ "not_reachable": {
+  "Redeye Records: failed:UnicodeEncodeError": 65
+ },
  "clip_hosts": {
   "DL.dropbox.com": {
    "clips": 44,
@@ -175,7 +177,7 @@
    "sample": []
   },
   "clone.nl": {
-   "clips": 2173,
+   "clips": 2169,
    "failed": 0,
    "sample": []
   },
@@ -228,9 +230,12 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 998,
-   "failed": 0,
-   "sample": []
+   "clips": 3897,
+   "failed": 2,
+   "sample": [
+    "https://sounds.redeyerecords.co.uk/190747.mp3",
+    "https://sounds.redeyerecords.co.uk/193166.mp3"
+   ]
   },
   "srv8.beanet-hosting.eu": {
    "clips": 32,
