@@ -243,10 +243,12 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
   if(!c.firstChild)c.innerHTML='<span class="od" id="oda"></span><span class="sl2">/</span><span class="tot od" id="odb"></span>';
   odo(document.getElementById("oda"),a);odo(document.getElementById("odb"),b)}
 // Tasten-Hinweise: nach dem ersten Ton blinkt ↑, bis man sie einmal nutzt; bei Platten mit mehreren Tracks blinkt →, bis man sie einmal nutzt
-const used={up:false,rt:false};
-function hintKeys(){const r=L[cur];
-  document.querySelector(".k-up").classList.toggle("nudge",listening&&!used.up);
-  document.querySelector(".k-rt").classList.toggle("nudge",listening&&!used.rt&&!!r&&r.tracks.length>1)}
+// Haben beide gleichzeitig geblinkt und man drückt eine der beiden, hören beide auf
+const used={up:false,rt:false,both:false};
+function hintKeys(){const r=L[cur],up=listening&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
+  if(up&&rt)used.both=true;
+  document.querySelector(".k-up").classList.toggle("nudge",up);
+  document.querySelector(".k-rt").classList.toggle("nudge",rt)}
 function bagCount(){document.getElementById("bagn").textContent=cart.length||""}
 function build(data){
   FX=data.fx||{};const G={};
@@ -345,6 +347,7 @@ function act(a,arg){
   if(busy)return;
   const first=!listening&&L[cur];
   if(a==="next"||a==="prev")used.up=true;if(a==="track")used.rt=true;
+  if(used.both&&(a==="next"||a==="prev"||a==="track"))used.up=used.rt=true;
   if(a==="next"){go(arg!=null?arg:cur+1)}
   else if(a==="prev"){go(cur-1)}
   else if(a==="bag"){pack()}
