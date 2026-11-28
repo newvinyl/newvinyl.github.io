@@ -361,7 +361,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   .scn .bm,.scn .br{opacity:0}
   .scn .bm{position:absolute;left:380px;top:190px;width:320px;height:260px}.scn .bm img{left:0;top:0;width:320px}
   .scn .bm b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:900 40px/1 "Comic Sans MS","Comic Neue","Chalkboard SE",sans-serif;color:#000;text-shadow:2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;white-space:nowrap}
-  .scn .br{left:480px;top:305px;width:120px}
+  .scn .br{left:465px;top:292px;width:150px}
   .scn .pf{position:absolute;left:-600px;top:-76px;width:560px;height:439px;transform-origin:62% 96%}
   .scn .pfi{position:absolute;inset:0;transform-origin:62% 96%}
   .scn .pf img{left:0;top:0;width:560px}
@@ -376,7 +376,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 </style>
 </head>
 <body>
-<div class="scn" aria-hidden="true"><div class="tint"></div><img class="wb" src="/beta/waschbaeren.png" alt=""><img class="br" src="/beta/brand.png" alt=""><img class="bl" src="/beta/ballon.png" alt=""><div class="bm"><img src="/beta/szene/boom-leer.png" alt=""><b>BOOM!</b></div><div class="pf"><div class="pfi"><img class="p0" src="/beta/pfau0.png" alt=""><img class="p1" src="/beta/pfau1.png" alt=""></div></div></div>
+<div class="scn" aria-hidden="true"><div class="tint"></div><img class="wb" src="/beta/waschbaeren.png" alt=""><img class="br" src="/beta/wrack.png" alt=""><img class="bl" src="/beta/ballon.png" alt=""><div class="bm"><img src="/beta/szene/boom-leer.png" alt=""></div><div class="pf"><div class="pfi"><img class="p0" src="/beta/pfau0.png" alt=""><img class="p1" src="/beta/pfau1.png" alt=""></div></div></div>
 <script>
 /* Desktop-Szene als endlose Story (User 28.11.): Runde 1 fix, danach Baukasten aus Ereignissen plus Mutationen, die jede Runde eskalieren.
    Test: ?scn=10 (10x schneller), ?round=5 (startet in Runde 5) */
@@ -418,6 +418,8 @@ fuss(g){const f=actor("fuss",150*g,470-30*g,0);mv(f,[tr(0,-420),tr(0,-420),tr(0,
 schild(g){const s=actor("schild",95*g,560,345-84*g);s.style.transformOrigin="50% 100%";mv(s,[{transform:"scale(0)"},{transform:"scale(1.2)",offset:.6},{transform:"scale(1)"}],.6,"ease-out");at(14,()=>mv(s,[{transform:"scale(1)"},{transform:"scale(0)"}],.4));gone(s,14.5)},
 komitee(g){const k=actor("komitee",90*g,0,350-73*g);mv(k,[tr(-160,0),tr(440,0)],5);say(k,R(["We need another meeting about this.","Let us form a working group.","Not in our budget."]),4,5);at(11,()=>mv(k,[tr(440,0),tr(-160,0)],5));gone(k,16.2)}};
 const POOL=Object.keys(EV);
+/* Wrack bleibt nach der Explosion liegen (User 28.11.), kein BOOM-Text mehr */
+const WR={"/beta/ballon.png":"/beta/wrack.png","/beta/szene/ballon-platte.png":"/beta/szene/wrack-platte.png","/beta/szene/ballon-ente.png":"/beta/szene/wrack-ente.png","/beta/szene/ballon-toaster.png":"/beta/szene/wrack-toaster.png"};
 const BOOM=["KABOOM!","PLOP.","oops","meh.","BOOM BOOM","KA-CHING!","404","PFFFT","BADABOOM"];
 /* Runde planen: Runde 1 ist die Originalgeschichte, danach steigt alles */
 let n=+(q.get("round")||1),sunB=null;
@@ -435,7 +437,7 @@ const driveIn=(sp,done)=>{let a;crew.forEach((w,i)=>{const[x,y]=base(i);clr(w);a
 const round=c=>{
   tint.style.background=c.tint||"transparent";tint.style.opacity=c.tint?.45:0;
   pfi.style.scale=c.ps;pfi.style.filter=c.hue?`hue-rotate(${c.hue}deg)`:"";
-  bl.src=c.bal;bm.querySelector("b").textContent=c.boom;bm.style.scale=c.bs;
+  bl.src=c.bal;br.src=WR[c.bal];bm.style.scale=c.bs;
   c.ev.forEach(({e,t})=>at(t,()=>{const r=EV[e](Math.min(1+c.L*.12,1.9),c.L);if(e==="sonne"){sunB&&sunB.remove();sunB=r}}));
   at(30,()=>driveOut(c.sp));
   /* Ballon erst ab 1:00 sichtbar: fällt brennend vom Himmel (User 28.11.) */
