@@ -2,9 +2,9 @@
  "date": "2026-11-28",
  "total": {
   "records": 7098,
-  "tracks": 6598,
-  "clip": 277,
-  "none": 223
+  "tracks": 6741,
+  "clip": 131,
+  "none": 226
  },
  "shops": {
   "Hardwax": {
@@ -21,8 +21,8 @@
   },
   "Decks.de": {
    "records": 31,
-   "tracks": 22,
-   "clip": 2,
+   "tracks": 23,
+   "clip": 1,
    "none": 7
   },
   "Clone": {
@@ -39,21 +39,21 @@
   },
   "Redeye Records": {
    "records": 1873,
-   "tracks": 1580,
-   "clip": 251,
+   "tracks": 1720,
+   "clip": 111,
    "none": 42
   },
   "Yoyaku": {
    "records": 459,
-   "tracks": 457,
+   "tracks": 456,
    "clip": 0,
-   "none": 2
+   "none": 3
   },
   "Kompakt": {
    "records": 173,
-   "tracks": 167,
+   "tracks": 165,
    "clip": 0,
-   "none": 6
+   "none": 8
   },
   "Juno Records": {
    "records": 1248,
@@ -63,8 +63,8 @@
   },
   "Deejay.de": {
    "records": 502,
-   "tracks": 422,
-   "clip": 15,
+   "tracks": 427,
+   "clip": 10,
    "none": 65
   },
   "Vinyl Underground": {
@@ -152,13 +152,13 @@
    "none": 4
   }
  },
- "pages_checked": 1403,
- "new_from_shop_pages": 808,
- "copied_from_other_shop": 38,
- "broken_clips_removed": 15,
- "clips_verified": 24291,
+ "pages_checked": 1657,
+ "new_from_shop_pages": 927,
+ "copied_from_other_shop": 434,
+ "broken_clips_removed": 35,
+ "clips_verified": 25528,
  "not_reachable": {
-  "Redeye Records: failed:UnicodeEncodeError": 65
+  "Phonica: http307": 54
  },
  "clip_hosts": {
   "DL.dropbox.com": {
@@ -177,9 +177,11 @@
    "sample": []
   },
   "clone.nl": {
-   "clips": 2169,
-   "failed": 0,
-   "sample": []
+   "clips": 2184,
+   "failed": 1,
+   "sample": [
+    "https://clone.nl/platen/mp3/84004/06%20Graves%20Qui%3Fmicos%20%28Breaks%29.mp3"
+   ]
   },
   "creators-audio-snippets-production.fra1.cdn.digitaloceanspaces.com": {
    "clips": 325,
@@ -207,7 +209,7 @@
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 421,
+   "clips": 475,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -221,16 +223,16 @@
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 66,
+   "clips": 90,
    "failed": 7,
    "sample": [
-    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/dustv143-in_the_north-01-six_am_services.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eg03-stardiving_mit_joerg_burger-01-10_minutes_of_stardiving_91.mp3",
-    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/kompakt511-the_hill_ep-01-the_hill-extended.mp3"
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/mop031-blue_hour_fantasy-01-blue_hour_fantasy.mp3",
+    "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/soundtrek003-soundtrek_3-01-glockenspiel_in_gebaeude_2.mp3"
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 3897,
+   "clips": 4502,
    "failed": 2,
    "sample": [
     "https://sounds.redeyerecords.co.uk/190747.mp3",
@@ -238,7 +240,7 @@
    ]
   },
   "srv8.beanet-hosting.eu": {
-   "clips": 32,
+   "clips": 39,
    "failed": 0,
    "sample": []
   },
@@ -276,14 +278,21 @@
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 1054,
-   "failed": 0,
-   "sample": []
+   "clips": 1561,
+   "failed": 2,
+   "sample": [
+    "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/YTCWVYL08_3.mp3",
+    "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/YTCWVYL08_4.mp3"
+   ]
   },
   "yydistribution.ams3.digitaloceanspaces.com": {
-   "clips": 22,
-   "failed": 0,
-   "sample": []
+   "clips": 47,
+   "failed": 17,
+   "sample": [
+    "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/SPEC08_1.mp3",
+    "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/SPEC08_10.mp3",
+    "https://yydistribution.ams3.digitaloceanspaces.com/yyplayer/mp3/SPEC08_11.mp3"
+   ]
   }
  },
  "unverifiable_hosts": [
