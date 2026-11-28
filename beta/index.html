@@ -352,6 +352,8 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .key.sp,.key.en{display:flex;align-items:center;justify-content:center;gap:10px}
 .key.sp .kd,.key.en .kd{font:500 10px/1 var(--mono)!important;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
 .key.sp span,.key.en span{font:700 14px/1 var(--display)!important;letter-spacing:.02em;text-transform:uppercase}
+/* Desktop (User 28.11.): Seite fixiert, kein Scrollen ins Leere */
+@media (min-width:861px){html,body{height:100%;overflow:hidden;overscroll-behavior:none}body{min-height:0;height:100vh}}
 </style>
 </head>
 <body>
