@@ -81,7 +81,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
    Seiten: SVG .rims hinter den Platten; Front: Fläche auf der Frontwand, nach hinten schmaler (Gehrung zu den Seiten) */
 .rims{position:absolute;left:50%;bottom:calc(var(--cv) * .30);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:2;pointer-events:none;overflow:visible}
 .bin::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:calc(var(--cv) * 0.03);
-  clip-path:polygon(0 100%,100% 100%,calc(100% - var(--cv) * .052) 0,calc(var(--cv) * .052) 0);
+  clip-path:polygon(0 100%,100% 100%,calc(100% - var(--cv) * .07) 0,calc(var(--cv) * .07) 0);
   background:linear-gradient(0deg,rgba(255,255,255,.13),rgba(255,255,255,.07)),url("/beta/holz-front.jpg") 0 35%/100% 1100% no-repeat,#2c2b2a}
 .inside::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.9),rgba(13,13,13,0) 60%)}
 .bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .32);transform:translateX(-50%);z-index:200;pointer-events:none;
@@ -422,17 +422,17 @@ const VIS=33; // sichtbare Platten in der Kiste (User 28.11.: mind. 15 mehr)
 
 /* Perspektive (User 28.11.): ein Fluchtpunkt für Wände, Oberkanten und Plattenstapel.
    PV = Höhe des Fluchtpunkts über der Plattenunterkante, in Coverbreiten. Plattenanstieg und Wandneigung folgen daraus. */
-const DEP=.36,PVS={a:4.2,b:2.6,c:1.7},PV=PVS[(location.search.match(/[?&]pv=([abc])/)||[])[1]]||PVS.c;let SH=.006,RISE=SH*PV;
+const DEP=.24,PVS={a:4.2,b:2.6,c:2.4},PV=PVS[(location.search.match(/[?&]pv=([abc])/)||[])[1]]||PVS.c;let SH=.006,RISE=SH*PV;
 function crateGeo(){const st=document.getElementById("stage"),ins=st.querySelector(".inside"),rims=st.querySelector(".rims"),bin=st.querySelector(".bin"),r0=st.querySelector(".rec");
   const cv=bin.offsetWidth/1.24;if(!cv)return;ins.style.height=rims.style.height="calc(var(--cv) * "+DEP+")";const sb=st.getBoundingClientRect().bottom,B=el=>(sb-el.getBoundingClientRect().bottom)/cv;
   const recB=r0?B(r0):.17,insB=B(ins),insH=ins.offsetHeight/cv,binH=bin.offsetHeight/cv,D=PV-(insB-recB),f=insH/D,back=1-f,ip=50*f;
   SH=back<1?(1-back)*.9/VIS:.006;RISE=SH*PV;ins.style.clipPath=`polygon(0 100%,100% 100%,${100-ip}% 0,${ip}% 0)`;
-  const W=124,Hh=insH*100,xo=ip*1.24,t0=5.2,t1=t0*back,hw=Math.max(.05,binH-.03)*100,hb=hw*back;
+  const W=124,Hh=insH*100,xo=ip*1.24,t0=7,t1=t0*back,hw=Math.max(.05,binH-.03)*100,hb=hw*back;
   rims.setAttribute("viewBox",`0 0 ${W} ${Hh}`);
-  rims.innerHTML=`<defs><linearGradient id="wl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2e2c2a"/><stop offset="1" stop-color="#1d1c1b"/></linearGradient>
-<linearGradient id="wr" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#181716"/><stop offset="1" stop-color="#111010"/></linearGradient>
+  rims.innerHTML=`<defs><linearGradient id="wl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1c1b1a"/><stop offset="1" stop-color="#121211"/></linearGradient>
+<linearGradient id="wr" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#0f0f0e"/><stop offset="1" stop-color="#0a0a0a"/></linearGradient>
 <linearGradient id="bw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151413"/><stop offset="1" stop-color="#0a0a09"/></linearGradient>
-<linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2928"/><stop offset="1" stop-color="#3d3b39"/></linearGradient>
+<linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#383634"/><stop offset="1" stop-color="#4c4946"/></linearGradient>
 <pattern id="wd" patternUnits="userSpaceOnUse" width="${W}" height="${Hh}"><image href="/beta/holz-front.jpg" width="${W}" height="${Hh}" preserveAspectRatio="none" opacity=".9"/></pattern></defs>
 <rect x="${xo+t1}" y="0" width="${W-2*(xo+t1)}" height="${hb}" fill="url(#bw)"/>
 <polygon points="${t0},${Hh} ${xo+t1},0 ${xo+t1},${hb} ${t0},${Hh+hw}" fill="url(#wl)"/>
