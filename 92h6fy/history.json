@@ -2,19 +2,19 @@
  {
   "date": "2026-11-28",
   "keys": [
-   "various|years of freerange vol 1 (12\" in box)",
+   "vivian wang|golden hour",
    "various artists|judder vinyl series vol.2",
-   "ron trent, carlton, dj roland clark, urban soul, the kings dub|the ron trent collection vol. 2"
+   "portamento|at the right place at the right time"
   ],
   "titles": [
-   "Various – Years Of Freerange Vol 1 (12\" in box)",
+   "Vivian Wang – Golden Hour",
    "Various Artists – Judder Vinyl Series Vol.2",
-   "Ron Trent, Carlton, DJ Roland Clark, Urban Soul, The Kings Dub – The Ron Trent Collection Vol. 2"
+   "Portamento – At the Right Place at the Right Time"
   ],
   "shops": [
    "Vinyl Underground",
    "Hardwax",
-   "Side One"
+   "Rubadub"
   ],
   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261128.mp4",
   "looks": [
@@ -23,35 +23,35 @@
   "dv": 9,
   "reels": [
    {
-    "key": "strange shadows|dance with me / tell me why",
-    "title": "Strange Shadows – Dance With Me / Tell Me Why",
+    "key": "simoncino|traxxx ii ep",
+    "title": "Simoncino – Traxxx II EP",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-1.mp4",
-    "look": "poster916 107 bpm",
+    "look": "poster916 120 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-1.jpg"
    },
    {
-    "key": "simoncino|traxxx ii ep",
-    "title": "Simoncino – Traxxx II EP",
+    "key": "strange shadows|dance with me / tell me why",
+    "title": "Strange Shadows – Dance With Me / Tell Me Why",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-2.mp4",
-    "look": "poster916 120 bpm",
+    "look": "poster916 107 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-2.jpg"
    },
    {
-    "key": "portamento|at the right place at the right time",
-    "title": "Portamento – At the Right Place at the Right Time",
+    "key": "pedronium|ep1 ep",
+    "title": "Pedronium – EP1 EP",
     "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-3.mp4",
-    "look": "poster916 138 bpm",
+    "look": "poster916 113 bpm",
     "v": 23,
     "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-3.jpg"
    }
   ],
   "reel": {
-   "key": "strange shadows|dance with me / tell me why",
-   "title": "Strange Shadows – Dance With Me / Tell Me Why",
+   "key": "simoncino|traxxx ii ep",
+   "title": "Simoncino – Traxxx II EP",
    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-1.mp4",
-   "look": "poster916 107 bpm",
+   "look": "poster916 120 bpm",
    "v": 23,
    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-1.jpg"
   }
