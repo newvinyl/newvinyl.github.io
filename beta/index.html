@@ -548,7 +548,7 @@ function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hi
 // Tasten-Hinweise: nach dem ersten Ton blinkt ↑, bis man sie einmal nutzt; bei Platten mit mehreren Tracks blinkt →, bis man sie einmal nutzt
 // Haben beide gleichzeitig geblinkt und man drückt eine der beiden, hören beide auf
 const TOUCH=matchMedia("(max-width:860px)").matches;
-const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?(h=>h.bag?h:{})(store.get("mvr-betahints2",{})):{});
+const usedK=new Set();let enDone=!!store.get("mvr-ennudge",0);const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?(h=>h.bag?h:{})(store.get("mvr-betahints2",{})):{});
 // Grab it!: drei Durchgänge (3 x 1.25s), dann erst wieder nach einer Minute, solange noch nichts im Bag gelandet ist
 const HINT_GAP=4500;let bgEnd=0,bgNext=0,hintGap=0,holdEnd=0,tut=TOUCH&&!/[?&]hints/.test(location.search)&&store.get("mvr-tut",0)>=4?4:0;
 function tutGo(n){if(n<=tut)return;tut=n;if(n>=4)store.set("mvr-tut",4);hintGap=Date.now()+HINT_GAP;setTimeout(hintKeys,HINT_GAP+50)}const T0=Date.now();if(TOUCH)setTimeout(()=>hintKeys(),60100);
@@ -569,7 +569,8 @@ function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&
   document.querySelector(".k-up").classList.toggle("nudge",up);
   document.querySelector(".k-rt").classList.toggle("nudge",rt);
   // Desktop: GRAB IT! (Enter) blinkt erst, wenn ↑ und → gelernt sind und noch nichts eingepackt wurde
-  {const en=document.querySelector(".key.en");if(en)en.classList.toggle("nudge",!TOUCH&&listening&&!up&&!rt&&used.up&&!used.bag&&!!r&&!(r.out&&!cart.includes(r.key)))}}
+  /* Enter GRAB IT (User 28.11.): blinkt genau 3x, erst wenn Space, ↑, ↓, ← und → je einmal benutzt wurden, danach nie mehr */
+  if(!TOUCH&&!enDone&&!used.bag&&["play","next","prev","track","back"].every(k=>usedK.has(k))){const en=document.querySelector(".key.en");enDone=true;store.set("mvr-ennudge",1);if(en){en.classList.add("nudge");en.addEventListener("animationend",()=>en.classList.remove("nudge"),{once:true})}}}
 function bagCount(){document.getElementById("bagn").textContent=cart.length||""}
 function build(data){
   FX=data.fx||{};const G={};
@@ -713,7 +714,7 @@ function act(a,arg){
   if(busy)return;
   const first=!listening&&L[cur];
   if(TOUCH){if(tut===1&&(a==="next"||a==="prev"))tutGo(2);else if(tut===2&&a==="track")tutGo(3);else if(tut===3&&a==="bag"&&L[cur]&&!(L[cur].out&&!cart.includes(L[cur].key)))tutGo(4)}
-  if(a==="next"||a==="prev")used.up=true;if(a==="track")used.rt=true;if(a==="bag")used.bag=true;if(TOUCH)store.set("mvr-betahints2",{up:used.up,rt:used.rt,bag:used.bag});
+  usedK.add(a);if(a==="next"||a==="prev")used.up=true;if(a==="track")used.rt=true;if(a==="bag")used.bag=true;if(TOUCH)store.set("mvr-betahints2",{up:used.up,rt:used.rt,bag:used.bag});
   if(used.both&&(a==="next"||a==="prev"||a==="track"))used.up=used.rt=true;
   if(a==="next"){go(arg!=null?arg:cur+1)}
   else if(a==="prev"){go(cur-1)}
