@@ -353,8 +353,8 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 .key.sp .kd,.key.en .kd{font:500 10px/1 var(--mono)!important;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
 .key.sp span,.key.en span{font:700 14px/1 var(--display)!important;letter-spacing:.02em;text-transform:uppercase}
 /* Desktop (User 28.11.): Info-Block doppelt so gross, Tasten unten direkt über der Shop-Zeile */
-@media (min-width:861px){main{grid-template-columns:1fr minmax(360px,560px);grid-template-rows:minmax(0,1fr)}.rinfo{zoom:1.6}.rinfo .tl{height:calc(4 * 27px)!important}.ctl{flex:0 0 auto;margin-top:auto}.side{justify-content:flex-start;gap:12px;min-height:0;overflow:hidden;padding-top:18px;padding-bottom:14px}}
-@media (min-width:861px) and (max-height:800px){.rinfo{zoom:1.5}.rinfo .tl{height:calc(3 * 27px)!important}}
+@media (min-width:861px){main{grid-template-columns:1fr minmax(360px,560px);grid-template-rows:minmax(0,1fr)}.rinfo{margin:0 auto}.rinfo .tl{height:auto!important;max-height:none!important;overflow:visible!important;-webkit-mask-image:none!important;mask-image:none!important}.ctl{flex:0 0 auto;margin-top:auto}.side{justify-content:flex-start;gap:12px;min-height:0;overflow:hidden;padding-top:18px;padding-bottom:14px}}
+
 /* Desktop (User 28.11.): Play/Pause und Grab it nebeneinander */
 @media (min-width:861px){.pad .key.sp,.pad .key.en{grid-area:5/1/6/6!important;justify-self:center;width:196px!important;height:44px!important;margin-top:14px!important}.pad .key.sp{translate:-104px 0}.pad .key.en{translate:104px 0}}
 </style>
@@ -445,6 +445,14 @@ const VIS=33; // sichtbare Platten in der Kiste (User 28.11.: mind. 15 mehr)
 /* Perspektive (User 28.11.): ein Fluchtpunkt für Wände, Oberkanten und Plattenstapel.
    PV = Höhe des Fluchtpunkts über der Plattenunterkante, in Coverbreiten. Plattenanstieg und Wandneigung folgen daraus. */
 const PLY=(location.search.match(/[?&]ply=([ab])/)||[])[1]||"a",PC={f:"#2b2b2b",l:"#1d1d1d",g:"#383838"}/* matt schwarz (User 28.11.) */,GL=+((location.search.match(/[?&]gl=(\d)/)||[])[1]||.4),DEP=.30,PVS={a:4.2,b:2.6,c:2.4},PV=PVS[(location.search.match(/[?&]pv=([abc])/)||[])[1]]||PVS.c;let SH=.006,RISE=SH*PV;
+
+/* Desktop (User 28.11.): Info-Block so gross wie möglich, aber ganze Trackliste lesbar und bündig mit dem Tastenblock */
+function fitInfo(){if(TOUCH||!matchMedia("(min-width:861px)").matches){info.style.zoom="";info.style.width="";return}
+  const side=info.parentElement,ctl=side.querySelector(".ctl"),pad=side.querySelector(".pad"),ft=side.querySelector(".rfoot");
+  info.style.zoom=1;const pw=pad.getBoundingClientRect().width;info.style.width=pw+"px";
+  const cs=getComputedStyle(side),gap=parseFloat(cs.rowGap)||12,avail=side.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom)-ctl.offsetHeight-ft.offsetHeight-gap*2-8;
+  const z=Math.max(.75,Math.min(1.5,avail/info.scrollHeight));info.style.zoom=z;info.style.width=(pw/z)+"px"}
+new MutationObserver(()=>requestAnimationFrame(fitInfo)).observe(info,{childList:true,subtree:true});addEventListener("resize",fitInfo);
 function crateGeo(){const st=document.getElementById("stage");st.style.setProperty("--gl",GL);st.style.setProperty("--pf",PC.f);st.style.setProperty("--pl",PC.l);st.style.setProperty("--pg",PC.g);const ins=st.querySelector(".inside"),rims=st.querySelector(".rims"),bin=st.querySelector(".bin"),r0=st.querySelector(".rec");
   const cv=bin.offsetWidth/1.34;if(!cv)return;ins.style.height=rims.style.height="calc(var(--cv) * "+DEP+")";const sb=st.getBoundingClientRect().bottom,B=el=>(sb-el.getBoundingClientRect().bottom)/cv;
   const recB=r0?B(r0):.17,insB=B(ins),insH=ins.offsetHeight/cv,binH=bin.offsetHeight/cv,D=PV-(insB-recB),f=insH/D,back=1-f,ip=50*f;
