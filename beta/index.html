@@ -430,11 +430,12 @@ const VIS=33; // sichtbare Platten in der Kiste (User 28.11.: mind. 15 mehr)
 
 /* Perspektive (User 28.11.): ein Fluchtpunkt für Wände, Oberkanten und Plattenstapel.
    PV = Höhe des Fluchtpunkts über der Plattenunterkante, in Coverbreiten. Plattenanstieg und Wandneigung folgen daraus. */
-const PLY=(location.search.match(/[?&]ply=([ab])/)||[])[1]||"a",PC={f:"#2b2b2b",l:"#1d1d1d",g:"#383838"}/* matt schwarz (User 28.11.) */,GL=+((location.search.match(/[?&]gl=(\d)/)||[])[1]||.4),DEP=.30,PVS={a:4.2,b:2.6,c:2.4},PV=PVS[(location.search.match(/[?&]pv=([abc])/)||[])[1]]||PVS.c;let SH=.006,RISE=SH*PV;
+const PLY=(location.search.match(/[?&]ply=([ab])/)||[])[1]||"a",PC={f:"#2b2b2b",l:"#1d1d1d",g:"#383838"}/* matt schwarz (User 28.11.) */,GL=+((location.search.match(/[?&]gl=(\d)/)||[])[1]||.4),DEP=.30,PVS={a:4.2,b:2.6,c:2.4},PV=PVS[(location.search.match(/[?&]pv=([abc])/)||[])[1]]||PVS.c;let PD=9;const TH=3.5/310;
 function crateGeo(){const st=document.getElementById("stage");st.style.setProperty("--gl",GL);st.style.setProperty("--pf",PC.f);st.style.setProperty("--pl",PC.l);st.style.setProperty("--pg",PC.g);const ins=st.querySelector(".inside"),rims=st.querySelector(".rims"),bin=st.querySelector(".bin"),r0=st.querySelector(".rec");
   const cv=bin.offsetWidth/1.34;if(!cv)return;ins.style.height=rims.style.height="calc(var(--cv) * "+DEP+")";const sb=st.getBoundingClientRect().bottom,B=el=>(sb-el.getBoundingClientRect().bottom)/cv;
   const recB=r0?B(r0):.17,insB=B(ins),insH=ins.offsetHeight/cv,binH=bin.offsetHeight/cv,D=PV-(insB-recB),f=insH/D,back=1-f,ip=50*f;
-  SH=back<1?(1-back)*.9/VIS:.006;RISE=SH*PV;ins.style.clipPath=`polygon(0 100%,100% 100%,${100-ip}% 0,${ip}% 0)`;
+  /* Kiste quadratisch (User 28.11.): Tiefe = Breite 1.34 Cover, Kameraabstand PD folgt aus der Wandneigung, eine Platte mit Hülle = 3.5 mm = .0113 Cover */
+  PD=back<1?1.34*back/(1-back):9;ins.style.clipPath=`polygon(0 100%,100% 100%,${100-ip}% 0,${ip}% 0)`;
   const W=134,Hh=insH*100,xo=ip*1.34,t0=7,t1=t0*back,hw=Math.max(.05,binH-.03)*100,hb=hw*back;
   rims.setAttribute("viewBox",`0 0 ${W} ${Hh}`);
   rims.innerHTML=`<defs><linearGradient id="wl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1b1b1b"/><stop offset="1" stop-color="#121212"/></linearGradient>
@@ -541,8 +542,8 @@ function place(e,k,i){
     e.style.transform=`translateY(calc(var(--cv) * -1.35)) scale(.94) rotate(${jit(i)*2}deg)`;e.style.zIndex=160;e.style.filter="none";e.style.opacity=0;return}
   if(k<0){ // umgeblättert: kippt nach vorne und verschwindet hinter der Kistenwand
     e.style.transform=`translateY(calc(var(--cv) * .75)) perspective(900px) rotateX(-28deg) rotate(${jit(i)}deg)`;e.style.zIndex=150;e.style.filter="brightness(.5)";e.style.opacity=0;return}
-  e.style.transform=`translateY(calc(var(--cv) * ${-k*RISE})) scale(${1-k*SH}) rotate(${k?jit(i)*.3:0}deg)`;
-  e.style.zIndex=100-k;e.style.filter=`brightness(${Math.max(.35,1-k*.022)})`;e.style.opacity=k>=VIS?0:1;
+  const sc=PD/(PD+k*TH);e.style.transform=`translateY(calc(var(--cv) * ${-(1-sc)*PV})) scale(${sc}) rotate(${k?jit(i)*.3:0}deg)`;
+  e.style.zIndex=100-k;e.style.filter=`brightness(${Math.max(.45,1-k*.014)})`;e.style.opacity=k>=VIS?0:1;
 }
 function render(fresh){
   const keep=new Set();for(let i=cur-2;i<=cur+VIS;i++){if(i<0||i>=L.length)continue;keep.add(i);const e=el(i);if(fresh)e.style.transition="none";place(e,i-cur,i);if(fresh){void e.offsetWidth;e.style.transition=""}}
