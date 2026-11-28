@@ -480,7 +480,7 @@ const usedK=new Set();let enDone=!!store.get("mvr-ennudge",0);const used=Object.
 // Grab it!: drei Durchgänge (3 x 1.25s), dann erst wieder nach einer Minute, solange noch nichts im Bag gelandet ist
 const HINT_GAP=4500;let bgEnd=0,bgNext=0,hintGap=0,holdEnd=0,tut=TOUCH&&!/[?&]hints/.test(location.search)&&store.get("mvr-tut",0)>=4?4:0;
 function tutGo(n){if(n<=tut)return;tut=n;if(n>=4)store.set("mvr-tut",4);hintGap=Date.now()+HINT_GAP;setTimeout(hintKeys,HINT_GAP+50)}const T0=Date.now();if(TOUCH)setTimeout(()=>hintKeys(),60100);
-function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
+function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&(TOUCH||used.up)/* erst NEXT, dann SKIP (User 28.11.) */&&!!r&&r.tracks.length>1;
   if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)},t=Date.now();
     // Feste Abfolge (User 27.11.): 0 TAP, 1 NEXT, 2 SKIP, 3 GRAB IT!, 4 fertig. Ein Schritt gilt nur, wenn genau seine Geste
     // gemacht wurde; zwischen zwei Hinweisen 4,5 s Pause. Gespeichert wird nur «fertig».
