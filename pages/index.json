@@ -1,0 +1,219 @@
+{
+ "fetched": "2026-11-28T15:57Z",
+ "pages": [
+  {
+   "url": "https://hardwax.com/this-week/",
+   "file": "hardwax-com-this-week.txt",
+   "status": 200,
+   "chars": 66353
+  },
+  {
+   "url": "https://hardwax.com/this-week/?page=2",
+   "file": "hardwax-com-this-week-page-2.txt",
+   "status": 200,
+   "chars": 92753
+  },
+  {
+   "url": "https://hardwax.com/this-week/?page=3",
+   "file": "hardwax-com-this-week-page-3.txt",
+   "status": 200,
+   "chars": 30915
+  },
+  {
+   "url": "https://www.rushhour.nl/",
+   "file": "rushhour-nl.txt",
+   "status": 200,
+   "chars": 19477
+  },
+  {
+   "url": "https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zh&now_Was=news&now_Date=nodate&aktuell=0",
+   "file": "decks-de-decks-workfloor-lists-list-php-wo-ten-now-sub-zh-now-was-news-now-date-nodate-akt.txt",
+   "status": 200,
+   "chars": 9571
+  },
+  {
+   "url": "https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zz&now_Was=news&now_Date=nodate&aktuell=0",
+   "file": "decks-de-decks-workfloor-lists-list-php-wo-ten-now-sub-zz-now-was-news-now-date-nodate-akt.txt",
+   "status": 200,
+   "chars": 10822
+  },
+  {
+   "url": "https://www.deejay.de/m_House/sm_News",
+   "file": "deejay-de-m-house-sm-news.txt",
+   "error": "HTTP Error 403: Forbidden",
+   "diag": {
+    "code": 403,
+    "server": "cloudflare",
+    "cf-mitigated": "challenge",
+    "cf-ray": "a61a9171bace1f64-SEA",
+    "title": "Just a moment...",
+    "challenge": "cloudflare"
+   }
+  },
+  {
+   "url": "https://www.deejay.de/m_House/sm_News/page_2",
+   "file": "deejay-de-m-house-sm-news-page-2.txt",
+   "error": "HTTP Error 403: Forbidden",
+   "diag": {
+    "code": 403,
+    "server": "cloudflare",
+    "cf-mitigated": "challenge",
+    "cf-ray": "a61a917b3d3ff7ff-SEA",
+    "title": "Just a moment...",
+    "challenge": "cloudflare"
+   }
+  },
+  {
+   "url": "https://www.deejay.de/m_Techno/sm_News",
+   "file": "deejay-de-m-techno-sm-news.txt",
+   "error": "HTTP Error 403: Forbidden",
+   "diag": {
+    "code": 403,
+    "server": "cloudflare",
+    "cf-mitigated": "challenge",
+    "cf-ray": "a61a9184cc73b10f-SEA",
+    "title": "Just a moment...",
+    "challenge": "cloudflare"
+   }
+  },
+  {
+   "url": "https://www.deejay.de/m_Techno/sm_News/page_2",
+   "file": "deejay-de-m-techno-sm-news-page-2.txt",
+   "error": "HTTP Error 403: Forbidden",
+   "diag": {
+    "code": 403,
+    "server": "cloudflare",
+    "cf-mitigated": "challenge",
+    "cf-ray": "a61a918e6cdc101c-SEA",
+    "title": "Just a moment...",
+    "challenge": "cloudflare"
+   }
+  },
+  {
+   "url": "https://clone.nl/all/new",
+   "file": "clone-nl-all-new.txt",
+   "status": 200,
+   "chars": 47309
+  },
+  {
+   "url": "https://clone.nl/all/new?page=2",
+   "file": "clone-nl-all-new-page-2.txt",
+   "status": 200,
+   "chars": 47456
+  },
+  {
+   "url": "https://clone.nl/all/tag/Dub+Techno",
+   "file": "clone-nl-all-tag-dub-techno.txt",
+   "status": 200,
+   "chars": 48512
+  },
+  {
+   "url": "https://clone.nl/all/tag/Minimal",
+   "file": "clone-nl-all-tag-minimal.txt",
+   "status": 200,
+   "chars": 45244
+  },
+  {
+   "url": "https://clone.nl/all/tag/Tech+House",
+   "file": "clone-nl-all-tag-tech-house.txt",
+   "status": 200,
+   "chars": 47727
+  },
+  {
+   "url": "https://clone.nl/all/tag/Italo",
+   "file": "clone-nl-all-tag-italo.txt",
+   "status": 200,
+   "chars": 48666
+  },
+  {
+   "url": "https://clone.nl/all/tag/Ambient",
+   "file": "clone-nl-all-tag-ambient.txt",
+   "status": 200,
+   "chars": 48605
+  },
+  {
+   "url": "https://clone.nl/all/genre/Electro",
+   "file": "clone-nl-all-genre-electro.txt",
+   "status": 200,
+   "chars": 50066
+  },
+  {
+   "url": "https://clone.nl/all/genre/Disco",
+   "file": "clone-nl-all-genre-disco.txt",
+   "status": 200,
+   "chars": 49106
+  },
+  {
+   "url": "https://clone.nl/all/genre/Acid",
+   "file": "clone-nl-all-genre-acid.txt",
+   "status": 200,
+   "chars": 50709
+  },
+  {
+   "url": "https://www.phonicarecords.com/new-releases",
+   "file": "phonicarecords-com-new-releases.txt",
+   "error": "HTTP Error 307: Temporary Redirect",
+   "diag": {
+    "code": 307,
+    "server": "Sucuri/Cloudproxy",
+    "title": "You are being redirected..."
+   }
+  },
+  {
+   "url": "https://www.phonicarecords.com/new-releases/18",
+   "file": "phonicarecords-com-new-releases-18.txt",
+   "error": "HTTP Error 307: Temporary Redirect",
+   "diag": {
+    "code": 307,
+    "server": "Sucuri/Cloudproxy",
+    "title": "You are being redirected..."
+   }
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/house-disco/new-releases",
+   "file": "redeyerecords-co-uk-house-disco-new-releases.txt",
+   "status": 200,
+   "chars": 39222
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/techno-electro/new-releases",
+   "file": "redeyerecords-co-uk-techno-electro-new-releases.txt",
+   "status": 200,
+   "chars": 39290
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/balearic-and-downtempo/new-releases",
+   "file": "redeyerecords-co-uk-balearic-and-downtempo-new-releases.txt",
+   "status": 200,
+   "chars": 39648
+  },
+  {
+   "url": "https://www.redeyerecords.co.uk/experimental/new-releases",
+   "file": "redeyerecords-co-uk-experimental-new-releases.txt",
+   "status": 200,
+   "chars": 39198
+  },
+  {
+   "url": "https://yoyaku.io/releases/",
+   "file": "yoyaku-io-releases.txt",
+   "status": 200,
+   "chars": 57748
+  },
+  {
+   "url": "https://kompakt.fm/releases",
+   "file": "kompakt-fm-releases.txt",
+   "status": 200,
+   "chars": 35715
+  },
+  {
+   "url": "https://kompakt.fm/releases?page=2",
+   "file": "kompakt-fm-releases-page-2.txt",
+   "status": 200,
+   "chars": 37494
+  }
+ ],
+ "paused": {
+  "Juno Records": "waiting for official product feed (pages answered 403 since 2026-11-17)"
+ },
+ "rushhour_products_checked": 18
+}
