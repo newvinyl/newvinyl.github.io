@@ -343,6 +343,11 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
   background:linear-gradient(103deg,transparent 18%,rgba(255,255,255,calc(.035 * var(--gl,1))) 34%,rgba(255,255,255,calc(.012 * var(--gl,1))) 44%,transparent 58%),
   linear-gradient(90deg,rgba(0,0,0,.6) 0 1px,transparent 1px calc(100% - 1px),rgba(0,0,0,.6) calc(100% - 1px)),
   linear-gradient(180deg,rgba(255,255,255,.09) 0 1px,transparent 1px)}/* scharfe Kanten, keine Rundungen (User 28.11.) */
+/* Keine Trennlinien in der Trackliste, Zähler wieder grösser (User 28.11.) */
+.tl,.tl li{border-top:0!important;border-bottom:0!important}
+.tl button span{font-family:var(--display);font-weight:400;letter-spacing:0;font-size:1.15em}/* Tracknamen in Helvetica Regular (User 28.11.) */
+@media (min-width:861px){.cnt{font-size:24px!important}}
+@media (max-width:860px){.cnt{font-size:18px!important}}
 </style>
 </head>
 <body>
