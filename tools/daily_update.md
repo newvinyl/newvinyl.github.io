@@ -103,8 +103,7 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
 - Hardwax (Berlin, DE): https://hardwax.com/this-week/ and ?page=2, ?page=3. Direct mp3s at
   media.hardwax.com/audio/ID_SIDE.mp3 (use the vinyl links, not "_clip"). Price €.
 - Rush Hour (Amsterdam, NL): https://www.rushhour.nl/ (new releases with week numbers; prices usually
-  not shown → null; store the week as "d"; pre-orders → "st":"pre"; skip pre-orders dated "W 52",
-  which is a placeholder). Rush Hour only tags coarse genres; use its Disco / Italo / Electro /
+  not shown → null; store the week as "d"; skip pre-orders, see step 5). Rush Hour only tags coarse genres; use its Disco / Italo / Electro /
   Ambient / Balearic tags where given. Direct mp3s from the product pages are in
   pages/rushhour-product-mp3.json (objectstore.true.nl/rushhourrecords:files/tracks/…).
 - Decks.de (DE): https://www.decks.de/decks/workfloor/lists/list.php?wo=ten&now_Sub=zh&now_Was=news&now_Date=nodate&aktuell=0
@@ -114,21 +113,21 @@ Pages per shop (only those that are in the saved files are read; "next page" = t
   https://www.deejay.de/m_Techno/sm_News (page 1 and /page_2). Take releases whose shown date lies within the
   last 7 days (Europe/Zurich, but not before 2026-11-16) and that are not in releases.json yet, so a
   missed day is caught up the next morning (9.–12.11. were lost with the old "yesterday or today"
-  rule); skip later pre-order dates. Price €. Style
+  rule); skip pre-orders (later dates, "ships from …", "collecting"). Price €. Style
   tags: House+Deep → Deep House, House+Minimal → Minimal House, House+Tech → Tech House, House alone
   → House, Techno → Techno (Techno+Minimal without House → Minimal Techno), Electro → Electro, Disco
   → Disco, Breaks → Breakbeat; join several with " / "; add " · Reissue" if tagged Classics. Format
   "12inch"/"excl" → 12", "2x12inch" → 2×12", "LP" → LP. "In Stock" → "st":"in"; "ships from …" or
-  "collecting" → "st":"pre". No direct mp3s: store tracks as {"s":side,"n":name,"page":product URL}
+  "collecting" = pre-order → skip. No direct mp3s: store tracks as {"s":side,"n":name,"page":product URL}
   and let step 6 find previews. The shop entry must not carry "blocked"/"note".
 - Clone (Rotterdam, NL): https://clone.nl/all/new and ?page=2. Also the subgenre lists (sorted newest
-  first, with release dates; take releases dated within the last 7 days or upcoming, page 1 only):
+  first, with release dates; take releases dated within the last 7 days, page 1 only):
   https://clone.nl/all/tag/Dub+Techno (→ "Dub Techno"), https://clone.nl/all/tag/Minimal (→
   "Minimal"), https://clone.nl/all/tag/Tech+House (→ "Tech House"), https://clone.nl/all/tag/Italo
   (→ "Italo Disco"), https://clone.nl/all/tag/Ambient (→ "Ambient"), https://clone.nl/all/genre/Electro
   (→ "Electro"), https://clone.nl/all/genre/Disco (→ "Disco", skip soul/funk),
   https://clone.nl/all/genre/Acid (→ "Acid House" if house-based, "Acid Techno" if techno-based). Put
-  the list's subgenre into "g" (join several with " / "); future release dates → "st":"pre". Direct
+  the list's subgenre into "g" (join several with " / "); future release dates = pre-order → skip. Direct
   mp3s follow https://clone.nl/platen/mp3/ITEMID/<track label as listed, e.g. "1 Meteora">.mp3
   (URL-encode the label; ITEMID is the number in itemNNNNN.html).
 - Phonica (London, UK): https://www.phonicarecords.com/new-releases and /new-releases/18 (price £;
@@ -180,6 +179,11 @@ automated access or fails (including 403 or rate limits), skip it for today, lea
 are and do not retry that page. Do not work around a blocked site.
 
 ## 5. New vs. existing
+
+Never add pre-orders / pre-sales (user rule, 28.11.26): skip every release the shop shows as pre-order,
+pre-sale, presale, forthcoming, upcoming, coming soon, expected, "ships from …" or with a future release date. It is
+added later as a normal new release on the day the shop shows it as available. The structured-shop items
+(pages/items) are already filtered.
 
 Never add a release listed in tools/not_ours.json (match by url or lower-case "artist|title"); the user removed
 these because they are not our genres. If one is still in releases.json or in the artifact data, remove it.

@@ -137,7 +137,8 @@ def shop_feeds(pdir):
     for fid, shop, where, country, cur, fn in SF.FEEDS:
         e = {"id": fid, "shop": shop, "where": where, "country": country, "cur": cur, "file": "items/%s.json" % fid}
         try:
-            items = [i for i in fn(fetch) if i.get("url") not in no_urls
+            # no pre-orders / pre-sales (user, 28.11.26): they come in once the shop lists them as available
+            items = [i for i in fn(fetch) if i.get("st") != "pre" and i.get("url") not in no_urls
                      and ("%s|%s" % (i.get("a", ""), i.get("t", ""))).lower() not in no_keys]
             json.dump({"fetched": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "shop": shop, "items": items},
                       open(os.path.join(idir, fid + ".json"), "w"), indent=1, ensure_ascii=False)
