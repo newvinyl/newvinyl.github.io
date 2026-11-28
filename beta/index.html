@@ -263,6 +263,7 @@ main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,
 @media (prefers-reduced-motion:reduce){.gh.on span{animation:none!important}.gh svg.cv path{animation:none!important;opacity:1}}
 /* Trackwechsel: Platte hüpft; Start: TAP im Stil der Hinweise, ohne Pfeil, bis der erste Track läuft */
 .rec.hop{animation:hop .55s cubic-bezier(.3,0,.3,1)}
+.rec.tick{animation:tick .22s ease-out}@keyframes tick{0%,100%{translate:0 0}40%{translate:-3px 0}}/* Handy: nur minimale Bewegung beim neuen Track */
 @keyframes hop{0%{translate:0 0}30%{translate:0 -18px}55%{translate:0 0}72%{translate:0 -5px}86%,100%{translate:0 0}}
 @media (max-width:860px){
   .gh-tap{left:50%;bottom:calc(var(--cv) * .55);transform:translateX(-50%)}
@@ -605,7 +606,7 @@ function playTrack(j){
 function prevTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}if(ti>0){playTrack(ti-1);hop()}else{au.currentTime=0;au.play().catch(()=>{})}}
 function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}playTrack((ti+1)%r.tracks.length);hop()}
 // Trackwechsel sichtbar machen: die Platte hüpft kurz in der Kiste
-function hop(){const e=EL.get(cur);if(!e)return;e.classList.remove("hop");void e.offsetWidth;e.classList.add("hop");setTimeout(()=>e.classList.remove("hop"),600)}
+function hop(){const e=EL.get(cur);if(!e)return;const c=TOUCH?"tick":"hop";e.classList.remove(c);void e.offsetWidth;e.classList.add(c);setTimeout(()=>e.classList.remove(c),600)}
 function toggle(){if(!listening||!au.src){playTrack(ti);track("Beta play",{crate:crate.name});return}if(au.paused)au.play().catch(()=>{});else au.pause()}
 // In den Bag: die Platte fliegt zum Bag-Symbol oben rechts, dann kommt die nächste nach vorne
 function pack(){
@@ -685,12 +686,13 @@ stage.addEventListener("touchmove",e=>{if(ty==null||!drag||!drag.e||busy)return;
   if(!drag.ax){if(Math.hypot(dx,dy)<8)return;clearTimeout(holdT);holdT=null;drag.ax=Math.abs(dy)>Math.abs(dx)?"y":"x";drag.e.style.transition="none"}
   let x=0,y=0,r=0;
   if(drag.ax==="y"){y=dy<0?dy:0;r=0}
-  else{x=dx<0?-26*(1-Math.exp(dx/70)):dx;y=dx>0?-Math.min(dx,160)*.12:0;r=dx*.045}
+  else if(dx<0){x=-110*(1-Math.exp(dx/140));y=0;r=0}/* Skip (User 28.11.): gerade nach links, kein Drehen */
+  else{x=dx;y=-Math.min(dx,160)*.12;r=dx*.045}
   drag.e.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`},{passive:true});
 stage.addEventListener("contextmenu",e=>e.preventDefault());
 stage.addEventListener("touchcancel",()=>{clearTimeout(holdT);holdT=null;ffStop()});
 stage.addEventListener("touchend",e=>{clearTimeout(holdT);holdT=null;if(ff){ffStop();ty=null;drag=null;return}if(ty==null)return;const dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;ty=null;
-  const d=drag;drag=null;if(d&&d.e&&d.ax){d.e.style.transition="";d.e.classList.add("snap");setTimeout(()=>d.e.classList.remove("snap"),650)}
+  const d=drag;drag=null;if(d&&d.e&&d.ax){if(d.ax==="x"&&dx<0){d.e.style.transition="transform .26s cubic-bezier(.2,.7,.2,1)";setTimeout(()=>{d.e.style.transition=""},300)}else{d.e.style.transition="";d.e.classList.add("snap");setTimeout(()=>d.e.classList.remove("snap"),650)}}
   let done=false;
   // Wie bei TikTok/Instagram: ein kurzer, schneller Wisch genügt (Tempo zählt, nicht nur die Strecke)
   const vx=d?d.vx:0,vy=d?d.vy:0,fl=(dist,v,lim,vmin)=>Math.abs(dist)>lim||(Math.abs(dist)>12&&Math.abs(v)>vmin&&Math.sign(v)===Math.sign(dist));
