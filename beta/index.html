@@ -680,6 +680,8 @@ document.addEventListener("keydown",e=>{
   else return;
   e.preventDefault();
 });
+// Nach Mausklick auf Filter/Buttons den Fokus lösen, sonst löst Space den Button erneut aus statt Play/Pause (User 28.11.)
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("button,a");if(b&&e.detail>0)b.blur()});
 // Mausrad / Trackpad senkrecht: nächste bzw. vorherige Platte
 let acc=0,lock=0;
 stage.addEventListener("wheel",e=>{e.preventDefault();if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;const now=Date.now();acc+=e.deltaY;if(now<lock)return;if(Math.abs(acc)>40){act(acc>0?"next":"prev");acc=0;lock=now+170}},{passive:false});
