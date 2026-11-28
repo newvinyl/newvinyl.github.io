@@ -395,28 +395,30 @@ const gone=(el,sec)=>at(sec,()=>el.remove());
 const mv=(el,kf,sec,ease="linear")=>A(el,kf,{duration:sec*1000,easing:ease});
 const tr=(x,y,r=0,s=1)=>({transform:`translate(${x}px,${y}px) rotate(${r}deg) scale(${s})`});
 /* Ereignis-Baukasten. g = Grössenfaktor, der mit der Runde wächst */
+/* Sprechblasen (User 28.11.): nur sehr kurze ironische Ausrufe, Beobachtungen, keine Meinungen */
+const OHS=["Not again!","Why me?","Seriously?","Ooh, something new!","Wait, what?","Oh no.","Again?","Huh?","Uh-oh.","Whoa!","Really?","Oh. Hello.","Not now!","Me again?","What was that?"],OH=()=>R(OHS);
 const EV={
 ufo(g){const u=actor("ufo",120*g,0,0),c=actor("kuh",60,500,262);mv(u,[tr(900,-150),tr(440,40)],3,"ease-out");
   at(3,()=>{const b=document.createElement("div");b.className="beam";Object.assign(b.style,{left:440+10*g+"px",top:40+70*g+"px",width:100*g+"px",height:250-60*g+"px"});S.insertBefore(b,u);gone(b,3.2);
-    say(c,R(["Not again.","I have a dentist appointment.","Third time this week."]),3);mv(c,[tr(0,0),tr(10,-200+40*g,15,.3)],3,"ease-in");gone(c,3)});
+    say(c,OH(),3);mv(c,[tr(0,0),tr(10,-200+40*g,15,.3)],3,"ease-in");gone(c,3)});
   at(6.5,()=>mv(u,[tr(440,40),tr(-300,-250)],1.2,"ease-in"));gone(u,8)},
-jetkuh(g){const c=actor("jetkuh",110*g,0,0);mv(c,[tr(-250,250,-10),tr(150,120,-14),tr(450,160,-8),tr(950,-120,-20)],6,"ease-in");say(c,R(["Going to Mars. Cheaper rent.","Milk is overrated.","MOOOO"]),3,.8);gone(c,6.2)},
-schnecke(g){const c=actor("schnecke",150*g,0,250-60*(g-1));mv(c,[tr(-300,0),tr(950,0)],45);say(c,R(["Express delivery.","Almost there.","I was told there would be a shortcut."]),4,20);gone(c,45)},
+jetkuh(g){const c=actor("jetkuh",110*g,0,0);mv(c,[tr(-250,250,-10),tr(150,120,-14),tr(450,160,-8),tr(950,-120,-20)],6,"ease-in");say(c,OH(),3,.8);gone(c,6.2)},
+schnecke(g){const c=actor("schnecke",150*g,0,250-60*(g-1));mv(c,[tr(-300,0),tr(950,0)],45);say(c,OH(),4,20);gone(c,45)},
 enten(g,L){const n=Math.min(6+L*3,30);for(let i=0;i<n;i++){const x=rnd(380,720),y=rnd(305,345),d=actor("ente",rnd(28,46)*g,x,0,Math.random()<.5),t=rnd(0,2.5);
   at(t,()=>{mv(d,[tr(0,-100,rnd(-90,90)),tr(0,y,0),tr(0,y-22,0),tr(0,y,0)],1.4,"ease-in")});at(t+12,()=>mv(d,[{opacity:1},{opacity:0}],1));gone(d,t+13.2)}},
 drohne(g){const d=actor("drohne",110*g,0,0),p=actor("paket",36*g,0,0);mv(d,[tr(900,90),tr(470,110)],3,"ease-out");mv(p,[tr(900,150),tr(500,170)],3,"ease-out");
-  at(3,()=>{say(d,R(["Delivered. Nobody was home.","Your parcel. Ordered by nobody.","Signed by the peacock."]),3);mv(p,[tr(500,170),tr(505,330-36*g,8)],.7,"ease-in")});
+  at(3,()=>{say(d,OH(),3);mv(p,[tr(500,170),tr(505,330-36*g,8)],.7,"ease-in")});
   at(4,()=>mv(d,[tr(470,110),tr(-300,-60)],2.5,"ease-in"));at(14,()=>mv(p,[{opacity:1},{opacity:0}],1));gone(d,7);gone(p,15.2)},
-influencer(g){const f=actor("influencer",40*g,0,350-62*g,true);mv(f,[tr(850,0),tr(590,0)],3);say(f,R(["Wait, this is so my story.","OMG content!","Like and subscribe!"]),3.5,3);at(7.5,()=>mv(f,[tr(590,0),tr(850,0)],2.5));gone(f,10.2)},
-kontrolle(g){const f=actor("kontrolle",40*g,0,350-66*g);mv(f,[tr(-80,0),tr(470,0)],4);say(f,R(["Exploding without a permit. 80 francs.","Ticket. Wrong parking for a crash.","Noise level exceeded."]),4,4);at(9,()=>mv(f,[tr(470,0),tr(-80,0)],4));gone(f,13.2)},
+influencer(g){const f=actor("influencer",40*g,0,350-62*g,true);mv(f,[tr(850,0),tr(590,0)],3);say(f,OH(),3.5,3);at(7.5,()=>mv(f,[tr(590,0),tr(850,0)],2.5));gone(f,10.2)},
+kontrolle(g){const f=actor("kontrolle",40*g,0,350-66*g);mv(f,[tr(-80,0),tr(470,0)],4);say(f,OH(),4,4);at(9,()=>mv(f,[tr(470,0),tr(-80,0)],4));gone(f,13.2)},
 wagen(g,L){const n=Math.min(1+L,6);for(let i=0;i<n;i++){const w=actor("wagen",90*g,0,262-50*(g-1));const t=i*.45;at(t,()=>mv(w,[tr(-250,0,-4),tr(950,0,4)],2.2,"ease-in"));gone(w,t+2.4)}
-  const s=actor("influencer",36,0,292);at(.3,()=>{mv(s,[tr(-80,0),tr(950,0)],3.4,"ease-in")});say(s,"BLACK FRIDAY!",2.4,.8);gone(s,3.8)},
+  const s=actor("influencer",36,0,292);at(.3,()=>{mv(s,[tr(-80,0),tr(950,0)],3.4,"ease-in")});say(s,OH(),2.4,.8);gone(s,3.8)},
 platten(g,L){const n=Math.min(8+L*3,30);for(let i=0;i<n;i++){const d=actor("platte",rnd(20,40)*g,rnd(380,760),0),t=rnd(0,4);at(t,()=>mv(d,[tr(0,-80,0),tr(rnd(-60,60),420,rnd(360,1080))],rnd(2,3.5),"ease-in"));gone(d,t+3.6)}},
-sonne(g){const b=actor("sonnenbrille",95,652,0);mv(b,[tr(0,-140,-30),tr(0,52,4),tr(0,46,0)],1.6,"ease-in");say(b,R(["Too bright out here.","Global warming? Not my job.","I need a vacation."]),3.5,1.6);return b},
+sonne(g){const b=actor("sonnenbrille",95,652,0);mv(b,[tr(0,-140,-30),tr(0,52,4),tr(0,46,0)],1.6,"ease-in");say(b,OH(),3.5,1.6);return b},
 fuss(g){const f=actor("fuss",150*g,470-30*g,0);mv(f,[tr(0,-420),tr(0,-420),tr(0,365-190*g)],1.1,"cubic-bezier(.7,0,1,.6)");at(1.1,()=>shake(10));
-  say(f,R(["Oops.","Sorry, wrong planet.","Did I step on something?"]),2.5,1.3);at(3.2,()=>mv(f,[tr(0,365-190*g),tr(0,-500)],.9,"ease-in"));gone(f,4.3)},
+  say(f,OH(),2.5,1.3);at(3.2,()=>mv(f,[tr(0,365-190*g),tr(0,-500)],.9,"ease-in"));gone(f,4.3)},
 schild(g){const s=actor("schild",95*g,560,345-84*g);s.style.transformOrigin="50% 100%";mv(s,[{transform:"scale(0)"},{transform:"scale(1.2)",offset:.6},{transform:"scale(1)"}],.6,"ease-out");at(14,()=>mv(s,[{transform:"scale(1)"},{transform:"scale(0)"}],.4));gone(s,14.5)},
-komitee(g){const k=actor("komitee",90*g,0,350-73*g);mv(k,[tr(-160,0),tr(440,0)],5);say(k,R(["We need another meeting about this.","Let us form a working group.","Not in our budget."]),4,5);at(11,()=>mv(k,[tr(440,0),tr(-160,0)],5));gone(k,16.2)}};
+komitee(g){const k=actor("komitee",90*g,0,350-73*g);mv(k,[tr(-160,0),tr(440,0)],5);say(k,OH(),4,5);at(11,()=>mv(k,[tr(440,0),tr(-160,0)],5));gone(k,16.2)}};
 const POOL=Object.keys(EV);
 /* Wrack bleibt nach der Explosion liegen (User 28.11.), kein BOOM-Text mehr */
 const WR={"/beta/ballon.png":"/beta/wrack.png","/beta/szene/ballon-platte.png":"/beta/szene/wrack-platte.png","/beta/szene/ballon-ente.png":"/beta/szene/wrack-ente.png","/beta/szene/ballon-toaster.png":"/beta/szene/wrack-toaster.png"};
