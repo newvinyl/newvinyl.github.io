@@ -725,6 +725,5 @@ window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr
 bagCount();
 fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{info.innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
 </script>
-<script src="/beta/raum.js"></script>
 </body>
 </html>
