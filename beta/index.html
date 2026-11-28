@@ -430,7 +430,7 @@ const VIS=33; // sichtbare Platten in der Kiste (User 28.11.: mind. 15 mehr)
 
 /* Perspektive (User 28.11.): ein Fluchtpunkt für Wände, Oberkanten und Plattenstapel.
    PV = Höhe des Fluchtpunkts über der Plattenunterkante, in Coverbreiten. Plattenanstieg und Wandneigung folgen daraus. */
-const PLY=(location.search.match(/[?&]ply=([ab])/)||[])[1]||"b",PC=PLY==="a"?{f:"#b49d76",l:"#8c7552",g:"#6a573c"}:{f:"#34302c",l:"#25221f",g:"#48423c"},GL=+((location.search.match(/[?&]gl=(\d)/)||[])[1]||1),DEP=.30,PVS={a:4.2,b:2.6,c:2.4},PV=PVS[(location.search.match(/[?&]pv=([abc])/)||[])[1]]||PVS.c;let SH=.006,RISE=SH*PV;
+const PLY=(location.search.match(/[?&]ply=([ab])/)||[])[1]||"a",PC=PLY==="a"?{f:"#b49d76",l:"#8c7552",g:"#6a573c"}:{f:"#34302c",l:"#25221f",g:"#48423c"},GL=+((location.search.match(/[?&]gl=(\d)/)||[])[1]||1),DEP=.30,PVS={a:4.2,b:2.6,c:2.4},PV=PVS[(location.search.match(/[?&]pv=([abc])/)||[])[1]]||PVS.c;let SH=.006,RISE=SH*PV;
 function crateGeo(){const st=document.getElementById("stage");st.style.setProperty("--gl",GL);st.style.setProperty("--pf",PC.f);st.style.setProperty("--pl",PC.l);st.style.setProperty("--pg",PC.g);const ins=st.querySelector(".inside"),rims=st.querySelector(".rims"),bin=st.querySelector(".bin"),r0=st.querySelector(".rec");
   const cv=bin.offsetWidth/1.24;if(!cv)return;ins.style.height=rims.style.height="calc(var(--cv) * "+DEP+")";const sb=st.getBoundingClientRect().bottom,B=el=>(sb-el.getBoundingClientRect().bottom)/cv;
   const recB=r0?B(r0):.17,insB=B(ins),insH=ins.offsetHeight/cv,binH=bin.offsetHeight/cv,D=PV-(insB-recB),f=insH/D,back=1-f,ip=50*f;
