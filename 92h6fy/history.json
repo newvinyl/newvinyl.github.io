@@ -1,5 +1,62 @@
 [
  {
+  "date": "2026-11-28",
+  "keys": [
+   "various|years of freerange vol 1 (12\" in box)",
+   "various artists|judder vinyl series vol.2",
+   "ron trent, carlton, dj roland clark, urban soul, the kings dub|the ron trent collection vol. 2"
+  ],
+  "titles": [
+   "Various – Years Of Freerange Vol 1 (12\" in box)",
+   "Various Artists – Judder Vinyl Series Vol.2",
+   "Ron Trent, Carlton, DJ Roland Clark, Urban Soul, The Kings Dub – The Ron Trent Collection Vol. 2"
+  ],
+  "shops": [
+   "Vinyl Underground",
+   "Hardwax",
+   "Side One"
+  ],
+  "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/todays-digs-261128.mp4",
+  "looks": [
+   "one view"
+  ],
+  "dv": 9,
+  "reels": [
+   {
+    "key": "strange shadows|dance with me / tell me why",
+    "title": "Strange Shadows – Dance With Me / Tell Me Why",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-1.mp4",
+    "look": "poster916 107 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-1.jpg"
+   },
+   {
+    "key": "simoncino|traxxx ii ep",
+    "title": "Simoncino – Traxxx II EP",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-2.mp4",
+    "look": "poster916 120 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-2.jpg"
+   },
+   {
+    "key": "portamento|at the right place at the right time",
+    "title": "Portamento – At the Right Place at the Right Time",
+    "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-3.mp4",
+    "look": "poster916 138 bpm",
+    "v": 23,
+    "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-3.jpg"
+   }
+  ],
+  "reel": {
+   "key": "strange shadows|dance with me / tell me why",
+   "title": "Strange Shadows – Dance With Me / Tell Me Why",
+   "video": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-261128-1.mp4",
+   "look": "poster916 107 bpm",
+   "v": 23,
+   "cover": "https://github.com/newvinyl/newvinyl.github.io/releases/download/digs/reel-cover-261128-1.jpg"
+  }
+ },
+ {
   "date": "2026-11-27",
   "keys": [
    "dngdngdng|vestigio",
