@@ -79,6 +79,7 @@ def get_page(url, tries=3):
     """Produktseite holen (höflich, mit robots.txt). None bei Fehler/Verbot."""
     if not allowed(url):
         return None, "robots"
+    url = urllib.parse.quote(url, safe=":/?&=%#+,;@!$'()*~[]")  # Umlaute in Redeye-URLs
     host = urllib.parse.urlparse(url).netloc
     err = "http429"
     for t in range(tries):
@@ -214,6 +215,8 @@ def tracklist_redeye(page):
         return []
     txt = html.unescape(re.sub(r"<br\s*/?>|\n", " | ", m.group(1)))
     txt = re.sub("<[^>]+>", "", txt)
+    if "|" not in txt.strip(" |"):  # ältere Einträge: "Titel 1 / Titel 2 / Titel 3"
+        txt = txt.replace(" / ", " | ")
     return parse_tracklist(" | ".join(s.strip() for s in txt.split("|") if s.strip() and s.strip() != "..."))
 
 
@@ -238,8 +241,10 @@ def tracks_redeye(page, artist=""):
     out = []
     for k, L in enumerate(letters):
         u = f"https://{REDEYE_CLIP}/{rid.group(1)}{'' if L == 'a' else L}.mp3"
-        if len(letters) == len(tl):
+        if len(letters) == len(tl) and tl[k]["n"].lower() not in ("no title", "untitled"):
             out.append({"s": tl[k]["s"], "n": tl[k]["n"], "u": u})
+        elif len(letters) == len(tl):  # Shop nennt keinen Titel
+            out.append({"s": tl[k]["s"] or L.upper(), "n": "Untitled", "u": u})
         else:  # Anzahl Clips passt nicht zur Titelliste: Zuordnung unsicher, nur Buchstabe
             out.append({"s": L.upper(), "n": f"Clip {L.upper()}", "u": u})
     return out, tl
@@ -332,11 +337,13 @@ def main():
         if not url:
             continue
         c = cache.get(url, {})
-        if c.get("checked") == str(TODAY):
+        if c.get("checked") == str(TODAY) and not (shop == "Redeye Records" and c.get("rx") == 2):
             continue
         if shop == "Redeye Records":
             # Einzelclips A, B, C … holen (Version 2 des Extraktors: "rx"); ohne Clips 14 Tage lang neu versuchen
-            if c.get("rx") == 2 and (c.get("tr") or (TODAY - datetime.date.fromisoformat(c.get("rx_first", str(TODAY)))).days > RETRY_DAYS):
+            named = c.get("tr") and not any(t.get("n", "").startswith("Clip ") for t in c["tr"])
+            late = (TODAY - datetime.date.fromisoformat(c.get("rx_first", str(TODAY)))).days > RETRY_DAYS
+            if (c.get("rx") == 2 and named) or (c.get("rx") == 3 and (c.get("tr") or late)):
                 continue
             todo.append((S, r))
             continue
@@ -376,13 +383,15 @@ def main():
                 continue
             if S["shop"] == "Redeye Records":
                 tr, tl = tracks_redeye(page, r.get("a", ""))
-                c["rx"] = 2
+                c["rx"] = 3
                 c.setdefault("rx_first", str(TODAY))
                 if len(tl) > 1:
                     c["tl"] = r["tl"] = tl
                 if tr:
+                    old = r.get("tr", [])
                     c["tr"] = tr
-                    if n_audio(tr) > n_audio(r.get("tr", [])) or not per_track(r):
+                    if n_audio(tr) > n_audio(old) or not per_track(r) or (
+                            n_audio(tr) == n_audio(old) and any(t.get("n", "").startswith("Clip ") for t in old)):
                         r["tr"] = [dict(t) for t in tr]
                         stats["found"] += 1
                 continue
@@ -401,14 +410,16 @@ def main():
     for S, r in items:
         if per_track(r):
             k = rkey(r)
-            sc = lambda tr: (n_audio(tr), sum(1 for t in tr if t.get("u") or t.get("yt")))
+            sc = lambda tr: (n_audio(tr), not any(t.get("n", "").startswith("Clip ") for t in tr), sum(1 for t in tr if t.get("u") or t.get("yt")))
             if sc(r["tr"]) > sc(best.get(k, [])):
                 best[k] = [dict(t) for t in r["tr"]]
     copied = 0
     for S, r in items:
         b = best.get(rkey(r))
         # Fehlt die Hörprobe oder hat derselbe Release anderswo mehr Clips: vollständige Liste übernehmen
-        if b and (not per_track(r) or n_audio(b) > max(1, n_audio(r.get("tr", [])))):
+        clipnames = lambda tr: any(t.get("n", "").startswith("Clip ") for t in tr)
+        if b and (not per_track(r) or n_audio(b) > max(1, n_audio(r.get("tr", [])))
+                  or (n_audio(b) == n_audio(r.get("tr", [])) and clipnames(r.get("tr", [])) and not clipnames(b))):
             r["tr"] = [dict(t) for t in b]
             copied += 1
 
