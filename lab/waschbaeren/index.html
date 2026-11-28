@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>/* Beta seit 27.11. auch auf dem Handy live; ?test bleibt harmlos */try{if(/[?&]test=off/.test(location.search))localStorage.removeItem("mvr-betatest");if(/[?&]hints/.test(location.search))localStorage.removeItem("mvr-betahints2")}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0d0d">
+<title>Beta – Digging · Monthly Vinyl</title>
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://wsrv.nl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="56d072fe-6ab0-4180-9a6f-e9926985275c" data-domains="monthlyvinyl.net"></script>
+<style>
+/* Beta: Experimente, die (noch) nicht auf der Startseite sind. Erstes Experiment: Plattenkiste (27.11.26). */
+:root{
+  --bg:#0d0d0d; --deep:#1a1a1a; --fg:#ecebe7; --muted:#a0a4a9; --line:#3c4046;
+  --neon:#8fd3b0; --pink:#ef7a6d; --yellow:#fbed4f; --white:#ffffff; --ink:#0d0d0d;
+  --display:"Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+  --body:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --cv:min(44vh,430px,78vw);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}[hidden]{display:none!important}
+html{overscroll-behavior-x:none;overflow-x:clip}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+a{color:inherit}button{font:inherit;color:inherit}
+
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(6px + env(safe-area-inset-top,0px)) 16px 6px;background:var(--bg);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-weight:700;font-size:19px;line-height:1;letter-spacing:-.008em;color:var(--yellow);-webkit-text-stroke:.085em var(--yellow);paint-order:stroke fill;text-decoration:none;text-transform:uppercase}
+.hicons{display:flex;align-items:center;gap:4px}
+.habout{font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 6px}
+.habout:hover,.habout:focus-visible{color:var(--yellow)}
+.habout.beta{color:var(--yellow)}
+.bagtop{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:2px solid var(--white);background:var(--ink);text-decoration:none}
+.bagtop svg{width:20px;height:20px}
+.bagtop b{position:absolute;top:-8px;right:-8px;min-width:20px;height:20px;padding:0 5px;background:var(--pink);color:var(--ink);font:700 11px/20px var(--mono);text-align:center}
+.bagtop b:empty{display:none}
+
+/* Kisten-Leiste: alle Genres der Woche, seitlich scrollbar; rechts kein Abstand, damit der letzte sichtbare Knopf angeschnitten ist */
+.bar{display:flex;align-items:center;gap:6px;padding:12px 0 12px 16px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);scroll-behavior:smooth;overscroll-behavior-x:contain}
+.bar::-webkit-scrollbar{display:none}
+.tag{font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--yellow);padding:5px 7px;margin-right:8px;flex:none}
+.crt{all:unset;cursor:pointer;flex:none;font:500 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border:1px solid var(--line)}
+.crt:hover,.crt:focus-visible{color:var(--fg);border-color:var(--fg)}
+.crt[aria-pressed="true"]{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.crt small{opacity:.6;margin-left:5px}
+
+
+main{flex:1;overflow-x:clip;display:grid;grid-template-columns:1fr minmax(320px,420px);align-items:center;gap:32px;padding:0 32px 0;min-height:0}
+.stage{position:relative;align-self:end;height:calc(var(--cv) * 1.82);min-height:340px;outline:none;user-select:none;-webkit-user-select:none;touch-action:none}
+.glow{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 2.2);height:calc(var(--cv) * 1.2);transform:translateX(-50%);background:radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.07),transparent 62%);pointer-events:none}
+.rec{position:absolute;left:50%;bottom:calc(var(--cv) * .17);width:var(--cv);margin-left:calc(var(--cv) / -2);aspect-ratio:1;transform-origin:50% 100%;
+  transition:transform .42s cubic-bezier(.25,.8,.25,1),filter .42s,opacity .3s;cursor:pointer;will-change:transform}
+.rec .sl{position:absolute;inset:0;background:#1d1d1d;overflow:hidden;border-radius:2px;box-shadow:none}
+.rec img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.035)}
+.key.off{opacity:.3}
+.rec.sold img{filter:grayscale(.85) brightness(.45)}
+.rec.nope{animation:nope .38s}
+@keyframes nope{0%,100%{translate:0}20%{translate:-9px}40%{translate:8px}60%{translate:-5px}80%{translate:3px}}
+.sob{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--fg);border:1px solid #666;padding:3px 5px;margin-left:8px;vertical-align:2px}
+.sob.hit{border-color:var(--yellow);color:var(--yellow)}
+.rec .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20%;font:500 13px/1.35 var(--mono);color:var(--muted)}
+.rec.k0 .sl{box-shadow:none}
+.rec.gone{pointer-events:none}
+.rec.snap{transition:transform .55s cubic-bezier(.2,1.25,.35,1),filter .42s,opacity .35s}
+.rec.pack{transition:transform .6s cubic-bezier(.5,-.15,.3,1),opacity .18s .44s!important;z-index:400!important}
+/* Kiste: schlicht, schwarz, glatt, nur leichte Maserung; reicht bis zum unteren Bildschirmrand.
+   Von schräg oben gesehen: hinter den Platten das Innere der Kiste als Trapez (Seitenwände laufen nach hinten zusammen) */
+.inside{position:absolute;left:50%;bottom:calc(var(--cv) * .3);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:1;pointer-events:none;
+  clip-path:polygon(0 100%,100% 100%,90.5% 0,9.5% 0);
+  background:linear-gradient(90deg,#262626 0%,#1a1a1a 9.6%,#070707 9.7%,#050505 50%,#070707 90.3%,#1a1a1a 90.4%,#262626 100%)}
+/* Brettdicke (User 27.11., Variante A, Seiten etwas dicker): Oberkanten der Wände als Flächen in Perspektive.
+   Seiten: SVG .rims hinter den Platten; Front: Fläche auf der Frontwand, nach hinten schmaler (Gehrung zu den Seiten) */
+.rims{position:absolute;left:50%;bottom:calc(var(--cv) * .30);width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .62);transform:translateX(-50%);z-index:2;pointer-events:none;overflow:visible}
+.bin::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:calc(var(--cv) * 0.03);
+  clip-path:polygon(0 100%,100% 100%,calc(100% - var(--cv) * .052) 0,calc(var(--cv) * .052) 0);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='30'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.003 .6' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 -.035'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/100% 100%,linear-gradient(0deg,#3b3b3b,#2a2a2a)}
+.inside::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.9),rgba(13,13,13,0) 60%)}
+.bin{position:absolute;left:50%;bottom:0;width:calc(var(--cv) * 1.24);height:calc(var(--cv) * .32);transform:translateX(-50%);z-index:200;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.002 .09' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 -.028'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") 0 0/160% 100%,linear-gradient(180deg,#1c1c1c 0%,#161616 50%,#131313 100%);
+  box-shadow:inset 0 1px 0 #4a4a4a,0 -14px 28px rgba(0,0,0,.7)}
+.bin span{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) rotate(-2.5deg);white-space:nowrap;
+  font:700 max(10px,calc(var(--cv) * .024))/1 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;letter-spacing:.005em;text-transform:uppercase;color:#141414;
+  padding:.42em .62em .36em;border-radius:1.5px;
+  background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.6),transparent 60%),linear-gradient(170deg,#f6f4ee,#e7e3d9);
+  box-shadow:0 1px 1px rgba(0,0,0,.55),0 4px 8px rgba(0,0,0,.35),inset 0 0 0 .5px rgba(0,0,0,.08);}}
+.end{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:150;text-align:center;font:500 13px/1.6 var(--mono);color:var(--muted)}
+.end button{all:unset;cursor:pointer;margin-top:10px;display:inline-block;border:2px solid var(--white);color:var(--fg);padding:9px 14px;font:700 14px var(--display)}
+.bagtop.pop{animation:pop .4s ease}@keyframes pop{40%{transform:scale(1.22)}}
+
+/* Rechte Seite: oben kompakt die Platte, in der Mitte die Bedienung */
+.side{min-width:0;align-self:stretch;padding:28px 0 22px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.rinfo{min-width:0}
+.now{display:flex;justify-content:space-between;gap:10px;font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ar{font:800 18px/1.15 var(--display);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ti{font:400 14px/1.3 var(--body);color:#cfcfcb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me{font:400 11px/1.5 var(--mono);color:var(--muted);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Tracklist: alle Tracks; ab 6 Tracks ein Fenster von 5 Zeilen, das dem laufenden Track folgt, Ränder ausgeblendet */
+.tl{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid #222;height:calc(5 * 27px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;position:relative}
+.tl::-webkit-scrollbar{display:none}
+.tl.many{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14px,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(180deg,transparent 0,#000 14px,#000 calc(100% - 22px),transparent)}
+.tl.many.attop{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 22px),transparent)}
+.tl.many.atbot{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14px);mask-image:linear-gradient(180deg,transparent 0,#000 14px)}
+.tl li{position:relative;border-bottom:1px solid #1c1c1c}
+.tl button{all:unset;cursor:pointer;box-sizing:border-box;display:flex;align-items:center;gap:8px;width:100%;height:26px;font:400 12px/1 var(--mono);color:#cfcfcb}
+.tl button:hover,.tl button:focus-visible{color:var(--fg)}
+.tl em{font-style:normal;color:var(--muted);width:24px;flex:none}
+.tl span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl li.on button,.tl li.on em{color:var(--yellow)}
+.tl .pg{position:absolute;left:0;right:0;bottom:-1px;height:3px;cursor:pointer;display:none}
+.tl li.on .pg{display:block}
+.tl .pg i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--yellow)}
+/* feste Höhen: Tasten darunter springen nicht (User 27.11.) */
+.rinfo .ar{height:1.15em}.rinfo .ti{height:1.3em}.rinfo .me{height:1.5em}.tlh{height:10.5px}
+.tlh{display:flex;justify-content:space-between;font:400 10.5px/1 var(--mono);color:var(--muted);margin-top:7px;letter-spacing:.04em}
+.buyrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.price{font:800 16px/1 var(--display);font-variant-numeric:tabular-nums}
+.price small{font-size:.6em;vertical-align:.45em;margin-right:2px}
+.buy{font:400 11.5px/1 var(--mono);letter-spacing:.04em;color:var(--muted);text-decoration:none;white-space:nowrap}
+.buy:hover,.buy:focus-visible{color:var(--fg)}
+.cnt{position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:250;display:flex;align-items:baseline;gap:.35em;font:500 calc(var(--cv) * .1)/1 var(--mono);letter-spacing:.02em;color:var(--yellow);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cnt .sl2{color:#5a5a3a;font-size:.55em}.cnt .tot{font-size:.55em;color:#8f8a3e}
+/* Rollzahlen: jede Ziffer ist ein Band 0 bis 9, das weich an die neue Stelle gleitet */
+.od{display:inline-flex;overflow:hidden;height:1em;line-height:1em}
+.od .dg{display:inline-block;height:1em;overflow:hidden}
+.od .dg i{display:flex;flex-direction:column;font-style:normal;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.od .dg i b{display:block;height:1em;font-weight:inherit}
+@media (prefers-reduced-motion:reduce){.od .dg i{transition:none}}
+.inb{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--pink);padding:3px 5px;margin-left:8px;vertical-align:2px}
+
+.ctl{flex:1;display:flex;align-items:center;justify-content:center}
+.pad{display:grid;grid-template-columns:auto 64px 64px 64px auto;grid-template-rows:auto 64px 64px auto auto;gap:8px;align-items:center;justify-items:center}
+.key{all:unset;cursor:pointer;width:64px;height:64px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:2px solid #6a6e74;border-bottom-width:6px;border-radius:8px;background:#151515;color:var(--fg);transition:transform .08s,background .12s,color .12s,border-color .12s}
+.key svg{width:26px;height:26px}
+.key:hover{border-color:var(--fg)}
+.key.hit,.key:active{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(3px);border-bottom-width:3px}
+.key:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.lb{font:500 11px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);max-width:110px}
+.lb b{display:block;color:var(--fg);font-weight:500}
+.k-up{grid-area:2/3}.k-lt{grid-area:3/2}.k-dn{grid-area:3/3}.k-rt{grid-area:3/4}
+.l-up{grid-area:1/2/2/5;text-align:center;max-width:none;padding-bottom:2px}
+.l-lt{grid-area:3/1;text-align:right;justify-self:end}
+.l-rt{grid-area:3/5;justify-self:start}
+.l-dn{grid-area:4/2/5/5;text-align:center;max-width:none;padding-top:2px}
+.sp{grid-area:5/2/6/5;width:100%;height:44px;margin-top:14px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.sp.nudge{animation:nudge 3s cubic-bezier(.45,0,.55,1) infinite}
+.key.nudge:not(.sp){animation:nudge 2s cubic-bezier(.45,0,.55,1) infinite}
+.sp.nudge span{animation:nudgetx 3s cubic-bezier(.45,0,.55,1) infinite}
+/* Leertaste lädt zum Start ein: alle 3 Sekunden ein weicher gelber Tastendruck, bis zum ersten Ton */
+@keyframes nudge{0%,62%,100%{background:#151515;color:var(--fg);border-color:#6a6e74;transform:none;border-bottom-width:6px}
+  74%,84%{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(3px);border-bottom-width:3px}}
+@keyframes nudgetx{0%,62%,100%{color:var(--muted)}74%,84%{color:var(--ink)}}
+@media (prefers-reduced-motion:reduce){.key.nudge,.sp.nudge span{animation:none}}
+.sp span{color:var(--muted);margin-left:8px}.sp.hit span,.sp:active span{color:var(--ink)}
+.rfoot{font:400 11px/1.7 var(--mono);color:var(--muted);text-align:center}
+.rfoot kbd{font:inherit;color:var(--fg);border:1px solid #555;border-bottom-width:2px;padding:1px 5px;margin-right:4px}
+.rfoot a{color:var(--muted)}
+.load{padding:60px 0;font-family:var(--mono);color:var(--muted);text-align:center}
+
+@media (max-width:860px){
+  :root{--cv:min(34vh,320px,72vw)}
+  main{grid-template-columns:1fr;padding:6px 16px 20px;gap:10px}
+  .side{height:auto;min-height:0;gap:16px}
+  .pad{grid-template-columns:auto 54px 54px 54px auto;grid-template-rows:auto 54px 54px auto auto;gap:6px}
+  .key{width:54px;height:54px}.lb{font-size:10px;max-width:84px}
+  .key.sp{width:100%;height:40px}
+  .rfoot .dk{display:none}
+}
+@media (min-width:861px){.rfoot .mb{display:none}}
+@media (min-width:861px) and (max-height:800px){.tl{height:calc(4 * 27px)}.side{padding:6px 0;gap:12px}.pad{grid-template-columns:auto 54px 54px 54px auto;grid-template-rows:auto 54px 54px auto auto;gap:6px}.key{width:54px;height:54px}.key.sp{width:100%;height:38px;margin-top:8px}.me{display:none}}
+@media (prefers-reduced-motion:reduce){.rec{transition:none}}
+.hback{color:var(--fg);margin-right:10px}.hback:hover,.hback:focus-visible{color:var(--yellow)}
+/* Handy (User 27.11., 2. Runde): ganz schlicht. Keine Tasten-Abbildung; Wisch-Hinweise als Pfeile im Verlauf direkt
+   über der Platte (von transparent zu gelb, blenden in Wischrichtung ein) mit gelbem Text daneben.
+   Artist und Titel stehen auf dem Sticker der Kiste, die Tracks klein rechts neben der Platte. Antippen = Play/Pause. */
+.g,.km{display:none}.kd,.km{font-style:normal}
+.gh{display:none}
+@media (max-width:860px){
+  .top{gap:8px}.logo{font-size:16px;white-space:nowrap}.hicons .habout:not(.hback):not(.beta){display:none}.habout{white-space:nowrap}
+  .bar{padding:6px 0 6px 16px}
+  :root{--cv:min(70vw,36vh,320px)}
+  main{display:flex;flex-direction:column;justify-content:flex-start;gap:8px;padding:6px 16px 10px}
+  .stage{min-height:0;height:calc(var(--cv) * 1.38);align-self:stretch;flex:none}
+  .side{padding:0;gap:0;align-self:stretch;justify-content:flex-start;min-height:0;flex:none;margin-top:22px}
+  .bin{height:calc(var(--cv) * .2)}.rec{bottom:calc(var(--cv) * .05)}.inside,.rims{bottom:calc(var(--cv) * .18)}
+  .ctl,.rfoot,.rinfo .now,.rinfo .me,.tlh,.bin span{display:none!important}
+  .rinfo .ti{margin-bottom:6px}
+  .tl{height:auto;max-height:82px;margin:0;border-top:1px solid #222;-webkit-mask-image:none!important;mask-image:none!important}
+  .tl li{border-bottom:1px solid #1a1a1a}
+  .tl button{padding:4px 0!important;font-size:11px!important;line-height:14px!important;gap:8px!important}
+  .tl em{min-width:16px!important;font-size:9.5px!important}
+  .tl .pg{height:2px}
+  .buyrow{margin-top:8px}
+  .buyrow .price{font-size:21px}.buy{font-size:11px}
+  .bin span{display:flex;flex-direction:column;align-items:center;gap:.25em;max-width:calc(var(--cv) * 1.02);white-space:normal;text-align:center;font-size:calc(var(--cv) * .068)}
+  .bin span b,.bin span small{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bin span small{font:500 .62em/1.1 var(--mono);text-transform:none;letter-spacing:0;color:#444}
+  .gh{position:absolute;z-index:300;pointer-events:none;align-items:center;gap:10px;font:700 17px/1.1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 10px rgba(0,0,0,.6)}
+  .gh.on{display:flex;opacity:1}
+  .gh.on span{animation:ghin .6s cubic-bezier(.2,.8,.2,1) both}
+  .gh svg{overflow:visible;filter:drop-shadow(0 1px 3px rgba(0,0,0,.7))}
+  .gh-up{left:50%;bottom:calc(var(--cv) * .5);transform:translateX(-20px)}
+  .gh-up span{position:absolute;right:calc(100% + 4px);bottom:24px;white-space:nowrap}
+  .gh-up svg{width:40px;height:calc(var(--cv) * .42);animation:gh-up 2.6s cubic-bezier(.37,0,.2,1) infinite;will-change:transform,opacity}
+  .gh-rt{right:calc(50% - var(--cv) * .5 + 8px);bottom:calc(var(--cv) * .72);flex-direction:column;align-items:flex-end}
+  .gh-rt svg{width:calc(var(--cv) * .38);height:40px;animation:gh-rt 2.6s cubic-bezier(.37,0,.2,1) infinite;will-change:transform,opacity}
+  .gh-lt{left:calc(50% - var(--cv) * .5 + 8px);bottom:calc(var(--cv) * .72);flex-direction:column;align-items:flex-start}
+  .gh-lt svg{width:calc(var(--cv) * .38);height:40px;animation:gh-lt 2.6s cubic-bezier(.37,0,.2,1) infinite;will-change:transform,opacity}
+}
+@keyframes gh-up{0%{opacity:0;transform:translate3d(0,22px,0)}28%{opacity:1}62%{opacity:1;transform:translate3d(0,-6px,0)}100%{opacity:0;transform:translate3d(0,-16px,0)}}
+@keyframes gh-rt{0%{opacity:0;transform:translate3d(-22px,0,0)}28%{opacity:1}62%{opacity:1;transform:translate3d(6px,0,0)}100%{opacity:0;transform:translate3d(16px,0,0)}}
+@keyframes gh-lt{0%{opacity:0;transform:translate3d(22px,0,0)}28%{opacity:1}62%{opacity:1;transform:translate3d(-6px,0,0)}100%{opacity:0;transform:translate3d(-16px,0,0)}}
+@keyframes ghin{from{opacity:0;transform:translate3d(0,6px,0)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.gh svg{animation:none!important}}
+/* Handy (User 27.11., 3. Runde): Kiste so gross wie möglich, mehr Luft. Die Bühne füllt den freien Platz,
+   --cv richtet sich per Container-Einheiten nach ihr (Breite und Höhe), die Infos haben feste Abstände. */
+@media (max-width:860px){
+  body{min-height:0;height:100vh;height:100dvh}
+  main{flex:1 1 auto;min-height:0;gap:0;padding:10px 20px 22px}
+  .stage{flex:1 1 0;height:auto;min-height:0;container-type:size;--cv:min(80cqw,calc(100cqh / 1.42),420px)}
+  .side{margin-top:30px}
+  .rinfo .ar{font-size:22px}.rinfo .ti{font-size:16px;margin-bottom:14px}
+  .tl{height:72px;max-height:72px}
+  .buyrow{margin-top:16px}
+  .buyrow .price{font-size:21px}
+}
+/* Kleine Handys (User 27.11., 22:14): Trackliste zusammengeklappt, nur der laufende Track, dafür grössere Kiste. */
+@media (max-width:860px) and (max-height:620px){
+  .tl{height:24px;max-height:24px;overflow:hidden}
+  .side{margin-top:22px}.rinfo .ti{margin-bottom:10px}.buyrow{margin-top:12px}
+}
+/* Hinweise als drei kräftige Chevrons (User 27.11., 22:31): blenden ein, leuchten nacheinander in Wischrichtung auf */
+@media (max-width:860px){
+  .gh{font:800 24px/1 var(--display);letter-spacing:.01em;gap:12px}
+  .gh svg.cv{animation:none!important;fill:#ffea00;overflow:visible;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+  .gh svg.cv path{opacity:0;animation:cv-1 1.25s infinite}
+  .gh svg.cv path:nth-child(2){animation-name:cv-2}.gh svg.cv path:nth-child(3){animation-name:cv-3}
+  .gh-up{bottom:calc(var(--cv) * .42);transform:translateX(-50%)}
+  .gh-up svg.cv{width:calc(var(--cv) * .22);height:auto;aspect-ratio:44/84}
+  .gh-up span{bottom:auto;top:50%;transform:translateY(-50%);right:calc(100% + 14px)}
+  .gh-rt svg.cv,.gh-lt svg.cv{width:calc(var(--cv) * .32);height:auto;aspect-ratio:84/44}
+  .gh.on{animation:cv-in .5s cubic-bezier(.2,.8,.2,1) both}
+}
+@keyframes cv-1{0%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}14%,72%{opacity:1}88%,100%{opacity:0}}
+@keyframes cv-2{0%,14%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}28%,72%{opacity:1}88%,100%{opacity:0}}
+@keyframes cv-3{0%,28%{opacity:0;animation-timing-function:cubic-bezier(.2,.8,.2,1)}42%,72%{opacity:1}88%,100%{opacity:0}}
+@keyframes cv-in{from{opacity:0}to{opacity:.8}}
+@media (max-width:860px){
+  .gh-rt,.gh-lt{align-items:center!important}.gh-rt span,.gh-lt span{align-self:center!important;margin:0!important}
+  .gh-up{flex-direction:column-reverse;align-items:center}
+  .gh-up span{position:static!important;transform:none!important}
+  .gh.on span{animation:cv-tx 1.25s infinite!important}
+}
+@keyframes cv-tx{0%{opacity:0}16%,72%{opacity:1}90%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.gh.on span{animation:none!important}.gh svg.cv path{animation:none!important;opacity:1}}
+/* Trackwechsel: Platte hüpft; Start: TAP im Stil der Hinweise, ohne Pfeil, bis der erste Track läuft */
+.rec.hop{animation:hop .55s cubic-bezier(.3,0,.3,1)}
+@keyframes hop{0%{translate:0 0}30%{translate:0 -18px}55%{translate:0 0}72%{translate:0 -5px}86%,100%{translate:0 0}}
+@media (max-width:860px){
+  .gh-tap{left:50%;bottom:calc(var(--cv) * .55);transform:translateX(-50%)}
+  .gh-tap span{font-size:37px!important;letter-spacing:.04em}
+}
+/* Hinweise schweben über der Platte (User 27.11., 23:07): weicher Schlagschatten mit Abstand, leichtes Auf und Ab */
+@media (max-width:860px){
+  .gh{text-shadow:none!important;filter:drop-shadow(0 3px 2px rgba(0,0,0,.45)) drop-shadow(0 26px 18px rgba(0,0,0,.7))}
+  .gh svg.cv{filter:none!important}
+  .gh.on{animation:cv-in .5s cubic-bezier(.2,.8,.2,1) both,gh-float 2.8s ease-in-out .5s infinite}
+}
+@keyframes gh-float{0%,100%{translate:0 0;scale:1}50%{translate:0 -7px;scale:1.03}}
+/* Zähler klein oben rechts in der Ecke, die Kiste bekommt den Platz (User 27.11., 23:24) */
+@media (max-width:860px){
+  .cnt{left:auto;right:0;top:0;transform:none;font-size:13px}
+  .stage{--cv:min(80cqw,calc(100cqh / 1.3),420px)}
+}
+/* Handy (User 27.11., 23:27): nur ein Track sichtbar, der nächste halb angeschnitten und ins Schwarze verlaufend;
+   beim Skippen rutscht die Liste hoch. Artist und Titel grösser und gelb. */
+@media (max-width:860px){
+  .tl{height:42px!important;max-height:42px!important;overflow:hidden!important;border-top:0!important;padding-bottom:42px;
+    -webkit-mask-image:linear-gradient(#000 58%,transparent 100%)!important;mask-image:linear-gradient(#000 58%,transparent 100%)!important}
+  .tl li{border-bottom:0!important}
+  .tl button{font-size:13px!important;line-height:14px!important}
+  .rinfo .ar{font-size:26px;color:var(--yellow)}
+  .rinfo .ti{font-size:18px;color:var(--yellow);opacity:.8;margin-bottom:12px}
+  .buyrow{margin-top:10px}
+}
+/* Handy: Fortschrittsbalken unter der laufenden Trackzeile, Zeile antippen oder ziehen = spulen (User 27.11., 23:35) */
+@media (max-width:860px){
+  .tl{-webkit-mask-image:linear-gradient(#000 68%,transparent 100%)!important;mask-image:linear-gradient(#000 68%,transparent 100%)!important}
+  .tl li.on .pg{display:block;height:3px;bottom:0;background:rgba(255,255,255,.14);transition:height .15s}
+  .tl li.on.scrub .pg{height:6px}
+  .tl li.on{touch-action:none}
+}
+/* Vorspulen: Hinweis HOLD nach einer Minute, beim Halten drei Chevrons mit 3× */
+@media (max-width:860px){
+  .gh-hold span{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .gh-hold small{font:700 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .gh-ff{left:50%;bottom:calc(var(--cv) * .5);transform:translateX(-50%);flex-direction:column;align-items:center;gap:8px}
+  .gh-ff span{animation:none!important;opacity:1;font-size:26px}
+  .gh-ff svg.cv{width:calc(var(--cv) * .32);height:auto;aspect-ratio:84/44}
+  .gh-ff svg.cv path{animation-duration:.5s!important}
+  .stage.ff .rec.k0{animation:ffs .18s linear infinite}
+}
+@keyframes ffs{0%,100%{translate:0 0}50%{translate:0 -2px}}
+@media (max-width:860px){.gh.on{opacity:.8!important}}
+/* Desktop-Infoblock (User 27.11., 23:56): Artist und Titel grösser und gelb, laufender Track grösser und gelb */
+@media (min-width:861px){
+  .rinfo .ar{font-size:32px;color:var(--yellow)}
+  .rinfo .ti{font-size:20px;color:var(--yellow);opacity:.8}
+  .tl li.on button{font-size:15px;font-weight:500}
+}
+/* Gedrückt halten darf kein Bild-Menü des Browsers öffnen (iOS, Android) */
+.stage,.stage *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.rec img{pointer-events:none}
+/* Desktop (User 28.11.): ← vorheriger Track, In den Bag mit Enter als gelbe Taste */
+.pad{grid-template-rows:auto 64px 64px auto auto auto}
+.key.en{grid-area:6/2/7/5;width:100%;height:44px;margin-top:4px;display:flex;gap:10px;font:700 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.key.en .kd{font:500 10px/1 var(--mono);opacity:.7}
+.key.en:hover{color:var(--pink);border-color:var(--pink)}
+.key.en.nudge{animation:ennudge 2s cubic-bezier(.45,0,.55,1) 3!important}
+@keyframes ennudge{0%,62%,100%{background:#151515;color:var(--fg);border-color:#6a6e74;transform:none;border-bottom-width:6px}74%,84%{background:var(--pink);color:var(--ink);border-color:var(--pink);transform:translateY(3px);border-bottom-width:3px}}
+@media (min-width:861px) and (max-height:800px){.pad{grid-template-rows:auto 54px 54px auto auto auto}.key.en{height:38px}}
+@media (max-width:860px){.key.en{display:none}}
+/* Desktop (User 28.11.): Zähler klein oben links in der Ecke, Kiste und Cover füllen die Bühne */
+@media (min-width:861px){
+  .stage{align-self:stretch;height:auto;min-height:0;container-type:size;--cv:min(62cqw,calc(100cqh / 1.42),640px)}
+  .cnt{left:0;top:14px;transform:none;font-size:15px}
+}
+/* Desktop-Hintergrund (User 28.11.): Waschbären-Rennen */
+@media (min-width:861px){html,body{background:#0d0d0d url("/lab/waschbaeren/bg-waschbaeren.png") center/cover fixed no-repeat}}
+/* Desktop mit Waschbären-Bild (User 28.11.): alle Schriften dunkel, damit sie auf dem hellen Bild lesbar sind */
+@media (min-width:861px){
+  .bar,.side,.cnt,.end{--fg:#000;--muted:#000;--line:#000;color:#000}
+  .bar,.side,.cnt{text-shadow:0 0 4px rgba(255,255,255,.6)}
+  .crt{font-weight:700;color:#000!important}.crt small{opacity:1}.lb,.lb b,.tl em,.me,.now,.now span,.tlh,.tlh span{color:#000!important;font-weight:700}
+  .rinfo .ar,.rinfo .ti,.tl li.on button,.tl li.on em,.cnt,.cnt *{color:#000!important}
+  .rinfo .ti{opacity:1}
+  .tl,.tl li{border-color:rgba(0,0,0,.35)!important}
+  .tl button,.tl em,.lb,.lb b,.rfoot,.rfoot a,.price,.buy{color:#000!important}
+  .tl .pg{background:rgba(0,0,0,.15)}.tl .pg i{background:#000}
+  .rfoot kbd{border-color:#000;color:#000}
+  .key{color:#ecebe7;text-shadow:none}
+  .key.en{text-shadow:none}
+}
+.key.held{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(3px);border-bottom-width:3px}
+/* Desktop-Szene (User 28.11.): Waschbären fahren nach 30 s weg, Ballon stürzt nach 60 s ab, Pfau frisst ihn nach 90 s */
+.scn{display:none}
+@media (min-width:861px){
+  body{background:transparent!important}
+  .scn{display:block;position:fixed;left:0;top:0;width:800px;height:560px;transform-origin:0 0;z-index:-1;pointer-events:none;overflow:visible}
+  .scn img{position:absolute;display:block;user-select:none}
+  .scn .wb{left:0;top:0;width:800px;height:560px;transform-origin:400px 410px}
+  .scn .bl{left:474px;top:40px;width:132px;transform-origin:50% 100%;opacity:0}
+  .scn .bm,.scn .br{opacity:0}
+  .scn .bm{position:absolute;left:380px;top:190px;width:320px;height:260px}.scn .bm img{left:0;top:0;width:320px}
+  .scn .bm b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:900 40px/1 "Comic Sans MS","Comic Neue","Chalkboard SE",sans-serif;color:#000;text-shadow:2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;white-space:nowrap}
+  .scn .br{left:465px;top:292px;width:150px}
+  .scn .pf{position:absolute;left:-600px;top:-76px;width:560px;height:439px;transform-origin:62% 96%}
+  .scn .pfi{position:absolute;inset:0;transform-origin:62% 96%}
+  .scn .pf img{left:0;top:0;width:560px}
+  .scn .pf.st img{top:-7px}.scn .pf .p1{visibility:hidden}.scn .pf.st .p1{visibility:visible}.scn .pf.st .p0{visibility:hidden}
+  .scn .ac{position:absolute;left:0;top:0}.scn .ac img{position:relative;width:100%}
+  .scn .bub{position:absolute;left:50%;bottom:100%;margin-bottom:8px;transform-origin:0 100%;background:#fff;border:2px solid #000;border-radius:14px;padding:5px 9px;font:400 12px/1.2 "Comic Sans MS","Comic Neue","Chalkboard SE",sans-serif;color:#000;white-space:nowrap}
+  .scn .bub:after{content:"";position:absolute;left:12px;top:100%;border:7px solid transparent;border-top-color:#000}
+  .scn .beam{position:absolute;background:rgba(255,255,140,.55);clip-path:polygon(35% 0,65% 0,100% 100%,0 100%)}
+  .scn .tint{position:absolute;left:-400px;top:-300px;width:1600px;height:1200px;mix-blend-mode:multiply;opacity:0;transition:opacity 3s}
+}
+@keyframes bl-sway{from{rotate:-4deg}to{rotate:4deg}}
+</style>
+</head>
+<body>
+<div class="scn" aria-hidden="true"><div class="tint"></div><img class="wb" src="/lab/waschbaeren/waschbaeren.png" alt=""><img class="br" src="/lab/waschbaeren/wrack.png" alt=""><img class="bl" src="/lab/waschbaeren/ballon.png" alt=""><div class="bm"><img src="/lab/waschbaeren/szene/boom-leer.png" alt=""></div><div class="pf"><div class="pfi"><img class="p0" src="/lab/waschbaeren/pfau0.png" alt=""><img class="p1" src="/lab/waschbaeren/pfau1.png" alt=""></div></div></div>
+<script>
+/* Desktop-Szene als endlose Story (User 28.11.): Runde 1 fix, danach Baukasten aus Ereignissen plus Mutationen, die jede Runde eskalieren.
+   Test: ?scn=10 (10x schneller), ?round=5 (startet in Runde 5) */
+(()=>{const q=new URLSearchParams(location.search),T=+(q.get("scn")||1);
+const S=document.querySelector(".scn");if(!S||!matchMedia("(min-width:861px)").matches)return;const $=c=>S.querySelector(c);
+const fit=()=>{const k=Math.max(innerWidth/800,innerHeight/560);S.style.transform=`translate(${(innerWidth-800*k)/2}px,${(innerHeight-560*k)/2}px) scale(${k})`};fit();addEventListener("resize",fit);
+const at=(sec,f)=>setTimeout(f,sec*1000/T),A=(el,kf,o)=>el.animate(kf,Object.assign({fill:"forwards"},o,{duration:o.duration/T,delay:(o.delay||0)/T}));
+const R=a=>a[Math.random()*a.length|0],rnd=(a,b)=>a+Math.random()*(b-a),shuf=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+const wb=$(".wb"),bl=$(".bl"),bm=$(".bm"),br=$(".br"),pf=$(".pf"),pfi=$(".pfi"),tint=$(".tint");
+const clr=el=>el.getAnimations().forEach(x=>x.cancel());
+const shake=(px=6)=>document.documentElement.animate([{transform:"translate(0,0)"},{transform:`translate(${-px}px,${px*.7}px)`},{transform:`translate(${px*.8}px,${-px*.5}px)`},{transform:`translate(${-px*.5}px,${px*.3}px)`},{transform:"translate(0,0)"}],{duration:450});
+/* Figuren */
+const actor=(src,w,x,y,flip)=>{const d=document.createElement("div");d.className="ac";d.style.width=w+"px";d.style.left=x+"px";d.style.top=y+"px";const i=new Image();i.src="/lab/waschbaeren/szene/"+src+".png";i.alt="";if(flip)i.style.transform="scaleX(-1)";d.appendChild(i);S.insertBefore(d,pf);return d};
+const say=(ac,t,sec,delay=0)=>at(delay,()=>{if(!ac.isConnected)return;const b=document.createElement("div");b.className="bub";b.textContent=t;ac.appendChild(b);A(b,[{opacity:0,transform:"scale(.4)"},{opacity:1,transform:"scale(1)",offset:.06},{opacity:1,transform:"scale(1)",offset:.92},{opacity:0,transform:"scale(1)"}],{duration:sec*1000}).onfinish=()=>b.remove()});
+const gone=(el,sec)=>at(sec,()=>el.remove());
+const mv=(el,kf,sec,ease="linear")=>A(el,kf,{duration:sec*1000,easing:ease});
+const tr=(x,y,r=0,s=1)=>({transform:`translate(${x}px,${y}px) rotate(${r}deg) scale(${s})`});
+/* Ereignis-Baukasten. g = Grössenfaktor, der mit der Runde wächst */
+/* Sprechblasen (User 28.11.): nur sehr kurze ironische Ausrufe, Beobachtungen, keine Meinungen */
+const OHS=["Not again!","Why me?","Seriously?","Ooh, something new!","Wait, what?","Oh no.","Again?","Huh?","Uh-oh.","Whoa!","Really?","Oh. Hello.","Not now!","Me again?","What was that?"],OH=()=>R(OHS);
+const EV={
+ufo(g){const u=actor("ufo",120*g,0,0),c=actor("kuh",60,500,262);mv(u,[tr(900,-150),tr(440,40)],3,"ease-out");
+  at(3,()=>{const b=document.createElement("div");b.className="beam";Object.assign(b.style,{left:440+10*g+"px",top:40+70*g+"px",width:100*g+"px",height:250-60*g+"px"});S.insertBefore(b,u);gone(b,3.2);
+    say(c,OH(),3);mv(c,[tr(0,0),tr(10,-200+40*g,15,.3)],3,"ease-in");gone(c,3)});
+  at(6.5,()=>mv(u,[tr(440,40),tr(-300,-250)],1.2,"ease-in"));gone(u,8)},
+jetkuh(g){const c=actor("jetkuh",110*g,0,0);mv(c,[tr(-250,250,-10),tr(150,120,-14),tr(450,160,-8),tr(950,-120,-20)],6,"ease-in");say(c,OH(),3,.8);gone(c,6.2)},
+schnecke(g){const c=actor("schnecke",150*g,0,250-60*(g-1));mv(c,[tr(-300,0),tr(950,0)],45);say(c,OH(),4,20);gone(c,45)},
+enten(g,L){const n=Math.min(6+L*3,30);for(let i=0;i<n;i++){const x=rnd(380,720),y=rnd(305,345),d=actor("ente",rnd(28,46)*g,x,0,Math.random()<.5),t=rnd(0,2.5);
+  at(t,()=>{mv(d,[tr(0,-100,rnd(-90,90)),tr(0,y,0),tr(0,y-22,0),tr(0,y,0)],1.4,"ease-in")});at(t+12,()=>mv(d,[{opacity:1},{opacity:0}],1));gone(d,t+13.2)}},
+drohne(g){const d=actor("drohne",110*g,0,0),p=actor("paket",36*g,0,0);mv(d,[tr(900,90),tr(470,110)],3,"ease-out");mv(p,[tr(900,150),tr(500,170)],3,"ease-out");
+  at(3,()=>{say(d,OH(),3);mv(p,[tr(500,170),tr(505,330-36*g,8)],.7,"ease-in")});
+  at(4,()=>mv(d,[tr(470,110),tr(-300,-60)],2.5,"ease-in"));at(14,()=>mv(p,[{opacity:1},{opacity:0}],1));gone(d,7);gone(p,15.2)},
+influencer(g){const f=actor("influencer",40*g,0,350-62*g,true);mv(f,[tr(850,0),tr(590,0)],3);say(f,OH(),3.5,3);at(7.5,()=>mv(f,[tr(590,0),tr(850,0)],2.5));gone(f,10.2)},
+kontrolle(g){const f=actor("kontrolle",40*g,0,350-66*g);mv(f,[tr(-80,0),tr(470,0)],4);say(f,OH(),4,4);at(9,()=>mv(f,[tr(470,0),tr(-80,0)],4));gone(f,13.2)},
+wagen(g,L){const n=Math.min(1+L,6);for(let i=0;i<n;i++){const w=actor("wagen",90*g,0,262-50*(g-1));const t=i*.45;at(t,()=>mv(w,[tr(-250,0,-4),tr(950,0,4)],2.2,"ease-in"));gone(w,t+2.4)}
+  const s=actor("influencer",36,0,292);at(.3,()=>{mv(s,[tr(-80,0),tr(950,0)],3.4,"ease-in")});say(s,OH(),2.4,.8);gone(s,3.8)},
+sonne(g){const b=actor("sonnenbrille",95,652,0);mv(b,[tr(0,-140,-30),tr(0,52,4),tr(0,46,0)],1.6,"ease-in");say(b,OH(),3.5,1.6);return b},
+fuss(g){const f=actor("fuss",150*g,470-30*g,0);mv(f,[tr(0,-420),tr(0,-420),tr(0,365-190*g)],1.1,"cubic-bezier(.7,0,1,.6)");at(1.1,()=>shake(10));
+  say(f,OH(),2.5,1.3);at(3.2,()=>mv(f,[tr(0,365-190*g),tr(0,-500)],.9,"ease-in"));gone(f,4.3)},
+schild(g){const s=actor("schild",95*g,560,345-84*g);s.style.transformOrigin="50% 100%";mv(s,[{transform:"scale(0)"},{transform:"scale(1.2)",offset:.6},{transform:"scale(1)"}],.6,"ease-out");at(14,()=>mv(s,[{transform:"scale(1)"},{transform:"scale(0)"}],.4));gone(s,14.5)},
+komitee(g){const k=actor("komitee",90*g,0,350-73*g);mv(k,[tr(-160,0),tr(440,0)],5);say(k,OH(),4,5);at(11,()=>mv(k,[tr(440,0),tr(-160,0)],5));gone(k,16.2)}};
+/* Unfälle (User 28.11.): Runde 1 und 2 stürzt etwas vom Himmel, danach wechselt das Szenario. Das Wrack landet immer auf dem Rasen, wo der Pfau frisst */
+const boomAt=(dx,dy,c)=>{bm.style.translate=`${dx}px ${dy}px`;A(bm,[{opacity:1,transform:"scale(.1) rotate(-20deg)"},{opacity:1,transform:"scale(1.15) rotate(6deg)",offset:.25},{opacity:1,transform:"scale(1) rotate(0)",offset:.6},{opacity:0,transform:"scale(1.3) rotate(4deg)"}],{duration:1600,easing:"ease-out"});shake(6*c.bs)};
+const wreck=(src,dx,dy)=>{br.src=src;clr(br);if(!dx&&!dy){A(br,[{opacity:0},{opacity:1}],{duration:400,delay:500});return}
+  A(br,[{opacity:1,transform:`translate(${dx}px,${dy}px) rotate(0) scale(.5)`},{opacity:1,transform:`translate(${dx*.5}px,${dy-150}px) rotate(200deg) scale(.8)`},{opacity:1,transform:"translate(0,-8px) rotate(350deg) scale(1)",offset:.85},{opacity:1,transform:"translate(0,0) rotate(360deg) scale(1)"}],{duration:1100,delay:250,easing:"ease-in-out"})};
+const CRASH={
+sky(c){bm.style.translate="0 0";clr(bl);bl.style.opacity=1;mv(bl,[tr(-40,-420,-8),tr(10,-200,10),tr(0,0,-6),tr(-6,128,-18)],3.2,"cubic-bezier(.55,0,1,.45)");
+  at(3.2,()=>{bl.style.opacity=0;boomAt(0,0,c);wreck(WR[c.bal],0,0)})},
+collide(c){const a=actor("auto",100,0,372),g=actor("glace",125,0,358,true);mv(a,[tr(-160,0),tr(440,0)],2.4,"ease-in");mv(g,[tr(950,0),tr(540,0)],2.4,"ease-in");say(a,OH(),1.6,.6);
+  at(2.4,()=>{a.remove();g.remove();boomAt(0,95,c);wreck("/lab/waschbaeren/szene/wrack-auto.png",0,100)})},
+cake(c){const t=actor("torte",90,0,350,true);mv(t,[tr(950,0),tr(495,0)],3,"ease-out");at(3,()=>mv(t,[{scale:1},{scale:1.25},{scale:.9},{scale:1.4}],.8,"ease-in"));
+  at(3.8,()=>{t.remove();boomAt(0,95,c);wreck("/lab/waschbaeren/szene/wrack-torte.png",0,100)})},
+mole(c){const m=actor("maulwurf",70,505,292),r=actor("rakete",22,529,268);m.style.transformOrigin="50% 100%";mv(m,[{transform:"scale(0)"},{transform:"scale(1.2)",offset:.7},{transform:"scale(1)"}],.6,"ease-out");mv(r,[{opacity:0},{opacity:1}],.6);say(m,OH(),2,1);
+  at(2.6,()=>mv(r,[tr(0,0),tr(0,-280)],.9,"ease-in"));
+  at(3.5,()=>{const f=actor("feuerwerk",200,440,-110);mv(f,[{transform:"scale(0)",opacity:1},{transform:"scale(1.3)",opacity:1,offset:.6},{transform:"scale(1.4)",opacity:0}],1.6,"ease-out");gone(f,1.7)});
+  at(4.6,()=>mv(r,[tr(0,-280,180),tr(0,0,180)],.7,"ease-in"));say(m,OH(),1.5,4.6);
+  at(5.3,()=>{m.remove();r.remove();boomAt(0,0,c);wreck("/lab/waschbaeren/szene/wrack-rakete.png",0,0)})}};
+let lastCrash="sky";
+const POOL=Object.keys(EV);
+/* Wrack bleibt nach der Explosion liegen (User 28.11.), kein BOOM-Text mehr */
+const WR={"/lab/waschbaeren/ballon.png":"/lab/waschbaeren/wrack.png","/lab/waschbaeren/szene/ballon-ente.png":"/lab/waschbaeren/szene/wrack-ente.png","/lab/waschbaeren/szene/ballon-toaster.png":"/lab/waschbaeren/szene/wrack-toaster.png"};
+const BOOM=["KABOOM!","PLOP.","oops","meh.","BOOM BOOM","KA-CHING!","404","PFFFT","BADABOOM"];
+/* Runde planen: Runde 1 ist die Originalgeschichte, danach steigt alles */
+let n=+(q.get("round")||1),sunB=null;
+const pickCrash=n=>{if(q.get("crash")&&n>1)return q.get("crash");if(n<=2)return"sky";const o=Object.keys(CRASH).filter(k=>k!==lastCrash&&(n>3||k!=="sky"));return lastCrash=R(o)};
+const plan=n=>{const L=n-1;if(!L)return{L,cl:1,ps:1,hue:0,bal:"/lab/waschbaeren/ballon.png",boom:"BOOM!",bs:1,ev:[],tint:0,sp:1,crash:"sky"};
+  const k=Math.min(1+L,7),ev=shuf(POOL).concat(shuf(POOL)).slice(0,k),slots=shuf([4,9,15,22,36,42,50,66,72,80]).slice(0,k);
+  return{L,cl:Math.min(1+Math.floor(L*rnd(.6,1.3)),7),ps:Math.min(1+L*rnd(.05,.2),1.8),hue:L>1&&Math.random()<.6?rnd(40,320):0,
+    bal:R(["/lab/waschbaeren/ballon.png","/lab/waschbaeren/szene/ballon-ente.png","/lab/waschbaeren/szene/ballon-toaster.png"]),boom:R(BOOM),bs:Math.min(1+L*.12,1.8),
+    ev:ev.map((e,i)=>({e,t:e==="schnecke"?rnd(3,40):slots[i]})),tint:L>2&&Math.random()<.5?R(["#ff9ad5","#9affc0","#ffe48a","#a6b8ff"]):0,sp:Math.max(.35,1-L*.1),crash:pickCrash(n)}};
+/* Waschbären-Konvoi */
+let crew=[wb];
+const buildCrew=c=>{crew.slice(1).forEach(x=>x.remove());crew=[wb];for(let i=1;i<c;i++){const x=wb.cloneNode();x.style.scale=Math.max(.45,1-i*.12);S.insertBefore(x,wb);crew.push(x)}};
+const base=i=>[-i*120,-i*16];
+const driveOut=sp=>crew.forEach((w,i)=>{const[x,y]=base(i);clr(w);mv(w,[tr(x,y),tr(x-14,y+1,-1),tr(x+1300+i*140,y-30,2)].map((f,j)=>j===1?Object.assign(f,{offset:.12}):f),3.2*sp,"cubic-bezier(.5,0,.9,.6)")});
+const driveIn=(sp,done)=>{let a;crew.forEach((w,i)=>{const[x,y]=base(i);clr(w);a=mv(w,[tr(x-1300-i*140,y+10,-2),Object.assign(tr(x+18,y,1),{offset:.8}),tr(x,y)],1.6*Math.max(sp,.6),"cubic-bezier(.2,.7,.3,1)")});a.onfinish=done};
+const round=c=>{
+  tint.style.background=c.tint||"transparent";tint.style.opacity=c.tint?.45:0;
+  pfi.style.scale=c.ps;pfi.style.filter=c.hue?`hue-rotate(${c.hue}deg)`:"";
+  bl.src=c.bal;br.src=WR[c.bal];bm.style.scale=c.bs;
+  c.ev.forEach(({e,t})=>at(t,()=>{const r=EV[e](Math.min(1+c.L*.12,1.9),c.L);if(e==="sonne"){sunB&&sunB.remove();sunB=r}}));
+  at(30,()=>driveOut(c.sp));
+  /* Ballon erst ab 1:00 sichtbar: fällt brennend vom Himmel (User 28.11.) */
+  at(60,()=>CRASH[c.crash](c));
+  at(90,()=>{let st=0;const iv=setInterval(()=>{pf.classList.toggle("st",st^=1)},260/T),tx=793-381*c.ps;
+    mv(pf,[{transform:"translateX(0)"},{transform:`translateX(${tx}px)`}],5).onfinish=()=>{clearInterval(iv);
+      const P=d=>({transform:`translateX(${tx}px) rotate(${d}deg)`});mv(pf,[P(0),Object.assign(P(60),{offset:.2}),Object.assign(P(46),{offset:.35}),Object.assign(P(60),{offset:.5}),Object.assign(P(46),{offset:.65}),Object.assign(P(60),{offset:.8}),P(0)],2.6,"ease-in-out");
+      clr(br);br.style.opacity=1;br.style.transformOrigin="50% 80%";A(br,[{transform:"scale(1)",opacity:1,offset:.18},{transform:"scale(.6)",opacity:1,offset:.5},{transform:"scale(.25)",opacity:1,offset:.72},{transform:"scale(0)",opacity:0,offset:.8},{transform:"scale(0)",opacity:0}],{duration:2600});
+      at(2.7,()=>{const iv2=setInterval(()=>{pf.classList.toggle("st",st^=1)},260/T);mv(pf,[{transform:`translateX(${tx}px)`},{transform:`translateX(${1500+300*c.ps}px)`}],7).onfinish=()=>{clearInterval(iv2);pf.classList.remove("st");
+        /* Loop: neue Runde planen, Waschbären düsen wieder herein */
+        [pf,bm,br,bl].forEach(clr);br.style.opacity="";bl.style.opacity=0;
+        const nx=plan(++n);buildCrew(nx.cl);driveIn(nx.sp,()=>round(nx))}})}});
+};
+const c0=plan(n);buildCrew(c0.cl);crew.forEach((w,i)=>{const[x,y]=base(i);w.style.transform=tr(x,y).transform});round(c0);
+})();
+</script>
+<header class="top">
+  <a class="logo" href="/">Monthly Vinyl</a>
+  <div class="hicons">
+    <a class="habout hback" href="/" title="Back to the classic feed (Esc)">← Classic</a>
+    <a class="habout" href="/about/">About</a>
+    <a class="habout beta" href="/beta/" aria-current="page">Beta</a>
+    <a class="bagtop" id="bagtop" href="/bag/" aria-label="My bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3z"/><path d="M7 9V5h10v4"/><path d="M7 5h2M11 5h2M15 5h2" stroke-width="1.6"/></svg><b id="bagn"></b></a>
+  </div>
+</header>
+<nav class="bar" id="bar" aria-label="Crates"></nav>
+<main id="main">
+  <div class="stage idle" id="stage" tabindex="0" aria-label="Record crate. Arrow up for the next record, arrow left puts it in the bag.">
+    <div class="glow"></div>
+    <div class="inside"></div>
+    <svg class="rims" viewBox="0 0 124 62" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151515"/><stop offset=".55" stop-color="#262626"/><stop offset="1" stop-color="#363636"/></linearGradient></defs><polygon points="0,62 5.2,62 15.6,0 11.8,0" fill="url(#rg)"/><polygon points="124,62 118.8,62 108.4,0 112.2,0" fill="url(#rg)"/><line x1="5.2" y1="62" x2="15.6" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/><line x1="118.8" y1="62" x2="108.4" y2="0" stroke="#000" stroke-opacity=".6" stroke-width=".35"/></svg>
+    <div class="cnt" id="cnt"></div>
+    <div class="gh gh-tap" id="ghtap"><span>Tap</span></div>
+    <div class="gh gh-tap gh-hold" id="ghhold"><span>Hold<small>to fast-forward</small></span></div>
+    <div class="gh gh-ff" id="ghff"><svg class="cv" viewBox="0 0 84 44" aria-hidden="true"><path d="M0 0h15l19 22-19 22H0l19-22z"/><path d="M24 0h15l19 22-19 22H24l19-22z"/><path d="M48 0h15l19 22-19 22H48l19-22z"/></svg><span>3×</span></div>
+    <div class="gh gh-up" id="ghup"><span>Next</span><svg class="cv" viewBox="0 -19 44 84" aria-hidden="true"><path class="c" d="M0 46v15l22-19 22 19V46L22 27z"/><path class="c" d="M0 23v15l22-19 22 19V23L22 4z"/><path class="c" d="M0 0v15l22-19 22 19V0L22 -19z"/></svg></div>
+    <div class="gh gh-rt" id="ghlt"><span>Grab it!</span><svg class="cv" viewBox="0 0 84 44" aria-hidden="true"><path d="M0 0h15l19 22-19 22H0l19-22z"/><path d="M24 0h15l19 22-19 22H24l19-22z"/><path d="M48 0h15l19 22-19 22H48l19-22z"/></svg></div>
+    <div class="gh gh-lt" id="ghrt"><span>Skip</span><svg class="cv" viewBox="0 0 84 44" aria-hidden="true" style="transform:scaleX(-1)"><path d="M0 0h15l19 22-19 22H0l19-22z"/><path d="M24 0h15l19 22-19 22H24l19-22z"/><path d="M48 0h15l19 22-19 22H48l19-22z"/></svg></div>
+    <div class="bin"><span id="binlbl">Fresh today</span></div>
+  </div>
+  <aside class="side">
+    <section class="rinfo" id="info" aria-live="polite"><p class="load">Loading the crate…</p></section>
+    <div class="ctl">
+      <div class="pad" role="group" aria-label="Controls">
+        <span class="lb l-up"><b>Next record</b></span>
+        <button class="key k-up" type="button" data-k="ArrowUp" aria-label="Next record"><i class="g g-up" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+        <span class="lb l-lt"><b>Previous track</b></span>
+        <button class="key k-lt" type="button" data-k="ArrowLeft" aria-label="Previous track"><i class="g g-lt" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="key k-dn" type="button" data-k="ArrowDown" aria-label="Previous record"><i class="g g-dn" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
+        <button class="key k-rt" type="button" data-k="ArrowRight" aria-label="Next track"><i class="g g-rt" aria-hidden="true"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <span class="lb l-rt"><b>Next track</b></span>
+        <span class="lb l-dn"><b>Previous record</b></span>
+        <button class="key sp nudge" type="button" data-k=" " aria-label="Play or pause"><i class="g g-tap" aria-hidden="true"></i><em class="kd">Space</em><em class="km">Tap the record</em><span>Play / pause</span></button>
+        <button class="key en" type="button" data-k="Enter" aria-label="Grab it"><em class="kd">Enter</em><span>Grab it!</span></button>
+      </div>
+    </div>
+    <div class="rfoot"><span class="dk"><kbd>O</kbd>open at the shop · click the record for the next one</span><span class="mb">Swipe ↑ next · ↓ back · ← bag · → track</span><br><a href="/">Back to the classic feed</a> <kbd>Esc</kbd></div>
+  </aside>
+</main>
+<audio id="au" preload="auto"></audio>
+<script>
+const CODE={"€":"EUR","£":"GBP","$":"USD","CHF":"CHF","Fr.":"CHF","zł":"PLN"};
+const LOC=(()=>{let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+  if(/Zurich|Vaduz|Busingen/.test(tz))return"CHF";if(/London|Belfast|Guernsey|Jersey|Isle_of_Man|Gibraltar/.test(tz))return"GBP";
+  if(/^Europe\/|^Atlantic\/(Canary|Madeira|Azores|Faroe)/.test(tz))return"EUR";if(/^America\//.test(tz))return"USD";
+  const r=((navigator.language||"").split("-")[1]||"").toUpperCase();return r==="CH"?"CHF":r==="GB"?"GBP":r==="US"?"USD":"EUR"})();
+const SYM={EUR:"€",GBP:"£",USD:"$",CHF:"CHF ",PLN:"zł "};
+let FX={};
+function toLoc(cur,p){const c=CODE[cur]||cur;if(p==null)return null;if(c===LOC||!FX[c]||!FX[LOC])return{v:+p,c:c===LOC?LOC:c,ex:true};return{v:p*FX[c]/FX[LOC],c:LOC,ex:false}}
+const symOf=c=>SYM[c]||(Object.keys(CODE).find(k=>CODE[k]===c)||c);
+const money=(cur,p)=>{const L=toLoc(cur,p);if(!L)return"";return`<small>${L.ex?"":"≈"}${esc(symOf(L.c).trim())}</small>${L.v.toFixed(2).replace(/\.00$/,"")}`};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fold=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"");
+const norm=s=>fold(s).replace(/\(.*?\)|\[.*?\]/g,"").replace(/\b(ep|lp|12"?|2x12"?)\b/g,"").replace(/[^\p{L}\p{N}]/gu,"");
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function track(n,d){try{if(window.umami&&typeof umami.track==="function")umami.track(n,d)}catch(e){}}
+function hiRes(u){
+  if(!u)return u;
+  if(/media\.hardwax\.com\/images\//.test(u)&&!/big\.jpg$/.test(u))return u.replace(/\.jpg$/,"big.jpg");
+  if(/redeyerecords\.co\.uk\/imagery\//.test(u))return u.replace(/-2\.jpg$/,"-1.jpg");
+  if(/rushhourrecords/.test(u))return u.replace("/styles/cover_medium/","/styles/cover_large/");
+  if(/clone\.nl\/platen\/artwork\/small\//.test(u))return u.replace("/artwork/small/","/artwork/large/");
+  if(/yoyaku\.io\/wp-content\/uploads\//.test(u))return u.replace(/-\d+x\d+(\.\w+)$/,"$1");
+  if(/imagescdn\.juno\.co\.uk\/300\//.test(u))return u.replace("/300/","/full/").replace(/-MED\.jpg$/,"-BIG.jpg");
+  if(/decks\.de\/decks\/gfx\/co_mid\//.test(u))return u.replace("/co_mid/","/co_big/");
+  return u;
+}
+// Eigene Cover für Platten, deren Shop-Bild fehlt (User 28.11.); Schlüssel = Shop-Link
+const COVER_FIX={"https://hardwax.com/89875/various-artists/agora-wax-02/":"/covers/agora-wax-02.jpg","https://hardwax.com/39672/uvb/kavanah-ep/":"/covers/uvb-kavanah-ep.jpg"};
+const thumb=u=>u&&u[0]==="/"?u:u?"https://wsrv.nl/?w=720&output=webp&q=80&url="+encodeURIComponent(u):u;
+function coverFail(im){const n=+(im.dataset.t||0)+1;im.dataset.t=n;const nx=n===1?im.dataset.o:n===2&&im.dataset.lo!==im.dataset.o?im.dataset.lo:null;if(nx)im.src=nx;else im.remove()}
+
+const stage=document.getElementById("stage"),info=document.getElementById("info"),au=document.getElementById("au");
+let ALL=[],CRATES=[],crate=null,L=[],cur=0,ti=0,listening=false,cart=store.get("mvr-cart",[]),EL=new Map(),flips=0,busy=false;
+const VIS=18; // sichtbare Platten in der Kiste
+const jit=i=>(((i*9301+49297)%233280)/233280-.5)*3.2; // feste kleine Schräglage pro Platte
+
+// Zähler mit Rollziffern
+function odo(el,n){const t=String(n),w=Math.max(t.length,1);
+  while(el.children.length<w){const d=document.createElement("span");d.className="dg";d.innerHTML="<i>"+"0123456789".split("").map(x=>`<b>${x}</b>`).join("")+"</i>";el.prepend(d)}
+  while(el.children.length>w)el.firstElementChild.remove();
+  [...el.children].forEach((d,k)=>{d.firstElementChild.style.transform=`translateY(${-(+t[k])}em)`})}
+function setCount(a,b){const c=document.getElementById("cnt");if(!L.length){c.hidden=true;return}c.hidden=false;
+  if(!c.firstChild)c.innerHTML='<span class="od" id="oda"></span><span class="sl2">/</span><span class="tot od" id="odb"></span>';
+  odo(document.getElementById("oda"),a);odo(document.getElementById("odb"),b)}
+// Tasten-Hinweise: nach dem ersten Ton blinkt ↑, bis man sie einmal nutzt; bei Platten mit mehreren Tracks blinkt →, bis man sie einmal nutzt
+// Haben beide gleichzeitig geblinkt und man drückt eine der beiden, hören beide auf
+const TOUCH=matchMedia("(max-width:860px)").matches;
+const usedK=new Set();let enDone=!!store.get("mvr-ennudge",0);const used=Object.assign({up:false,rt:false,both:false,bag:false},TOUCH?(h=>h.bag?h:{})(store.get("mvr-betahints2",{})):{});
+// Grab it!: drei Durchgänge (3 x 1.25s), dann erst wieder nach einer Minute, solange noch nichts im Bag gelandet ist
+const HINT_GAP=4500;let bgEnd=0,bgNext=0,hintGap=0,holdEnd=0,tut=TOUCH&&!/[?&]hints/.test(location.search)&&store.get("mvr-tut",0)>=4?4:0;
+function tutGo(n){if(n<=tut)return;tut=n;if(n>=4)store.set("mvr-tut",4);hintGap=Date.now()+HINT_GAP;setTimeout(hintKeys,HINT_GAP+50)}const T0=Date.now();if(TOUCH)setTimeout(()=>hintKeys(),60100);
+function hintKeys(){const r=L[cur],up=(listening||TOUCH)&&!used.up,rt=listening&&!used.rt&&!!r&&r.tracks.length>1;
+  if(TOUCH){const sh=(id,on)=>{const e=document.getElementById(id);if(e)e.classList.toggle("on",on)},t=Date.now();
+    // Feste Abfolge (User 27.11.): 0 TAP, 1 NEXT, 2 SKIP, 3 GRAB IT!, 4 fertig. Ein Schritt gilt nur, wenn genau seine Geste
+    // gemacht wurde; zwischen zwei Hinweisen 4,5 s Pause. Gespeichert wird nur «fertig».
+    if(tut===0&&listening)tutGo(1);
+    let want="";const gap=t<hintGap;
+    if(!listening)want="ghtap";
+    else if(gap)want="";
+    else if(tut===1)want="ghup";
+    else if(tut===2)want=r&&r.tracks.length>1?"ghrt":"";
+    else if(tut===3){if(r&&!(r.out&&!cart.includes(r.key))){if(t>=bgNext){bgEnd=t+3750;bgNext=bgEnd+60000;setTimeout(hintKeys,3800);setTimeout(hintKeys,63800)}if(t<bgEnd)want="ghlt"}}
+    else if(tut===4&&!used.hold&&t>=T0+60000&&!ff){if(!holdEnd){holdEnd=t+3750;setTimeout(hintKeys,3800)}if(t<holdEnd)want="ghhold"}
+    for(const id of["ghtap","ghup","ghrt","ghlt","ghhold"])sh(id,id===want)}
+  if(up&&rt&&!TOUCH)used.both=true;
+  document.querySelector(".k-up").classList.toggle("nudge",up);
+  document.querySelector(".k-rt").classList.toggle("nudge",rt);
+  // Desktop: GRAB IT! (Enter) blinkt erst, wenn ↑ und → gelernt sind und noch nichts eingepackt wurde
+  /* Enter GRAB IT (User 28.11.): blinkt genau 3x, erst wenn Space, ↑, ↓, ← und → je einmal benutzt wurden, danach nie mehr */
+  if(!TOUCH&&!enDone&&!used.bag&&["play","next","prev","track","back"].every(k=>usedK.has(k))){const en=document.querySelector(".key.en");enDone=true;store.set("mvr-ennudge",1);if(en){en.classList.add("nudge");en.addEventListener("animationend",()=>en.classList.remove("nudge"),{once:true})}}}
+function bagCount(){document.getElementById("bagn").textContent=cart.length||""}
+function build(data){
+  FX=data.fx||{};const G={};
+  data.shops.forEach(S=>{if(S.blocked)return;(S.items||[]).forEach(r=>{const gk=r.gk||norm(r.a)+"|"+norm(r.t);(G[gk]=G[gk]||[]).push({...r,S,key:S.shop+"|"+r.url,chf:r.p==null?null:r.p*(FX[CODE[S.cur]]||NaN)})})});
+  for(const [gk,all] of Object.entries(G)){
+    const nu=x=>new Set((x.tr||[]).filter(t=>t.u).map(t=>t.u)).size;const src=all.reduce((b,x)=>nu(x)>(b?nu(b):0)?x:b,null);if(!src)continue; // Shop mit den meisten Hörproben
+    const first=all.map(x=>x.first_seen||((x.m||"0000-00")+"-01")).sort()[0];
+    const avail=all.filter(x=>x.st!=="out"),out=!avail.length;   // ausverkauft nur, wenn kein Shop sie mehr hat
+    const priced=(out?all:avail).filter(x=>x.chf!=null&&!isNaN(x.chf)).sort((a,b)=>a.chf-b.chf),main=priced[0]||src;
+    const cover=(all.map(x=>COVER_FIX[x.url]).find(Boolean))||(all.find(x=>/yoyaku|phonica|cloudfront|kompakt/.test(x.cover||""))||all.find(x=>x.cover)||{}).cover||"";
+    ALL.push({gk,first,main,key:main.key,tracks:(src.tr||[]).filter((t,i,a)=>t.u&&a.findIndex(x=>x.u===t.u)===i),cover,out,g:(main.g||src.g||"")});
+  }
+  ALL.sort((a,b)=>b.first.localeCompare(a.first));
+  const days=[...new Set(ALL.map(r=>r.first))].sort().reverse(),today=days[0];
+  const week=ALL.filter(r=>days.slice(0,7).includes(r.first));
+  CRATES.push({id:"today",name:"Fresh today",recs:ALL.filter(r=>r.first===today)});
+  CRATES.push({id:"week",name:"This week",recs:week});
+  // Kalendermonate, ausgehend vom neusten Datum in den Daten
+  const ym=today.slice(0,7),pm=(([y,m])=>m===1?`${y-1}-12`:`${y}-${String(m-1).padStart(2,"0")}`)(ym.split("-").map(Number));
+  CRATES.push({id:"month",name:"This month",recs:ALL.filter(r=>r.first.slice(0,7)===ym)});
+  CRATES.push({id:"lastmonth",name:"Last month",recs:ALL.filter(r=>r.first.slice(0,7)===pm)});
+  const gs=r=>String(r.g).split(/\s*[\/,]\s*/).map(g=>g.replace(/\s*·.*$/,"").trim()),cnt={};week.forEach(r=>gs(r).forEach(g=>{if(g)cnt[g]=(cnt[g]||0)+1}));
+  Object.entries(cnt).filter(([,n])=>n>=3).sort((a,b)=>b[1]-a[1]).forEach(([g])=>CRATES.push({id:"g:"+g,name:g,recs:week.filter(r=>gs(r).includes(g))}));
+  const bar=document.getElementById("bar");
+  CRATES.forEach(c=>{const b=document.createElement("button");b.className="crt";b.type="button";b.innerHTML=`${esc(c.name)}<small>${c.recs.length}</small>`;b.onclick=()=>{openCrate(c);track("Beta crate",{crate:c.name})};c.btn=b;bar.appendChild(b)});
+  // Mausrad senkrecht scrollt die Leiste seitlich
+  bar.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&bar.scrollWidth>bar.clientWidth){e.preventDefault();bar.scrollLeft+=e.deltaY}},{passive:false});
+  const want=decodeURIComponent((location.hash.match(/crate=([^&]+)/)||[])[1]||"");
+  openCrate(CRATES.find(c=>c.id===want)||CRATES[0]);
+}
+function openCrate(c){
+  crate=c;L=c.recs;cur=0;
+  // Solange die Wisch-Anleitung läuft: die ersten 4 Platten haben mehrere Hörproben, damit SKIP auch etwas tut
+  if(TOUCH&&tut<4){L=L.slice();const ok=r=>r.tracks.length>1&&!r.out;for(let i=0;i<4&&i<L.length;i++)if(!ok(L[i])){const j=L.findIndex((r,k)=>k>i&&ok(r));if(j>0)L.splice(i,0,L.splice(j,1)[0])}}ti=0;EL.forEach(e=>e.remove());EL.clear();
+  CRATES.forEach(x=>x.btn.setAttribute("aria-pressed",x===c));c.btn.scrollIntoView({block:"nearest",inline:"nearest"});
+  if(!TOUCH)document.getElementById("binlbl").textContent=c.name;
+  try{history.replaceState(null,"","#crate="+encodeURIComponent(c.id))}catch(e){}
+  render(true);if(listening)playTrack(0);
+}
+function el(i){
+  let e=EL.get(i);if(e)return e;const r=L[i];if(!r)return null;
+  e=document.createElement("div");e.className="rec"+(r.out?" sold":"");e.dataset.i=i;
+  e.innerHTML=`<div class="sl"><div class="ph">${esc(r.main.a)}<br>${esc(r.main.t)}</div>${r.cover?`<img decoding="async" alt="" src="${esc(thumb(hiRes(r.cover)))}" data-o="${esc(hiRes(r.cover))}" data-lo="${esc(r.cover)}" onerror="coverFail(this)">`:""}</div>`;
+  // Klick auf die vordere Platte: nächste Platte; auf eine hintere: direkt zu ihr
+  e.onclick=()=>{if(ffJust){ffJust=false;return}const k=+e.dataset.i-cur;if(TOUCH&&k===0){act("play");return}if(k>=0)act("next",k?+e.dataset.i:null)};
+  stage.insertBefore(e,stage.querySelector(".bin"));EL.set(i,e);return e;
+}
+function place(e,k,i){
+  e.classList.toggle("k0",k===0);e.classList.toggle("gone",k<0);
+  if(k<0&&TOUCH){ // Handy: hochgewischt, die Platte fliegt in Wischrichtung nach oben weg
+    e.style.transform=`translateY(calc(var(--cv) * -1.35)) scale(.94) rotate(${jit(i)*2}deg)`;e.style.zIndex=160;e.style.filter="none";e.style.opacity=0;return}
+  if(k<0){ // umgeblättert: kippt nach vorne und verschwindet hinter der Kistenwand
+    e.style.transform=`translateY(calc(var(--cv) * .75)) perspective(900px) rotateX(-28deg) rotate(${jit(i)}deg)`;e.style.zIndex=150;e.style.filter="brightness(.5)";e.style.opacity=0;return}
+  e.style.transform=`translateY(calc(var(--cv) * ${-k*.021})) scale(${1-k*.009}) rotate(${k?jit(i):0}deg)`;
+  e.style.zIndex=100-k;e.style.filter=`brightness(${1-k*.036})`;e.style.opacity=k>=VIS?0:1;
+}
+function render(fresh){
+  const keep=new Set();for(let i=cur-2;i<=cur+VIS;i++){if(i<0||i>=L.length)continue;keep.add(i);const e=el(i);if(fresh)e.style.transition="none";place(e,i-cur,i);if(fresh){void e.offsetWidth;e.style.transition=""}}
+  EL.forEach((e,i)=>{if(!keep.has(i)){e.remove();EL.delete(i)}});
+  if(L[cur+VIS+1]&&L[cur+VIS+1].cover){const p=new Image();p.src=thumb(hiRes(L[cur+VIS+1].cover))}
+  setCount(Math.min(cur+1,L.length),L.length);hintKeys();
+  let end=stage.querySelector(".end");
+  if(cur>=L.length){if(!end){end=document.createElement("div");end.className="end";stage.appendChild(end)}end.innerHTML=`That was the last one in here.<br><button type="button">Back to the front</button>`;end.querySelector("button").onclick=()=>go(0)}else if(end)end.remove();
+  paintInfo();
+}
+function li_on(tl,on){const li=tl.querySelector("li.on");if(li)li.classList.toggle("scrub",on)}
+function paintInfo(){
+  const r=L[cur];if(!r){info.innerHTML=`<div class="now"><span>${esc(crate.name)}</span><span>${L.length} records</span></div><div class="ti">You flipped through the whole crate.</div>`;return}
+  const m=r.main,t=r.tracks[ti]||r.tracks[0],inb=cart.includes(r.key);
+  if(TOUCH&&info.dataset.k!==r.key){info.dataset.k=r.key;try{info.animate([{opacity:0,transform:"translateY(8px)"},{opacity:1,transform:"none"}],{duration:380,easing:"cubic-bezier(.2,.8,.2,1)"})}catch(e){}}
+  {const k=document.querySelector('.key[data-k="Enter"]');if(k)k.classList.toggle("off",r.out&&!inb)}
+  info.innerHTML=`<div class="now"><span id="nowl">${!au.paused&&listening?"Now playing":"In front"}</span></div>
+  <h1 class="ar">${esc(m.a)}${inb?'<span class="inb">In bag</span>':r.out?'<span class="sob" id="sob">Sold out</span>':""}</h1><div class="ti">${esc(m.t)}</div>
+  <div class="me">${[m.l,m.cat,m.f,r.g].filter(Boolean).map(esc).join(" · ")}</div>
+  <ol class="tl${r.tracks.length>5?" many":""}" id="tl">${r.tracks.map((x,j)=>`<li class="${j===ti&&listening?"on":""}"><button type="button" data-j="${j}"><em>${esc(x.s||j+1)}</em><span>${esc(x.n||"Track "+(j+1))}</span></button><div class="pg"><i></i></div></li>`).join("")}</ol>
+  <div class="tlh"${r.tracks.length>5?"":' style="visibility:hidden"'}><span>${r.tracks.length} tracks</span><span id="tlm"></span></div>
+  <div class="buyrow"><span class="price">${money(m.S.cur,m.p)}</span><a class="buy" id="buy" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.S.shop)}</a></div>`;
+  document.getElementById("buy").onclick=()=>track("Shop click",{shop:m.S.shop,where:"beta"});
+  const tl=document.getElementById("tl");
+  tl.querySelectorAll("button").forEach(b=>b.onclick=()=>playTrack(+b.dataset.j));
+  // Handy: auf der laufenden Trackzeile antippen oder ziehen = an diese Stelle springen
+  if(TOUCH){const seek=e=>{const li=e.target.closest&&e.target.closest("li.on");if(!li||!au.duration)return false;const b=li.getBoundingClientRect(),x=e.touches[0].clientX;
+      au.currentTime=au.duration*Math.min(.995,Math.max(0,(x-b.left)/b.width));const i=li.querySelector(".pg i");if(i)i.style.width=(au.currentTime/au.duration*100)+"%";return true};
+    tl.addEventListener("touchstart",e=>{tl._sk=seek(e);if(tl._sk)li_on(tl,true)},{passive:true});
+    tl.addEventListener("touchmove",e=>{if(tl._sk){e.preventDefault();seek(e)}},{passive:false});
+    tl.addEventListener("touchend",e=>{if(tl._sk){e.preventDefault();tl._sk=false;li_on(tl,false)}})}
+  tl.querySelectorAll(".pg").forEach(g=>g.onclick=e=>{if(!au.duration)return;const b=g.getBoundingClientRect();au.currentTime=au.duration*Math.min(1,Math.max(0,(e.clientX-b.left)/b.width))});
+  if(TOUCH){const on=tl.children[ti]||tl.children[0],prev=tl.children[+info.dataset.ti];
+    if(info.dataset.k2===r.key&&prev&&prev!==on){tl.scrollTop=prev.offsetTop;requestAnimationFrame(()=>tl.scrollTo({top:on.offsetTop,behavior:"smooth"}))}else tl.scrollTop=on.offsetTop;
+    info.dataset.k2=r.key;info.dataset.ti=ti}
+  else{const on=tl.children[ti],same=info.dataset.k3===r.key,pt=+info.dataset.ti3,pst=+info.dataset.st3||0;
+    if(r.tracks.length>5&&on){const to=Math.max(0,on.offsetTop-2*on.offsetHeight);if(same){tl.scrollTop=pst;requestAnimationFrame(()=>tl.scrollTo({top:to,behavior:"smooth"}))}else tl.scrollTop=to;tlEdges();tl.onscroll=tlEdges}
+    // Desktop: Trackwechsel animiert (User 27.11., 23:56): neuer Track wächst gelb hinein, der alte schrumpft zurück
+    if(same&&listening&&pt!==ti&&on){const E={duration:420,easing:"cubic-bezier(.2,.8,.2,1)"};const ob=tl.children[pt]&&tl.children[pt].querySelector("button");
+      try{on.querySelector("button").animate([{fontSize:"12px",color:"#cfcfcb",transform:"translateX(-6px)"},{fontSize:"15px",color:"#ffea00",transform:"none"}],E);if(ob)ob.animate([{fontSize:"15px",color:"#ffea00"},{fontSize:"12px",color:"#cfcfcb"}],E)}catch(e){}}
+    info.dataset.k3=r.key;info.dataset.ti3=listening?ti:-1;tl.addEventListener("scroll",()=>{info.dataset.st3=tl.scrollTop},{passive:true});info.dataset.st3=tl.scrollTop}
+}
+// Fenster-Hinweis: welche Ränder ausblenden, wie viele Tracks noch darunter liegen
+function tlEdges(){const tl=document.getElementById("tl");if(!tl)return;const atTop=tl.scrollTop<2,atBot=tl.scrollTop+tl.clientHeight>=tl.scrollHeight-2;
+  tl.classList.toggle("attop",atTop&&!atBot);tl.classList.toggle("atbot",atBot&&!atTop);
+  const m=document.getElementById("tlm");if(m){const below=[...tl.children].filter(li=>li.offsetTop>=tl.scrollTop+tl.clientHeight-4).length;m.textContent=below?`↓ ${below} more`:""}}
+let pt=null;
+function go(i){
+  i=Math.max(0,Math.min(L.length,i));if(i===cur)return;cur=i;ti=0;render();flips++;
+  if(flips===5)track("Beta flip",{crate:crate.name,n:5});
+  clearTimeout(pt);if(listening)playTrack(0);else warm();   // sofort spielen (User 27.11.: keine Wartezeit beim Blättern)
+}
+// Vorladen: erste Hörprobe der nächsten zwei Platten, der vorherigen und den nächsten Track der aktuellen.
+// Der Browser legt sie in den Cache, beim Weiterblättern startet der Ton dann ohne Ladezeit.
+const WARM=new Map();
+function warm(){
+  const want=[];const add=u=>{if(u&&!want.includes(u))want.push(u)};
+  const r=L[cur];if(r&&r.tracks.length>1)add(r.tracks[(ti+1)%r.tracks.length].u);
+  [cur+1,cur+2,cur-1].forEach(k=>{const x=L[k];if(x&&x.tracks[0])add(x.tracks[0].u)});
+  for(const [u,a] of WARM)if(!want.includes(u)){a.removeAttribute("src");a.load();WARM.delete(u)}
+  want.forEach(u=>{if(WARM.has(u)||u===au.src)return;const a=new Audio();a.preload="auto";a.muted=true;a.src=u;try{a.load()}catch(e){}WARM.set(u,a)});
+}
+function playTrack(j){
+  clearTimeout(pt);const r=L[cur];if(!r||!r.tracks[j])return;
+  ti=j;listening=true;stage.classList.remove("idle");document.querySelector(".sp").classList.remove("nudge");hintKeys();
+  au.muted=false;au.src=r.tracks[j].u;au.play().catch(e=>{if(e&&e.name==="NotAllowedError"){listening=false;hintKeys()}});paintInfo();warm();
+}
+// ← (User 28.11.): vorheriger Track; beim ersten Track von vorne
+function prevTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}if(ti>0){playTrack(ti-1);hop()}else{au.currentTime=0;au.play().catch(()=>{})}}
+function nextTrack(){const r=L[cur];if(!r)return;if(!listening){playTrack(0);return}playTrack((ti+1)%r.tracks.length);hop()}
+// Trackwechsel sichtbar machen: die Platte hüpft kurz in der Kiste
+function hop(){const e=EL.get(cur);if(!e)return;e.classList.remove("hop");void e.offsetWidth;e.classList.add("hop");setTimeout(()=>e.classList.remove("hop"),600)}
+function toggle(){if(!listening||!au.src){playTrack(ti);track("Beta play",{crate:crate.name});return}if(au.paused)au.play().catch(()=>{});else au.pause()}
+// In den Bag: die Platte fliegt zum Bag-Symbol oben rechts, dann kommt die nächste nach vorne
+function pack(){
+  const r=L[cur],e=EL.get(cur);if(!r||!e||busy)return;
+  // Ausverkauft: nicht in den Bag, Platte schüttelt kurz den Kopf
+  if(r.out&&!cart.includes(r.key)){e.classList.remove("nope");void e.offsetWidth;e.classList.add("nope");const so=document.getElementById("sob");if(so){so.classList.add("hit");setTimeout(()=>so.classList.remove("hit"),700)}return}
+  busy=true;
+  cart=store.get("mvr-cart",[]);if(!cart.includes(r.key)){cart.push(r.key);store.set("mvr-cart",cart);track("Add to bag",{shop:r.main.S.shop,where:"beta"})}
+  const t=document.getElementById("bagtop"),a=t.getBoundingClientRect(),b=e.getBoundingClientRect();
+  const cur0=getComputedStyle(e).transform;e.classList.remove("snap");e.classList.add("pack");e.style.transform=`translate(${a.left+a.width/2-(b.left+b.width/2)}px,${a.top+a.height/2-(b.top+b.height/2)}px) ${cur0==='none'?'':cur0} rotate(-14deg) scale(.07)`;e.style.opacity=0;
+  setTimeout(()=>{bagCount();t.classList.remove("pop");void t.offsetWidth;t.classList.add("pop");e.remove();EL.delete(cur);busy=false;go(cur+1)},600)}
+// Eine Stelle für alle Eingaben (Tastatur, Klick auf Tasten, Swipe); die erste Eingabe startet auch den Ton
+function act(a,arg){
+  if(busy)return;
+  const first=!listening&&L[cur];
+  if(TOUCH){if(tut===1&&(a==="next"||a==="prev"))tutGo(2);else if(tut===2&&a==="track")tutGo(3);else if(tut===3&&a==="bag"&&L[cur]&&!(L[cur].out&&!cart.includes(L[cur].key)))tutGo(4)}
+  usedK.add(a);if(a==="next"||a==="prev")used.up=true;if(a==="track")used.rt=true;if(a==="bag")used.bag=true;if(TOUCH)store.set("mvr-betahints2",{up:used.up,rt:used.rt,bag:used.bag});
+  if(used.both&&(a==="next"||a==="prev"||a==="track"))used.up=used.rt=true;
+  if(a==="next"){go(arg!=null?arg:cur+1)}
+  else if(a==="prev"){go(cur-1)}
+  else if(a==="bag"){pack()}
+  else if(a==="track"){nextTrack()}
+  else if(a==="back"){prevTrack()}
+  else if(a==="play"){toggle()}
+  if(first&&!listening&&a!=="play"&&a!=="bag"){listening=true;clearTimeout(pt);playTrack(0);track("Beta play",{crate:crate.name,via:a})}
+  hintKeys();
+}
+// Esc: zurück zum klassischen Feed
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!e.metaKey&&!e.ctrlKey){location.href="/"}});
+const KEYMAP={ArrowUp:"next",ArrowDown:"prev",ArrowLeft:"back",ArrowRight:"track"," ":"play",Enter:"bag"};
+function flash(k){const b=document.querySelector(`.key[data-k="${k===" "?" ":k}"]`);if(!b)return;b.classList.add("hit");setTimeout(()=>b.classList.remove("hit"),140)}
+document.querySelectorAll(".key").forEach(b=>b.onclick=()=>{act(KEYMAP[b.dataset.k]);stage.focus({preventScroll:true})});
+au.addEventListener("play",()=>{stage.classList.add("playing");const n=document.getElementById("nowl");if(n)n.textContent="Now playing"});
+au.addEventListener("pause",()=>{stage.classList.remove("playing");const n=document.getElementById("nowl");if(n)n.textContent="In front"});
+au.addEventListener("timeupdate",()=>{const i=document.querySelector(".tl li.on .pg i");if(i&&au.duration)i.style.width=(au.currentTime/au.duration*100)+"%"});
+// Ende der Hörprobe: nächster Track, nach dem letzten die nächste Platte (Kiste läuft von selbst weiter)
+au.addEventListener("ended",()=>{const r=L[cur];if(r&&ti+1<r.tracks.length)playTrack(ti+1);else go(cur+1)});
+
+let kh=null;
+document.addEventListener("keyup",e=>{if(!kh||e.key!==kh.k)return;const h=kh;kh=null;clearTimeout(h.t);clearInterval(h.iv);
+  if(h.seek){au.playbackRate=1;const b=document.querySelector(`.key[data-k="${h.k}"]`);if(b)b.classList.remove("held")}else act(KEYMAP[h.k])});
+document.addEventListener("keydown",e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey||/input|textarea/i.test(e.target.tagName))return;
+  const k=e.key;
+  // ← / → lange halten = zurück- bzw. vorspulen, kurz drücken = Trackwechsel (User 28.11.)
+  if(k==="ArrowLeft"||k==="ArrowRight"){e.preventDefault();if(e.repeat||kh)return;flash(k);
+    kh={k,t:setTimeout(()=>{kh.seek=true;if(!listening)act("play");if(k==="ArrowRight"){au.preservesPitch=false;au.webkitPreservesPitch=false;au.playbackRate=3}else kh.iv=setInterval(()=>{au.currentTime=Math.max(0,au.currentTime-.5)},100);
+      document.querySelector(`.key[data-k="${k}"]`).classList.add("held")},380)};return}
+  if(KEYMAP[k]){if((k===" "||k==="Enter")&&(e.target.tagName==="A"||(e.target.tagName==="BUTTON"&&!e.target.classList.contains("key"))))return;flash(k);act(KEYMAP[k])}
+  else if(k==="o"){const r=L[cur];if(r){track("Shop click",{shop:r.main.S.shop,where:"beta"});window.open(r.main.url,"_blank","noopener")}}
+  else if(k==="b"||k==="B"){flash("Enter");act("bag")}
+  else return;
+  e.preventDefault();
+});
+// Mausrad / Trackpad senkrecht: nächste bzw. vorherige Platte
+let acc=0,lock=0;
+stage.addEventListener("wheel",e=>{e.preventDefault();if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;const now=Date.now();acc+=e.deltaY;if(now<lock)return;if(Math.abs(acc)>40){act(acc>0?"next":"prev");acc=0;lock=now+170}},{passive:false});
+// Touch: wie die Pfeiltasten (hoch = nächste Platte, runter = zurück, links = Bag, rechts = nächster Track)
+let ty=null,tx=null;
+// Platte folgt dem Finger (User 27.11.: mehr Flow). Hoch = nächste Platte, runter = zurück,
+// Finger nach links = nächster Track, nach rechts = Bag. Unter der Schwelle federt sie zurück.
+let drag=null;
+// iOS gibt den Ton nur bei einer Berührung frei, nicht nach einem Wisch. Darum beim ersten Berühren den Player stumm
+// kurz anspielen (das schaltet ihn frei); wird er trotzdem blockiert, bleibt TAP stehen.
+let primed=false;
+stage.addEventListener("touchstart",()=>{if(primed||listening||!L[cur])return;primed=true;au.muted=true;au.src=L[cur].tracks[0].u;au.play().then(()=>{if(!listening)au.pause()}).catch(()=>{}).finally(()=>{au.muted=false})},{passive:true});
+// Gedrückt halten = vorspulen: der Track läuft dreifach schnell, wie eine zu schnell drehende Platte (User 27.11., 23:36)
+let holdT=null,ff=false,ffJust=false;
+function ffStart(){holdT=null;if(!L[cur]||busy)return;if(!listening)act("play");ff=true;used.hold=true;
+  au.preservesPitch=false;au.webkitPreservesPitch=false;au.playbackRate=3;stage.classList.add("ff");document.getElementById("ghff").classList.add("on");hintKeys()}
+function ffStop(){if(!ff)return;ff=false;ffJust=true;setTimeout(()=>{ffJust=false},450);au.playbackRate=1;stage.classList.remove("ff");document.getElementById("ghff").classList.remove("on")}
+stage.addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].clientX;drag={ax:null,e:EL.get(cur),t0:performance.now(),lx:tx,ly:ty,lt:performance.now(),vx:0,vy:0};
+  clearTimeout(holdT);if(e.target.closest&&e.target.closest(".rec.k0"))holdT=setTimeout(ffStart,380)},{passive:true});
+stage.addEventListener("touchmove",e=>{if(ty==null||!drag||!drag.e||busy)return;const dx=e.touches[0].clientX-tx,dy=e.touches[0].clientY-ty;
+  if(ff)return;
+  {const n=performance.now(),cx=e.touches[0].clientX,cy=e.touches[0].clientY,dt=Math.max(1,n-drag.lt);drag.vx=.6*drag.vx+.4*(cx-drag.lx)/dt;drag.vy=.6*drag.vy+.4*(cy-drag.ly)/dt;drag.lx=cx;drag.ly=cy;drag.lt=n}
+  if(!drag.ax){if(Math.hypot(dx,dy)<8)return;clearTimeout(holdT);holdT=null;drag.ax=Math.abs(dy)>Math.abs(dx)?"y":"x";drag.e.style.transition="none"}
+  let x=0,y=0,r=0;
+  if(drag.ax==="y"){y=dy<0?dy:0;r=0}
+  else{x=dx<0?-26*(1-Math.exp(dx/70)):dx;y=dx>0?-Math.min(dx,160)*.12:0;r=dx*.045}
+  drag.e.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`},{passive:true});
+stage.addEventListener("contextmenu",e=>e.preventDefault());
+stage.addEventListener("touchcancel",()=>{clearTimeout(holdT);holdT=null;ffStop()});
+stage.addEventListener("touchend",e=>{clearTimeout(holdT);holdT=null;if(ff){ffStop();ty=null;drag=null;return}if(ty==null)return;const dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;ty=null;
+  const d=drag;drag=null;if(d&&d.e&&d.ax){d.e.style.transition="";d.e.classList.add("snap");setTimeout(()=>d.e.classList.remove("snap"),650)}
+  let done=false;
+  // Wie bei TikTok/Instagram: ein kurzer, schneller Wisch genügt (Tempo zählt, nicht nur die Strecke)
+  const vx=d?d.vx:0,vy=d?d.vy:0,fl=(dist,v,lim,vmin)=>Math.abs(dist)>lim||(Math.abs(dist)>12&&Math.abs(v)>vmin&&Math.sign(v)===Math.sign(dist));
+  if(Math.abs(dy)>Math.abs(dx)){if(fl(dy,vy,40,.35)){act(dy<0?"next":"prev");done=true}}
+  else if(dx<0){if(fl(dx,vx,24,.3))act("track")}
+  else if(fl(dx,vx,50,.4)){act("bag");done=busy}
+  if(!done&&d&&d.e&&d.e.isConnected&&EL.get(cur)===d.e)place(d.e,0,cur)},{passive:true});
+window.addEventListener("storage",e=>{if(e.key==="mvr-cart"){cart=store.get("mvr-cart",[]);bagCount();paintInfo()}});
+bagCount();
+fetch("/releases.json",{cache:"no-cache"}).then(r=>r.json()).then(build).catch(()=>{info.innerHTML='<p class="load">Could not load the records. Reload the page.</p>'});
+</script>
+</body>
+</html>
