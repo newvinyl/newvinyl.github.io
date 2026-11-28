@@ -1,15 +1,15 @@
 {
  "date": "2026-11-28",
  "total": {
-  "records": 7098,
-  "tracks": 6741,
-  "clip": 131,
-  "none": 226
+  "records": 6200,
+  "tracks": 5968,
+  "clip": 41,
+  "none": 191
  },
  "shops": {
   "Hardwax": {
-   "records": 319,
-   "tracks": 319,
+   "records": 345,
+   "tracks": 345,
    "clip": 0,
    "none": 0
   },
@@ -20,14 +20,14 @@
    "none": 2
   },
   "Decks.de": {
-   "records": 31,
-   "tracks": 23,
+   "records": 32,
+   "tracks": 25,
    "clip": 1,
-   "none": 7
+   "none": 6
   },
   "Clone": {
-   "records": 525,
-   "tracks": 523,
+   "records": 546,
+   "tracks": 544,
    "clip": 0,
    "none": 2
   },
@@ -38,56 +38,56 @@
    "none": 30
   },
   "Redeye Records": {
-   "records": 1873,
-   "tracks": 1720,
-   "clip": 111,
-   "none": 42
+   "records": 1392,
+   "tracks": 1339,
+   "clip": 23,
+   "none": 30
   },
   "Yoyaku": {
-   "records": 459,
-   "tracks": 456,
+   "records": 434,
+   "tracks": 431,
    "clip": 0,
    "none": 3
   },
   "Kompakt": {
-   "records": 173,
-   "tracks": 165,
+   "records": 180,
+   "tracks": 172,
    "clip": 0,
    "none": 8
   },
   "Juno Records": {
-   "records": 1248,
-   "tracks": 1231,
+   "records": 1112,
+   "tracks": 1102,
    "clip": 0,
-   "none": 17
+   "none": 10
   },
   "Deejay.de": {
-   "records": 502,
+   "records": 499,
    "tracks": 427,
    "clip": 10,
-   "none": 65
+   "none": 62
   },
   "Vinyl Underground": {
-   "records": 555,
-   "tracks": 544,
+   "records": 348,
+   "tracks": 343,
    "clip": 0,
-   "none": 11
+   "none": 5
   },
   "Sound Metaphors": {
    "records": 18,
-   "tracks": 16,
-   "clip": 1,
+   "tracks": 17,
+   "clip": 0,
    "none": 1
   },
   "Discos Paradiso": {
    "records": 35,
-   "tracks": 28,
-   "clip": 2,
+   "tracks": 29,
+   "clip": 1,
    "none": 5
   },
   "Syncrophone": {
-   "records": 126,
-   "tracks": 126,
+   "records": 132,
+   "tracks": 132,
    "clip": 0,
    "none": 0
   },
@@ -98,16 +98,16 @@
    "none": 0
   },
   "Bordello A Parigi": {
-   "records": 148,
-   "tracks": 147,
+   "records": 149,
+   "tracks": 148,
    "clip": 0,
    "none": 1
   },
   "Diggers.fr": {
-   "records": 238,
-   "tracks": 233,
+   "records": 134,
+   "tracks": 134,
    "clip": 0,
-   "none": 5
+   "none": 0
   },
   "Carpet & Snares": {
    "records": 23,
@@ -122,16 +122,16 @@
    "none": 0
   },
   "Side One": {
-   "records": 150,
-   "tracks": 141,
+   "records": 182,
+   "tracks": 173,
    "clip": 0,
    "none": 9
   },
   "SoundGround": {
-   "records": 135,
-   "tracks": 128,
+   "records": 128,
+   "tracks": 122,
    "clip": 0,
-   "none": 7
+   "none": 6
   },
   "Divert Records": {
    "records": 5,
@@ -140,44 +140,42 @@
    "none": 1
   },
   "Ultrasuoni": {
-   "records": 71,
-   "tracks": 71,
+   "records": 81,
+   "tracks": 81,
    "clip": 0,
    "none": 0
   },
   "Rubadub": {
-   "records": 138,
-   "tracks": 134,
+   "records": 99,
+   "tracks": 95,
    "clip": 0,
    "none": 4
   }
  },
- "pages_checked": 1657,
- "new_from_shop_pages": 927,
- "copied_from_other_shop": 434,
- "broken_clips_removed": 35,
- "clips_verified": 25528,
- "not_reachable": {
-  "Phonica: http307": 54
- },
+ "pages_checked": 175,
+ "new_from_shop_pages": 85,
+ "copied_from_other_shop": 25,
+ "broken_clips_removed": 34,
+ "clips_verified": 22168,
+ "not_reachable": {},
  "clip_hosts": {
   "DL.dropbox.com": {
-   "clips": 44,
+   "clips": 30,
    "failed": 0,
    "sample": []
   },
   "bordelloaparigi.com": {
-   "clips": 705,
+   "clips": 708,
    "failed": 0,
    "sample": []
   },
   "cdn.shopify.com": {
-   "clips": 2396,
+   "clips": 1710,
    "failed": 0,
    "sample": []
   },
   "clone.nl": {
-   "clips": 2184,
+   "clips": 1748,
    "failed": 1,
    "sample": [
     "https://clone.nl/platen/mp3/84004/06%20Graves%20Qui%3Fmicos%20%28Breaks%29.mp3"
@@ -189,27 +187,27 @@
    "sample": []
   },
   "diggers.fr": {
-   "clips": 1171,
+   "clips": 646,
    "failed": 0,
    "sample": []
   },
   "dl.dropbox.com": {
-   "clips": 565,
+   "clips": 383,
    "failed": 0,
    "sample": []
   },
   "imvbzrbcpbpwuwjizeyo.supabase.co": {
-   "clips": 562,
+   "clips": 434,
    "failed": 0,
    "sample": []
   },
   "media.hardwax.com": {
-   "clips": 1641,
+   "clips": 1691,
    "failed": 0,
    "sample": []
   },
   "objectstore.true.nl": {
-   "clips": 475,
+   "clips": 471,
    "failed": 6,
    "sample": [
     "https://objectstore.true.nl/rushhourrecords:files/tracks/s/sps26127_mtms2/01-luca_formentini-what_if.mp3",
@@ -218,13 +216,13 @@
    ]
   },
   "play.syncrophone.fr": {
-   "clips": 558,
+   "clips": 577,
    "failed": 0,
    "sample": []
   },
   "s3.amazonaws.com": {
-   "clips": 90,
-   "failed": 7,
+   "clips": 56,
+   "failed": 6,
    "sample": [
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/eg03-stardiving_mit_joerg_burger-01-10_minutes_of_stardiving_91.mp3",
     "https://s3.amazonaws.com/media.kompakt.fm/01/assets/tracks/mp3short/mop031-blue_hour_fantasy-01-blue_hour_fantasy.mp3",
@@ -232,7 +230,7 @@
    ]
   },
   "sounds.redeyerecords.co.uk": {
-   "clips": 4502,
+   "clips": 3424,
    "failed": 2,
    "sample": [
     "https://sounds.redeyerecords.co.uk/190747.mp3",
@@ -245,12 +243,12 @@
    "sample": []
   },
   "www.betinos.com": {
-   "clips": 122,
-   "failed": 87,
+   "clips": 86,
+   "failed": 59,
    "sample": [
     "https://www.betinos.com/sites/default/files/1Blob 1Blob 1.mp3",
     "https://www.betinos.com/sites/default/files/1_1_C.A.R. - Sunshine.mp3",
-    "https://www.betinos.com/sites/default/files/1_1_milan93 & 9ICK & Mauricesax - Rhodora.mp3"
+    "https://www.betinos.com/sites/default/files/1_2_C.A.R. - Step Outside.mp3"
    ]
   },
   "www.divertrecords.sk": {
@@ -259,8 +257,8 @@
    "sample": []
   },
   "www.juno.co.uk": {
-   "clips": 7354,
-   "failed": 7354,
+   "clips": 6907,
+   "failed": 6907,
    "sample": [
     "https://www.juno.co.uk/MP3/SF1009968-01-01-01.mp3",
     "https://www.juno.co.uk/MP3/SF1009968-01-01-02.mp3",
@@ -268,17 +266,17 @@
    ]
   },
   "www.sideone.pl": {
-   "clips": 885,
+   "clips": 1024,
    "failed": 0,
    "sample": []
   },
   "www.ultrasuonirecords.com": {
-   "clips": 291,
+   "clips": 339,
    "failed": 0,
    "sample": []
   },
   "yydistribution.ams3.cdn.digitaloceanspaces.com": {
-   "clips": 1561,
+   "clips": 1512,
    "failed": 2,
    "sample": [
     "https://yydistribution.ams3.cdn.digitaloceanspaces.com/yyplayer/mp3/YTCWVYL08_3.mp3",
