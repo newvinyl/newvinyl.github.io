@@ -419,17 +419,35 @@ fuss(g){const f=actor("fuss",150*g,470-30*g,0);mv(f,[tr(0,-420),tr(0,-420),tr(0,
   say(f,OH(),2.5,1.3);at(3.2,()=>mv(f,[tr(0,365-190*g),tr(0,-500)],.9,"ease-in"));gone(f,4.3)},
 schild(g){const s=actor("schild",95*g,560,345-84*g);s.style.transformOrigin="50% 100%";mv(s,[{transform:"scale(0)"},{transform:"scale(1.2)",offset:.6},{transform:"scale(1)"}],.6,"ease-out");at(14,()=>mv(s,[{transform:"scale(1)"},{transform:"scale(0)"}],.4));gone(s,14.5)},
 komitee(g){const k=actor("komitee",90*g,0,350-73*g);mv(k,[tr(-160,0),tr(440,0)],5);say(k,OH(),4,5);at(11,()=>mv(k,[tr(440,0),tr(-160,0)],5));gone(k,16.2)}};
+/* Unfälle (User 28.11.): Runde 1 und 2 stürzt etwas vom Himmel, danach wechselt das Szenario. Das Wrack landet immer auf dem Rasen, wo der Pfau frisst */
+const boomAt=(dx,dy,c)=>{bm.style.translate=`${dx}px ${dy}px`;A(bm,[{opacity:1,transform:"scale(.1) rotate(-20deg)"},{opacity:1,transform:"scale(1.15) rotate(6deg)",offset:.25},{opacity:1,transform:"scale(1) rotate(0)",offset:.6},{opacity:0,transform:"scale(1.3) rotate(4deg)"}],{duration:1600,easing:"ease-out"});shake(6*c.bs)};
+const wreck=(src,dx,dy)=>{br.src=src;clr(br);if(!dx&&!dy){A(br,[{opacity:0},{opacity:1}],{duration:400,delay:500});return}
+  A(br,[{opacity:1,transform:`translate(${dx}px,${dy}px) rotate(0) scale(.5)`},{opacity:1,transform:`translate(${dx*.5}px,${dy-150}px) rotate(200deg) scale(.8)`},{opacity:1,transform:"translate(0,-8px) rotate(350deg) scale(1)",offset:.85},{opacity:1,transform:"translate(0,0) rotate(360deg) scale(1)"}],{duration:1100,delay:250,easing:"ease-in-out"})};
+const CRASH={
+sky(c){bm.style.translate="0 0";clr(bl);bl.style.opacity=1;mv(bl,[tr(-40,-420,-8),tr(10,-200,10),tr(0,0,-6),tr(-6,128,-18)],3.2,"cubic-bezier(.55,0,1,.45)");
+  at(3.2,()=>{bl.style.opacity=0;boomAt(0,0,c);wreck(WR[c.bal],0,0)})},
+collide(c){const a=actor("auto",100,0,372),g=actor("glace",125,0,358,true);mv(a,[tr(-160,0),tr(440,0)],2.4,"ease-in");mv(g,[tr(950,0),tr(540,0)],2.4,"ease-in");say(a,OH(),1.6,.6);
+  at(2.4,()=>{a.remove();g.remove();boomAt(0,95,c);wreck("/beta/szene/wrack-auto.png",0,100)})},
+cake(c){const t=actor("torte",90,0,350,true);mv(t,[tr(950,0),tr(495,0)],3,"ease-out");at(3,()=>mv(t,[{scale:1},{scale:1.25},{scale:.9},{scale:1.4}],.8,"ease-in"));
+  at(3.8,()=>{t.remove();boomAt(0,95,c);wreck("/beta/szene/wrack-torte.png",0,100)})},
+mole(c){const m=actor("maulwurf",70,505,292),r=actor("rakete",22,529,268);m.style.transformOrigin="50% 100%";mv(m,[{transform:"scale(0)"},{transform:"scale(1.2)",offset:.7},{transform:"scale(1)"}],.6,"ease-out");mv(r,[{opacity:0},{opacity:1}],.6);say(m,OH(),2,1);
+  at(2.6,()=>mv(r,[tr(0,0),tr(0,-280)],.9,"ease-in"));
+  at(3.5,()=>{const f=actor("feuerwerk",200,440,-110);mv(f,[{transform:"scale(0)",opacity:1},{transform:"scale(1.3)",opacity:1,offset:.6},{transform:"scale(1.4)",opacity:0}],1.6,"ease-out");gone(f,1.7)});
+  at(4.6,()=>mv(r,[tr(0,-280,180),tr(0,0,180)],.7,"ease-in"));say(m,OH(),1.5,4.6);
+  at(5.3,()=>{m.remove();r.remove();boomAt(0,0,c);wreck("/beta/szene/wrack-rakete.png",0,0)})}};
+let lastCrash="sky";
 const POOL=Object.keys(EV);
 /* Wrack bleibt nach der Explosion liegen (User 28.11.), kein BOOM-Text mehr */
 const WR={"/beta/ballon.png":"/beta/wrack.png","/beta/szene/ballon-platte.png":"/beta/szene/wrack-platte.png","/beta/szene/ballon-ente.png":"/beta/szene/wrack-ente.png","/beta/szene/ballon-toaster.png":"/beta/szene/wrack-toaster.png"};
 const BOOM=["KABOOM!","PLOP.","oops","meh.","BOOM BOOM","KA-CHING!","404","PFFFT","BADABOOM"];
 /* Runde planen: Runde 1 ist die Originalgeschichte, danach steigt alles */
 let n=+(q.get("round")||1),sunB=null;
-const plan=n=>{const L=n-1;if(!L)return{L,cl:1,ps:1,hue:0,bal:"/beta/ballon.png",boom:"BOOM!",bs:1,ev:[],tint:0,sp:1};
+const pickCrash=n=>{if(q.get("crash")&&n>1)return q.get("crash");if(n<=2)return"sky";const o=Object.keys(CRASH).filter(k=>k!==lastCrash&&(n>3||k!=="sky"));return lastCrash=R(o)};
+const plan=n=>{const L=n-1;if(!L)return{L,cl:1,ps:1,hue:0,bal:"/beta/ballon.png",boom:"BOOM!",bs:1,ev:[],tint:0,sp:1,crash:"sky"};
   const k=Math.min(1+L,7),ev=shuf(POOL).concat(shuf(POOL)).slice(0,k),slots=shuf([4,9,15,22,36,42,50,66,72,80]).slice(0,k);
   return{L,cl:Math.min(1+Math.floor(L*rnd(.6,1.3)),7),ps:Math.min(1+L*rnd(.05,.2),1.8),hue:L>1&&Math.random()<.6?rnd(40,320):0,
     bal:R(["/beta/ballon.png","/beta/szene/ballon-platte.png","/beta/szene/ballon-ente.png","/beta/szene/ballon-toaster.png"]),boom:R(BOOM),bs:Math.min(1+L*.12,1.8),
-    ev:ev.map((e,i)=>({e,t:e==="schnecke"?rnd(3,40):slots[i]})),tint:L>2&&Math.random()<.5?R(["#ff9ad5","#9affc0","#ffe48a","#a6b8ff"]):0,sp:Math.max(.35,1-L*.1)}};
+    ev:ev.map((e,i)=>({e,t:e==="schnecke"?rnd(3,40):slots[i]})),tint:L>2&&Math.random()<.5?R(["#ff9ad5","#9affc0","#ffe48a","#a6b8ff"]):0,sp:Math.max(.35,1-L*.1),crash:pickCrash(n)}};
 /* Waschbären-Konvoi */
 let crew=[wb];
 const buildCrew=c=>{crew.slice(1).forEach(x=>x.remove());crew=[wb];for(let i=1;i<c;i++){const x=wb.cloneNode();x.style.scale=Math.max(.45,1-i*.12);S.insertBefore(x,wb);crew.push(x)}};
@@ -443,9 +461,7 @@ const round=c=>{
   c.ev.forEach(({e,t})=>at(t,()=>{const r=EV[e](Math.min(1+c.L*.12,1.9),c.L);if(e==="sonne"){sunB&&sunB.remove();sunB=r}}));
   at(30,()=>driveOut(c.sp));
   /* Ballon erst ab 1:00 sichtbar: fällt brennend vom Himmel (User 28.11.) */
-  at(60,()=>{clr(bl);bl.style.opacity=1;mv(bl,[tr(-40,-420,-8),tr(10,-200,10),tr(0,0,-6),tr(-6,128,-18)],3.2,"cubic-bezier(.55,0,1,.45)");
-    at(3.2,()=>{bl.style.opacity=0;A(bm,[{opacity:1,transform:"scale(.1) rotate(-20deg)"},{opacity:1,transform:"scale(1.15) rotate(6deg)",offset:.25},{opacity:1,transform:"scale(1) rotate(0)",offset:.6},{opacity:0,transform:"scale(1.3) rotate(4deg)"}],{duration:1600,easing:"ease-out"});
-      A(br,[{opacity:0},{opacity:1}],{duration:400,delay:500});shake(6*c.bs)})});
+  at(60,()=>CRASH[c.crash](c));
   at(90,()=>{let st=0;const iv=setInterval(()=>{pf.classList.toggle("st",st^=1)},260/T),tx=793-381*c.ps;
     mv(pf,[{transform:"translateX(0)"},{transform:`translateX(${tx}px)`}],5).onfinish=()=>{clearInterval(iv);
       const P=d=>({transform:`translateX(${tx}px) rotate(${d}deg)`});mv(pf,[P(0),Object.assign(P(60),{offset:.2}),Object.assign(P(46),{offset:.35}),Object.assign(P(60),{offset:.5}),Object.assign(P(46),{offset:.65}),Object.assign(P(60),{offset:.8}),P(0)],2.6,"ease-in-out");
